@@ -1,6 +1,6 @@
 # Romo
 
-TODO: Write a gem description
+A UI Toolkit _loosely_ based on conventions from [Bootstrap v2.3.2](http://getbootstrap.com/2.3.2/index.html).
 
 ## Usage
 
