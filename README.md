@@ -1,6 +1,6 @@
 # Romo
 
-TODO: Write a gem description
+UI Toolkit
 
 ## Usage
 
