@@ -6,7 +6,7 @@ $.fn.romoDropdown = function() {
 
 // Dropdown
 
-window.RomoDropdown = function(element) {
+var RomoDropdown = function(element) {
   this.elem = $(element);
   this.toggleElem = this.elem.find('> .romo-dropdown-toggle');
   this.popupElem  = this.elem.find('> .romo-dropdown-popup');
