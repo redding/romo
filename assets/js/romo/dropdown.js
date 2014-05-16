@@ -14,7 +14,6 @@ var RomoDropdown = function(element) {
 
   this.toggleElem.unbind('click');
   this.toggleElem.on('click', $.proxy(this.onToggleClick, this));
-  this.toggleElem.on('dropdown:onPopupOpen', $.proxy(this.doLoadBody, this));
 
   // don't propagate click events on the popup elem.  this prevents the popup
   // from closing when clicked (see body click event bind on popup open)
@@ -25,22 +24,22 @@ var RomoDropdown = function(element) {
   })
 
   if (this.bodyElem.data('min-width') != undefined) {
-    this.bodyElem.css('min-width', this.bodyElem.data('min-width'))
+    this.bodyElem.css('min-width', this.bodyElem.data('min-width'));
   }
   if (this.bodyElem.data('max-width') != undefined) {
-    this.bodyElem.css('max-width', this.bodyElem.data('max-width'))
+    this.bodyElem.css('max-width', this.bodyElem.data('max-width'));
   }
   if (this.bodyElem.data('width') != undefined) {
-    this.bodyElem.css('width', this.bodyElem.data('width'))
+    this.bodyElem.css('width', this.bodyElem.data('width'));
   }
   if (this.bodyElem.data('min-height') != undefined) {
-    this.bodyElem.css('min-height', this.bodyElem.data('min-height'))
+    this.bodyElem.css('min-height', this.bodyElem.data('min-height'));
   }
   if (this.bodyElem.data('max-height') != undefined) {
-    this.bodyElem.css('max-height', this.bodyElem.data('max-height'))
+    this.bodyElem.css('max-height', this.bodyElem.data('max-height'));
   }
   if (this.bodyElem.data('height') != undefined) {
-    this.bodyElem.css('height', this.bodyElem.data('height'))
+    this.bodyElem.css('height', this.bodyElem.data('height'));
   }
 
   this.doInit();
@@ -93,7 +92,7 @@ RomoDropdown.prototype.doPopupOpen = function() {
   this.popupElem.addClass('romo-dropdown-open');
 
   // bind an event to close the popup when clicking away from the
-  // popup.  Bind on a timeout to allow time for the any toggle
+  // popup.  Bind on a timeout to allow time for any toggle
   // click event to propagate.  If no timeout, we'll bind this
   // event, then the toggle click will propagate which will call
   // this event and immediately close the popup.
