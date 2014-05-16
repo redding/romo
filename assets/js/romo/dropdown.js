@@ -23,22 +23,22 @@ var RomoDropdown = function(element) {
     }
   })
 
-  if (this.bodyElem.data('min-width') != undefined) {
+  if (this.bodyElem.data('min-width') != undefined && this.elem.data('min-width') != '') {
     this.bodyElem.css('min-width', this.bodyElem.data('min-width'));
   }
-  if (this.bodyElem.data('max-width') != undefined) {
+  if (this.bodyElem.data('max-width') != undefined && this.elem.data('max-width') != '') {
     this.bodyElem.css('max-width', this.bodyElem.data('max-width'));
   }
-  if (this.bodyElem.data('width') != undefined) {
+  if (this.bodyElem.data('width') != undefined && this.elem.data('width') != '') {
     this.bodyElem.css('width', this.bodyElem.data('width'));
   }
-  if (this.bodyElem.data('min-height') != undefined) {
+  if (this.bodyElem.data('min-height') != undefined && this.elem.data('min-height') != '') {
     this.bodyElem.css('min-height', this.bodyElem.data('min-height'));
   }
-  if (this.bodyElem.data('max-height') != undefined) {
+  if (this.bodyElem.data('max-height') != undefined && this.elem.data('max-height') != '') {
     this.bodyElem.css('max-height', this.bodyElem.data('max-height'));
   }
-  if (this.bodyElem.data('height') != undefined) {
+  if (this.bodyElem.data('height') != undefined && this.elem.data('height') != '') {
     this.bodyElem.css('height', this.bodyElem.data('height'));
   }
 

@@ -16,15 +16,14 @@ var RomoTooltip = function(element) {
   this.delayEnter = 0
   this.delayLeave = 0
 
-  if (this.elem.data('delay') != undefined) {
+  if (this.elem.data('delay') != undefined && this.elem.data('delay') != '') {
     this.delayEnter = this.elem.data('delay');
     this.delayLeave = this.elem.data('delay');
   }
-
-  if (this.elem.data('delay-enter') != undefined) {
+  if (this.elem.data('delay-enter') != undefined && this.elem.data('delay-enter') != '') {
     this.delayEnter = this.elem.data('delay-enter');
   }
-  if (this.elem.data('delay-leave') != undefined) {
+  if (this.elem.data('delay-leave') != undefined && this.elem.data('delay-leave') != '') {
     this.delayLeave = this.elem.data('delay-leave');
   }
 
@@ -39,22 +38,22 @@ var RomoTooltip = function(element) {
     }
   })
 
-  if (this.bodyElem.data('min-width') != undefined) {
+  if (this.bodyElem.data('min-width') != undefined && this.elem.data('min-width') != '') {
     this.bodyElem.css('min-width', this.bodyElem.data('min-width'));
   }
-  if (this.bodyElem.data('max-width') != undefined) {
+  if (this.bodyElem.data('max-width') != undefined && this.elem.data('max-width') != '') {
     this.bodyElem.css('max-width', this.bodyElem.data('max-width'));
   }
-  if (this.bodyElem.data('width') != undefined) {
+  if (this.bodyElem.data('width') != undefined && this.elem.data('width') != '') {
     this.bodyElem.css('width', this.bodyElem.data('width'));
   }
-  if (this.bodyElem.data('min-height') != undefined) {
+  if (this.bodyElem.data('min-height') != undefined && this.elem.data('min-height') != '') {
     this.bodyElem.css('min-height', this.bodyElem.data('min-height'));
   }
-  if (this.bodyElem.data('max-height') != undefined) {
+  if (this.bodyElem.data('max-height') != undefined && this.elem.data('max-height') != '') {
     this.bodyElem.css('max-height', this.bodyElem.data('max-height'));
   }
-  if (this.bodyElem.data('height') != undefined) {
+  if (this.bodyElem.data('height') != undefined && this.elem.data('height') != '') {
     this.bodyElem.css('height', this.bodyElem.data('height'));
   }
 
