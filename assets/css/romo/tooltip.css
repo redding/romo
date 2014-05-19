@@ -1,5 +1,6 @@
 .romo-tooltip {
   position: relative;
+  cursor: pointer;
 }
 
 .romo-tooltip-popup {
@@ -11,6 +12,7 @@
           border-radius: 4px;
 
   font-size: 11px;
+  line-height: 1.4;
 }
 
 .romo-tooltip-popup[data-position="top"],
@@ -148,26 +150,26 @@
 /* theme */
 
 .romo-tooltip-popup {
-  background-color: #000;
-  color: #fff;
+  background-color: #202020;
+  color: #e0e0e0;
 }
 
 .romo-tooltip-popup[data-position="top"][data-align="left"] .romo-tooltip-arrow,
 .romo-tooltip-popup[data-position="top"][data-align="right"] .romo-tooltip-arrow {
-  border-top-color: #000;
+  border-top-color: #202020;
 }
 
 .romo-tooltip-popup[data-position="right"][data-align="top"] .romo-tooltip-arrow,
 .romo-tooltip-popup[data-position="right"][data-align="bottom"] .romo-tooltip-arrow {
-  border-right-color: #000;
+  border-right-color: #202020;
 }
 
 .romo-tooltip-popup[data-position="bottom"][data-align="left"] .romo-tooltip-arrow,
 .romo-tooltip-popup[data-position="bottom"][data-align="right"] .romo-tooltip-arrow {
-  border-bottom-color: #000;
+  border-bottom-color: #202020;
 }
 
 .romo-tooltip-popup[data-position="left"][data-align="top"] .romo-tooltip-arrow,
 .romo-tooltip-popup[data-position="left"][data-align="bottom"] .romo-tooltip-arrow {
-  border-left-color: #000;
+  border-left-color: #202020;
 }
