@@ -15,12 +15,12 @@
 
 .romo-tooltip-popup[data-position="top"],
 .romo-tooltip-popup[data-position="bottom"] {
-  margin: 2px 0;
+  margin: 6px 0;
 }
 
 .romo-tooltip-popup[data-position="left"],
 .romo-tooltip-popup[data-position="right"] {
-  margin: 0 2px;
+  margin: 0 6px;
 }
 
 .romo-tooltip-popup[data-position="top"][data-align="left"] {
