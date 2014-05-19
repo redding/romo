@@ -43,6 +43,21 @@ var RomoTooltip = function(element) {
     }
   })
 
+  if (this.popupElem.data('align-adjust') != undefined && this.popupElem.data('align-adjust') != '') {
+    if (this.popupElem.data('align') === 'left') {
+      this.popupElem.css('left', this.popupElem.data('align-adjust'));
+    }
+    else if (this.popupElem.data('top') === 'top') {
+      this.popupElem.css('top', this.popupElem.data('align-adjust'));
+    }
+    else if (this.popupElem.data('align') === 'right') {
+      this.popupElem.css('right', this.popupElem.data('align-adjust'));
+    }
+    else if (this.popupElem.data('align') === 'bottom') {
+      this.popupElem.css('bottom', this.popupElem.data('align-adjust'));
+    }
+  }
+
   if (this.bodyElem.data('min-width') != undefined && this.elem.data('min-width') != '') {
     this.bodyElem.css('min-width', this.bodyElem.data('min-width'));
   }
