@@ -12,6 +12,11 @@ var RomoTooltip = function(element) {
   this.popupElem  = this.elem.find('> .romo-tooltip-popup');
   this.bodyElem   = this.popupElem.find('> .romo-tooltip-body');
 
+  if (this.elem.data('romo-display') != undefined && this.elem.data('romo-display') != '') {
+    this.elem.css('display', this.elem.data('romo-display'));
+    this.toggleElem.css('display', this.elem.data('romo-display'));
+  }
+
   this.hoverState = 'out'
   this.delayEnter = 0
   this.delayLeave = 0
