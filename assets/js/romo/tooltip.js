@@ -16,15 +16,15 @@ var RomoTooltip = function(element) {
   this.delayEnter = 0
   this.delayLeave = 0
 
-  if (this.elem.data('delay') != undefined && this.elem.data('delay') != '') {
-    this.delayEnter = this.elem.data('delay');
-    this.delayLeave = this.elem.data('delay');
+  if (this.toggleElem.data('delay') != undefined && this.toggleElem.data('delay') != '') {
+    this.delayEnter = this.toggleElem.data('delay');
+    this.delayLeave = this.toggleElem.data('delay');
   }
-  if (this.elem.data('delay-enter') != undefined && this.elem.data('delay-enter') != '') {
-    this.delayEnter = this.elem.data('delay-enter');
+  if (this.toggleElem.data('delay-enter') != undefined && this.toggleElem.data('delay-enter') != '') {
+    this.delayEnter = this.toggleElem.data('delay-enter');
   }
-  if (this.elem.data('delay-leave') != undefined && this.elem.data('delay-leave') != '') {
-    this.delayLeave = this.elem.data('delay-leave');
+  if (this.toggleElem.data('delay-leave') != undefined && this.toggleElem.data('delay-leave') != '') {
+    this.delayLeave = this.toggleElem.data('delay-leave');
   }
 
   this.toggleElem.on('mouseenter', $.proxy(this.onToggleEnter, this));
