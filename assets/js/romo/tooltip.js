@@ -49,7 +49,7 @@ var RomoTooltip = function(element) {
     if (this.popupElem.data('align') === 'left') {
       this.popupElem.css('left', this.popupElem.data('align-adjust'));
     }
-    else if (this.popupElem.data('top') === 'top') {
+    else if (this.popupElem.data('align') === 'top') {
       this.popupElem.css('top', this.popupElem.data('align-adjust'));
     }
     else if (this.popupElem.data('align') === 'right') {
