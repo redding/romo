@@ -32,8 +32,10 @@ var RomoTooltip = function(element) {
     this.delayLeave = this.toggleElem.data('delay-leave');
   }
 
-  this.toggleElem.on('mouseenter', $.proxy(this.onToggleEnter, this));
-  this.toggleElem.on('mouseleave', $.proxy(this.onToggleLeave, this));
+  if (this.toggleElem.data('disabled') != true) {
+    this.toggleElem.on('mouseenter', $.proxy(this.onToggleEnter, this));
+    this.toggleElem.on('mouseleave', $.proxy(this.onToggleLeave, this));
+  }
 
   // don't propagate click events on the popup elem.  this prevents the popup
   // from closing when clicked (see body click event bind on popup open)
