@@ -1,41 +1,25 @@
 .romo-dropdown {
-  position: relative;
   cursor: pointer;
 }
 
 .romo-dropdown-popup {
   position: absolute;
-  margin: 2px 0;
   z-index: 1000;
   float: left;
   border-width: 1px;
   border-style: solid;
 }
 
-.romo-dropdown-popup[data-position="bottom"] {
-  top: 100%;
-  bottom: auto;
+.romo-dropdown-popup[data-dropdown-position="bottom"] {
   -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
      -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
           box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.romo-dropdown-popup[data-position="top"] {
-  top: auto;
-  bottom: 100%;
+.romo-dropdown-popup[data-dropdown-position="top"] {
   -webkit-box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.2);
      -moz-box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.2);
           box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.2);
-}
-
-.romo-dropdown-popup[data-align="left"] {
-  left: 0;
-  right: auto;
-}
-
-.romo-dropdown-popup[data-align="right"] {
-  left: auto;
-  right: 0;
 }
 
 .romo-dropdown-popup:not([class*="romo-dropdown-open"]) {
