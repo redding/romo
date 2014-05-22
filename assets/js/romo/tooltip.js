@@ -27,9 +27,6 @@ var RomoTooltip = function(element) {
 
   this.popupPosition = this.elem.data('tooltip-position') || 'top'
   this.popupElem.attr('data-tooltip-position', this.popupPosition)
-  this.elem.on('mouseenter', $.proxy(this.onToggleEnter, this))
-  this.elem.on('mouseleave', $.proxy(this.onToggleLeave, this))
-  $(window).on('resize', $.proxy(this.onResizeWindow, this))
   // don't propagate click events on the popup elem.  this prevents the popup
   // from closing when clicked (see body click event bind on popup open)
   this.popupElem.on('click', function(e) {
@@ -37,16 +34,21 @@ var RomoTooltip = function(element) {
       e.stopPropagation()
     }
   })
-
   this.bodyElem.addClass(this.elem.data('tooltip-style-class'))
-  this.bodyElem.css('min-width', this.elem.data('tooltip-min-width'))
-  this.bodyElem.css('max-width', this.elem.data('tooltip-max-width'))
-  this.bodyElem.css('width', this.elem.data('tooltip-width'))
-  this.bodyElem.css('min-height', this.elem.data('tooltip-min-height'))
-  this.bodyElem.css('max-height', this.elem.data('tooltip-max-height'))
-  this.bodyElem.css('height', this.elem.data('tooltip-height'))
+  this.bodyElem.css({
+    'min-width':  this.bodyElem.data('tooltip-min-width'),
+    'max-width':  this.bodyElem.data('tooltip-max-width'),
+    'width':      this.bodyElem.data('tooltip-width'),
+    'min-height': this.bodyElem.data('tooltip-min-height'),
+    'max-height': this.bodyElem.data('tooltip-max-height'),
+    'height':     this.bodyElem.data('tooltip-height')
+  })
   this.bodyElem.html(this.elem.data('tooltip-content') || '')
+
   // TODO: tooltip-href handling
+  this.elem.on('mouseenter', $.proxy(this.onToggleEnter, this))
+  this.elem.on('mouseleave', $.proxy(this.onToggleLeave, this))
+  $(window).on('resize', $.proxy(this.onResizeWindow, this))
 
   this.doInit()
   this.elem.trigger('tooltip:onReady', [this])
@@ -93,6 +95,7 @@ RomoTooltip.prototype.onResizeWindow = function(e) {
     this.doPlacePopupElem()
   }
 }
+
 RomoTooltip.prototype.doPopupOpen = function() {
   this.popupElem.addClass('romo-tooltip-open')
   this.doPlacePopupElem()
@@ -110,7 +113,6 @@ RomoTooltip.prototype.doPlacePopupElem = function() {
   var pos = $.extend({}, this.elem[0].getBoundingClientRect(), this.elem.offset())
   var w = this.popupElem[0].offsetWidth
   var h = this.popupElem[0].offsetHeight
-
   var pad = 6 + 1 // arrow size + spacing
   var offset = {}
 
