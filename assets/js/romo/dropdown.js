@@ -65,8 +65,7 @@ RomoDropdown.prototype.doLoadBodyStart = function() {
 
 RomoDropdown.prototype.doLoadBodySuccess = function(data) {
   // override as needed
-  // TODO: Romo.initHtml
-  this.bodyElem.html(data)
+  Romo.initHtml(this.bodyElem, data)
   this.doPlacePopupElem()
 }
 
