@@ -38,15 +38,12 @@ var RomoDropdown = function(element) {
   this.elem.on('click', $.proxy(this.onToggleClick, this))
   this.elem.on('invoke:onLoadStart', $.proxy(function(e, invoke) {
     this.doLoadBodyStart()
-    this.elem.trigger('dropdown:onLoadBodyStart', [this])
   }, this))
   this.elem.on('invoke:onLoadSuccess', $.proxy(function(e, data, invoke) {
     this.doLoadBodySuccess(data)
-    this.elem.trigger('dropdown:onLoadBodySuccess', [data, this])
   }, this))
   this.elem.on('invoke:onLoadError', $.proxy(function(e, xhr, invoke) {
     this.doLoadBodyError(xhr)
-    this.elem.trigger('dropdown:onLoadBodyError', [xhr, this])
   }, this))
 
   this.doInit()
@@ -58,19 +55,19 @@ RomoDropdown.prototype.doInit = function() {
 }
 
 RomoDropdown.prototype.doLoadBodyStart = function() {
-  // override as needed
   this.bodyElem.html('')
   this.doPlacePopupElem()
+  this.elem.trigger('dropdown:onLoadBodyStart', [this])
 }
 
 RomoDropdown.prototype.doLoadBodySuccess = function(data) {
-  // override as needed
   Romo.initHtml(this.bodyElem, data)
   this.doPlacePopupElem()
+  this.elem.trigger('dropdown:onLoadBodySuccess', [data, this])
 }
 
 RomoDropdown.prototype.doLoadBodyError = function(xhr) {
-  // override as needed
+  this.elem.trigger('dropdown:onLoadBodyError', [xhr, this])
 }
 
 RomoDropdown.prototype.onToggleClick = function(e) {
