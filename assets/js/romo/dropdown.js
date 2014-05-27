@@ -9,6 +9,7 @@ var RomoDropdown = function(element) {
   this.popupElem = $('<div class="romo-dropdown-popup"><div class="romo-dropdown-body"></div></div>')
   this.popupElem.appendTo('body')
   this.bodyElem = this.popupElem.find('> .romo-dropdown-body')
+  this.romoInvoke = this.elem.romoInvoke()[0]
 
   var positionData = this._parsePositionData(this.elem.data('dropdown-position'))
   this.popupPosition  = positionData.position  || 'bottom'
@@ -35,6 +36,18 @@ var RomoDropdown = function(element) {
 
   this.elem.unbind('click')
   this.elem.on('click', $.proxy(this.onToggleClick, this))
+  this.elem.on('invoke:onLoadStart', $.proxy(function(e, invoke) {
+    this.doLoadBodyStart()
+    this.elem.trigger('dropdown:onLoadBodyStart', [this])
+  }, this))
+  this.elem.on('invoke:onLoadSuccess', $.proxy(function(e, data, invoke) {
+    this.doLoadBodySuccess(data)
+    this.elem.trigger('dropdown:onLoadBodySuccess', [data, this])
+  }, this))
+  this.elem.on('invoke:onLoadError', $.proxy(function(e, xhr, invoke) {
+    this.doLoadBodyError(xhr)
+    this.elem.trigger('dropdown:onLoadBodyError', [xhr, this])
+  }, this))
 
   this.doInit()
   this.elem.trigger('dropdown:onReady', [this])
@@ -52,7 +65,7 @@ RomoDropdown.prototype.doLoadBodyStart = function() {
 
 RomoDropdown.prototype.doLoadBodySuccess = function(data) {
   // override as needed
-  // TODO: initHtml
+  // TODO: Romo.initHtml
   this.bodyElem.html(data)
   this.doPlacePopupElem()
 }
@@ -81,11 +94,7 @@ RomoDropdown.prototype.doToggle = function() {
 }
 
 RomoDropdown.prototype.doPopupOpen = function() {
-  var loadHref = this.elem.attr('href')
-  if (loadHref != undefined) {
-    this.doLoadBody(loadHref)
-  }
-
+  this.romoInvoke.doInvoke()
   this.popupElem.addClass('romo-dropdown-open')
   this.doPlacePopupElem()
 
@@ -134,27 +143,6 @@ RomoDropdown.prototype.onWindowBodyKeyUp = function(e) {
 
 RomoDropdown.prototype.onResizeWindow = function(e) {
   this.doPlacePopupElem()
-}
-
-RomoDropdown.prototype.doLoadBody = function(href) {
-  this.doLoadBodyStart()
-  this.elem.trigger('dropdown:onLoadBodyStart', [this])
-
-  $.ajax({
-    url: href,
-    success: $.proxy(this.onLoadBodyAjaxSuccess, this),
-    error: $.proxy(this.onLoadBodyAjaxError, this)
-  })
-}
-
-RomoDropdown.prototype.onLoadBodyAjaxSuccess = function(data, status, xhr) {
-  this.doLoadBodySuccess(data)
-  this.elem.trigger('dropdown:onLoadBodySuccess', [data, this])
-}
-
-RomoDropdown.prototype.onLoadBodyAjaxError = function(xhr, errorType, error) {
-  this.doLoadBodyError(xhr)
-  this.elem.trigger('dropdown:onLoadBodyError', [xhr, this])
 }
 
 RomoDropdown.prototype.doPlacePopupElem = function() {
