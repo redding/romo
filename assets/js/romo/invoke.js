@@ -35,11 +35,11 @@ RomoInvoke.prototype.doInvoke = function() {
     this.doLoad(loadHref)
   }
 
-  this._trigger('invoke:onInvoke', [this]);
+  this._trigger('invoke:onInvoke', [this])
 }
 
 RomoInvoke.prototype.doLoad = function(href) {
-  this._trigger('invoke:onLoadStart', [this]);
+  this._trigger('invoke:onLoadStart', [this])
 
   $.ajax({
     url:     href,
@@ -49,11 +49,11 @@ RomoInvoke.prototype.doLoad = function(href) {
 }
 
 RomoInvoke.prototype.onLoadAjaxSuccess = function(data, status, xhr) {
-  this._trigger('invoke:onLoadSuccess', [data, this]);
+  this._trigger('invoke:onLoadSuccess', [data, this])
 }
 
 RomoInvoke.prototype.onLoadAjaxError = function(xhr, errorType, error) {
-  this._trigger('invoke:onLoadError', [xhr, this]);
+  this._trigger('invoke:onLoadError', [xhr, this])
 }
 
 RomoInvoke.prototype._trigger = function(event_name, event_data) {
