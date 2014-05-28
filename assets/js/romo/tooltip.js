@@ -51,7 +51,7 @@ var RomoTooltip = function(element) {
   $(window).on('resize', $.proxy(this.onResizeWindow, this))
 
   this.doInit()
-  this.elem.trigger('tooltip:onReady', [this])
+  this.elem.trigger('tooltip:ready', [this])
 }
 
 RomoTooltip.prototype.doInit = function() {
@@ -100,13 +100,13 @@ RomoTooltip.prototype.doPopupOpen = function() {
   this.popupElem.addClass('romo-tooltip-open')
   this.doPlacePopupElem()
 
-  this.elem.trigger('tooltip:onPopupOpen', [this])
+  this.elem.trigger('tooltip:popupOpen', [this])
 }
 
 RomoTooltip.prototype.doPopupClose = function() {
   this.popupElem.removeClass('romo-tooltip-open')
 
-  this.elem.trigger('tooltip:onPopupClose', [this])
+  this.elem.trigger('tooltip:popupClose', [this])
 }
 
 RomoTooltip.prototype.doPlacePopupElem = function() {

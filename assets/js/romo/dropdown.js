@@ -36,18 +36,18 @@ var RomoDropdown = function(element) {
 
   this.elem.unbind('click')
   this.elem.on('click', $.proxy(this.onToggleClick, this))
-  this.elem.on('invoke:onLoadStart', $.proxy(function(e, invoke) {
+  this.elem.on('invoke:loadStart', $.proxy(function(e, invoke) {
     this.doLoadBodyStart()
   }, this))
-  this.elem.on('invoke:onLoadSuccess', $.proxy(function(e, data, invoke) {
+  this.elem.on('invoke:loadSuccess', $.proxy(function(e, data, invoke) {
     this.doLoadBodySuccess(data)
   }, this))
-  this.elem.on('invoke:onLoadError', $.proxy(function(e, xhr, invoke) {
+  this.elem.on('invoke:loadError', $.proxy(function(e, xhr, invoke) {
     this.doLoadBodyError(xhr)
   }, this))
 
   this.doInit()
-  this.elem.trigger('dropdown:onReady', [this])
+  this.elem.trigger('dropdown:ready', [this])
 }
 
 RomoDropdown.prototype.doInit = function() {
@@ -57,17 +57,17 @@ RomoDropdown.prototype.doInit = function() {
 RomoDropdown.prototype.doLoadBodyStart = function() {
   this.bodyElem.html('')
   this.doPlacePopupElem()
-  this.elem.trigger('dropdown:onLoadBodyStart', [this])
+  this.elem.trigger('dropdown:loadBodyStart', [this])
 }
 
 RomoDropdown.prototype.doLoadBodySuccess = function(data) {
   Romo.initHtml(this.bodyElem, data)
   this.doPlacePopupElem()
-  this.elem.trigger('dropdown:onLoadBodySuccess', [data, this])
+  this.elem.trigger('dropdown:loadBodySuccess', [data, this])
 }
 
 RomoDropdown.prototype.doLoadBodyError = function(xhr) {
-  this.elem.trigger('dropdown:onLoadBodyError', [xhr, this])
+  this.elem.trigger('dropdown:loadBodyError', [xhr, this])
 }
 
 RomoDropdown.prototype.onToggleClick = function(e) {
@@ -86,7 +86,7 @@ RomoDropdown.prototype.doToggle = function() {
   } else {
     this.doPopupOpen()
   }
-  this.elem.trigger('dropdown:onToggle', [this])
+  this.elem.trigger('dropdown:toggle', [this])
 }
 
 RomoDropdown.prototype.doPopupOpen = function() {
@@ -109,7 +109,7 @@ RomoDropdown.prototype.doPopupOpen = function() {
   // bind window resizes reposition dropdown
   $(window).on('resize', $.proxy(this.onResizeWindow, this))
 
-  this.elem.trigger('dropdown:onPopupOpen', [this])
+  this.elem.trigger('dropdown:popupOpen', [this])
 }
 
 RomoDropdown.prototype.doPopupClose = function() {
@@ -124,7 +124,7 @@ RomoDropdown.prototype.doPopupClose = function() {
   // unbind window resizes reposition dropdown
   $(window).off('resize', $.proxy(this.onResizeWindow, this))
 
-  this.elem.trigger('dropdown:onPopupClose', [this])
+  this.elem.trigger('dropdown:popupClose', [this])
 }
 
 RomoDropdown.prototype.onWindowBodyClick = function(e) {
