@@ -78,7 +78,7 @@ RomoForm.prototype._doGetSubmit = function() {
   var data = this._getSerializeObj()
 
   if (this.elem.data('form-redirect-page') === true) {
-    Romo.redirectPage(this.elem.attr('action') + '?' + $.param(data))
+    Romo.redirectPage(this.elem.attr('action') + '?' + Romo.param(data))
   } else {
     this._doAjaxSubmit(data)
   }

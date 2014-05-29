@@ -36,6 +36,12 @@
     window.location = redirectUrl
   }
 
+  // param serialization
+
+  Romo.prototype.param = function(data) {
+    return $.param(data)
+  }
+
   // private
 
   Romo.prototype._addEventCallback = function(name, callback) {
