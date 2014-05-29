@@ -38,8 +38,17 @@
 
   // param serialization
 
-  Romo.prototype.param = function(data) {
-    return $.param(data)
+  Romo.prototype.param = function(data, opts) {
+    var paramData = $.extend({}, data)
+    if (opts && opts.removeEmpty) {
+      $.each(paramData, function(key, value) {
+        if (value === '') {
+          delete paramData[key]
+        }
+      })
+    }
+
+    return $.param(paramData)
   }
 
   // private

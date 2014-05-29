@@ -20,6 +20,11 @@ var RomoForm = function(element, submitElement) {
     })
   }
 
+  this.removeEmptyGetParams = this.elem.data('form-remove-empty-get-params')
+  if (this.removeEmptyGetParams === undefined) {
+    this.removeEmptyGetParams = true
+  }
+
   this.doInit()
   this.elem.trigger('form:clearMsgs', [this])
   this.elem.trigger('form:ready', [this])
@@ -78,7 +83,9 @@ RomoForm.prototype._doGetSubmit = function() {
   var data = this._getSerializeObj()
 
   if (this.elem.data('form-redirect-page') === true) {
-    Romo.redirectPage(this.elem.attr('action') + '?' + Romo.param(data))
+    Romo.redirectPage(this.elem.attr('action') + '?' + Romo.param(data, {
+      removeEmpty: this.removeEmptyGetParams
+    }))
   } else {
     this._doAjaxSubmit(data)
   }
