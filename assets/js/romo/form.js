@@ -27,6 +27,11 @@ var RomoForm = function(element, submitElement) {
     this.removeEmptyGetParams = true
   }
 
+  this.decodeParams = this.elem.data('form-decode-params')
+  if (this.decodeParams === undefined) {
+    this.decodeParams = true
+  }
+
   this.doInit()
   this.elem.trigger('form:clearMsgs', [this])
   this.elem.trigger('form:ready', [this])
@@ -86,7 +91,8 @@ RomoForm.prototype._doGetSubmit = function() {
 
   if (this.elem.data('form-redirect-page') === true) {
     Romo.redirectPage(this.elem.attr('action') + '?' + Romo.param(data, {
-      removeEmpty: this.removeEmptyGetParams
+      removeEmpty:  this.removeEmptyGetParams,
+      decodeValues: this.decodeParams
     }))
   } else {
     this._doAjaxSubmit(data)

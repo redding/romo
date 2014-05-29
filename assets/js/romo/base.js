@@ -40,6 +40,7 @@
 
   Romo.prototype.param = function(data, opts) {
     var paramData = $.extend({}, data)
+
     if (opts && opts.removeEmpty) {
       $.each(paramData, function(key, value) {
         if (value === '') {
@@ -48,8 +49,49 @@
       })
     }
 
-    return $.param(paramData)
+    var paramString = $.param(paramData)
+
+    if (opts && opts.decodeValues) {
+      paramString = this.decodeParam(paramString)
+    }
+
+    return paramString
   }
+
+  Romo.prototype.decodeParam = function(string) {
+    return this.decodeParamMap.reduce(function(prev, curr) {
+      return prev.replace(curr[0], curr[1])
+    }, string)
+  }
+
+  Romo.prototype.decodeParamMap = [
+    [/%20/g, '+'],
+    [/%21/g, '!'],
+    [/%24/g, '$'],
+    [/%28/g, '('],
+    [/%29/g, ')'],
+    [/%2A/g, '*'],
+    [/%2B/g, '+'],
+    [/%2C/g, ','],
+    [/%2D/g, '-'],
+    [/%2E/g, '.'],
+    [/%2F/g, '/'],
+    [/%5B/g, '['],
+    [/%5C/g, '\\'],
+    [/%5D/g, ']'],
+    [/%3A/g, ':'],
+    [/%3C/g, '<'],
+    [/%3E/g, '>'],
+    [/%3F/g, '?'],
+    [/%40/g, '@'],
+    [/%5E/g, '^'],
+    [/%5F/g, '_'],
+    [/%60/g, '`'],
+    [/%7B/g, '{'],
+    [/%7C/g, '|'],
+    [/%7D/g, '}'],
+    [/%7E/g, '~']
+  ]
 
   // private
 
