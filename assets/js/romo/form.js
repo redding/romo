@@ -14,6 +14,12 @@ var RomoForm = function(element, submitElement) {
   this.submitElem.unbind('click')
   this.submitElem.on('click', $.proxy(this.onSubmitClick, this))
 
+  if (this.elem.data('form-reload-page') === true) {
+    this.elem.on('form:submitSuccess', function(e, data, form) {
+      Romo.reloadPage()
+    })
+  }
+
   this.doInit()
   this.elem.trigger('form:clearMsgs', [this])
   this.elem.trigger('form:ready', [this])
