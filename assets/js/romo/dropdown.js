@@ -132,7 +132,7 @@ RomoDropdown.prototype.onWindowBodyClick = function(e) {
 }
 
 RomoDropdown.prototype.onWindowBodyKeyUp = function(e) {
-  if (e.keyCode == 27) { // esc
+  if (e.keyCode === 27 /* Esc */) {
     this.doPopupClose()
   }
 }

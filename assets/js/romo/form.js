@@ -32,7 +32,7 @@ RomoForm.prototype.doInit = function() {
 RomoForm.prototype.onFormKeyPress = function(e) {
   var target = $(e.target)
 
-  if(target.is(':not(TEXTAREA)') && e.which == 13) {
+  if(target.is(':not(TEXTAREA)') && e.which === 13 /* Enter */) {
     e.preventDefault()
     this.onSubmitClick()
   }
@@ -48,26 +48,14 @@ RomoForm.prototype.onSubmitClick = function(e) {
   }
 }
 
-RomoForm.prototype.doSubmit = function(e) {
+RomoForm.prototype.doSubmit = function() {
   this.elem.trigger('form:beforeSubmit', [this])
 
-  var type = this.elem.attr('method')
-  if(type.toUpperCase() == 'GET') {
-    var data = this.elem.serialize()
+  if (this.elem.attr('method').toUpperCase() === 'GET') {
+    this._doGetSubmit()
   } else {
-    var data = new FormData(this.elem[0])
+    this._doMethodSubmit()
   }
-
-  $.ajax({
-    url:         this.elem.attr('action'),
-    type:        type,
-    dataType:    this._getXhrDataType(),
-    data:        data,
-    processData: false,
-    contentType: false,
-    success:     $.proxy(this.onSubmitSuccess, this),
-    error:       $.proxy(this.onSubmitError, this)
-  })
 }
 
 RomoForm.prototype.onSubmitSuccess = function(data, status, xhr) {
@@ -78,13 +66,42 @@ RomoForm.prototype.onSubmitSuccess = function(data, status, xhr) {
 RomoForm.prototype.onSubmitError = function(xhr, errorType, error) {
   this.elem.trigger('form:clearMsgs')
 
-  if(xhr.status == '422') {
+  if(xhr.status === '422') {
     this.elem.trigger('form:submitInvalidMsgs', [$.parseJSON(xhr.responseText), xhr, this])
   } else {
     this.elem.trigger('form:submitXhrError', [xhr, this])
   }
   // TODO: switch arg order to xhr, this.form - update modal/inline
   this.form.trigger('form:submitError', [xhr, this]);
+}
+
+RomoForm.prototype._doGetSubmit = function() {
+  var data = this.elem.serialize()
+
+  if (this.elem.data('form-redirect-page') === true) {
+    Romo.redirectPage(this.elem.attr('action') + '?' + data)
+  }
+  else {
+    this._doAjaxSubmit(data)
+  }
+}
+
+RomoForm.prototype._doMethodSubmit = function() {
+  var data = new FormData(this.elem[0])
+  this._doAjaxSubmit(data)
+}
+
+RomoForm.prototype._doAjaxSubmit = function(data) {
+  $.ajax({
+    url:         this.elem.attr('action'),
+    type:        this.elem.attr('method'),
+    dataType:    this._getXhrDataType(),
+    data:        data,
+    processData: false,
+    contentType: false,
+    success:     $.proxy(this.onSubmitSuccess, this),
+    error:       $.proxy(this.onSubmitError, this)
+  })
 }
 
 RomoForm.prototype._getXhrDataType = function() {
