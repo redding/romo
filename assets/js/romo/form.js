@@ -20,6 +20,8 @@ var RomoForm = function(element, submitElement) {
     })
   }
 
+  this.defaultListValuesDelim = ','
+
   this.removeEmptyGetParams = this.elem.data('form-remove-empty-get-params')
   if (this.removeEmptyGetParams === undefined) {
     this.removeEmptyGetParams = true
@@ -142,10 +144,10 @@ RomoForm.prototype._getSerializeObj = function() {
 RomoForm.prototype._getListValueInputNamesDelims = function() {
   return $.map(this.elem.find('[data-form-list-values="true"]'), function(item){
     return item // onverts the collection to an array
-  }).reduce(function(prev, curr) {
-    prev[$(curr).attr('name')] = $(curr).data('form-list-values-delim') || ','
+  }).reduce($.proxy(function(prev, curr) {
+    prev[$(curr).attr('name')] = $(curr).data('form-list-values-delim') || this.defaultListValuesDelim
     return prev
-  }, {})
+  }, this), {})
 }
 
 RomoForm.prototype._getXhrDataType = function() {
