@@ -20,7 +20,7 @@ RomoInvoke.prototype.doInit = function() {
 }
 
 RomoInvoke.prototype.onClick = function(e) {
-  if (e != undefined) {
+  if (e !== undefined) {
     e.preventDefault()
   }
 
@@ -31,7 +31,7 @@ RomoInvoke.prototype.onClick = function(e) {
 
 RomoInvoke.prototype.doInvoke = function() {
   var loadHref = this.elem.attr('href')
-  if (loadHref != undefined) {
+  if (loadHref !== undefined) {
     this.doLoad(loadHref)
   }
 
@@ -58,7 +58,7 @@ RomoInvoke.prototype.onLoadAjaxError = function(xhr, errorType, error) {
 
 RomoInvoke.prototype._trigger = function(event_name, event_data) {
   this.elem.trigger(event_name, event_data)
-  if (this.targetElem != undefined) {
+  if (this.targetElem !== undefined) {
     this.targetElem.trigger(event_name, event_data)
   }
 }

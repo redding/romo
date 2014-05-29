@@ -19,7 +19,7 @@ var RomoDropdown = function(element) {
   // don't propagate click events on the popup elem.  this prevents the popup
   // from closing when clicked (see body click event bind on popup open)
   this.popupElem.on('click', function(e) {
-    if (e != undefined) {
+    if (e !== undefined) {
       e.stopPropagation()
     }
   })
@@ -71,7 +71,7 @@ RomoDropdown.prototype.doLoadBodyError = function(xhr) {
 }
 
 RomoDropdown.prototype.onToggleClick = function(e) {
-  if (e != undefined) {
+  if (e !== undefined) {
     e.preventDefault()
   }
 

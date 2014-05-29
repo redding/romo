@@ -14,14 +14,14 @@ var RomoTooltip = function(element) {
   this.hoverState = 'out'
   this.delayEnter = 0
   this.delayLeave = 0
-  if (this.elem.data('tooltip-delay') != undefined && this.elem.data('tooltip-delay') != '') {
+  if (this.elem.data('tooltip-delay') !== undefined && this.elem.data('tooltip-delay') !== '') {
     this.delayEnter = this.elem.data('tooltip-delay')
     this.delayLeave = this.elem.data('tooltip-delay')
   }
-  if (this.elem.data('tooltip-delay-enter') != undefined && this.elem.data('tooltip-delay-enter') != '') {
+  if (this.elem.data('tooltip-delay-enter') !== undefined && this.elem.data('tooltip-delay-enter') !== '') {
     this.delayEnter = this.elem.data('tooltip-delay-enter')
   }
-  if (this.elem.data('tooltip-delay-leave') != undefined && this.elem.data('tooltip-delay-leave') != '') {
+  if (this.elem.data('tooltip-delay-leave') !== undefined && this.elem.data('tooltip-delay-leave') !== '') {
     this.delayLeave = this.elem.data('tooltip-delay-leave')
   }
 
@@ -30,7 +30,7 @@ var RomoTooltip = function(element) {
   // don't propagate click events on the popup elem.  this prevents the popup
   // from closing when clicked (see body click event bind on popup open)
   this.popupElem.on('click', function(e) {
-    if (e != undefined) {
+    if (e !== undefined) {
       e.stopPropagation()
     }
   })
@@ -59,7 +59,7 @@ RomoTooltip.prototype.doInit = function() {
 }
 
 RomoTooltip.prototype.onToggleEnter = function(e) {
-  if (e != undefined) {
+  if (e !== undefined) {
     e.preventDefault()
   }
 
@@ -75,7 +75,7 @@ RomoTooltip.prototype.onToggleEnter = function(e) {
 }
 
 RomoTooltip.prototype.onToggleLeave = function(e) {
-  if (e != undefined) {
+  if (e !== undefined) {
     e.preventDefault()
   }
 

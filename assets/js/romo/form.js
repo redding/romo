@@ -39,7 +39,7 @@ RomoForm.prototype.onFormKeyPress = function(e) {
 }
 
 RomoForm.prototype.onSubmitClick = function(e) {
-  if (e != undefined) {
+  if (e !== undefined) {
     e.preventDefault()
   }
 
