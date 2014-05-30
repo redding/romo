@@ -14,18 +14,18 @@ var RomoTooltip = function(element) {
   this.hoverState = 'out'
   this.delayEnter = 0
   this.delayLeave = 0
-  if (this.elem.data('tooltip-delay') !== undefined && this.elem.data('tooltip-delay') !== '') {
-    this.delayEnter = this.elem.data('tooltip-delay')
-    this.delayLeave = this.elem.data('tooltip-delay')
+  if (this.elem.data('romo-tooltip-delay') !== undefined && this.elem.data('romo-tooltip-delay') !== '') {
+    this.delayEnter = this.elem.data('romo-tooltip-delay')
+    this.delayLeave = this.elem.data('romo-tooltip-delay')
   }
-  if (this.elem.data('tooltip-delay-enter') !== undefined && this.elem.data('tooltip-delay-enter') !== '') {
-    this.delayEnter = this.elem.data('tooltip-delay-enter')
+  if (this.elem.data('romo-tooltip-delay-enter') !== undefined && this.elem.data('romo-tooltip-delay-enter') !== '') {
+    this.delayEnter = this.elem.data('romo-tooltip-delay-enter')
   }
-  if (this.elem.data('tooltip-delay-leave') !== undefined && this.elem.data('tooltip-delay-leave') !== '') {
-    this.delayLeave = this.elem.data('tooltip-delay-leave')
+  if (this.elem.data('romo-tooltip-delay-leave') !== undefined && this.elem.data('romo-tooltip-delay-leave') !== '') {
+    this.delayLeave = this.elem.data('romo-tooltip-delay-leave')
   }
 
-  this.popupPosition = this.elem.data('tooltip-position') || 'top'
+  this.popupPosition = this.elem.data('romo-tooltip-position') || 'top'
   this.popupElem.attr('data-tooltip-position', this.popupPosition)
   // don't propagate click events on the popup elem.  this prevents the popup
   // from closing when clicked (see body click event bind on popup open)
@@ -34,16 +34,16 @@ var RomoTooltip = function(element) {
       e.stopPropagation()
     }
   })
-  this.bodyElem.addClass(this.elem.data('tooltip-style-class'))
+  this.bodyElem.addClass(this.elem.data('romo-tooltip-style-class'))
   this.bodyElem.css({
-    'min-width':  this.bodyElem.data('tooltip-min-width'),
-    'max-width':  this.bodyElem.data('tooltip-max-width'),
-    'width':      this.bodyElem.data('tooltip-width'),
-    'min-height': this.bodyElem.data('tooltip-min-height'),
-    'max-height': this.bodyElem.data('tooltip-max-height'),
-    'height':     this.bodyElem.data('tooltip-height')
+    'min-width':  this.elem.data('romo-tooltip-min-width'),
+    'max-width':  this.elem.data('romo-tooltip-max-width'),
+    'width':      this.elem.data('romo-tooltip-width'),
+    'min-height': this.elem.data('romo-tooltip-min-height'),
+    'max-height': this.elem.data('romo-tooltip-max-height'),
+    'height':     this.elem.data('romo-tooltip-height')
   })
-  this.bodyElem.html(this.elem.data('tooltip-content') || '')
+  this.bodyElem.html(this.elem.data('romo-tooltip-content') || '')
 
   // TODO: tooltip-href handling
   this.elem.on('mouseenter', $.proxy(this.onToggleEnter, this))
@@ -135,5 +135,5 @@ RomoTooltip.prototype.doPlacePopupElem = function() {
 }
 
 Romo.onInitUI(function(e) {
-  $(e.target).find('.romo-tooltip[data-tooltip-auto="true"]').romoTooltip()
+  $(e.target).find('[data-romo-tooltip-auto="true"]').romoTooltip()
 })

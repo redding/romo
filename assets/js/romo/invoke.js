@@ -6,7 +6,7 @@ $.fn.romoInvoke = function() {
 
 var RomoInvoke = function(element) {
   this.elem = $(element)
-  this.targetElem = $(this.elem.data('invoke-target'))
+  this.targetElem = $(this.elem.data('romo-invoke-target'))
 
   this.elem.unbind('click')
   this.elem.on('click', $.proxy(this.onClick, this))
@@ -64,5 +64,5 @@ RomoInvoke.prototype._trigger = function(event_name, event_data) {
 }
 
 Romo.onInitUI(function(e) {
-  $(e.target).find('.romo-invoke[data-invoke-auto="true"]').romoInvoke()
+  $(e.target).find('[data-romo-invoke-auto="true"]').romoInvoke()
 })

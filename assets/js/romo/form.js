@@ -14,7 +14,7 @@ var RomoForm = function(element, submitElement) {
   this.submitElem.unbind('click')
   this.submitElem.on('click', $.proxy(this.onSubmitClick, this))
 
-  if (this.elem.data('form-reload-page') === true) {
+  if (this.elem.data('romo-form-reload-page') === true) {
     this.elem.on('form:submitSuccess', function(e, data, form) {
       Romo.reloadPage()
     })
@@ -22,12 +22,12 @@ var RomoForm = function(element, submitElement) {
 
   this.defaultListValuesDelim = ','
 
-  this.removeEmptyGetParams = this.elem.data('form-remove-empty-get-params')
+  this.removeEmptyGetParams = this.elem.data('romo-form-remove-empty-get-params')
   if (this.removeEmptyGetParams === undefined) {
     this.removeEmptyGetParams = true
   }
 
-  this.decodeParams = this.elem.data('form-decode-params')
+  this.decodeParams = this.elem.data('romo-form-decode-params')
   if (this.decodeParams === undefined) {
     this.decodeParams = true
   }
@@ -89,7 +89,7 @@ RomoForm.prototype.onSubmitError = function(xhr, errorType, error) {
 RomoForm.prototype._doGetSubmit = function() {
   var data = this._getSerializeObj()
 
-  if (this.elem.data('form-redirect-page') === true) {
+  if (this.elem.data('romo-form-redirect-page') === true) {
     Romo.redirectPage(this.elem.attr('action') + '?' + Romo.param(data, {
       removeEmpty:  this.removeEmptyGetParams,
       decodeValues: this.decodeParams
@@ -151,20 +151,20 @@ RomoForm.prototype._getListValueInputNamesDelims = function() {
   return $.map(this.elem.find('[data-form-list-values="true"]'), function(item){
     return item // onverts the collection to an array
   }).reduce($.proxy(function(prev, curr) {
-    prev[$(curr).attr('name')] = $(curr).data('form-list-values-delim') || this.defaultListValuesDelim
+    prev[$(curr).attr('name')] = $(curr).data('romo-form-list-values-delim') || this.defaultListValuesDelim
     return prev
   }, this), {})
 }
 
 RomoForm.prototype._getXhrDataType = function() {
-  if(this.elem.data('form-xhr-data-type') !== undefined) {
-    return this.elem.data('form-xhr-data-type')
+  if(this.elem.data('romo-form-xhr-data-type') !== undefined) {
+    return this.elem.data('romo-form-xhr-data-type')
   } else {
     return 'json'
   }
 }
 
 Romo.onInitUI(function(e) {
-  $(e.target).find('.romo-form[data-form-auto="true"]').romoForm()
+  $(e.target).find('[data-form-auto="true"]').romoForm()
 })
 

@@ -11,11 +11,11 @@ var RomoDropdown = function(element) {
   this.bodyElem = this.popupElem.find('> .romo-dropdown-body')
   this.romoInvoke = this.elem.romoInvoke()[0]
 
-  var positionData = this._parsePositionData(this.elem.data('dropdown-position'))
+  var positionData = this._parsePositionData(this.elem.data('romo-dropdown-position'))
   this.popupPosition  = positionData.position  || 'bottom'
   this.popupAlignment = positionData.alignment || 'left'
-  this.popupElem.attr('data-dropdown-position',  this.popupPosition)
-  this.popupElem.attr('data-dropdown-alignment', this.popupAlignment)
+  this.popupElem.attr('data-romo-dropdown-position',  this.popupPosition)
+  this.popupElem.attr('data-romo-dropdown-alignment', this.popupAlignment)
   // don't propagate click events on the popup elem.  this prevents the popup
   // from closing when clicked (see body click event bind on popup open)
   this.popupElem.on('click', function(e) {
@@ -24,14 +24,14 @@ var RomoDropdown = function(element) {
     }
   })
 
-  this.bodyElem.addClass(this.elem.data('dropdown-style-class'))
+  this.bodyElem.addClass(this.elem.data('romo-dropdown-style-class'))
   this.bodyElem.css({
-    'min-width':  this.elem.data('dropdown-min-width'),
-    'max-width':  this.elem.data('dropdown-max-width'),
-    'width':      this.elem.data('dropdown-width'),
-    'min-height': this.elem.data('dropdown-min-height'),
-    'max-height': this.elem.data('dropdown-max-height'),
-    'height':     this.elem.data('dropdown-height')
+    'min-width':  this.elem.data('romo-dropdown-min-width'),
+    'max-width':  this.elem.data('romo-dropdown-max-width'),
+    'width':      this.elem.data('romo-dropdown-width'),
+    'min-height': this.elem.data('romo-dropdown-min-height'),
+    'max-height': this.elem.data('romo-dropdown-max-height'),
+    'height':     this.elem.data('romo-dropdown-height')
   })
 
   this.elem.unbind('click')
@@ -174,5 +174,5 @@ RomoDropdown.prototype._parsePositionData = function(posString) {
 }
 
 Romo.onInitUI(function(e) {
-  $(e.target).find('.romo-dropdown[data-dropdown-auto="true"]').romoDropdown()
+  $(e.target).find('[data-romo-dropdown-auto="true"]').romoDropdown()
 })
