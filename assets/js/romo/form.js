@@ -148,7 +148,7 @@ RomoForm.prototype._getSerializeObj = function() {
 }
 
 RomoForm.prototype._getListValueInputNamesDelims = function() {
-  return $.map(this.elem.find('[data-form-list-values="true"]'), function(item){
+  return $.map(this.elem.find('[data-romo-form-list-values="true"]'), function(item){
     return item // onverts the collection to an array
   }).reduce($.proxy(function(prev, curr) {
     prev[$(curr).attr('name')] = $(curr).data('romo-form-list-values-delim') || this.defaultListValuesDelim
@@ -165,6 +165,6 @@ RomoForm.prototype._getXhrDataType = function() {
 }
 
 Romo.onInitUI(function(e) {
-  $(e.target).find('[data-form-auto="true"]').romoForm()
+  $(e.target).find('[data-romo-form-auto="true"]').romoForm()
 })
 

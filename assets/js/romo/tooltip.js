@@ -26,7 +26,7 @@ var RomoTooltip = function(element) {
   }
 
   this.popupPosition = this.elem.data('romo-tooltip-position') || 'top'
-  this.popupElem.attr('data-tooltip-position', this.popupPosition)
+  this.popupElem.attr('data-romo-tooltip-position', this.popupPosition)
   // don't propagate click events on the popup elem.  this prevents the popup
   // from closing when clicked (see body click event bind on popup open)
   this.popupElem.on('click', function(e) {
