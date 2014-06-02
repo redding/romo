@@ -7,11 +7,12 @@ $.fn.romoInvoke = function() {
 var RomoInvoke = function(element) {
   this.elem = $(element)
   this.targetElem = $(this.elem.data('romo-invoke-target'))
+  this.invokeOn = this.elem.data('romo-invoke-on') || 'click'
 
-  this.elem.unbind('click')
-  this.elem.on('click', $.proxy(this.onClick, this))
+  this.elem.unbind(this.invokeOn)
 
   this.doInit()
+  this.doBindInvoke()
   this._trigger('invoke:ready', [this])
 }
 
@@ -19,7 +20,16 @@ RomoInvoke.prototype.doInit = function() {
   // override as needed
 }
 
-RomoInvoke.prototype.onClick = function(e) {
+RomoInvoke.prototype.doBindInvoke = function() {
+  this.doUnBindInvoke()
+  this.elem.on(this.invokeOn, $.proxy(this.onInvoke, this))
+}
+
+RomoInvoke.prototype.doUnBindInvoke = function() {
+  this.elem.off(this.invokeOn, $.proxy(this.onInvoke, this))
+}
+
+RomoInvoke.prototype.onInvoke = function(e) {
   if (e !== undefined) {
     e.preventDefault()
   }
