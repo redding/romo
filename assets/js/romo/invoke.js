@@ -43,9 +43,9 @@ RomoInvoke.prototype.doInvoke = function() {
   var loadHref = this.elem.attr('href')
   if (loadHref !== undefined) {
     this.doLoad(loadHref)
+  } else {
+    this._trigger('invoke:invoke', [this])
   }
-
-  this._trigger('invoke:invoke', [this])
 }
 
 RomoInvoke.prototype.doLoad = function(href) {
@@ -59,10 +59,12 @@ RomoInvoke.prototype.doLoad = function(href) {
 }
 
 RomoInvoke.prototype.onLoadAjaxSuccess = function(data, status, xhr) {
+  this._trigger('invoke:invoke', [this])
   this._trigger('invoke:loadSuccess', [data, this])
 }
 
 RomoInvoke.prototype.onLoadAjaxError = function(xhr, errorType, error) {
+  this._trigger('invoke:invoke', [this])
   this._trigger('invoke:loadError', [xhr, this])
 }
 
