@@ -1,16 +1,16 @@
-$.fn.romoForm = function() {
-  return $.map(this, function(elem, submitElem) {
-    return new RomoForm($(elem), submitElem)
+$.fn.romoForm = function(givenSubmitElement) {
+  return $.map(this, function(element) {
+    return new RomoForm(element, givenSubmitElement)
   })
 }
 
-var RomoForm = function(element, submitElement) {
+var RomoForm = function(element, givenSubmitElement) {
   this.elem = $(element)
-  this.submit = this.elem.find('button[type="submit"], input[type="submit"]')
-  this.submitElem = $(submitElement || this.submit)
+  this.defaultSubmitElem = this.elem.find('button[type="submit"], input[type="submit"], [data-romo-form-submit="true"]')
+  this.submitElem = $(givenSubmitElement || this.defaultSubmitElem)
 
   this.elem.on('keypress', $.proxy(this.onFormKeyPress, this))
-  this.submit.unbind('click')
+  this.defaultSubmitElem.unbind('click')
   this.submitElem.unbind('click')
   this.submitElem.on('click', $.proxy(this.onSubmitClick, this))
 
