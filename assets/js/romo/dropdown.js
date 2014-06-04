@@ -1,6 +1,6 @@
 $.fn.romoDropdown = function() {
-  return $.map(this, function(elem) {
-    return new RomoDropdown($(elem))
+  return $.map(this, function(element) {
+    return new RomoDropdown(element)
   })
 }
 

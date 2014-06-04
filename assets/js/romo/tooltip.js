@@ -1,6 +1,6 @@
 $.fn.romoTooltip = function() {
-  return $.map(this, function(elem) {
-    return new RomoTooltip($(elem))
+  return $.map(this, function(element) {
+    return new RomoTooltip(element)
   })
 }
 

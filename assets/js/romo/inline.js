@@ -1,6 +1,6 @@
 $.fn.romoInline = function() {
-  return $.map(this, function(elem) {
-    return new RomoInline($(elem))
+  return $.map(this, function(element) {
+    return new RomoInline(element)
   })
 }
 

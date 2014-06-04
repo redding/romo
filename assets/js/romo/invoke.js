@@ -1,6 +1,6 @@
 $.fn.romoInvoke = function() {
-  return $.map(this, function(elem) {
-    return new RomoInvoke($(elem))
+  return $.map(this, function(element) {
+    return new RomoInvoke(element)
   })
 }
 
