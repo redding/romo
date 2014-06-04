@@ -21,6 +21,7 @@ var RomoInline = function(element) {
     this.doLoadError(xhr)
   }, this))
 
+  this.doBindDismiss()
   this.doInit()
   this.elem.trigger('inline:ready', [this])
 }
@@ -42,16 +43,18 @@ RomoInline.prototype.doLoadStart = function() {
 
 RomoInline.prototype.doLoadSuccess = function(data) {
   Romo.initHtml(this.elem, data)
-
-  var dismissElem = this.elem.find('[data-romo-inline-dismiss="true"]')
-  dismissElem.unbind('click')
-  dismissElem.on('click', $.proxy(this.onDismissClick, this))
-
+  this.doBindDismiss()
   this.elem.trigger('inline:loadSuccess', [data, this])
 }
 
 RomoInline.prototype.doLoadError = function(xhr) {
   this.elem.trigger('inline:loadError', [xhr, this])
+}
+
+RomoInline.prototype.doBindDismiss = function() {
+  var dismissElem = this.elem.find('[data-romo-inline-dismiss="true"]')
+  dismissElem.unbind('click')
+  dismissElem.on('click', $.proxy(this.onDismissClick, this))
 }
 
 RomoInline.prototype.onDismissClick = function(e) {
