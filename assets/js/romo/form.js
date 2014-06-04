@@ -121,7 +121,8 @@ RomoForm.prototype._getFormData = function() {
 
   $.each(this._getSerializeObj(), function(k, v){ formData.append(k, v) })
   $.each(this.elem.find('INPUT[type="file"]'), function(i, fileInput) {
-    formData.append($(fileInput).attr('name'), fileInput.files)
+    var attrName = $(fileInput).attr('name')
+    $.each(fileInput.files, function(i, file) { formData.append(attrName, file) })
   })
 
   return formData
