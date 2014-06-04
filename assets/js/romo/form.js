@@ -78,7 +78,7 @@ RomoForm.prototype.onSubmitSuccess = function(data, status, xhr) {
 RomoForm.prototype.onSubmitError = function(xhr, errorType, error) {
   this.elem.trigger('form:clearMsgs')
 
-  if(xhr.status === '422') {
+  if(xhr.status === 422) {
     this.elem.trigger('form:submitInvalidMsgs', [$.parseJSON(xhr.responseText), xhr, this])
   } else {
     this.elem.trigger('form:submitXhrError', [xhr, this])
