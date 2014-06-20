@@ -48,6 +48,8 @@ var RomoTooltip = function(element) {
   // TODO: tooltip-href handling
   this.elem.on('mouseenter', $.proxy(this.onToggleEnter, this))
   this.elem.on('mouseleave', $.proxy(this.onToggleLeave, this))
+  this.elem.on('tooltip:triggerPopupOpen', $.proxy(this.onPopupOpen, this))
+  this.elem.on('tooltip:triggerPopupClose', $.proxy(this.onPopupClose, this))
   $(window).on('resize', $.proxy(this.onResizeWindow, this))
 
   this.doInit()
@@ -96,11 +98,31 @@ RomoTooltip.prototype.onResizeWindow = function(e) {
   }
 }
 
+RomoTooltip.prototype.onPopupOpen = function(e) {
+  if (e !== undefined) {
+    e.preventDefault()
+  }
+
+  if (this.elem.hasClass('disabled') === false) {
+    this.doPopupOpen()
+  }
+}
+
 RomoTooltip.prototype.doPopupOpen = function() {
   this.popupElem.addClass('romo-tooltip-open')
   this.doPlacePopupElem()
 
   this.elem.trigger('tooltip:popupOpen', [this])
+}
+
+RomoTooltip.prototype.onPopupClose = function(e) {
+  if (e !== undefined) {
+    e.preventDefault()
+  }
+
+  if (this.elem.hasClass('disabled') === false) {
+    this.doPopupClose()
+  }
 }
 
 RomoTooltip.prototype.doPopupClose = function() {
