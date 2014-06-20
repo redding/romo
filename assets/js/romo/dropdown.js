@@ -36,6 +36,9 @@ var RomoDropdown = function(element) {
 
   this.elem.unbind('click')
   this.elem.on('click', $.proxy(this.onToggleClick, this))
+  this.elem.on('dropdown:triggerToggle', $.proxy(this.onToggleClick, this))
+  this.elem.on('dropdown:triggerPopupOpen', $.proxy(this.onPopupOpen, this))
+  this.elem.on('dropdown:triggerPopupClose', $.proxy(this.onPopupClose, this))
   this.elem.on('invoke:loadStart', $.proxy(function(e, invoke) {
     this.doLoadBodyStart()
   }, this))
@@ -89,6 +92,16 @@ RomoDropdown.prototype.doToggle = function() {
   this.elem.trigger('dropdown:toggle', [this])
 }
 
+RomoDropdown.prototype.onPopupOpen = function(e) {
+  if (e !== undefined) {
+    e.preventDefault()
+  }
+
+  if (this.elem.hasClass('disabled') === false) {
+    this.doPopupOpen()
+  }
+}
+
 RomoDropdown.prototype.doPopupOpen = function() {
   this.romoInvoke.doInvoke()
   this.popupElem.addClass('romo-dropdown-open')
@@ -110,6 +123,16 @@ RomoDropdown.prototype.doPopupOpen = function() {
   $(window).on('resize', $.proxy(this.onResizeWindow, this))
 
   this.elem.trigger('dropdown:popupOpen', [this])
+}
+
+RomoDropdown.prototype.onPopupClose = function(e) {
+  if (e !== undefined) {
+    e.preventDefault()
+  }
+
+  if (this.elem.hasClass('disabled') === false) {
+    this.doPopupClose()
+  }
 }
 
 RomoDropdown.prototype.doPopupClose = function() {
