@@ -23,10 +23,12 @@ RomoInvoke.prototype.doInit = function() {
 RomoInvoke.prototype.doBindInvoke = function() {
   this.doUnBindInvoke()
   this.elem.on(this.invokeOn, $.proxy(this.onInvoke, this))
+  this.elem.on('invoke:triggerInvoke', $.proxy(this.onInvoke, this))
 }
 
 RomoInvoke.prototype.doUnBindInvoke = function() {
   this.elem.off(this.invokeOn, $.proxy(this.onInvoke, this))
+  this.elem.off('invoke:triggerInvoke', $.proxy(this.onInvoke, this))
 }
 
 RomoInvoke.prototype.onInvoke = function(e) {
