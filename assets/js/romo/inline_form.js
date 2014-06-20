@@ -15,11 +15,33 @@ var RomoInlineForm = function(element) {
 
   this.doInit()
   this.inline = this.elem.romoInline()[0]
+  this.doBindInline()
   this.elem.trigger('inlineForm:ready', [this])
 }
 
 RomoInlineForm.prototype.doInit = function() {
   // override as needed
+}
+
+RomoInlineForm.prototype.doBindInline = function() {
+  this.elem.on('inline:ready', $.proxy(function(e, inline) {
+    this.elem.trigger('inlineForm:inline:ready', [inline, this])
+  }, this))
+  this.elem.on('inline:invoke', $.proxy(function(e, inline) {
+    this.elem.trigger('inlineForm:inline:invoke', [inline, this])
+  }, this))
+  this.elem.on('inline:loadStart', $.proxy(function(e, inline) {
+    this.elem.trigger('inlineForm:inline:loadStart', [inline, this])
+  }, this))
+  this.elem.on('inline:loadSuccess', $.proxy(function(e, inline) {
+    this.elem.trigger('inlineForm:inline:loadSuccess', [inline, this])
+  }, this))
+  this.elem.on('inline:loadError', $.proxy(function(e, inline) {
+    this.elem.trigger('inlineForm:inline:loadError', [inline, this])
+  }, this))
+  this.elem.on('inline:dismiss', $.proxy(function(e, inline) {
+    this.elem.trigger('inlineForm:inline:dismiss', [inline, this])
+  }, this))
 }
 
 RomoInlineForm.prototype.doBindForm = function() {
