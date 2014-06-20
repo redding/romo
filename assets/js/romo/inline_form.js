@@ -8,6 +8,11 @@ var RomoInlineForm = function(element) {
   this.elem = $(element)
 
   this.form = undefined
+  this.elem.on('inlineForm:form:triggerSubmit', $.proxy(function(e) {
+    if (this.form != undefined) {
+      this.form.trigger('form:triggerSubmit', [])
+    }
+  }, this))
   this.doBindForm()
   this.elem.on('inline:loadSuccess', $.proxy(function(e, data, inline) {
     this.doBindForm()
