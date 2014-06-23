@@ -9,6 +9,7 @@ var RomoDropdown = function(element) {
   this.popupElem = $('<div class="romo-dropdown-popup"><div class="romo-dropdown-body"></div></div>')
   this.popupElem.appendTo('body')
   this.bodyElem = this.popupElem.find('> .romo-dropdown-body')
+  this.contentElem = $()
   this.romoInvoke = this.elem.romoInvoke()[0]
 
   var positionData = this._parsePositionData(this.elem.data('romo-dropdown-position'))
@@ -24,15 +25,9 @@ var RomoDropdown = function(element) {
     }
   })
 
-  this.bodyElem.addClass(this.elem.data('romo-dropdown-style-class'))
-  this.bodyElem.css({
-    'min-width':  this.elem.data('romo-dropdown-min-width'),
-    'max-width':  this.elem.data('romo-dropdown-max-width'),
-    'width':      this.elem.data('romo-dropdown-width'),
-    'min-height': this.elem.data('romo-dropdown-min-height'),
-    'max-height': this.elem.data('romo-dropdown-max-height'),
-    'height':     this.elem.data('romo-dropdown-height')
-  })
+  if (this.elem.data('romo-dropdown-style-class') !== undefined) {
+    this.bodyElem.addClass(this.elem.data('romo-dropdown-style-class'))
+  }
 
   this.elem.unbind('click')
   this.elem.on('click', $.proxy(this.onToggleClick, this))
@@ -50,6 +45,8 @@ var RomoDropdown = function(element) {
   }, this))
 
   this.doInit()
+  this.doInitBody()
+
   this.elem.trigger('dropdown:ready', [this])
 }
 
@@ -57,14 +54,47 @@ RomoDropdown.prototype.doInit = function() {
   // override as needed
 }
 
+RomoDropdown.prototype.doInitBody = function() {
+  this.doResetBody()
+
+  this.contentElem = this.bodyElem.find('.romo-dropdown-content')
+  if (this.contentElem.size() === 0) {
+    this.contentElem = this.bodyElem
+  }
+
+  this.contentElem.css({
+    'min-width':  this.elem.data('romo-dropdown-min-width'),
+    'max-width':  this.elem.data('romo-dropdown-max-width'),
+    'width':      this.elem.data('romo-dropdown-width'),
+    'min-height': this.elem.data('romo-dropdown-min-height'),
+    'max-height': this.elem.data('romo-dropdown-max-height'),
+    'height':     this.elem.data('romo-dropdown-height'),
+    'overflow':   'scroll'
+  })
+}
+
+RomoDropdown.prototype.doResetBody = function() {
+  this.contentElem.css({
+    'min-width':  '',
+    'max-width':  '',
+    'width':      '',
+    'min-height': '',
+    'max-height': '',
+    'height':     '',
+    'overflow':   ''
+  })
+}
+
 RomoDropdown.prototype.doLoadBodyStart = function() {
   this.bodyElem.html('')
+  this.doInitBody()
   this.doPlacePopupElem()
   this.elem.trigger('dropdown:loadBodyStart', [this])
 }
 
 RomoDropdown.prototype.doLoadBodySuccess = function(data) {
   Romo.initHtml(this.bodyElem, data)
+  this.doInitBody()
   this.doPlacePopupElem()
   this.elem.trigger('dropdown:loadBodySuccess', [data, this])
 }
