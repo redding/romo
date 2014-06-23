@@ -1,67 +1,67 @@
 (function() {
   var Romo = function() {
-    this._eventCallbacks = []
+    this._eventCallbacks = [];
   }
 
   Romo.prototype.doInit = function() {
     $.each(this._eventCallbacks, function(idx, eventCallback) {
-      $('body').on(eventCallback.eventName, eventCallback.callback)
+      $('body').on(eventCallback.eventName, eventCallback.callback);
     })
 
-    this.triggerInitUI($('body'))
+    this.triggerInitUI($('body'));
   }
 
   // init UI
 
   Romo.prototype.onInitUI = function(callback) {
-    this._addEventCallback('romo:initUI', callback)
+    this._addEventCallback('romo:initUI', callback);
   }
 
   Romo.prototype.triggerInitUI = function(elem) {
-    elem.trigger('romo:initUI')
+    elem.trigger('romo:initUI');
   }
 
   Romo.prototype.initHtml = function(elem, data) {
-    elem.html(data)
-    this.triggerInitUI(elem)
+    elem.html(data);
+    this.triggerInitUI(elem);
   }
 
   // page handling
 
   Romo.prototype.reloadPage = function() {
-    window.location = window.location
+    window.location = window.location;
   }
 
   Romo.prototype.redirectPage = function(redirectUrl) {
-    window.location = redirectUrl
+    window.location = redirectUrl;
   }
 
   // param serialization
 
   Romo.prototype.param = function(data, opts) {
-    var paramData = $.extend({}, data)
+    var paramData = $.extend({}, data);
 
     if (opts && opts.removeEmpty) {
       $.each(paramData, function(key, value) {
         if (value === '') {
-          delete paramData[key]
+          delete paramData[key];
         }
       })
     }
 
-    var paramString = $.param(paramData)
+    var paramString = $.param(paramData);
 
     if (opts && opts.decodeValues) {
-      paramString = this.decodeParam(paramString)
+      paramString = this.decodeParam(paramString);
     }
 
-    return paramString
+    return paramString;
   }
 
   Romo.prototype.decodeParam = function(string) {
     return this.decodeParamMap.reduce(function(prev, curr) {
-      return prev.replace(curr[0], curr[1])
-    }, string)
+      return prev.replace(curr[0], curr[1]);
+    }, string);
   }
 
   Romo.prototype.decodeParamMap = [
@@ -91,19 +91,19 @@
     [/%7C/g, '|'],
     [/%7D/g, '}'],
     [/%7E/g, '~']
-  ]
+  ];
 
   // private
 
   Romo.prototype._addEventCallback = function(name, callback) {
-    this._eventCallbacks.push({ eventName: name, callback:  callback })
+    this._eventCallbacks.push({ eventName: name, callback:  callback });
   }
 
-  window.Romo = new Romo()
-})()
+  window.Romo = new Romo();
+})();
 
 $(function() {
 
-  Romo.doInit()
+  Romo.doInit();
 
 })
