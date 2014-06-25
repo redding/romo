@@ -11,6 +11,7 @@ var RomoModal = function(element) {
   this.bodyElem = this.popupElem.find('> .romo-modal-body');
   this.contentElem = $();
   this.closeElem = $();
+  this.dragElem = $();
   this.romoInvoke = this.elem.romoInvoke()[0];
 
   // don't propagate click events on the popup elem.  this prevents the popup
@@ -58,6 +59,7 @@ RomoModal.prototype.doInitBody = function() {
     this.contentElem = this.bodyElem;
   }
   this.closeElem = this.popupElem.find('[data-romo-modal-close="true"]');
+  this.dragElem = this.popupElem.find('[data-romo-modal-drag="true"]');
 
   this.contentElem.css({
     'min-width':  this.elem.data('romo-modal-min-width'),
@@ -71,6 +73,9 @@ RomoModal.prototype.doInitBody = function() {
 
   this.closeElem.unbind('click');
   this.closeElem.on('click', $.proxy(this.onPopupClose, this));
+
+  this.dragElem.css('cursor', 'grab');
+  this.dragElem.on('mousedown', $.proxy(this.onMouseDown, this));
 }
 
 RomoModal.prototype.doResetBody = function() {
@@ -189,6 +194,61 @@ RomoModal.prototype.doPopupClose = function() {
   $(window).off('resize', $.proxy(this.onResizeWindow, this));
 
   this.elem.trigger('modal:popupClose', [this]);
+}
+
+RomoModal.prototype.onMouseDown = function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  this.doDragStart(e);
+  return false;
+}
+
+RomoModal.prototype.doDragStart = function(e) {
+  this.dragElem.css('cursor', 'grabbing');
+  this.popupElem.css('width', this.popupElem.width()+'px');
+  this.popupElem.css('height', this.popupElem.height()+'px');
+
+  this._dragDiffX = e.clientX - this.popupElem[0].offsetLeft;
+  this._dragDiffY = e.clientY - this.popupElem[0].offsetTop;
+  $(window).on('mousemove', $.proxy(this.onMouseMove, this));
+  $(window).on('mouseup',   $.proxy(this.onMouseUp, this));
+
+  this.elem.trigger("modal:dragStart", [this]);
+}
+
+RomoModal.prototype.onMouseMove = function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  this.doDragMove(e.clientX, e.clientY);
+  return false;
+}
+
+RomoModal.prototype.doDragMove = function(clientX, clientY) {
+  var placeX = clientX - this._dragDiffX;
+  var placeY = clientY - this._dragDiffY;
+  this.popupElem.css({ left: placeX+'px' , top: placeY+'px' });
+
+  this.elem.trigger("modal:dragMove", [placeX, placeY, this]);
+}
+
+RomoModal.prototype.onMouseUp = function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  this.doDragStop(e);
+  return false;
+}
+
+RomoModal.prototype.doDragStop = function(e) {
+  this.dragElem.css('cursor', 'grab');
+  this.popupElem.css('width', '');
+  this.popupElem.css('height', '');
+
+  $(window).off('mousemove', $.proxy(this.onMouseMove, this));
+  $(window).off('mouseup',   $.proxy(this.onMouseUp, this));
+  delete this._dragDiffX;
+  delete this._dragDiffY;
+
+  this.elem.trigger("modal:dragStop", [this]);
 }
 
 RomoModal.prototype.onWindowBodyClick = function(e) {
