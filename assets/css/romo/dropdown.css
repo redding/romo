@@ -4,7 +4,6 @@
 
 .romo-dropdown-popup {
   position: absolute;
-  z-index: 1000;
   float: left;
   border-width: 1px;
   border-style: solid;
