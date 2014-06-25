@@ -115,9 +115,13 @@ RomoDropdown.prototype.onToggleClick = function(e) {
 
 RomoDropdown.prototype.doToggle = function() {
   if (this.popupElem.hasClass('romo-dropdown-open')) {
-    this.doPopupClose();
+    setTimeout($.proxy(function() {
+      this.doPopupClose();
+    }, this), 100);
   } else {
-    this.doPopupOpen();
+    setTimeout($.proxy(function() {
+      this.doPopupOpen();
+    }, this), 100);
   }
   this.elem.trigger('dropdown:toggle', [this]);
 }
@@ -127,8 +131,11 @@ RomoDropdown.prototype.onPopupOpen = function(e) {
     e.preventDefault();
   }
 
-  if (this.elem.hasClass('disabled') === false) {
-    this.doPopupOpen();
+  if ((this.elem.hasClass('disabled') === false) &&
+      (this.popupElem.hasClass('romo-dropdown-open') === false)) {
+    setTimeout($.proxy(function() {
+      this.doPopupOpen();
+    }, this), 100);
   }
 }
 
@@ -161,7 +168,9 @@ RomoDropdown.prototype.onPopupClose = function(e) {
   }
 
   if (this.elem.hasClass('disabled') === false) {
-    this.doPopupClose();
+    setTimeout($.proxy(function() {
+      this.doPopupClose();
+    }, this), 100);
   }
 }
 
@@ -182,16 +191,19 @@ RomoDropdown.prototype.doPopupClose = function() {
 
 RomoDropdown.prototype.onWindowBodyClick = function(e) {
   this.doPopupClose();
+  return true;
 }
 
 RomoDropdown.prototype.onWindowBodyKeyUp = function(e) {
   if (e.keyCode === 27 /* Esc */) {
     this.doPopupClose();
   }
+  return true;
 }
 
 RomoDropdown.prototype.onResizeWindow = function(e) {
   this.doPlacePopupElem();
+  return true;
 }
 
 RomoDropdown.prototype.doPlacePopupElem = function() {

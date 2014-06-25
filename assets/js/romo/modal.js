@@ -117,9 +117,13 @@ RomoModal.prototype.onToggleClick = function(e) {
 
 RomoModal.prototype.doToggle = function() {
   if (this.popupElem.hasClass('romo-modal-open')) {
-    this.doPopupClose();
+    setTimeout($.proxy(function() {
+      this.doPopupClose();
+    }, this), 100);
   } else {
-    this.doPopupOpen();
+    setTimeout($.proxy(function() {
+      this.doPopupOpen();
+    }, this), 100);
   }
   this.elem.trigger('modal:toggle', [this]);
 }
@@ -129,8 +133,11 @@ RomoModal.prototype.onPopupOpen = function(e) {
     e.preventDefault();
   }
 
-  if (this.elem.hasClass('disabled') === false) {
-    this.doPopupOpen();
+  if ((this.elem.hasClass('disabled') === false) &&
+      (this.popupElem.hasClass('romo-modal-open') === false)) {
+    setTimeout($.proxy(function() {
+      this.doPopupOpen();
+    }, this), 100);
   }
 }
 
@@ -163,7 +170,9 @@ RomoModal.prototype.onPopupClose = function(e) {
   }
 
   if (this.elem.hasClass('disabled') === false) {
-    this.doPopupClose();
+    setTimeout($.proxy(function() {
+      this.doPopupClose();
+    }, this), 100);
   }
 }
 
@@ -184,16 +193,19 @@ RomoModal.prototype.doPopupClose = function() {
 
 RomoModal.prototype.onWindowBodyClick = function(e) {
   this.doPopupClose();
+  return true;
 }
 
 RomoModal.prototype.onWindowBodyKeyUp = function(e) {
   if (e.keyCode === 27 /* Esc */) {
     this.doPopupClose();
   }
+  return true;
 }
 
 RomoModal.prototype.onResizeWindow = function(e) {
   this.doPlacePopupElem();
+  return true;
 }
 
 RomoModal.prototype.doPlacePopupElem = function() {
