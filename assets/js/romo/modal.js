@@ -61,15 +61,21 @@ RomoModal.prototype.doInitBody = function() {
   this.closeElem = this.popupElem.find('[data-romo-modal-close="true"]');
   this.dragElem = this.popupElem.find('[data-romo-modal-drag="true"]');
 
-  this.contentElem.css({
+  var css = {
     'min-width':  this.elem.data('romo-modal-min-width'),
     'max-width':  this.elem.data('romo-modal-max-width'),
     'width':      this.elem.data('romo-modal-width'),
     'min-height': this.elem.data('romo-modal-min-height'),
     'max-height': this.elem.data('romo-modal-max-height'),
-    'height':     this.elem.data('romo-modal-height'),
-    'overflow':   'scroll'
-  });
+    'height':     this.elem.data('romo-modal-height')
+  }
+  if (css.width || css['max-width']) {
+    css['overflow-x'] = 'auto'
+  }
+  if (css.height || css['max-height']) {
+    css['overflow-y'] = 'auto'
+  }
+  this.contentElem.css(css);
 
   this.closeElem.unbind('click');
   this.closeElem.on('click', $.proxy(this.onPopupClose, this));
