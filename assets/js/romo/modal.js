@@ -277,14 +277,18 @@ RomoModal.prototype.onResizeWindow = function(e) {
 RomoModal.prototype.doPlacePopupElem = function() {
   var w = this.popupElem[0].offsetWidth;
   var h = this.popupElem[0].offsetHeight;
-  min = 75;
+  var min = 75;
+  var centerTop  = $(window).height() / 2 - h / 2;
+  var centerLeft = $(window).width()  / 2 - w / 2;
   var css = {};
 
-  $.extend(css, { top:  $(window).height() / 2 - h / 2 });
+  css.top = $(window).height() * 0.15;
+  if (centerTop < css.top) { css.top = centerTop; }
   if (css.top < min) { css.top = min; }
 
-  $.extend(css, { left: $(window).width()  / 2 - w / 2 });
-  if (css.left <  min) { css.left = min; }
+  css.left = centerLeft;
+  if (css.left < min) { css.left = min; }
+
   this.popupElem.css(css);
 }
 
