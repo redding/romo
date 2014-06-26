@@ -80,7 +80,7 @@ RomoModal.prototype.doInitBody = function() {
   this.closeElem.unbind('click');
   this.closeElem.on('click', $.proxy(this.onPopupClose, this));
 
-  this.dragElem.css('cursor', 'grab');
+  this.dragElem.addClass('romo-modal-grab');
   this.dragElem.on('mousedown', $.proxy(this.onMouseDown, this));
 }
 
@@ -210,7 +210,9 @@ RomoModal.prototype.onMouseDown = function(e) {
 }
 
 RomoModal.prototype.doDragStart = function(e) {
-  this.dragElem.css('cursor', 'grabbing');
+  this.dragElem.addClass('romo-modal-grabbing');
+  this.dragElem.removeClass('romo-modal-grab');
+
   this.popupElem.css('width', this.popupElem.width()+'px');
   this.popupElem.css('height', this.popupElem.height()+'px');
 
@@ -245,7 +247,8 @@ RomoModal.prototype.onMouseUp = function(e) {
 }
 
 RomoModal.prototype.doDragStop = function(e) {
-  this.dragElem.css('cursor', 'grab');
+  this.dragElem.addClass('romo-modal-grab');
+  this.dragElem.removeClass('romo-modal-grabbing');
   this.popupElem.css('width', '');
   this.popupElem.css('height', '');
 

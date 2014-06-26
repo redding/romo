@@ -2,6 +2,18 @@
   cursor: pointer;
 }
 
+.romo-modal-grab {
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+.romo-modal-grabbing {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+
 .romo-modal-popup {
   position: fixed;
   top: 50%;
