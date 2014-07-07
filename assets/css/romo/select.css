@@ -1,0 +1,91 @@
+button.romo-select {
+  display: inline-block;
+  *display: inline;
+
+  text-align: left;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  vertical-align: middle;
+  cursor: pointer;
+
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+
+  border-width: 1px;
+  border-style: solid;
+}
+
+button.romo-select.disabled,
+button.romo-select[disabled] {
+  cursor: not-allowed;
+}
+
+
+/* variable */
+
+button.romo-select {
+  padding: 4px 12px;
+
+  font-size: 14px;
+  line-height: 20px;
+}
+
+
+/* theme */
+
+button.romo-select {
+  color: #333333;
+
+  background-color: #f5f5f5;
+  *background-color: #e6e6e6;
+  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+  background-repeat: repeat-x;
+
+  border-color: #cccccc;
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border-bottom-color: #b3b3b3;
+
+}
+
+button.romo-select:hover,
+button.romo-select:focus,
+button.romo-select:active,
+button.romo-select.active,
+button.romo-select.disabled,
+button.romo-select[disabled] {
+  color: #333333;
+  background-color: #e6e6e6;
+  *background-color: #d9d9d9;
+}
+
+button.romo-select:hover,
+button.romo-select:focus {
+  color: #333333;
+  text-decoration: none;
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+     -moz-transition: background-position 0.1s linear;
+       -o-transition: background-position 0.1s linear;
+          transition: background-position 0.1s linear;
+}
+
+
+button.romo-select:active,
+button.romo-select.active {
+  background-color: #e6e6e6;
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+button.romo-select.disabled,
+button.romo-select[disabled] {
+  color: #999999;
+}

@@ -6,7 +6,7 @@
   Romo.prototype.doInit = function() {
     $.each(this._eventCallbacks, function(idx, eventCallback) {
       $('body').on(eventCallback.eventName, eventCallback.callback);
-    })
+    });
 
     this.triggerInitUI($('body'));
   }
