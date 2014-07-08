@@ -1,8 +1,9 @@
-button.romo-select {
+.romo-select {
   display: inline-block;
   *display: inline;
 
-  text-align: left;
+  font-weight: normal;
+  text-align: center;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   vertical-align: middle;
   cursor: pointer;
@@ -15,25 +16,49 @@ button.romo-select {
   border-style: solid;
 }
 
-button.romo-select.disabled,
-button.romo-select[disabled] {
+.romo-select.disabled,
+.romo-select[disabled] {
   cursor: not-allowed;
+}
+
+.romo-select > span {
+  text-align: left;
+
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.romo-select > i {
+  text-align: right;
+  padding-left: 0.2857142857142857em;
+
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 
 /* variable */
 
-button.romo-select {
-  padding: 4px 12px;
-
+.romo-select {
+  padding: .3em 0;
+  min-width: 50px;
   font-size: 14px;
   line-height: 20px;
 }
 
-
 /* theme */
 
-button.romo-select {
+.romo-select {
   color: #333333;
 
   background-color: #f5f5f5;
@@ -52,19 +77,19 @@ button.romo-select {
 
 }
 
-button.romo-select:hover,
-button.romo-select:focus,
-button.romo-select:active,
-button.romo-select.active,
-button.romo-select.disabled,
-button.romo-select[disabled] {
+.romo-select:hover,
+.romo-select:focus,
+.romo-select:active,
+.romo-select.active,
+.romo-select.disabled,
+.romo-select[disabled] {
   color: #333333;
   background-color: #e6e6e6;
   *background-color: #d9d9d9;
 }
 
-button.romo-select:hover,
-button.romo-select:focus {
+.romo-select:hover,
+.romo-select:focus {
   color: #333333;
   text-decoration: none;
   background-position: 0 -15px;
@@ -75,8 +100,8 @@ button.romo-select:focus {
 }
 
 
-button.romo-select:active,
-button.romo-select.active {
+.romo-select:active,
+.romo-select.active {
   background-color: #e6e6e6;
   background-image: none;
   outline: 0;
@@ -85,7 +110,7 @@ button.romo-select.active {
           box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-button.romo-select.disabled,
-button.romo-select[disabled] {
+.romo-select.disabled,
+.romo-select[disabled] {
   color: #999999;
 }
