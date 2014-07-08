@@ -63,14 +63,24 @@ RomoDropdown.prototype.doInitBody = function() {
   }
 
   this.contentElem.css({
-    'min-width':  this.elem.data('romo-dropdown-min-width'),
-    'max-width':  this.elem.data('romo-dropdown-max-width'),
-    'width':      this.elem.data('romo-dropdown-width'),
     'min-height': this.elem.data('romo-dropdown-min-height'),
     'max-height': this.elem.data('romo-dropdown-max-height'),
     'height':     this.elem.data('romo-dropdown-height'),
-    'overflow':   'scroll'
+    'overflow-x': this.elem.data('romo-dropdown-overflow-x') || 'scroll',
+    'overflow-y': this.elem.data('romo-dropdown-overflow-y') || 'scroll'
   });
+
+  if (this.elem.data('romo-dropdown-width') === 'elem') {
+    this.popupElem.css({
+      'width': this.elem.css('width')
+    });
+  } else {
+    this.contentElem.css({
+      'min-width':  this.elem.data('romo-dropdown-min-width'),
+      'max-width':  this.elem.data('romo-dropdown-max-width'),
+      'width':      this.elem.data('romo-dropdown-width')
+    });
+  }
 }
 
 RomoDropdown.prototype.doResetBody = function() {
@@ -81,7 +91,8 @@ RomoDropdown.prototype.doResetBody = function() {
     'min-height': '',
     'max-height': '',
     'height':     '',
-    'overflow':   ''
+    'overflow-x': '',
+    'overflow-y': ''
   });
 }
 

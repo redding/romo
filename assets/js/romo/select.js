@@ -31,7 +31,7 @@ RomoSelect.prototype.doInit = function() {
 }
 
 RomoSelect.prototype.doRefreshUI = function() {
-  this.romoDropdown.popupElem.html('');
+  this.romoDropdown.bodyElem.html('');
 }
 
 RomoSelect.prototype.onSelect = function(e) {
@@ -55,7 +55,8 @@ RomoSelect.prototype._buildDropdownElem = function() {
   romoDropdownElem.attr('data-romo-dropdown-min-height', this.elem.data('romo-select-dropdown-min-height'));
   romoDropdownElem.attr('data-romo-dropdown-max-height', this.elem.data('romo-select-dropdown-max-height'));
   romoDropdownElem.attr('data-romo-dropdown-height', this.elem.data('romo-select-dropdown-height'));
-  // ignore any dropdown width settings - will match width of select elem
+  romoDropdownElem.attr('data-romo-dropdown-overflow-x', 'hidden');
+  romoDropdownElem.attr('data-romo-dropdown-width', 'elem');
 
   var classList = this.elem.attr('class') !== undefined ? this.elem.attr('class').split(/\s+/) : [];
   $.each(classList, function(idx, classItem) {
