@@ -10,6 +10,7 @@ var RomoSelect = function(element) {
 
   this.doInit();
   this.romoDropdown = this._buildDropdownElem().romoDropdown()[0];
+  this.romoDropdown.bodyElem.addClass('romo-select-option-list');
   this.doRefreshUI();
   this.elem.after(this.romoDropdown.elem);
 
@@ -32,6 +33,12 @@ RomoSelect.prototype.doInit = function() {
 
 RomoSelect.prototype.doRefreshUI = function() {
   this.romoDropdown.bodyElem.html('');
+  this.romoDropdown.bodyElem.append(this._buildOptionList(this.elem.children()));
+
+  // TODO: set selected option in UI
+  if (this.elem.attr('disabled') !== undefined) {
+    this.romoDropdown.elem.attr('disabled', this.elem.attr('disabled'));
+  }
 }
 
 RomoSelect.prototype.onSelect = function(e) {
@@ -48,7 +55,7 @@ RomoSelect.prototype.doSelect = function() {
 }
 
 RomoSelect.prototype._buildDropdownElem = function() {
-  var romoDropdownElem = $('<div class="romo-select"><span>Something long that will overflow</span><i class=""></i></div>');
+  var romoDropdownElem = $('<div class="romo-select"><span>Value</span><i class=""></i></div>');
 
   romoDropdownElem.attr('data-romo-dropdown-position', this.elem.data('romo-select-dropdown-position'));
   romoDropdownElem.attr('data-romo-dropdown-style-class', this.elem.data('romo-select-dropdown-style-class'));
@@ -60,9 +67,7 @@ RomoSelect.prototype._buildDropdownElem = function() {
 
   var classList = this.elem.attr('class') !== undefined ? this.elem.attr('class').split(/\s+/) : [];
   $.each(classList, function(idx, classItem) {
-    if (classItem !== 'selectpicker') { // temporary
-      romoDropdownElem.addClass(classItem);
-    }
+    romoDropdownElem.addClass(classItem);
   });
 
   if (this.elem.attr('style') !== undefined) {
@@ -85,12 +90,48 @@ RomoSelect.prototype._buildDropdownElem = function() {
   }
   icon.addClass(this.elem.data('romo-select-caret-class') || this.defaultCaretClass);
 
-  if (this.elem.attr('disabled') !== undefined) {
-    romoDropdownElem.attr('disabled', this.elem.attr('disabled'));
-  }
-
   return romoDropdownElem;
 }
+
+RomoSelect.prototype._buildOptionList = function(optionElems, listClass) {
+  var list = $('<ul></ul>');
+  list.addClass(listClass);
+  $.each(optionElems, $.proxy(function(idx, elem) {
+    if (elem.tagName === "OPTION") {
+      list.append(this._buildOptionListItem(elem));
+    } else if (elem.tagName === "OPTGROUP") {
+      list.append(this._buildOptionListItem(elem));
+    }
+  }, this));
+  return list;
+}
+
+RomoSelect.prototype._buildOptionListItem = function(optionElem) {
+  var opt = $(optionElem);
+  var item = $('<li></li>');
+
+  item.attr('data-romo-select-option-value', opt.attr('value'));
+  item.text(opt.text().trim());
+  if (opt.prop('selected')) {
+    item.addClass('selected');
+  }
+  if (opt.attr('disabled') !== undefined) {
+    item.addClass('disabled');
+  }
+
+  return item;
+}
+
+RomoSelect.prototype._buildOptGroupListItem = function(optGroupElem) {
+  var item = $('<li></li>');
+
+  // TODO:
+  // item.append(); // add divider and dt? for optgroup
+  // item.append(this._buildOptGroupListItem($(elem).children(), 'romo-select-optgroup'));
+
+  return item;
+}
+
 
 Romo.onInitUI(function(e) {
   $(e.target).find('[data-romo-select-auto="true"]').romoSelect();
