@@ -15,6 +15,11 @@
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
+
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .romo-select.disabled,
@@ -42,12 +47,44 @@
   padding-left: 0.2857142857142857em;
 }
 
+.romo-select-option-list {
+  cursor: pointer;
+  font-weight: normal;
+  padding: 4px 0;
+
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.romo-select-option-list UL {
+  list-style: none outside none;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.romo-select-option-list LI.disabled {
+  cursor: not-allowed;
+}
 
 /* variable */
 
 .romo-select {
   font-size: 14px;
   line-height: 20px;
+}
+
+.romo-select-option-list LI {
+  height: 20px;
+  line-height: 20px;
+  padding: 0 10px;
+}
+
+.romo-select-option-list UL.romo-select-optgroup LI {
+  padding-left: 20px;
 }
 
 /* theme */
@@ -104,5 +141,24 @@
 
 .romo-select.disabled,
 .romo-select[disabled] {
+  color: #999999;
+}
+
+.romo-select-option-list {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.romo-select-option-list LI.disabled {
+  color: #999999;
+}
+
+.romo-select-option-list LI:hover {
+  background-color: #3c83c7;
+  color: #ffffff;
+}
+
+.romo-select-option-list LI.disabled:hover {
+  background-color: #ffffff;
   color: #999999;
 }
