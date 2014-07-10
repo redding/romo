@@ -149,16 +149,13 @@
   color: #333333;
 }
 
-.romo-select-option-list LI.disabled {
-  color: #999999;
-}
-
-.romo-select-option-list LI:hover {
-  background-color: #3c83c7;
-  color: #ffffff;
-}
-
-.romo-select-option-list LI.disabled:hover {
+.romo-select-option-list LI.disabled,
+.romo-select-option-list LI.disabled.romo-select-highlight {
   background-color: #ffffff;
   color: #999999;
+}
+
+.romo-select-option-list LI.romo-select-highlight {
+  background-color: #3c83c7;
+  color: #ffffff;
 }

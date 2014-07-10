@@ -11,6 +11,7 @@ var RomoSelect = function(element) {
   this.doInit();
   this.romoDropdown = this._buildDropdownElem().romoDropdown()[0];
   this.romoDropdown.bodyElem.addClass('romo-select-option-list');
+  this.romoDropdown.elem.on('dropdown:popupOpen', $.proxy(this.onPopupOpen, this));
   this.doRefreshUI();
   this.elem.after(this.romoDropdown.elem);
 
@@ -35,23 +36,46 @@ RomoSelect.prototype.doRefreshUI = function() {
   this.romoDropdown.bodyElem.html('');
   this.romoDropdown.bodyElem.append(this._buildOptionList(this.elem.children()));
 
+  this.romoDropdown.bodyElem.find('LI').on('hover', $.proxy(this.onItemHover, this));
   // TODO: set selected option in UI
   if (this.elem.attr('disabled') !== undefined) {
     this.romoDropdown.elem.attr('disabled', this.elem.attr('disabled'));
   }
 }
 
-RomoSelect.prototype.onSelect = function(e) {
+RomoSelect.prototype.onPopupOpen = function(e) {
   if (e !== undefined) {
     e.preventDefault();
   }
 
   if (this.elem.hasClass('disabled') === false) {
-    this.doSelect();
+    this.romoDropdown.bodyElem.find('LI.romo-select-highlight').removeClass('romo-select-highlight');
+    this.romoDropdown.bodyElem.find('LI.selected').addClass('romo-select-highlight');
+    this._scrollToItem(this.romoDropdown.bodyElem.find('LI.selected'));
   }
 }
 
-RomoSelect.prototype.doSelect = function() {
+RomoSelect.prototype.onItemHover = function(e) {
+  if (e !== undefined) {
+    e.preventDefault();
+  }
+
+  if (this.elem.hasClass('disabled') === false) {
+    this.romoDropdown.bodyElem.find('LI.romo-select-highlight').removeClass('romo-select-highlight');
+    $(e.target).addClass('romo-select-highlight');
+  }
+}
+
+RomoSelect.prototype._scrollToItem = function(item) {
+  if (item.size() > 0) {
+    var scroll = this.romoDropdown.bodyElem;
+    scroll.scrollTop(0);
+    var scrollOffsetTop = this.romoDropdown.bodyElem.offset().top;
+    var selOffsetTop = item.offset().top;
+    var selOffset = item.height() / 2;
+
+    scroll.scrollTop(selOffsetTop - scrollOffsetTop - selOffset);
+  }
 }
 
 RomoSelect.prototype._buildDropdownElem = function() {
