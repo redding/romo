@@ -12,6 +12,7 @@ var RomoSelect = function(element) {
   this.romoDropdown = this._buildDropdownElem().romoDropdown()[0];
   this.romoDropdown.bodyElem.addClass('romo-select-option-list');
   this.romoDropdown.elem.on('dropdown:popupOpen', $.proxy(this.onPopupOpen, this));
+  this.romoDropdown.elem.on('dropdown:popupClose', $.proxy(this.onPopupClose, this));
   this.doRefreshUI();
   this.elem.after(this.romoDropdown.elem);
 
@@ -44,15 +45,17 @@ RomoSelect.prototype.doRefreshUI = function() {
 }
 
 RomoSelect.prototype.onPopupOpen = function(e) {
-  if (e !== undefined) {
-    e.preventDefault();
-  }
-
   if (this.elem.hasClass('disabled') === false) {
     this.romoDropdown.bodyElem.find('LI.romo-select-highlight').removeClass('romo-select-highlight');
     this.romoDropdown.bodyElem.find('LI.selected').addClass('romo-select-highlight');
-    this._scrollToItem(this.romoDropdown.bodyElem.find('LI.selected'));
+    this._scrollTopToItem(this.romoDropdown.bodyElem.find('LI.selected'));
   }
+
+  $('body').on('keydown', $.proxy(this.onPopupOpenBodyKeyDown, this));
+}
+
+RomoSelect.prototype.onPopupClose = function(e) {
+  $('body').off('keydown', $.proxy(this.onPopupOpenBodyKeyDown, this));
 }
 
 RomoSelect.prototype.onItemHover = function(e) {
@@ -66,13 +69,71 @@ RomoSelect.prototype.onItemHover = function(e) {
   }
 }
 
-RomoSelect.prototype._scrollToItem = function(item) {
+RomoSelect.prototype.onPopupOpenBodyKeyDown = function(e) {
+  if (e !== undefined) {
+    e.stopPropagation();
+  }
+
+  var scroll = this.romoDropdown.bodyElem;
+
+  if (e.keyCode === 38 /* Up */) {
+    var curr = this.romoDropdown.bodyElem.find('LI.romo-select-highlight');
+    var prev = curr.prev(':not(.disabled)');
+    if (prev.size() === 0) {
+      prev = this.romoDropdown.bodyElem.find('LI').last();
+    }
+
+    this.romoDropdown.bodyElem.find('LI.romo-select-highlight').removeClass('romo-select-highlight');
+    prev.addClass('romo-select-highlight');
+    if (scroll.offset().top > prev.offset().top) {
+      this._scrollTopToItem(prev);
+    } else if ((scroll.offset().top + scroll.height()) < prev.offset().top) {
+      this._scrollTopToItem(prev);
+    }
+
+    return false;
+  } else if(e.keyCode === 40 /* Down */) {
+    var curr = this.romoDropdown.bodyElem.find('LI.romo-select-highlight');
+    var next = curr.next(':not(.disabled)');
+    if (next.size() === 0) {
+      next = this.romoDropdown.bodyElem.find('LI').first();
+    }
+
+    this.romoDropdown.bodyElem.find('LI.romo-select-highlight').removeClass('romo-select-highlight');
+    next.addClass('romo-select-highlight');
+    if ((scroll.offset().top + scroll.height()) < next.offset().top) {
+      this._scrollBottomToItem(next);
+    } else if (scroll.offset().top > next.offset().top) {
+      this._scrollTopToItem(next);
+    }
+
+    return false;
+  } else {
+    return true;
+  }
+}
+
+RomoSelect.prototype._scrollTopToItem = function(item) {
   if (item.size() > 0) {
     var scroll = this.romoDropdown.bodyElem;
     scroll.scrollTop(0);
-    var scrollOffsetTop = this.romoDropdown.bodyElem.offset().top;
+
+    var scrollOffsetTop = scroll.offset().top;
     var selOffsetTop = item.offset().top;
     var selOffset = item.height() / 2;
+
+    scroll.scrollTop(selOffsetTop - scrollOffsetTop - selOffset);
+  }
+}
+
+RomoSelect.prototype._scrollBottomToItem = function(item) {
+  if (item.size() > 0) {
+    var scroll = this.romoDropdown.bodyElem;
+    scroll.scrollTop(0);
+
+    var scrollOffsetTop = scroll.offset().top;
+    var selOffsetTop = item.offset().top;
+    var selOffset = scroll[0].offsetHeight - item.height();
 
     scroll.scrollTop(selOffsetTop - scrollOffsetTop - selOffset);
   }
