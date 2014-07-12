@@ -10,6 +10,16 @@ var RomoSelect = function(element) {
   this.itemSelector = 'LI[data-romo-select-item="opt"]:not(.disabled)';
 
   this.doInit();
+  this.doBindDropdown();
+
+  this.elem.trigger('select:ready', [this]);
+}
+
+RomoSelect.prototype.doInit = function() {
+  // override as needed
+}
+
+RomoSelect.prototype.doBindDropdown = function() {
   this.romoDropdown = this._buildDropdownElem().romoDropdown()[0];
   this.romoDropdown.bodyElem.addClass('romo-select-option-list');
   this.romoDropdown.elem.on('dropdown:popupOpen', $.proxy(this.onPopupOpen, this));
@@ -17,8 +27,15 @@ var RomoSelect = function(element) {
   this.romoDropdown.elem.on('keydown', $.proxy(this.onElemKeyDown, this));
   this.romoDropdown.popupElem.on('keydown', $.proxy(this.onElemKeyDown, this));
 
-  this.doRefreshUI();
-  this.elem.after(this.romoDropdown.elem);
+  this.romoDropdown.elem.on('dropdown:toggle', $.proxy(function(e, dropdown) {
+    this.elem.trigger('select:dropdown:toggle', [dropdown, this]);
+  }, this));
+  this.romoDropdown.elem.on('dropdown:popupOpen', $.proxy(function(e, dropdown) {
+    this.elem.trigger('select:dropdown:popupOpen', [dropdown, this]);
+  }, this));
+  this.romoDropdown.elem.on('dropdown:popupClose', $.proxy(function(e, dropdown) {
+    this.elem.trigger('select:dropdown:popupClose', [dropdown, this]);
+  }, this));
 
   this.elem.on('select:triggerToggle', $.proxy(function(e) {
     this.romoDropdown.elem.trigger('dropdown:triggerToggle', []);
@@ -30,11 +47,8 @@ var RomoSelect = function(element) {
     this.romoDropdown.elem.trigger('dropdown:triggerPopupClose', []);
   }, this));
 
-  this.elem.trigger('select:ready', [this]);
-}
-
-RomoSelect.prototype.doInit = function() {
-  // override as needed
+  this.doRefreshUI();
+  this.elem.after(this.romoDropdown.elem);
 }
 
 RomoSelect.prototype.doSelectHighlightedItem = function() {
