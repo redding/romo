@@ -53,13 +53,18 @@ RomoSelect.prototype.doBindDropdown = function() {
 
 RomoSelect.prototype.doSelectHighlightedItem = function() {
   var prevValue = this.elem[0].value;
-  this.elem[0].value = this.romoDropdown.bodyElem.find('LI.romo-select-highlight').data('romo-select-option-value');
-  var newValue = this.elem[0].value;
+  var newValue = this.romoDropdown.bodyElem.find('LI.romo-select-highlight').data('romo-select-option-value');
 
   this.romoDropdown.doPopupClose();
-  this.doRefreshUI();
   this.elem.trigger('select:itemSelected', [newValue, prevValue, this]);
-  this.elem.trigger('change', [newValue]);
+
+  if (newValue !== prevValue) {
+    this.elem[0].value = newValue;
+    this.doRefreshUI();
+
+    this.elem.trigger('change');
+    this.elem.trigger('select:change', [newValue, prevValue, this]);
+  }
 }
 
 RomoSelect.prototype.doRefreshUI = function() {
