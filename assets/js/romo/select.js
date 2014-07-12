@@ -7,6 +7,7 @@ $.fn.romoSelect = function() {
 var RomoSelect = function(element) {
   this.elem = $(element);
   this.defaultCaretClass = '';
+  this.itemSelector = 'LI[data-romo-select-item="opt"]:not(.disabled)';
 
   this.doInit();
   this.romoDropdown = this._buildDropdownElem().romoDropdown()[0];
@@ -46,9 +47,8 @@ RomoSelect.prototype.doRefreshUI = function() {
   this.romoDropdown.bodyElem.html('');
   this.romoDropdown.bodyElem.append(this._buildOptionList(this.elem.children()));
 
-  var itemSelector = 'LI[data-romo-select-item="opt"]:not(.disabled)';
-  this.romoDropdown.bodyElem.find(itemSelector).on('hover', $.proxy(this.onItemHover, this));
-  this.romoDropdown.bodyElem.find(itemSelector).on('click', $.proxy(this.onItemClick, this));
+  this.romoDropdown.bodyElem.find(this.itemSelector).on('hover', $.proxy(this.onItemHover, this));
+  this.romoDropdown.bodyElem.find(this.itemSelector).on('click', $.proxy(this.onItemClick, this));
 
   this.romoDropdown.elem.find('span').text(this.romoDropdown.bodyElem.find('LI.selected').text());
   if (this.elem.attr('disabled') !== undefined) {
@@ -97,9 +97,9 @@ RomoSelect.prototype.onPopupOpenBodyKeyDown = function(e) {
 
   if (e.keyCode === 38 /* Up */) {
     var curr = this.romoDropdown.bodyElem.find('LI.romo-select-highlight');
-    var prev = curr.prev(':not(.disabled)');
+    var prev = this._prevAll(curr, this.itemSelector).last();
     if (prev.size() === 0) {
-      prev = this.romoDropdown.bodyElem.find('LI').last();
+      prev = this.romoDropdown.bodyElem.find(this.itemSelector).last();
     }
 
     this.romoDropdown.bodyElem.find('LI.romo-select-highlight').removeClass('romo-select-highlight');
@@ -113,9 +113,9 @@ RomoSelect.prototype.onPopupOpenBodyKeyDown = function(e) {
     return false;
   } else if(e.keyCode === 40 /* Down */) {
     var curr = this.romoDropdown.bodyElem.find('LI.romo-select-highlight');
-    var next = curr.next(':not(.disabled)');
+    var next = this._nextAll(curr, this.itemSelector).first();
     if (next.size() === 0) {
-      next = this.romoDropdown.bodyElem.find('LI').first();
+      next = this.romoDropdown.bodyElem.find(this.itemSelector).first();
     }
 
     this.romoDropdown.bodyElem.find('LI.romo-select-highlight').removeClass('romo-select-highlight');
@@ -258,6 +258,29 @@ RomoSelect.prototype._buildOptGroupListItem = function(optGroupElem) {
   return item;
 }
 
+RomoSelect.prototype._nextAll = function(elem, selector) {
+  var els = $();
+  var el = elem.next();
+  while( el.length ) {
+    if (selector === undefined || el.is(selector)) {
+      els = els.add(el);
+    }
+    el = el.next();
+  }
+  return els;
+}
+
+RomoSelect.prototype._prevAll = function(elem, selector) {
+  var els = $();
+  var el = elem.prev();
+  while( el.length ) {
+    if (selector === undefined || el.is(selector)) {
+      els = els.add(el);
+    }
+    el = el.prev();
+  }
+  return els;
+}
 
 Romo.onInitUI(function(e) {
   $(e.target).find('[data-romo-select-auto="true"]').romoSelect();
