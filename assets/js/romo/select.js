@@ -101,7 +101,7 @@ RomoSelect.prototype.onPopupOpenBodyKeyDown = function(e) {
 
     this.romoDropdown.bodyElem.find('LI.romo-select-highlight').removeClass('romo-select-highlight');
     next.addClass('romo-select-highlight');
-    if ((scroll.offset().top + scroll.height()) < next.offset().top) {
+    if ((scroll.offset().top + scroll.height()) < next.offset().top + next.height()) {
       this._scrollBottomToItem(next);
     } else if (scroll.offset().top > next.offset().top) {
       this._scrollTopToItem(next);
