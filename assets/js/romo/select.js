@@ -14,6 +14,8 @@ var RomoSelect = function(element) {
   this.romoDropdown.elem.on('dropdown:popupOpen', $.proxy(this.onPopupOpen, this));
   this.romoDropdown.elem.on('dropdown:popupClose', $.proxy(this.onPopupClose, this));
   this.romoDropdown.elem.on('keydown', $.proxy(this.onElemKeyDown, this));
+  this.romoDropdown.popupElem.on('keydown', $.proxy(this.onElemKeyDown, this));
+
   this.doRefreshUI();
   this.elem.after(this.romoDropdown.elem);
 
@@ -34,11 +36,18 @@ RomoSelect.prototype.doInit = function() {
   // override as needed
 }
 
+RomoSelect.prototype.doSelectHighlightedItem = function() {
+  // TODO
+  console.log('select highlighted');
+}
+
 RomoSelect.prototype.doRefreshUI = function() {
   this.romoDropdown.bodyElem.html('');
   this.romoDropdown.bodyElem.append(this._buildOptionList(this.elem.children()));
 
-  this.romoDropdown.bodyElem.find('LI').on('hover', $.proxy(this.onItemHover, this));
+  var itemSelector = 'LI[data-romo-select-item="opt"]:not(.disabled)';
+  this.romoDropdown.bodyElem.find(itemSelector).on('hover', $.proxy(this.onItemHover, this));
+  this.romoDropdown.bodyElem.find(itemSelector).on('click', $.proxy(this.onItemClick, this));
   // TODO: set selected option in UI
   if (this.elem.attr('disabled') !== undefined) {
     this.romoDropdown.elem.attr('disabled', this.elem.attr('disabled'));
@@ -56,6 +65,7 @@ RomoSelect.prototype.onPopupOpen = function(e) {
 }
 
 RomoSelect.prototype.onPopupClose = function(e) {
+  this.romoDropdown.bodyElem.find('LI.romo-select-highlight').removeClass('romo-select-highlight');
   $('body').off('keydown', $.proxy(this.onPopupOpenBodyKeyDown, this));
 }
 
@@ -64,10 +74,16 @@ RomoSelect.prototype.onItemHover = function(e) {
     e.preventDefault();
   }
 
-  if (this.elem.hasClass('disabled') === false) {
-    this.romoDropdown.bodyElem.find('LI.romo-select-highlight').removeClass('romo-select-highlight');
-    $(e.target).addClass('romo-select-highlight');
+  this.romoDropdown.bodyElem.find('LI.romo-select-highlight').removeClass('romo-select-highlight');
+  $(e.target).addClass('romo-select-highlight');
+}
+
+RomoSelect.prototype.onItemClick = function(e) {
+  if (e !== undefined) {
+    e.preventDefault();
   }
+
+  this.doSelectHighlightedItem();
 }
 
 RomoSelect.prototype.onPopupOpenBodyKeyDown = function(e) {
@@ -116,12 +132,21 @@ RomoSelect.prototype.onPopupOpenBodyKeyDown = function(e) {
 
 RomoSelect.prototype.onElemKeyDown = function(e) {
   if (this.elem.hasClass('disabled') === false) {
-    if(e.keyCode === 40 /* Down */ && !this.romoDropdown.popupElem.hasClass('romo-dropdown-open')) {
-      this.romoDropdown.doPopupOpen();
-      this.romoDropdown.popupElem.focus();
-      return false;
+    if (this.romoDropdown.popupElem.hasClass('romo-dropdown-open')) {
+      if(e.keyCode === 13 /* Enter */ ) {
+        this.doSelectHighlightedItem();
+        return false;
+      } else {
+        return true;
+      }
     } else {
-      return true;
+      if(e.keyCode === 40 /* Down */ ) {
+        this.romoDropdown.doPopupOpen();
+        this.romoDropdown.popupElem.focus();
+        return false;
+      } else {
+        return true;
+      }
     }
   }
   return true;
@@ -207,7 +232,7 @@ RomoSelect.prototype._buildOptionList = function(optionElems, listClass) {
 
 RomoSelect.prototype._buildOptionListItem = function(optionElem) {
   var opt = $(optionElem);
-  var item = $('<li></li>');
+  var item = $('<li data-romo-select-item="opt"></li>');
 
   item.attr('data-romo-select-option-value', opt.attr('value'));
   item.text(opt.text().trim());
@@ -222,7 +247,7 @@ RomoSelect.prototype._buildOptionListItem = function(optionElem) {
 }
 
 RomoSelect.prototype._buildOptGroupListItem = function(optGroupElem) {
-  var item = $('<li></li>');
+  var item = $('<li data-romo-select-item="optgroup"></li>');
 
   // TODO:
   // item.append(); // add divider and dt? for optgroup
