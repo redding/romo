@@ -47,6 +47,18 @@ RomoSelect.prototype.doBindDropdown = function() {
     this.romoDropdown.elem.trigger('dropdown:triggerPopupClose', []);
   }, this));
 
+  $(window).on("pageshow", $.proxy(function(e) {
+    var selectedVal = this.elem.find('option[selected]').attr('value');
+    if (selectedVal === undefined) {
+      selectedVal = '';
+    }
+
+    if (selectedVal !== this.elem[0].value) {
+      this.elem[0].value = selectedVal;
+      this.doRefreshUI();
+    }
+  }, this));
+
   this.doRefreshUI();
   this.elem.after(this.romoDropdown.elem);
 }
