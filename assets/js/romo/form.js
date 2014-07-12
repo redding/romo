@@ -93,10 +93,16 @@ RomoForm.prototype._doGetSubmit = function() {
   var data = this._getSerializeObj();
 
   if (this.elem.data('romo-form-redirect-page') === true) {
-    Romo.redirectPage(this.elem.attr('action') + '?' + Romo.param(data, {
+    var paramString = Romo.param(data, {
       removeEmpty:  this.removeEmptyGetParams,
       decodeValues: this.decodeParams
-    }));
+    });
+    if (paramString !== '') {
+      Romo.redirectPage(this.elem.attr('action') + '?' + paramString);
+    } else {
+      Romo.redirectPage(this.elem.attr('action'));
+    }
+
   } else {
     this._doAjaxSubmit(data);
   }
