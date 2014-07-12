@@ -8,11 +8,15 @@ var RomoForm = function(element, givenSubmitElement) {
   this.elem = $(element);
   this.defaultSubmitElem = this.elem.find('button[type="submit"], input[type="submit"], [data-romo-form-submit="true"]');
   this.submitElem = $(givenSubmitElement || this.defaultSubmitElem);
+  this.changeSubmitElems = this.elem.find('[data-romo-form-change-submit="true"]');
 
   this.elem.on('keypress', $.proxy(this.onFormKeyPress, this));
   this.defaultSubmitElem.unbind('click');
   this.submitElem.unbind('click');
   this.submitElem.on('click', $.proxy(this.onSubmitClick, this));
+  this.changeSubmitElems.on('change', $.proxy(function(e) {
+    this.elem.trigger('form:triggerSubmit');
+  }, this));
   this.elem.on('form:triggerSubmit', $.proxy(this.onSubmitClick, this));
 
   if (this.elem.data('romo-form-reload-page') === true) {
