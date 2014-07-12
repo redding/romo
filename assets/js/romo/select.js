@@ -55,6 +55,7 @@ RomoSelect.prototype.doSelectHighlightedItem = function() {
   this.elem[0].value = this.romoDropdown.bodyElem.find('LI.romo-select-highlight').data('romo-select-option-value');
   this.romoDropdown.doPopupClose();
   this.doRefreshUI();
+  this.elem.trigger('select:itemSelected', [this.elem[0].value, this]);
 }
 
 RomoSelect.prototype.doRefreshUI = function() {
