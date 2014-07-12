@@ -13,6 +13,7 @@ var RomoSelect = function(element) {
   this.romoDropdown.bodyElem.addClass('romo-select-option-list');
   this.romoDropdown.elem.on('dropdown:popupOpen', $.proxy(this.onPopupOpen, this));
   this.romoDropdown.elem.on('dropdown:popupClose', $.proxy(this.onPopupClose, this));
+  this.romoDropdown.elem.on('keydown', $.proxy(this.onElemKeyDown, this));
   this.doRefreshUI();
   this.elem.after(this.romoDropdown.elem);
 
@@ -113,6 +114,19 @@ RomoSelect.prototype.onPopupOpenBodyKeyDown = function(e) {
   }
 }
 
+RomoSelect.prototype.onElemKeyDown = function(e) {
+  if (this.elem.hasClass('disabled') === false) {
+    if(e.keyCode === 40 /* Down */ && !this.romoDropdown.popupElem.hasClass('romo-dropdown-open')) {
+      this.romoDropdown.doPopupOpen();
+      this.romoDropdown.popupElem.focus();
+      return false;
+    } else {
+      return true;
+    }
+  }
+  return true;
+}
+
 RomoSelect.prototype._scrollTopToItem = function(item) {
   if (item.size() > 0) {
     var scroll = this.romoDropdown.bodyElem;
@@ -140,7 +154,7 @@ RomoSelect.prototype._scrollBottomToItem = function(item) {
 }
 
 RomoSelect.prototype._buildDropdownElem = function() {
-  var romoDropdownElem = $('<div class="romo-select"><span>Value</span><i class=""></i></div>');
+  var romoDropdownElem = $('<div class="romo-select" tabindex="0"><span>Value</span><i class=""></i></div>');
 
   romoDropdownElem.attr('data-romo-dropdown-position', this.elem.data('romo-select-dropdown-position'));
   romoDropdownElem.attr('data-romo-dropdown-style-class', this.elem.data('romo-select-dropdown-style-class'));
