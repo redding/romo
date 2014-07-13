@@ -11,6 +11,12 @@ var RomoSelect = function(element) {
 
   this.doInit();
   this.doBindDropdown();
+  if (this.elem.attr('id') !== undefined) {
+    $('label[for="'+this.elem.attr('id')+'"]').on('click', $.proxy(function(e) {
+      this.romoDropdown.elem.focus();
+    }, this));
+  }
+  this.elem.hide();
 
   this.elem.trigger('select:ready', [this]);
 }
