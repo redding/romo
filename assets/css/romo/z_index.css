@@ -1,11 +1,20 @@
 .romo-tooltip-popup {
   z-index: 1100;
 }
+.romo-tooltip-popup * {
+  z-index: inherit;
+}
 
 .romo-dropdown-popup {
   z-index: 1200;
 }
+.romo-dropdown-popup * {
+  z-index: inherit;
+}
 
 .romo-modal-popup {
   z-index: 1300;
+}
+.romo-modal-popup * {
+  z-index: inherit;
 }

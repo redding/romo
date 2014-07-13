@@ -8,6 +8,7 @@ var RomoDropdown = function(element) {
   this.elem = $(element);
   this.popupElem = $('<div class="romo-dropdown-popup"><div class="romo-dropdown-body"></div></div>');
   this.popupElem.appendTo('body');
+  this.doSetPopupZIndex(parseInt(this.elem.css('z-index')));
   this.bodyElem = this.popupElem.find('> .romo-dropdown-body');
   this.contentElem = $();
   this.romoInvoke = this.elem.romoInvoke()[0];
@@ -242,6 +243,12 @@ RomoDropdown.prototype.doPlacePopupElem = function() {
   }
 
   this.popupElem.offset(offset);
+}
+
+RomoDropdown.prototype.doSetPopupZIndex = function(relativeZIndex) {
+  if (!isNaN(relativeZIndex)) {
+    this.popupElem.css({'z-index': relativeZIndex + 1200}); // see z-index.css
+  }
 }
 
 RomoDropdown.prototype._parsePositionData = function(posString) {

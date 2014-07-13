@@ -21,6 +21,7 @@ RomoSelect.prototype.doInit = function() {
 
 RomoSelect.prototype.doBindDropdown = function() {
   this.romoDropdown = this._buildDropdownElem().romoDropdown()[0];
+  this.romoDropdown.doSetPopupZIndex(parseInt(this.elem.css('z-index')));
   this.romoDropdown.bodyElem.addClass('romo-select-option-list');
   this.romoDropdown.elem.on('dropdown:popupOpen', $.proxy(this.onPopupOpen, this));
   this.romoDropdown.elem.on('dropdown:popupClose', $.proxy(this.onPopupClose, this));
