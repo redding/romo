@@ -44,6 +44,8 @@ var RomoDropdown = function(element) {
   this.elem.on('invoke:loadError', $.proxy(function(e, xhr, invoke) {
     this.doLoadBodyError(xhr);
   }, this));
+  this.elem.on('keyup', $.proxy(this.onElemKeyUp, this));
+  this.popupElem.on('keyup', $.proxy(this.onElemKeyUp, this));
 
   this.doInit();
   this.doInitBody();
@@ -199,6 +201,22 @@ RomoDropdown.prototype.doPopupClose = function() {
   $(window).off('resize', $.proxy(this.onResizeWindow, this));
 
   this.elem.trigger('dropdown:popupClose', [this]);
+}
+
+RomoDropdown.prototype.onElemKeyUp = function(e) {
+  if (this.elem.hasClass('disabled') === false) {
+    if (this.popupElem.hasClass('romo-dropdown-open')) {
+      if(e.keyCode === 27 /* Esc */ ) {
+        this.doPopupClose();
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      return true;
+    }
+  }
+  return true;
 }
 
 RomoDropdown.prototype.onWindowBodyClick = function(e) {
