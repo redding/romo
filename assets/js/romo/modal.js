@@ -14,14 +14,6 @@ var RomoModal = function(element) {
   this.dragElem = $();
   this.romoInvoke = this.elem.romoInvoke()[0];
 
-  // don't propagate click events on the popup elem.  this prevents the popup
-  // from closing when clicked (see body click event bind on popup open)
-  this.popupElem.on('click', function(e) {
-    if (e !== undefined) {
-      e.stopPropagation();
-    }
-  })
-
   if (this.elem.data('romo-modal-style-class') !== undefined) {
     this.bodyElem.addClass(this.elem.data('romo-modal-style-class'));
   }
@@ -261,7 +253,10 @@ RomoModal.prototype.doDragStop = function(e) {
 }
 
 RomoModal.prototype.onWindowBodyClick = function(e) {
-  this.doPopupClose();
+  // if not clicked on the popup elem
+  if (e !== undefined && $(e.target).parents('.romo-modal-popup').size() === 0) {
+    this.doPopupClose();
+  }
   return true;
 }
 

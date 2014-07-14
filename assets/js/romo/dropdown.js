@@ -24,6 +24,7 @@ var RomoDropdown = function(element) {
     if (e !== undefined) {
       e.stopPropagation();
     }
+    return false;
   })
 
   if (this.elem.data('romo-dropdown-style-class') !== undefined) {
@@ -220,7 +221,10 @@ RomoDropdown.prototype.onElemKeyUp = function(e) {
 }
 
 RomoDropdown.prototype.onWindowBodyClick = function(e) {
-  this.doPopupClose();
+  // if not clicked on the popup elem
+  if (e !== undefined && $(e.target).parents('.romo-dropdown-popup').size() === 0) {
+    this.doPopupClose();
+  }
   return true;
 }
 
