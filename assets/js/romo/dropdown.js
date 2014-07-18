@@ -234,6 +234,10 @@ RomoDropdown.prototype.onResizeWindow = function(e) {
 }
 
 RomoDropdown.prototype.doPlacePopupElem = function() {
+  if (this.elem.parents('.romo-modal-popup').size() !== 0) {
+    this.popupElem.css({'position': 'fixed'});
+  }
+
   var pos = $.extend({}, this.elem[0].getBoundingClientRect(), this.elem.offset());
   var w = this.popupElem[0].offsetWidth;
   var h = this.popupElem[0].offsetHeight;
@@ -258,9 +262,6 @@ RomoDropdown.prototype.doPlacePopupElem = function() {
   }
 
   this.popupElem.offset(offset);
-  if (this.elem.parents('.romo-modal-popup').size() !== 0) {
-    this.popupElem.css({'position': 'fixed'});
-  }
 }
 
 RomoDropdown.prototype.doSetPopupZIndex = function(relativeZIndex) {
