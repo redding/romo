@@ -180,6 +180,7 @@ RomoModal.prototype.onPopupClose = function(e) {
 }
 
 RomoModal.prototype.doPopupClose = function() {
+  $('body').trigger('modal:popupclose');
   this.popupElem.removeClass('romo-modal-open');
 
   // unbind any event to close the popup when clicking away from it
@@ -195,6 +196,7 @@ RomoModal.prototype.doPopupClose = function() {
 }
 
 RomoModal.prototype.onMouseDown = function(e) {
+  $('body').trigger('modal:mousedown');
   e.preventDefault();
   e.stopPropagation();
   this.doDragStart(e);

@@ -166,12 +166,9 @@ RomoDropdown.prototype.doPopupOpen = function() {
   // this event and immediately close the popup.
   setTimeout($.proxy(function() {
     $('body').on('click', $.proxy(this.onWindowBodyClick, this));
+    $('body').on('modal:mousedown', $.proxy(this.onWindowBodyClick, this));
   }, this), 100);
-
-  // bind "esc" keystroke to toggle close
   $('body').on('keyup', $.proxy(this.onWindowBodyKeyUp, this));
-
-  // bind window resizes reposition dropdown
   $(window).on('resize', $.proxy(this.onResizeWindow, this));
 
   this.elem.trigger('dropdown:popupOpen', [this]);
@@ -192,13 +189,9 @@ RomoDropdown.prototype.onPopupClose = function(e) {
 RomoDropdown.prototype.doPopupClose = function() {
   this.popupElem.removeClass('romo-dropdown-open');
 
-  // unbind any event to close the popup when clicking away from it
   $('body').off('click', $.proxy(this.onWindowBodyClick, this));
-
-  // unbind "esc" keystroke to toggle close
+  $('body').off('modal:mousedown', $.proxy(this.onWindowBodyClick, this));
   $('body').off('keyup', $.proxy(this.onWindowBodyKeyUp, this));
-
-  // unbind window resizes reposition dropdown
   $(window).off('resize', $.proxy(this.onResizeWindow, this));
 
   this.elem.trigger('dropdown:popupClose', [this]);
@@ -265,6 +258,9 @@ RomoDropdown.prototype.doPlacePopupElem = function() {
   }
 
   this.popupElem.offset(offset);
+  if (this.elem.parents('.romo-modal-popup').size() !== 0) {
+    this.popupElem.css({'position': 'fixed'});
+  }
 }
 
 RomoDropdown.prototype.doSetPopupZIndex = function(relativeZIndex) {

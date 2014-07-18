@@ -113,6 +113,12 @@ RomoTooltip.prototype.doPopupOpen = function() {
   this.popupElem.addClass('romo-tooltip-open');
   this.doPlacePopupElem();
 
+  if (this.elem.parents('.romo-modal-popup').size() !== 0) {
+    $('body').on('modal:mousedown',  $.proxy(this.onModalPopupChange, this));
+    $('body').on('modal:popupclose', $.proxy(this.onModalPopupChange, this));
+  }
+  $(window).on('resize', $.proxy(this.onResizeWindow, this));
+
   this.elem.trigger('tooltip:popupOpen', [this]);
 }
 
@@ -129,7 +135,25 @@ RomoTooltip.prototype.onPopupClose = function(e) {
 RomoTooltip.prototype.doPopupClose = function() {
   this.popupElem.removeClass('romo-tooltip-open');
 
+  if (this.elem.parents('.romo-modal-popup').size() !== 0) {
+    $('body').off('modal:mousedown',  $.proxy(this.onModalPopupChange, this));
+    $('body').off('modal:popupclose', $.proxy(this.onModalPopupChange, this));
+  }
+  $(window).off('resize', $.proxy(this.onResizeWindow, this));
+
   this.elem.trigger('tooltip:popupClose', [this]);
+}
+
+RomoTooltip.prototype.onModalPopupChange = function(e) {
+  if (e !== undefined) {
+    this.doPopupClose();
+  }
+  return true;
+}
+
+RomoTooltip.prototype.onResizeWindow = function(e) {
+  this.doPlacePopupElem();
+  return true;
 }
 
 RomoTooltip.prototype.doPlacePopupElem = function() {
