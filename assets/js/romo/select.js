@@ -136,11 +136,7 @@ RomoSelect.prototype.onPopupOpenBodyKeyDown = function(e) {
   var scroll = this.romoDropdown.bodyElem;
 
   if (e.keyCode === 38 /* Up */) {
-    var curr = this.romoDropdown.bodyElem.find('LI.romo-select-highlight');
-    var prev = this._prevAll(curr, this.itemSelector).last();
-    if (prev.size() === 0) {
-      prev = this.romoDropdown.bodyElem.find(this.itemSelector).last();
-    }
+    var prev = this._prevListItem();
 
     this._highlightItem(prev);
     if (scroll.offset().top > prev.offset().top) {
@@ -151,11 +147,7 @@ RomoSelect.prototype.onPopupOpenBodyKeyDown = function(e) {
 
     return false;
   } else if(e.keyCode === 40 /* Down */) {
-    var curr = this.romoDropdown.bodyElem.find('LI.romo-select-highlight');
-    var next = this._nextAll(curr, this.itemSelector).first();
-    if (next.size() === 0) {
-      next = this.romoDropdown.bodyElem.find(this.itemSelector).first();
-    }
+    var next = this._nextListItem();
 
     this._highlightItem(next);
     if ((scroll.offset().top + scroll.height()) < next.offset().top + next.height()) {
@@ -294,6 +286,40 @@ RomoSelect.prototype._buildOptGroupListItem = function(optGroupElem) {
   item.text(optgroup.attr('label'));
 
   return item;
+}
+
+RomoSelect.prototype._nextListItem = function() {
+  var listOrItemSelector = 'UL, '+this.itemSelector;
+  var curr = this.romoDropdown.bodyElem.find('LI.romo-select-highlight');
+  var next = this._nextAll(curr, listOrItemSelector).first();
+
+  if (next.size() === 0) {
+    next = this._nextAll(curr.closest('UL'), listOrItemSelector).first();
+  }
+  if (next.size() !== 0 && next[0].tagName === 'UL') {
+    next = next.find(this.itemSelector).first()
+  }
+  if (next.size() === 0) {
+    next = this.romoDropdown.bodyElem.find(this.itemSelector).first();
+  }
+  return next;
+}
+
+RomoSelect.prototype._prevListItem = function() {
+  var listOrItemSelector = 'UL, '+this.itemSelector;
+  var curr = this.romoDropdown.bodyElem.find('LI.romo-select-highlight');
+  var prev = this._prevAll(curr, listOrItemSelector).last();
+
+  if (prev.size() === 0) {
+    prev = this._prevAll(curr.closest('UL'), listOrItemSelector).last();
+  }
+  if (prev.size() !== 0 && prev[0].tagName === 'UL') {
+    prev = prev.find(this.itemSelector).last()
+  }
+  if (prev.size() === 0) {
+    prev = this.romoDropdown.bodyElem.find(this.itemSelector).last();
+  }
+  return prev;
 }
 
 RomoSelect.prototype._nextAll = function(elem, selector) {
