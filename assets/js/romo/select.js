@@ -270,7 +270,7 @@ RomoSelect.prototype._buildOptionList = function(optionElems, listClass) {
       list.append(this._buildOptionListItem(elem));
     } else if (elem.tagName === "OPTGROUP") {
       list.append(this._buildOptGroupListItem(elem));
-      list.append(this._buildOptionList($(elem).children()));
+      list.append(this._buildOptionList($(elem).children(), 'romo-select-optgroup'));
     }
   }, this));
   return list;

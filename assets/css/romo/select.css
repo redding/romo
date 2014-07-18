@@ -78,9 +78,16 @@
 }
 
 .romo-select-option-list LI {
-  height: 20px;
+  font-size: 14px;
   line-height: 20px;
+  height: 20px;
   padding: 0 10px;
+}
+
+.romo-select-option-list LI[data-romo-select-item="optgroup"] {
+  font-size: 12px;
+  line-height: 16px;
+  height: 16px;
 }
 
 .romo-select-option-list UL.romo-select-optgroup LI {
@@ -147,6 +154,11 @@
 .romo-select-option-list {
   background-color: #ffffff;
   color: #333333;
+}
+
+.romo-select-option-list LI[data-romo-select-item="optgroup"] {
+  background-color: #333333;
+  color: #ffffff;
 }
 
 .romo-select-option-list LI.disabled,
