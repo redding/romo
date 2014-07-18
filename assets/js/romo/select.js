@@ -101,8 +101,7 @@ RomoSelect.prototype.doRefreshUI = function() {
 
 RomoSelect.prototype.onPopupOpen = function(e) {
   if (this.elem.hasClass('disabled') === false) {
-    this.romoDropdown.bodyElem.find('LI.romo-select-highlight').removeClass('romo-select-highlight');
-    this.romoDropdown.bodyElem.find('LI.selected').addClass('romo-select-highlight');
+    this._highlightItem(this.romoDropdown.bodyElem.find('LI.selected'));
     this._scrollTopToItem(this.romoDropdown.bodyElem.find('LI.selected'));
   }
 
@@ -110,7 +109,7 @@ RomoSelect.prototype.onPopupOpen = function(e) {
 }
 
 RomoSelect.prototype.onPopupClose = function(e) {
-  this.romoDropdown.bodyElem.find('LI.romo-select-highlight').removeClass('romo-select-highlight');
+  this._highlightItem($());
   $('body').off('keydown', $.proxy(this.onPopupOpenBodyKeyDown, this));
 }
 
@@ -118,9 +117,7 @@ RomoSelect.prototype.onItemHover = function(e) {
   if (e !== undefined) {
     e.preventDefault();
   }
-
-  this.romoDropdown.bodyElem.find('LI.romo-select-highlight').removeClass('romo-select-highlight');
-  $(e.target).addClass('romo-select-highlight');
+  this._highlightItem($(e.target));
 }
 
 RomoSelect.prototype.onItemClick = function(e) {
@@ -145,8 +142,7 @@ RomoSelect.prototype.onPopupOpenBodyKeyDown = function(e) {
       prev = this.romoDropdown.bodyElem.find(this.itemSelector).last();
     }
 
-    this.romoDropdown.bodyElem.find('LI.romo-select-highlight').removeClass('romo-select-highlight');
-    prev.addClass('romo-select-highlight');
+    this._highlightItem(prev);
     if (scroll.offset().top > prev.offset().top) {
       this._scrollTopToItem(prev);
     } else if ((scroll.offset().top + scroll.height()) < prev.offset().top) {
@@ -161,8 +157,7 @@ RomoSelect.prototype.onPopupOpenBodyKeyDown = function(e) {
       next = this.romoDropdown.bodyElem.find(this.itemSelector).first();
     }
 
-    this.romoDropdown.bodyElem.find('LI.romo-select-highlight').removeClass('romo-select-highlight');
-    next.addClass('romo-select-highlight');
+    this._highlightItem(next);
     if ((scroll.offset().top + scroll.height()) < next.offset().top + next.height()) {
       this._scrollBottomToItem(next);
     } else if (scroll.offset().top > next.offset().top) {
@@ -323,6 +318,11 @@ RomoSelect.prototype._prevAll = function(elem, selector) {
     el = el.prev();
   }
   return els;
+}
+
+RomoSelect.prototype._highlightItem = function(item) {
+  this.romoDropdown.bodyElem.find('LI.romo-select-highlight').removeClass('romo-select-highlight');
+  item.addClass('romo-select-highlight');
 }
 
 Romo.onInitUI(function(e) {
