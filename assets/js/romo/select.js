@@ -269,7 +269,8 @@ RomoSelect.prototype._buildOptionList = function(optionElems, listClass) {
     if (elem.tagName === "OPTION") {
       list.append(this._buildOptionListItem(elem));
     } else if (elem.tagName === "OPTGROUP") {
-      list.append(this._buildOptionListItem(elem));
+      list.append(this._buildOptGroupListItem(elem));
+      list.append(this._buildOptionList($(elem).children()));
     }
   }, this));
   return list;
@@ -292,11 +293,10 @@ RomoSelect.prototype._buildOptionListItem = function(optionElem) {
 }
 
 RomoSelect.prototype._buildOptGroupListItem = function(optGroupElem) {
+  var optgroup = $(optGroupElem);
   var item = $('<li data-romo-select-item="optgroup"></li>');
 
-  // TODO:
-  // item.append(); // add divider and dt? for optgroup
-  // item.append(this._buildOptGroupListItem($(elem).children(), 'romo-select-optgroup'));
+  item.text(optgroup.attr('label'));
 
   return item;
 }
