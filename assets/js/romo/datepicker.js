@@ -160,6 +160,76 @@ RomoDatepicker.prototype._highlightItem = function(item) {
   item.addClass('romo-datepicker-highlight');
 }
 
+RomoDatepicker.prototype._parseDate = function(value) {
+  if (value.trim() === '') {
+    return undefined;
+  }
+
+  var dateValues = this._parseDateValues(value.trim());
+  if (dateValues.length === 0) {
+    return undefined;
+  }
+
+  var year = parseInt(dateValues[0]);
+  if (year < 0) {
+    return undefined;
+  }
+  if (dateValues[0].length > 2 && year < 100) {
+    return undefined;
+  }
+  if (dateValues[0].length === 2 && year < 100) {
+    year = this._currentYear() - (this._currentYear() % 1000) + year;
+  }
+
+  var month = parseInt(dateValues[1]) - 1;
+  if (month < 0 || month > 11) {
+    return undefined;
+  }
+
+  var day = parseInt(dateValues[2]);
+  var date = new Date(Date.UTC.apply(Date, [year, month, day]));
+  if (date.getUTCMonth() !== month) {
+    return undefined;
+  }
+
+  return date;
+}
+
+RomoDatepicker.prototype._parseDateValues = function(value) {
+  var regex, matches;
+
+  regex = /^([0-9]{1,2})[\/|-|\.]+([0-9]{1,2})[\/|-|\.]+([0-9]{2,4})$/; // mm dd yyyy or mm dd yy
+  matches = this._matchFormattedDate(value, regex);
+  if (matches.length === 3) {
+    return [matches[2], matches[0], matches[1]];
+  }
+
+  regex = /^([0-9]{3,4})[\/|-|\.]+([0-9]{1,2})[\/|-|\.]+([0-9]{1,2})$/; // yyyy mm dd
+  matches = this._matchFormattedDate(value, regex);
+  if (matches.length === 3) {
+    return matches;
+  }
+
+  regex = /^([0-9]{1,2})[\/|-|\.]+([0-9]{2})$/; // mm dd
+  matches = this._matchFormattedDate(value, regex);
+  if (matches.length === 2) {
+    return [this._currentYear(), matches[0], matches[1]];
+  }
+
+  return [];
+}
+
+RomoDatepicker.prototype._matchFormattedDate = function(value, regex) {
+  if (regex.test(value) === true) {
+    return regex.exec(value).slice(1);
+  }
+  return [];
+}
+
+RomoDatepicker.prototype._currentYear = function() {
+  return (new Date).getUTCFullYear();
+}
+
 Romo.onInitUI(function(e) {
   $(e.target).find('[data-romo-datepicker-auto="true"]').romoDatepicker();
 });
