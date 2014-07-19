@@ -11,12 +11,28 @@ var RomoSelect = function(element) {
 
   this.doInit();
   this.doBindDropdown();
+  this.doRefreshUI();
+
+  this.elem.after(this.romoDropdown.elem);
+  this.elem.hide();
+
   if (this.elem.attr('id') !== undefined) {
     $('label[for="'+this.elem.attr('id')+'"]').on('click', $.proxy(function(e) {
       this.romoDropdown.elem.focus();
     }, this));
   }
-  this.elem.hide();
+
+  $(window).on("pageshow", $.proxy(function(e) {
+    var selectedVal = this.elem.find('option[selected]').attr('value');
+    if (selectedVal === undefined) {
+      selectedVal = '';
+    }
+
+    if (selectedVal !== this.elem[0].value) {
+      this.elem[0].value = selectedVal;
+      this.doRefreshUI();
+    }
+  }, this));
 
   this.elem.trigger('select:ready', [this]);
 }
@@ -53,21 +69,19 @@ RomoSelect.prototype.doBindDropdown = function() {
   this.elem.on('select:triggerPopupClose', $.proxy(function(e) {
     this.romoDropdown.elem.trigger('dropdown:triggerPopupClose', []);
   }, this));
+}
 
-  $(window).on("pageshow", $.proxy(function(e) {
-    var selectedVal = this.elem.find('option[selected]').attr('value');
-    if (selectedVal === undefined) {
-      selectedVal = '';
-    }
+RomoSelect.prototype.doRefreshUI = function() {
+  this.romoDropdown.bodyElem.html('');
+  this.romoDropdown.bodyElem.append(this._buildOptionList(this.elem.children()));
 
-    if (selectedVal !== this.elem[0].value) {
-      this.elem[0].value = selectedVal;
-      this.doRefreshUI();
-    }
-  }, this));
+  this.romoDropdown.bodyElem.find(this.itemSelector).on('hover', $.proxy(this.onItemHover, this));
+  this.romoDropdown.bodyElem.find(this.itemSelector).on('click', $.proxy(this.onItemClick, this));
 
-  this.doRefreshUI();
-  this.elem.after(this.romoDropdown.elem);
+  this.romoDropdown.elem.find('span').text(this.romoDropdown.bodyElem.find('LI.selected').text());
+  if (this.elem.attr('disabled') !== undefined) {
+    this.romoDropdown.elem.attr('disabled', this.elem.attr('disabled'));
+  }
 }
 
 RomoSelect.prototype.doSelectHighlightedItem = function() {
@@ -86,25 +100,11 @@ RomoSelect.prototype.doSelectHighlightedItem = function() {
   }
 }
 
-RomoSelect.prototype.doRefreshUI = function() {
-  this.romoDropdown.bodyElem.html('');
-  this.romoDropdown.bodyElem.append(this._buildOptionList(this.elem.children()));
-
-  this.romoDropdown.bodyElem.find(this.itemSelector).on('hover', $.proxy(this.onItemHover, this));
-  this.romoDropdown.bodyElem.find(this.itemSelector).on('click', $.proxy(this.onItemClick, this));
-
-  this.romoDropdown.elem.find('span').text(this.romoDropdown.bodyElem.find('LI.selected').text());
-  if (this.elem.attr('disabled') !== undefined) {
-    this.romoDropdown.elem.attr('disabled', this.elem.attr('disabled'));
-  }
-}
-
 RomoSelect.prototype.onPopupOpen = function(e) {
   if (this.elem.hasClass('disabled') === false) {
     this._highlightItem(this.romoDropdown.bodyElem.find('LI.selected'));
     this._scrollTopToItem(this.romoDropdown.bodyElem.find('LI.selected'));
   }
-
   $('body').on('keydown', $.proxy(this.onPopupOpenBodyKeyDown, this));
 }
 
@@ -124,7 +124,6 @@ RomoSelect.prototype.onItemClick = function(e) {
   if (e !== undefined) {
     e.preventDefault();
   }
-
   this.doSelectHighlightedItem();
 }
 
