@@ -10,17 +10,11 @@ var RomoDatepicker = function(element) {
   this.defaultRightArrowClass = '';
   this.defaultIndicatorClass  = '';
   this.itemSelector = 'TD.romo-datepicker-item:not(.disabled)';
-  this.calendarElem = $();
+  this.calTable = $();
 
   this.doInit();
   this.doBindDropdown();
   this.doBuildUI();
-
-  // if (this.elem.attr('id') !== undefined) {
-  //   $('label[for="'+this.elem.attr('id')+'"]').on('click', $.proxy(function(e) {
-  //     this.romoDropdown.elem.focus();
-  //   }, this));
-  // }
 
   this.elem.trigger('datepicker:ready', [this]);
 }
@@ -63,9 +57,9 @@ RomoDatepicker.prototype.doBindDropdown = function() {
 }
 
 RomoDatepicker.prototype.doBuildUI = function() {
-  this.calendarElem = this._buildCalendar();
+  this.calTable = this._buildCalendar();
   this.romoDropdown.bodyElem.html('');
-  this.romoDropdown.bodyElem.append(this.calendarElem);
+  this.romoDropdown.bodyElem.append(this.calTable);
   this.doRefreshUI();
 }
 
@@ -73,13 +67,13 @@ RomoDatepicker.prototype.doRefreshUI = function() {
   // remove item rows from calendar
   // build item rows and add after calendar headers
 
-  this.calendarElem.find(this.itemSelector).on('hover', $.proxy(this.onItemHover, this));
-  this.calendarElem.find(this.itemSelector).on('click', $.proxy(this.onItemClick, this));
+  this.calTable.find(this.itemSelector).on('hover', $.proxy(this.onItemHover, this));
+  this.calTable.find(this.itemSelector).on('click', $.proxy(this.onItemClick, this));
 }
 
 RomoDatepicker.prototype.doSelectHighlightedItem = function() {
   var prevValue = this.elem[0].value;
-  var newValue = this.calendarElem.find('TD.romo-datepicker-highlight').data('romo-datepicker-item-value');
+  var newValue = this.calTable.find('TD.romo-datepicker-highlight').data('romo-datepicker-item-value');
 
   this.romoDropdown.doPopupClose();
   this.elem.trigger('datepicker:itemSelected', [newValue, prevValue, this]);
@@ -95,7 +89,7 @@ RomoDatepicker.prototype.doSelectHighlightedItem = function() {
 
 RomoDatepicker.prototype.onPopupOpen = function(e) {
   if (this.elem.hasClass('disabled') === false) {
-    this._highlightItem(this.calendarElem.find('TD.selected'));
+    this._highlightItem(this.calTable.find('TD.selected'));
   }
 }
 
@@ -117,13 +111,42 @@ RomoDatepicker.prototype.onItemClick = function(e) {
   this.doSelectHighlightedItem();
 }
 
-RomoDatepicker.prototype._buildCalendar = function() {
-  // TODO
-  return $('<p>Calendar Goes Here</p>');
+RomoDatepicker.prototype._refreshCalendar = function(elemValue) {
+  this.calTable.find('tbody').remove();
+  this.calTable.append(this._buildCalendarBody(elemValue));
 }
 
-RomoDatepicker.prototype._refreshCalendar = function(elemValue) {
-  // TODO
+RomoDatepicker.prototype._buildCalendar = function() {
+  var table = $('<table></table>');
+  table.append(this._buildCalendarHeader());
+  table.append($('<tbody></tbody>'));
+  return table;
+}
+
+RomoDatepicker.prototype._buildCalendarHeader = function() {
+  var header = $('<thead></thead');
+
+  var row = $('<tr></tr>');
+  row.append($('<th class="romo-datepicker-prev"><i class="'+this.defaultLeftArrowClass+'"></i>'));
+  row.append($('<th class="romo-datepicker-title" colspan="5"></th>'));
+  row.append($('<th class="romo-datepicker-next"><i class="'+this.defaultRightArrowClass+'"></i>'));
+  header.append(row);
+
+  row = $('<tr></tr>');
+  row.append($('<th class="romo-datepicker-day">Su</th>'));
+  row.append($('<th class="romo-datepicker-day">M</th>'));
+  row.append($('<th class="romo-datepicker-day">T</th>'));
+  row.append($('<th class="romo-datepicker-day">W</th>'));
+  row.append($('<th class="romo-datepicker-day">Th</th>'));
+  row.append($('<th class="romo-datepicker-day">F</th>'));
+  row.append($('<th class="romo-datepicker-day">S</th>'));
+  header.append(row);
+
+  return header;
+}
+
+RomoDatepicker.prototype._buildCalendarBody = function(dateValue) {
+  return $('<tbody><tr><td colspan="7">Calendar Body Goes Here</td></tr></tbody>');
 }
 
 RomoDatepicker.prototype._addIndicatorToElem = function() {
@@ -133,7 +156,7 @@ RomoDatepicker.prototype._addIndicatorToElem = function() {
 }
 
 RomoDatepicker.prototype._highlightItem = function(item) {
-  this.calendarElem.find('TD.romo-datepicker-highlight').removeClass('romo-datepicker-highlight');
+  this.calTable.find('TD.romo-datepicker-highlight').removeClass('romo-datepicker-highlight');
   item.addClass('romo-datepicker-highlight');
 }
 

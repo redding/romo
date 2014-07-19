@@ -1,0 +1,37 @@
+.romo-datepicker-calendar {
+  padding: 3px;
+}
+.romo-datepicker-calendar * {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.romo-datepicker-calendar table {
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.romo-datepicker-calendar th,
+.romo-datepicker-calendar td {
+  width: 14.285714286%; /* 100% / 7 */
+  text-align: center;
+}
+
+.romo-datepicker-calendar .romo-datepicker-prev,
+.romo-datepicker-calendar .romo-datepicker-next,
+.romo-datepicker-calendar TD.romo-datepicker-day:not(.disabled) {
+  cursor: pointer;
+}
+
+.romo-datepicker-calendar .romo-datepicker-prev:hover,
+.romo-datepicker-calendar .romo-datepicker-next:hover,
+.romo-datepicker-calendar TD.romo-datepicker-day:not(.disabled).romo-datepicker-highlight {
+  background: #eeeeee;
+}
+
+.romo-datepicker-calendar TD.romo-datepicker-day.disabled {
+  cursor: not-allowed;
+}
