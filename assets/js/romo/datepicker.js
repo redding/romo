@@ -11,8 +11,10 @@ var RomoDatepicker = function(element) {
   this.defaultIndicatorClass  = '';
   this.itemSelector = 'TD.romo-datepicker-item:not(.disabled)';
   this.calTable = $();
+  this.date = undefined;
 
   this.doInit();
+  this.doSetDate(this.elem.val());
   this.doBindDropdown();
   this.doBuildUI();
 
@@ -21,6 +23,15 @@ var RomoDatepicker = function(element) {
 
 RomoDatepicker.prototype.doInit = function() {
   // override as needed
+}
+
+RomoDatepicker.prototype.doSetDate = function(value) {
+  this.date = this._parseDate(value);
+  if (this.date !== undefined) {
+    this.elem.val(this._formatDate(this.date));
+  } else {
+    this.elem.val(value);
+  }
 }
 
 RomoDatepicker.prototype.doBindDropdown = function() {
@@ -158,6 +169,10 @@ RomoDatepicker.prototype._addIndicatorToElem = function() {
 RomoDatepicker.prototype._highlightItem = function(item) {
   this.calTable.find('TD.romo-datepicker-highlight').removeClass('romo-datepicker-highlight');
   item.addClass('romo-datepicker-highlight');
+}
+
+RomoDatepicker.prototype._formatDate = function(date) {
+  return date.toUTCString();  // TODO
 }
 
 RomoDatepicker.prototype._parseDate = function(value) {
