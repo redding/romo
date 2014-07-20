@@ -6,6 +6,7 @@ $.fn.romoDatepicker = function() {
 
 var RomoDatepicker = function(element) {
   this.elem = $(element);
+  this.defaultFormat = 'yyyy-mm-dd'
   this.defaultLeftArrowClass  = '';
   this.defaultRightArrowClass = '';
   this.defaultIndicatorClass  = '';
@@ -172,7 +173,27 @@ RomoDatepicker.prototype._highlightItem = function(item) {
 }
 
 RomoDatepicker.prototype._formatDate = function(date) {
+  var values = this._parseFormatValues(this.elem.data('romo-datepicker-format') || this.defaultFormat);
+
   return date.toUTCString();  // TODO
+}
+
+RomoDatepicker.prototype._parseFormatValues = function(value) {
+  var regex, matches;
+
+  regex = /^([m]{1,2})([^md]+)([d]{1,2})([^dy]+)([y]{2,4})$/; // mm dd yyyy or mm dd yy
+  matches = this._regexMatches(value, regex);
+  if (matches.length === 5) {
+    return matches;
+  }
+
+  regex = /^([y]{3,4})([^ym]+)([m]{1,2})([^md]+)([d]{1,2})$/; // yyyy mm dd
+  matches = this._regexMatches(value, regex);
+  if (matches.length === 5) {
+    return matches;
+  }
+
+  return ['yyyy', '-', 'mm', '-', 'dd'];
 }
 
 RomoDatepicker.prototype._parseDate = function(value) {
@@ -214,19 +235,19 @@ RomoDatepicker.prototype._parseDateValues = function(value) {
   var regex, matches;
 
   regex = /^([0-9]{1,2})[\/|-|\.]+([0-9]{1,2})[\/|-|\.]+([0-9]{2,4})$/; // mm dd yyyy or mm dd yy
-  matches = this._matchFormattedDate(value, regex);
+  matches = this._regexMatches(value, regex);
   if (matches.length === 3) {
     return [matches[2], matches[0], matches[1]];
   }
 
   regex = /^([0-9]{3,4})[\/|-|\.]+([0-9]{1,2})[\/|-|\.]+([0-9]{1,2})$/; // yyyy mm dd
-  matches = this._matchFormattedDate(value, regex);
+  matches = this._regexMatches(value, regex);
   if (matches.length === 3) {
     return matches;
   }
 
   regex = /^([0-9]{1,2})[\/|-|\.]+([0-9]{2})$/; // mm dd
-  matches = this._matchFormattedDate(value, regex);
+  matches = this._regexMatches(value, regex);
   if (matches.length === 2) {
     return [this._currentYear(), matches[0], matches[1]];
   }
@@ -234,7 +255,7 @@ RomoDatepicker.prototype._parseDateValues = function(value) {
   return [];
 }
 
-RomoDatepicker.prototype._matchFormattedDate = function(value, regex) {
+RomoDatepicker.prototype._regexMatches = function(value, regex) {
   if (regex.test(value) === true) {
     return regex.exec(value).slice(1);
   }
