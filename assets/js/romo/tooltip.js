@@ -8,7 +8,7 @@ var RomoTooltip = function(element) {
   this.elem = $(element);
   this.popupElem = $('<div class="romo-tooltip-popup"><div class="romo-tooltip-arrow"></div><div class="romo-tooltip-body"></div></div>');
   this.popupElem.appendTo('body');
-  this.doSetPopupZIndex(parseInt(this.elem.css('z-index')));
+  this.doSetPopupZIndex(this.elem);
   this.arrowElem = this.popupElem.find('> .romo-tooltip-arrow');
   this.bodyElem  = this.popupElem.find('> .romo-tooltip-body');
 
@@ -185,10 +185,9 @@ RomoTooltip.prototype.doPlacePopupElem = function() {
   this.popupElem.offset(offset);
 }
 
-RomoTooltip.prototype.doSetPopupZIndex = function(relativeZIndex) {
-  if (!isNaN(relativeZIndex)) {
-    this.popupElem.css({'z-index': relativeZIndex + 1100}); // see z-index.css
-  }
+RomoTooltip.prototype.doSetPopupZIndex = function(relativeElem) {
+  var relativeZIndex = Romo.parseZIndex(relativeElem);
+  this.popupElem.css({'z-index': relativeZIndex + 1100}); // see z-index.css
 }
 
 Romo.onInitUI(function(e) {

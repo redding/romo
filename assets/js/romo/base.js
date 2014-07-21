@@ -93,6 +93,29 @@
     [/%7E/g, '~']
   ];
 
+  // style handling
+
+  Romo.prototype.parseZIndex = function(elem) {
+    // for the case where the browser doesn't suck and can read inherited z-index
+    var val = parseInt(elem.css('z-index'));
+    if (!isNaN(val)) {
+      return val;
+    }
+
+    // for the case where the browser sucks and can't read inherited z-index - we'll do it for you!
+    var parentIndexes = $.map(elem.parents(), function(item) {
+      return item; // converts the collection to an array
+    }).reduce($.proxy(function(prev, curr) {
+      var pval = parseInt($(curr).css('z-index'));
+      if (!isNaN(pval)) {
+        prev.push(pval);
+      }
+      return prev;
+    }, this), []);
+    parentIndexes.push(0); // in case z-index is 'auto' all the way up
+    return parentIndexes[0];
+  }
+
   // private
 
   Romo.prototype._addEventCallback = function(name, callback) {
