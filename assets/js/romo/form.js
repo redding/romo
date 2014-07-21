@@ -163,7 +163,7 @@ RomoForm.prototype._getSerializeObj = function() {
 
 RomoForm.prototype._getListValueInputNamesDelims = function() {
   return $.map(this.elem.find('[data-romo-form-list-values="true"]'), function(item){
-    return item; // onverts the collection to an array
+    return item; // converts the collection to an array
   }).reduce($.proxy(function(prev, curr) {
     prev[$(curr).attr('name')] = $(curr).data('romo-form-list-values-delim') || this.defaultListValuesDelim;
     return prev;
