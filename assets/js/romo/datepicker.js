@@ -173,9 +173,38 @@ RomoDatepicker.prototype._highlightItem = function(item) {
 }
 
 RomoDatepicker.prototype._formatDate = function(date) {
+  var year = date.getUTCFullYear();
+  var month = date.getUTCMonth() + 1;
+  var day = date.getUTCDate();
   var values = this._parseFormatValues(this.elem.data('romo-datepicker-format') || this.defaultFormat);
 
-  return date.toUTCString();  // TODO
+  return values.reduce(function(prev, curr) {
+    switch (curr) {
+      case "yyyy":
+      case "yyy":
+        prev += year.toString();
+        break;
+      case "yy":
+      case "y":
+        prev += year.toString().slice(-2);
+        break;
+      case "mm":
+        prev += ("00"+ month.toString()).slice(-2); // pad 2 with "0"s
+        break;
+      case "m":
+        prev += month.toString();
+        break;
+      case "dd":
+        prev += ("00"+ day.toString()).slice(-2); // pad 2 with "0"s
+        break;
+      case "d":
+        prev += day.toString();
+        break;
+      default:
+        prev += curr; // delimeter, pass-thru
+    }
+    return prev;
+  }, '');
 }
 
 RomoDatepicker.prototype._parseFormatValues = function(value) {
