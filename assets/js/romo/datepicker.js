@@ -37,6 +37,7 @@ RomoDatepicker.prototype.doSetDate = function(value) {
 
 RomoDatepicker.prototype.doBindDropdown = function() {
   this.elem.addClass('romo');
+  this.elem.attr('data-romo-dropdown-disable-toggle', 'true');
   if (this.elem.data('romo-dropdown-width') === undefined) {
     this.elem.attr('data-romo-dropdown-width', 'elem');
   }

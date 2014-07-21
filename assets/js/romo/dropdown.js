@@ -124,8 +124,13 @@ RomoDropdown.prototype.onToggleClick = function(e) {
   }
 
   if (this.elem.hasClass('disabled') === false) {
-    this.doToggle();
+    if (!this.popupElem.hasClass('romo-dropdown-open') ||
+         this.elem.data('romo-dropdown-disable-toggle') !== true) {
+      this.doToggle();
+      return true;
+    }
   }
+  return false;
 }
 
 RomoDropdown.prototype.doToggle = function() {
