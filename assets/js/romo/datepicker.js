@@ -275,7 +275,7 @@ RomoDatepicker.prototype._parseDateValues = function(value) {
     return matches;
   }
 
-  regex = /^([0-9]{1,2})[\/|-|\.]+([0-9]{2})$/; // mm dd
+  regex = /^([0-9]{1,2})[\/|-|\.]+([0-9]{1,2})$/; // mm dd
   matches = this._regexMatches(value, regex);
   if (matches.length === 2) {
     return [this._currentYear(), matches[0], matches[1]];
