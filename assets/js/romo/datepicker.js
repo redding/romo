@@ -127,8 +127,7 @@ RomoDatepicker.prototype.onItemClick = function(e) {
 
 RomoDatepicker.prototype._refreshCalendar = function(date) {
   this.calTable.find('.romo-datepicker-title').html(this._buildCalendarTitle(date));
-  this.calTable.find('tbody').remove();
-  this.calTable.append(this._buildCalendarBody(date));
+  this.calTable.find('tbody').empty().append(this._buildCalendarBody(date));
 }
 
 RomoDatepicker.prototype._buildCalendar = function() {
@@ -165,7 +164,13 @@ RomoDatepicker.prototype._buildCalendarTitle = function(date) {
 }
 
 RomoDatepicker.prototype._buildCalendarBody = function(date) {
-  return $('<tbody><tr><td colspan="7">'+date.toUTCString()+'</td></tr></tbody>');
+  var html = [];
+
+  html.push('<tr>');
+  html.push('<td colspan="7">'+date.toUTCString()+'</td>');
+  html.push('</tr>');
+
+  return $(html.join(''));
 }
 
 RomoDatepicker.prototype._addIndicatorToElem = function() {
@@ -259,7 +264,7 @@ RomoDatepicker.prototype._parseDate = function(value) {
   }
 
   var day = parseInt(dateValues[2]);
-  var date = new Date(Date.UTC.apply(Date, [year, month, day]));
+  var date = this._UTCDate(year, month, day);
   if (date.getUTCMonth() !== month) {
     return undefined;
   }
@@ -300,6 +305,10 @@ RomoDatepicker.prototype._regexMatches = function(value, regex) {
 
 RomoDatepicker.prototype._currentYear = function() {
   return (new Date).getUTCFullYear();
+}
+
+RomoDatepicker.prototype._UTCDate = function(year, month, day) {
+  return new Date(Date.UTC.apply(Date, [year, month, day]));
 }
 
 Romo.onInitUI(function(e) {
