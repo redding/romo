@@ -7,6 +7,11 @@
   float: left;
   border-width: 1px;
   border-style: solid;
+}
+
+.romo-dropdown-popup,
+.romo-dropdown-body,
+.romo-dropdown-content {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
