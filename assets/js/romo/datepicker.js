@@ -84,12 +84,39 @@ RomoDatepicker.prototype.doBuildUI = function() {
   this.calTable = this._buildCalendar();
   this.romoDropdown.bodyElem.html('');
   this.romoDropdown.bodyElem.append(this.calTable);
+
+  this.calTable.find('.romo-datepicker-prev').on('click', $.proxy(this.onPrevClick, this));
+  this.calTable.find('.romo-datepicker-next').on('click', $.proxy(this.onNextClick, this));
 }
 
 RomoDatepicker.prototype.doRefreshUI = function(date) {
   this._refreshCalendar(date || this.date || (new Date));
   this.calTable.find(this.itemSelector).on('hover', $.proxy(this.onItemHover, this));
   this.calTable.find(this.itemSelector).on('click', $.proxy(this.onItemClick, this));
+}
+
+RomoDatepicker.prototype.doRefreshToPrevMonth = function() {
+  var date = this.refreshDate || this.date || (new Date);
+  var year = date.getUTCFullYear();
+  var month = date.getUTCMonth() - 1;
+  if (month < 0) {
+    year -= 1;
+    month = 11;
+  }
+
+  this.doRefreshUI(this._UTCDate(year, month, 1));
+}
+
+RomoDatepicker.prototype.doRefreshToNextMonth = function() {
+  var date = this.refreshDate || this.date || (new Date);
+  var year = date.getUTCFullYear();
+  var month = date.getUTCMonth() + 1;
+  if (month > 11) {
+    year += 1;
+    month = 0;
+  }
+
+  this.doRefreshUI(this._UTCDate(year, month, 1));
 }
 
 RomoDatepicker.prototype.doSelectHighlightedItem = function() {
