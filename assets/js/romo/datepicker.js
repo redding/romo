@@ -109,6 +109,7 @@ RomoDatepicker.prototype.doSelectHighlightedItem = function() {
 
 RomoDatepicker.prototype.onPopupOpen = function(e) {
   if (this.elem.hasClass('disabled') === false) {
+    this.doSetDate(this.elem.val());
     this.doRefreshUI();
   }
 }
