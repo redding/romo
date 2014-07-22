@@ -171,6 +171,9 @@ RomoDatepicker.prototype._buildCalendarTitle = function(date) {
 }
 
 RomoDatepicker.prototype._buildCalendarBody = function(date) {
+  var ty = this.today.getUTCFullYear();
+  var tm = this.today.getUTCMonth();
+  var td = this.today.getUTCDate();
   var year = date.getUTCFullYear();
   var month = date.getUTCMonth();
   var day = date.getUTCDate();
@@ -183,9 +186,6 @@ RomoDatepicker.prototype._buildCalendarBody = function(date) {
   var html = [];
 
   while (iWeek < 6) { // render 6 weeks in the calendar
-    var ty = this.today.getUTCFullYear();
-    var tm = this.today.getUTCMonth();
-    var td = this.today.getUTCDate();
     var y = iDate.getUTCFullYear();
     var m = iDate.getUTCMonth();
     var d = iDate.getUTCDate();
