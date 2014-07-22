@@ -73,27 +73,23 @@ RomoDatepicker.prototype.doBuildUI = function() {
   this.calTable = this._buildCalendar();
   this.romoDropdown.bodyElem.html('');
   this.romoDropdown.bodyElem.append(this.calTable);
-  this.doRefreshUI();
 }
 
 RomoDatepicker.prototype.doRefreshUI = function() {
-  // remove item rows from calendar
-  // build item rows and add after calendar headers
-
+  this._refreshCalendar(this.date || (new Date));
   this.calTable.find(this.itemSelector).on('hover', $.proxy(this.onItemHover, this));
   this.calTable.find(this.itemSelector).on('click', $.proxy(this.onItemClick, this));
 }
 
 RomoDatepicker.prototype.doSelectHighlightedItem = function() {
-  var prevValue = this.elem[0].value;
+  var prevValue = this.elem.val();
   var newValue = this.calTable.find('TD.romo-datepicker-highlight').data('romo-datepicker-item-value');
 
   this.romoDropdown.doPopupClose();
   this.elem.trigger('datepicker:itemSelected', [newValue, prevValue, this]);
 
   if (newValue !== prevValue) {
-    this._setElemValue = newValue;
-    this.doRefreshUI();
+    this.doSetDate(newValue);
 
     this.elem.trigger('change');
     this.elem.trigger('datepicker:change', [newValue, prevValue, this]);
@@ -102,6 +98,7 @@ RomoDatepicker.prototype.doSelectHighlightedItem = function() {
 
 RomoDatepicker.prototype.onPopupOpen = function(e) {
   if (this.elem.hasClass('disabled') === false) {
+    this.doRefreshUI();
     this._highlightItem(this.calTable.find('TD.selected'));
   }
 }
@@ -124,9 +121,9 @@ RomoDatepicker.prototype.onItemClick = function(e) {
   this.doSelectHighlightedItem();
 }
 
-RomoDatepicker.prototype._refreshCalendar = function(elemValue) {
+RomoDatepicker.prototype._refreshCalendar = function(date) {
   this.calTable.find('tbody').remove();
-  this.calTable.append(this._buildCalendarBody(elemValue));
+  this.calTable.append(this._buildCalendarBody(date));
 }
 
 RomoDatepicker.prototype._buildCalendar = function() {
@@ -158,8 +155,8 @@ RomoDatepicker.prototype._buildCalendarHeader = function() {
   return header;
 }
 
-RomoDatepicker.prototype._buildCalendarBody = function(dateValue) {
-  return $('<tbody><tr><td colspan="7">Calendar Body Goes Here</td></tr></tbody>');
+RomoDatepicker.prototype._buildCalendarBody = function(date) {
+  return $('<tbody><tr><td colspan="7">'+date.toUTCString()+'</td></tr></tbody>');
 }
 
 RomoDatepicker.prototype._addIndicatorToElem = function() {
