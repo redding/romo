@@ -19,6 +19,7 @@ var RomoDatepicker = function(element) {
   this.date = undefined;
 
   this.doInit();
+  this.doSetFormat();
   this.doSetDate(this.elem.val());
   this.doBindDropdown();
   this.doBuildUI();
@@ -28,6 +29,11 @@ var RomoDatepicker = function(element) {
 
 RomoDatepicker.prototype.doInit = function() {
   // override as needed
+}
+
+RomoDatepicker.prototype.doSetFormat = function() {
+  var format = this.elem.data('romo-datepicker-format') || this.defaultFormat;
+  this.formatValues = this._parseFormatValues(format);
 }
 
 RomoDatepicker.prototype.doSetDate = function(value) {
@@ -218,9 +224,8 @@ RomoDatepicker.prototype._formatDate = function(date) {
   var year = date.getUTCFullYear();
   var month = date.getUTCMonth() + 1;
   var day = date.getUTCDate();
-  var values = this._parseFormatValues(this.elem.data('romo-datepicker-format') || this.defaultFormat);
 
-  return values.reduce(function(prev, curr) {
+  return this.formatValues.reduce(function(prev, curr) {
     switch (curr) {
       case "yyyy":
       case "yyy":
