@@ -90,7 +90,10 @@ RomoDatepicker.prototype.doBuildUI = function() {
 }
 
 RomoDatepicker.prototype.doRefreshUI = function(date) {
-  this._refreshCalendar(date || this.date || (new Date));
+  var rDate = date || this.date || (new Date);
+  this._refreshCalendar(rDate);
+  this.elem.trigger('datepicker:refresh', [rDate, this]);
+
   this.calTable.find(this.itemSelector).on('hover', $.proxy(this.onItemHover, this));
   this.calTable.find(this.itemSelector).on('click', $.proxy(this.onItemClick, this));
 }
@@ -104,7 +107,9 @@ RomoDatepicker.prototype.doRefreshToPrevMonth = function() {
     month = 11;
   }
 
-  this.doRefreshUI(this._UTCDate(year, month, 1));
+  var pDate = this._UTCDate(year, month, 1);
+  this.doRefreshUI(pDate);
+  this.elem.trigger('datepicker:prevRefresh', [pDate, this]);
 }
 
 RomoDatepicker.prototype.doRefreshToNextMonth = function() {
@@ -116,7 +121,9 @@ RomoDatepicker.prototype.doRefreshToNextMonth = function() {
     month = 0;
   }
 
-  this.doRefreshUI(this._UTCDate(year, month, 1));
+  var nDate = this._UTCDate(year, month, 1);
+  this.doRefreshUI(nDate);
+  this.elem.trigger('datepicker:nextRefresh', [nDate, this]);
 }
 
 RomoDatepicker.prototype.doSelectHighlightedItem = function() {
