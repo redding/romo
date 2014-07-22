@@ -209,8 +209,13 @@ RomoDatepicker.prototype._buildCalendarBody = function(date) {
       cls.push('selected');
     }
 
-    html.push('<td class="'+cls.join(' ')+'" data-romo-datepicker-value="'+this._formatDate(iDate)+'">');
-    html.push(day.toString());
+    html.push('<td');
+    html.push(' class="'+cls.join(' ')+'"');
+    var dt = this._formatDate(iDate);
+    html.push(' title="'+dt+'"');
+    html.push(' data-romo-datepicker-value="'+dt+'"');
+    html.push('>');
+    html.push(d.toString());
     html.push('</td>');
 
     if (dow === 6) {
