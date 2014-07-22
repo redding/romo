@@ -14,7 +14,7 @@ var RomoDatepicker = function(element) {
   this.defaultLeftArrowClass  = '';
   this.defaultRightArrowClass = '';
   this.defaultIndicatorClass  = '';
-  this.itemSelector = 'TD.romo-datepicker-item:not(.disabled)';
+  this.itemSelector = 'TD.romo-datepicker-day:not(.disabled)';
   this.calTable = $();
   this.date = undefined;
 
@@ -87,7 +87,7 @@ RomoDatepicker.prototype.doRefreshUI = function() {
 
 RomoDatepicker.prototype.doSelectHighlightedItem = function() {
   var prevValue = this.elem.val();
-  var newValue = this.calTable.find('TD.romo-datepicker-highlight').data('romo-datepicker-item-value');
+  var newValue = this.calTable.find('TD.romo-datepicker-highlight').data('romo-datepicker-value');
 
   this.romoDropdown.doPopupClose();
   this.elem.trigger('datepicker:itemSelected', [newValue, prevValue, this]);
@@ -164,11 +164,41 @@ RomoDatepicker.prototype._buildCalendarTitle = function(date) {
 }
 
 RomoDatepicker.prototype._buildCalendarBody = function(date) {
+  var year = date.getUTCFullYear();
+  var month = date.getUTCMonth();
+  var fomdow = this._UTCDate(year, month, 1).getUTCDay(); // first-of-the-month day-of-the-week
+  if (fomdow == 0) {
+    fomdow = 7;  // don't start calendar on the first-of-the-month, show last week of prev month
+  }
+  var iDate = this._UTCDate(year, month, 1 - fomdow);
+  var iWeek = 0;
   var html = [];
 
   html.push('<tr>');
   html.push('<td colspan="7">'+date.toUTCString()+'</td>');
   html.push('</tr>');
+
+  while (iWeek < 6) { // render 6 weeks in the calendar
+    var day = iDate.getUTCDate();
+    var dow = iDate.getUTCDay();
+    var cls = [];
+
+    if (dow === 0) {
+      html.push('<tr>');
+    }
+
+    cls.push('romo-datepicker-day');
+
+    html.push('<td class="'+cls.join(' ')+'" data-romo-datepicker-value="'+this._formatDate(iDate)+'">');
+    html.push(day.toString());
+    html.push('</td>');
+
+    if (dow === 6) {
+      html.push('</tr>');
+      iWeek += 1;
+    }
+    iDate.setUTCDate(iDate.getUTCDate()+1);
+  }
 
   return $(html.join(''));
 }
