@@ -26,12 +26,32 @@
   cursor: pointer;
 }
 
+.romo-datepicker-calendar TD.romo-datepicker-day.disabled {
+  cursor: not-allowed;
+}
+
+/* theme */
+
 .romo-datepicker-calendar .romo-datepicker-prev:hover,
 .romo-datepicker-calendar .romo-datepicker-next:hover,
-.romo-datepicker-calendar TD.romo-datepicker-day:not(.disabled).romo-datepicker-highlight {
+.romo-datepicker-calendar TD.romo-datepicker-day.romo-datepicker-highlight:not(.disabled) {
+  background: #ddd;
+}
+
+.romo-datepicker-calendar TD.romo-datepicker-day-weekend {
   background: #eeeeee;
 }
 
-.romo-datepicker-calendar TD.romo-datepicker-day.disabled {
-  cursor: not-allowed;
+.romo-datepicker-calendar TD.romo-datepicker-day-other {
+  color: #bbbbbb;
+}
+
+.romo-datepicker-calendar TD.romo-datepicker-day-today {
+  border: 1px solid #333333;
+}
+
+.romo-datepicker-calendar TD.romo-datepicker-day.selected,
+.romo-datepicker-calendar TD.romo-datepicker-day.selected.romo-datepicker-highlight {
+  background-color: #3c83c7;
+  color: #ffffff;
 }

@@ -17,6 +17,7 @@ var RomoDatepicker = function(element) {
   this.itemSelector = 'TD.romo-datepicker-day:not(.disabled)';
   this.calTable = $();
   this.date = undefined;
+  this.today = new Date;
 
   this.doInit();
   this.doSetFormat();
@@ -109,7 +110,6 @@ RomoDatepicker.prototype.doSelectHighlightedItem = function() {
 RomoDatepicker.prototype.onPopupOpen = function(e) {
   if (this.elem.hasClass('disabled') === false) {
     this.doRefreshUI();
-    this._highlightItem(this.calTable.find('TD.selected'));
   }
 }
 
@@ -172,6 +172,7 @@ RomoDatepicker.prototype._buildCalendarTitle = function(date) {
 RomoDatepicker.prototype._buildCalendarBody = function(date) {
   var year = date.getUTCFullYear();
   var month = date.getUTCMonth();
+  var day = date.getUTCDate();
   var fomdow = this._UTCDate(year, month, 1).getUTCDay(); // first-of-the-month day-of-the-week
   if (fomdow == 0) {
     fomdow = 7;  // don't start calendar on the first-of-the-month, show last week of prev month
@@ -180,12 +181,13 @@ RomoDatepicker.prototype._buildCalendarBody = function(date) {
   var iWeek = 0;
   var html = [];
 
-  html.push('<tr>');
-  html.push('<td colspan="7">'+date.toUTCString()+'</td>');
-  html.push('</tr>');
-
   while (iWeek < 6) { // render 6 weeks in the calendar
-    var day = iDate.getUTCDate();
+    var ty = this.today.getUTCFullYear();
+    var tm = this.today.getUTCMonth();
+    var td = this.today.getUTCDate();
+    var y = iDate.getUTCFullYear();
+    var m = iDate.getUTCMonth();
+    var d = iDate.getUTCDate();
     var dow = iDate.getUTCDay();
     var cls = [];
 
@@ -194,6 +196,18 @@ RomoDatepicker.prototype._buildCalendarBody = function(date) {
     }
 
     cls.push('romo-datepicker-day');
+    if (dow === 0 || dow === 6) {
+      cls.push('romo-datepicker-day-weekend');
+    }
+    if (y !== year || m !== month) {
+      cls.push('romo-datepicker-day-other');
+    }
+    if (y === ty && m === tm && d === td) {
+      cls.push('romo-datepicker-day-today');
+    }
+    if (y === year && m === month && d === day) {
+      cls.push('selected');
+    }
 
     html.push('<td class="'+cls.join(' ')+'" data-romo-datepicker-value="'+this._formatDate(iDate)+'">');
     html.push(day.toString());
