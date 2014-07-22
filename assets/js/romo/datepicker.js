@@ -7,6 +7,10 @@ $.fn.romoDatepicker = function() {
 var RomoDatepicker = function(element) {
   this.elem = $(element);
   this.defaultFormat = 'yyyy-mm-dd'
+  this.monthNames = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ]
   this.defaultLeftArrowClass  = '';
   this.defaultRightArrowClass = '';
   this.defaultIndicatorClass  = '';
@@ -122,6 +126,7 @@ RomoDatepicker.prototype.onItemClick = function(e) {
 }
 
 RomoDatepicker.prototype._refreshCalendar = function(date) {
+  this.calTable.find('.romo-datepicker-title').html(this._buildCalendarTitle(date));
   this.calTable.find('tbody').remove();
   this.calTable.append(this._buildCalendarBody(date));
 }
@@ -153,6 +158,10 @@ RomoDatepicker.prototype._buildCalendarHeader = function() {
   header.append(row);
 
   return header;
+}
+
+RomoDatepicker.prototype._buildCalendarTitle = function(date) {
+  return this.monthNames[date.getUTCMonth()] + ' ' + date.getUTCFullYear().toString();
 }
 
 RomoDatepicker.prototype._buildCalendarBody = function(date) {
