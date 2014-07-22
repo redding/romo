@@ -261,19 +261,19 @@ RomoDatepicker.prototype._parseDate = function(value) {
 RomoDatepicker.prototype._parseDateValues = function(value) {
   var regex, matches;
 
-  regex = /^([0-9]{1,2})[\/|-|\.]+([0-9]{1,2})[\/|-|\.]+([0-9]{2,4})$/; // mm dd yyyy or mm dd yy
+  regex = /^([0-9]{1,2})[\/\-\.]+([0-9]{1,2})[\/\-\.]+([0-9]{2,4})$/; // mm dd yyyy or mm dd yy
   matches = this._regexMatches(value, regex);
   if (matches.length === 3) {
     return [matches[2], matches[0], matches[1]];
   }
 
-  regex = /^([0-9]{3,4})[\/|-|\.]+([0-9]{1,2})[\/|-|\.]+([0-9]{1,2})$/; // yyyy mm dd
+  regex = /^([0-9]{3,4})[\/\-\.]+([0-9]{1,2})[\/\-\.]+([0-9]{1,2})$/; // yyyy mm dd
   matches = this._regexMatches(value, regex);
   if (matches.length === 3) {
     return matches;
   }
 
-  regex = /^([0-9]{1,2})[\/|-|\.]+([0-9]{1,2})$/; // mm dd
+  regex = /^([0-9]{1,2})[\/\-\.]+([0-9]{1,2})$/; // mm dd
   matches = this._regexMatches(value, regex);
   if (matches.length === 2) {
     return [this._currentYear(), matches[0], matches[1]];
