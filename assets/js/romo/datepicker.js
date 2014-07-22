@@ -221,7 +221,10 @@ RomoDatepicker.prototype._buildCalendarBody = function(date) {
     if (y === ty && m === tm && d === td) {
       cls.push('romo-datepicker-day-today');
     }
-    if (y === year && m === month && d === day) {
+    if (this.date &&
+        y === this.date.getUTCFullYear() &&
+        m === this.date.getUTCMonth() &&
+        d === this.date.getUTCDate()) {
       cls.push('selected');
     }
 
