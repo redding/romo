@@ -86,8 +86,8 @@ RomoDatepicker.prototype.doBuildUI = function() {
   this.romoDropdown.bodyElem.append(this.calTable);
 }
 
-RomoDatepicker.prototype.doRefreshUI = function() {
-  this._refreshCalendar(this.date || (new Date));
+RomoDatepicker.prototype.doRefreshUI = function(date) {
+  this._refreshCalendar(date || this.date || (new Date));
   this.calTable.find(this.itemSelector).on('hover', $.proxy(this.onItemHover, this));
   this.calTable.find(this.itemSelector).on('click', $.proxy(this.onItemClick, this));
 }
@@ -132,9 +132,24 @@ RomoDatepicker.prototype.onItemClick = function(e) {
   this.doSelectHighlightedItem();
 }
 
+RomoDatepicker.prototype.onPrevClick = function(e) {
+  if (e !== undefined) {
+    e.preventDefault();
+  }
+  this.doRefreshToPrevMonth();
+}
+
+RomoDatepicker.prototype.onNextClick = function(e) {
+  if (e !== undefined) {
+    e.preventDefault();
+  }
+  this.doRefreshToNextMonth();
+}
+
 RomoDatepicker.prototype._refreshCalendar = function(date) {
   this.calTable.find('.romo-datepicker-title').html(this._buildCalendarTitle(date));
   this.calTable.find('tbody').empty().append(this._buildCalendarBody(date));
+  this.refreshDate = date;
 }
 
 RomoDatepicker.prototype._buildCalendar = function() {
