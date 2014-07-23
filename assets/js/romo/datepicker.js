@@ -41,7 +41,7 @@ RomoDatepicker.prototype.doBindElem = function() {
   elemWrapper.append(this.elem);
 
   var indicatorClass = this.elem.data('romo-datepicker-indicator') || this.defaultIndicatorClass;
-  if (indicatorClass !== undefined) {
+  if (indicatorClass !== undefined && indicatorClass !== 'none') {
     var indicator = $('<i class="romo-datepicker-indicator '+indicatorClass+'"></i>');
     indicator.css({'line-height': this.elem.css('height')});
     this.elem.css({'padding-right': '30px'});
