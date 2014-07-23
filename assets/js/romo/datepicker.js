@@ -11,8 +11,8 @@ var RomoDatepicker = function(element) {
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ]
-  this.defaultLeftArrowClass  = undefined;
-  this.defaultRightArrowClass = undefined;
+  this.defaultPrevClass = undefined;
+  this.defaultNextClass = undefined;
   this.defaultIndicatorClass  = undefined;
   this.itemSelector = 'TD.romo-datepicker-day:not(.disabled)';
   this.calTable = $();
@@ -211,12 +211,26 @@ RomoDatepicker.prototype._buildCalendar = function() {
 }
 
 RomoDatepicker.prototype._buildCalendarHeader = function() {
+  var prevClass = this.elem.data('romo-datepicker-prev') || this.defaultPrevClass;
+  var nextClass = this.elem.data('romo-datepicker-next') || this.defaultNextClass;
   var header = $('<thead></thead');
 
   var row = $('<tr></tr>');
-  row.append($('<th class="romo-datepicker-prev"><i class="'+this.defaultLeftArrowClass+'"></i>'));
+  var th = $('<th class="romo-datepicker-prev" title="Previous Month"></th>');
+  if (prevClass) {
+    th.append('<i class="'+prevClass+'"></i>');
+  } else {
+    th.text('<<');
+  }
+  row.append(th);
   row.append($('<th class="romo-datepicker-title" colspan="5"></th>'));
-  row.append($('<th class="romo-datepicker-next"><i class="'+this.defaultRightArrowClass+'"></i>'));
+  var th = $('<th class="romo-datepicker-next" title="Next Month"></th>');
+  if (nextClass) {
+    th.append('<i class="'+nextClass+'"></i>');
+  } else {
+    th.text('>>');
+  }
+  row.append(th);
   header.append(row);
 
   row = $('<tr></tr>');
