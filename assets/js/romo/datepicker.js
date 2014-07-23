@@ -11,15 +11,16 @@ var RomoDatepicker = function(element) {
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ]
-  this.defaultLeftArrowClass  = '';
-  this.defaultRightArrowClass = '';
-  this.defaultIndicatorClass  = '';
+  this.defaultLeftArrowClass  = undefined;
+  this.defaultRightArrowClass = undefined;
+  this.defaultIndicatorClass  = undefined;
   this.itemSelector = 'TD.romo-datepicker-day:not(.disabled)';
   this.calTable = $();
   this.date = undefined;
   this.today = new Date;
 
   this.doInit();
+  this.doBindElem();
   this.doSetFormat();
   this.doSetDate(this.elem.val());
   this.doBindDropdown();
@@ -30,6 +31,22 @@ var RomoDatepicker = function(element) {
 
 RomoDatepicker.prototype.doInit = function() {
   // override as needed
+}
+
+RomoDatepicker.prototype.doBindElem = function() {
+  var elemWrapper = $('<div class="romo-datepicker-wrapper"></div>');
+  elemWrapper.css({'display': this.elem.css('display')});
+
+  this.elem.before(elemWrapper);
+  elemWrapper.append(this.elem);
+
+  var indicatorClass = this.elem.data('romo-datepicker-indicator') || this.defaultIndicatorClass;
+  if (indicatorClass !== undefined) {
+    var indicator = $('<i class="romo-datepicker-indicator '+indicatorClass+'"></i>');
+    indicator.css({'line-height': this.elem.css('height')});
+    this.elem.css({'padding-right': '30px'});
+    this.elem.after(indicator);
+  }
 }
 
 RomoDatepicker.prototype.doSetFormat = function() {

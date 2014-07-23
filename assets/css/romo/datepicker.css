@@ -1,3 +1,12 @@
+.romo-datepicker-wrapper {
+  position: relative;
+}
+
+.romo-datepicker-indicator {
+  position: absolute;
+  right: 10px;
+}
+
 .romo-datepicker-calendar {
   padding: 3px;
 }
