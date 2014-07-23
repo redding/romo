@@ -69,6 +69,9 @@ RomoDatepicker.prototype.doBindDropdown = function() {
   if (this.elem.data('romo-dropdown-width') === undefined) {
     this.elem.attr('data-romo-dropdown-width', 'elem');
   }
+  if (this.elem.width() < 175) {
+    this.elem.attr('data-romo-dropdown-width', '175px');
+  }
   this.romoDropdown = this.elem.romoDropdown()[0];
 
   this.romoDropdown.doSetPopupZIndex(this.elem);
