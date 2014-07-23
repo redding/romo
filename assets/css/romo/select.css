@@ -3,13 +3,12 @@
   *display: inline;
 
   font-weight: normal;
-  text-align: center;
+  text-align: left;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-  vertical-align: middle;
   cursor: pointer;
 
   min-width: 50px;
-  padding: .3em 0;
+  padding: 4px 6px;
   border-width: 1px;
   border-style: solid;
   -webkit-box-sizing: border-box;
@@ -27,24 +26,27 @@
   cursor: not-allowed;
 }
 
-.romo-select > span,
-.romo-select > i {
-  display: inline-block;
-  vertical-align: middle;
-  white-space: nowrap;
-  overflow: hidden;
+.romo-select-wrapper {
+  position: relative;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-.romo-select > span {
-  text-align: left;
+.romo-select-text {
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
-
-.romo-select > i {
-  text-align: right;
-  padding-left: 0.2857142857142857em;
+.romo-select-caret {
+  position: absolute;
+  right: 6px;
+  vertical-align: middle;
 }
 
 .romo-select-option-list {

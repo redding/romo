@@ -4,7 +4,8 @@
 
 .romo-datepicker-indicator {
   position: absolute;
-  right: 10px;
+  right: 6px;
+  vertical-align: middle;
 }
 
 .romo-datepicker-calendar {

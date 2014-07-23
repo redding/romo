@@ -13,9 +13,6 @@ var RomoSelect = function(element) {
   this.doBindDropdown();
   this.doRefreshUI();
 
-  this.elem.after(this.romoDropdown.elem);
-  this.elem.hide();
-
   if (this.elem.attr('id') !== undefined) {
     $('label[for="'+this.elem.attr('id')+'"]').on('click', $.proxy(function(e) {
       this.romoDropdown.elem.focus();
@@ -78,7 +75,8 @@ RomoSelect.prototype.doRefreshUI = function() {
   this.romoDropdown.bodyElem.find(this.itemSelector).on('hover', $.proxy(this.onItemHover, this));
   this.romoDropdown.bodyElem.find(this.itemSelector).on('click', $.proxy(this.onItemClick, this));
 
-  this.romoDropdown.elem.find('span').text(this.romoDropdown.bodyElem.find('LI.selected').text());
+  this.romoDropdown.elem.find('.romo-select-text').text(this.romoDropdown.bodyElem.find('LI.selected').text());
+  this.elemWrapper.find('.romo-select-caret').css({'line-height': this.elemWrapper.css('height')});
   if (this.elem.attr('disabled') !== undefined) {
     this.romoDropdown.elem.attr('disabled', this.elem.attr('disabled'));
   }
@@ -210,7 +208,7 @@ RomoSelect.prototype._scrollBottomToItem = function(item) {
 }
 
 RomoSelect.prototype._buildDropdownElem = function() {
-  var romoDropdownElem = $('<div class="romo-select" tabindex="0"><span></span><i class=""></i></div>');
+  var romoDropdownElem = $('<div class="romo-select" tabindex="0"><span class="romo-select-text"></span></div>');
 
   romoDropdownElem.attr('data-romo-dropdown-position', this.elem.data('romo-select-dropdown-position'));
   romoDropdownElem.attr('data-romo-dropdown-style-class', this.elem.data('romo-select-dropdown-style-class'));
@@ -224,26 +222,26 @@ RomoSelect.prototype._buildDropdownElem = function() {
   $.each(classList, function(idx, classItem) {
     romoDropdownElem.addClass(classItem);
   });
-
   if (this.elem.attr('style') !== undefined) {
     romoDropdownElem.attr('style', this.elem.attr('style'));
   }
-
   romoDropdownElem.css({'width': this.elem.css('width')});
-  var span = romoDropdownElem.find('> span');
-  var icon = romoDropdownElem.find('> i');
-  var width = parseInt(romoDropdownElem.css('width'));
-  if (width < 100) {
-    span.css({'width': '70%', 'padding-left': '10%'});
-    icon.css({'width': '30%', 'padding-right': '10%'});
-  } else if (width < 200) {
-    span.css({'width': '80%', 'padding-left': '5%'});
-    icon.css({'width': '20%', 'padding-right': '5%'});
-  } else {
-    span.css({'width': '90%', 'padding-left': '5%'});
-    icon.css({'width': '10%', 'padding-right': '5%'});
+
+  this.elem.after(romoDropdownElem);
+  this.elem.hide();
+
+  this.elemWrapper = $('<div class="romo-select-wrapper"></div>');
+  this.elemWrapper.css({'display': romoDropdownElem.css('display')});
+  romoDropdownElem.before(this.elemWrapper);
+  this.elemWrapper.append(romoDropdownElem);
+
+  var caretClass = this.elem.data('romo-select-caret') || this.defaultCaretClass;
+  if (caretClass !== undefined && caretClass !== 'none') {
+    var caret = $('<i class="romo-select-caret '+caretClass+'"></i>');
+    caret.css({'line-height': this.elemWrapper.css('height')});
+    romoDropdownElem.css({'padding-right': '22px'});
+    romoDropdownElem.after(caret);
   }
-  icon.addClass(this.elem.data('romo-select-caret-class') || this.defaultCaretClass);
 
   return romoDropdownElem;
 }
