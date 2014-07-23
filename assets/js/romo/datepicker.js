@@ -151,6 +151,7 @@ RomoDatepicker.prototype.doSelectHighlightedItem = function() {
   var newValue = this.calTable.find('TD.romo-datepicker-highlight').data('romo-datepicker-value');
 
   this.romoDropdown.doPopupClose();
+  this.elem.focus();
   this.elem.trigger('datepicker:itemSelected', [newValue, prevValue, this]);
 
   if (newValue !== prevValue) {
