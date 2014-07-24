@@ -100,6 +100,12 @@ RomoSelect.prototype.doSelectHighlightedItem = function() {
 
 RomoSelect.prototype.onPopupOpen = function(e) {
   if (this.elem.hasClass('disabled') === false) {
+    if (this.romoDropdown.elem.data('romo-dropdown-max-height') === undefined) {
+      var pad = 10;
+      var contentTop = this.romoDropdown.contentElem[0].getBoundingClientRect().top;
+      var maxHeight = $(window).height() - contentTop - pad;
+      this.romoDropdown.contentElem.css({'max-height': maxHeight.toString() + 'px'});
+    }
     this._highlightItem(this.romoDropdown.bodyElem.find('LI.selected'));
     this._scrollTopToItem(this.romoDropdown.bodyElem.find('LI.selected'));
   }
