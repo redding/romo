@@ -24,7 +24,6 @@ var RomoDropdown = function(element) {
     if (e !== undefined) {
       e.stopPropagation();
     }
-    return false;
   })
 
   if (this.elem.data('romo-dropdown-style-class') !== undefined) {
