@@ -267,6 +267,13 @@ RomoDropdown.prototype.doPlacePopupElem = function() {
   }
 
   this.popupElem.offset(offset);
+
+  if (this.elem.data('romo-dropdown-max-height') === 'detect') {
+    var pad = 10;
+    var contentTop = this.contentElem[0].getBoundingClientRect().top;
+    var maxHeight = $(window).height() - contentTop - pad;
+    this.contentElem.css({'max-height': maxHeight.toString() + 'px'});
+  }
 }
 
 RomoDropdown.prototype.doSetPopupZIndex = function(relativeElem) {
