@@ -89,6 +89,9 @@ RomoDatepicker.prototype.doBindDropdown = function() {
     this.elem.trigger('datepicker:dropdown:popupClose', [dropdown, this]);
   }, this));
 
+  this.elem.on('select', $.proxy(function(e) {
+    this.romoDropdown.elem.trigger('dropdown:triggerPopupOpen', []);
+  }, this));
   this.elem.on('datepicker:triggerToggle', $.proxy(function(e) {
     this.romoDropdown.elem.trigger('dropdown:triggerToggle', []);
   }, this));
