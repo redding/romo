@@ -6,6 +6,10 @@
   position: absolute;
   right: 6px;
   vertical-align: middle;
+  cursor: pointer;
+}
+.romo-datepicker-indicator.disabled {
+  cursor: not-allowed;
 }
 
 .romo-datepicker-calendar {

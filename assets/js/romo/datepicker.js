@@ -53,6 +53,10 @@ RomoDatepicker.prototype.doBindElem = function() {
   if (indicatorClass !== undefined && indicatorClass !== 'none') {
     var indicator = $('<i class="romo-datepicker-indicator '+indicatorClass+'"></i>');
     indicator.css({'line-height': this.elem.css('height')});
+    if (this.elem.prop('disabled') === true) {
+      indicator.addClass('disabled');
+    }
+    indicator.on('click', $.proxy(this.onIndicatorClick, this));
     this.elem.css({'padding-right': '22px'});
     this.elem.after(indicator);
   }
@@ -167,6 +171,13 @@ RomoDatepicker.prototype.doSelectHighlightedItem = function() {
   if (newValue !== prevValue) {
     this.elem.trigger('change');
     this.elem.trigger('datepicker:change', [newValue, prevValue, this]);
+  }
+}
+
+RomoDatepicker.prototype.onIndicatorClick = function(e) {
+  if (this.elem.prop('disabled') === false) {
+    this.elem.focus();
+    this.elem.trigger('datepicker:triggerPopupOpen');
   }
 }
 
@@ -322,12 +333,6 @@ RomoDatepicker.prototype._buildCalendarBody = function(date) {
   }
 
   return $(html.join(''));
-}
-
-RomoDatepicker.prototype._addIndicatorToElem = function() {
-  // TODO, if opt and indicator icon class
-  // create icon
-  // append to elem
 }
 
 RomoDatepicker.prototype._highlightItem = function(item) {
