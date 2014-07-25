@@ -89,8 +89,10 @@ RomoDatepicker.prototype.doBindDropdown = function() {
     this.elem.trigger('datepicker:dropdown:popupClose', [dropdown, this]);
   }, this));
 
-  this.elem.on('select', $.proxy(function(e) {
-    this.romoDropdown.elem.trigger('dropdown:triggerPopupOpen', []);
+  this.elem.on('focus', $.proxy(function(e) {
+    if (this.elem.val() === '') {
+      this.romoDropdown.elem.trigger('dropdown:triggerPopupOpen', []);
+    }
   }, this));
   this.elem.on('datepicker:triggerToggle', $.proxy(function(e) {
     this.romoDropdown.elem.trigger('dropdown:triggerToggle', []);
@@ -154,12 +156,11 @@ RomoDatepicker.prototype.doSelectHighlightedItem = function() {
   var newValue = this.calTable.find('TD.romo-datepicker-highlight').data('romo-datepicker-value');
 
   this.romoDropdown.doPopupClose();
+  this.doSetDate(newValue);
   this.elem.focus();
   this.elem.trigger('datepicker:itemSelected', [newValue, prevValue, this]);
 
   if (newValue !== prevValue) {
-    this.doSetDate(newValue);
-
     this.elem.trigger('change');
     this.elem.trigger('datepicker:change', [newValue, prevValue, this]);
   }
