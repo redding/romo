@@ -40,14 +40,18 @@ RomoDatepicker.prototype.doBindElem = function() {
   this.elem.before(elemWrapper);
   elemWrapper.append(this.elem);
 
-  this.elem.on('focus', $.proxy(function(e) {
-    if (this.elem.val() === '') {
-      this.elem.trigger('datepicker:triggerPopupOpen', []);
-    }
-  }, this));
-  this.elem.on('blur', $.proxy(function(e) {
-    this.elem.trigger('datepicker:triggerPopupClose', []);
-  }, this));
+  // Removing this for now.  There are problems with clicking to cycle
+  // calendar months causing a blur and closing the popup on you
+  // Don't really want the focus handling without the blur to go with
+  // it.  Just removing both for now.  :(
+  // this.elem.on('focus', $.proxy(function(e) {
+  //   if (this.elem.val() === '') {
+  //     this.elem.trigger('datepicker:triggerPopupOpen', []);
+  //   }
+  // }, this));
+  // this.elem.on('blur', $.proxy(function(e) {
+  //   this.elem.trigger('datepicker:triggerPopupClose', []);
+  // }, this));
 
   var indicatorClass = this.elem.data('romo-datepicker-indicator') || this.defaultIndicatorClass;
   if (indicatorClass !== undefined && indicatorClass !== 'none') {
