@@ -5,6 +5,9 @@ gemspec
 gem 'rake'
 gem 'pry'
 
+gem 'rack'
+gem 'deas'
+
 platform :rbx do
   gem 'rubysl'
 end

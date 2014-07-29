@@ -13,7 +13,9 @@ Gem::Specification.new do |gem|
   gem.homepage    = "http://github.com/__/romo"
   gem.license     = 'MIT'
 
-  gem.files         = `git ls-files`.split($/)
+  gem_files = `git ls-files`.split($/)
+  gem_files -= gem_files.grep(%r{^(gh-pages)/})
+  gem.files         = gem_files
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
