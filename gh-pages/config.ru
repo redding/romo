@@ -1,5 +1,10 @@
 require 'pathname'
 require 'deas'
+require 'dassets'
+require 'dassets-sass'
+require 'dassets-erb'
+require 'dassets/server'
+require 'romo'
 
 class RomoGHPages
   include Deas::Server
@@ -9,6 +14,44 @@ class RomoGHPages
   views_root proc{ Utils.app_path('view_handlers') }
 
   init do
+    Dassets.config.file_store self.configuration.public_root
+
+    # TODO: have a gem, "romo-dassets", do this eventually
+    Dassets.configure do |c|
+      c.source Romo.gem_assets_path do |s|
+        s.filter{ |paths| paths.reject{ |p| File.basename(p) =~ /^_/ } }
+        s.engine 'scss', Dassets::Sass::Engine, :syntax => 'scss'
+        s.engine 'erb',  Dassets::Erb::Engine
+      end
+
+      c.combination "css/romo.css", [
+        'css/romo/inputs.css',
+        'css/romo/dropdown.css',
+        'css/romo/modal.css',
+        'css/romo/select.css',
+        'css/romo/datepicker.css',
+        'css/romo/tooltip.css',
+        'css/romo/z_index.css',
+      ]
+      c.combination "js/romo.js", [
+        'js/romo/base.js',
+        'js/romo/invoke.js',
+        'js/romo/form.js',
+        'js/romo/dropdown.js',
+        'js/romo/select.js',
+        'js/romo/datepicker.js',
+        'js/romo/inline.js',
+        'js/romo/inline_form.js',
+        'js/romo/modal.js',
+        'js/romo/modal_form.js',
+        'js/romo/tooltip.js',
+        'js/romo/indicator.js',
+      ]
+    end
+
+    Dassets.init
+    use Dassets::Server
+
     Utils.require_rb 'view_handlers/_helpers'
     Utils.require_rb 'view_handlers/_layouts'
     Utils.require_rb 'view_handlers'
