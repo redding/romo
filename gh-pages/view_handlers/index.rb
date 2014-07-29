@@ -1,9 +1,9 @@
-require 'deas/view_handler'
+require 'view_handlers/_layouts/web'
 
 module ViewHandlers
 
   class Index
-    include Deas::ViewHandler
+    include ViewHandlers::Layouts::Web
 
     def run!
       render 'index.html'

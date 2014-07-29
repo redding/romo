@@ -18,8 +18,17 @@ class RomoGHPages
 
     # TODO: have a gem, "romo-dassets", do this eventually
     Dassets.configure do |c|
+
+      # Romo's assets path
       c.source Romo.gem_assets_path do |s|
         s.filter{ |paths| paths.reject{ |p| File.basename(p) =~ /^_/ } }
+        s.engine 'scss', Dassets::Sass::Engine, :syntax => 'scss'
+        s.engine 'erb',  Dassets::Erb::Engine
+      end
+
+      # gh-pages assets path
+      c.source Utils.app_path('assets').to_s do |s|
+        s.filter{ |paths| paths.reject{ |p| File.basename(p) =~ /^_.*\.scss$/ } }
         s.engine 'scss', Dassets::Sass::Engine, :syntax => 'scss'
         s.engine 'erb',  Dassets::Erb::Engine
       end
