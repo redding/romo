@@ -9,26 +9,20 @@ require 'romo'
 class RomoGHPages
   include Deas::Server
 
-  logger     proc{ Logger.new($stdout) }
-  root       proc{ Utils.app_root }
-  views_root proc{ Utils.app_path('view_handlers') }
+  view_handler_ns 'ViewHandlers'
+  base_url "/pages/teaminsight/romo"
+
+  get '/index.html', 'Index'
 
   init do
-    Dassets.config.file_store self.configuration.public_root
-
-    # TODO: have a gem, "romo-dassets", do this eventually
     Dassets.configure do |c|
 
+      c.base_url self.base_url
+
+      # TODO: have a gem, "romo-dassets", do this eventually
       # Romo's assets path
       c.source Romo.gem_assets_path do |s|
         s.filter{ |paths| paths.reject{ |p| File.basename(p) =~ /^_/ } }
-        s.engine 'scss', Dassets::Sass::Engine, :syntax => 'scss'
-        s.engine 'erb',  Dassets::Erb::Engine
-      end
-
-      # gh-pages assets path
-      c.source Utils.app_path('assets').to_s do |s|
-        s.filter{ |paths| paths.reject{ |p| File.basename(p) =~ /^_.*\.scss$/ } }
         s.engine 'scss', Dassets::Sass::Engine, :syntax => 'scss'
         s.engine 'erb',  Dassets::Erb::Engine
       end
@@ -56,6 +50,14 @@ class RomoGHPages
         'js/romo/tooltip.js',
         'js/romo/indicator.js',
       ]
+
+      # gh-pages assets path
+      c.source Utils.app_path('assets').to_s do |s|
+        s.filter{ |paths| paths.reject{ |p| File.basename(p) =~ /^_.*\.scss$/ } }
+        s.engine 'scss', Dassets::Sass::Engine, :syntax => 'scss'
+        s.engine 'erb',  Dassets::Erb::Engine
+      end
+
     end
 
     Dassets.init
@@ -66,9 +68,9 @@ class RomoGHPages
     Utils.require_rb 'view_handlers'
   end
 
-  view_handler_ns 'ViewHandlers'
-
-  get '/', 'Index'
+  logger     proc{ Logger.new($stdout) }
+  root       proc{ Utils.app_root }
+  views_root proc{ Utils.app_path('view_handlers') }
 
   private
 

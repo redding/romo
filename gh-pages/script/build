@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+# $ bundle exec script/build
+
+require 'pathname'
+require 'scmd'
+require 'pry'
+
+base_url = "/pages/teaminsight/romo"
+root = Pathname.new(File.expand_path('../../..', __FILE__))
+tmp_dir = root.join('tmp/gh-pages')
+gh_pages_dir = root.join('gh-pages')
+gh_pages_public_dir = gh_pages_dir.join('public')
+
+gh_pages_host = "0.0.0.0"
+gh_pages_port = '9292'
+
+def cmd(cmd_string)
+  Scmd.new(cmd_string).tap{ |c| puts "** #{c}" }
+end
+
+def run!(cmd_string)
+  cmd(cmd_string).run!
+end
+
+def run(cmd_string)
+  cmd(cmd_string).run
+end
+
+puts "starting the local gh-pages server..."
+server_cmd = cmd("cd #{gh_pages_dir} && bundle exec rackup --host #{gh_pages_host} --port #{gh_pages_port} config.ru")
+server_cmd.start
+sleep(2)
+
+puts "\nbuilding the gh-pages static files to the tmp dir..."
+run!("mkdir -p #{tmp_dir}")
+run!("rm -rf #{tmp_dir}/*")
+wget = cmd("cd #{tmp_dir} && wget -r --no-host-directories #{gh_pages_host}:#{gh_pages_port}#{base_url}/index.html")
+wget.run
+puts wget.stdout
+puts wget.stderr
+
+puts "\nstopping the local gh-pages server..."
+server_cmd.kill('INT')
