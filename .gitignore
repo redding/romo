@@ -4,6 +4,7 @@
 .rbx/
 .bundle
 .config
+.powrc
 .yardoc
 Gemfile.lock
 InstalledFiles

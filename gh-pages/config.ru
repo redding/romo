@@ -1,3 +1,9 @@
+require 'rubygems'
+
+# Set up gems listed in the Gemfile.
+ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../Gemfile', __FILE__)
+require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
+
 require 'pathname'
 require 'deas'
 require 'dassets'
@@ -57,6 +63,11 @@ class RomoGHPages
         s.engine 'scss', Dassets::Sass::Engine, :syntax => 'scss'
         s.engine 'erb',  Dassets::Erb::Engine
       end
+
+      c.combination "js/web.js", [
+        "js/vendor/zepto-1-1-4-default-min.js",
+        "js/romo.js",
+      ]
 
     end
 
