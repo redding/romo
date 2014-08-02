@@ -11,8 +11,8 @@ module ViewHandlers::Layouts
         include InstanceMethods
         extend ClassMethods
 
-        style  "css/romo.css", "css/web.css"
-        script "js/romo.js",   "js/web.js"
+        style  "css/web.css"
+        script "js/web.js"
         layout "_layouts/web.html"
 
       end

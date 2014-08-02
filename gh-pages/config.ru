@@ -10,6 +10,7 @@ require 'dassets'
 require 'dassets-sass'
 require 'dassets-erb'
 require 'dassets/server'
+require 'kramdown'
 require 'romo'
 
 class RomoGHPages
@@ -18,6 +19,14 @@ class RomoGHPages
   view_handler_ns 'ViewHandlers'
   base_url "/pages/teaminsight/romo"
 
+  # Testing
+  url :test_index,    '/test/index.html'
+  url :test_kramdown, '/test/kramdown.html'
+
+  get :test_index,    'Test::Index'
+  get :test_kramdown, 'Test::Kramdown'
+
+  # General stuff
   get '/index.html', 'Index'
 
   init do
@@ -64,6 +73,11 @@ class RomoGHPages
         s.engine 'erb',  Dassets::Erb::Engine
       end
 
+      c.combination "css/web.css", [
+        "css/romo.css",
+        "css/coderay.css",
+      ]
+
       c.combination "js/web.js", [
         "js/vendor/zepto-1-1-4-default-min.js",
         "js/romo.js",
@@ -83,6 +97,12 @@ class RomoGHPages
   root       proc{ Utils.app_root }
   views_root proc{ Utils.app_path('view_handlers') }
 
+  show_exceptions  true
+  reload_templates true
+
+  module TemplateHelpers; end
+  template_helpers TemplateHelpers
+
   private
 
   module Utils
@@ -99,6 +119,20 @@ class RomoGHPages
 
     def self.app_root
       @app_root ||= Pathname.new(File.expand_path('..', __FILE__))
+    end
+
+  end
+
+  module TemplateHelpers
+
+    def kramdown(template_path)
+      text = File.read(self.sinatra_call.settings.views.join(template_path))
+      opts = {
+        :input => 'GFM',
+        :coderay_line_numbers => nil,
+        :coderay_css => :class
+      }
+      Kramdown::Document.new(text, opts).to_html
     end
 
   end
