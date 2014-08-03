@@ -2,6 +2,7 @@
 *.log
 *.rbc
 .rbx/
+.sass-cache/
 .bundle
 .config
 .powrc

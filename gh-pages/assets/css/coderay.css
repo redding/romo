@@ -121,7 +121,7 @@ ol.CodeRay li { white-space: pre }
 .CodeRay .predefined-constant { color:teal; }
 .CodeRay .predefined { color:#369; font-weight:bold }
 .CodeRay .preprocessor { color:#579; }
-.CodeRay .pseudo-class { color:#00C; font-weight:bold }
+.CodeRay .pseudo-class { color:#458; font-weight:bold }
 .CodeRay .predefined-type { color:#074; font-weight:bold }
 .CodeRay .reserved, .keyword  { color:#000; font-weight:bold }
 
