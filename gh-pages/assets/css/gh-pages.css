@@ -1,0 +1,22 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333333;
+}
+
+code,
+.CodeRay .code pre {
+  font-family: Monaco, Consolas,"Liberation Mono",Menlo,Courier,monospace;
+  color: #333;
+}
+
+code {
+  font-size: 12px;
+  line-height: 19px;
+}
+.CodeRay .code pre {
+  font-size: 13px;
+  line-height: 20px;
+}
+

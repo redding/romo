@@ -20,9 +20,11 @@ class RomoGHPages
   base_url "/pages/teaminsight/romo"
 
   # Base CSS
-  url :base_css_globals, '/base-css/globals.html'
+  url :base_css_globals,    '/base-css/globals.html'
+  url :base_css_typography, '/base-css/typography.html'
 
-  get :base_css_globals, 'BaseCSS::Globals'
+  get :base_css_globals,    'BaseCSS::Globals'
+  get :base_css_typography, 'BaseCSS::Typography'
 
   # Testing
   url :test_index,    '/test/index.html'
@@ -49,7 +51,7 @@ class RomoGHPages
 
       c.combination "css/romo.css", [
         'css/romo/normalize.css',
-        'css/romo/globals.css',
+        'css/romo/base.css',
         'css/romo/inputs.css',
         'css/romo/dropdown.css',
         'css/romo/modal.css',
@@ -83,6 +85,7 @@ class RomoGHPages
       c.combination "css/web.css", [
         "css/romo.css",
         "css/coderay.css",
+        "css/gh-pages.css"
       ]
 
       c.combination "js/web.js", [

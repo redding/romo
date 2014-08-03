@@ -8,13 +8,13 @@ code,
 
 code,
 .CodeRay .code pre {
-  font-family: Monaco,Consolas,"Liberation Mono",Menlo,Courier,monospace;
+  font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace;
   color: #333;
 }
 
 .CodeRay .code pre {
   font-size: 13px;
-  line-height: 20px;
+  line-height: 19px;
   overflow: auto;
 }
 
