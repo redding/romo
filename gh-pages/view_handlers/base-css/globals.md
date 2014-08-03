@@ -27,3 +27,8 @@ Romo uses <a href="http://www.paulirish.com/2012/box-sizing-border-box-ftw/" tar
           box-sizing: border-box;
  }
 ```
+
+## Other Settings
+
+* Remove `margin` on the body
+* Set `background-color: white;` on the body
