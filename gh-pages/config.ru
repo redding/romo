@@ -49,6 +49,7 @@ class RomoGHPages
 
       c.combination "css/romo.css", [
         'css/romo/normalize.css',
+        'css/romo/globals.css',
         'css/romo/inputs.css',
         'css/romo/dropdown.css',
         'css/romo/modal.css',
