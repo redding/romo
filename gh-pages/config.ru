@@ -19,6 +19,11 @@ class RomoGHPages
   view_handler_ns 'ViewHandlers'
   base_url "/pages/teaminsight/romo"
 
+  # Base CSS
+  url :base_css_globals, '/base-css/globals.html'
+
+  get :base_css_globals, 'BaseCSS::Globals'
+
   # Testing
   url :test_index,    '/test/index.html'
   url :test_kramdown, '/test/kramdown.html'
