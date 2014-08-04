@@ -1,5 +1,31 @@
 /* Typography */
+/* ---------- */
 
 $baseFontFamily: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $baseFontSize:   14px;
 $baseLineHeight: 20px;
+
+/* links */
+
+$linkColor:         #08c;
+$linkColorHover:    darken($linkColor, 15%);
+
+/* color emphasis */
+
+$mutedText:         #999999;
+
+$warningText:       #c09853;
+$warningBackground: #fcf8e3;
+$warningBorder:     darken(adjust_hue($warningBackground, -10), 3%);
+
+$errorText:         #b94a48;
+$errorBackground:   #f2dede;
+$errorBorder:       darken(adjust_hue($errorBackground, -10), 3%);
+
+$successText:       #468847;
+$successBackground: #dff0d8;
+$successBorder:     darken(adjust_hue($successBackground, -10), 5%);
+
+$infoText:          #3a87ad;
+$infoBackground:    #d9edf7;
+$infoBorder:        darken(adjust_hue($infoBackground, -10), 7%);

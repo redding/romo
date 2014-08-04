@@ -32,3 +32,5 @@ Romo uses <a href="http://www.paulirish.com/2012/box-sizing-border-box-ftw/" tar
 
 * Remove `margin` on the body
 * Set `background-color: white;` on the body
+* Set `$baseFontFamily`, `$baseFontSize` and `$baseLineHeight` as our typographical base
+* Set the global link color with `$linkColor` and `$linkColorHover` and only apply link underlines on `:hover`

@@ -1,6 +1,7 @@
 @import 'css/romo/vars';
 
 /* Globals */
+/* ------- */
 
 /* apply a natural box layout model to all elements */
 *, *:before, *:after {
@@ -16,6 +17,7 @@ body {
 }
 
 /* Typography */
+/* ---------- */
 
 body {
   font-family: $baseFontFamily;
@@ -24,5 +26,125 @@ body {
 }
 
 p {
-  margin: 0 0 10px;
+  margin: 0 0 ($baseLineHeight / 2);
 }
+
+small  { font-size: 85%; } /* Ex: 14px base font * 85% = about 12px */
+strong { font-weight: bold; }
+em     { font-style: italic; }
+
+a,
+a:link,
+a:visited {
+  outline: 0;
+  color: $linkColor;
+  text-decoration: none;
+}
+a:hover,
+a:active {
+  outline: 0;
+  color: $linkColorHover;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* headings */
+
+h1, h2, h3, h4, h5, h6 {
+  margin: ($baseLineHeight / 2) 0;
+  font-weight: bold;
+  line-height: $baseLineHeight;
+  text-rendering: optimizelegibility; /* Fix the character spacing for headings */
+  small {
+    font-weight: normal;
+    line-height: 1;
+  }
+}
+
+h1,
+h2,
+h3 { line-height: $baseLineHeight * 2; }
+
+h1 { font-size: $baseFontSize * 2.75; } /* ~38px */
+h2 { font-size: $baseFontSize * 2.25; } /* ~32px */
+h3 { font-size: $baseFontSize * 1.75; } /* ~24px */
+h4 { font-size: $baseFontSize * 1.25; } /* ~18px */
+h5 { font-size: $baseFontSize; }
+h6 { font-size: $baseFontSize * 0.85; } /* ~12px */
+
+h1 small { font-size: $baseFontSize * 1.75; } /* ~24px */
+h2 small { font-size: $baseFontSize * 1.25; } /* ~18px */
+h3 small { font-size: $baseFontSize; }
+h4 small { font-size: $baseFontSize; }
+
+/* text size */
+
+.romo-text1,
+.romo-text2,
+.romo-text3 {
+  font-weight: 200;
+  text-rendering: optimizelegibility; /* Fix the character spacing */
+}
+
+.romo-text4,
+.romo-text-large {
+  font-weight: 300;
+  text-rendering: optimizelegibility; /* Fix the character spacing */
+}
+
+.romo-text1 {
+  font-size: $baseFontSize * 2.75;     /* ~38px */
+  line-height: $baseLineHeight * 2.75;
+}
+.romo-text2 {
+  font-size: $baseFontSize * 2.25;     /* ~32px */
+  line-height: $baseLineHeight * 2.25;
+}
+.romo-text3 {
+  font-size: $baseFontSize * 1.75;     /* ~24px */
+  line-height: $baseLineHeight * 1.75;
+}
+.romo-text4,
+.romo-text-large {
+  font-size: $baseFontSize * 1.25;     /* ~18px */
+  line-height: $baseLineHeight * 1.25;
+}
+.romo-text5 {
+  font-size: $baseFontSize;
+  line-height: $baseLineHeight;
+}
+.romo-text6,
+.romo-text-small {
+  font-size: $baseFontSize * 0.85;     /* ~12px */
+  line-height: $baseLineHeight * 0.85;
+}
+
+/* alignment */
+
+.romo-text-left   { text-align: left; }
+.romo-text-right  { text-align: right; }
+.romo-text-center { text-align: center; }
+
+/* color emphasis */
+
+.romo-text-muted          { color: $mutedText; }
+a.romo-text-muted:hover,
+a.romo-text-muted:focus   { color: darken($mutedText, 10%); }
+
+.romo-text-warning        { color: $warningText; }
+a.romo-text-warning:hover,
+a.romo-text-warning:focus { color: darken($warningText, 10%); }
+
+.romo-text-error          { color: $errorText; }
+a.romo-text-error:hover,
+a.romo-text-error:focus   { color: darken($errorText, 10%); }
+
+.romo-text-info           { color: $infoText; }
+a.romo-text-info:hover,
+a.romo-text-info:focus    { color: darken($infoText, 10%); }
+
+.romo-text-success        { color: $successText; }
+a.romo-text-success:hover,
+a.romo-text-success:focus { color: darken($successText, 10%); }
