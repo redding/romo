@@ -35,18 +35,21 @@ em     { font-style: italic; }
 
 a,
 a:link,
-a:visited {
+a:visited,
+a:hover,
+a:active {
   outline: 0;
+}
+
+a,
+a:link,
+a:visited {
   color: $linkColor;
   text-decoration: none;
 }
 a:hover,
 a:active {
-  outline: 0;
   color: $linkColorHover;
-}
-
-a:hover {
   text-decoration: underline;
 }
 
@@ -129,22 +132,68 @@ h4 small { font-size: $baseFontSize; }
 
 /* color emphasis */
 
-.romo-text-muted          { color: $mutedText; }
+.romo-text-muted,
+a.romo-text-muted         { color: $mutedText; }
+.romo-text-muted-hover:hover,
 a.romo-text-muted:hover,
 a.romo-text-muted:focus   { color: darken($mutedText, 10%); }
+.romo-bg-muted,
+a.romo-bg-muted           { background-color: $mutedBackground; }
+.romo-bg-muted-hover:hover,
+a.romo-bg-muted:hover,
+a.romo-bg-muted:focus     { background-color: darken($mutedBackground, 10%); }
 
-.romo-text-warning        { color: $warningText; }
+.romo-text-warning,
+a.romo-text-warning       { color: $warningText; }
+.romo-text-warning-hover:hover,
 a.romo-text-warning:hover,
 a.romo-text-warning:focus { color: darken($warningText, 10%); }
+.romo-bg-warning,
+a.romo-bg-warning         { background-color: $warningBackground; }
+.romo-bg-warning-hover:hover,
+a.romo-bg-warning:hover,
+a.romo-bg-warning:focus   { background-color: darken($warningBackground, 10%); }
 
-.romo-text-error          { color: $errorText; }
+.romo-text-error,
+a.romo-text-error         { color: $errorText; }
+.romo-text-error-hover:hover,
 a.romo-text-error:hover,
 a.romo-text-error:focus   { color: darken($errorText, 10%); }
+.romo-bg-error,
+a.romo-bg-error           { background-color: $errorBackground; }
+.romo-bg-error-hover:hover,
+a.romo-bg-error:hover,
+a.romo-bg-error:focus     { background-color: darken($errorBackground, 10%); }
 
-.romo-text-info           { color: $infoText; }
+.romo-text-info,
+a.romo-text-info          { color: $infoText; }
+.romo-text-info-hover:hover,
 a.romo-text-info:hover,
 a.romo-text-info:focus    { color: darken($infoText, 10%); }
+.romo-bg-info,
+a.romo-bg-info            { background-color: $infoBackground; }
+.romo-bg-info-hover:hover,
+a.romo-bg-info:hover,
+a.romo-bg-info:focus      { background-color: darken($infoBackground, 10%); }
 
-.romo-text-success        { color: $successText; }
+.romo-text-success,
+a.romo-text-success       { color: $successText; }
+.romo-text-success-hover:hover,
 a.romo-text-success:hover,
 a.romo-text-success:focus { color: darken($successText, 10%); }
+.romo-bg-success,
+a.romo-bg-success         { background-color: $successBackground; }
+.romo-bg-success-hover:hover,
+a.romo-bg-success:hover,
+a.romo-bg-success:focus   { background-color: darken($successBackground, 10%); }
+
+.romo-text-inverse,
+a.romo-text-inverse       { color: $inverseText; }
+.romo-text-inverse-hover:hover,
+a.romo-text-inverse:hover,
+a.romo-text-inverse:focus { color: darken($inverseText, 10%); }
+.romo-bg-inverse,
+a.romo-bg-inverse         { background-color: $inverseBackground; }
+.romo-bg-inverse-hover:hover,
+a.romo-bg-inverse:hover,
+a.romo-bg-inverse:focus   { background-color: darken($inverseBackground, 10%); }

@@ -7,12 +7,18 @@ $baseLineHeight: 20px;
 
 /* links */
 
-$linkColor:         #08c;
-$linkColorHover:    darken($linkColor, 15%);
+$linkColor:      #08c;
+$linkColorHover: darken($linkColor, 15%);
 
 /* color emphasis */
 
+$inverseText:       #ffffff;
+$inverseBackground: #363636;
+$inverseBorder:     darken(adjust_hue($inverseBackground, -10), 3%);
+
 $mutedText:         #999999;
+$mutedBackground:   #f9f9f9;
+$mutedBorder:       darken(adjust_hue($mutedBackground, -10), 5%);
 
 $warningText:       #c09853;
 $warningBackground: #fcf8e3;
