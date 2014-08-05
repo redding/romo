@@ -1,5 +1,5 @@
-/* Typography */
-/* ---------- */
+/* Base */
+/* ---- */
 
 $baseFontFamily: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $baseFontSize:   14px;
@@ -10,11 +10,9 @@ $baseLineHeight: 20px;
 $linkColor:      #08c;
 $linkColorHover: darken($linkColor, 15%);
 
-/* color emphasis */
+/* nav */
 
-$inverseText:       #ffffff;
-$inverseBackground: #363636;
-$inverseBorder:     darken(adjust_hue($inverseBackground, -10), 3%);
+/* color emphasis */
 
 $mutedText:         #999999;
 $mutedBackground:   #f9f9f9;
@@ -28,10 +26,15 @@ $errorText:         #b94a48;
 $errorBackground:   #f2dede;
 $errorBorder:       darken(adjust_hue($errorBackground, -10), 3%);
 
+$infoText:          #3a87ad;
+$infoBackground:    #d9edf7;
+$infoBorder:        darken(adjust_hue($infoBackground, -10), 7%);
+
 $successText:       #468847;
 $successBackground: #dff0d8;
 $successBorder:     darken(adjust_hue($successBackground, -10), 5%);
 
-$infoText:          #3a87ad;
-$infoBackground:    #d9edf7;
-$infoBorder:        darken(adjust_hue($infoBackground, -10), 7%);
+$inverseText:       #ffffff;
+$inverseBackground: #363636;
+$inverseBorder:     darken(adjust_hue($inverseBackground, -10), 3%);
+
