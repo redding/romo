@@ -26,6 +26,11 @@ class RomoGHPages
   get :base_css_globals,    'BaseCSS::Globals'
   get :base_css_typography, 'BaseCSS::Typography'
 
+  # Scaffolding
+  url :scaffolding_helpers, '/scaffolding/helpers.html'
+
+  get :scaffolding_helpers, 'Scaffolding::Helpers'
+
   # Testing
   url :test_index,    '/test/index.html'
   url :test_kramdown, '/test/kramdown.html'

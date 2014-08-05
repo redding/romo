@@ -1,14 +1,18 @@
 /* Base */
 /* ---- */
 
-$baseFontFamily: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$baseFontSize:   14px;
-$baseLineHeight: 20px;
+$lineHeightToSizeRatio: 20/14;
 
-$baseBackground:  #fff;
-$altBackground:   #f3f3f3;
-$baseColor:       #333;
-$baseBorderColor: #ccc;
+$baseFontFamily:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+$baseFontSize:    14px;
+$baseLineHeight:  $baseFontSize * $lineHeightToSizeRatio;
+$baseSpacingSize: $baseLineHeight / 2;
+
+$baseBackground:   #fff;
+$altBackground:    #f3f3f3;
+$baseColor:        #333;
+$baseBorderColor:  #ccc;
+$baseBorderRadius: 3px;
 
 /* links */
 

@@ -63,7 +63,6 @@ a:active {
 h1, h2, h3, h4, h5, h6 {
   margin: ($baseLineHeight / 2) 0;
   font-weight: bold;
-  line-height: $baseLineHeight;
   text-rendering: optimizelegibility; /* Fix the character spacing for headings */
   small {
     font-weight: normal;
@@ -71,16 +70,30 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-h1,
-h2,
-h3 { line-height: $baseLineHeight * 2; }
-
-h1 { font-size: $baseFontSize * 2.75; } /* ~38px */
-h2 { font-size: $baseFontSize * 2.25; } /* ~32px */
-h3 { font-size: $baseFontSize * 1.75; } /* ~24px */
-h4 { font-size: $baseFontSize * 1.25; } /* ~18px */
-h5 { font-size: $baseFontSize; }
-h6 { font-size: $baseFontSize * 0.85; } /* ~12px */
+h1 {
+  font-size: $baseFontSize * 2.75;     /* ~38px */
+  line-height: $baseLineHeight * 2;
+}
+h2 {
+  font-size: $baseFontSize * 2.25;    /* ~32px */
+  line-height: $baseLineHeight * 1.75;
+}
+h3 {
+  font-size: $baseFontSize * 1.75;    /* ~24px */
+  line-height: $baseLineHeight * 1.5;
+}
+h4 {
+  font-size: $baseFontSize * 1.25;    /* ~18px */
+  line-height: $baseLineHeight;
+}
+h5 {
+  font-size: $baseFontSize;
+  line-height: $baseLineHeight;
+}
+h6 {
+  font-size: $baseFontSize * 0.85;    /* ~12px */
+  line-height: 1;
+}
 
 h1 small { font-size: $baseFontSize * 1.75; } /* ~24px */
 h2 small { font-size: $baseFontSize * 1.25; } /* ~18px */
@@ -91,33 +104,40 @@ h4 small { font-size: $baseFontSize; }
 
 .romo-text1,
 .romo-text2,
+.romo-text3,
+.romo-text4,
+.romo-text5,
+.romo-text6 {
+  text-rendering: optimizelegibility; /* Fix the character spacing */
+}
+
+.romo-text1,
+.romo-text2,
 .romo-text3 {
   font-weight: 200;
-  text-rendering: optimizelegibility; /* Fix the character spacing */
 }
 
 .romo-text4,
 .romo-text-large {
   font-weight: 300;
-  text-rendering: optimizelegibility; /* Fix the character spacing */
 }
 
 .romo-text1 {
   font-size: $baseFontSize * 2.75;     /* ~38px */
-  line-height: $baseLineHeight * 2.75;
+  line-height: $baseLineHeight * 2;
 }
 .romo-text2 {
   font-size: $baseFontSize * 2.25;     /* ~32px */
-  line-height: $baseLineHeight * 2.25;
+  line-height: $baseLineHeight * 1.75;
 }
 .romo-text3 {
   font-size: $baseFontSize * 1.75;     /* ~24px */
-  line-height: $baseLineHeight * 1.75;
+  line-height: $baseLineHeight * 1.5;
 }
 .romo-text4,
 .romo-text-large {
   font-size: $baseFontSize * 1.25;     /* ~18px */
-  line-height: $baseLineHeight * 1.25;
+  line-height: $baseLineHeight;
 }
 .romo-text5 {
   font-size: $baseFontSize;
@@ -126,7 +146,7 @@ h4 small { font-size: $baseFontSize; }
 .romo-text6,
 .romo-text-small {
   font-size: $baseFontSize * 0.85;     /* ~12px */
-  line-height: $baseLineHeight * 0.85;
+  line-height: 1;
 }
 
 /* alignment */
@@ -150,6 +170,7 @@ a.romo-bg-muted           { background-color: $mutedBackground; }
 .romo-bg-muted-hover:hover,
 a.romo-bg-muted:hover,
 a.romo-bg-muted:focus     { background-color: darken($mutedBackground, 10%); }
+.romo-border-muted        { border-color: $mutedBorder; }
 
 .romo-text-warning,
 a.romo-text-warning       { color: $warningText; }
@@ -161,6 +182,7 @@ a.romo-bg-warning         { background-color: $warningBackground; }
 .romo-bg-warning-hover:hover,
 a.romo-bg-warning:hover,
 a.romo-bg-warning:focus   { background-color: darken($warningBackground, 10%); }
+.romo-border-warning      { border-color: $warningBorder; }
 
 .romo-text-error,
 a.romo-text-error         { color: $errorText; }
@@ -172,6 +194,7 @@ a.romo-bg-error           { background-color: $errorBackground; }
 .romo-bg-error-hover:hover,
 a.romo-bg-error:hover,
 a.romo-bg-error:focus     { background-color: darken($errorBackground, 10%); }
+.romo-border-error        { border-color: $errorBorder; }
 
 .romo-text-info,
 a.romo-text-info          { color: $infoText; }
@@ -183,6 +206,7 @@ a.romo-bg-info            { background-color: $infoBackground; }
 .romo-bg-info-hover:hover,
 a.romo-bg-info:hover,
 a.romo-bg-info:focus      { background-color: darken($infoBackground, 10%); }
+.romo-border-info         { border-color: $infoBorder; }
 
 .romo-text-success,
 a.romo-text-success       { color: $successText; }
@@ -194,6 +218,7 @@ a.romo-bg-success         { background-color: $successBackground; }
 .romo-bg-success-hover:hover,
 a.romo-bg-success:hover,
 a.romo-bg-success:focus   { background-color: darken($successBackground, 10%); }
+.romo-border-success      { border-color: $successBorder; }
 
 .romo-text-inverse,
 a.romo-text-inverse       { color: $inverseText; }
@@ -205,3 +230,331 @@ a.romo-bg-inverse         { background-color: $inverseBackground; }
 .romo-bg-inverse-hover:hover,
 a.romo-bg-inverse:hover,
 a.romo-bg-inverse:focus   { background-color: darken($inverseBackground, 10%); }
+.romo-border-inverse      { border-color: $inverseBorder; }
+
+/* Scaffolding */
+/* ----------- */
+
+/* border helpers */
+
+.romo-border,
+.romo-border1 { border-width: 1px; border-style: solid; }
+.romo-border2 { border-width: 2px; border-style: solid; }
+.romo-border3 { border-width: 3px; border-style: solid; }
+.romo-border4 { border-width: 4px; border-style: solid; }
+.romo-border5 { border-width: 5px; border-style: solid; }
+.romo-border6 { border-width: 6px; border-style: solid; }
+
+.romo-border-top,
+.romo-border1-top { border-top-width: 1px; border-top-style: solid; }
+.romo-border2-top { border-top-width: 2px; border-top-style: solid; }
+.romo-border3-top { border-top-width: 3px; border-top-style: solid; }
+.romo-border4-top { border-top-width: 4px; border-top-style: solid; }
+.romo-border5-top { border-top-width: 5px; border-top-style: solid; }
+.romo-border6-top { border-top-width: 6px; border-top-style: solid; }
+
+.romo-border-right,
+.romo-border1-right { border-right-width: 1px; border-right-style: solid; }
+.romo-border2-right { border-right-width: 2px; border-right-style: solid; }
+.romo-border3-right { border-right-width: 3px; border-right-style: solid; }
+.romo-border4-right { border-right-width: 4px; border-right-style: solid; }
+.romo-border5-right { border-right-width: 5px; border-right-style: solid; }
+.romo-border6-right { border-right-width: 6px; border-right-style: solid; }
+
+.romo-border-bottom,
+.romo-border1-bottom { border-bottom-width: 1px; border-bottom-style: solid; }
+.romo-border2-bottom { border-bottom-width: 2px; border-bottom-style: solid; }
+.romo-border3-bottom { border-bottom-width: 3px; border-bottom-style: solid; }
+.romo-border4-bottom { border-bottom-width: 4px; border-bottom-style: solid; }
+.romo-border5-bottom { border-bottom-width: 5px; border-bottom-style: solid; }
+.romo-border6-bottom { border-bottom-width: 6px; border-bottom-style: solid; }
+
+.romo-border-left,
+.romo-border1-left { border-left-width: 1px; border-left-style: solid; }
+.romo-border2-left { border-left-width: 2px; border-left-style: solid; }
+.romo-border3-left { border-left-width: 3px; border-left-style: solid; }
+.romo-border4-left { border-left-width: 4px; border-left-style: solid; }
+.romo-border5-left { border-left-width: 5px; border-left-style: solid; }
+.romo-border6-left { border-left-width: 6px; border-left-style: solid; }
+
+.romo-border-radius,
+.romo-border1-radius {
+  -webkit-border-radius: $baseBorderRadius;
+     -moz-border-radius: $baseBorderRadius;
+          border-radius: $baseBorderRadius;
+}
+.romo-border-top-left-radius,
+.romo-border1-top-left-radius {
+  -webkit-border-top-left-radius: $baseBorderRadius;
+      -moz-border-radius-topleft: $baseBorderRadius;
+          border-top-left-radius: $baseBorderRadius;
+}
+.romo-border-top-right-radius,
+.romo-border1-top-right-radius {
+  -webkit-border-top-right-radius: $baseBorderRadius;
+      -moz-border-radius-topright: $baseBorderRadius;
+          border-top-right-radius: $baseBorderRadius;
+}
+.romo-border-bottom-left-radius,
+.romo-border1-bottom-left-radius {
+  -webkit-border-bottom-left-radius: $baseBorderRadius;
+      -moz-border-radius-bottomleft: $baseBorderRadius;
+          border-bottom-left-radius: $baseBorderRadius;
+}
+.romo-border-bottom-right-radius,
+.romo-border1-bottom-right-radius {
+  -webkit-border-bottom-right-radius: $baseBorderRadius;
+      -moz-border-radius-bottomright: $baseBorderRadius;
+          border-bottom-right-radius: $baseBorderRadius;
+}
+
+.romo-border2-radius {
+  -webkit-border-radius: $baseBorderRadius + 1px;
+     -moz-border-radius: $baseBorderRadius + 1px;
+          border-radius: $baseBorderRadius + 1px;
+}
+.romo-border2-top-left-radius {
+  -webkit-border-top-left-radius: $baseBorderRadius + 1px;
+      -moz-border-radius-topleft: $baseBorderRadius + 1px;
+          border-top-left-radius: $baseBorderRadius + 1px;
+}
+.romo-border2-top-right-radius {
+  -webkit-border-top-right-radius: $baseBorderRadius + 1px;
+      -moz-border-radius-topright: $baseBorderRadius + 1px;
+          border-top-right-radius: $baseBorderRadius + 1px;
+}
+.romo-border2-bottom-left-radius {
+  -webkit-border-bottom-left-radius: $baseBorderRadius + 1px;
+      -moz-border-radius-bottomleft: $baseBorderRadius + 1px;
+          border-bottom-left-radius: $baseBorderRadius + 1px;
+}
+.romo-border2-bottom-right-radius {
+  -webkit-border-bottom-right-radius: $baseBorderRadius + 1px;
+      -moz-border-radius-bottomright: $baseBorderRadius + 1px;
+          border-bottom-right-radius: $baseBorderRadius + 1px;
+}
+
+.romo-border3-radius {
+  -webkit-border-radius: $baseBorderRadius + 2px;
+     -moz-border-radius: $baseBorderRadius + 2px;
+          border-radius: $baseBorderRadius + 2px;
+}
+.romo-border3-top-left-radius {
+  -webkit-border-top-left-radius: $baseBorderRadius + 2px;
+      -moz-border-radius-topleft: $baseBorderRadius + 2px;
+          border-top-left-radius: $baseBorderRadius + 2px;
+}
+.romo-border3-top-right-radius {
+  -webkit-border-top-right-radius: $baseBorderRadius + 2px;
+      -moz-border-radius-topright: $baseBorderRadius + 2px;
+          border-top-right-radius: $baseBorderRadius + 2px;
+}
+.romo-border3-bottom-left-radius {
+  -webkit-border-bottom-left-radius: $baseBorderRadius + 2px;
+      -moz-border-radius-bottomleft: $baseBorderRadius + 2px;
+          border-bottom-left-radius: $baseBorderRadius + 2px;
+}
+.romo-border3-bottom-right-radius {
+  -webkit-border-bottom-right-radius: $baseBorderRadius + 2px;
+      -moz-border-radius-bottomright: $baseBorderRadius + 2px;
+          border-bottom-right-radius: $baseBorderRadius + 2px;
+}
+
+.romo-border4-radius {
+  -webkit-border-radius: $baseBorderRadius + 3px;
+     -moz-border-radius: $baseBorderRadius + 3px;
+          border-radius: $baseBorderRadius + 3px;
+}
+.romo-border4-top-left-radius {
+  -webkit-border-top-left-radius: $baseBorderRadius + 3px;
+      -moz-border-radius-topleft: $baseBorderRadius + 3px;
+          border-top-left-radius: $baseBorderRadius + 3px;
+}
+.romo-border4-top-right-radius {
+  -webkit-border-top-right-radius: $baseBorderRadius + 3px;
+      -moz-border-radius-topright: $baseBorderRadius + 3px;
+          border-top-right-radius: $baseBorderRadius + 3px;
+}
+.romo-border4-bottom-left-radius {
+  -webkit-border-bottom-left-radius: $baseBorderRadius + 3px;
+      -moz-border-radius-bottomleft: $baseBorderRadius + 3px;
+          border-bottom-left-radius: $baseBorderRadius + 3px;
+}
+.romo-border4-bottom-right-radius {
+  -webkit-border-bottom-right-radius: $baseBorderRadius + 3px;
+      -moz-border-radius-bottomright: $baseBorderRadius + 3px;
+          border-bottom-right-radius: $baseBorderRadius + 3px;
+}
+
+.romo-border5-radius {
+  -webkit-border-radius: $baseBorderRadius + 4px;
+     -moz-border-radius: $baseBorderRadius + 4px;
+          border-radius: $baseBorderRadius + 4px;
+}
+.romo-border5-top-left-radius {
+  -webkit-border-top-left-radius: $baseBorderRadius + 4px;
+      -moz-border-radius-topleft: $baseBorderRadius + 4px;
+          border-top-left-radius: $baseBorderRadius + 4px;
+}
+.romo-border5-top-right-radius {
+  -webkit-border-top-right-radius: $baseBorderRadius + 4px;
+      -moz-border-radius-topright: $baseBorderRadius + 4px;
+          border-top-right-radius: $baseBorderRadius + 4px;
+}
+.romo-border5-bottom-left-radius {
+  -webkit-border-bottom-left-radius: $baseBorderRadius + 4px;
+      -moz-border-radius-bottomleft: $baseBorderRadius + 4px;
+          border-bottom-left-radius: $baseBorderRadius + 4px;
+}
+.romo-border5-bottom-right-radius {
+  -webkit-border-bottom-right-radius: $baseBorderRadius + 4px;
+      -moz-border-radius-bottomright: $baseBorderRadius + 4px;
+          border-bottom-right-radius: $baseBorderRadius + 4px;
+}
+
+.romo-border6-radius {
+  -webkit-border-radius: $baseBorderRadius + 5px;
+     -moz-border-radius: $baseBorderRadius + 5px;
+          border-radius: $baseBorderRadius + 5px;
+}
+.romo-border6-top-left-radius {
+  -webkit-border-top-left-radius: $baseBorderRadius + 5px;
+      -moz-border-radius-topleft: $baseBorderRadius + 5px;
+          border-top-left-radius: $baseBorderRadius + 5px;
+}
+.romo-border6-top-right-radius {
+  -webkit-border-top-right-radius: $baseBorderRadius + 5px;
+      -moz-border-radius-topright: $baseBorderRadius + 5px;
+          border-top-right-radius: $baseBorderRadius + 5px;
+}
+.romo-border6-bottom-left-radius {
+  -webkit-border-bottom-left-radius: $baseBorderRadius + 5px;
+      -moz-border-radius-bottomleft: $baseBorderRadius + 5px;
+          border-bottom-left-radius: $baseBorderRadius + 5px;
+}
+.romo-border6-bottom-right-radius {
+  -webkit-border-bottom-right-radius: $baseBorderRadius + 5px;
+      -moz-border-radius-bottomright: $baseBorderRadius + 5px;
+          border-bottom-right-radius: $baseBorderRadius + 5px;
+}
+
+/* spacing */
+
+.romo-pad0 { padding: $baseSpacingSize * 0.35; }
+.romo-pad,
+.romo-pad1 { padding: $baseSpacingSize * 1; }
+.romo-pad2 { padding: $baseSpacingSize * 2; }
+.romo-pad3 { padding: $baseSpacingSize * 3; }
+.romo-pad4 { padding: $baseSpacingSize * 4; }
+.romo-pad5 { padding: $baseSpacingSize * 5; }
+.romo-pad6 { padding: $baseSpacingSize * 6; }
+
+.romo-pad0-top { padding-top: $baseSpacingSize * 0.35; }
+.romo-pad-top,
+.romo-pad1-top { padding-top: $baseSpacingSize * 1; }
+.romo-pad2-top { padding-top: $baseSpacingSize * 2; }
+.romo-pad3-top { padding-top: $baseSpacingSize * 3; }
+.romo-pad4-top { padding-top: $baseSpacingSize * 4; }
+.romo-pad5-top { padding-top: $baseSpacingSize * 5; }
+.romo-pad6-top { padding-top: $baseSpacingSize * 6; }
+
+.romo-rm-pad-top { padding-top: 0; }
+
+.romo-pad0-right { padding-right: $baseSpacingSize * 0.35; }
+.romo-pad-right,
+.romo-pad1-right { padding-right: $baseSpacingSize * 1; }
+.romo-pad2-right { padding-right: $baseSpacingSize * 2; }
+.romo-pad3-right { padding-right: $baseSpacingSize * 3; }
+.romo-pad4-right { padding-right: $baseSpacingSize * 4; }
+.romo-pad5-right { padding-right: $baseSpacingSize * 5; }
+.romo-pad6-right { padding-right: $baseSpacingSize * 6; }
+
+.romo-rm-pad-right { padding-right: 0; }
+
+.romo-pad0-bottom { padding-bottom: $baseSpacingSize * 0.35; }
+.romo-pad-bottom,
+.romo-pad1-bottom { padding-bottom: $baseSpacingSize * 1; }
+.romo-pad2-bottom { padding-bottom: $baseSpacingSize * 2; }
+.romo-pad3-bottom { padding-bottom: $baseSpacingSize * 3; }
+.romo-pad4-bottom { padding-bottom: $baseSpacingSize * 4; }
+.romo-pad5-bottom { padding-bottom: $baseSpacingSize * 5; }
+.romo-pad6-bottom { padding-bottom: $baseSpacingSize * 6; }
+
+.romo-rm-pad-bottom { padding-bottom: 0; }
+
+.romo-pad0-left { padding-left: $baseSpacingSize * 0.35; }
+.romo-pad-left,
+.romo-pad1-left { padding-left: $baseSpacingSize * 1; }
+.romo-pad2-left { padding-left: $baseSpacingSize * 2; }
+.romo-pad3-left { padding-left: $baseSpacingSize * 3; }
+.romo-pad4-left { padding-left: $baseSpacingSize * 4; }
+.romo-pad5-left { padding-left: $baseSpacingSize * 5; }
+.romo-pad6-left { padding-left: $baseSpacingSize * 6; }
+
+.romo-rm-pad-left { padding-left: 0; }
+
+.romo-push0 { margin: $baseSpacingSize * 0.35; }
+.romo-push,
+.romo-push1 { margin: $baseSpacingSize * 1; }
+.romo-push2 { margin: $baseSpacingSize * 2; }
+.romo-push3 { margin: $baseSpacingSize * 3; }
+.romo-push4 { margin: $baseSpacingSize * 4; }
+.romo-push5 { margin: $baseSpacingSize * 5; }
+.romo-push6 { margin: $baseSpacingSize * 6; }
+
+.romo-push0-top { margin-top: $baseSpacingSize * 0.35; }
+.romo-push-top,
+.romo-push1-top { margin-top: $baseSpacingSize * 1; }
+.romo-push2-top { margin-top: $baseSpacingSize * 2; }
+.romo-push3-top { margin-top: $baseSpacingSize * 3; }
+.romo-push4-top { margin-top: $baseSpacingSize * 4; }
+.romo-push5-top { margin-top: $baseSpacingSize * 5; }
+.romo-push6-top { margin-top: $baseSpacingSize * 6; }
+
+.romo-rm-push-top { margin-top: 0; }
+
+.romo-push0-right { margin-right: $baseSpacingSize * 0.35; }
+.romo-push-right,
+.romo-push1-right { margin-right: $baseSpacingSize * 1; }
+.romo-push2-right { margin-right: $baseSpacingSize * 2; }
+.romo-push3-right { margin-right: $baseSpacingSize * 3; }
+.romo-push4-right { margin-right: $baseSpacingSize * 4; }
+.romo-push5-right { margin-right: $baseSpacingSize * 5; }
+.romo-push6-right { margin-right: $baseSpacingSize * 6; }
+
+.romo-rm-push-right { margin-right: 0; }
+
+.romo-push0-bottom { margin-bottom: $baseSpacingSize * 0.35; }
+.romo-push-bottom,
+.romo-push1-bottom { margin-bottom: $baseSpacingSize * 1; }
+.romo-push2-bottom { margin-bottom: $baseSpacingSize * 2; }
+.romo-push3-bottom { margin-bottom: $baseSpacingSize * 3; }
+.romo-push4-bottom { margin-bottom: $baseSpacingSize * 4; }
+.romo-push5-bottom { margin-bottom: $baseSpacingSize * 5; }
+.romo-push6-bottom { margin-bottom: $baseSpacingSize * 6; }
+
+.romo-rm-push-bottom { margin-bottom: 0; }
+
+.romo-push0-left { margin-left: $baseSpacingSize * 0.35; }
+.romo-push-left,
+.romo-push1-left { margin-left: $baseSpacingSize * 1; }
+.romo-push2-left { margin-left: $baseSpacingSize * 2; }
+.romo-push3-left { margin-left: $baseSpacingSize * 3; }
+.romo-push4-left { margin-left: $baseSpacingSize * 4; }
+.romo-push5-left { margin-left: $baseSpacingSize * 5; }
+.romo-push6-left { margin-left: $baseSpacingSize * 6; }
+
+.romo-rm-push-left { margin-left: 0; }
+
+/* other helpers */
+
+.romo-display-inline       { display: inline; }
+.romo-display-inline-block { display: inline-block; }
+.romo-display-block        { display: block; }
+
+.romo-position-relative { position: relative; }
+.romo-position-absolute { position: absolute; }
+.romo-position-fixed    { position: fixed; }
+
+.romo-float-left  { float: left; }
+.romo-float-right { float: right; }
