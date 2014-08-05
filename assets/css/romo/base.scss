@@ -13,9 +13,11 @@ html, body { height: 100%; }
 
 body {
   margin: 0;
-  background-color: #ffffff;
-  color: #333333;
+  background-color: $baseBackground;
+  color: $baseColor;
 }
+
+* { border-color: $baseBorderColor; }
 
 /* Typography */
 /* ---------- */
@@ -134,6 +136,9 @@ h4 small { font-size: $baseFontSize; }
 .romo-text-center { text-align: center; }
 
 /* color emphasis */
+
+.romo-bg-base { background-color: $baseBackground; }
+.romo-bg-alt  { background-color: $altBackground; }
 
 .romo-text-muted,
 a.romo-text-muted         { color: $mutedText; }
