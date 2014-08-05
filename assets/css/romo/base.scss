@@ -58,6 +58,12 @@ a:active {
   text-decoration: underline;
 }
 
+a.romo-text {
+  color: $baseColor;
+  text-decoration: none;
+}
+.romo-pointer { curson: pointer; }
+
 /* headings */
 
 h1, h2, h3, h4, h5, h6 {
@@ -154,6 +160,12 @@ h4 small { font-size: $baseFontSize; }
 .romo-text-left   { text-align: left; }
 .romo-text-right  { text-align: right; }
 .romo-text-center { text-align: center; }
+
+.romo-text-top    { vertical-align: top; }
+.romo-text-middle { vertical-align: middle; }
+.romo-text-bottom { vertical-align: bottom; }
+
+.romo-text-inline { display: inline-block; vertical-align: middle; }
 
 /* color emphasis */
 
@@ -548,13 +560,18 @@ a.romo-bg-inverse:focus   { background-color: darken($inverseBackground, 10%); }
 
 /* other helpers */
 
-.romo-display-inline       { display: inline; }
-.romo-display-inline-block { display: inline-block; }
-.romo-display-block        { display: block; }
+.romo-nowrap { white-space: nowrap; }
+.romo-crop   { white-space: nowrap; overflow: hidden; }
 
-.romo-position-relative { position: relative; }
-.romo-position-absolute { position: absolute; }
-.romo-position-fixed    { position: fixed; }
+.romo-inline       { display: inline; }
+.romo-inline-block { display: inline-block; }
+.romo-block        { display: block; }
 
+.romo-relative { position: relative; }
+.romo-absolute { position: absolute; }
+.romo-fixed    { position: fixed; }
+
+.romo-pull-left,
 .romo-float-left  { float: left; }
+.romo-pull-right,
 .romo-float-right { float: right; }

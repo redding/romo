@@ -58,20 +58,20 @@ All HTML headings, `<h1>` through `<h6>` are available.
 
 Use style classes to size up/down text corresponding with heading sizes.
 
-<div class="romo-text1">.romo-text1 Size</div>
-<div class="romo-text2">.romo-text2 Size</div>
-<div class="romo-text3">.romo-text3 Size</div>
-<div class="romo-text4">.romo-text4 Size</div>
-<div class="romo-text5">.romo-text5 Size</div>
-<div class="romo-text6">.romo-text6 Size</div>
+<div class="romo-text1">.romo-text1</div>
+<div class="romo-text2">.romo-text2</div>
+<div class="romo-text3">.romo-text3</div>
+<div class="romo-text4">.romo-text4</div>
+<div class="romo-text5">.romo-text5</div>
+<div class="romo-text6">.romo-text6</div>
 
 ```html
-<div class="romo-text1">.romo-text1 Size</div>
-<div class="romo-text2">.romo-text2 Size</div>
-<div class="romo-text3">.romo-text3 Size</div>
-<div class="romo-text4">.romo-text4 Size</div>
-<div class="romo-text5">.romo-text5 Size</div>
-<div class="romo-text6">.romo-text6 Size</div>
+<div class="romo-text1">.romo-text1</div>
+<div class="romo-text2">.romo-text2</div>
+<div class="romo-text3">.romo-text3</div>
+<div class="romo-text4">.romo-text4</div>
+<div class="romo-text5">.romo-text5</div>
+<div class="romo-text6">.romo-text6</div>
 ```
 
 Or, use these natural-size style classes for the more common sizing needs.
@@ -88,16 +88,60 @@ Or, use these natural-size style classes for the more common sizing needs.
 
 ## Alignment classes
 
-Use style classes to realign text.
+Use style classes to align text.
 
-<p class="romo-text-left">Left aligned text.</p>
-<p class="romo-text-center">Center aligned text.</p>
-<p class="romo-text-right">Right aligned text.</p>
+<p class="romo-text-left">.romo-text-left</p>
+<p class="romo-text-center">.romo-text-center</p>
+<p class="romo-text-right">.romo-text-right</p>
 
 ```html
-<p class="romo-text-left">Left aligned text.</p>
-<p class="romo-text-center">Center aligned text.</p>
-<p class="romo-text-right">Right aligned text.</p>
+<p class="romo-text-left">.romo-text-left</p>
+<p class="romo-text-center">.romo-text-center</p>
+<p class="romo-text-right">.romo-text-right</p>
+```
+
+Or vertical align text.
+
+<div>
+  <span class="romo-text-top romo-text-large">Aligned:</span>
+  <span class="romo-text-top romo-text-small">.romo-text-top</span>
+</div>
+<div>
+  <span class="romo-text-middle romo-text-large">Aligned:</span>
+  <span class="romo-text-middle romo-text-small">.romo-text-middle</span>
+</div>
+<div>
+  <span class="romo-text-bottom romo-text-large">Aligned:</span>
+  <span class="romo-text-bottom romo-text-small">.romo-text-bottom</span>
+</div>
+
+```html
+<div>
+  <span class="romo-text-top romo-text-large">Aligned:</span>
+  <span class="romo-text-top romo-text-small">.romo-text-top</span>
+</div>
+<div>
+  <span class="romo-text-middle romo-text-large">Aligned:</span>
+  <span class="romo-text-middle romo-text-small">.romo-text-middle</span>
+</div>
+<div>
+  <span class="romo-text-bottom romo-text-large">Aligned:</span>
+  <span class="romo-text-bottom romo-text-small">.romo-text-bottom</span>
+</div>
+```
+
+Or have any text elements be inline.
+
+<div>
+  <div class="romo-text-inline romo-text-large">Aligned:</div>
+  <div class="romo-text-inline romo-text-small">.romo-text-inline</div>
+</div>
+
+```html
+<div>
+  <div class="romo-text-inline romo-text-large">Aligned:</div>
+  <div class="romo-text-inline romo-text-small">.romo-text-inline</div>
+</div>
 ```
 
 ## Color emphasis classes

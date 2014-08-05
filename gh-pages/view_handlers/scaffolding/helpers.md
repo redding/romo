@@ -236,35 +236,35 @@ Remove from just specific sides.
 
 Use style classes to set specific display values.
 
-<div class="romo-display-inline">-.romo-display-inline-</div>
-<div class="romo-display-inline-block">-.romo-display-inline-block-</div>
-<div class="romo-display-block">-.romo-display-block-</div>
+<div class="romo-inline">-.romo-inline-</div>
+<div class="romo-inline-block">-.romo-inline-block-</div>
+<div class="romo-block">-.romo-block-</div>
 
 ```html
-<div class="romo-display-inline">-.romo-display-inline-</div>
-<div class="romo-display-inline-block">-.romo-display-inline-block-</div>
-<div class="romo-display-block">-.romo-display-block-</div>
+<div class="romo-inline">-.romo-inline-</div>
+<div class="romo-inline-block">-.romo-inline-block-</div>
+<div class="romo-block">-.romo-block-</div>
 ```
 
 ## Position
 
 Use style classes to set specific position values.
 
-<div class="romo-position-relative romo-border">
-  <div>-.romo-position-relative-</div>
+<div class="romo-relative romo-border">
+  <div>-.romo-relative-</div>
   <div>&nbsp;</div>
-  <div class="romo-position-absolute" style="top: 0; right: 0">-.romo-position-absolute-</div>
+  <div class="romo-absolute" style="top: 0; right: 0">-.romo-absolute-</div>
 </div>
 
 ```html
-<div class="romo-position-relative romo-border">
-  <div>-.romo-position-relative-</div>
+<div class="romo-relative romo-border">
+  <div>-.romo-relative-</div>
   <div>&nbsp;</div>
-  <div class="romo-position-absolute" style="top: 0; right: 0">-.romo-position-absolute-</div>
+  <div class="romo-absolute" style="top: 0; right: 0">-.romo-absolute-</div>
 </div>
 ```
 
-Or, use `romo-position-fixed` to position as fixed.
+Or, use `romo-fixed` to position as fixed.
 
 ## Floating
 
@@ -273,7 +273,8 @@ Use style classes to float elements.
 <div class="romo-border">
   <div class="romo-float-left">-.romo-float-left-</div>
   <div class="romo-float-right">-.romo-float-right-</div>
-  <div class="romo-float-left">-.romo-float-left-</div>
+  <div class="romo-pull-left">-.romo-pull-left-</div>
+  <div class="romo-pull-right">-.romo-pull-right-</div>
   <div style="clear: both"></div>
 </div>
 
@@ -281,7 +282,22 @@ Use style classes to float elements.
 <div class="romo-border">
   <div class="romo-float-left">-.romo-float-left-</div>
   <div class="romo-float-right">-.romo-float-right-</div>
-  <div class="romo-float-left">-.romo-float-left-</div>
+  <div class="romo-pull-left">-.romo-pull-left-</div>
+  <div class="romo-pull-right">-.romo-pull-right-</div>
   <div style="clear: both"></div>
 </div>
+```
+
+## Overflow
+
+Use style classes to handle common overflow cases.
+
+<div style="width: 150px" class="romo-border romo-inline-block romo-crop">.romo-crop: content that will overflow</div>
+<div></div>
+<div style="width: 150px" class="romo-border romo-inline-block romo-nowrap">.romo-nowrap: content that will overflow</div>
+
+```html
+<div style="width: 150px" class="romo-border romo-inline-block romo-crop">.romo-crop: content that will overflow</div>
+<div></div>
+<div style="width: 150px" class="romo-border romo-inline-block romo-nowrap">.romo-nowrap: content that will overflow</div>
 ```
