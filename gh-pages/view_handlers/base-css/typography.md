@@ -130,18 +130,38 @@ Or vertical align text.
 </div>
 ```
 
-Or have any text elements be inline.
+## Weight classes
 
-<div>
-  <div class="romo-text-inline romo-text-large">Aligned:</div>
-  <div class="romo-text-inline romo-text-small">.romo-text-inline</div>
-</div>
+Use style classes to set font weight.
+
+<div class="romo-text3 romo-text-normal">.romo-text-normal</div>
+<div class="romo-text3 romo-text-lighter">.romo-text-lighter</div>
+<div class="romo-text3 romo-text-bold">.romo-text-bold</div>
+<div class="romo-text3 romo-text-bolder">.romo-text-bolder</div>
+<div class="romo-text3 romo-text-100">.romo-text-100</div>
+<div class="romo-text3 romo-text-200">.romo-text-200</div>
+<div class="romo-text3 romo-text-300">.romo-text-300</div>
+<div class="romo-text3 romo-text-400">.romo-text-400</div>
+<div class="romo-text3 romo-text-500">.romo-text-500</div>
+<div class="romo-text3 romo-text-600">.romo-text-600</div>
+<div class="romo-text3 romo-text-700">.romo-text-700</div>
+<div class="romo-text3 romo-text-800">.romo-text-800</div>
+<div class="romo-text3 romo-text-900">.romo-text-900</div>
 
 ```html
-<div>
-  <div class="romo-text-inline romo-text-large">Aligned:</div>
-  <div class="romo-text-inline romo-text-small">.romo-text-inline</div>
-</div>
+<div class="romo-text3 romo-text-normal">.romo-text-normal</div>
+<div class="romo-text3 romo-text-lighter">.romo-text-lighter</div>
+<div class="romo-text3 romo-text-bold">.romo-text-bold</div>
+<div class="romo-text3 romo-text-bolder">.romo-text-bolder</div>
+<div class="romo-text3 romo-text-100">.romo-text-100</div>
+<div class="romo-text3 romo-text-200">.romo-text-200</div>
+<div class="romo-text3 romo-text-300">.romo-text-300</div>
+<div class="romo-text3 romo-text-400">.romo-text-400</div>
+<div class="romo-text3 romo-text-500">.romo-text-500</div>
+<div class="romo-text3 romo-text-600">.romo-text-600</div>
+<div class="romo-text3 romo-text-700">.romo-text-700</div>
+<div class="romo-text3 romo-text-800">.romo-text-800</div>
+<div class="romo-text3 romo-text-900">.romo-text-900</div>
 ```
 
 ## Color emphasis classes

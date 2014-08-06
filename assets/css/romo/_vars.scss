@@ -9,9 +9,11 @@ $baseLineHeight:  $baseFontSize * $lineHeightToSizeRatio;
 $baseSpacingSize: $baseLineHeight / 2;
 
 $baseBackground:   #fff;
-$altBackground:    #f3f3f3;
+$altBackground:    #f9f9f9;
+$backgroundHover:  darken($altBackground, 5%);
 $baseColor:        #333;
 $baseBorderColor:  #ccc;
+$altBorderColor:   #fff;
 $baseBorderRadius: 3px;
 
 /* links */
@@ -23,27 +25,39 @@ $linkColorHover: darken($linkColor, 15%);
 
 /* color emphasis */
 
-$mutedText:         #999999;
-$mutedBackground:   #f9f9f9;
-$mutedBorder:       darken(adjust_hue($mutedBackground, -10), 5%);
+$mutedText:              #999999;
+$mutedTextHover:         darken($mutedText, 10%);
+$mutedBackground:        #f9f9f9;
+$mutedBackgroundHover:   darken($mutedBackground, 5%);
+$mutedBorder:            darken(adjust_hue($mutedBackground, -10), 5%);
 
-$warningText:       #c09853;
-$warningBackground: #fcf8e3;
-$warningBorder:     darken(adjust_hue($warningBackground, -10), 3%);
+$warningText:            #c09853;
+$warningTextHover:       darken($warningText, 10%);
+$warningBackground:      #fcf8e3;
+$warningBackgroundHover: darken($warningBackground, 5%);
+$warningBorder:          darken(adjust_hue($warningBackground, -10), 3%);
 
-$errorText:         #b94a48;
-$errorBackground:   #f2dede;
-$errorBorder:       darken(adjust_hue($errorBackground, -10), 3%);
+$errorText:              #b94a48;
+$errorTextHover:         darken($errorText, 10%);
+$errorBackground:        #f2dede;
+$errorBackgroundHover:   darken($errorBackground, 5%);
+$errorBorder:            darken(adjust_hue($errorBackground, -10), 3%);
 
-$infoText:          #3a87ad;
-$infoBackground:    #d9edf7;
-$infoBorder:        darken(adjust_hue($infoBackground, -10), 7%);
+$infoText:               #3a87ad;
+$infoTextHover:          darken($infoText, 10%);
+$infoBackground:         #d9edf7;
+$infoBackgroundHover:    darken($infoBackground, 5%);
+$infoBorder:             darken(adjust_hue($infoBackground, -10), 7%);
 
-$successText:       #468847;
-$successBackground: #dff0d8;
-$successBorder:     darken(adjust_hue($successBackground, -10), 5%);
+$successText:            #468847;
+$successTextHover:       darken($successText, 10%);
+$successBackground:      #dff0d8;
+$successBackgroundHover: darken($successBackground, 5%);
+$successBorder:          darken(adjust_hue($successBackground, -10), 5%);
 
-$inverseText:       #ffffff;
-$inverseBackground: #363636;
-$inverseBorder:     darken(adjust_hue($inverseBackground, -10), 3%);
+$inverseText:            #ffffff;
+$inverseTextHover:       darken($inverseText, 10%);
+$inverseBackground:      #444444;
+$inverseBackgroundHover: darken($inverseBackground, 5%);
+$inverseBorder:          darken(adjust_hue($inverseBackground, -10), 3%);
 

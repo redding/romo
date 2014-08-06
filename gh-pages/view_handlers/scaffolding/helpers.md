@@ -12,26 +12,6 @@ Use style classes to add borders.
 </div>
 ```
 
-Or, add borders to specific sides.
-
-<div style="padding: 10px">
-  <div class="romo-border-top">.romo-border-top</div>
-  <div>&nbsp;</div>
-  <div class="romo-border-bottom">.romo-border-bottom</div>
-  <div>&nbsp;</div>
-  <div class="romo-border-left romo-border-right">.romo-border-left.romo-border-right</div>
-</div>
-
-```html
-<div style="padding: 10px">
-  <div class="romo-border-top">.romo-border-top</div>
-  <div>&nbsp;</div>
-  <div class="romo-border-bottom">.romo-border-bottom</div>
-  <div>&nbsp;</div>
-  <div class="romo-border-left romo-border-right">.romo-border-left.romo-border-right</div>
-</div>
-```
-
 Use numbered classes, 1 through 6, to set specific pixel width.
 
 <div style="padding: 10px">
@@ -65,6 +45,84 @@ Use numbered classes, 1 through 6, to set specific pixel width.
   <div class="romo-border5">.romo-border5</div>
   <div>&nbsp;</div>
   <div class="romo-border6">.romo-border6</div>
+</div>
+```
+
+Or, add borders to specific sides.
+
+<div style="padding: 10px">
+  <div class="romo-border-top">.romo-border-top</div>
+  <div>&nbsp;</div>
+  <div class="romo-border-bottom">.romo-border-bottom</div>
+  <div>&nbsp;</div>
+  <div class="romo-border-left romo-border-right">.romo-border-left.romo-border-right</div>
+</div>
+
+```html
+<div style="padding: 10px">
+  <div class="romo-border-top">.romo-border-top</div>
+  <div>&nbsp;</div>
+  <div class="romo-border-bottom">.romo-border-bottom</div>
+  <div>&nbsp;</div>
+  <div class="romo-border-left romo-border-right">.romo-border-left.romo-border-right</div>
+</div>
+```
+
+Remove from just specific sides.
+
+<div style="padding: 10px">
+  <div class="romo-border romo-rm-border-top">.romo-rm-border-top</div>
+  <div class="romo-border romo-rm-border-right">.romo-rm-border-right</div>
+  <div class="romo-border romo-rm-border-left">.romo-rm-border-left</div>
+  <div class="romo-border romo-rm-border-bottom">.romo-rm-border-bottom</div>
+</div>
+
+```html
+<div style="padding: 10px">
+  <div class="romo-border romo-rm-border-top">.romo-rm-border-top</div>
+  <div class="romo-border romo-rm-border-right">.romo-rm-border-right</div>
+  <div class="romo-border romo-rm-border-left">.romo-rm-border-left</div>
+  <div class="romo-border romo-rm-border-bottom">.romo-rm-border-bottom</div>
+</div>
+```
+
+Change style on any border configuration
+
+<div style="padding: 10px">
+  <div class="romo-border-solid romo-border6">.romo-border-solid</div>
+  <div>&nbsp;</div>
+  <div class="romo-border-dashed romo-border6">.romo-border-dashed</div>
+  <div>&nbsp;</div>
+  <div class="romo-border-dotted romo-border6">.romo-border-dotted</div>
+  <div>&nbsp;</div>
+  <div class="romo-border-double romo-border6">.romo-border-double</div>
+  <div>&nbsp;</div>
+  <div class="romo-border-groove romo-border6">.romo-border-groove</div>
+  <div>&nbsp;</div>
+  <div class="romo-border-inset romo-border6">.romo-border-inset</div>
+  <div>&nbsp;</div>
+  <div class="romo-border-hidden romo-border6">.romo-border-hidden</div>
+  <div>&nbsp;</div>
+  <div class="romo-border-none romo-border6">.romo-border-none</div>
+</div>
+
+```html
+<div style="padding: 10px">
+  <div class="romo-border-solid romo-border6">.romo-border-solid</div>
+  <div>&nbsp;</div>
+  <div class="romo-border-dashed romo-border6">.romo-border-dashed</div>
+  <div>&nbsp;</div>
+  <div class="romo-border-dotted romo-border6">.romo-border-dotted</div>
+  <div>&nbsp;</div>
+  <div class="romo-border-double romo-border6">.romo-border-double</div>
+  <div>&nbsp;</div>
+  <div class="romo-border-groove romo-border6">.romo-border-groove</div>
+  <div>&nbsp;</div>
+  <div class="romo-border-inset romo-border6">.romo-border-inset</div>
+  <div>&nbsp;</div>
+  <div class="romo-border-hidden romo-border6">.romo-border-hidden</div>
+  <div>&nbsp;</div>
+  <div class="romo-border-none romo-border6">.romo-border-none</div>
 </div>
 ```
 
