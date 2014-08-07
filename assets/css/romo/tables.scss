@@ -20,3 +20,14 @@
   @include align-bottom;
 }
 
+.romo-table-striped tbody > tr:nth-child(odd) {
+  @include bg-alt;
+}
+
+.romo-table-alt {
+  @include bg-alt;
+}
+.romo-table-alt.romo-table-striped tbody > tr:nth-child(odd) {
+  @include bg-base;
+}
+
