@@ -479,3 +479,543 @@ Add hover state to rows within a `<tbody>`.
   </table>
 </div>
 ```
+
+### `.romo-table-border*`
+
+Adds sized borders to the table.
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="2">1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td rowspan="2">18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td colspan="2">Good Corp.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border1">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="2">1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td rowspan="2">18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td colspan="2">Good Corp.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border2">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="2">1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td rowspan="2">18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td colspan="2">Good Corp.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border3">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="2">1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td rowspan="2">18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td colspan="2">Good Corp.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border4">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="2">1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td rowspan="2">18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td colspan="2">Good Corp.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border5">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="2">1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td rowspan="2">18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td colspan="2">Good Corp.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border6">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="2">1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td rowspan="2">18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td colspan="2">Good Corp.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+```html
+<div class="romo-pad">
+  <table class="romo-table romo-table-border">
+    ...
+  </table>
+</div>
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border1">
+    ...
+  </table>
+</div>
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border2">
+    ...
+  </table>
+</div>
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border3">
+    ...
+  </table>
+</div>
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border4">
+    ...
+  </table>
+</div>
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border5">
+    ...
+  </table>
+</div>
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border6">
+    ...
+  </table>
+</div>
+```
+
+### `.romo-table-border-{muted|warning|error|info|success|inverse}`
+
+Adds border color empasis to the entire table.
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border6 romo-table-border-muted">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border6 romo-table-border-warning">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border6 romo-table-border-error">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border6 romo-table-border-info">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border6 romo-table-border-success">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border6 romo-table-border-inverse">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+```html
+<div class="romo-pad">
+  <table class="romo-table romo-table-border6 romo-table-border-muted">
+    ...
+  </table>
+</div>
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border6 romo-table-border-warning">
+    ...
+  </table>
+</div>
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border6 romo-table-border-error">
+    ...
+  </table>
+</div>
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border6 romo-table-border-info">
+    ...
+  </table>
+</div>
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border6 romo-table-border-success">
+    ...
+  </table>
+</div>
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border6 romo-table-border-inverse">
+    ...
+  </table>
+</div>
+```
