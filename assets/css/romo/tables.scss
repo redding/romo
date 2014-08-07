@@ -31,3 +31,9 @@
   @include bg-base;
 }
 
+.romo-table tr.romo-muted   { @include bg-muted; }
+.romo-table tr.romo-warning { @include bg-warning; }
+.romo-table tr.romo-error   { @include bg-error; }
+.romo-table tr.romo-info    { @include bg-info; }
+.romo-table tr.romo-success { @include bg-success; }
+.romo-table tr.romo-inverse { @include bg-inverse; }
