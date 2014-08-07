@@ -1019,3 +1019,75 @@ Adds border color empasis to the entire table.
   </table>
 </div>
 ```
+
+## Custom Styles
+
+Use any helper classes in any combination on rows/cells.
+
+<div class="romo-pad">
+  <table class="romo-table">
+    <thead>
+      <tr>
+        <th class="romo-pad2">#</th>
+        <th>Name</th>
+        <th class="romo-text2 romo-pad2-left">Slug</th>
+        <th class="romo-text-center romo-text-top">Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td class="romo-bg-info">Joe Test</td>
+        <td>joe-test</td>
+        <td class="romo-text2 romo-border-error romo-border4">10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td class="romo-pad3">jane-doe</td>
+        <td class="romo-text-center romo-text-success">18</td>
+      </tr>
+      <tr class="romo-bg-success">
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+```html
+<div class="romo-pad">
+  <table class="romo-table">
+    <thead>
+      <tr>
+        <th class="romo-pad2">#</th>
+        <th>Name</th>
+        <th class="romo-text2 romo-pad2-left">Slug</th>
+        <th class="romo-text-center romo-text-top">Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td class="romo-bg-info">Joe Test</td>
+        <td>joe-test</td>
+        <td class="romo-text2 romo-border-error romo-border4">10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td class="romo-pad3">jane-doe</td>
+        <td class="romo-text-center romo-text-success">18</td>
+      </tr>
+      <tr class="romo-bg-success">
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
