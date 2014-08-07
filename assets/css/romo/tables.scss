@@ -1,0 +1,22 @@
+@import 'css/romo/mixins';
+
+.romo-table {
+  width: 100%;
+}
+
+.romo-table th,
+.romo-table td {
+  @include rm-pad;
+  @include align-left;
+  @include align-middle;
+  @include border1-bottom;
+}
+
+.romo-table th {
+  font-weight: bold;
+}
+
+.romo-table thead th {
+  @include align-bottom;
+}
+
