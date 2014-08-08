@@ -1090,34 +1090,34 @@ Adds border color empasis to the entire table.
 </div>
 ```
 
-## Custom Styles
+### `.romo-table-padN{-top|-right|-bottom|-left|}`
 
-Use any helper classes in any combination on rows/cells.
+Adds cell padding to every cell in the table
 
 <div class="romo-pad">
-  <table class="romo-table">
+  <table class="romo-table romo-table-border romo-table-pad0">
     <thead>
       <tr>
-        <th class="romo-pad2">#</th>
+        <th>#</th>
         <th>Name</th>
-        <th class="romo-text2 romo-pad2-left">Slug</th>
-        <th class="romo-text-center romo-text-top">Count</th>
+        <th>Slug</th>
+        <th>Count</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>1</td>
-        <td class="romo-bg-info">Joe Test</td>
+        <td>Joe Test</td>
         <td>joe-test</td>
-        <td class="romo-text2 romo-border-error romo-border4">10</td>
+        <td>10</td>
       </tr>
       <tr>
         <td>2</td>
         <td>Jane Doe</td>
-        <td class="romo-pad3">jane-doe</td>
-        <td class="romo-text-center romo-text-success">18</td>
+        <td>jane-doe</td>
+        <td>18</td>
       </tr>
-      <tr class="romo-bg-success">
+      <tr>
         <td>3</td>
         <td>Good Corp.</td>
         <td>good-corp</td>
@@ -1129,13 +1129,311 @@ Use any helper classes in any combination on rows/cells.
 
 ```html
 <div class="romo-pad">
-  <table class="romo-table">
+  <table class="romo-table romo-table-border romo-table-pad0">
+    ...
+  </table>
+</div>
+```
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border romo-table-pad">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+```html
+<div class="romo-pad">
+  <table class="romo-table romo-table-border romo-table-pad">
+    ...
+  </table>
+</div>
+```
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border romo-table-pad1">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+```html
+<div class="romo-pad">
+  <table class="romo-table romo-table-border romo-table-pad1">
+    ...
+  </table>
+</div>
+```
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border romo-table-pad2">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+```html
+<div class="romo-pad">
+  <table class="romo-table romo-table-border romo-table-pad2">
+    ...
+  </table>
+</div>
+```
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border romo-table-pad3">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+```html
+<div class="romo-pad">
+  <table class="romo-table romo-table-border romo-table-pad3">
+    ...
+  </table>
+</div>
+```
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border romo-table-pad4">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+```html
+<div class="romo-pad">
+  <table class="romo-table romo-table-border romo-table-pad4">
+    ...
+  </table>
+</div>
+```
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border romo-table-pad5">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+```html
+<div class="romo-pad">
+  <table class="romo-table romo-table-border romo-table-pad5">
+    ...
+  </table>
+</div>
+```
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border romo-table-pad6">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+```html
+<div class="romo-pad">
+  <table class="romo-table romo-table-border romo-table-pad6">
+    ...
+  </table>
+</div>
+```
+
+## Custom Styles
+
+Use any helper style classes in any combination on rows/cells.
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-pad2">
     <thead>
       <tr>
         <th class="romo-pad2">#</th>
         <th>Name</th>
         <th class="romo-text2 romo-pad2-left">Slug</th>
-        <th class="romo-text-center romo-text-top">Count</th>
+        <th class="romo-col-1-12 romo-text-center romo-text-top">Count</th>
       </tr>
     </thead>
     <tbody>
@@ -1143,19 +1441,53 @@ Use any helper classes in any combination on rows/cells.
         <td>1</td>
         <td class="romo-bg-info">Joe Test</td>
         <td>joe-test</td>
-        <td class="romo-text2 romo-border-error romo-border4">10</td>
+        <td class="romo-col-1-12 romo-text2 romo-border-error romo-border4">10</td>
       </tr>
       <tr>
         <td>2</td>
         <td>Jane Doe</td>
         <td class="romo-pad3">jane-doe</td>
-        <td class="romo-text-center romo-text-success">18</td>
+        <td class="romo-col-1-12 romo-text-center romo-text-success">18</td>
       </tr>
       <tr class="romo-bg-success">
         <td>3</td>
         <td>Good Corp.</td>
         <td>good-corp</td>
-        <td>5</td>
+        <td class="romo-col-1-12">5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+```html
+<div class="romo-pad">
+  <table class="romo-table romo-table-pad2">
+    <thead>
+      <tr>
+        <th class="romo-pad2">#</th>
+        <th>Name</th>
+        <th class="romo-text2 romo-pad2-left">Slug</th>
+        <th class="romo-col-1-12 romo-text-center romo-text-top">Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td class="romo-bg-info">Joe Test</td>
+        <td>joe-test</td>
+        <td class="romo-col-1-12 romo-text2 romo-border-error romo-border4">10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td class="romo-pad3">jane-doe</td>
+        <td class="romo-col-1-12 romo-text-center romo-text-success">18</td>
+      </tr>
+      <tr class="romo-bg-success">
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td class="romo-col-1-12">5</td>
       </tr>
     </tbody>
   </table>

@@ -87,3 +87,53 @@
 .romo-table-border-info    th, .romo-table-border-info    td { @include border-info; }
 .romo-table-border-success th, .romo-table-border-success td { @include border-success; }
 .romo-table-border-inverse th, .romo-table-border-inverse td { @include border-inverse; }
+
+.romo-table-pad0   th, .romo-table-pad0   td { @include pad0; }
+.romo-table-pad    th, .romo-table-pad    td { @include pad1; }
+.romo-table-pad1   th, .romo-table-pad1   td { @include pad1; }
+.romo-table-pad2   th, .romo-table-pad2   td { @include pad2; }
+.romo-table-pad3   th, .romo-table-pad3   td { @include pad3; }
+.romo-table-pad4   th, .romo-table-pad4   td { @include pad4; }
+.romo-table-pad5   th, .romo-table-pad5   td { @include pad5; }
+.romo-table-pad6   th, .romo-table-pad6   td { @include pad6; }
+.romo-table-rm-pad th, .romo-table-rm-pad td { @include rm-pad; }
+
+.romo-table-pad0-top   th, .romo-table-pad0-top   td { @include pad0-top; }
+.romo-table-pad-top    th, .romo-table-pad-top    td { @include pad1-top; }
+.romo-table-pad1-top   th, .romo-table-pad1-top   td { @include pad1-top; }
+.romo-table-pad2-top   th, .romo-table-pad2-top   td { @include pad2-top; }
+.romo-table-pad3-top   th, .romo-table-pad3-top   td { @include pad3-top; }
+.romo-table-pad4-top   th, .romo-table-pad4-top   td { @include pad4-top; }
+.romo-table-pad5-top   th, .romo-table-pad5-top   td { @include pad5-top; }
+.romo-table-pad6-top   th, .romo-table-pad6-top   td { @include pad6-top; }
+.romo-table-rm-pad-top th, .romo-table-rm-pad-top td { @include rm-pad-top; }
+
+.romo-table-pad0-right   th, .romo-table-pad0-right   td { @include pad0-right; }
+.romo-table-pad-right    th, .romo-table-pad-right    td { @include pad1-right; }
+.romo-table-pad1-right   th, .romo-table-pad1-right   td { @include pad1-right; }
+.romo-table-pad2-right   th, .romo-table-pad2-right   td { @include pad2-right; }
+.romo-table-pad3-right   th, .romo-table-pad3-right   td { @include pad3-right; }
+.romo-table-pad4-right   th, .romo-table-pad4-right   td { @include pad4-right; }
+.romo-table-pad5-right   th, .romo-table-pad5-right   td { @include pad5-right; }
+.romo-table-pad6-right   th, .romo-table-pad6-right   td { @include pad6-right; }
+.romo-table-rm-pad-right th, .romo-table-rm-pad-right td { @include rm-pad-right; }
+
+.romo-table-pad0-bottom   th, .romo-table-pad0-bottom   td { @include pad0-bottom; }
+.romo-table-pad-bottom    th, .romo-table-pad-bottom    td { @include pad1-bottom; }
+.romo-table-pad1-bottom   th, .romo-table-pad1-bottom   td { @include pad1-bottom; }
+.romo-table-pad2-bottom   th, .romo-table-pad2-bottom   td { @include pad2-bottom; }
+.romo-table-pad3-bottom   th, .romo-table-pad3-bottom   td { @include pad3-bottom; }
+.romo-table-pad4-bottom   th, .romo-table-pad4-bottom   td { @include pad4-bottom; }
+.romo-table-pad5-bottom   th, .romo-table-pad5-bottom   td { @include pad5-bottom; }
+.romo-table-pad6-bottom   th, .romo-table-pad6-bottom   td { @include pad6-bottom; }
+.romo-table-rm-pad-bottom th, .romo-table-rm-pad-bottom td { @include rm-pad-bottom; }
+
+.romo-table-pad0-left   th, .romo-table-pad0-left   td { @include pad0-left; }
+.romo-table-pad-left    th, .romo-table-pad-left    td { @include pad1-left; }
+.romo-table-pad1-left   th, .romo-table-pad1-left   td { @include pad1-left; }
+.romo-table-pad2-left   th, .romo-table-pad2-left   td { @include pad2-left; }
+.romo-table-pad3-left   th, .romo-table-pad3-left   td { @include pad3-left; }
+.romo-table-pad4-left   th, .romo-table-pad4-left   td { @include pad4-left; }
+.romo-table-pad5-left   th, .romo-table-pad5-left   td { @include pad5-left; }
+.romo-table-pad6-left   th, .romo-table-pad6-left   td { @include pad6-left; }
+.romo-table-rm-pad-left th, .romo-table-rm-pad-left td { @include rm-pad-left; }
