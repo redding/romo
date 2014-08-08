@@ -45,7 +45,77 @@ For basic styling with horizontal dividers, add the base class `.romo-table`.
 
 ## Optional classes
 
-Add any of the following classes to the `.romo-table` base class.
+### `{th|td}.romo-col-N-N`
+
+Add grid column style classes to set table cell widths.
+
+<div class="romo-pad">
+  <table class="romo-table">
+    <thead>
+      <tr>
+        <th class="romo-col-1-12">#</th>
+        <th class="romo-col-7-12">Name</th>
+        <th class="romo-col-2-12">Slug</th>
+        <th class="romo-col-2-12">Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="romo-col-1-12">1</td>
+        <td class="romo-col-7-12">Joe Test</td>
+        <td class="romo-col-2-12">joe-test</td>
+        <td class="romo-col-2-12">10</td>
+      </tr>
+      <tr>
+        <td class="romo-col-1-12">2</td>
+        <td class="romo-col-7-12">Jane Doe</td>
+        <td class="romo-col-2-12">jane-doe</td>
+        <td class="romo-col-2-12">18</td>
+      </tr>
+      <tr>
+        <td class="romo-col-1-12">3</td>
+        <td class="romo-col-7-12">Good Corp.</td>
+        <td class="romo-col-2-12">good-corp</td>
+        <td class="romo-col-2-12">5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+```html
+<div class="romo-pad">
+  <table class="romo-table">
+    <thead>
+      <tr>
+        <th class="romo-col-1-12">#</th>
+        <th class="romo-col-7-12">Name</th>
+        <th class="romo-col-2-12">Slug</th>
+        <th class="romo-col-2-12">Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="romo-col-1-12">1</td>
+        <td class="romo-col-7-12">Joe Test</td>
+        <td class="romo-col-2-12">joe-test</td>
+        <td class="romo-col-2-12">10</td>
+      </tr>
+      <tr>
+        <td class="romo-col-1-12">2</td>
+        <td class="romo-col-7-12">Jane Doe</td>
+        <td class="romo-col-2-12">jane-doe</td>
+        <td class="romo-col-2-12">18</td>
+      </tr>
+      <tr>
+        <td class="romo-col-1-12">3</td>
+        <td class="romo-col-7-12">Good Corp.</td>
+        <td class="romo-col-2-12">good-corp</td>
+        <td class="romo-col-2-12">5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
 
 ### `.romo-table-striped`
 
