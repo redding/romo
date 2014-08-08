@@ -1,8 +1,6 @@
 @import 'css/romo/mixins';
 
-.romo-table {
-  width: 100%;
-}
+.romo-table { width: 100%; }
 
 .romo-table th,
 .romo-table td {
@@ -12,24 +10,13 @@
   @include border1-bottom;
 }
 
-.romo-table th {
-  font-weight: bold;
-}
+.romo-table th { @include weight(bold); }
+.romo-table thead th { @include align-bottom; }
 
-.romo-table thead th {
-  @include align-bottom;
-}
+.romo-table-alt { @include bg-alt; }
 
-.romo-table-striped tbody > tr:nth-child(odd) {
-  @include bg-alt;
-}
-
-.romo-table-alt {
-  @include bg-alt;
-}
-.romo-table-alt.romo-table-striped tbody > tr:nth-child(odd) {
-  @include bg-base;
-}
+.romo-table-striped tbody > tr:nth-child(odd) { @include bg-alt; }
+.romo-table-striped.romo-table-alt tbody > tr:nth-child(odd) { @include bg-base; }
 
 .romo-table tr.romo-muted   { @include bg-muted; }
 .romo-table tr.romo-warning { @include bg-warning; }
@@ -39,9 +26,7 @@
 .romo-table tr.romo-inverse { @include bg-inverse; }
 
 .romo-table-hover tbody tr:hover,
-.romo-table-hover.romo-table-alt tbody tr:hover {
-  @include bg-hover;
-}
+.romo-table-hover.romo-table-alt tbody tr:hover { @include bg-hover; }
 
 .romo-table-hover tbody tr.romo-muted:hover   { @include bg-muted-hover; }
 .romo-table-hover tbody tr.romo-warning:hover { @include bg-warning-hover; }
@@ -80,6 +65,7 @@
 .romo-table-border-info    { @include border-info; }
 .romo-table-border-success { @include border-success; }
 .romo-table-border-inverse { @include border-inverse; }
+.romo-table-border-alt     { @include border-alt; }
 
 .romo-table-border-muted   th, .romo-table-border-muted   td { @include border-muted; }
 .romo-table-border-warning th, .romo-table-border-warning td { @include border-warning; }
@@ -87,6 +73,7 @@
 .romo-table-border-info    th, .romo-table-border-info    td { @include border-info; }
 .romo-table-border-success th, .romo-table-border-success td { @include border-success; }
 .romo-table-border-inverse th, .romo-table-border-inverse td { @include border-inverse; }
+.romo-table-border-alt     th, .romo-table-border-alt     td { @include border-alt; }
 
 .romo-table-pad0   th, .romo-table-pad0   td { @include pad0; }
 .romo-table-pad    th, .romo-table-pad    td { @include pad1; }

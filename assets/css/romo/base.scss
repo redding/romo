@@ -158,6 +158,9 @@ h6 { @include text6; }
 .romo-bg-alt   { @include bg-alt(!important); }
 .romo-bg-hover { @include bg-hover(!important); }
 
+.romo-border-base { @include border-base(!important); }
+.romo-border-alt  { @include border-alt(!important); }
+
 .romo-text-muted   { @include text-muted(!important); }
 .romo-text-warning { @include text-warning(!important); }
 .romo-text-error   { @include text-error(!important); }
