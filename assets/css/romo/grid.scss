@@ -1,5 +1,4 @@
-/* Grid System */
-/* ----------- */
+@import 'css/romo/mixins';
 
 .romo-row:before,
 .romo-row:after {
@@ -12,83 +11,83 @@
   clear: both;
 }
 
-[class*="romo-col-"] {
+.romo-row > [class*="romo-col-"] {
   float: left;
   min-height: 1px;
 }
 
-.romo-col-1-12  { width: 1  * (100% / 12); }
-.romo-col-2-12  { width: 2  * (100% / 12); }
-.romo-col-3-12  { width: 3  * (100% / 12); }
-.romo-col-4-12  { width: 4  * (100% / 12); }
-.romo-col-5-12  { width: 5  * (100% / 12); }
-.romo-col-6-12  { width: 6  * (100% / 12); }
-.romo-col-7-12  { width: 7  * (100% / 12); }
-.romo-col-8-12  { width: 8  * (100% / 12); }
-.romo-col-9-12  { width: 9  * (100% / 12); }
-.romo-col-10-12 { width: 10 * (100% / 12); }
-.romo-col-11-12 { width: 11 * (100% / 12); }
-.romo-col-12-12 { width: 12 * (100% / 12); }
+.romo-col-1-12  { @include grid-col(1, 12); }
+.romo-col-2-12  { @include grid-col(2, 12); }
+.romo-col-3-12  { @include grid-col(3, 12); }
+.romo-col-4-12  { @include grid-col(4, 12); }
+.romo-col-5-12  { @include grid-col(5, 12); }
+.romo-col-6-12  { @include grid-col(6, 12); }
+.romo-col-7-12  { @include grid-col(7, 12); }
+.romo-col-8-12  { @include grid-col(8, 12); }
+.romo-col-9-12  { @include grid-col(9, 12); }
+.romo-col-10-12 { @include grid-col(10, 12); }
+.romo-col-11-12 { @include grid-col(11, 12); }
+.romo-col-12-12 { @include grid-col(12, 12); }
 
-.romo-col-1-24  { width: 1  * (100% / 24); }
-.romo-col-2-24  { width: 2  * (100% / 24); }
-.romo-col-3-24  { width: 3  * (100% / 24); }
-.romo-col-4-24  { width: 4  * (100% / 24); }
-.romo-col-5-24  { width: 5  * (100% / 24); }
-.romo-col-6-24  { width: 6  * (100% / 24); }
-.romo-col-7-24  { width: 7  * (100% / 24); }
-.romo-col-8-24  { width: 8  * (100% / 24); }
-.romo-col-9-24  { width: 9  * (100% / 24); }
-.romo-col-10-24 { width: 10 * (100% / 24); }
-.romo-col-11-24 { width: 11 * (100% / 24); }
-.romo-col-12-24 { width: 12 * (100% / 24); }
-.romo-col-13-24 { width: 13 * (100% / 24); }
-.romo-col-14-24 { width: 14 * (100% / 24); }
-.romo-col-15-24 { width: 15 * (100% / 24); }
-.romo-col-16-24 { width: 16 * (100% / 24); }
-.romo-col-17-24 { width: 17 * (100% / 24); }
-.romo-col-18-24 { width: 18 * (100% / 24); }
-.romo-col-19-24 { width: 19 * (100% / 24); }
-.romo-col-20-24 { width: 20 * (100% / 24); }
-.romo-col-21-24 { width: 21 * (100% / 24); }
-.romo-col-22-24 { width: 22 * (100% / 24); }
-.romo-col-23-24 { width: 23 * (100% / 24); }
-.romo-col-24-24 { width: 24 * (100% / 24); }
+.romo-col-1-24  { @include grid-col(1, 24); }
+.romo-col-2-24  { @include grid-col(2, 24); }
+.romo-col-3-24  { @include grid-col(3, 24); }
+.romo-col-4-24  { @include grid-col(4, 24); }
+.romo-col-5-24  { @include grid-col(5, 24); }
+.romo-col-6-24  { @include grid-col(6, 24); }
+.romo-col-7-24  { @include grid-col(7, 24); }
+.romo-col-8-24  { @include grid-col(8, 24); }
+.romo-col-9-24  { @include grid-col(9, 24); }
+.romo-col-10-24 { @include grid-col(10, 24); }
+.romo-col-11-24 { @include grid-col(11, 24); }
+.romo-col-12-24 { @include grid-col(12, 24); }
+.romo-col-13-24 { @include grid-col(13, 24); }
+.romo-col-14-24 { @include grid-col(14, 24); }
+.romo-col-15-24 { @include grid-col(15, 24); }
+.romo-col-16-24 { @include grid-col(16, 24); }
+.romo-col-17-24 { @include grid-col(17, 24); }
+.romo-col-18-24 { @include grid-col(18, 24); }
+.romo-col-19-24 { @include grid-col(19, 24); }
+.romo-col-20-24 { @include grid-col(20, 24); }
+.romo-col-21-24 { @include grid-col(21, 24); }
+.romo-col-22-24 { @include grid-col(22, 24); }
+.romo-col-23-24 { @include grid-col(23, 24); }
+.romo-col-24-24 { @include grid-col(24, 24); }
 
-.romo-offset-1-12  { margin-left: 1  * (100% / 12); }
-.romo-offset-2-12  { margin-left: 2  * (100% / 12); }
-.romo-offset-3-12  { margin-left: 3  * (100% / 12); }
-.romo-offset-4-12  { margin-left: 4  * (100% / 12); }
-.romo-offset-5-12  { margin-left: 5  * (100% / 12); }
-.romo-offset-6-12  { margin-left: 6  * (100% / 12); }
-.romo-offset-7-12  { margin-left: 7  * (100% / 12); }
-.romo-offset-8-12  { margin-left: 8  * (100% / 12); }
-.romo-offset-9-12  { margin-left: 9  * (100% / 12); }
-.romo-offset-10-12 { margin-left: 10 * (100% / 12); }
-.romo-offset-11-12 { margin-left: 11 * (100% / 12); }
-.romo-offset-12-12 { margin-left: 12 * (100% / 12); }
+.romo-offset-1-12  { @include grid-offset(1, 12); }
+.romo-offset-2-12  { @include grid-offset(2, 12); }
+.romo-offset-3-12  { @include grid-offset(3, 12); }
+.romo-offset-4-12  { @include grid-offset(4, 12); }
+.romo-offset-5-12  { @include grid-offset(5, 12); }
+.romo-offset-6-12  { @include grid-offset(6, 12); }
+.romo-offset-7-12  { @include grid-offset(7, 12); }
+.romo-offset-8-12  { @include grid-offset(8, 12); }
+.romo-offset-9-12  { @include grid-offset(9, 12); }
+.romo-offset-10-12 { @include grid-offset(10, 12); }
+.romo-offset-11-12 { @include grid-offset(11, 12); }
+.romo-offset-12-12 { @include grid-offset(12, 12); }
 
-.romo-offset-1-24  { margin-left: 1  * (100% / 24); }
-.romo-offset-2-24  { margin-left: 2  * (100% / 24); }
-.romo-offset-3-24  { margin-left: 3  * (100% / 24); }
-.romo-offset-4-24  { margin-left: 4  * (100% / 24); }
-.romo-offset-5-24  { margin-left: 5  * (100% / 24); }
-.romo-offset-6-24  { margin-left: 6  * (100% / 24); }
-.romo-offset-7-24  { margin-left: 7  * (100% / 24); }
-.romo-offset-8-24  { margin-left: 8  * (100% / 24); }
-.romo-offset-9-24  { margin-left: 9  * (100% / 24); }
-.romo-offset-10-24 { margin-left: 10 * (100% / 24); }
-.romo-offset-11-24 { margin-left: 11 * (100% / 24); }
-.romo-offset-12-24 { margin-left: 12 * (100% / 24); }
-.romo-offset-13-24 { margin-left: 13 * (100% / 24); }
-.romo-offset-14-24 { margin-left: 14 * (100% / 24); }
-.romo-offset-15-24 { margin-left: 15 * (100% / 24); }
-.romo-offset-16-24 { margin-left: 16 * (100% / 24); }
-.romo-offset-17-24 { margin-left: 17 * (100% / 24); }
-.romo-offset-18-24 { margin-left: 18 * (100% / 24); }
-.romo-offset-19-24 { margin-left: 19 * (100% / 24); }
-.romo-offset-20-24 { margin-left: 20 * (100% / 24); }
-.romo-offset-21-24 { margin-left: 21 * (100% / 24); }
-.romo-offset-22-24 { margin-left: 22 * (100% / 24); }
-.romo-offset-23-24 { margin-left: 23 * (100% / 24); }
-.romo-offset-24-24 { margin-left: 24 * (100% / 24); }
+.romo-offset-1-24  { @include grid-offset(1, 24); }
+.romo-offset-2-24  { @include grid-offset(2, 24); }
+.romo-offset-3-24  { @include grid-offset(3, 24); }
+.romo-offset-4-24  { @include grid-offset(4, 24); }
+.romo-offset-5-24  { @include grid-offset(5, 24); }
+.romo-offset-6-24  { @include grid-offset(6, 24); }
+.romo-offset-7-24  { @include grid-offset(7, 24); }
+.romo-offset-8-24  { @include grid-offset(8, 24); }
+.romo-offset-9-24  { @include grid-offset(9, 24); }
+.romo-offset-10-24 { @include grid-offset(10, 24); }
+.romo-offset-11-24 { @include grid-offset(11, 24); }
+.romo-offset-12-24 { @include grid-offset(12, 24); }
+.romo-offset-13-24 { @include grid-offset(13, 24); }
+.romo-offset-14-24 { @include grid-offset(14, 24); }
+.romo-offset-15-24 { @include grid-offset(15, 24); }
+.romo-offset-16-24 { @include grid-offset(16, 24); }
+.romo-offset-17-24 { @include grid-offset(17, 24); }
+.romo-offset-18-24 { @include grid-offset(18, 24); }
+.romo-offset-19-24 { @include grid-offset(19, 24); }
+.romo-offset-20-24 { @include grid-offset(20, 24); }
+.romo-offset-21-24 { @include grid-offset(21, 24); }
+.romo-offset-22-24 { @include grid-offset(22, 24); }
+.romo-offset-23-24 { @include grid-offset(23, 24); }
+.romo-offset-24-24 { @include grid-offset(24, 24); }

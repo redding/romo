@@ -100,6 +100,11 @@
 /* Scaffolding */
 /* ----------- */
 
+/* grid helpers */
+
+@mixin grid-col   ($num, $total, $i:"") { width:       $num * (100% / $total); }
+@mixin grid-offset($num, $total, $i:"") { margin-left: $num * (100% / $total); }
+
 /* border helpers */
 
 @mixin border-style($val, $i:"")        { border-style:        $val #{$i}; }
