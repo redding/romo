@@ -109,14 +109,14 @@
 
 @mixin list-unstyled($i:"") {
   list-style: none #{$i};
-  @include rm-push;
-  @include rm-pad;
+  @include rm-push($i);
+  @include rm-pad($i);
 }
 @mixin list-styled($i:"") {
   list-style-position: outside #{$i};
-  @include rm-push;
-  @include rm-pad;
-  padding-left: $baseFontSize * $lineHeightToSizeRatio;
+  @include rm-push($i);
+  @include rm-pad($i);
+  padding-left: ($baseFontSize * $lineHeightToSizeRatio) #{$i};
 }
 
 /* border helpers */

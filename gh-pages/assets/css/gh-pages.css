@@ -12,3 +12,8 @@ code {
   font-size: 13px;
   line-height: 20px;
 }
+
+ul, ol {
+  margin-bottom: 10px;
+  padding-left: 30px;
+}

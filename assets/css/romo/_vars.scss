@@ -8,22 +8,18 @@ $baseFontSize:    14px;
 $baseLineHeight:  $baseFontSize * $lineHeightToSizeRatio;
 $baseSpacingSize: $baseLineHeight / 2;
 
+/* colors */
+
+$linkColor:      #08c;
+$linkColorHover: darken($linkColor, 15%);
+
 $baseBackground:   #fff;
-$altBackground:    #f9f9f9;
+$altBackground:    #f3f3f3;
 $backgroundHover:  darken($altBackground, 5%);
 $baseColor:        #333;
 $baseBorderColor:  #ccc;
 $altBorderColor:   #fff;
 $baseBorderRadius: 3px;
-
-/* links */
-
-$linkColor:      #08c;
-$linkColorHover: darken($linkColor, 15%);
-
-/* nav */
-
-/* color emphasis */
 
 $mutedText:              #999999;
 $mutedTextHover:         darken($mutedText, 10%);
@@ -60,3 +56,5 @@ $inverseTextHover:       darken($inverseText, 10%);
 $inverseBackground:      #444444;
 $inverseBackgroundHover: darken($inverseBackground, 5%);
 $inverseBorder:          darken(adjust_hue($inverseBackground, -10), 3%);
+
+/* nav */

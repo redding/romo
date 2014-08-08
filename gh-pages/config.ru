@@ -27,15 +27,17 @@ class RomoGHPages
   get :base_css_typography, 'BaseCSS::Typography'
 
   # Scaffolding
-  url :scaffolding_helpers, '/scaffolding/helpers.html'
-  url :scaffolding_grid,    '/scaffolding/grid.html'
-  url :scaffolding_tables,  '/scaffolding/tables.html'
-  url :scaffolding_lists,   '/scaffolding/lists.html'
+  url :scaffolding_helpers,    '/scaffolding/helpers.html'
+  url :scaffolding_lists,      '/scaffolding/lists.html'
+  url :scaffolding_grid,       '/scaffolding/grid.html'
+  url :scaffolding_tables,     '/scaffolding/tables.html'
+  url :scaffolding_grid_table, '/scaffolding/grid-table.html'
 
-  get :scaffolding_helpers, 'Scaffolding::Helpers'
-  get :scaffolding_grid,    'Scaffolding::Grid'
-  get :scaffolding_tables,  'Scaffolding::Tables'
-  get :scaffolding_lists,   'Scaffolding::Lists'
+  get :scaffolding_helpers,    'Scaffolding::Helpers'
+  get :scaffolding_lists,      'Scaffolding::Lists'
+  get :scaffolding_grid,       'Scaffolding::Grid'
+  get :scaffolding_tables,     'Scaffolding::Tables'
+  get :scaffolding_grid_table, 'Scaffolding::GridTable'
 
   # Testing
   url :test_index,    '/test/index.html'
@@ -65,7 +67,8 @@ class RomoGHPages
         'css/romo/base.css',
         'css/romo/lists.css',
         'css/romo/grid.css',
-        'css/romo/tables.css',
+        'css/romo/table.css',
+        'css/romo/grid_table.css',
         'css/romo/inputs.css',
         'css/romo/dropdown.css',
         'css/romo/modal.css',

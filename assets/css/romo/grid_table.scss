@@ -1,0 +1,156 @@
+@import 'css/romo/mixins';
+
+.romo-grid-table {
+  width: 100%;
+  background-color: transparent;
+  @include rm-pad;
+  @include rm-push;
+}
+
+ul.romo-grid-table,
+ol.romo-grid-table { @include list-unstyled(!important); }
+
+.romo-grid-table > .romo-row { @include border1-bottom; }
+
+.romo-grid-table.romo-grid-table-header > .romo-row:first-child > [class*="romo-span-"] { @include weight(bold); }
+.romo-grid-table.romo-grid-table-header > .romo-row:first-child > [class*="romo-span-"] { @include align-bottom; }
+
+.romo-grid-table > .romo-row > [class*="romo-span-"] {
+  @include rm-pad;
+  @include rm-push;
+  @include align-left;
+  @include align-middle;
+}
+
+.romo-grid-table-alt { @include bg-alt; }
+
+.romo-grid-table-striped:not(.romo-grid-table-header) > .romo-row:nth-child(odd) { @include bg-alt; }
+.romo-grid-table-striped:not(.romo-grid-table-header).romo-grid-table-alt > .romo-row:nth-child(odd) { @include bg-base; }
+.romo-grid-table-striped.romo-grid-table-header > .romo-row:nth-child(even) { @include bg-alt; }
+.romo-grid-table-striped.romo-grid-table-header.romo-grid-table-alt > .romo-row:nth-child(even) { @include bg-base; }
+
+.romo-grid-table .romo-row.romo-muted   { @include bg-muted; }
+.romo-grid-table .romo-row.romo-warning { @include bg-warning; }
+.romo-grid-table .romo-row.romo-error   { @include bg-error; }
+.romo-grid-table .romo-row.romo-info    { @include bg-info; }
+.romo-grid-table .romo-row.romo-success { @include bg-success; }
+.romo-grid-table .romo-row.romo-inverse { @include bg-inverse; }
+
+.romo-grid-table-hover:not(.romo-grid-table-header) > .romo-row:hover,
+.romo-grid-table-hover:not(.romo-grid-table-header).romo-grid-table-alt > .romo-row:hover { @include bg-hover; }
+.romo-grid-table-hover.romo-grid-table-header > .romo-row:not(:first-child):hover,
+.romo-grid-table-hover.romo-grid-table-header.romo-grid-table-alt > .romo-row:not(:first-child):hover { @include bg-hover; }
+
+.romo-grid-table-hover:not(.romo-grid-table-header) > .romo-row.romo-muted:hover,
+.romo-grid-table-hover.romo-grid-table-header > .romo-row.romo-muted:not(:first-child):hover { @include bg-muted-hover; }
+.romo-grid-table-hover:not(.romo-grid-table-header) > .romo-row.romo-warning:hover,
+.romo-grid-table-hover.romo-grid-table-header > .romo-row.romo-warning:not(:first-child):hover { @include bg-warning-hover; }
+.romo-grid-table-hover:not(.romo-grid-table-header) > .romo-row.romo-error:hover,
+.romo-grid-table-hover.romo-grid-table-header > .romo-row.romo-error:not(:first-child):hover { @include bg-error-hover; }
+.romo-grid-table-hover:not(.romo-grid-table-header) > .romo-row.romo-info:hover,
+.romo-grid-table-hover.romo-grid-table-header > .romo-row.romo-info:not(:first-child):hover { @include bg-info-hover; }
+.romo-grid-table-hover:not(.romo-grid-table-header) > .romo-row.romo-success:hover,
+.romo-grid-table-hover.romo-grid-table-header > .romo-row.romo-success:not(:first-child):hover { @include bg-success-hover; }
+.romo-grid-table-hover:not(.romo-grid-table-header) > .romo-row.romo-inverse:hover,
+.romo-grid-table-hover.romo-grid-table-header > .romo-row.romo-inverse:not(:first-child):hover { @include bg-inverse-hover; }
+
+.romo-grid-table-border  { @include border1; }
+.romo-grid-table-border1 { @include border1; }
+.romo-grid-table-border2 { @include border2; }
+.romo-grid-table-border3 { @include border3; }
+.romo-grid-table-border4 { @include border4; }
+.romo-grid-table-border5 { @include border5; }
+.romo-grid-table-border6 { @include border6; }
+
+.romo-grid-table.romo-grid-table-border  > .romo-row { @include border1-bottom; }
+.romo-grid-table.romo-grid-table-border1 > .romo-row { @include border1-bottom; }
+.romo-grid-table.romo-grid-table-border2 > .romo-row { @include border2-bottom; }
+.romo-grid-table.romo-grid-table-border3 > .romo-row { @include border3-bottom; }
+.romo-grid-table.romo-grid-table-border4 > .romo-row { @include border4-bottom; }
+.romo-grid-table.romo-grid-table-border5 > .romo-row { @include border5-bottom; }
+.romo-grid-table.romo-grid-table-border6 > .romo-row { @include border6-bottom; }
+
+.romo-grid-table.romo-grid-table-border  > .romo-row > [class*="romo-span-"] { @include border1-right; }
+.romo-grid-table.romo-grid-table-border1 > .romo-row > [class*="romo-span-"] { @include border1-right; }
+.romo-grid-table.romo-grid-table-border2 > .romo-row > [class*="romo-span-"] { @include border2-right; }
+.romo-grid-table.romo-grid-table-border3 > .romo-row > [class*="romo-span-"] { @include border3-right; }
+.romo-grid-table.romo-grid-table-border4 > .romo-row > [class*="romo-span-"] { @include border4-right; }
+.romo-grid-table.romo-grid-table-border5 > .romo-row > [class*="romo-span-"] { @include border5-right; }
+.romo-grid-table.romo-grid-table-border6 > .romo-row > [class*="romo-span-"] { @include border6-right; }
+
+.romo-grid-table[class*="romo-grid-table-border"] > .romo-row > [class*="romo-span-"]:last-child { @include rm-border-right; }
+.romo-grid-table[class*="romo-grid-table-border"] > .romo-row:last-child { @include rm-border-bottom; }
+
+.romo-grid-table-border-muted   { @include border-muted; }
+.romo-grid-table-border-warning { @include border-warning; }
+.romo-grid-table-border-error   { @include border-error; }
+.romo-grid-table-border-info    { @include border-info; }
+.romo-grid-table-border-success { @include border-success; }
+.romo-grid-table-border-inverse { @include border-inverse; }
+.romo-grid-table-border-alt     { @include border-alt; }
+
+.romo-grid-table-border-muted   > .romo-row { @include border-muted; }
+.romo-grid-table-border-warning > .romo-row { @include border-warning; }
+.romo-grid-table-border-error   > .romo-row { @include border-error; }
+.romo-grid-table-border-info    > .romo-row { @include border-info; }
+.romo-grid-table-border-success > .romo-row { @include border-success; }
+.romo-grid-table-border-inverse > .romo-row { @include border-inverse; }
+.romo-grid-table-border-alt     > .romo-row { @include border-alt; }
+
+.romo-grid-table-border-muted   > .romo-row > [class*="romo-span-"] { @include border-muted; }
+.romo-grid-table-border-warning > .romo-row > [class*="romo-span-"] { @include border-warning; }
+.romo-grid-table-border-error   > .romo-row > [class*="romo-span-"] { @include border-error; }
+.romo-grid-table-border-info    > .romo-row > [class*="romo-span-"] { @include border-info; }
+.romo-grid-table-border-success > .romo-row > [class*="romo-span-"] { @include border-success; }
+.romo-grid-table-border-inverse > .romo-row > [class*="romo-span-"] { @include border-inverse; }
+.romo-grid-table-border-alt     > .romo-row > [class*="romo-span-"] { @include border-alt; }
+
+.romo-grid-table.romo-grid-table-pad0   > .romo-row > [class*="romo-span-"] { @include pad0; }
+.romo-grid-table.romo-grid-table-pad    > .romo-row > [class*="romo-span-"] { @include pad1; }
+.romo-grid-table.romo-grid-table-pad1   > .romo-row > [class*="romo-span-"] { @include pad1; }
+.romo-grid-table.romo-grid-table-pad2   > .romo-row > [class*="romo-span-"] { @include pad2; }
+.romo-grid-table.romo-grid-table-pad3   > .romo-row > [class*="romo-span-"] { @include pad3; }
+.romo-grid-table.romo-grid-table-pad4   > .romo-row > [class*="romo-span-"] { @include pad4; }
+.romo-grid-table.romo-grid-table-pad5   > .romo-row > [class*="romo-span-"] { @include pad5; }
+.romo-grid-table.romo-grid-table-pad6   > .romo-row > [class*="romo-span-"] { @include pad6; }
+.romo-grid-table.romo-grid-table-rm-pad > .romo-row > [class*="romo-span-"] { @include rm-pad; }
+
+.romo-grid-table.romo-table-pad0-top   > .romo-row > [class*="romo-span-"] { @include pad0-top; }
+.romo-grid-table.romo-table-pad-top    > .romo-row > [class*="romo-span-"] { @include pad1-top; }
+.romo-grid-table.romo-table-pad1-top   > .romo-row > [class*="romo-span-"] { @include pad1-top; }
+.romo-grid-table.romo-table-pad2-top   > .romo-row > [class*="romo-span-"] { @include pad2-top; }
+.romo-grid-table.romo-table-pad3-top   > .romo-row > [class*="romo-span-"] { @include pad3-top; }
+.romo-grid-table.romo-table-pad4-top   > .romo-row > [class*="romo-span-"] { @include pad4-top; }
+.romo-grid-table.romo-table-pad5-top   > .romo-row > [class*="romo-span-"] { @include pad5-top; }
+.romo-grid-table.romo-table-pad6-top   > .romo-row > [class*="romo-span-"] { @include pad6-top; }
+.romo-grid-table.romo-table-rm-pad-top > .romo-row > [class*="romo-span-"] { @include rm-pad-top; }
+
+.romo-grid-table.romo-table-pad0-right   > .romo-row > [class*="romo-span-"] { @include pad0-right; }
+.romo-grid-table.romo-table-pad-right    > .romo-row > [class*="romo-span-"] { @include pad1-right; }
+.romo-grid-table.romo-table-pad1-right   > .romo-row > [class*="romo-span-"] { @include pad1-right; }
+.romo-grid-table.romo-table-pad2-right   > .romo-row > [class*="romo-span-"] { @include pad2-right; }
+.romo-grid-table.romo-table-pad3-right   > .romo-row > [class*="romo-span-"] { @include pad3-right; }
+.romo-grid-table.romo-table-pad4-right   > .romo-row > [class*="romo-span-"] { @include pad4-right; }
+.romo-grid-table.romo-table-pad5-right   > .romo-row > [class*="romo-span-"] { @include pad5-right; }
+.romo-grid-table.romo-table-pad6-right   > .romo-row > [class*="romo-span-"] { @include pad6-right; }
+.romo-grid-table.romo-table-rm-pad-right > .romo-row > [class*="romo-span-"] { @include rm-pad-right; }
+
+.romo-grid-table.romo-table-pad0-bottom   > .romo-row > [class*="romo-span-"] { @include pad0-bottom; }
+.romo-grid-table.romo-table-pad-bottom    > .romo-row > [class*="romo-span-"] { @include pad1-bottom; }
+.romo-grid-table.romo-table-pad1-bottom   > .romo-row > [class*="romo-span-"] { @include pad1-bottom; }
+.romo-grid-table.romo-table-pad2-bottom   > .romo-row > [class*="romo-span-"] { @include pad2-bottom; }
+.romo-grid-table.romo-table-pad3-bottom   > .romo-row > [class*="romo-span-"] { @include pad3-bottom; }
+.romo-grid-table.romo-table-pad4-bottom   > .romo-row > [class*="romo-span-"] { @include pad4-bottom; }
+.romo-grid-table.romo-table-pad5-bottom   > .romo-row > [class*="romo-span-"] { @include pad5-bottom; }
+.romo-grid-table.romo-table-pad6-bottom   > .romo-row > [class*="romo-span-"] { @include pad6-bottom; }
+.romo-grid-table.romo-table-rm-pad-bottom > .romo-row > [class*="romo-span-"] { @include rm-pad-bottom; }
+
+.romo-grid-table.romo-table-pad0-left   > .romo-row > [class*="romo-span-"] { @include pad0-left; }
+.romo-grid-table.romo-table-pad-left    > .romo-row > [class*="romo-span-"] { @include pad1-left; }
+.romo-grid-table.romo-table-pad1-left   > .romo-row > [class*="romo-span-"] { @include pad1-left; }
+.romo-grid-table.romo-table-pad2-left   > .romo-row > [class*="romo-span-"] { @include pad2-left; }
+.romo-grid-table.romo-table-pad3-left   > .romo-row > [class*="romo-span-"] { @include pad3-left; }
+.romo-grid-table.romo-table-pad4-left   > .romo-row > [class*="romo-span-"] { @include pad4-left; }
+.romo-grid-table.romo-table-pad5-left   > .romo-row > [class*="romo-span-"] { @include pad5-left; }
+.romo-grid-table.romo-table-pad6-left   > .romo-row > [class*="romo-span-"] { @include pad6-left; }
+.romo-grid-table.romo-table-rm-pad-left > .romo-row > [class*="romo-span-"] { @include rm-pad-left; }

@@ -199,14 +199,6 @@ Uses the alternate bg color for the table background.
   </table>
 </div>
 
-```html
-<div class="romo-pad">
-  <table class="romo-table romo-table-alt">
-    ...
-  </table>
-</div>
-```
-
 <div class="romo-pad">
   <table class="romo-table romo-table-alt romo-table-striped">
     <thead>
@@ -242,7 +234,7 @@ Uses the alternate bg color for the table background.
 
 ```html
 <div class="romo-pad">
-  <table class="romo-table romo-table-alt romo-table-striped">
+  <table class="romo-table romo-table-alt">
     ...
   </table>
 </div>
@@ -436,14 +428,6 @@ Add hover state to rows within a `<tbody>`.
   </table>
 </div>
 
-```html
-<div class="romo-pad">
-  <table class="romo-table romo-table-hover romo-table-alt">
-    ...
-  </table>
-</div>
-```
-
 <div class="romo-pad">
   <table class="romo-table romo-table-hover romo-table-alt romo-table-striped">
     <thead>
@@ -479,7 +463,7 @@ Add hover state to rows within a `<tbody>`.
 
 ```html
 <div class="romo-pad">
-  <table class="romo-table romo-table-hover romo-table-alt romo-table-striped">
+  <table class="romo-table romo-table-hover romo-table-alt">
     ...
   </table>
 </div>
@@ -550,7 +534,7 @@ Add hover state to rows within a `<tbody>`.
 </div>
 ```
 
-### `.romo-table-border*`
+### `.romo-table-border{1-6}`
 
 Adds sized borders to the table.
 
@@ -808,43 +792,7 @@ Adds sized borders to the table.
 
 ```html
 <div class="romo-pad">
-  <table class="romo-table romo-table-border">
-    ...
-  </table>
-</div>
-
-<div class="romo-pad">
-  <table class="romo-table romo-table-border1">
-    ...
-  </table>
-</div>
-
-<div class="romo-pad">
-  <table class="romo-table romo-table-border2">
-    ...
-  </table>
-</div>
-
-<div class="romo-pad">
-  <table class="romo-table romo-table-border3">
-    ...
-  </table>
-</div>
-
-<div class="romo-pad">
-  <table class="romo-table romo-table-border4">
-    ...
-  </table>
-</div>
-
-<div class="romo-pad">
-  <table class="romo-table romo-table-border5">
-    ...
-  </table>
-</div>
-
-<div class="romo-pad">
-  <table class="romo-table romo-table-border6">
+  <table class="romo-table romo-table-border{1-6}">
     ...
   </table>
 </div>
@@ -1054,37 +1002,7 @@ Adds border color empasis to the entire table.
 
 ```html
 <div class="romo-pad">
-  <table class="romo-table romo-table-border6 romo-table-border-muted">
-    ...
-  </table>
-</div>
-
-<div class="romo-pad">
-  <table class="romo-table romo-table-border6 romo-table-border-warning">
-    ...
-  </table>
-</div>
-
-<div class="romo-pad">
-  <table class="romo-table romo-table-border6 romo-table-border-error">
-    ...
-  </table>
-</div>
-
-<div class="romo-pad">
-  <table class="romo-table romo-table-border6 romo-table-border-info">
-    ...
-  </table>
-</div>
-
-<div class="romo-pad">
-  <table class="romo-table romo-table-border6 romo-table-border-success">
-    ...
-  </table>
-</div>
-
-<div class="romo-pad">
-  <table class="romo-table romo-table-border6 romo-table-border-inverse">
+  <table class="romo-table romo-table-border6 romo-table-border-{muted|warning|error|info|success|inverse}">
     ...
   </table>
 </div>
@@ -1174,7 +1092,7 @@ Adds cell padding to every cell in the table
 
 ```html
 <div class="romo-pad">
-  <table class="romo-table romo-table-border romo-table-pad0">
+  <table class="romo-table romo-table-pad0">
     ...
   </table>
 </div>
@@ -1215,7 +1133,7 @@ Adds cell padding to every cell in the table
 
 ```html
 <div class="romo-pad">
-  <table class="romo-table romo-table-border romo-table-pad">
+  <table class="romo-table romo-table-pad">
     ...
   </table>
 </div>
@@ -1256,7 +1174,7 @@ Adds cell padding to every cell in the table
 
 ```html
 <div class="romo-pad">
-  <table class="romo-table romo-table-border romo-table-pad1">
+  <table class="romo-table romo-table-pad1">
     ...
   </table>
 </div>
@@ -1297,7 +1215,7 @@ Adds cell padding to every cell in the table
 
 ```html
 <div class="romo-pad">
-  <table class="romo-table romo-table-border romo-table-pad2">
+  <table class="romo-table romo-table-pad2">
     ...
   </table>
 </div>
@@ -1338,7 +1256,7 @@ Adds cell padding to every cell in the table
 
 ```html
 <div class="romo-pad">
-  <table class="romo-table romo-table-border romo-table-pad3">
+  <table class="romo-table romo-table-pad3">
     ...
   </table>
 </div>
@@ -1379,7 +1297,7 @@ Adds cell padding to every cell in the table
 
 ```html
 <div class="romo-pad">
-  <table class="romo-table romo-table-border romo-table-pad4">
+  <table class="romo-table romo-table-pad4">
     ...
   </table>
 </div>
@@ -1420,7 +1338,7 @@ Adds cell padding to every cell in the table
 
 ```html
 <div class="romo-pad">
-  <table class="romo-table romo-table-border romo-table-pad5">
+  <table class="romo-table romo-table-pad5">
     ...
   </table>
 </div>
@@ -1461,7 +1379,7 @@ Adds cell padding to every cell in the table
 
 ```html
 <div class="romo-pad">
-  <table class="romo-table romo-table-border romo-table-pad6">
+  <table class="romo-table romo-table-pad6">
     ...
   </table>
 </div>

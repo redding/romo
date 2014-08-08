@@ -5,6 +5,9 @@
 ul.romo-list-unstyled,
 ol.romo-list-unstyled { @include list-unstyled(!important); }
 
+ul.romo-list-styled,
+ol.romo-list-styled { @include list-styled(!important); }
+
 ul.romo-list-inline,
 ol.romo-list-inline { @include list-unstyled(!important); display: inline-flex; }
 ul.romo-list-inline > li,
