@@ -1538,3 +1538,71 @@ Use any helper style classes in any combination on rows/cells.
   </table>
 </div>
 ```
+
+## Supported table markup
+
+List of supported table HTML elements and how they should be used.
+
+<div>
+<table class="romo-table romo-table-striped romo-table-pad romo-table-border">
+  <thead>
+    <tr>
+      <th>Tag</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;table&gt;</code></td>
+      <td>Wrapping element for displaying data in a tabular format</td>
+    </tr>
+    <tr>
+      <td><code>&lt;thead&gt;</code></td>
+      <td>(optional) Container element for table header rows to label table columns</td>
+    </tr>
+    <tr>
+      <td><code>&lt;tfoot&gt;</code></td>
+      <td>(optional) Container element for table footer rows</td>
+    </tr>
+    <tr>
+      <td><code>&lt;tbody&gt;</code></td>
+      <td>Container element for table rows in the body of the table</td>
+    </tr>
+    <tr>
+      <td><code>&lt;tr&gt;</code></td>
+      <td>Container element for a set of table cells that appears on a single row</td>
+    </tr>
+    <tr>
+      <td><code>&lt;td&gt;</code></td>
+      <td>Default table cell</td>
+    </tr>
+    <tr>
+      <td><code>&lt;th&gt;</code></td>
+      <td>Special table cell for column (or row, depending on scope and placement) labels</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+```html
+<table>
+  <thead>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tfoot>
+  <tbody>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
+```
