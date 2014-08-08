@@ -102,7 +102,7 @@
 
 /* grid helpers */
 
-@mixin grid-col   ($num, $total, $i:"") { width:       $num * (100% / $total); }
+@mixin grid-span  ($num, $total, $i:"") { width:       $num * (100% / $total); }
 @mixin grid-offset($num, $total, $i:"") { margin-left: $num * (100% / $total); }
 
 /* list helpers */

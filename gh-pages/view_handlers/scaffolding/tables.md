@@ -45,7 +45,7 @@ For basic styling with horizontal dividers, add the base class `.romo-table`.
 
 ## Optional classes
 
-### `{th|td}.romo-col-N-N`
+### `{th|td}.romo-span-N-N`
 
 Add grid column style classes to set table cell widths.
 
@@ -53,30 +53,30 @@ Add grid column style classes to set table cell widths.
   <table class="romo-table">
     <thead>
       <tr>
-        <th class="romo-col-1-12">#</th>
-        <th class="romo-col-7-12">Name</th>
-        <th class="romo-col-2-12">Slug</th>
-        <th class="romo-col-2-12">Count</th>
+        <th class="romo-span-1-12">#</th>
+        <th class="romo-span-7-12">Name</th>
+        <th class="romo-span-2-12">Slug</th>
+        <th class="romo-span-2-12">Count</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td class="romo-col-1-12">1</td>
-        <td class="romo-col-7-12">Joe Test</td>
-        <td class="romo-col-2-12">joe-test</td>
-        <td class="romo-col-2-12">10</td>
+        <td class="romo-span-1-12">1</td>
+        <td class="romo-span-7-12">Joe Test</td>
+        <td class="romo-span-2-12">joe-test</td>
+        <td class="romo-span-2-12">10</td>
       </tr>
       <tr>
-        <td class="romo-col-1-12">2</td>
-        <td class="romo-col-7-12">Jane Doe</td>
-        <td class="romo-col-2-12">jane-doe</td>
-        <td class="romo-col-2-12">18</td>
+        <td class="romo-span-1-12">2</td>
+        <td class="romo-span-7-12">Jane Doe</td>
+        <td class="romo-span-2-12">jane-doe</td>
+        <td class="romo-span-2-12">18</td>
       </tr>
       <tr>
-        <td class="romo-col-1-12">3</td>
-        <td class="romo-col-7-12">Good Corp.</td>
-        <td class="romo-col-2-12">good-corp</td>
-        <td class="romo-col-2-12">5</td>
+        <td class="romo-span-1-12">3</td>
+        <td class="romo-span-7-12">Good Corp.</td>
+        <td class="romo-span-2-12">good-corp</td>
+        <td class="romo-span-2-12">5</td>
       </tr>
     </tbody>
   </table>
@@ -87,30 +87,30 @@ Add grid column style classes to set table cell widths.
   <table class="romo-table">
     <thead>
       <tr>
-        <th class="romo-col-1-12">#</th>
-        <th class="romo-col-7-12">Name</th>
-        <th class="romo-col-2-12">Slug</th>
-        <th class="romo-col-2-12">Count</th>
+        <th class="romo-span-1-12">#</th>
+        <th class="romo-span-7-12">Name</th>
+        <th class="romo-span-2-12">Slug</th>
+        <th class="romo-span-2-12">Count</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td class="romo-col-1-12">1</td>
-        <td class="romo-col-7-12">Joe Test</td>
-        <td class="romo-col-2-12">joe-test</td>
-        <td class="romo-col-2-12">10</td>
+        <td class="romo-span-1-12">1</td>
+        <td class="romo-span-7-12">Joe Test</td>
+        <td class="romo-span-2-12">joe-test</td>
+        <td class="romo-span-2-12">10</td>
       </tr>
       <tr>
-        <td class="romo-col-1-12">2</td>
-        <td class="romo-col-7-12">Jane Doe</td>
-        <td class="romo-col-2-12">jane-doe</td>
-        <td class="romo-col-2-12">18</td>
+        <td class="romo-span-1-12">2</td>
+        <td class="romo-span-7-12">Jane Doe</td>
+        <td class="romo-span-2-12">jane-doe</td>
+        <td class="romo-span-2-12">18</td>
       </tr>
       <tr>
-        <td class="romo-col-1-12">3</td>
-        <td class="romo-col-7-12">Good Corp.</td>
-        <td class="romo-col-2-12">good-corp</td>
-        <td class="romo-col-2-12">5</td>
+        <td class="romo-span-1-12">3</td>
+        <td class="romo-span-7-12">Good Corp.</td>
+        <td class="romo-span-2-12">good-corp</td>
+        <td class="romo-span-2-12">5</td>
       </tr>
     </tbody>
   </table>
@@ -1478,7 +1478,7 @@ Use any helper style classes in any combination on rows/cells.
         <th class="romo-pad2">#</th>
         <th>Name</th>
         <th class="romo-text2 romo-pad2-left">Slug</th>
-        <th class="romo-col-1-12 romo-text-center romo-text-top">Count</th>
+        <th class="romo-span-1-12 romo-text-center romo-text-top">Count</th>
       </tr>
     </thead>
     <tbody>
@@ -1486,19 +1486,19 @@ Use any helper style classes in any combination on rows/cells.
         <td>1</td>
         <td class="romo-bg-info">Joe Test</td>
         <td>joe-test</td>
-        <td class="romo-col-1-12 romo-text2 romo-border-error romo-border4">10</td>
+        <td class="romo-span-1-12 romo-text2 romo-border-error romo-border4">10</td>
       </tr>
       <tr>
         <td>2</td>
         <td>Jane Doe</td>
         <td class="romo-pad3">jane-doe</td>
-        <td class="romo-col-1-12 romo-text-center romo-text-success">18</td>
+        <td class="romo-span-1-12 romo-text-center romo-text-success">18</td>
       </tr>
       <tr class="romo-bg-success">
         <td>3</td>
         <td>Good Corp.</td>
         <td>good-corp</td>
-        <td class="romo-col-1-12">5</td>
+        <td class="romo-span-1-12">5</td>
       </tr>
     </tbody>
   </table>
@@ -1512,7 +1512,7 @@ Use any helper style classes in any combination on rows/cells.
         <th class="romo-pad2">#</th>
         <th>Name</th>
         <th class="romo-text2 romo-pad2-left">Slug</th>
-        <th class="romo-col-1-12 romo-text-center romo-text-top">Count</th>
+        <th class="romo-span-1-12 romo-text-center romo-text-top">Count</th>
       </tr>
     </thead>
     <tbody>
@@ -1520,19 +1520,19 @@ Use any helper style classes in any combination on rows/cells.
         <td>1</td>
         <td class="romo-bg-info">Joe Test</td>
         <td>joe-test</td>
-        <td class="romo-col-1-12 romo-text2 romo-border-error romo-border4">10</td>
+        <td class="romo-span-1-12 romo-text2 romo-border-error romo-border4">10</td>
       </tr>
       <tr>
         <td>2</td>
         <td>Jane Doe</td>
         <td class="romo-pad3">jane-doe</td>
-        <td class="romo-col-1-12 romo-text-center romo-text-success">18</td>
+        <td class="romo-span-1-12 romo-text-center romo-text-success">18</td>
       </tr>
       <tr class="romo-bg-success">
         <td>3</td>
         <td>Good Corp.</td>
         <td>good-corp</td>
-        <td class="romo-col-1-12">5</td>
+        <td class="romo-span-1-12">5</td>
       </tr>
     </tbody>
   </table>
