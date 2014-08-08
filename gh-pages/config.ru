@@ -30,10 +30,12 @@ class RomoGHPages
   url :scaffolding_helpers, '/scaffolding/helpers.html'
   url :scaffolding_grid,    '/scaffolding/grid.html'
   url :scaffolding_tables,  '/scaffolding/tables.html'
+  url :scaffolding_lists,   '/scaffolding/lists.html'
 
   get :scaffolding_helpers, 'Scaffolding::Helpers'
   get :scaffolding_grid,    'Scaffolding::Grid'
   get :scaffolding_tables,  'Scaffolding::Tables'
+  get :scaffolding_lists,   'Scaffolding::Lists'
 
   # Testing
   url :test_index,    '/test/index.html'
@@ -61,6 +63,7 @@ class RomoGHPages
       c.combination "css/romo.css", [
         'css/romo/normalize.css',
         'css/romo/base.css',
+        'css/romo/lists.css',
         'css/romo/grid.css',
         'css/romo/tables.css',
         'css/romo/inputs.css',

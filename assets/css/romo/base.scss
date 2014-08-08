@@ -31,6 +31,8 @@ td {
   @include align-middle;
 }
 
+ul, ol { @include list-styled; }
+
 /* Typography */
 /* ---------- */
 
