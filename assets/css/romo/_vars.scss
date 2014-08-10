@@ -8,6 +8,27 @@ $baseFontSize:    14px;
 $baseLineHeight:  $baseFontSize * $lineHeightToSizeRatio;
 $baseSpacingSize: $baseLineHeight / 2;
 
+$fontSize1: ($baseFontSize * 2.75);    /* ~38px */
+$fontSize2: ($baseFontSize * 2.25);    /* ~32px */
+$fontSize3: ($baseFontSize * 1.75);    /* ~24px */
+$fontSize4: ($baseFontSize * 1.25);    /* ~18px */
+$fontSize5: $baseFontSize;             /*  14px */
+$fontSize6: ($baseFontSize * 0.85);    /* ~12px */
+
+$lineHeight1: ($baseLineHeight * 2.00); /* 40px */
+$lineHeight2: ($baseLineHeight * 1.75); /* 35px */
+$lineHeight3: ($baseLineHeight * 1.50); /* 30px */
+$lineHeight4: $baseLineHeight;          /* 20px */
+$lineHeight5: ($baseLineHeight * 0.85); /* 17px */
+$lineHeight6: ($baseLineHeight * 0.75); /* 15px */;
+
+$imgHeight1: $lineHeight1 + (1 * $baseSpacingSize); /* 60px */
+$imgHeight2: $lineHeight2 + (1 * $baseSpacingSize); /* 55px */
+$imgHeight3: $lineHeight3 + (1 * $baseSpacingSize); /* 50px */
+$imgHeight4: $lineHeight4 + (1 * $baseSpacingSize); /* 30px */
+$imgHeight5: $lineHeight5 + (1 * $baseSpacingSize); /* 27px */
+$imgHeight6: $lineHeight6 + (1 * $baseSpacingSize); /* 25px */;
+
 /* colors */
 
 $linkColor:      #08c;
@@ -16,7 +37,7 @@ $linkColorHover: darken($linkColor, 15%);
 $baseBackground:   #fff;
 $altBackground:    #f3f3f3;
 $backgroundHover:  darken($altBackground, 5%);
-$baseColor:        #333;
+$baseColor:        #444;
 $baseBorderColor:  #ccc;
 $altBorderColor:   #fff;
 $baseBorderRadius: 3px;

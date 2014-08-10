@@ -13,30 +13,12 @@
 
 /* text size */
 
-@mixin text1($i:"") {
-  font-size: ($baseFontSize * 2.75) #{$i};     /* ~38px */
-  line-height: ($baseLineHeight * 2) #{$i};
-}
-@mixin text2($i:"") {
-  font-size: ($baseFontSize * 2.25) #{$i};    /* ~32px */
-  line-height: ($baseLineHeight * 1.75) #{$i};
-}
-@mixin text3($i:"") {
-  font-size: ($baseFontSize * 1.75) #{$i};    /* ~24px */
-  line-height: ($baseLineHeight * 1.5) #{$i};
-}
-@mixin text4($i:"") {
-  font-size: ($baseFontSize * 1.25) #{$i};    /* ~18px */
-  line-height: $baseLineHeight #{$i};
-}
-@mixin text5($i:"") {
-  font-size: $baseFontSize #{$i};
-  line-height: $baseLineHeight #{$i};
-}
-@mixin text6($i:"") {
-  font-size: ($baseFontSize * 0.85) #{$i};    /* ~12px */
-  line-height: 1 #{$i};
-}
+@mixin text1($i:"") { font-size: $fontSize1 #{$i}; line-height: $lineHeight1 #{$i}; }
+@mixin text2($i:"") { font-size: $fontSize2 #{$i}; line-height: $lineHeight2 #{$i}; }
+@mixin text3($i:"") { font-size: $fontSize3 #{$i}; line-height: $lineHeight3 #{$i}; }
+@mixin text4($i:"") { font-size: $fontSize4 #{$i}; line-height: $lineHeight4 #{$i}; }
+@mixin text5($i:"") { font-size: $fontSize5 #{$i}; line-height: $lineHeight5 #{$i}; }
+@mixin text6($i:"") { font-size: $fontSize6 #{$i}; line-height: $lineHeight6 #{$i}; }
 
 /* text alignment */
 

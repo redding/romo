@@ -22,9 +22,11 @@ class RomoGHPages
   # Base CSS
   url :base_css_globals,    '/base-css/globals.html'
   url :base_css_typography, '/base-css/typography.html'
+  url :base_css_images,     '/base-css/images.html'
 
   get :base_css_globals,    'BaseCSS::Globals'
   get :base_css_typography, 'BaseCSS::Typography'
+  get :base_css_images,     'BaseCSS::Images'
 
   # Scaffolding
   url :scaffolding_helpers,    '/scaffolding/helpers.html'
@@ -106,7 +108,7 @@ class RomoGHPages
       ]
 
       c.combination "js/web.js", [
-        "js/vendor/zepto-1-1-4-default-min.js",
+        "js/zepto-1-1-4-default-min.js",
         "js/romo.js",
       ]
 
