@@ -23,10 +23,12 @@ class RomoGHPages
   url :base_css_globals,    '/base-css/globals.html'
   url :base_css_typography, '/base-css/typography.html'
   url :base_css_images,     '/base-css/images.html'
+  url :base_css_forms,      '/base-css/forms.html'
 
   get :base_css_globals,    'BaseCSS::Globals'
   get :base_css_typography, 'BaseCSS::Typography'
   get :base_css_images,     'BaseCSS::Images'
+  get :base_css_forms,      'BaseCSS::Forms'
 
   # Scaffolding
   url :scaffolding_helpers,    '/scaffolding/helpers.html'
@@ -67,11 +69,11 @@ class RomoGHPages
       c.combination "css/romo.css", [
         'css/romo/normalize.css',
         'css/romo/base.css',
+        'css/romo/forms.css',
         'css/romo/lists.css',
         'css/romo/grid.css',
         'css/romo/table.css',
         'css/romo/grid_table.css',
-        'css/romo/inputs.css',
         'css/romo/dropdown.css',
         'css/romo/modal.css',
         'css/romo/select.css',
