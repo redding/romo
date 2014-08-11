@@ -1,3 +1,6 @@
+@import 'css/romo/vars';
+@import 'css/romo/mixins';
+
 .romo-modal {
   cursor: pointer;
 }
@@ -21,9 +24,7 @@
   float: left;
   border-width: 1px;
   border-style: solid;
-  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-     -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  @include box-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
 }
 
 .romo-modal-popup:not([class*="romo-modal-open"]) {

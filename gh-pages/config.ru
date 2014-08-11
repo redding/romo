@@ -62,7 +62,10 @@ class RomoGHPages
       # Romo's assets path
       c.source Romo.gem_assets_path do |s|
         s.filter{ |paths| paths.reject{ |p| File.basename(p) =~ /^_/ } }
-        s.engine 'scss', Dassets::Sass::Engine, :syntax => 'scss'
+        s.engine 'scss', Dassets::Sass::Engine, {
+          :syntax => 'scss',
+          :output_style => 'compressed'
+        }
         s.engine 'erb',  Dassets::Erb::Engine
       end
 

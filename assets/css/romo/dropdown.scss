@@ -1,3 +1,6 @@
+@import 'css/romo/vars';
+@import 'css/romo/mixins';
+
 .romo-dropdown {
   cursor: pointer;
 }
@@ -12,21 +15,15 @@
 .romo-dropdown-popup,
 .romo-dropdown-body,
 .romo-dropdown-content {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  @include border-box;
 }
 
 .romo-dropdown-popup[data-romo-dropdown-position="bottom"] {
-  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-     -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  @include box-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
 }
 
 .romo-dropdown-popup[data-romo-dropdown-position="top"] {
-  -webkit-box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.2);
-     -moz-box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.2);
+  @include box-shadow(0 -3px 10px rgba(0, 0, 0, 0.2));
 }
 
 .romo-dropdown-popup:not([class*="romo-dropdown-open"]) {

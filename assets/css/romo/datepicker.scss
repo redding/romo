@@ -1,3 +1,6 @@
+@import 'css/romo/vars';
+@import 'css/romo/mixins';
+
 .romo-datepicker-wrapper {
   position: relative;
 }
@@ -16,9 +19,7 @@
   padding: 3px;
 }
 .romo-datepicker-calendar * {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  @include border-box;
 }
 
 .romo-datepicker-calendar table {

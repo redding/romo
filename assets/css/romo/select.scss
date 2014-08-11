@@ -1,3 +1,6 @@
+@import 'css/romo/vars';
+@import 'css/romo/mixins';
+
 .romo-select {
   display: inline-block;
   *display: inline;
@@ -11,9 +14,7 @@
   padding: 4px 6px;
   border-width: 1px;
   border-style: solid;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  @include border-box;
 
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -28,9 +29,7 @@
 
 .romo-select-wrapper {
   position: relative;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  @include border-box;
 }
 
 .romo-select-text {
@@ -39,9 +38,7 @@
   overflow: hidden;
   display: inline-block;
   width: 100%;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  @include border-box;
 }
 .romo-select-caret {
   position: absolute;
@@ -132,10 +129,7 @@
   color: #333333;
   text-decoration: none;
   background-position: 0 -15px;
-  -webkit-transition: background-position 0.1s linear;
-     -moz-transition: background-position 0.1s linear;
-       -o-transition: background-position 0.1s linear;
-          transition: background-position 0.1s linear;
+  @include box-shadow(background-position 0.1s linear);
 }
 
 .romo-select:active,
@@ -143,9 +137,7 @@
   background-color: #e6e6e6;
   background-image: none;
   outline: 0;
-  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
-     -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
-          box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+  @include box-shadow((inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05)));
 }
 
 .romo-select.disabled,
