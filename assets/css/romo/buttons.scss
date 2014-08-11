@@ -26,6 +26,7 @@
 }
 
 .romo-btn:focus{ outline: none; }
+.romo-btn.romo-btn-active,
 .romo-btn:active {
   background-image: none;
   outline: 0;
@@ -64,6 +65,7 @@ input[type="button"].romo-btn-block,
 .romo-btn-inverse { @include button-bg($btnInverseBackground, $btnInverseBackgroundHighlight, $btnInverseColor); }
 
 .romo-btn.romo-btn-link,
+.romo-btn.romo-btn-link.active,
 .romo-btn.romo-btn-link:active,
 .romo-btn.romo-btn-link.disabled,
 .romo-btn.romo-btn-link[disabled] {
