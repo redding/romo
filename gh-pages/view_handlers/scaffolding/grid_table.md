@@ -609,6 +609,8 @@ Add hover state to rows
 
 Adds sized borders to the grid table.
 
+**Note**: This makes all cells hide any overflow.  Since grid tables don't keep all cell heights the same (like normal tables do), uneven grid heights break the borders.  If you need cells to overflow with borders, use a normal table.
+
 <div class="romo-pad">
   <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border">
     <li class="romo-row">
@@ -633,7 +635,7 @@ Adds sized borders to the grid table.
       <span class="romo-span romo-1-12">3</span>
       <span class="romo-span romo-5-12">Good Corp.</span>
       <span class="romo-span romo-5-12">good-corp</span>
-      <span class="romo-span romo-1-12">5</span>
+      <span class="romo-span romo-1-12">overflow: 1234567890</span>
     </li>
   </ul>
 </div>
@@ -662,7 +664,7 @@ Adds sized borders to the grid table.
       <span class="romo-span romo-1-12">3</span>
       <span class="romo-span romo-5-12">Good Corp.</span>
       <span class="romo-span romo-5-12">good-corp</span>
-      <span class="romo-span romo-1-12">5</span>
+      <span class="romo-span romo-1-12">overflow: 1234567890</span>
     </li>
   </ul>
 </div>
@@ -691,7 +693,7 @@ Adds sized borders to the grid table.
       <span class="romo-span romo-1-12">3</span>
       <span class="romo-span romo-5-12">Good Corp.</span>
       <span class="romo-span romo-5-12">good-corp</span>
-      <span class="romo-span romo-1-12">5</span>
+      <span class="romo-span romo-1-12">overflow: 1234567890</span>
     </li>
   </ul>
 </div>
@@ -720,7 +722,7 @@ Adds sized borders to the grid table.
       <span class="romo-span romo-1-12">3</span>
       <span class="romo-span romo-5-12">Good Corp.</span>
       <span class="romo-span romo-5-12">good-corp</span>
-      <span class="romo-span romo-1-12">5</span>
+      <span class="romo-span romo-1-12">overflow: 1234567890</span>
     </li>
   </ul>
 </div>
@@ -749,7 +751,7 @@ Adds sized borders to the grid table.
       <span class="romo-span romo-1-12">3</span>
       <span class="romo-span romo-5-12">Good Corp.</span>
       <span class="romo-span romo-5-12">good-corp</span>
-      <span class="romo-span romo-1-12">5</span>
+      <span class="romo-span romo-1-12">overflow: 1234567890</span>
     </li>
   </ul>
 </div>
@@ -778,7 +780,7 @@ Adds sized borders to the grid table.
       <span class="romo-span romo-1-12">3</span>
       <span class="romo-span romo-5-12">Good Corp.</span>
       <span class="romo-span romo-5-12">good-corp</span>
-      <span class="romo-span romo-1-12">5</span>
+      <span class="romo-span romo-1-12">overflow: 1234567890</span>
     </li>
   </ul>
 </div>
@@ -807,7 +809,7 @@ Adds sized borders to the grid table.
       <span class="romo-span romo-1-12">3</span>
       <span class="romo-span romo-5-12">Good Corp.</span>
       <span class="romo-span romo-5-12">good-corp</span>
-      <span class="romo-span romo-1-12">5</span>
+      <span class="romo-span romo-1-12">overflow: 1234567890</span>
     </li>
   </ul>
 </div>

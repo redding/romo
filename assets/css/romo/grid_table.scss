@@ -71,13 +71,13 @@ ol.romo-grid-table { @include list-unstyled(!important); }
 .romo-grid-table.romo-grid-table-border5 > .romo-row { @include border5-bottom; }
 .romo-grid-table.romo-grid-table-border6 > .romo-row { @include border6-bottom; }
 
-.romo-grid-table.romo-grid-table-border  > .romo-row > .romo-span { @include border1-right; }
-.romo-grid-table.romo-grid-table-border1 > .romo-row > .romo-span { @include border1-right; }
-.romo-grid-table.romo-grid-table-border2 > .romo-row > .romo-span { @include border2-right; }
-.romo-grid-table.romo-grid-table-border3 > .romo-row > .romo-span { @include border3-right; }
-.romo-grid-table.romo-grid-table-border4 > .romo-row > .romo-span { @include border4-right; }
-.romo-grid-table.romo-grid-table-border5 > .romo-row > .romo-span { @include border5-right; }
-.romo-grid-table.romo-grid-table-border6 > .romo-row > .romo-span { @include border6-right; }
+.romo-grid-table.romo-grid-table-border  > .romo-row > .romo-span { @include border1-right; white-space: nowrap; overflow: hidden; }
+.romo-grid-table.romo-grid-table-border1 > .romo-row > .romo-span { @include border1-right; white-space: nowrap; overflow: hidden; }
+.romo-grid-table.romo-grid-table-border2 > .romo-row > .romo-span { @include border2-right; white-space: nowrap; overflow: hidden; }
+.romo-grid-table.romo-grid-table-border3 > .romo-row > .romo-span { @include border3-right; white-space: nowrap; overflow: hidden; }
+.romo-grid-table.romo-grid-table-border4 > .romo-row > .romo-span { @include border4-right; white-space: nowrap; overflow: hidden; }
+.romo-grid-table.romo-grid-table-border5 > .romo-row > .romo-span { @include border5-right; white-space: nowrap; overflow: hidden; }
+.romo-grid-table.romo-grid-table-border6 > .romo-row > .romo-span { @include border6-right; white-space: nowrap; overflow: hidden; }
 
 .romo-grid-table[class*="romo-grid-table-border"] > .romo-row > .romo-span:last-child { @include rm-border-right; }
 .romo-grid-table[class*="romo-grid-table-border"] > .romo-row:last-child { @include rm-border-bottom; }
