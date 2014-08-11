@@ -1,0 +1,92 @@
+@import 'css/romo/vars';
+@import 'css/romo/mixins';
+
+.romo-btn {
+  display: inline-block;
+  font-size: $baseFontSize;
+  line-height: $baseLineHeight;
+  @include button-pad($baseLineHeight);
+  @include rm-push;
+  @include align-center;
+  @include align-middle;
+  cursor: pointer;
+
+  @include button-bg($btnBackground, $btnBackgroundHighlight, $btnColor, 0 1px 1px rgba(255,255,255,.75));
+  @include border1;
+  border-color: $btnBorder;
+  border-bottom-color: darken($btnBorder, 10%);
+  @include box-shadow((inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05)));
+}
+.romo-btn:hover,
+.romo-btn:focus {
+  color: $btnColorHover;
+  text-decoration: none;
+  background-position: 0 -15px;
+  @include transition(background-position .1s linear);
+}
+
+.romo-btn:focus{ outline: none; }
+.romo-btn:active {
+  background-image: none;
+  outline: 0;
+  @include box-shadow((inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)));
+}
+
+.romo-btn.disabled,
+.romo-btn[disabled] {
+  cursor: not-allowed;
+  background-image: none;
+  @include opacity(65);
+  @include box-shadow(none);
+}
+
+.romo-btn1 { @include font-size1; @include font-weight1; @include line-height1; @include button-pad1; }
+.romo-btn2 { @include font-size2; @include font-weight2; @include line-height1; @include button-pad1; }
+.romo-btn3 { @include font-size3; @include font-weight3; @include line-height2; @include button-pad2; }
+.romo-btn-large,
+.romo-btn4 { @include font-size4; @include font-weight4; @include line-height3; @include button-pad3; }
+.romo-btn5 { @include font-size5; @include font-weight5; @include line-height4; @include button-pad4; }
+.romo-btn-small,
+.romo-btn6 { @include font-size6; @include font-weight6; @include line-height6; @include button-pad6; }
+
+input[type="submit"].romo-btn-block,
+input[type="reset"].romo-btn-block,
+input[type="button"].romo-btn-block,
+.romo-btn-block { display: block; width: 100%; }
+
+.romo-btn-alt     { @include button-bg($btnAltBackground,     $btnAltBackgroundHighlight,     $btnAltColor); }
+.romo-btn-primary { @include button-bg($btnPrimaryBackground, $btnPrimaryBackgroundHighlight, $btnPrimaryColor); }
+.romo-btn-warning { @include button-bg($btnWarningBackground, $btnWarningBackgroundHighlight, $btnWarningColor); }
+.romo-btn-error,
+.romo-btn-danger  { @include button-bg($btnDangerBackground,  $btnDangerBackgroundHighlight,  $btnDangerColor); }
+.romo-btn-info    { @include button-bg($btnInfoBackground,    $btnInfoBackgroundHighlight,    $btnInfoColor); }
+.romo-btn-success { @include button-bg($btnSuccessBackground, $btnSuccessBackgroundHighlight, $btnSuccessColor); }
+.romo-btn-inverse { @include button-bg($btnInverseBackground, $btnInverseBackgroundHighlight, $btnInverseColor); }
+
+.romo-btn.romo-btn-link,
+.romo-btn.romo-btn-link:active,
+.romo-btn.romo-btn-link.disabled,
+.romo-btn.romo-btn-link[disabled] {
+  background-color: transparent;
+  background-image: none;
+  @include box-shadow(none);
+}
+.romo-btn.romo-btn-link {
+  border-color: transparent;
+  color: $linkColor;
+}
+.romo-btn.romo-btn-link:hover,
+.romo-btn.romo-btn-link:focus {
+  color: $linkColorHover;
+  text-decoration: underline;
+  background-color: transparent;
+}
+.romo-btn.romo-btn-link.disabled,
+.romo-btn.romo-btn-link.disabled:hover,
+.romo-btn.romo-btn-link.disabled:focus,
+.romo-btn.romo-btn-link[disabled],
+.romo-btn.romo-btn-link[disabled]:hover,
+.romo-btn.romo-btn-link[disabled]:focus {
+  color: $btnColor;
+  text-decoration: none;
+}

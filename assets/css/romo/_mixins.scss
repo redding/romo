@@ -1,4 +1,5 @@
 @import 'css/romo/vars';
+
 /* Globals */
 /* ------- */
 
@@ -8,30 +9,59 @@
           box-sizing: border-box #{$i};
 }
 
-@mixin box-shadow($shadow) {
-  -webkit-box-shadow: $shadow;
-     -moz-box-shadow: $shadow;
-          box-shadow: $shadow;
+@mixin box-shadow($shadow, $i:"") {
+  -webkit-box-shadow: $shadow #{$i};
+     -moz-box-shadow: $shadow #{$i};
+          box-shadow: $shadow #{$i};
 }
 
-@mixin transition($transition) {
-  -webkit-transition: $transition;
-     -moz-transition: $transition;
-       -o-transition: $transition;
-          transition: $transition;
+@mixin transition($transition, $i:"") {
+  -webkit-transition: $transition #{$i};
+     -moz-transition: $transition #{$i};
+       -o-transition: $transition #{$i};
+          transition: $transition #{$i};
+}
+
+@mixin opacity($opacity, $i:"") {
+  opacity: $opacity / 100;
 }
 
 /* Typography */
 /* ---------- */
 
+/* text weight */
+
+@mixin font-weight($val, $i:"") { font-weight: $val #{$i}; }
+
+@mixin font-weight1($i:"") { @include font-weight(200, $i); }
+@mixin font-weight2($i:"") { @include font-weight(200, $i); }
+@mixin font-weight3($i:"") { @include font-weight(200, $i); }
+@mixin font-weight4($i:"") { @include font-weight(300, $i); }
+@mixin font-weight5($i:"") { @include font-weight(normal, $i); }
+@mixin font-weight6($i:"") { @include font-weight(normal, $i); }
+
 /* text size */
 
-@mixin text1($i:"") { font-size: $fontSize1 #{$i}; line-height: $lineHeight1 #{$i}; }
-@mixin text2($i:"") { font-size: $fontSize2 #{$i}; line-height: $lineHeight2 #{$i}; }
-@mixin text3($i:"") { font-size: $fontSize3 #{$i}; line-height: $lineHeight3 #{$i}; }
-@mixin text4($i:"") { font-size: $fontSize4 #{$i}; line-height: $lineHeight4 #{$i}; }
-@mixin text5($i:"") { font-size: $fontSize5 #{$i}; line-height: $lineHeight5 #{$i}; }
-@mixin text6($i:"") { font-size: $fontSize6 #{$i}; line-height: $lineHeight6 #{$i}; }
+@mixin font-size1($i:"") { font-size: $fontSize1 #{$i}; }
+@mixin font-size2($i:"") { font-size: $fontSize2 #{$i}; }
+@mixin font-size3($i:"") { font-size: $fontSize3 #{$i}; }
+@mixin font-size4($i:"") { font-size: $fontSize4 #{$i}; }
+@mixin font-size5($i:"") { font-size: $fontSize5 #{$i}; }
+@mixin font-size6($i:"") { font-size: $fontSize6 #{$i}; }
+
+@mixin line-height1($i:"") { line-height: $lineHeight1 #{$i}; }
+@mixin line-height2($i:"") { line-height: $lineHeight2 #{$i}; }
+@mixin line-height3($i:"") { line-height: $lineHeight3 #{$i}; }
+@mixin line-height4($i:"") { line-height: $lineHeight4 #{$i}; }
+@mixin line-height5($i:"") { line-height: $lineHeight5 #{$i}; }
+@mixin line-height6($i:"") { line-height: $lineHeight6 #{$i}; }
+
+@mixin text1($i:"") { @include font-size1($i); @include line-height1($i); }
+@mixin text2($i:"") { @include font-size2($i); @include line-height2($i); }
+@mixin text3($i:"") { @include font-size3($i); @include line-height3($i); }
+@mixin text4($i:"") { @include font-size4($i); @include line-height4($i); }
+@mixin text5($i:"") { @include font-size5($i); @include line-height5($i); }
+@mixin text6($i:"") { @include font-size6($i); @include line-height6($i); }
 
 /* text alignment */
 
@@ -42,10 +72,6 @@
 @mixin align-top($i:"")    { vertical-align: top #{$i}; }
 @mixin align-middle($i:"") { vertical-align: middle #{$i}; }
 @mixin align-bottom($i:"") { vertical-align: bottom #{$i}; }
-
-/* text weight */
-
-@mixin weight($val, $i:"")  { font-weight: $val #{$i}; }
 
 /* color emphasis */
 
@@ -91,6 +117,64 @@
 @mixin bg-inverse($i:"")         { background-color: $inverseBackground #{$i}; }
 @mixin bg-inverse-hover($i:"")   { background-color: $inverseBackgroundHover #{$i}; }
 @mixin border-inverse($i:"")     {     border-color: $inverseBorder #{$i}; }
+
+/* Gradients */
+/* --------- */
+
+@mixin gradient-horizontal($start, $end) {
+  background-color: $end;
+  background-image: -moz-linear-gradient(left, $start, $end); // FF 3.6+
+  background-image: -webkit-gradient(linear, 0 0, 100% 0, from($start), to($end)); // Safari 4+, Chrome 2+
+  background-image: -webkit-linear-gradient(left, $start, $end); // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient(left, $start, $end); // Opera 11.10
+  background-image: linear-gradient(to right, $start, $end); // Standard, IE10
+  background-repeat: repeat-x;
+}
+@mixin gradient-vertical($start, $end) {
+  background-color: mix($start, $end, 60%);
+  background-image: -moz-linear-gradient(top, $start, $end); // FF 3.6+
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($start), to($end)); // Safari 4+, Chrome 2+
+  background-image: -webkit-linear-gradient(top, $start, $end); // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient(top, $start, $end); // Opera 11.10
+  background-image: linear-gradient(to bottom, $start, $end); // Standard, IE10
+  background-repeat: repeat-x;
+}
+@mixin gradient-bar($primary, $secondary, $text, $shadow: 0 -1px 0 rgba(0,0,0,.25)) {
+  color: $text;
+  text-shadow: $shadow;
+  @include gradient-vertical($primary, $secondary);
+  border-color: $secondary $secondary darken($secondary, 15%);
+  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
+}
+
+/* Buttons */
+/* ------- */
+
+@mixin button-bg($start, $end, $text, $shadow: 0 -1px 0 rgba(0,0,0,.25)) {
+  @include gradient-bar($start, $end, $text, $shadow);
+  *background-color: $end; /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  /* in these cases the gradient won't cover the background, so we override */
+  &:hover, &:focus, &:active, &.active, &.disabled, &[disabled] {
+    color: $text;
+    background-color: $end;
+    *background-color: darken($end, 5%);
+  }
+}
+
+@mixin button-pad($lineHeight) {
+  $inputHeight: ($lineHeight / 2) * 3; /* 30px */
+  $btnPaddingTopBottom: ($inputHeight - 2 - $lineHeight) / 2; /* 4px; "2" is for the borders */
+  $btnPaddingLeftRight: $btnPaddingTopBottom * 3; /* 12px; keep the 4px to 12px ratio */
+  padding: $btnPaddingTopBottom $btnPaddingLeftRight;
+}
+
+@mixin button-pad1 { @include button-pad($lineHeight1); }
+@mixin button-pad2 { @include button-pad($lineHeight2); }
+@mixin button-pad3 { @include button-pad($lineHeight3); }
+@mixin button-pad4 { @include button-pad($lineHeight4); }
+@mixin button-pad5 { @include button-pad($lineHeight4); }
+@mixin button-pad6 { @include button-pad($lineHeight6); }
 
 /* Scaffolding */
 /* ----------- */

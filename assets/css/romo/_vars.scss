@@ -30,15 +30,13 @@ $imgHeight5: $lineHeight5 + (1 * $baseSpacingSize); /* 27px */
 $imgHeight6: $lineHeight6 + (1 * $baseSpacingSize); /* 25px */;
 
 $inputHeight: ($baseLineHeight / 2) * 3; /* 30px */
+$btnPaddingTopBottom: ($inputHeight - 2 - $baseLineHeight) / 2; /* 4px; "2" is for the borders */
+$btnPaddingLeftRight: $btnPaddingTopBottom * 3; /* 12px; keep the 4px to 12px ratio */
 
 /* colors */
 
 $linkColor:      #08c;
 $linkColorHover: darken($linkColor, 15%);
-
-$inputColor:         #555;
-$inputDisabledColor: #eee;
-$inputFocusColor:    rgba(82, 168, 236, 0.8);
 
 $baseBackground:   #fff;
 $altBackground:    #f3f3f3;
@@ -47,6 +45,44 @@ $baseColor:        #444;
 $baseBorderColor:  #ccc;
 $altBorderColor:   #fff;
 $baseBorderRadius: 3px;
+
+$inputColor:         #555;
+$inputDisabledColor: #eee;
+$inputFocusColor:    rgba(82, 168, 236, 0.8);
+
+$btnBorder:                     $baseBorderColor;
+$btnBackground:                 $baseBackground;
+$btnBackgroundHighlight:        darken($btnBackground, 10%);
+$btnColor:                      $baseColor;
+$btnColorHover:                 #333;
+
+$btnAltBackground:              $altBackground;
+$btnAltBackgroundHighlight:     darken($btnAltBackground, 10%);
+$btnAltColor:                   $btnColor;
+
+$btnPrimaryBackground:          $linkColor;
+$btnPrimaryBackgroundHighlight: adjust_hue($btnPrimaryBackground, 20%);
+$btnPrimaryColor:               #fff;
+
+$btnWarningBackgroundHighlight: #f89406;
+$btnWarningBackground:          lighten($btnWarningBackgroundHighlight, 15%);
+$btnWarningColor:               #fff;
+
+$btnDangerBackground:           #ee5f5b;
+$btnDangerBackgroundHighlight:  #bd362f;
+$btnDangerColor:                #fff;
+
+$btnInfoBackground:             #5bc0de;
+$btnInfoBackgroundHighlight:    #2f96b4;
+$btnInfoColor:                  #fff;
+
+$btnSuccessBackground:          #62c462;
+$btnSuccessBackgroundHighlight: #51a351;
+$btnSuccessColor:               #fff;
+
+$btnInverseBackground:          #444;
+$btnInverseBackgroundHighlight: #222;
+$btnInverseColor:               #fff;
 
 $mutedText:              #999999;
 $mutedTextHover:         darken($mutedText, 10%);

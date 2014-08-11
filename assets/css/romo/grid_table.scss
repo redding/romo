@@ -13,7 +13,7 @@ ol.romo-grid-table { @include list-unstyled(!important); }
 
 .romo-grid-table > .romo-row { @include border1-bottom; }
 
-.romo-grid-table.romo-grid-table-header > .romo-row:first-child > [class*="romo-span-"] { @include weight(bold); }
+.romo-grid-table.romo-grid-table-header > .romo-row:first-child > [class*="romo-span-"] { @include font-weight(bold); }
 .romo-grid-table.romo-grid-table-header > .romo-row:first-child > [class*="romo-span-"] { @include align-bottom; }
 
 .romo-grid-table > .romo-row > [class*="romo-span-"] {

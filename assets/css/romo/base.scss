@@ -137,25 +137,14 @@ h6 { @include text6; }
   text-rendering: optimizelegibility;
 }
 
-.romo-text1,
-.romo-text2,
-.romo-text3 {
-  font-weight: 200;
-}
-
-.romo-text4,
-.romo-text-large {
-  font-weight: 300;
-}
-
-.romo-text1 { @include text1(!important); }
-.romo-text2 { @include text2(!important); }
-.romo-text3 { @include text3(!important); }
+.romo-text1 { @include text1(!important); @include font-weight1; }
+.romo-text2 { @include text2(!important); @include font-weight2; }
+.romo-text3 { @include text3(!important); @include font-weight3; }
 .romo-text-large,
-.romo-text4 { @include text4(!important); }
-.romo-text5 { @include text5(!important); }
+.romo-text4 { @include text4(!important); @include font-weight4; }
+.romo-text5 { @include text5(!important); @include font-weight5; }
 .romo-text-small,
-.romo-text6 { @include text6(!important); }
+.romo-text6 { @include text6(!important); @include font-weight6; }
 
 /* text alignment */
 
@@ -169,19 +158,19 @@ h6 { @include text6; }
 
 /* text weight */
 
-.romo-text-normal  { @include weight(normal,  !important); }
-.romo-text-lighter { @include weight(lighter, !important); }
-.romo-text-bold    { @include weight(bold,    !important); }
-.romo-text-bolder  { @include weight(bolder,  !important); }
-.romo-text-100     { @include weight(100,     !important); }
-.romo-text-200     { @include weight(200,     !important); }
-.romo-text-300     { @include weight(300,     !important); }
-.romo-text-400     { @include weight(400,     !important); }
-.romo-text-500     { @include weight(500,     !important); }
-.romo-text-600     { @include weight(600,     !important); }
-.romo-text-700     { @include weight(700,     !important); }
-.romo-text-800     { @include weight(800,     !important); }
-.romo-text-900     { @include weight(900,     !important); }
+.romo-text-normal  { @include font-weight(normal,  !important); }
+.romo-text-lighter { @include font-weight(lighter, !important); }
+.romo-text-bold    { @include font-weight(bold,    !important); }
+.romo-text-bolder  { @include font-weight(bolder,  !important); }
+.romo-text-100     { @include font-weight(100,     !important); }
+.romo-text-200     { @include font-weight(200,     !important); }
+.romo-text-300     { @include font-weight(300,     !important); }
+.romo-text-400     { @include font-weight(400,     !important); }
+.romo-text-500     { @include font-weight(500,     !important); }
+.romo-text-600     { @include font-weight(600,     !important); }
+.romo-text-700     { @include font-weight(700,     !important); }
+.romo-text-800     { @include font-weight(800,     !important); }
+.romo-text-900     { @include font-weight(900,     !important); }
 
 /* color emphasis */
 

@@ -11,7 +11,7 @@
   @include border1-bottom;
 }
 
-.romo-table th { @include weight(bold); }
+.romo-table th { @include font-weight(bold); }
 .romo-table thead th { @include align-bottom; }
 
 .romo-table-alt { @include bg-alt; }

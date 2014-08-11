@@ -108,7 +108,7 @@ Add the `.romo-form` class to receive additional styling on the controls.  Add `
         <input type="checkbox">
         <span>Checkbox 1</span>
       </label>
-      <button type="submit">Submit</button>
+      <button type="submit" class="romo-btn">Submit</button>
     </fieldset>
   </form>
 </div>

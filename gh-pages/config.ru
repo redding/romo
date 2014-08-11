@@ -24,11 +24,13 @@ class RomoGHPages
   url :base_css_typography, '/base-css/typography.html'
   url :base_css_images,     '/base-css/images.html'
   url :base_css_forms,      '/base-css/forms.html'
+  url :base_css_buttons,     '/base-css/buttons.html'
 
   get :base_css_globals,    'BaseCSS::Globals'
   get :base_css_typography, 'BaseCSS::Typography'
   get :base_css_images,     'BaseCSS::Images'
   get :base_css_forms,      'BaseCSS::Forms'
+  get :base_css_buttons,    'BaseCSS::Buttons'
 
   # Scaffolding
   url :scaffolding_helpers,    '/scaffolding/helpers.html'
@@ -73,6 +75,7 @@ class RomoGHPages
         'css/romo/normalize.css',
         'css/romo/base.css',
         'css/romo/forms.css',
+        'css/romo/buttons.css',
         'css/romo/lists.css',
         'css/romo/grid.css',
         'css/romo/table.css',
