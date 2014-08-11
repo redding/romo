@@ -90,43 +90,43 @@ Or, use these natural-size style classes for the more common sizing needs.
 
 Use style classes to align text.
 
-<p class="romo-text-left">.romo-text-left</p>
-<p class="romo-text-center">.romo-text-center</p>
-<p class="romo-text-right">.romo-text-right</p>
+<p class="romo-align-left">.romo-align-left</p>
+<p class="romo-align-center">.romo-align-center</p>
+<p class="romo-align-right">.romo-align-right</p>
 
 ```html
-<p class="romo-text-left">.romo-text-left</p>
-<p class="romo-text-center">.romo-text-center</p>
-<p class="romo-text-right">.romo-text-right</p>
+<p class="romo-align-left">.romo-align-left</p>
+<p class="romo-align-center">.romo-align-center</p>
+<p class="romo-align-right">.romo-align-right</p>
 ```
 
 Or vertical align text.
 
 <div>
-  <span class="romo-text-top romo-text-large">Aligned:</span>
-  <span class="romo-text-top romo-text-small">.romo-text-top</span>
+  <span class="romo-align-top romo-text-large">Aligned:</span>
+  <span class="romo-align-top romo-text-small">.romo-align-top</span>
 </div>
 <div>
-  <span class="romo-text-middle romo-text-large">Aligned:</span>
-  <span class="romo-text-middle romo-text-small">.romo-text-middle</span>
+  <span class="romo-align-middle romo-text-large">Aligned:</span>
+  <span class="romo-align-middle romo-text-small">.romo-align-middle</span>
 </div>
 <div>
-  <span class="romo-text-bottom romo-text-large">Aligned:</span>
-  <span class="romo-text-bottom romo-text-small">.romo-text-bottom</span>
+  <span class="romo-align-bottom romo-text-large">Aligned:</span>
+  <span class="romo-align-bottom romo-text-small">.romo-align-bottom</span>
 </div>
 
 ```html
 <div>
-  <span class="romo-text-top romo-text-large">Aligned:</span>
-  <span class="romo-text-top romo-text-small">.romo-text-top</span>
+  <span class="romo-align-top romo-text-large">Aligned:</span>
+  <span class="romo-align-top romo-text-small">.romo-align-top</span>
 </div>
 <div>
-  <span class="romo-text-middle romo-text-large">Aligned:</span>
-  <span class="romo-text-middle romo-text-small">.romo-text-middle</span>
+  <span class="romo-align-middle romo-text-large">Aligned:</span>
+  <span class="romo-align-middle romo-text-small">.romo-align-middle</span>
 </div>
 <div>
-  <span class="romo-text-bottom romo-text-large">Aligned:</span>
-  <span class="romo-text-bottom romo-text-small">.romo-text-bottom</span>
+  <span class="romo-align-bottom romo-text-large">Aligned:</span>
+  <span class="romo-align-bottom romo-text-small">.romo-align-bottom</span>
 </div>
 ```
 

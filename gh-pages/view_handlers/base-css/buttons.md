@@ -348,13 +348,13 @@ Make a group of buttons appear vertically stacked rather than horizontally by us
 **Note**: you should set a static width on vertical button group buttons so they always line up as expected regardless of their content.
 
 <div class="romo-pad">
-  <div class="romo-btn-group-vertical romo-text-top">
+  <div class="romo-btn-group-vertical romo-align-top">
     <button class="romo-btn" style="width: 40px">1</button>
     <button class="romo-btn" style="width: 40px">2</button>
     <button class="romo-btn" style="width: 40px">3</button>
     <button class="romo-btn" style="width: 40px">4</button>
   </div>
-  <div class="romo-btn-group-vertical romo-text-top">
+  <div class="romo-btn-group-vertical romo-align-top">
     <button class="romo-btn" style="width: 80px">First</button>
     <button class="romo-btn" style="width: 80px">Second</button>
     <button class="romo-btn" style="width: 80px">Third</button>
@@ -362,13 +362,13 @@ Make a group of buttons appear vertically stacked rather than horizontally by us
 </div>
 
 ```html
-<div class="romo-btn-group-vertical romo-text-top">
+<div class="romo-btn-group-vertical romo-align-top">
   <button class="romo-btn" style="width: 40px">1</button>
   <button class="romo-btn" style="width: 40px">2</button>
   <button class="romo-btn" style="width: 40px">3</button>
   <button class="romo-btn" style="width: 40px">4</button>
 </div>
-<div class="romo-btn-group-vertical romo-text-top">
+<div class="romo-btn-group-vertical romo-align-top">
   <button class="romo-btn" style="width: 80px">First</button>
   <button class="romo-btn" style="width: 80px">Second</button>
   <button class="romo-btn" style="width: 80px">Third</button>
@@ -447,25 +447,25 @@ Combine horizontal and vertical button groups to create grids of buttons.
 
 <div class="romo-pad">
   <div class="romo-btn-group">
-    <div class="romo-btn-group-vertical romo-text-top">
+    <div class="romo-btn-group-vertical romo-align-top">
       <button class="romo-btn" style="width: 40px">7</button>
       <button class="romo-btn" style="width: 40px">4</button>
       <button class="romo-btn" style="width: 40px">1</button>
       <button class="romo-btn" style="width: 40px">.</button>
     </div>
-    <div class="romo-btn-group-vertical romo-text-top">
+    <div class="romo-btn-group-vertical romo-align-top">
       <button class="romo-btn" style="width: 40px">8</button>
       <button class="romo-btn" style="width: 40px">5</button>
       <button class="romo-btn" style="width: 40px">3</button>
       <button class="romo-btn" style="width: 40px">0</button>
     </div>
-    <div class="romo-btn-group-vertical romo-text-top">
+    <div class="romo-btn-group-vertical romo-align-top">
       <button class="romo-btn" style="width: 40px">9</button>
       <button class="romo-btn" style="width: 40px">6</button>
       <button class="romo-btn" style="width: 40px">3</button>
       <button class="romo-btn" style="width: 40px">=</button>
     </div>
-    <div class="romo-btn-group-vertical romo-text-top">
+    <div class="romo-btn-group-vertical romo-align-top">
       <button class="romo-btn" style="width: 40px">/</button>
       <button class="romo-btn" style="width: 40px">*</button>
       <button class="romo-btn" style="width: 40px">-</button>
@@ -476,25 +476,25 @@ Combine horizontal and vertical button groups to create grids of buttons.
 
 ```html
 <div class="romo-btn-group">
-  <div class="romo-btn-group-vertical romo-text-top">
+  <div class="romo-btn-group-vertical romo-align-top">
     <button class="romo-btn" style="width: 40px">7</button>
     <button class="romo-btn" style="width: 40px">4</button>
     <button class="romo-btn" style="width: 40px">1</button>
     <button class="romo-btn" style="width: 40px">.</button>
   </div>
-  <div class="romo-btn-group-vertical romo-text-top">
+  <div class="romo-btn-group-vertical romo-align-top">
     <button class="romo-btn" style="width: 40px">8</button>
     <button class="romo-btn" style="width: 40px">5</button>
     <button class="romo-btn" style="width: 40px">3</button>
     <button class="romo-btn" style="width: 40px">0</button>
   </div>
-  <div class="romo-btn-group-vertical romo-text-top">
+  <div class="romo-btn-group-vertical romo-align-top">
     <button class="romo-btn" style="width: 40px">9</button>
     <button class="romo-btn" style="width: 40px">6</button>
     <button class="romo-btn" style="width: 40px">3</button>
     <button class="romo-btn" style="width: 40px">=</button>
   </div>
-  <div class="romo-btn-group-vertical romo-text-top">
+  <div class="romo-btn-group-vertical romo-align-top">
     <button class="romo-btn" style="width: 40px">/</button>
     <button class="romo-btn" style="width: 40px">*</button>
     <button class="romo-btn" style="width: 40px">-</button>
@@ -507,25 +507,25 @@ Optionally with border radius.
 
 <div class="romo-pad">
   <div class="romo-btn-group romo-btn-group-border3-radius">
-    <div class="romo-btn-group-vertical romo-text-top">
+    <div class="romo-btn-group-vertical romo-align-top">
       <button class="romo-btn" style="width: 40px">7</button>
       <button class="romo-btn" style="width: 40px">4</button>
       <button class="romo-btn" style="width: 40px">1</button>
       <button class="romo-btn" style="width: 40px">.</button>
     </div>
-    <div class="romo-btn-group-vertical romo-text-top">
+    <div class="romo-btn-group-vertical romo-align-top">
       <button class="romo-btn" style="width: 40px">8</button>
       <button class="romo-btn" style="width: 40px">5</button>
       <button class="romo-btn" style="width: 40px">3</button>
       <button class="romo-btn" style="width: 40px">0</button>
     </div>
-    <div class="romo-btn-group-vertical romo-text-top">
+    <div class="romo-btn-group-vertical romo-align-top">
       <button class="romo-btn" style="width: 40px">9</button>
       <button class="romo-btn" style="width: 40px">6</button>
       <button class="romo-btn" style="width: 40px">3</button>
       <button class="romo-btn" style="width: 40px">=</button>
     </div>
-    <div class="romo-btn-group-vertical romo-text-top">
+    <div class="romo-btn-group-vertical romo-align-top">
       <button class="romo-btn" style="width: 40px">/</button>
       <button class="romo-btn" style="width: 40px">*</button>
       <button class="romo-btn" style="width: 40px">-</button>
@@ -536,16 +536,16 @@ Optionally with border radius.
 
 ```html
 <div class="romo-btn-group romo-btn-group-border3-radius">
-  <div class="romo-btn-group-vertical romo-text-top">
+  <div class="romo-btn-group-vertical romo-align-top">
     ...
   </div>
-  <div class="romo-btn-group-vertical romo-text-top">
+  <div class="romo-btn-group-vertical romo-align-top">
     ...
   </div>
-  <div class="romo-btn-group-vertical romo-text-top">
+  <div class="romo-btn-group-vertical romo-align-top">
     ...
   </div>
-  <div class="romo-btn-group-vertical romo-text-top">
+  <div class="romo-btn-group-vertical romo-align-top">
     ...
   </div>
 </div>

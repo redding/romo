@@ -1396,7 +1396,7 @@ Use any helper style classes in any combination on rows/cells.
         <th class="romo-pad2">#</th>
         <th>Name</th>
         <th class="romo-text2 romo-pad2-left">Slug</th>
-        <th class="romo-1-12 romo-text-center romo-text-top">Count</th>
+        <th class="romo-1-12 romo-align-center romo-align-top">Count</th>
       </tr>
     </thead>
     <tbody>
@@ -1410,7 +1410,7 @@ Use any helper style classes in any combination on rows/cells.
         <td>2</td>
         <td>Jane Doe</td>
         <td class="romo-pad3">jane-doe</td>
-        <td class="romo-1-12 romo-text-center romo-text-success">18</td>
+        <td class="romo-1-12 romo-align-center romo-text-success">18</td>
       </tr>
       <tr class="romo-bg-success">
         <td>3</td>
@@ -1430,7 +1430,7 @@ Use any helper style classes in any combination on rows/cells.
         <th class="romo-pad2">#</th>
         <th>Name</th>
         <th class="romo-text2 romo-pad2-left">Slug</th>
-        <th class="romo-1-12 romo-text-center romo-text-top">Count</th>
+        <th class="romo-1-12 romo-align-center romo-align-top">Count</th>
       </tr>
     </thead>
     <tbody>
@@ -1444,7 +1444,7 @@ Use any helper style classes in any combination on rows/cells.
         <td>2</td>
         <td>Jane Doe</td>
         <td class="romo-pad3">jane-doe</td>
-        <td class="romo-1-12 romo-text-center romo-text-success">18</td>
+        <td class="romo-1-12 romo-align-center romo-text-success">18</td>
       </tr>
       <tr class="romo-bg-success">
         <td>3</td>

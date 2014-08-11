@@ -88,43 +88,43 @@ Use to align with inline text.
 
 <div class="romo-pad">
   <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
-       class="romo-img1 romo-text-middle">
-  <span class="romo-text1 romo-text-middle">Img1, text1, middle</span>
+       class="romo-img1 romo-align-middle">
+  <span class="romo-text1 romo-align-middle">Img1, text1, middle</span>
 </div>
 <div class="romo-pad">
   <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
-       class="romo-img2 romo-text-middle">
-  <span class="romo-text2 romo-text-middle">Img2, text2, middle</span>
+       class="romo-img2 romo-align-middle">
+  <span class="romo-text2 romo-align-middle">Img2, text2, middle</span>
 </div>
 <div class="romo-pad">
   <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
-       class="romo-img3 romo-text-middle">
-  <span class="romo-text3 romo-text-middle">Img3, text3, middle</span>
+       class="romo-img3 romo-align-middle">
+  <span class="romo-text3 romo-align-middle">Img3, text3, middle</span>
 </div>
 <div class="romo-pad">
   <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
-       class="romo-img4 romo-text-middle">
-  <span class="romo-text4 romo-text-middle">Img4, text4, middle</span>
+       class="romo-img4 romo-align-middle">
+  <span class="romo-text4 romo-align-middle">Img4, text4, middle</span>
 </div>
 <div class="romo-pad">
   <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
-       class="romo-img5 romo-text-middle">
-  <span class="romo-text5 romo-text-middle">Img5, text5, middle</span>
+       class="romo-img5 romo-align-middle">
+  <span class="romo-text5 romo-align-middle">Img5, text5, middle</span>
 </div>
 <div class="romo-pad">
   <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
-       class="romo-img6 romo-text-middle">
-  <span class="romo-text6 romo-text-middle">Img6, text6, middle</span>
+       class="romo-img6 romo-align-middle">
+  <span class="romo-text6 romo-align-middle">Img6, text6, middle</span>
 </div>
 <div class="romo-pad">
   <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
-       class="romo-img1 romo-text-middle">
-  <span class="romo-text6 romo-text-middle">Img1, text6, middle</span>
+       class="romo-img1 romo-align-middle">
+  <span class="romo-text6 romo-align-middle">Img1, text6, middle</span>
 </div>
 <div class="romo-pad">
   <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
-       class="romo-img6 romo-text-middle">
-  <span class="romo-text4 romo-text-middle">Img6, text4, middle</span>
+       class="romo-img6 romo-align-middle">
+  <span class="romo-text4 romo-align-middle">Img6, text4, middle</span>
 </div>
 
 <div class="romo-pad romo-rm-pad-bottom">
@@ -133,35 +133,35 @@ Use to align with inline text.
 
 ```html
 <div class="romo-pad">
-  <img class="romo-img1 romo-text-middle" src="...">
-  <span class="romo-text1 romo-text-middle">Img1, text1, middle</span>
+  <img class="romo-img1 romo-align-middle" src="...">
+  <span class="romo-text1 romo-align-middle">Img1, text1, middle</span>
 </div>
 <div class="romo-pad">
-  <img class="romo-img2 romo-text-middle" src="...">
-  <span class="romo-text2 romo-text-middle">Img2, text2, middle</span>
+  <img class="romo-img2 romo-align-middle" src="...">
+  <span class="romo-text2 romo-align-middle">Img2, text2, middle</span>
 </div>
 <div class="romo-pad">
-  <img class="romo-img3 romo-text-middle" src="...">
-  <span class="romo-text3 romo-text-middle">Img3, text3, middle</span>
+  <img class="romo-img3 romo-align-middle" src="...">
+  <span class="romo-text3 romo-align-middle">Img3, text3, middle</span>
 </div>
 <div class="romo-pad">
-  <img class="romo-img4 romo-text-middle" src="...">
-  <span class="romo-text4 romo-text-middle">Img4, text4, middle</span>
+  <img class="romo-img4 romo-align-middle" src="...">
+  <span class="romo-text4 romo-align-middle">Img4, text4, middle</span>
 </div>
 <div class="romo-pad">
-  <img class="romo-img5 romo-text-middle" src="...">
-  <span class="romo-text5 romo-text-middle">Img5, text5, middle</span>
+  <img class="romo-img5 romo-align-middle" src="...">
+  <span class="romo-text5 romo-align-middle">Img5, text5, middle</span>
 </div>
 <div class="romo-pad">
-  <img class="romo-img6 romo-text-middle" src="...">
-  <span class="romo-text6 romo-text-middle">Img6, text6, middle</span>
+  <img class="romo-img6 romo-align-middle" src="...">
+  <span class="romo-text6 romo-align-middle">Img6, text6, middle</span>
 </div>
 <div class="romo-pad">
-  <img class="romo-img1 romo-text-middle" src="...">
-  <span class="romo-text6 romo-text-middle">Img1, text6, middle</span>
+  <img class="romo-img1 romo-align-middle" src="...">
+  <span class="romo-text6 romo-align-middle">Img1, text6, middle</span>
 </div>
 <div class="romo-pad">
-  <img class="romo-img6 romo-text-middle" src="...">
-  <span class="romo-text4 romo-text-middle">Img6, text4, middle</span>
+  <img class="romo-img6 romo-align-middle" src="...">
+  <span class="romo-text4 romo-align-middle">Img6, text4, middle</span>
 </div>
 ```

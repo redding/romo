@@ -146,16 +146,6 @@ h6 { @include text6; }
 .romo-text-small,
 .romo-text6 { @include text6(!important); @include font-weight6; }
 
-/* text alignment */
-
-.romo-text-left   { @include align-left(!important); }
-.romo-text-center { @include align-center(!important); }
-.romo-text-right  { @include align-right(!important); }
-
-.romo-text-top    { @include align-top(!important); }
-.romo-text-middle { @include align-middle(!important); }
-.romo-text-bottom { @include align-bottom(!important); }
-
 /* text weight */
 
 .romo-text-normal  { @include font-weight(normal,  !important); }
@@ -171,6 +161,16 @@ h6 { @include text6; }
 .romo-text-700     { @include font-weight(700,     !important); }
 .romo-text-800     { @include font-weight(800,     !important); }
 .romo-text-900     { @include font-weight(900,     !important); }
+
+/* alignment */
+
+.romo-align-left   { @include align-left(!important); }
+.romo-align-center { @include align-center(!important); }
+.romo-align-right  { @include align-right(!important); }
+
+.romo-align-top    { @include align-top(!important); }
+.romo-align-middle { @include align-middle(!important); }
+.romo-align-bottom { @include align-bottom(!important); }
 
 /* color emphasis */
 
