@@ -251,3 +251,353 @@ Use these as an alternative to the default styles and to add color emphasis to b
     </tbody>
   </table>
 </div>
+
+## Button groups
+
+Group buttons together by wrapping them in `.romo-btn-group`.
+
+<div class="romo-pad">
+  <div class="romo-btn-group">
+    <button class="romo-btn">Left</button>
+    <button class="romo-btn">Middle</button>
+    <button class="romo-btn">Right</button>
+  </div>
+</div>
+
+```html
+<div class="romo-btn-group">
+  <button class="romo-btn">Left</button>
+  <button class="romo-btn">Middle</button>
+  <button class="romo-btn">Right</button>
+</div>
+```
+
+Optionally with border radius.
+
+<div class="romo-pad">
+  <div class="romo-pad0-bottom">
+    <div class="romo-btn-group romo-btn-group-border-radius">
+      <button class="romo-btn">...</button>
+      <button class="romo-btn">border-radius</button>
+      <button class="romo-btn">...</button>
+    </div>
+  </div>
+  <div class="romo-pad0-bottom">
+    <div class="romo-btn-group romo-btn-group-border1-radius">
+      <button class="romo-btn">...</button>
+      <button class="romo-btn">border1-radius</button>
+      <button class="romo-btn">...</button>
+    </div>
+  </div>
+  <div class="romo-pad0-bottom">
+    <div class="romo-btn-group romo-btn-group-border2-radius">
+      <button class="romo-btn">...</button>
+      <button class="romo-btn">border2-radius</button>
+      <button class="romo-btn">...</button>
+    </div>
+  </div>
+  <div class="romo-pad0-bottom">
+    <div class="romo-btn-group romo-btn-group-border3-radius">
+      <button class="romo-btn">...</button>
+      <button class="romo-btn">border3-radius</button>
+      <button class="romo-btn">...</button>
+    </div>
+  </div>
+  <div class="romo-pad0-bottom">
+    <div class="romo-btn-group romo-btn-group-border4-radius">
+      <button class="romo-btn">...</button>
+      <button class="romo-btn">border4-radius</button>
+      <button class="romo-btn">...</button>
+    </div>
+  </div>
+  <div class="romo-pad0-bottom">
+    <div class="romo-btn-group romo-btn-group-border5-radius">
+      <button class="romo-btn">...</button>
+      <button class="romo-btn">border5-radius</button>
+      <button class="romo-btn">...</button>
+    </div>
+  </div>
+  <div class="romo-pad0-bottom">
+    <div class="romo-btn-group romo-btn-group-border6-radius">
+      <button class="romo-btn">...</button>
+      <button class="romo-btn">border6-radius</button>
+      <button class="romo-btn">...</button>
+    </div>
+  </div>
+</div>
+
+```html
+<div class="romo-btn-group romo-btn-group-border-radius">
+  ...
+</div>
+<div class="romo-btn-group romo-btn-group-border1-radius">
+  ...
+</div>
+<div class="romo-btn-group romo-btn-group-border2-radius">
+  ...
+</div>
+<div class="romo-btn-group romo-btn-group-border3-radius">
+  ...
+</div>
+<div class="romo-btn-group romo-btn-group-border4-radius">
+  ...
+</div>
+<div class="romo-btn-group romo-btn-group-border5-radius">
+  ...
+</div>
+<div class="romo-btn-group romo-btn-group-border6-radius">
+  ...
+</div>
+```
+
+### Multiple button groups
+
+Combine sets of button groups for more complex components.
+
+<div class="romo-pad">
+  <div class="romo-btn-group">
+    <button class="romo-btn">0</button>
+    <button class="romo-btn">1</button>
+    <button class="romo-btn">2</button>
+    <button class="romo-btn">3</button>
+  </div>
+  <div class="romo-btn-group">
+    <button class="romo-btn">4</button>
+    <button class="romo-btn">5</button>
+    <button class="romo-btn">6</button>
+    <button class="romo-btn">7</button>
+    <button class="romo-btn">8</button>
+  </div>
+  <div class="romo-btn-group">
+    <button class="romo-btn">9</button>
+  </div>
+</div>
+
+```html
+<div class="romo-btn-group">
+  <button class="romo-btn">0</button>
+  <button class="romo-btn">1</button>
+  <button class="romo-btn">2</button>
+  <button class="romo-btn">3</button>
+</div>
+<div class="romo-btn-group">
+  <button class="romo-btn">4</button>
+  <button class="romo-btn">5</button>
+  <button class="romo-btn">6</button>
+  <button class="romo-btn">7</button>
+  <button class="romo-btn">8</button>
+</div>
+<div class="romo-btn-group">
+  <button class="romo-btn">9</button>
+</div>
+```
+
+### Vertical button groups
+
+Make a group of buttons appear vertically stacked rather than horizontally by using `.romo-btn-group-vertical`.
+
+**Note**: you should set a static width on vertical button group buttons so they always line up as expected regardless of their content.
+
+<div class="romo-pad">
+  <div class="romo-btn-group-vertical romo-text-top">
+    <button class="romo-btn" style="width: 40px">1</button>
+    <button class="romo-btn" style="width: 40px">2</button>
+    <button class="romo-btn" style="width: 40px">3</button>
+    <button class="romo-btn" style="width: 40px">4</button>
+  </div>
+  <div class="romo-btn-group-vertical romo-text-top">
+    <button class="romo-btn" style="width: 80px">First</button>
+    <button class="romo-btn" style="width: 80px">Second</button>
+    <button class="romo-btn" style="width: 80px">Third</button>
+  </div>
+</div>
+
+```html
+<div class="romo-btn-group-vertical romo-text-top">
+  <button class="romo-btn" style="width: 40px">1</button>
+  <button class="romo-btn" style="width: 40px">2</button>
+  <button class="romo-btn" style="width: 40px">3</button>
+  <button class="romo-btn" style="width: 40px">4</button>
+</div>
+<div class="romo-btn-group-vertical romo-text-top">
+  <button class="romo-btn" style="width: 80px">First</button>
+  <button class="romo-btn" style="width: 80px">Second</button>
+  <button class="romo-btn" style="width: 80px">Third</button>
+</div>
+```
+
+Optionally with border radius.
+
+<div class="romo-pad">
+  <div class="romo-pad0-bottom">
+    <div class="romo-btn-group-vertical romo-btn-group-border-radius">
+      <button class="romo-btn" style="width: 120px">...</button>
+      <button class="romo-btn" style="width: 120px">border-radius</button>
+      <button class="romo-btn" style="width: 120px">...</button>
+    </div>
+    <div class="romo-btn-group-vertical romo-btn-group-border1-radius">
+      <button class="romo-btn" style="width: 120px">...</button>
+      <button class="romo-btn" style="width: 120px">border1-radius</button>
+      <button class="romo-btn" style="width: 120px">...</button>
+    </div>
+    <div class="romo-btn-group-vertical romo-btn-group-border2-radius">
+      <button class="romo-btn" style="width: 120px">...</button>
+      <button class="romo-btn" style="width: 120px">border2-radius</button>
+      <button class="romo-btn" style="width: 120px">...</button>
+    </div>
+    <div class="romo-btn-group-vertical romo-btn-group-border3-radius">
+      <button class="romo-btn" style="width: 120px">...</button>
+      <button class="romo-btn" style="width: 120px">border3-radius</button>
+      <button class="romo-btn" style="width: 120px">...</button>
+    </div>
+    <div class="romo-btn-group-vertical romo-btn-group-border4-radius">
+      <button class="romo-btn" style="width: 120px">...</button>
+      <button class="romo-btn" style="width: 120px">border4-radius</button>
+      <button class="romo-btn" style="width: 120px">...</button>
+    </div>
+    <div class="romo-btn-group-vertical romo-btn-group-border5-radius">
+      <button class="romo-btn" style="width: 120px">...</button>
+      <button class="romo-btn" style="width: 120px">border5-radius</button>
+      <button class="romo-btn" style="width: 120px">...</button>
+    </div>
+    <div class="romo-btn-group-vertical romo-btn-group-border6-radius">
+      <button class="romo-btn" style="width: 120px">...</button>
+      <button class="romo-btn" style="width: 120px">border6-radius</button>
+      <button class="romo-btn" style="width: 120px">...</button>
+    </div>
+  </div>
+</div>
+
+```html
+<div class="romo-btn-group-vertical romo-btn-group-border-radius">
+  ...
+</div>
+<div class="romo-btn-group-vertical romo-btn-group-border1-radius">
+  ...
+</div>
+<div class="romo-btn-group-vertical romo-btn-group-border2-radius">
+  ...
+</div>
+<div class="romo-btn-group-vertical romo-btn-group-border3-radius">
+  ...
+</div>
+<div class="romo-btn-group-vertical romo-btn-group-border4-radius">
+  ...
+</div>
+<div class="romo-btn-group-vertical romo-btn-group-border5-radius">
+  ...
+</div>
+<div class="romo-btn-group-vertical romo-btn-group-border6-radius">
+  ...
+</div>
+```
+
+## Combined button groups
+
+Combine horizontal and vertical button groups to create grids of buttons.
+
+<div class="romo-pad">
+  <div class="romo-btn-group">
+    <div class="romo-btn-group-vertical romo-text-top">
+      <button class="romo-btn" style="width: 40px">7</button>
+      <button class="romo-btn" style="width: 40px">4</button>
+      <button class="romo-btn" style="width: 40px">1</button>
+      <button class="romo-btn" style="width: 40px">.</button>
+    </div>
+    <div class="romo-btn-group-vertical romo-text-top">
+      <button class="romo-btn" style="width: 40px">8</button>
+      <button class="romo-btn" style="width: 40px">5</button>
+      <button class="romo-btn" style="width: 40px">3</button>
+      <button class="romo-btn" style="width: 40px">0</button>
+    </div>
+    <div class="romo-btn-group-vertical romo-text-top">
+      <button class="romo-btn" style="width: 40px">9</button>
+      <button class="romo-btn" style="width: 40px">6</button>
+      <button class="romo-btn" style="width: 40px">3</button>
+      <button class="romo-btn" style="width: 40px">=</button>
+    </div>
+    <div class="romo-btn-group-vertical romo-text-top">
+      <button class="romo-btn" style="width: 40px">/</button>
+      <button class="romo-btn" style="width: 40px">*</button>
+      <button class="romo-btn" style="width: 40px">-</button>
+      <button class="romo-btn" style="width: 40px">+</button>
+    </div>
+  </div>
+</div>
+
+```html
+<div class="romo-btn-group">
+  <div class="romo-btn-group-vertical romo-text-top">
+    <button class="romo-btn" style="width: 40px">7</button>
+    <button class="romo-btn" style="width: 40px">4</button>
+    <button class="romo-btn" style="width: 40px">1</button>
+    <button class="romo-btn" style="width: 40px">.</button>
+  </div>
+  <div class="romo-btn-group-vertical romo-text-top">
+    <button class="romo-btn" style="width: 40px">8</button>
+    <button class="romo-btn" style="width: 40px">5</button>
+    <button class="romo-btn" style="width: 40px">3</button>
+    <button class="romo-btn" style="width: 40px">0</button>
+  </div>
+  <div class="romo-btn-group-vertical romo-text-top">
+    <button class="romo-btn" style="width: 40px">9</button>
+    <button class="romo-btn" style="width: 40px">6</button>
+    <button class="romo-btn" style="width: 40px">3</button>
+    <button class="romo-btn" style="width: 40px">=</button>
+  </div>
+  <div class="romo-btn-group-vertical romo-text-top">
+    <button class="romo-btn" style="width: 40px">/</button>
+    <button class="romo-btn" style="width: 40px">*</button>
+    <button class="romo-btn" style="width: 40px">-</button>
+    <button class="romo-btn" style="width: 40px">+</button>
+  </div>
+</div>
+```
+
+Optionally with border radius.
+
+<div class="romo-pad">
+  <div class="romo-btn-group romo-btn-group-border3-radius">
+    <div class="romo-btn-group-vertical romo-text-top">
+      <button class="romo-btn" style="width: 40px">7</button>
+      <button class="romo-btn" style="width: 40px">4</button>
+      <button class="romo-btn" style="width: 40px">1</button>
+      <button class="romo-btn" style="width: 40px">.</button>
+    </div>
+    <div class="romo-btn-group-vertical romo-text-top">
+      <button class="romo-btn" style="width: 40px">8</button>
+      <button class="romo-btn" style="width: 40px">5</button>
+      <button class="romo-btn" style="width: 40px">3</button>
+      <button class="romo-btn" style="width: 40px">0</button>
+    </div>
+    <div class="romo-btn-group-vertical romo-text-top">
+      <button class="romo-btn" style="width: 40px">9</button>
+      <button class="romo-btn" style="width: 40px">6</button>
+      <button class="romo-btn" style="width: 40px">3</button>
+      <button class="romo-btn" style="width: 40px">=</button>
+    </div>
+    <div class="romo-btn-group-vertical romo-text-top">
+      <button class="romo-btn" style="width: 40px">/</button>
+      <button class="romo-btn" style="width: 40px">*</button>
+      <button class="romo-btn" style="width: 40px">-</button>
+      <button class="romo-btn" style="width: 40px">+</button>
+    </div>
+  </div>
+</div>
+
+```html
+<div class="romo-btn-group romo-btn-group-border3-radius">
+  <div class="romo-btn-group-vertical romo-text-top">
+    ...
+  </div>
+  <div class="romo-btn-group-vertical romo-text-top">
+    ...
+  </div>
+  <div class="romo-btn-group-vertical romo-text-top">
+    ...
+  </div>
+  <div class="romo-btn-group-vertical romo-text-top">
+    ...
+  </div>
+</div>
+```
