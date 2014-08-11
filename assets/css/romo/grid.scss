@@ -12,48 +12,48 @@
   clear: both;
 }
 
-.romo-row > [class*="romo-span-"] {
+.romo-span {
   float: left;
   min-height: 1px;
 }
 
-.romo-span-1-12  { @include grid-span(1, 12); }
-.romo-span-2-12  { @include grid-span(2, 12); }
-.romo-span-3-12  { @include grid-span(3, 12); }
-.romo-span-4-12  { @include grid-span(4, 12); }
-.romo-span-5-12  { @include grid-span(5, 12); }
-.romo-span-6-12  { @include grid-span(6, 12); }
-.romo-span-7-12  { @include grid-span(7, 12); }
-.romo-span-8-12  { @include grid-span(8, 12); }
-.romo-span-9-12  { @include grid-span(9, 12); }
-.romo-span-10-12 { @include grid-span(10, 12); }
-.romo-span-11-12 { @include grid-span(11, 12); }
-.romo-span-12-12 { @include grid-span(12, 12); }
+.romo-1-12  { @include grid-span(1, 12); }
+.romo-2-12  { @include grid-span(2, 12); }
+.romo-3-12  { @include grid-span(3, 12); }
+.romo-4-12  { @include grid-span(4, 12); }
+.romo-5-12  { @include grid-span(5, 12); }
+.romo-6-12  { @include grid-span(6, 12); }
+.romo-7-12  { @include grid-span(7, 12); }
+.romo-8-12  { @include grid-span(8, 12); }
+.romo-9-12  { @include grid-span(9, 12); }
+.romo-10-12 { @include grid-span(10, 12); }
+.romo-11-12 { @include grid-span(11, 12); }
+.romo-12-12 { @include grid-span(12, 12); }
 
-.romo-span-1-24  { @include grid-span(1, 24); }
-.romo-span-2-24  { @include grid-span(2, 24); }
-.romo-span-3-24  { @include grid-span(3, 24); }
-.romo-span-4-24  { @include grid-span(4, 24); }
-.romo-span-5-24  { @include grid-span(5, 24); }
-.romo-span-6-24  { @include grid-span(6, 24); }
-.romo-span-7-24  { @include grid-span(7, 24); }
-.romo-span-8-24  { @include grid-span(8, 24); }
-.romo-span-9-24  { @include grid-span(9, 24); }
-.romo-span-10-24 { @include grid-span(10, 24); }
-.romo-span-11-24 { @include grid-span(11, 24); }
-.romo-span-12-24 { @include grid-span(12, 24); }
-.romo-span-13-24 { @include grid-span(13, 24); }
-.romo-span-14-24 { @include grid-span(14, 24); }
-.romo-span-15-24 { @include grid-span(15, 24); }
-.romo-span-16-24 { @include grid-span(16, 24); }
-.romo-span-17-24 { @include grid-span(17, 24); }
-.romo-span-18-24 { @include grid-span(18, 24); }
-.romo-span-19-24 { @include grid-span(19, 24); }
-.romo-span-20-24 { @include grid-span(20, 24); }
-.romo-span-21-24 { @include grid-span(21, 24); }
-.romo-span-22-24 { @include grid-span(22, 24); }
-.romo-span-23-24 { @include grid-span(23, 24); }
-.romo-span-24-24 { @include grid-span(24, 24); }
+.romo-1-24  { @include grid-span(1, 24); }
+.romo-2-24  { @include grid-span(2, 24); }
+.romo-3-24  { @include grid-span(3, 24); }
+.romo-4-24  { @include grid-span(4, 24); }
+.romo-5-24  { @include grid-span(5, 24); }
+.romo-6-24  { @include grid-span(6, 24); }
+.romo-7-24  { @include grid-span(7, 24); }
+.romo-8-24  { @include grid-span(8, 24); }
+.romo-9-24  { @include grid-span(9, 24); }
+.romo-10-24 { @include grid-span(10, 24); }
+.romo-11-24 { @include grid-span(11, 24); }
+.romo-12-24 { @include grid-span(12, 24); }
+.romo-13-24 { @include grid-span(13, 24); }
+.romo-14-24 { @include grid-span(14, 24); }
+.romo-15-24 { @include grid-span(15, 24); }
+.romo-16-24 { @include grid-span(16, 24); }
+.romo-17-24 { @include grid-span(17, 24); }
+.romo-18-24 { @include grid-span(18, 24); }
+.romo-19-24 { @include grid-span(19, 24); }
+.romo-20-24 { @include grid-span(20, 24); }
+.romo-21-24 { @include grid-span(21, 24); }
+.romo-22-24 { @include grid-span(22, 24); }
+.romo-23-24 { @include grid-span(23, 24); }
+.romo-24-24 { @include grid-span(24, 24); }
 
 .romo-offset-1-12  { @include grid-offset(1, 12); }
 .romo-offset-2-12  { @include grid-offset(2, 12); }

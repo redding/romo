@@ -146,8 +146,7 @@ Use these as an alternative to the default styles and to add color emphasis to b
         <td><button class="romo-btn romo-btn-primary romo-btn-large romo-btn-active">Primary</button></td>
         <td><button class="romo-btn romo-btn-primary romo-btn-large">Primary</button></td>
         <td><button class="romo-btn romo-btn-primary">Primary</button></td>
-        <td class="romo-span--12">
-          <button class="romo-btn romo-btn-primary romo-btn-small">Primary</button></td>
+        <td><button class="romo-btn romo-btn-primary romo-btn-small">Primary</button></td>
         <td><code>romo-btn romo-btn-primary</code></td>
       </tr>
       <tr>

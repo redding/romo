@@ -4,27 +4,27 @@ All images have some basic styling that removes any border and auto scales down 
 
 
 <div class="romo-row">
-  <div class="romo-span-4-12 romo-border">
+  <div class="romo-span romo-4-12 romo-border">
     <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg" alt="F16A FAP linksup KC-10.jpg">
   </div>
-  <div class="romo-span-4-12 romo-border">
+  <div class="romo-span romo-4-12 romo-border">
     <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg" alt="F16A FAP linksup KC-10.jpg">
   </div>
-  <div class="romo-span-4-12 romo-border">
+  <div class="romo-span romo-4-12 romo-border">
     <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg" alt="F16A FAP linksup KC-10.jpg">
   </div>
 </div>
 <div class="romo-row">
-  <div class="romo-span-3-12 romo-border">
+  <div class="romo-span romo-3-12 romo-border">
     <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg" alt="F16A FAP linksup KC-10.jpg">
   </div>
-  <div class="romo-span-3-12 romo-border">
+  <div class="romo-span romo-3-12 romo-border">
     <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg" alt="F16A FAP linksup KC-10.jpg">
   </div>
-  <div class="romo-span-3-12 romo-border">
+  <div class="romo-span romo-3-12 romo-border">
     <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg" alt="F16A FAP linksup KC-10.jpg">
   </div>
-  <div class="romo-span-3-12 romo-border">
+  <div class="romo-span romo-3-12 romo-border">
     <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg" alt="F16A FAP linksup KC-10.jpg">
   </div>
 </div>
