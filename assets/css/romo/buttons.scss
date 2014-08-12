@@ -89,10 +89,7 @@ input[type="button"].romo-btn-block,
 .romo-btn.romo-btn-link.disabled:focus,
 .romo-btn.romo-btn-link[disabled],
 .romo-btn.romo-btn-link[disabled]:hover,
-.romo-btn.romo-btn-link[disabled]:focus {
-  color: $btnColor;
-  text-decoration: none;
-}
+.romo-btn.romo-btn-link[disabled]:focus { color: $disabledColor; }
 
 .romo-btn-group { display: inline-flex; }
 .romo-btn-group .romo-btn:not(:last-child) { @include rm-border-right; }

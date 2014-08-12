@@ -13,6 +13,7 @@
 }
 .romo-datepicker-indicator.disabled {
   cursor: $notAllowedCursor;
+  color: $disabledColor;
 }
 
 .romo-datepicker-calendar {
@@ -43,6 +44,7 @@
 
 .romo-datepicker-calendar TD.romo-datepicker-day.disabled {
   cursor: $notAllowedCursor;
+  color: $disabledColor;
 }
 
 /* theme */

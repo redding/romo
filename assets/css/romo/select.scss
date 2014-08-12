@@ -138,7 +138,7 @@
 
 .romo-select.disabled,
 .romo-select[disabled] {
-  color: #999999;
+  color: $disabledColor;
 }
 
 .romo-select-option-list {
@@ -154,7 +154,7 @@
 .romo-select-option-list LI.disabled,
 .romo-select-option-list LI.disabled.romo-select-highlight {
   background-color: #ffffff;
-  color: #999999;
+  color: $disabledColor;
 }
 
 .romo-select-option-list LI.romo-select-highlight {
