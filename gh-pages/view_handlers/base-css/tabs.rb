@@ -4,13 +4,13 @@ module ViewHandlers; end
 class ViewHandlers::BaseCSS; end
 class ViewHandlers::BaseCSS
 
-  class Nav
+  class Tabs
     include ViewHandlers::Layouts::Docs
 
-    page_title{ 'Nav CSS' }
+    page_title{ 'Tabs CSS' }
 
     def run!
-      render 'base-css/nav.html'
+      render 'base-css/tabs.html'
     end
 
   end
