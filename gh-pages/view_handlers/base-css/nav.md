@@ -36,7 +36,6 @@ For any tab items, add `.romo-tabs-active` to show the item as active.
   <li>...</li>
   <li>...</li>
 </ul>
-
 ```
 
 ### Disabled state
@@ -148,3 +147,40 @@ Use numbered style classes to size up/down tab items.
 <ul class="romo-tabs romo-tabs6 romo-push0-bottom">...</ul>
 ```
 
+## Stacked tabs
+
+Tabs are horizontal by default.  Add `.romo-tabs-stacked` to make them appear vertically stacked.
+
+<div class="romo-pad">
+  <ul class="romo-tabs romo-tabs-stacked">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Profile</a></li>
+    <li><a href="#">Settings</a></li>
+  </ul>
+</div>
+
+```html
+<ul class="romo-tabs romo-tabs-stacked">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Profile</a></li>
+  <li><a href="#">Settings</a></li>
+</ul>
+```
+
+Use `.romo-tabs-active` and `.disabled` just as you would on normal tabs.
+
+<div class="romo-pad">
+  <ul class="romo-tabs romo-tabs-stacked">
+    <li class="romo-tabs-active"><a href="#">Home</a></li>
+    <li><a href="#">Profile</a></li>
+    <li class="disabled"><a href="#">Settings</a></li>
+  </ul>
+</div>
+
+```html
+<ul class="romo-tabs romo-tabs-stacked">
+  <li class="romo-tabs-active">...</li>
+  <li>...</li>
+  <li class="disabled">...</li>
+</ul>
+```
