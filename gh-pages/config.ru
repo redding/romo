@@ -12,6 +12,7 @@ require 'dassets-erb'
 require 'dassets/server'
 require 'kramdown'
 require 'romo'
+require 'romo/dassets'
 
 class RomoGHPages
   include Deas::Server
@@ -58,54 +59,12 @@ class RomoGHPages
   get '/index.html', 'Index'
 
   init do
+    Romo::Dassets.configure!
+
     Dassets.configure do |c|
 
       c.base_url self.base_url
 
-      # TODO: have a gem, "romo-dassets", do this eventually
-      # Romo's assets path
-      c.source Romo.gem_assets_path do |s|
-        s.filter{ |paths| paths.reject{ |p| File.basename(p) =~ /^_/ } }
-        s.engine 'scss', Dassets::Sass::Engine, {
-          :syntax => 'scss',
-          :output_style => 'compressed'
-        }
-        s.engine 'erb',  Dassets::Erb::Engine
-      end
-
-      c.combination "css/romo.css", [
-        'css/romo/normalize.css',
-        'css/romo/base.css',
-        'css/romo/forms.css',
-        'css/romo/buttons.css',
-        'css/romo/tabs.css',
-        'css/romo/lists.css',
-        'css/romo/grid.css',
-        'css/romo/table.css',
-        'css/romo/grid_table.css',
-        'css/romo/dropdown.css',
-        'css/romo/modal.css',
-        'css/romo/select.css',
-        'css/romo/datepicker.css',
-        'css/romo/tooltip.css',
-        'css/romo/z_index.css',
-      ]
-      c.combination "js/romo.js", [
-        'js/romo/base.js',
-        'js/romo/invoke.js',
-        'js/romo/form.js',
-        'js/romo/dropdown.js',
-        'js/romo/select.js',
-        'js/romo/datepicker.js',
-        'js/romo/inline.js',
-        'js/romo/inline_form.js',
-        'js/romo/modal.js',
-        'js/romo/modal_form.js',
-        'js/romo/tooltip.js',
-        'js/romo/indicator.js',
-      ]
-
-      # gh-pages assets path
       c.source Utils.app_path('assets').to_s do |s|
         s.filter{ |paths| paths.reject{ |p| File.basename(p) =~ /^_.*\.scss$/ } }
         s.engine 'scss', Dassets::Sass::Engine, :syntax => 'scss'
