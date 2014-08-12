@@ -299,6 +299,26 @@ Optionally with border radius.
 </div>
 ```
 
+With alternate buttons.
+
+<div class="romo-pad">
+  <div class="romo-btn-group romo-btn-group-border-radius">
+    <button class="romo-btn romo-btn-link disabled"><< Prev</button>
+    <strong class="romo-btn romo-btn-link romo-text-bold">Page 1</strong>
+    <button class="romo-btn romo-btn-link">Next >></button>
+  </div>
+</div>
+
+```html
+<div class="romo-pad">
+  <div class="romo-btn-group romo-btn-group-border-radius">
+    <button class="romo-btn romo-btn-link disabled"><< Prev</button>
+    <strong class="romo-btn romo-btn-link romo-text-bold">Page 1</strong>
+    <button class="romo-btn romo-btn-link">Next >></button>
+  </div>
+</div>
+```
+
 ### Multiple button groups
 
 Combine sets of button groups for more complex components.
