@@ -26,6 +26,12 @@
   opacity: $opacity / 100;
 }
 
+@mixin clearfix { /* h5bp.com/q */
+  &:before,
+  &:after { display: table; content: ""; line-height: 0; }
+  &:after { clear: both; }
+}
+
 /* Typography */
 /* ---------- */
 
@@ -37,8 +43,8 @@
 @mixin font-weight2($i:"") { @include font-weight(200, $i); }
 @mixin font-weight3($i:"") { @include font-weight(200, $i); }
 @mixin font-weight4($i:"") { @include font-weight(300, $i); }
-@mixin font-weight5($i:"") { @include font-weight(normal, $i); }
-@mixin font-weight6($i:"") { @include font-weight(normal, $i); }
+@mixin font-weight5($i:"") { @include font-weight(300, $i); }
+@mixin font-weight6($i:"") { @include font-weight(300, $i); }
 
 /* text size */
 

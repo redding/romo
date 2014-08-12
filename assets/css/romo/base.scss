@@ -12,6 +12,7 @@ body {
   @include rm-push;
   @include bg-base;
   color: $baseColor;
+  font-weight: normal;
 }
 
 *,

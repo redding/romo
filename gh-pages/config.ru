@@ -78,6 +78,7 @@ class RomoGHPages
         'css/romo/base.css',
         'css/romo/forms.css',
         'css/romo/buttons.css',
+        'css/romo/nav.css',
         'css/romo/lists.css',
         'css/romo/grid.css',
         'css/romo/table.css',

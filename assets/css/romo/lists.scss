@@ -12,7 +12,7 @@ ol.romo-list-styled { @include list-styled(!important); }
 ul.romo-list-inline,
 ol.romo-list-inline { @include list-unstyled(!important); display: inline-flex; }
 ul.romo-list-inline > li,
-ol.romo-list-inline > li { display: inline-block }
+ol.romo-list-inline > li { display: inline-block; }
 
 /* border helpers */
 

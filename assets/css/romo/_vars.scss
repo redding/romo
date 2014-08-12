@@ -42,6 +42,7 @@ $baseBackground:   #fff;
 $altBackground:    #f3f3f3;
 $backgroundHover:  darken($altBackground, 5%);
 $baseColor:        #444;
+$disabledColor:    #999;
 $baseBorderColor:  #ccc;
 $altBorderColor:   #fff;
 $baseBorderRadius: 3px;
@@ -120,4 +121,13 @@ $inverseBackground:      #444444;
 $inverseBackgroundHover: darken($inverseBackground, 5%);
 $inverseBorder:          darken(adjust_hue($inverseBackground, -10), 3%);
 
+$tabBackground:       $altBackground;
+$tabBackgroundHover:  $backgroundHover;
+$tabBackgroundActive: #222;
+$tabColor:            $baseColor;
+$tabColorActive:      #fff;
+$tabColorDisabled:    $disabledColor;
+
 /* nav */
+
+$tabDividerSize:  4px;

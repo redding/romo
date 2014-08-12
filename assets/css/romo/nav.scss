@@ -1,0 +1,61 @@
+@import 'css/romo/vars';
+@import 'css/romo/mixins';
+
+/* tabs */
+
+.romo-tabs {
+  display: block;
+  @include list-unstyled;
+  @include clearfix;
+
+  border-bottom: $tabDividerSize solid $tabBackgroundActive;
+}
+
+.romo-tabs > li {
+  float: left;
+  @include rm-push;
+  @include rm-pad;
+}
+
+.romo-tabs-pull-left  > li { float: left; }
+.romo-tabs-pull-right > li { float: right; }
+
+.romo-tabs > li > a {
+  display: block;
+  cursor: pointer;
+
+  background-color: $tabBackground;
+  color: $tabColor;
+
+  &:hover,
+  &:focus {
+    outline: 0;
+    text-decoration: none;
+    background-color: $tabBackgroundHover;
+  }
+}
+
+.romo-tabs > li.romo-tabs-active > a,
+.romo-tabs > li:active a {
+  background-color: $tabBackgroundActive;
+  color: $tabColorActive;
+  cursor: default;
+}
+
+.romo-tabs > li.disabled a {
+  color: $tabColorDisabled;
+  cursor: not-allowed;
+
+  &:hover,
+  &:focus { background-color: $tabBackground; }
+}
+
+.romo-tabs.romo-tabs1 > li > a { @include font-size1; @include font-weight1; @include line-height1; @include button-pad1; }
+.romo-tabs.romo-tabs2 > li > a { @include font-size2; @include font-weight2; @include line-height1; @include button-pad1; }
+.romo-tabs.romo-tabs3 > li > a { @include font-size3; @include font-weight3; @include line-height2; @include button-pad2; }
+.romo-tabs.romo-tabs-large > li > a,
+.romo-tabs.romo-tabs4 > li > a { @include font-size4; @include font-weight4; @include line-height3; @include button-pad3; }
+.romo-tabs  > li > a,
+.romo-tabs.romo-tabs5 > li > a { @include font-size5; @include font-weight5; @include line-height4; @include button-pad4; }
+.romo-tabs.romo-tabs-small > li > a,
+.romo-tabs.romo-tabs6 > li > a { @include font-size6; @include font-weight6; @include line-height6; @include button-pad6; }

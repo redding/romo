@@ -41,14 +41,15 @@
   @include box-shadow(none);
 }
 
-.romo-btn1 { @include font-size1; @include font-weight1; @include line-height1; @include button-pad1; }
-.romo-btn2 { @include font-size2; @include font-weight2; @include line-height1; @include button-pad1; }
-.romo-btn3 { @include font-size3; @include font-weight3; @include line-height2; @include button-pad2; }
-.romo-btn-large,
-.romo-btn4 { @include font-size4; @include font-weight4; @include line-height3; @include button-pad3; }
-.romo-btn5 { @include font-size5; @include font-weight5; @include line-height4; @include button-pad4; }
-.romo-btn-small,
-.romo-btn6 { @include font-size6; @include font-weight6; @include line-height6; @include button-pad6; }
+.romo-btn.romo-btn1 { @include font-size1; @include font-weight1; @include line-height1; @include button-pad1; }
+.romo-btn.romo-btn2 { @include font-size2; @include font-weight2; @include line-height1; @include button-pad1; }
+.romo-btn.romo-btn3 { @include font-size3; @include font-weight3; @include line-height2; @include button-pad2; }
+.romo-btn.romo-btn-large,
+.romo-btn.romo-btn4 { @include font-size4; @include font-weight4; @include line-height3; @include button-pad3; }
+.romo-btn,
+.romo-btn.romo-btn5 { @include font-size5; @include font-weight5; @include line-height4; @include button-pad4; }
+.romo-btn.romo-btn-small,
+.romo-btn.romo-btn6 { @include font-size6; @include font-weight6; @include line-height6; @include button-pad6; }
 
 input[type="submit"].romo-btn-block,
 input[type="reset"].romo-btn-block,
