@@ -1,21 +1,32 @@
 @import 'css/romo/vars';
 @import 'css/romo/mixins';
 
-.romo-row:before,
-.romo-row:after {
-  display: table;
-  line-height: 0;
-  content: "";
+.romo-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 }
+.romo-row.romo-row-inline { diplay: inline-flex; }
 
-.romo-row:after {
-  clear: both;
-}
+.romo-span { min-height: 1px; }
 
-.romo-span {
-  float: left;
-  min-height: 1px;
-}
+.romo-row-pull-left  { justify-content: flex-start; }
+.romo-row-pull-right { justify-content: flex-end; }
+.romo-row-push-between { justify-content: space-between; }
+.romo-row-push-around  { justify-content: space-around; }
+
+.romo-row-align-top     { align-items: flex-start; }
+.romo-row-align-middle  { align-items: center; }
+.romo-row-align-bottom  { align-items: flex-end; }
+.romo-row-align-stretch { align-items: stretch; }
+
+.romo-span-fill { flex-grow: 1; flex-shrink: 1; }
+.romo-span-align-top     { align-self: flex-start; }
+.romo-span-align-middle  { align-self: center; }
+.romo-span-align-bottom  { align-self: flex-end; }
+.romo-span-align-stretch { align-self: stretch; }
 
 .romo-1-12  { @include grid-span(1, 12); }
 .romo-2-12  { @include grid-span(2, 12); }
@@ -92,3 +103,8 @@
 .romo-offset-22-24 { @include grid-offset(22, 24); }
 .romo-offset-23-24 { @include grid-offset(23, 24); }
 .romo-offset-24-24 { @include grid-offset(24, 24); }
+
+/* float mode (for browsers that don't support Flexbox */
+
+.romo-row-float { @include clearfix; }
+.romo-row-float > .romo-span { float: left; }
