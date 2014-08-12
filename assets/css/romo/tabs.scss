@@ -24,7 +24,9 @@
   display: block;
   cursor: pointer;
 
+  @include border1;
   background-color: $tabBackground;
+  border-color: $tabBackground;
   color: $tabColor;
 
   &:hover,
@@ -32,12 +34,14 @@
     outline: 0;
     text-decoration: none;
     background-color: $tabBackgroundHover;
+    border-color: $tabBackgroundHover;
   }
 }
 
 .romo-tabs > li.romo-tabs-active > a,
 .romo-tabs > li:active a {
   background-color: $tabBackgroundActive;
+  border-color: $tabBackgroundActive;
   color: $tabColorActive;
   cursor: default;
 }
@@ -47,7 +51,10 @@
   cursor: $notAllowedCursor;
 
   &:hover,
-  &:focus { background-color: $tabBackground; }
+  &:focus {
+    background-color: $tabBackground;
+    border-color: $tabBackgroundHover;
+  }
 }
 
 .romo-tabs.romo-tabs1 > li > a { @include font-size1; @include font-weight1; @include line-height1; @include button-pad1; }

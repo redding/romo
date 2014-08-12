@@ -184,3 +184,23 @@ Use `.romo-tabs-active` and `.disabled` just as you would on normal tabs.
   <li class="disabled">...</li>
 </ul>
 ```
+
+## Non-link items
+
+You can mix in non link items into the tabs.
+
+<ul class="romo-tabs">
+  <li><button class="romo-btn romo-push0-right">A button</button></li>
+  <li class="romo-tabs-active"><a href="#">Home</a></li>
+  <li><a href="#">Profile</a></li>
+  <li><a href="#">Settings</a></li>
+</ul>
+
+```html
+<ul class="romo-tabs">
+  <li><button class="romo-btn romo-push0-right">A button</button></li>
+  <li class="romo-tabs-active"><a href="#">Home</a></li>
+  <li><a href="#">Profile</a></li>
+  <li><a href="#">Settings</a></li>
+</ul>
+```
