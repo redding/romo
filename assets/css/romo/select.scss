@@ -23,9 +23,7 @@
 }
 
 .romo-select.disabled,
-.romo-select[disabled] {
-  cursor: not-allowed;
-}
+.romo-select[disabled] { cursor: $notAllowedCursor; }
 
 .romo-select-wrapper {
   position: relative;
@@ -65,9 +63,7 @@
   overflow: hidden;
 }
 
-.romo-select-option-list LI.disabled {
-  cursor: not-allowed;
-}
+.romo-select-option-list LI.disabled { cursor: $notAllowedCursor; }
 
 /* variable */
 

@@ -35,7 +35,7 @@
 
 .romo-btn.disabled,
 .romo-btn[disabled] {
-  cursor: not-allowed;
+  cursor: $notAllowedCursor;
   background-image: none;
   @include opacity(65);
   @include box-shadow(none);

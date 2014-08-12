@@ -44,7 +44,7 @@
 
 .romo-tabs > li.disabled a {
   color: $tabColorDisabled;
-  cursor: not-allowed;
+  cursor: $notAllowedCursor;
 
   &:hover,
   &:focus { background-color: $tabBackground; }

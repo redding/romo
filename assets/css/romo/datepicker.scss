@@ -12,7 +12,7 @@
   cursor: pointer;
 }
 .romo-datepicker-indicator.disabled {
-  cursor: not-allowed;
+  cursor: $notAllowedCursor;
 }
 
 .romo-datepicker-calendar {
@@ -42,7 +42,7 @@
 }
 
 .romo-datepicker-calendar TD.romo-datepicker-day.disabled {
-  cursor: not-allowed;
+  cursor: $notAllowedCursor;
 }
 
 /* theme */

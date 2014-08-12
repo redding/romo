@@ -59,7 +59,7 @@ label { display: block; }
 .romo-form textarea[disabled],
 .romo-form input[readonly],
 .romo-form select[readonly],
-.romo-form textarea[readonly] { cursor: not-allowed; }
+.romo-form textarea[readonly] { cursor: $notAllowedCursor; }
 
 .romo-form select { background-color: $baseBackground; @include border1; }
 
