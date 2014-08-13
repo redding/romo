@@ -500,3 +500,15 @@ h6 { @include text6; }
 .romo-float-left  { float: left !important; }
 .romo-pull-right,
 .romo-float-right { float: right !important; }
+
+.romo-overflow-hidden { overflow: hidden !important; }
+.romo-overflow-auto   { overflow: auto !important; }
+.romo-overflow-scroll { overflow: scroll !important; }
+
+.romo-overflow-x-hidden { overflow-x: hidden !important; }
+.romo-overflow-x-auto   { overflow-x: auto !important; }
+.romo-overflow-x-scroll { overflow-x: scroll !important; }
+
+.romo-overflow-y-hidden { overflow-y: hidden !important; }
+.romo-overflow-y-auto   { overflow-y: auto !important; }
+.romo-overflow-y-scroll { overflow-y: scroll !important; }
