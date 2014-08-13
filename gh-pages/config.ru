@@ -67,8 +67,11 @@ class RomoGHPages
 
       c.source Utils.app_path('assets').to_s do |s|
         s.filter{ |paths| paths.reject{ |p| File.basename(p) =~ /^_.*\.scss$/ } }
-        s.engine 'scss', Dassets::Sass::Engine, :syntax => 'scss'
         s.engine 'erb',  Dassets::Erb::Engine
+        s.engine 'scss', Dassets::Sass::Engine, {
+          :syntax => 'scss',
+          :output_style => 'compressed'
+        }
       end
 
       c.combination "css/web.css", [
