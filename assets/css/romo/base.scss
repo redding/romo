@@ -182,12 +182,14 @@ h6 { @include text6; }
 .romo-border-base { @include border-base(!important); }
 .romo-border-alt  { @include border-alt(!important); }
 
-.romo-text-muted   { @include text-muted(!important); }
-.romo-text-warning { @include text-warning(!important); }
-.romo-text-error   { @include text-error(!important); }
-.romo-text-info    { @include text-info(!important); }
-.romo-text-success { @include text-success(!important); }
-.romo-text-inverse { @include text-inverse(!important); }
+.romo-text-border-base { @include text-border-base(!important); }
+.romo-text-border-alt  { @include text-border-alt(!important); }
+.romo-text-muted       { @include text-muted(!important); }
+.romo-text-warning     { @include text-warning(!important); }
+.romo-text-error       { @include text-error(!important); }
+.romo-text-info        { @include text-info(!important); }
+.romo-text-success     { @include text-success(!important); }
+.romo-text-inverse     { @include text-inverse(!important); }
 
 .romo-text-muted-hover:hover, a.romo-text-muted:hover, a.romo-text-muted:focus {
   @include text-muted-hover(!important);

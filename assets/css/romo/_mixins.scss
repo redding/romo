@@ -87,6 +87,8 @@
 
 @mixin border-base($i:"") { border-color: $baseBorderColor #{$i}; }
 @mixin border-alt($i:"")  { border-color: $altBorderColor #{$i}; }
+@mixin text-border-base($i:"")   { color: $baseBorderColor #{$i}; }
+@mixin text-border-alt($i:"")    { color: $altBorderColor #{$i}; }
 
 @mixin text-muted($i:"")       { color: $mutedText #{$i}; }
 @mixin text-muted-hover($i:"") { color: $mutedTextHover #{$i}; }
