@@ -193,14 +193,14 @@
 /* list helpers */
 
 @mixin list-unstyled($i:"") {
+  @include rm-push;
+  @include rm-pad;
   list-style: none #{$i};
-  @include rm-push($i);
-  @include rm-pad($i);
 }
 @mixin list-styled($i:"") {
+  @include rm-push;
+  @include rm-pad;
   list-style-position: outside #{$i};
-  @include rm-push($i);
-  @include rm-pad($i);
   padding-left: ($baseFontSize * $lineHeightToSizeRatio) #{$i};
 }
 

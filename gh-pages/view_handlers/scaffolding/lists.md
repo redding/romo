@@ -91,165 +91,61 @@ Place all list items on a single line with inline-block.
 
 ### Optional classes
 
-#### `.romo-list-border{N}`
-
-Adds a border separating each item.
-
-<div class="romo-pad">
-  <ul class="romo-list-inline romo-list-border">
-    <li>Lorem ipsum</li>
-    <li>Phasellus iaculis</li>
-    <li>Nulla volutpat</li>
-  </ul>
-</div>
-
-<div class="romo-pad">
-  <ul class="romo-list-inline romo-list-border romo-border">
-    <li>Lorem ipsum</li>
-    <li>Phasellus iaculis</li>
-    <li>Nulla volutpat</li>
-  </ul>
-</div>
-
-```html
-<ul class="romo-list-inline romo-list-border">
-  <li>...</li>
-</ul>
-
-<ul class="romo-list-inline romo-list-border romo-border">
-  <li>...</li>
-</ul>
-```
-
-<div class="romo-pad">
-  <ul class="romo-list-inline romo-list-border1">
-    <li>Lorem ipsum</li>
-    <li>Phasellus iaculis</li>
-    <li>Nulla volutpat</li>
-  </ul>
-</div>
-
-<div class="romo-pad">
-  <ul class="romo-list-inline romo-list-border2">
-    <li>Lorem ipsum</li>
-    <li>Phasellus iaculis</li>
-    <li>Nulla volutpat</li>
-  </ul>
-</div>
-
-<div class="romo-pad">
-  <ul class="romo-list-inline romo-list-border3">
-    <li>Lorem ipsum</li>
-    <li>Phasellus iaculis</li>
-    <li>Nulla volutpat</li>
-  </ul>
-</div>
-
-<div class="romo-pad">
-  <ul class="romo-list-inline romo-list-border4">
-    <li>Lorem ipsum</li>
-    <li>Phasellus iaculis</li>
-    <li>Nulla volutpat</li>
-  </ul>
-</div>
-
-<div class="romo-pad">
-  <ul class="romo-list-inline romo-list-border5">
-    <li>Lorem ipsum</li>
-    <li>Phasellus iaculis</li>
-    <li>Nulla volutpat</li>
-  </ul>
-</div>
-
-<div class="romo-pad">
-  <ul class="romo-list-inline romo-list-border6">
-    <li>Lorem ipsum</li>
-    <li>Phasellus iaculis</li>
-    <li>Nulla volutpat</li>
-  </ul>
-</div>
-
-```html
-<ul class="romo-list-inline romo-list-border1">
-  <li>...</li>
-</ul>
-
-<ul class="romo-list-inline romo-list-border2">
-  <li>...</li>
-</ul>
-
-<ul class="romo-list-inline romo-list-border3">
-  <li>...</li>
-</ul>
-
-<ul class="romo-list-inline romo-list-border4">
-  <li>...</li>
-</ul>
-
-<ul class="romo-list-inline romo-list-border5">
-  <li>...</li>
-</ul>
-
-<ul class="romo-list-inline romo-list-border6">
-  <li>...</li>
-</ul>
-```
-
 #### `.romo-list-pad{N}`
 
 Add padding separating each item.
 
 <div>
-<ul class="romo-list-inline romo-list-border6 romo-list-pad0">
+<ul class="romo-list-inline romo-list-pad0">
   <li>Lorem ipsum</li>
   <li>Phasellus iaculis</li>
   <li>Nulla volutpat</li>
 </ul>
 </div>
 <div>
-<ul class="romo-list-inline romo-list-border6 romo-list-pad">
+<ul class="romo-list-inline romo-list-pad">
   <li>Lorem ipsum</li>
   <li>Phasellus iaculis</li>
   <li>Nulla volutpat</li>
 </ul>
 </div>
 <div>
-<ul class="romo-list-inline romo-list-border6 romo-list-pad1">
+<ul class="romo-list-inline romo-list-pad1">
   <li>Lorem ipsum</li>
   <li>Phasellus iaculis</li>
   <li>Nulla volutpat</li>
 </ul>
 </div>
 <div>
-<ul class="romo-list-inline romo-list-border6 romo-list-pad2">
+<ul class="romo-list-inline romo-list-pad2">
   <li>Lorem ipsum</li>
   <li>Phasellus iaculis</li>
   <li>Nulla volutpat</li>
 </ul>
 </div>
 <div>
-<ul class="romo-list-inline romo-list-border6 romo-list-pad3">
+<ul class="romo-list-inline romo-list-pad3">
   <li>Lorem ipsum</li>
   <li>Phasellus iaculis</li>
   <li>Nulla volutpat</li>
 </ul>
 </div>
 <div>
-<ul class="romo-list-inline romo-list-border6 romo-list-pad4">
+<ul class="romo-list-inline romo-list-pad4">
   <li>Lorem ipsum</li>
   <li>Phasellus iaculis</li>
   <li>Nulla volutpat</li>
 </ul>
 </div>
 <div>
-<ul class="romo-list-inline romo-list-border6 romo-list-pad5">
+<ul class="romo-list-inline romo-list-pad5">
   <li>Lorem ipsum</li>
   <li>Phasellus iaculis</li>
   <li>Nulla volutpat</li>
 </ul>
 </div>
 <div>
-<ul class="romo-list-inline romo-list-border6 romo-list-pad6">
+<ul class="romo-list-inline romo-list-pad6">
   <li>Lorem ipsum</li>
   <li>Phasellus iaculis</li>
   <li>Nulla volutpat</li>
@@ -295,56 +191,56 @@ Add padding separating each item.
 Add margin separating each item.
 
 <div>
-<ul class="romo-list-inline romo-list-border6 romo-list-push0">
+<ul class="romo-list-inline romo-list-push0">
   <li>Lorem ipsum</li>
   <li>Phasellus iaculis</li>
   <li>Nulla volutpat</li>
 </ul>
 </div>
 <div>
-<ul class="romo-list-inline romo-list-border6 romo-list-push">
+<ul class="romo-list-inline romo-list-push">
   <li>Lorem ipsum</li>
   <li>Phasellus iaculis</li>
   <li>Nulla volutpat</li>
 </ul>
 </div>
 <div>
-<ul class="romo-list-inline romo-list-border6 romo-list-push1">
+<ul class="romo-list-inline romo-list-push1">
   <li>Lorem ipsum</li>
   <li>Phasellus iaculis</li>
   <li>Nulla volutpat</li>
 </ul>
 </div>
 <div>
-<ul class="romo-list-inline romo-list-border6 romo-list-push2">
+<ul class="romo-list-inline romo-list-push2">
   <li>Lorem ipsum</li>
   <li>Phasellus iaculis</li>
   <li>Nulla volutpat</li>
 </ul>
 </div>
 <div>
-<ul class="romo-list-inline romo-list-border6 romo-list-push3">
+<ul class="romo-list-inline romo-list-push3">
   <li>Lorem ipsum</li>
   <li>Phasellus iaculis</li>
   <li>Nulla volutpat</li>
 </ul>
 </div>
 <div>
-<ul class="romo-list-inline romo-list-border6 romo-list-push4">
+<ul class="romo-list-inline romo-list-push4">
   <li>Lorem ipsum</li>
   <li>Phasellus iaculis</li>
   <li>Nulla volutpat</li>
 </ul>
 </div>
 <div>
-<ul class="romo-list-inline romo-list-border6 romo-list-push5">
+<ul class="romo-list-inline romo-list-push5">
   <li>Lorem ipsum</li>
   <li>Phasellus iaculis</li>
   <li>Nulla volutpat</li>
 </ul>
 </div>
 <div>
-<ul class="romo-list-inline romo-list-border6 romo-list-push6">
+<ul class="romo-list-inline romo-list-push6">
   <li>Lorem ipsum</li>
   <li>Phasellus iaculis</li>
   <li>Nulla volutpat</li>

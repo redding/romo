@@ -14,43 +14,16 @@ ol.romo-list-inline { @include list-unstyled(!important); display: inline-flex; 
 ul.romo-list-inline > li,
 ol.romo-list-inline > li { display: inline-block; }
 
-/* border helpers */
-
-.romo-list-inline.romo-list-border  > li { @include border1-right; }
-.romo-list-inline.romo-list-border1 > li { @include border1-right; }
-.romo-list-inline.romo-list-border2 > li { @include border2-right; }
-.romo-list-inline.romo-list-border3 > li { @include border3-right; }
-.romo-list-inline.romo-list-border4 > li { @include border4-right; }
-.romo-list-inline.romo-list-border5 > li { @include border5-right; }
-.romo-list-inline.romo-list-border6 > li { @include border6-right; }
-
-.romo-list-inline.romo-list-border  > li:last-child,
-.romo-list-inline.romo-list-border1 > li:last-child,
-.romo-list-inline.romo-list-border2 > li:last-child,
-.romo-list-inline.romo-list-border3 > li:last-child,
-.romo-list-inline.romo-list-border4 > li:last-child,
-.romo-list-inline.romo-list-border5 > li:last-child,
-.romo-list-inline.romo-list-border6 > li:last-child { @include rm-border-right; }
-
 /* spacing helpers */
 
-.romo-list-inline.romo-list-pad0 > li { @include pad0-left; @include pad0-right; }
-.romo-list-inline.romo-list-pad  > li { @include pad1-left; @include pad1-right; }
-.romo-list-inline.romo-list-pad1 > li { @include pad1-left; @include pad1-right; }
-.romo-list-inline.romo-list-pad2 > li { @include pad2-left; @include pad2-right; }
-.romo-list-inline.romo-list-pad3 > li { @include pad3-left; @include pad3-right; }
-.romo-list-inline.romo-list-pad4 > li { @include pad4-left; @include pad4-right; }
-.romo-list-inline.romo-list-pad5 > li { @include pad5-left; @include pad5-right; }
-.romo-list-inline.romo-list-pad6 > li { @include pad6-left; @include pad6-right; }
-
-.romo-list-inline.romo-list-pad0 > li:first-child,
-.romo-list-inline.romo-list-pad  > li:first-child,
-.romo-list-inline.romo-list-pad1 > li:first-child,
-.romo-list-inline.romo-list-pad2 > li:first-child,
-.romo-list-inline.romo-list-pad3 > li:first-child,
-.romo-list-inline.romo-list-pad4 > li:first-child,
-.romo-list-inline.romo-list-pad5 > li:first-child,
-.romo-list-inline.romo-list-pad6 > li:first-child { @include rm-pad-left; }
+.romo-list-inline.romo-list-pad0 > li { @include pad0-right; }
+.romo-list-inline.romo-list-pad  > li { @include pad1-right; }
+.romo-list-inline.romo-list-pad1 > li { @include pad1-right; }
+.romo-list-inline.romo-list-pad2 > li { @include pad2-right; }
+.romo-list-inline.romo-list-pad3 > li { @include pad3-right; }
+.romo-list-inline.romo-list-pad4 > li { @include pad4-right; }
+.romo-list-inline.romo-list-pad5 > li { @include pad5-right; }
+.romo-list-inline.romo-list-pad6 > li { @include pad6-right; }
 
 .romo-list-inline.romo-list-pad0 > li:last-child,
 .romo-list-inline.romo-list-pad  > li:last-child,
@@ -61,23 +34,14 @@ ol.romo-list-inline > li { display: inline-block; }
 .romo-list-inline.romo-list-pad5 > li:last-child,
 .romo-list-inline.romo-list-pad6 > li:last-child { @include rm-pad-right; }
 
-.romo-list-inline.romo-list-push0 > li { @include push0-left; @include push0-right; }
-.romo-list-inline.romo-list-push  > li { @include push1-left; @include push1-right; }
-.romo-list-inline.romo-list-push1 > li { @include push1-left; @include push1-right; }
-.romo-list-inline.romo-list-push2 > li { @include push2-left; @include push2-right; }
-.romo-list-inline.romo-list-push3 > li { @include push3-left; @include push3-right; }
-.romo-list-inline.romo-list-push4 > li { @include push4-left; @include push4-right; }
-.romo-list-inline.romo-list-push5 > li { @include push5-left; @include push5-right; }
-.romo-list-inline.romo-list-push6 > li { @include push6-left; @include push6-right; }
-
-.romo-list-inline.romo-list-push0 > li:first-child,
-.romo-list-inline.romo-list-push  > li:first-child,
-.romo-list-inline.romo-list-push1 > li:first-child,
-.romo-list-inline.romo-list-push2 > li:first-child,
-.romo-list-inline.romo-list-push3 > li:first-child,
-.romo-list-inline.romo-list-push4 > li:first-child,
-.romo-list-inline.romo-list-push5 > li:first-child,
-.romo-list-inline.romo-list-push6 > li:first-child { @include rm-push-left; }
+.romo-list-inline.romo-list-push0 > li { @include push0-right; }
+.romo-list-inline.romo-list-push  > li { @include push1-right; }
+.romo-list-inline.romo-list-push1 > li { @include push1-right; }
+.romo-list-inline.romo-list-push2 > li { @include push2-right; }
+.romo-list-inline.romo-list-push3 > li { @include push3-right; }
+.romo-list-inline.romo-list-push4 > li { @include push4-right; }
+.romo-list-inline.romo-list-push5 > li { @include push5-right; }
+.romo-list-inline.romo-list-push6 > li { @include push6-right; }
 
 .romo-list-inline.romo-list-push0 > li:last-child,
 .romo-list-inline.romo-list-push  > li:last-child,
