@@ -62,7 +62,7 @@ class RomoGHPages
     Romo::Dassets.configure!
 
     Dassets.configure do |c|
-
+      c.cache Dassets::Cache::MemCache.new
       c.base_url self.base_url
 
       c.source Utils.app_path('assets').to_s do |s|
@@ -84,7 +84,6 @@ class RomoGHPages
         "js/zepto-1-1-4-default-min.js",
         "js/romo.js",
       ]
-
     end
 
     Dassets.init
