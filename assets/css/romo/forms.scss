@@ -184,7 +184,8 @@ label { display: block; }
 .romo-form input[type="radio"],
 .romo-form input[type="checkbox"] { width: auto; }
 
-.romo-form .romo-input-help{
+.romo-form .romo-input-inline,
+.romo-form .romo-input-help {
   line-height: $inputHeight;
   @include align-middle;
 }

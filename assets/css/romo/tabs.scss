@@ -67,7 +67,8 @@
 .romo-tabs.romo-tabs-small > li > a,
 .romo-tabs.romo-tabs6 > li > a { @include font-size6; @include font-weight6; @include line-height6; @include button-pad6; }
 
-.romo-tabs.romo-tabs-stacked { @include border1; border-color: $baseBorderColor; }
+.romo-tabs.romo-tabs-stacked { @include rm-border; }
 .romo-tabs.romo-tabs-stacked > li { float: none; }
-.romo-tabs.romo-tabs-stacked > li > a { @include rm-border; @include border1-bottom; border-color: $baseBorderColor; }
-.romo-tabs.romo-tabs-stacked > li:last-child > a { @include rm-border-bottom; }
+.romo-tabs.romo-tabs-stacked > li > a { @include border1; border-color: $baseBorderColor; }
+.romo-tabs.romo-tabs-stacked > li.active > a { border-color: $tabBackgroundActive; }
+.romo-tabs.romo-tabs-stacked > li:not(:last-child) > a { @include rm-border-bottom; }

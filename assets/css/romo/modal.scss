@@ -17,6 +17,10 @@
   cursor: -webkit-grabbing;
 }
 
+[data-romo-modal-close="true"]{
+  cursor: pointer;
+}
+
 .romo-modal-popup {
   position: fixed;
   top: 50%;
