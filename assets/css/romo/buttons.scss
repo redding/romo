@@ -1,7 +1,8 @@
 @import 'css/romo/vars';
 @import 'css/romo/mixins';
 
-.romo-btn {
+.romo-btn,
+a.romo-btn {
   display: inline-block;
   font-size: $baseFontSize;
   line-height: $baseLineHeight;
@@ -61,20 +62,33 @@ input[type="reset"].romo-btn-block,
 input[type="button"].romo-btn-block,
 .romo-btn-block { display: block; width: 100%; }
 
-.romo-btn-alt     { @include button-bg($btnAltBackground,     $btnAltBackgroundHighlight,     $btnAltColor); }
-.romo-btn-primary { @include button-bg($btnPrimaryBackground, $btnPrimaryBackgroundHighlight, $btnPrimaryColor); }
-.romo-btn-warning { @include button-bg($btnWarningBackground, $btnWarningBackgroundHighlight, $btnWarningColor); }
-.romo-btn-error,
-.romo-btn-danger  { @include button-bg($btnDangerBackground,  $btnDangerBackgroundHighlight,  $btnDangerColor); }
-.romo-btn-info    { @include button-bg($btnInfoBackground,    $btnInfoBackgroundHighlight,    $btnInfoColor); }
-.romo-btn-success { @include button-bg($btnSuccessBackground, $btnSuccessBackgroundHighlight, $btnSuccessColor); }
-.romo-btn-inverse { @include button-bg($btnInverseBackground, $btnInverseBackgroundHighlight, $btnInverseColor); }
+.romo-btn.romo-btn-alt,
+a.romo-btn.romo-btn-alt     { @include button-bg($btnAltBackground,     $btnAltBackgroundHighlight,     $btnAltColor, !important); }
+.romo-btn.romo-btn-primary,
+a.romo-btn.romo-btn-primary { @include button-bg($btnPrimaryBackground, $btnPrimaryBackgroundHighlight, $btnPrimaryColor, !important); }
+.romo-btn.romo-btn-warning,
+a.romo-btn.romo-btn-warning { @include button-bg($btnWarningBackground, $btnWarningBackgroundHighlight, $btnWarningColor, !important); }
+.romo-btn.romo-btn-error,
+a.romo-btn.romo-btn-error,
+.romo-btn.romo-btn-danger,
+a.romo-btn.romo-btn-danger  { @include button-bg($btnDangerBackground,  $btnDangerBackgroundHighlight,  $btnDangerColor, !important); }
+.romo-btn.romo-btn-info,
+a.romo-btn.romo-btn-info    { @include button-bg($btnInfoBackground,    $btnInfoBackgroundHighlight,    $btnInfoColor, !important); }
+.romo-btn.romo-btn-success,
+a.romo-btn.romo-btn-success { @include button-bg($btnSuccessBackground, $btnSuccessBackgroundHighlight, $btnSuccessColor, !important); }
+.romo-btn.romo-btn-inverse,
+a.romo-btn.romo-btn-inverse { @include button-bg($btnInverseBackground, $btnInverseBackgroundHighlight, $btnInverseColor, !important); }
 
 .romo-btn.romo-btn-link,
+a.romo-btn.romo-btn-link,
 .romo-btn.romo-btn-link.active,
+a.romo-btn.romo-btn-link.active,
 .romo-btn.romo-btn-link:active,
+a.romo-btn.romo-btn-link:active,
 .romo-btn.romo-btn-link.disabled,
-.romo-btn.romo-btn-link[disabled] {
+a.romo-btn.romo-btn-link.disabled,
+.romo-btn.romo-btn-link[disabled],
+a.romo-btn.romo-btn-link[disabled] {
   background-color: transparent;
   background-image: none;
   @include box-shadow(none);
@@ -91,11 +105,17 @@ button.romo-btn.romo-btn-link:focus {
   background-color: transparent;
 }
 .romo-btn.romo-btn-link.disabled,
+a.romo-btn.romo-btn-link.disabled,
 .romo-btn.romo-btn-link.disabled:hover,
+a.romo-btn.romo-btn-link.disabled:hover,
 .romo-btn.romo-btn-link.disabled:focus,
+a.romo-btn.romo-btn-link.disabled:focus,
 .romo-btn.romo-btn-link[disabled],
+a.romo-btn.romo-btn-link[disabled],
 .romo-btn.romo-btn-link[disabled]:hover,
-.romo-btn.romo-btn-link[disabled]:focus { color: $disabledColor; }
+a.romo-btn.romo-btn-link[disabled]:hover,
+.romo-btn.romo-btn-link[disabled]:focus,
+a.romo-btn.romo-btn-link[disabled]:focus { color: $disabledColor; }
 
 .romo-btn-group { display: inline-flex; }
 .romo-btn-group .romo-btn:not(:last-child) { @include rm-border-right; }

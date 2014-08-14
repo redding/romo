@@ -4,7 +4,7 @@ Button styles can be applied to anything with the `.romo-btn` class. However, ty
 
 <div class="romo-pad">
   <button class="romo-btn romo-push0-bottom">Button</button>
-  <a class="romo-btn romo-push0-bottom">Anchor</a>
+  <a href="#" class="romo-btn romo-push0-bottom">Anchor</a>
   <input type="button" class="romo-btn romo-push0-bottom" value="Input-button" />
   <input type="submit" class="romo-btn romo-push0-bottom" value="Input-submit" />
   <input type="reset"  class="romo-btn romo-push0-bottom" value="Input-reset" />
@@ -126,75 +126,75 @@ Use these as an alternative to the default styles and to add color emphasis to b
     </thead>
     <tbody>
       <tr>
-        <td><button class="romo-btn romo-btn-large disabled">Default</button></td>
-        <td><button class="romo-btn romo-btn-large romo-btn-active">Default</button></td>
-        <td><button class="romo-btn romo-btn-large">Default</button></td>
-        <td><button class="romo-btn">Default</button></td>
-        <td><button class="romo-btn romo-btn-small">Default</button></td>
+        <td><button href="#" class="romo-btn romo-btn-large disabled">Default</button></td>
+        <td><button href="#" class="romo-btn romo-btn-large romo-btn-active">Default</button></td>
+        <td><button href="#" class="romo-btn romo-btn-large">Default</button></td>
+        <td><button href="#" class="romo-btn">Default</button></td>
+        <td><button href="#" class="romo-btn romo-btn-small">Default</button></td>
         <td><code>romo-btn</code></td>
       </tr>
       <tr>
-        <td><button class="romo-btn romo-btn-alt romo-btn-large disabled">Alt</button></td>
-        <td><button class="romo-btn romo-btn-alt romo-btn-large romo-btn-active">Alt</button></td>
-        <td><button class="romo-btn romo-btn-alt romo-btn-large">Alt</button></td>
-        <td><button class="romo-btn romo-btn-alt">Alt</button></td>
-        <td><button class="romo-btn romo-btn-alt romo-btn-small">Alt</button></td>
+        <td><button href="#" class="romo-btn romo-btn-alt romo-btn-large disabled">Alt</button></td>
+        <td><button href="#" class="romo-btn romo-btn-alt romo-btn-large romo-btn-active">Alt</button></td>
+        <td><button href="#" class="romo-btn romo-btn-alt romo-btn-large">Alt</button></td>
+        <td><button href="#" class="romo-btn romo-btn-alt">Alt</button></td>
+        <td><button href="#" class="romo-btn romo-btn-alt romo-btn-small">Alt</button></td>
         <td><code>romo-btn romo-btn-alt</code></td>
       </tr>
       <tr>
-        <td><button class="romo-btn romo-btn-primary romo-btn-large disabled">Primary</button></td>
-        <td><button class="romo-btn romo-btn-primary romo-btn-large romo-btn-active">Primary</button></td>
-        <td><button class="romo-btn romo-btn-primary romo-btn-large">Primary</button></td>
-        <td><button class="romo-btn romo-btn-primary">Primary</button></td>
-        <td><button class="romo-btn romo-btn-primary romo-btn-small">Primary</button></td>
+        <td><button href="#" class="romo-btn romo-btn-primary romo-btn-large disabled">Primary</button></td>
+        <td><button href="#" class="romo-btn romo-btn-primary romo-btn-large romo-btn-active">Primary</button></td>
+        <td><button href="#" class="romo-btn romo-btn-primary romo-btn-large">Primary</button></td>
+        <td><button href="#" class="romo-btn romo-btn-primary">Primary</button></td>
+        <td><button href="#" class="romo-btn romo-btn-primary romo-btn-small">Primary</button></td>
         <td><code>romo-btn romo-btn-primary</code></td>
       </tr>
       <tr>
-        <td><button class="romo-btn romo-btn-warning romo-btn-large disabled">Warning</button></td>
-        <td><button class="romo-btn romo-btn-warning romo-btn-large romo-btn-active">Warning</button></td>
-        <td><button class="romo-btn romo-btn-warning romo-btn-large">Warning</button></td>
-        <td><button class="romo-btn romo-btn-warning">Warning</button></td>
-        <td><button class="romo-btn romo-btn-warning romo-btn-small">Warning</button></td>
+        <td><button href="#" class="romo-btn romo-btn-warning romo-btn-large disabled">Warning</button></td>
+        <td><button href="#" class="romo-btn romo-btn-warning romo-btn-large romo-btn-active">Warning</button></td>
+        <td><button href="#" class="romo-btn romo-btn-warning romo-btn-large">Warning</button></td>
+        <td><button href="#" class="romo-btn romo-btn-warning">Warning</button></td>
+        <td><button href="#" class="romo-btn romo-btn-warning romo-btn-small">Warning</button></td>
         <td><code>romo-btn romo-btn-warning</code></td>
       </tr>
       <tr>
-        <td><button class="romo-btn romo-btn-danger romo-btn-large disabled">Danger</button></td>
-        <td><button class="romo-btn romo-btn-danger romo-btn-large romo-btn-active">Danger</button></td>
-        <td><button class="romo-btn romo-btn-danger romo-btn-large">Danger</button></td>
-        <td><button class="romo-btn romo-btn-error" >Danger</button></td>
-        <td><button class="romo-btn romo-btn-error romo-btn-small" >Danger</button></td>
+        <td><button href="#" class="romo-btn romo-btn-danger romo-btn-large disabled">Danger</button></td>
+        <td><button href="#" class="romo-btn romo-btn-danger romo-btn-large romo-btn-active">Danger</button></td>
+        <td><button href="#" class="romo-btn romo-btn-danger romo-btn-large">Danger</button></td>
+        <td><button href="#" class="romo-btn romo-btn-error" >Danger</button></td>
+        <td><button href="#" class="romo-btn romo-btn-error romo-btn-small" >Danger</button></td>
         <td><code>romo-btn romo-btn-danger</code><br/>Or, <code>romo-btn romo-btn-error</code></td>
       </tr>
       <tr>
-        <td><button class="romo-btn romo-btn-info romo-btn-large disabled">Info</button></td>
-        <td><button class="romo-btn romo-btn-info romo-btn-large romo-btn-active">Info</button></td>
-        <td><button class="romo-btn romo-btn-info romo-btn-large">Info</button></td>
-        <td><button class="romo-btn romo-btn-info">Info</button></td>
-        <td><button class="romo-btn romo-btn-info romo-btn-small">Info</button></td>
+        <td><button href="#" class="romo-btn romo-btn-info romo-btn-large disabled">Info</button></td>
+        <td><button href="#" class="romo-btn romo-btn-info romo-btn-large romo-btn-active">Info</button></td>
+        <td><button href="#" class="romo-btn romo-btn-info romo-btn-large">Info</button></td>
+        <td><button href="#" class="romo-btn romo-btn-info">Info</button></td>
+        <td><button href="#" class="romo-btn romo-btn-info romo-btn-small">Info</button></td>
         <td><code>romo-btn romo-btn-info</code></td>
       </tr>
       <tr>
-        <td><button class="romo-btn romo-btn-success romo-btn-large disabled">Success</button></td>
-        <td><button class="romo-btn romo-btn-success romo-btn-large romo-btn-active">Success</button></td>
-        <td><button class="romo-btn romo-btn-success romo-btn-large">Success</button></td>
-        <td><button class="romo-btn romo-btn-success">Success</button></td>
-        <td><button class="romo-btn romo-btn-success romo-btn-small">Success</button></td>
+        <td><button href="#" class="romo-btn romo-btn-success romo-btn-large disabled">Success</button></td>
+        <td><button href="#" class="romo-btn romo-btn-success romo-btn-large romo-btn-active">Success</button></td>
+        <td><button href="#" class="romo-btn romo-btn-success romo-btn-large">Success</button></td>
+        <td><button href="#" class="romo-btn romo-btn-success">Success</button></td>
+        <td><button href="#" class="romo-btn romo-btn-success romo-btn-small">Success</button></td>
         <td><code>romo-btn romo-btn-success</code></td>
       </tr>
       <tr>
-        <td><button class="romo-btn romo-btn-inverse romo-btn-large disabled">Inverse</button></td>
-        <td><button class="romo-btn romo-btn-inverse romo-btn-large romo-btn-active">Inverse</button></td>
-        <td><button class="romo-btn romo-btn-inverse romo-btn-large">Inverse</button></td>
-        <td><button class="romo-btn romo-btn-inverse">Inverse</button></td>
-        <td><button class="romo-btn romo-btn-inverse romo-btn-small">Inverse</button></td>
+        <td><button href="#" class="romo-btn romo-btn-inverse romo-btn-large disabled">Inverse</button></td>
+        <td><button href="#" class="romo-btn romo-btn-inverse romo-btn-large romo-btn-active">Inverse</button></td>
+        <td><button href="#" class="romo-btn romo-btn-inverse romo-btn-large">Inverse</button></td>
+        <td><button href="#" class="romo-btn romo-btn-inverse">Inverse</button></td>
+        <td><button href="#" class="romo-btn romo-btn-inverse romo-btn-small">Inverse</button></td>
         <td><code>romo-btn romo-btn-inverse</code></td>
       </tr>
       <tr>
-        <td><button class="romo-btn romo-btn-link romo-btn-large disabled">Link</button></td>
-        <td><button class="romo-btn romo-btn-link romo-btn-large romo-btn-active">Link</button></td>
-        <td><button class="romo-btn romo-btn-link romo-btn-large">Link</button></td>
-        <td><button class="romo-btn romo-btn-link">Link</button></td>
-        <td><button class="romo-btn romo-btn-link romo-btn-small">Link</button></td>
+        <td><button href="#" class="romo-btn romo-btn-link romo-btn-large disabled">Link</button></td>
+        <td><button href="#" class="romo-btn romo-btn-link romo-btn-large romo-btn-active">Link</button></td>
+        <td><button href="#" class="romo-btn romo-btn-link romo-btn-large">Link</button></td>
+        <td><button href="#" class="romo-btn romo-btn-link">Link</button></td>
+        <td><button href="#" class="romo-btn romo-btn-link romo-btn-small">Link</button></td>
         <td><code>romo-btn romo-btn-link</code></td>
       </tr>
     </tbody>
@@ -303,18 +303,18 @@ With alternate buttons.
 
 <div class="romo-pad">
   <div class="romo-btn-group romo-btn-group-border-radius">
-    <button class="romo-btn romo-btn-link disabled"><< Prev</button>
+    <a href="#" class="romo-btn romo-btn-link disabled"><< Prev</a>
     <strong class="romo-btn romo-btn-link romo-text-bold">Page 1</strong>
-    <button class="romo-btn romo-btn-link">Next >></button>
+    <a href="#" class="romo-btn romo-btn-link">Next >></a>
   </div>
 </div>
 
 ```html
 <div class="romo-pad">
   <div class="romo-btn-group romo-btn-group-border-radius">
-    <button class="romo-btn romo-btn-link disabled"><< Prev</button>
+    <a href="#" class="romo-btn romo-btn-link disabled"><< Prev</a>
     <strong class="romo-btn romo-btn-link romo-text-bold">Page 1</strong>
-    <button class="romo-btn romo-btn-link">Next >></button>
+    <a href="#" class="romo-btn romo-btn-link">Next >></a>
   </div>
 </div>
 ```
