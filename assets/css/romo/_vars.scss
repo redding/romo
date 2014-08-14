@@ -130,6 +130,14 @@ $tabColor:            $baseColor;
 $tabColorActive:      #fff;
 $tabColorDisabled:    $disabledColor;
 
-/* nav */
+/* tabs */
 
-$tabDividerSize:  4px;
+$tabDividerSize: 4px;
+
+/* z-index */
+
+$tooltipZIndex:  1100;
+$dropdownZIndex: 1200;
+// 1300 is reserved for app specific things like nav bars, etc
+// modals should appear on top of everything though
+$modalZIndex:    1400;
