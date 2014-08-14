@@ -34,8 +34,8 @@ var RomoIndicator = function(element) {
   this.elemHtml = this.elem.html();
   this.elem.css({
     'position': 'relative',
-    'width':    this.elem.width(),
-    'height':   this.elem.height(),
+    'width':    this.elem.css('width'),
+    'height':   this.elem.css('height'),
   });
   this.elem.on('indicator:triggerStart', $.proxy(this.onStart, this));
   this.elem.on('indicator:triggerStop', $.proxy(this.onStop, this));
