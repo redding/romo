@@ -448,7 +448,7 @@ You can also choose not to justify and just have some cells fill the remaining w
 
 ## Aligning cells
 
-By default cells with different heights vertically align middle.
+By default cells with different heights vertically align top.
 
 <div class="romo-row romo-bg-alt">
   <div class="romo-span romo-6-12 romo-border romo-align-center">6</div>
@@ -460,7 +460,7 @@ By default cells with different heights vertically align middle.
     </div>
   </div>
 </div>
-<div class="romo-row romo-row-align-middle romo-bg-alt">
+<div class="romo-row romo-row-align-top romo-bg-alt">
   <div class="romo-span romo-6-12 romo-border romo-align-center">6</div>
   <div class="romo-span romo-6-12 romo-border romo-align-center">
     <div>6</div>
@@ -473,12 +473,12 @@ By default cells with different heights vertically align middle.
 
 ```html
 <div class="romo-row">...</div>
-<div class="romo-row romo-row-align-middle">...</div>
+<div class="romo-row romo-row-align-top">...</div>
 ```
 
-You can align cells top or bottom.
+You can align cells middle or bottom.
 
-<div class="romo-row romo-row-align-top romo-bg-alt">
+<div class="romo-row romo-row-align-middle romo-bg-alt">
   <div class="romo-span romo-6-12 romo-border romo-align-center">6</div>
   <div class="romo-span romo-6-12 romo-border romo-align-center">
     <div>6</div>
@@ -500,7 +500,7 @@ You can align cells top or bottom.
 </div>
 
 ```html
-<div class="romo-row romo-row-align-top">...</div>
+<div class="romo-row romo-row-align-middle">...</div>
 <div class="romo-row romo-row-align-bottom">...</div>
 ```
 
