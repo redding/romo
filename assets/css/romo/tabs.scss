@@ -38,15 +38,15 @@
   }
 }
 
-.romo-tabs > li.romo-tabs-active > a,
-.romo-tabs > li:active a {
+.romo-tabs > li.active > a {
   background-color: $tabBackgroundActive;
   border-color: $tabBackgroundActive;
   color: $tabColorActive;
   cursor: default;
 }
 
-.romo-tabs > li.disabled a {
+.romo-tabs > li.disabled a,
+.romo-tabs > li:disabled a {
   color: $tabColorDisabled;
   cursor: $notAllowedCursor;
 
@@ -69,5 +69,5 @@
 
 .romo-tabs.romo-tabs-stacked { @include border1; border-color: $baseBorderColor; }
 .romo-tabs.romo-tabs-stacked > li { float: none; }
-.romo-tabs.romo-tabs-stacked > li > a { @include border1-bottom; }
+.romo-tabs.romo-tabs-stacked > li > a { @include rm-border; @include border1-bottom; border-color: $baseBorderColor; }
 .romo-tabs.romo-tabs-stacked > li:last-child > a { @include rm-border-bottom; }
