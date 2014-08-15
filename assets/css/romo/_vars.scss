@@ -22,12 +22,12 @@ $lineHeight4: $baseLineHeight;          /* 20px */
 $lineHeight5: ($baseLineHeight * 0.85); /* 17px */
 $lineHeight6: ($baseLineHeight * 0.75); /* 15px */;
 
-$imgHeight1: $lineHeight1 + (1 * $baseSpacingSize); /* 60px */
-$imgHeight2: $lineHeight2 + (1 * $baseSpacingSize); /* 55px */
-$imgHeight3: $lineHeight3 + (1 * $baseSpacingSize); /* 50px */
-$imgHeight4: $lineHeight4 + (1 * $baseSpacingSize); /* 30px */
-$imgHeight5: $lineHeight5 + (1 * $baseSpacingSize); /* 27px */
-$imgHeight6: $lineHeight6 + (1 * $baseSpacingSize); /* 25px */;
+$imgHeight1: $lineHeight1 + (1.0 * $baseSpacingSize); /* 50px */
+$imgHeight2: $lineHeight2 + (1.0 * $baseSpacingSize); /* 45px */
+$imgHeight3: $lineHeight3 + (0.5 * $baseSpacingSize); /* 35px */
+$imgHeight4: $lineHeight4 + (0.5 * $baseSpacingSize); /* 25px */
+$imgHeight5: $lineHeight4 + (0.0 * $baseSpacingSize); /* 20px */
+$imgHeight6: $lineHeight5 + (0.0 * $baseSpacingSize); /* 17px */;
 
 $inputHeight: ($baseLineHeight / 2) * 3; /* 30px */
 $btnPaddingTopBottom: ($inputHeight - 2 - $baseLineHeight) / 2; /* 4px; "2" is for the borders */
