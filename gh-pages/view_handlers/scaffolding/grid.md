@@ -425,7 +425,7 @@ You can also choose not to justify and just have some cells fill the remaining w
   <div class="romo-span romo-1-12 romo-span-fill romo-bg-alt romo-border romo-align-center">1</div>
 </div>
 <div class="romo-row">
-  <div class="romo-span romo-bg-alt romo-border romo-align-center">Fixed contnet</div>
+  <div class="romo-span romo-bg-alt romo-border romo-align-center">Fixed content</div>
   <div class="romo-span romo-span-fill romo-bg-alt romo-border romo-align-center">Fill content</div>
 </div>
 
@@ -441,7 +441,7 @@ You can also choose not to justify and just have some cells fill the remaining w
   <div class="romo-span romo-1-12 romo-span-fill">1</div>
 </div>
 <div class="romo-row">
-  <div class="romo-span">Fixed contnet</div>
+  <div class="romo-span">Fixed content</div>
   <div class="romo-span romo-span-fill">Fill content</div>
 </div>
 ```

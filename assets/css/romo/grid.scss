@@ -2,31 +2,34 @@
 @import 'css/romo/mixins';
 
 .romo-row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: flex-start;
+  @include display-flex;
+  @include flex-direction(row);
+  @include flex-wrap(nowrap);
+  @include flex-justify-content(center);
+  @include flex-align-items(flex-start);
 }
-.romo-row.romo-row-inline { diplay: inline-flex; }
 
 .romo-span { min-height: 1px; }
 
-.romo-row-pull-left  { justify-content: flex-start; }
-.romo-row-pull-right { justify-content: flex-end; }
-.romo-row-push-between { justify-content: space-between; }
-.romo-row-push-around  { justify-content: space-around; }
+.romo-row-pull-left  { @include flex-justify-content(flex-start); }
+.romo-row-pull-right { @include flex-justify-content(flex-end); }
+.romo-row-push-between { @include flex-justify-content(space-between); }
+.romo-row-push-around  { @include flex-justify-content(space-around); }
 
-.romo-row-align-top     { align-items: flex-start; }
-.romo-row-align-middle  { align-items: center; }
-.romo-row-align-bottom  { align-items: flex-end; }
-.romo-row-align-stretch { align-items: stretch; }
+.romo-row-align-top     { @include flex-align-items(flex-start); }
+.romo-row-align-middle  { @include flex-align-items(center); }
+.romo-row-align-bottom  { @include flex-align-items(flex-end); }
+.romo-row-align-stretch { @include flex-align-items(stretch); }
 
-.romo-span-fill { flex-grow: 1; flex-shrink: 1; }
-.romo-span-align-top     { align-self: flex-start; }
-.romo-span-align-middle  { align-self: center; }
-.romo-span-align-bottom  { align-self: flex-end; }
-.romo-span-align-stretch { align-self: stretch; }
+.romo-span-fill {
+  @include flex-grow(1);
+  @include flex-shrink(1);
+}
+
+.romo-span-align-top     { @include flex-align-self(flex-start); }
+.romo-span-align-middle  { @include flex-align-self(center); }
+.romo-span-align-bottom  { @include flex-align-self(flex-end); }
+.romo-span-align-stretch { @include flex-align-self(stretch); }
 
 .romo-1-12  { @include grid-span(1, 12); }
 .romo-2-12  { @include grid-span(2, 12); }
