@@ -150,8 +150,40 @@ Adds zebra-striping to grid table rows via the `:nth-child` CSS selector.
   </ul>
 </div>
 
+<div class="romo-pad">
+  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-striped romo-grid-table-striped-alt">
+    <li class="romo-row">
+      <span class="romo-span romo-1-12">#</span>
+      <span class="romo-span romo-5-12">Name</span>
+      <span class="romo-span romo-5-12">Slug</span>
+      <span class="romo-span romo-1-12">Count</span>
+    </li>
+    <li class="romo-row">
+      <span class="romo-span romo-1-12">1</span>
+      <span class="romo-span romo-5-12">Joe Test</span>
+      <span class="romo-span romo-5-12">joe-test</span>
+      <span class="romo-span romo-1-12">10</span>
+    </li>
+    <li class="romo-row">
+      <span class="romo-span romo-1-12">2</span>
+      <span class="romo-span romo-5-12">Jane Doe</span>
+      <span class="romo-span romo-5-12">jane-doe</span>
+      <span class="romo-span romo-1-12">18</span>
+    </li>
+    <li class="romo-row">
+      <span class="romo-span romo-1-12">3</span>
+      <span class="romo-span romo-5-12">Good Corp.</span>
+      <span class="romo-span romo-5-12">good-corp</span>
+      <span class="romo-span romo-1-12">5</span>
+    </li>
+  </ul>
+</div>
+
 ```html
 <ul class="romo-grid-table romo-grid-table-striped">
+  ...
+</ul>
+<ul class="romo-grid-table romo-grid-table-striped romo-grid-table-striped-alt">
   ...
 </ul>
 ```
@@ -161,53 +193,7 @@ Adds zebra-striping to grid table rows via the `:nth-child` CSS selector.
 Uses the alternate bg color for the table background.
 
 <div class="romo-pad">
-  <ul class="romo-grid-table romo-grid-table-alt">
-    <li class="romo-row">
-      <span class="romo-span romo-1-12">1</span>
-      <span class="romo-span romo-5-12">Joe Test</span>
-      <span class="romo-span romo-5-12">joe-test</span>
-      <span class="romo-span romo-1-12">10</span>
-    </li>
-    <li class="romo-row">
-      <span class="romo-span romo-1-12">2</span>
-      <span class="romo-span romo-5-12">Jane Doe</span>
-      <span class="romo-span romo-5-12">jane-doe</span>
-      <span class="romo-span romo-1-12">18</span>
-    </li>
-    <li class="romo-row">
-      <span class="romo-span romo-1-12">3</span>
-      <span class="romo-span romo-5-12">Good Corp.</span>
-      <span class="romo-span romo-5-12">good-corp</span>
-      <span class="romo-span romo-1-12">5</span>
-    </li>
-  </ul>
-</div>
-
-<div class="romo-pad">
-  <ul class="romo-grid-table romo-grid-table-alt romo-grid-table-striped">
-    <li class="romo-row">
-      <span class="romo-span romo-1-12">1</span>
-      <span class="romo-span romo-5-12">Joe Test</span>
-      <span class="romo-span romo-5-12">joe-test</span>
-      <span class="romo-span romo-1-12">10</span>
-    </li>
-    <li class="romo-row">
-      <span class="romo-span romo-1-12">2</span>
-      <span class="romo-span romo-5-12">Jane Doe</span>
-      <span class="romo-span romo-5-12">jane-doe</span>
-      <span class="romo-span romo-1-12">18</span>
-    </li>
-    <li class="romo-row">
-      <span class="romo-span romo-1-12">3</span>
-      <span class="romo-span romo-5-12">Good Corp.</span>
-      <span class="romo-span romo-5-12">good-corp</span>
-      <span class="romo-span romo-1-12">5</span>
-    </li>
-  </ul>
-</div>
-
-<div class="romo-pad">
-  <ul class="romo-grid-table romo-grid-table-alt romo-grid-table-header romo-grid-table-striped">
+  <ul class="romo-grid-table romo-grid-table-alt romo-grid-table-header">
     <li class="romo-row">
       <span class="romo-span romo-1-12">#</span>
       <span class="romo-span romo-5-12">Name</span>

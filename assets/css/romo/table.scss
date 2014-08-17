@@ -16,8 +16,9 @@
 
 .romo-table-alt { @include bg-alt; }
 
-.romo-table-striped tbody > tr:nth-child(odd) { @include bg-alt; }
-.romo-table-striped.romo-table-alt tbody > tr:nth-child(odd) { @include bg-base; }
+.romo-table-striped tbody > tr:nth-child(odd) { @include bg-striped; }
+.romo-table-striped.romo-table-striped-alt tbody > tr:nth-child(odd) { @include bg-base; }
+.romo-table-striped.romo-table-striped-alt { @include bg-striped; }
 
 .romo-table tr.romo-muted   { @include bg-muted; }
 .romo-table tr.romo-warning { @include bg-warning; }

@@ -25,10 +25,11 @@ ol.romo-grid-table { @include list-unstyled(!important); }
 
 .romo-grid-table-alt { @include bg-alt; }
 
-.romo-grid-table-striped:not(.romo-grid-table-header) > .romo-row:nth-child(odd) { @include bg-alt; }
-.romo-grid-table-striped:not(.romo-grid-table-header).romo-grid-table-alt > .romo-row:nth-child(odd) { @include bg-base; }
-.romo-grid-table-striped.romo-grid-table-header > .romo-row:nth-child(even) { @include bg-alt; }
-.romo-grid-table-striped.romo-grid-table-header.romo-grid-table-alt > .romo-row:nth-child(even) { @include bg-base; }
+.romo-grid-table-striped:not(.romo-grid-table-header) > .romo-row:nth-child(odd) { @include bg-striped; }
+.romo-grid-table-striped:not(.romo-grid-table-header).romo-grid-table-striped-alt > .romo-row:nth-child(odd) { @include bg-base; }
+.romo-grid-table-striped.romo-grid-table-header > .romo-row:nth-child(even) { @include bg-striped; }
+.romo-grid-table-striped.romo-grid-table-header.romo-grid-table-striped-alt > .romo-row:nth-child(even) { @include bg-base; }
+.romo-grid-table-striped.romo-grid-table-striped-alt { @include-bg-striped; }
 
 .romo-grid-table .romo-row.romo-muted   { @include bg-muted; }
 .romo-grid-table .romo-row.romo-warning { @include bg-warning; }

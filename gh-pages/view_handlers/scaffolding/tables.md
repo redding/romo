@@ -36,11 +36,9 @@ For basic styling with horizontal dividers, add the base class `.romo-table`.
 </div>
 
 ```html
-<div class="romo-pad">
-  <table class="romo-table">
+<table class="romo-table">
   ...
-  </table>
-</div>
+</table>
 ```
 
 ## Optional classes
@@ -83,38 +81,36 @@ Add grid column size classes to set table cell widths.
 </div>
 
 ```html
-<div class="romo-pad">
-  <table class="romo-table">
-    <thead>
-      <tr>
-        <th class="romo-1-12">#</th>
-        <th class="romo-7-12">Name</th>
-        <th class="romo-2-12">Slug</th>
-        <th class="romo-2-12">Count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="romo-1-12">1</td>
-        <td class="romo-7-12">Joe Test</td>
-        <td class="romo-2-12">joe-test</td>
-        <td class="romo-2-12">10</td>
-      </tr>
-      <tr>
-        <td class="romo-1-12">2</td>
-        <td class="romo-7-12">Jane Doe</td>
-        <td class="romo-2-12">jane-doe</td>
-        <td class="romo-2-12">18</td>
-      </tr>
-      <tr>
-        <td class="romoromo-1-12">3</td>
-        <td class="romoromo-7-12">Good Corp.</td>
-        <td class="romoromo-2-12">good-corp</td>
-        <td class="romoromo-2-12">5</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table class="romo-table">
+  <thead>
+    <tr>
+      <th class="romo-1-12">#</th>
+      <th class="romo-7-12">Name</th>
+      <th class="romo-2-12">Slug</th>
+      <th class="romo-2-12">Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="romo-1-12">1</td>
+      <td class="romo-7-12">Joe Test</td>
+      <td class="romo-2-12">joe-test</td>
+      <td class="romo-2-12">10</td>
+    </tr>
+    <tr>
+      <td class="romo-1-12">2</td>
+      <td class="romo-7-12">Jane Doe</td>
+      <td class="romo-2-12">jane-doe</td>
+      <td class="romo-2-12">18</td>
+    </tr>
+    <tr>
+      <td class="romoromo-1-12">3</td>
+      <td class="romoromo-7-12">Good Corp.</td>
+      <td class="romoromo-2-12">good-corp</td>
+      <td class="romoromo-2-12">5</td>
+    </tr>
+  </tbody>
+</table>
 ```
 
 ### `.romo-table-striped`
@@ -154,12 +150,47 @@ Adds zebra-striping to any table row within the `<tbody>` via the `:nth-child` C
   </table>
 </div>
 
-```html
 <div class="romo-pad">
-  <table class="romo-table romo-table-striped">
-    ...
+  <table class="romo-table romo-table-striped romo-table-striped-alt">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
   </table>
 </div>
+
+```html
+<table class="romo-table romo-table-striped">
+  ...
+</table>
+
+<table class="romo-table romo-table-striped romo-table-striped-alt">
+  ...
+</table>
 ```
 
 ### `.romo-table-alt`
@@ -199,45 +230,10 @@ Uses the alternate bg color for the table background.
   </table>
 </div>
 
-<div class="romo-pad">
-  <table class="romo-table romo-table-alt romo-table-striped">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Slug</th>
-        <th>Count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Joe Test</td>
-        <td>joe-test</td>
-        <td>10</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Jane Doe</td>
-        <td>jane-doe</td>
-        <td>18</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Good Corp.</td>
-        <td>good-corp</td>
-        <td>5</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
 ```html
-<div class="romo-pad">
-  <table class="romo-table romo-table-alt">
-    ...
-  </table>
-</div>
+<table class="romo-table romo-table-alt">
+  ...
+</table>
 ```
 
 ### `tr.romo-{muted|warning|error|info|success|inverse}`
@@ -296,17 +292,15 @@ Add color emphasis to rows.
 </div>
 
 ```html
-<div class="romo-pad">
-  <table class="romo-table romo-table-hover">
-    ...
-    <tr class="romo-muted romo-text-muted">...</tr>
-    <tr class="romo-warning">...</tr>
-    <tr class="romo-error">...</tr>
-    <tr class="romo-info">...</tr>
-    <tr class="romo-success">...</tr>
-    <tr class="romo-inverse romo-text-inverse">...</tr>
-  </table>
-</div>
+<table class="romo-table romo-table-hover">
+  ...
+  <tr class="romo-muted romo-text-muted">...</tr>
+  <tr class="romo-warning">...</tr>
+  <tr class="romo-error">...</tr>
+  <tr class="romo-info">...</tr>
+  <tr class="romo-success">...</tr>
+  <tr class="romo-inverse romo-text-inverse">...</tr>
+</table>
 ```
 
 ### `.romo-table-hover`
@@ -347,11 +341,9 @@ Add hover state to rows within a `<tbody>`.
 </div>
 
 ```html
-<div class="romo-pad">
-  <table class="romo-table romo-table-hover">
-    ...
-  </table>
-</div>
+<table class="romo-table romo-table-hover">
+  ...
+</table>
 ```
 
 <div class="romo-pad">
@@ -388,11 +380,9 @@ Add hover state to rows within a `<tbody>`.
 </div>
 
 ```html
-<div class="romo-pad">
-  <table class="romo-table romo-table-hover romo-table-striped">
-    ...
-  </table>
-</div>
+<table class="romo-table romo-table-hover romo-table-striped">
+  ...
+</table>
 ```
 
 <div class="romo-pad">
@@ -462,11 +452,9 @@ Add hover state to rows within a `<tbody>`.
 </div>
 
 ```html
-<div class="romo-pad">
-  <table class="romo-table romo-table-hover romo-table-alt">
-    ...
-  </table>
-</div>
+<table class="romo-table romo-table-hover romo-table-alt">
+  ...
+</table>
 ```
 
 <div class="romo-pad">
@@ -521,17 +509,15 @@ Add hover state to rows within a `<tbody>`.
 </div>
 
 ```html
-<div class="romo-pad">
-  <table class="romo-table romo-table-hover">
-    ...
-    <tr class="romo-muted romo-text-muted">...</tr>
-    <tr class="romo-warning">...</tr>
-    <tr class="romo-error">...</tr>
-    <tr class="romo-info">...</tr>
-    <tr class="romo-success">...</tr>
-    <tr class="romo-inverse romo-text-inverse">...</tr>
-  </table>
-</div>
+<table class="romo-table romo-table-hover">
+  ...
+  <tr class="romo-muted romo-text-muted">...</tr>
+  <tr class="romo-warning">...</tr>
+  <tr class="romo-error">...</tr>
+  <tr class="romo-info">...</tr>
+  <tr class="romo-success">...</tr>
+  <tr class="romo-inverse romo-text-inverse">...</tr>
+</table>
 ```
 
 ### `.romo-table-border{1-6}`
@@ -791,11 +777,9 @@ Adds sized borders to the table.
 </div>
 
 ```html
-<div class="romo-pad">
-  <table class="romo-table romo-table-border{1-6}">
-    ...
-  </table>
-</div>
+<table class="romo-table romo-table-border{1-6}">
+  ...
+</table>
 ```
 
 ### `.romo-table-border-{muted|warning|error|info|success|inverse}`
@@ -1001,11 +985,9 @@ Adds border color empasis to the entire table.
 </div>
 
 ```html
-<div class="romo-pad">
-  <table class="romo-table romo-table-border6 romo-table-border-{muted|warning|error|info|success|inverse}">
-    ...
-  </table>
-</div>
+<table class="romo-table romo-table-border6 romo-table-border-{muted|warning|error|info|success|inverse}">
+  ...
+</table>
 ```
 
 ### `.romo-table-border-alt`
@@ -1046,11 +1028,9 @@ Uses the alternate border color for the table borders.
 </div>
 
 ```html
-<div class="romo-pad">
-  <table class="romo-table romo-table-border6 romo-table-alt romo-table-border-alt">
-    ...
-  </table>
-</div>
+<table class="romo-table romo-table-border6 romo-table-alt romo-table-border-alt">
+  ...
+</table>
 ```
 
 ### `.romo-table-padN{-top|-right|-bottom|-left|}`
@@ -1091,11 +1071,9 @@ Adds cell padding to every cell in the table
 </div>
 
 ```html
-<div class="romo-pad">
-  <table class="romo-table romo-table-pad0">
-    ...
-  </table>
-</div>
+<table class="romo-table romo-table-pad0">
+  ...
+</table>
 ```
 
 <div class="romo-pad">
@@ -1132,11 +1110,9 @@ Adds cell padding to every cell in the table
 </div>
 
 ```html
-<div class="romo-pad">
-  <table class="romo-table romo-table-pad">
-    ...
-  </table>
-</div>
+<table class="romo-table romo-table-pad">
+  ...
+</table>
 ```
 
 <div class="romo-pad">
@@ -1173,11 +1149,9 @@ Adds cell padding to every cell in the table
 </div>
 
 ```html
-<div class="romo-pad">
-  <table class="romo-table romo-table-pad1">
-    ...
-  </table>
-</div>
+<table class="romo-table romo-table-pad1">
+  ...
+</table>
 ```
 
 <div class="romo-pad">
@@ -1214,11 +1188,9 @@ Adds cell padding to every cell in the table
 </div>
 
 ```html
-<div class="romo-pad">
-  <table class="romo-table romo-table-pad2">
-    ...
-  </table>
-</div>
+<table class="romo-table romo-table-pad2">
+  ...
+</table>
 ```
 
 <div class="romo-pad">
@@ -1255,11 +1227,9 @@ Adds cell padding to every cell in the table
 </div>
 
 ```html
-<div class="romo-pad">
-  <table class="romo-table romo-table-pad3">
-    ...
-  </table>
-</div>
+<table class="romo-table romo-table-pad3">
+  ...
+</table>
 ```
 
 <div class="romo-pad">
@@ -1296,11 +1266,9 @@ Adds cell padding to every cell in the table
 </div>
 
 ```html
-<div class="romo-pad">
-  <table class="romo-table romo-table-pad4">
-    ...
-  </table>
-</div>
+<table class="romo-table romo-table-pad4">
+  ...
+</table>
 ```
 
 <div class="romo-pad">
@@ -1337,11 +1305,9 @@ Adds cell padding to every cell in the table
 </div>
 
 ```html
-<div class="romo-pad">
-  <table class="romo-table romo-table-pad5">
-    ...
-  </table>
-</div>
+<table class="romo-table romo-table-pad5">
+  ...
+</table>
 ```
 
 <div class="romo-pad">
@@ -1378,11 +1344,9 @@ Adds cell padding to every cell in the table
 </div>
 
 ```html
-<div class="romo-pad">
-  <table class="romo-table romo-table-pad6">
-    ...
-  </table>
-</div>
+<table class="romo-table romo-table-pad6">
+  ...
+</table>
 ```
 
 ## Custom Styles
@@ -1423,38 +1387,36 @@ Use any helper style classes in any combination on rows/cells.
 </div>
 
 ```html
-<div class="romo-pad">
-  <table class="romo-table romo-table-pad2">
-    <thead>
-      <tr>
-        <th class="romo-pad2">#</th>
-        <th>Name</th>
-        <th class="romo-text2 romo-pad2-left">Slug</th>
-        <th class="romo-1-12 romo-align-center romo-align-top">Count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td class="romo-bg-info">Joe Test</td>
-        <td>joe-test</td>
-        <td class="romo-1-12 romo-text2 romo-border-error romo-border4">10</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Jane Doe</td>
-        <td class="romo-pad3">jane-doe</td>
-        <td class="romo-1-12 romo-align-center romo-text-success">18</td>
-      </tr>
-      <tr class="romo-bg-success">
-        <td>3</td>
-        <td>Good Corp.</td>
-        <td>good-corp</td>
-        <td class="romo-1-12">5</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table class="romo-table romo-table-pad2">
+  <thead>
+    <tr>
+      <th class="romo-pad2">#</th>
+      <th>Name</th>
+      <th class="romo-text2 romo-pad2-left">Slug</th>
+      <th class="romo-1-12 romo-align-center romo-align-top">Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td class="romo-bg-info">Joe Test</td>
+      <td>joe-test</td>
+      <td class="romo-1-12 romo-text2 romo-border-error romo-border4">10</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Jane Doe</td>
+      <td class="romo-pad3">jane-doe</td>
+      <td class="romo-1-12 romo-align-center romo-text-success">18</td>
+    </tr>
+    <tr class="romo-bg-success">
+      <td>3</td>
+      <td>Good Corp.</td>
+      <td>good-corp</td>
+      <td class="romo-1-12">5</td>
+    </tr>
+  </tbody>
+</table>
 ```
 
 ## Supported table markup

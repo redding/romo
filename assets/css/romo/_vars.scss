@@ -37,17 +37,20 @@ $notAllowedCursor: not-allowed;
 
 /* colors */
 
-$linkColor:      #08c;
-$linkColorHover: darken($linkColor, 15%);
+$baseBackground:    #fff;
+$altBackground:     #ededed;
+$stripedBackground: #fafafa;
+$backgroundHover:   #f5f5f5;
 
-$baseBackground:   #fff;
-$altBackground:    #f3f3f3;
-$backgroundHover:  darken($altBackground, 5%);
-$baseColor:        #444;
-$disabledColor:    #999;
+$baseColor:     #444;
+$disabledColor: #999;
+
 $baseBorderColor:  #ccc;
 $altBorderColor:   #fff;
 $baseBorderRadius: 3px;
+
+$linkColor:      #08c;
+$linkColorHover: darken($linkColor, 15%);
 
 $inputColor:         #555;
 $inputDisabledColor: #eee;
@@ -124,7 +127,7 @@ $inverseBackgroundHover: darken($inverseBackground, 5%);
 $inverseBorder:          darken(adjust_hue($inverseBackground, -10), 3%);
 
 $tabBackground:       $altBackground;
-$tabBackgroundHover:  $backgroundHover;
+$tabBackgroundHover:  darken($altBackground, 5%);
 $tabBackgroundActive: #222;
 $tabColor:            $baseColor;
 $tabColorActive:      #fff;

@@ -128,9 +128,10 @@
 
 /* color emphasis */
 
-@mixin bg-base($i:"")  { background-color: $baseBackground #{$i}; }
-@mixin bg-alt($i:"")   { background-color: $altBackground #{$i}; }
-@mixin bg-hover($i:"") { background-color: $backgroundHover #{$i}; }
+@mixin bg-base($i:"")    { background-color: $baseBackground #{$i}; }
+@mixin bg-alt($i:"")     { background-color: $altBackground #{$i}; }
+@mixin bg-striped($i:"") { background-color: $stripedBackground #{$i}; }
+@mixin bg-hover($i:"")   { background-color: $backgroundHover #{$i}; }
 
 @mixin border-base($i:"") { border-color: $baseBorderColor #{$i}; }
 @mixin border-alt($i:"")  { border-color: $altBorderColor #{$i}; }
