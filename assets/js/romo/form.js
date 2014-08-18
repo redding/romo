@@ -60,7 +60,7 @@ RomoForm.prototype.onSubmitClick = function(e) {
     e.preventDefault();
   }
 
-  if (this.elem.hasClass('disabled') === false) {
+  if (this.submitElem.hasClass('disabled') === false) {
     this.doSubmit();
   }
 }
