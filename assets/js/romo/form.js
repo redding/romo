@@ -149,10 +149,6 @@ RomoForm.prototype._getSerializeObj = function() {
       prev[curr.name] = $.map([prev[curr.name], curr.value], function(v) {
         return v; // $.map removes null/undefined vals, this acts like a compact function
       }).join(listNamesDelims[curr.name])
-    } else if ($.isArray(prev[curr.name]) === true) {
-      prev[curr.name].push(curr.value);
-    } else if (prev[curr.name] !== undefined) {
-      prev[curr.name] = [ prev[curr.name], curr.value ];
     } else {
       prev[curr.name] = curr.value;
     }
