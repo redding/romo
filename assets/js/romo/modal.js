@@ -297,7 +297,11 @@ RomoModal.prototype.doPlacePopupElem = function() {
   if (this.elem.data('romo-modal-max-height') === 'detect') {
     var pad = this.elem.data('romo-modal-max-height-detect-pad') || 10;
     var contentTop = this.contentElem[0].getBoundingClientRect().top;
-    var maxHeight = $(window).height() - contentTop - pad;
+    var contentBottom = this.contentElem[0].getBoundingClientRect().bottom;
+    var bodyBottom = this.bodyElem[0].getBoundingClientRect().bottom;
+    var padBottom = bodyBottom - contentBottom;
+
+    var maxHeight = $(window).height() - contentTop - padBottom - pad;
     this.contentElem.css({'max-height': maxHeight.toString() + 'px'});
   }
 }
