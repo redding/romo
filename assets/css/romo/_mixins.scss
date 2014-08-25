@@ -60,8 +60,8 @@
 }
 
 @mixin flex-align-items($val) {
-  -webkit-align-items: flex-start;
-          align-items: flex-start;
+  -webkit-align-items: $val;
+          align-items: $val;
 }
 
 @mixin flex-align-self($val) {
