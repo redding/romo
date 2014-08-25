@@ -58,15 +58,18 @@ RomoModal.prototype.doInitBody = function() {
     'max-width':  this.elem.data('romo-modal-max-width'),
     'width':      this.elem.data('romo-modal-width'),
     'min-height': this.elem.data('romo-modal-min-height'),
-    'max-height': this.elem.data('romo-modal-max-height'),
-    'height':     this.elem.data('romo-modal-height')
+    'height':     this.elem.data('romo-modal-height'),
+    'overflow-x': 'auto',
+    'overflow-y': 'auto'
   }
-  if (css.width || css['max-width']) {
-    css['overflow-x'] = 'auto'
+
+  if (this.elem.data('romo-modal-max-height') === undefined) {
+    this.elem.attr('data-romo-modal-max-height', 'detect');
   }
-  if (css.height || css['max-height']) {
-    css['overflow-y'] = 'auto'
+  if (this.elem.data('romo-modal-max-height') !== 'detect') {
+    css['max-height'] = this.elem.data('romo-modal-max-height');
   }
+
   this.contentElem.css(css);
 
   this.closeElem.unbind('click');

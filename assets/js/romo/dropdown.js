@@ -67,11 +67,19 @@ RomoDropdown.prototype.doInitBody = function() {
 
   this.contentElem.css({
     'min-height': this.elem.data('romo-dropdown-min-height'),
-    'max-height': this.elem.data('romo-dropdown-max-height'),
     'height':     this.elem.data('romo-dropdown-height'),
     'overflow-x': this.elem.data('romo-dropdown-overflow-x') || 'auto',
     'overflow-y': this.elem.data('romo-dropdown-overflow-y') || 'auto'
   });
+
+  if (this.elem.data('romo-dropdown-max-height') === undefined) {
+    this.elem.attr('data-romo-dropdown-max-height', 'detect');
+  }
+  if (this.elem.data('romo-dropdown-max-height') !== 'detect') {
+    this.contentElem.css({
+      'max-height': this.elem.data('romo-dropdown-max-height')
+    });
+  }
 
   if (this.elem.data('romo-dropdown-width') === 'elem') {
     this.popupElem.css({
