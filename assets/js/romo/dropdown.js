@@ -60,7 +60,7 @@ RomoDropdown.prototype.doInit = function() {
 RomoDropdown.prototype.doInitBody = function() {
   this.doResetBody();
 
-  this.contentElem = this.bodyElem.find('.romo-dropdown-content');
+  this.contentElem = this.bodyElem.find('.romo-dropdown-content').last();
   if (this.contentElem.size() === 0) {
     this.contentElem = this.bodyElem;
   }
