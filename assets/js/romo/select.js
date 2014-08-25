@@ -159,6 +159,13 @@ RomoSelect.prototype.onPopupOpenBodyKeyDown = function(e) {
   }
 }
 
+RomoSelect.prototype.onCaretClick = function(e) {
+  if (this.elem.prop('disabled') === false) {
+    this.romoDropdown.elem.focus();
+    this.elem.trigger('select:triggerPopupOpen');
+  }
+}
+
 RomoSelect.prototype.onElemKeyDown = function(e) {
   if (this.elem.hasClass('disabled') === false) {
     if (this.romoDropdown.popupElem.hasClass('romo-dropdown-open')) {
@@ -242,6 +249,7 @@ RomoSelect.prototype._buildDropdownElem = function() {
   if (caretClass !== undefined && caretClass !== 'none') {
     var caret = $('<i class="romo-select-caret '+caretClass+'"></i>');
     caret.css({'line-height': this.elemWrapper.css('height')});
+    caret.on('click', $.proxy(this.onCaretClick, this));
     romoDropdownElem.css({'padding-right': '22px'});
     romoDropdownElem.after(caret);
   }
