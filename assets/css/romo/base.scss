@@ -496,6 +496,13 @@ h6 { @include text6; }
 
 .romo-relative { position: relative !important; }
 .romo-absolute { position: absolute !important; }
+.romo-absolute-fill {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
 .romo-fixed    { position: fixed !important; }
 
 .romo-pull-left,
