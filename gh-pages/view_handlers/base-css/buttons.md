@@ -10,6 +10,7 @@ Button styles can be applied to anything with the `.romo-btn` class. However, ty
   <input type="reset"  class="romo-btn romo-push0-bottom" value="Input-reset" />
   <button class="romo-btn romo-push0-bottom" disabled>Disabled by prop button</button>
   <button class="romo-btn disabled romo-push0-bottom">Disabled by class button</button>
+  <button class="romo-btn active romo-push0-bottom">Active button</button>
 </div>
 
 ```html
@@ -20,20 +21,21 @@ Button styles can be applied to anything with the `.romo-btn` class. However, ty
 <input type="reset"  class="romo-btn" value="Input-reset" />
 <button class="romo-btn" disabled>Disabled by prop button</button>
 <button class="romo-btn disabled">Disabled by class button</button>
+<button class="romo-btn active">Active button</button>
 ```
 
 ## Active state
 
-Add `.romo-btn-active` to make any button appear pressed.
+Add `.active` to make any button appear pressed.
 
 <div class="romo-pad">
   <button class="romo-btn">Default</button>
-  <button class="romo-btn romo-btn-active">Active</button>
+  <button class="romo-btn active">Active</button>
 </div>
 
 ```html
 <button class="romo-btn">Default</button>
-<button class="romo-btn romo-btn-active">Active</button>
+<button class="romo-btn active">Active</button>
 ```
 
 ## Button sizes
@@ -127,7 +129,7 @@ Use these as an alternative to the default styles and to add color emphasis to b
     <tbody>
       <tr>
         <td><button href="#" class="romo-btn romo-btn-large disabled">Default</button></td>
-        <td><button href="#" class="romo-btn romo-btn-large romo-btn-active">Default</button></td>
+        <td><button href="#" class="romo-btn romo-btn-large active">Default</button></td>
         <td><button href="#" class="romo-btn romo-btn-large">Default</button></td>
         <td><button href="#" class="romo-btn">Default</button></td>
         <td><button href="#" class="romo-btn romo-btn-small">Default</button></td>
@@ -135,7 +137,7 @@ Use these as an alternative to the default styles and to add color emphasis to b
       </tr>
       <tr>
         <td><button href="#" class="romo-btn romo-btn-alt romo-btn-large disabled">Alt</button></td>
-        <td><button href="#" class="romo-btn romo-btn-alt romo-btn-large romo-btn-active">Alt</button></td>
+        <td><button href="#" class="romo-btn romo-btn-alt romo-btn-large active">Alt</button></td>
         <td><button href="#" class="romo-btn romo-btn-alt romo-btn-large">Alt</button></td>
         <td><button href="#" class="romo-btn romo-btn-alt">Alt</button></td>
         <td><button href="#" class="romo-btn romo-btn-alt romo-btn-small">Alt</button></td>
@@ -143,7 +145,7 @@ Use these as an alternative to the default styles and to add color emphasis to b
       </tr>
       <tr>
         <td><button href="#" class="romo-btn romo-btn-primary romo-btn-large disabled">Primary</button></td>
-        <td><button href="#" class="romo-btn romo-btn-primary romo-btn-large romo-btn-active">Primary</button></td>
+        <td><button href="#" class="romo-btn romo-btn-primary romo-btn-large active">Primary</button></td>
         <td><button href="#" class="romo-btn romo-btn-primary romo-btn-large">Primary</button></td>
         <td><button href="#" class="romo-btn romo-btn-primary">Primary</button></td>
         <td><button href="#" class="romo-btn romo-btn-primary romo-btn-small">Primary</button></td>
@@ -151,7 +153,7 @@ Use these as an alternative to the default styles and to add color emphasis to b
       </tr>
       <tr>
         <td><button href="#" class="romo-btn romo-btn-warning romo-btn-large disabled">Warning</button></td>
-        <td><button href="#" class="romo-btn romo-btn-warning romo-btn-large romo-btn-active">Warning</button></td>
+        <td><button href="#" class="romo-btn romo-btn-warning romo-btn-large active">Warning</button></td>
         <td><button href="#" class="romo-btn romo-btn-warning romo-btn-large">Warning</button></td>
         <td><button href="#" class="romo-btn romo-btn-warning">Warning</button></td>
         <td><button href="#" class="romo-btn romo-btn-warning romo-btn-small">Warning</button></td>
@@ -159,7 +161,7 @@ Use these as an alternative to the default styles and to add color emphasis to b
       </tr>
       <tr>
         <td><button href="#" class="romo-btn romo-btn-danger romo-btn-large disabled">Danger</button></td>
-        <td><button href="#" class="romo-btn romo-btn-danger romo-btn-large romo-btn-active">Danger</button></td>
+        <td><button href="#" class="romo-btn romo-btn-danger romo-btn-large active">Danger</button></td>
         <td><button href="#" class="romo-btn romo-btn-danger romo-btn-large">Danger</button></td>
         <td><button href="#" class="romo-btn romo-btn-error" >Danger</button></td>
         <td><button href="#" class="romo-btn romo-btn-error romo-btn-small" >Danger</button></td>
@@ -167,7 +169,7 @@ Use these as an alternative to the default styles and to add color emphasis to b
       </tr>
       <tr>
         <td><button href="#" class="romo-btn romo-btn-info romo-btn-large disabled">Info</button></td>
-        <td><button href="#" class="romo-btn romo-btn-info romo-btn-large romo-btn-active">Info</button></td>
+        <td><button href="#" class="romo-btn romo-btn-info romo-btn-large active">Info</button></td>
         <td><button href="#" class="romo-btn romo-btn-info romo-btn-large">Info</button></td>
         <td><button href="#" class="romo-btn romo-btn-info">Info</button></td>
         <td><button href="#" class="romo-btn romo-btn-info romo-btn-small">Info</button></td>
@@ -175,7 +177,7 @@ Use these as an alternative to the default styles and to add color emphasis to b
       </tr>
       <tr>
         <td><button href="#" class="romo-btn romo-btn-success romo-btn-large disabled">Success</button></td>
-        <td><button href="#" class="romo-btn romo-btn-success romo-btn-large romo-btn-active">Success</button></td>
+        <td><button href="#" class="romo-btn romo-btn-success romo-btn-large active">Success</button></td>
         <td><button href="#" class="romo-btn romo-btn-success romo-btn-large">Success</button></td>
         <td><button href="#" class="romo-btn romo-btn-success">Success</button></td>
         <td><button href="#" class="romo-btn romo-btn-success romo-btn-small">Success</button></td>
@@ -183,7 +185,7 @@ Use these as an alternative to the default styles and to add color emphasis to b
       </tr>
       <tr>
         <td><button href="#" class="romo-btn romo-btn-inverse romo-btn-large disabled">Inverse</button></td>
-        <td><button href="#" class="romo-btn romo-btn-inverse romo-btn-large romo-btn-active">Inverse</button></td>
+        <td><button href="#" class="romo-btn romo-btn-inverse romo-btn-large active">Inverse</button></td>
         <td><button href="#" class="romo-btn romo-btn-inverse romo-btn-large">Inverse</button></td>
         <td><button href="#" class="romo-btn romo-btn-inverse">Inverse</button></td>
         <td><button href="#" class="romo-btn romo-btn-inverse romo-btn-small">Inverse</button></td>
@@ -191,7 +193,7 @@ Use these as an alternative to the default styles and to add color emphasis to b
       </tr>
       <tr>
         <td><button href="#" class="romo-btn romo-btn-link romo-btn-large disabled">Link</button></td>
-        <td><button href="#" class="romo-btn romo-btn-link romo-btn-large romo-btn-active">Link</button></td>
+        <td><button href="#" class="romo-btn romo-btn-link romo-btn-large active">Link</button></td>
         <td><button href="#" class="romo-btn romo-btn-link romo-btn-large">Link</button></td>
         <td><button href="#" class="romo-btn romo-btn-link">Link</button></td>
         <td><button href="#" class="romo-btn romo-btn-link romo-btn-small">Link</button></td>
