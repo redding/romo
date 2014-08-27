@@ -26,6 +26,7 @@ class RomoGHPages
   url :base_css_images,     '/base-css/images.html'
   url :base_css_forms,      '/base-css/forms.html'
   url :base_css_buttons,    '/base-css/buttons.html'
+  url :base_css_labels,     '/base-css/labels.html'
   url :base_css_tabs,       '/base-css/tabs.html'
 
   get :base_css_globals,    'BaseCSS::Globals'
@@ -33,6 +34,7 @@ class RomoGHPages
   get :base_css_images,     'BaseCSS::Images'
   get :base_css_forms,      'BaseCSS::Forms'
   get :base_css_buttons,    'BaseCSS::Buttons'
+  get :base_css_labels,     'BaseCSS::Labels'
   get :base_css_tabs,       'BaseCSS::Tabs'
 
   # Scaffolding

@@ -244,6 +244,23 @@
 @mixin button-inline5 { @include button-inline($lineHeight4); }
 @mixin button-inline6 { @include button-inline($lineHeight6); }
 
+/* Labels */
+/* ------- */
+
+@mixin label-pad($lineHeight) {
+  $inputHeight: ($lineHeight / 2) * 3; /* 30px */
+  $btnPaddingTopBottom: ($inputHeight - $lineHeight) / 2; /* 5px */
+  $btnPaddingLeftRight: ($btnPaddingTopBottom - 2) * 3; /* 12px; subtract "2" to match btn padding */
+  padding: $btnPaddingTopBottom $btnPaddingLeftRight;
+}
+
+@mixin label-pad1 { @include label-pad($lineHeight1); }
+@mixin label-pad2 { @include label-pad($lineHeight2); }
+@mixin label-pad3 { @include label-pad($lineHeight3); }
+@mixin label-pad4 { @include label-pad($lineHeight4); }
+@mixin label-pad5 { @include label-pad($lineHeight4); }
+@mixin label-pad6 { @include label-pad($lineHeight6); }
+
 /* Scaffolding */
 /* ----------- */
 

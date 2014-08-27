@@ -26,6 +26,7 @@ module Romo::Dassets
         'css/romo/base.css',
         'css/romo/forms.css',
         'css/romo/buttons.css',
+        'css/romo/labels.css',
         'css/romo/tabs.css',
         'css/romo/lists.css',
         'css/romo/grid.css',
