@@ -57,6 +57,16 @@ button.romo-btn:focus {
 .romo-btn.romo-btn-small,
 .romo-btn.romo-btn6 { @include font-size6; @include font-weight6; @include line-height6; @include button-pad6; }
 
+.romo-btn-inline1 { @include font-size1; @include font-weight1; @include line-height1; @include button-inline1; }
+.romo-btn-inline2 { @include font-size2; @include font-weight2; @include line-height1; @include button-inline1; }
+.romo-btn-inline3 { @include font-size3; @include font-weight3; @include line-height2; @include button-inline2; }
+.romo-btn-inline-large,
+.romo-btn-inline4 { @include font-size4; @include font-weight4; @include line-height3; @include button-inline3; }
+.romo-btn-inline,
+.romo-btn-inline5 { @include font-size5; @include font-weight5; @include line-height4; @include button-inline4; }
+.romo-btn-inline-small,
+.romo-btn-inline6 { @include font-size6; @include font-weight6; @include line-height6; @include button-inline6; }
+
 input[type="submit"].romo-btn-block,
 input[type="reset"].romo-btn-block,
 input[type="button"].romo-btn-block,

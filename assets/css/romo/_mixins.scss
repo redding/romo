@@ -232,6 +232,18 @@
 @mixin button-pad5 { @include button-pad($lineHeight4); }
 @mixin button-pad6 { @include button-pad($lineHeight6); }
 
+@mixin button-inline($lineHeight) {
+  line-height: ($lineHeight / 2) * 3;
+  @include align-middle;
+}
+
+@mixin button-inline1 { @include button-inline($lineHeight1); }
+@mixin button-inline2 { @include button-inline($lineHeight2); }
+@mixin button-inline3 { @include button-inline($lineHeight3); }
+@mixin button-inline4 { @include button-inline($lineHeight4); }
+@mixin button-inline5 { @include button-inline($lineHeight4); }
+@mixin button-inline6 { @include button-inline($lineHeight6); }
+
 /* Scaffolding */
 /* ----------- */
 
