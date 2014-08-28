@@ -5,7 +5,7 @@
   display: inline-block;
   font-size: $baseFontSize;
   line-height: $baseLineHeight;
-  background-color: $btnAltBackground;
+  background-color: $btnAltBackgroundHighlight;
   color: $btnAltColor;
   @include label-pad($baseLineHeight);
   @include rm-push;
@@ -23,11 +23,11 @@
 .romo-label.romo-label-small,
 .romo-label.romo-label6 { @include font-size6; @include font-weight6; @include line-height6; @include label-pad6; }
 
-.romo-label.romo-label-alt     { background-color: $btnBackground;        color: $btnColor; }
-.romo-label.romo-label-primary { background-color: $btnPrimaryBackground; color: $btnPrimaryColor; }
-.romo-label.romo-label-warning { background-color: $btnWarningBackground; color: $btnWarningColor; }
+.romo-label.romo-label-alt     { background-color: $btnBackground;                 color: $btnColor; }
+.romo-label.romo-label-primary { background-color: $btnPrimaryBackgroundHighlight; color: $btnPrimaryColor; }
+.romo-label.romo-label-warning { background-color: $btnWarningBackgroundHighlight; color: $btnWarningColor; }
 .romo-label.romo-label-error,
-.romo-label.romo-label-danger  { background-color: $btnDangerBackground;  color: $btnDangerColor; }
-.romo-label.romo-label-info    { background-color: $btnInfoBackground;    color: $btnInfoColor; }
-.romo-label.romo-label-success { background-color: $btnSuccessBackground; color: $btnSuccessColor; }
-.romo-label.romo-label-inverse { background-color: $btnInverseBackground; color: $btnInverseColor; }
+.romo-label.romo-label-danger  { background-color: $btnDangerBackgroundHighlight;  color: $btnDangerColor; }
+.romo-label.romo-label-info    { background-color: $btnInfoBackgroundHighlight;    color: $btnInfoColor; }
+.romo-label.romo-label-success { background-color: $btnSuccessBackgroundHighlight; color: $btnSuccessColor; }
+.romo-label.romo-label-inverse { background-color: $btnInverseBackgroundHighlight; color: $btnInverseColor; }
