@@ -128,6 +128,8 @@ a.romo-btn.romo-btn-link[disabled]:hover,
 a.romo-btn.romo-btn-link[disabled]:focus { color: $disabledColor; }
 
 .romo-btn-group { @include display-inline-flex; }
+.romo-btn-group > * { display: inherit; }
+
 .romo-btn-group .romo-btn:not(:last-child) { @include rm-border-right; }
 
 .romo-btn-group.romo-btn-group-border-radius  .romo-btn:first-child { @include border1-top-left-radius; @include border1-bottom-left-radius; }
