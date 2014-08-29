@@ -492,6 +492,8 @@ h6 { @include text6; }
 
 .romo-inline       { display: inline !important; }
 .romo-inline-block { display: inline-block !important; }
+.romo-inline-flex  { @include display-inline-flex(!important); }
+.romo-flex         { @include display-flex(!important); }
 .romo-block        { display: block !important; }
 
 .romo-relative { position: relative !important; }
