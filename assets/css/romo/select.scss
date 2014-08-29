@@ -129,6 +129,8 @@
   @include box-shadow(background-position 0.1s linear);
 }
 
+.romo-select:focus{ @include input-focus; }
+
 .romo-select:active,
 .romo-select.active {
   background-color: #e6e6e6;
