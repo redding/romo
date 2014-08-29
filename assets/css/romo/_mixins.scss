@@ -87,11 +87,9 @@
 @mixin font-weight($val, $i:"") { font-weight: $val #{$i}; }
 
 @mixin font-weight1($i:"") { @include font-weight(200, $i); }
-@mixin font-weight2($i:"") { @include font-weight(200, $i); }
-@mixin font-weight3($i:"") { @include font-weight(200, $i); }
+@mixin font-weight2($i:"") { @include font-weight(300, $i); }
+@mixin font-weight3($i:"") { @include font-weight(300, $i); }
 @mixin font-weight4($i:"") { @include font-weight(300, $i); }
-@mixin font-weight5($i:"") { @include font-weight(300, $i); }
-@mixin font-weight6($i:"") { @include font-weight(300, $i); }
 
 /* text size */
 
@@ -99,22 +97,16 @@
 @mixin font-size2($i:"") { font-size: $fontSize2 #{$i}; }
 @mixin font-size3($i:"") { font-size: $fontSize3 #{$i}; }
 @mixin font-size4($i:"") { font-size: $fontSize4 #{$i}; }
-@mixin font-size5($i:"") { font-size: $fontSize5 #{$i}; }
-@mixin font-size6($i:"") { font-size: $fontSize6 #{$i}; }
 
 @mixin line-height1($i:"") { line-height: $lineHeight1 #{$i}; }
 @mixin line-height2($i:"") { line-height: $lineHeight2 #{$i}; }
 @mixin line-height3($i:"") { line-height: $lineHeight3 #{$i}; }
 @mixin line-height4($i:"") { line-height: $lineHeight4 #{$i}; }
-@mixin line-height5($i:"") { line-height: $lineHeight5 #{$i}; }
-@mixin line-height6($i:"") { line-height: $lineHeight6 #{$i}; }
 
 @mixin text1($i:"") { @include font-size1($i); @include line-height1($i); }
 @mixin text2($i:"") { @include font-size2($i); @include line-height2($i); }
 @mixin text3($i:"") { @include font-size3($i); @include line-height3($i); }
 @mixin text4($i:"") { @include font-size4($i); @include line-height4($i); }
-@mixin text5($i:"") { @include font-size5($i); @include line-height5($i); }
-@mixin text6($i:"") { @include font-size6($i); @include line-height6($i); }
 
 /* text alignment */
 
@@ -238,20 +230,16 @@
 @mixin button-pad2 { @include button-pad($lineHeight2); }
 @mixin button-pad3 { @include button-pad($lineHeight3); }
 @mixin button-pad4 { @include button-pad($lineHeight4); }
-@mixin button-pad5 { @include button-pad($lineHeight4); }
-@mixin button-pad6 { @include button-pad($lineHeight6); }
 
 @mixin button-inline($lineHeight) {
-  line-height: ($lineHeight / 2) * 3;
+  line-height: ($lineHeight / 2) * 3; /* 30px */
   @include align-middle;
 }
 
 @mixin button-inline1 { @include button-inline($lineHeight1); }
 @mixin button-inline2 { @include button-inline($lineHeight2); }
-@mixin button-inline3 { @include button-inline($lineHeight3); }
+@mixin button-inline3 { @include button-inline($lineHeight2); }
 @mixin button-inline4 { @include button-inline($lineHeight4); }
-@mixin button-inline5 { @include button-inline($lineHeight4); }
-@mixin button-inline6 { @include button-inline($lineHeight6); }
 
 /* Labels */
 /* ------- */
@@ -267,8 +255,16 @@
 @mixin label-pad2 { @include label-pad($lineHeight2); }
 @mixin label-pad3 { @include label-pad($lineHeight3); }
 @mixin label-pad4 { @include label-pad($lineHeight4); }
-@mixin label-pad5 { @include label-pad($lineHeight4); }
-@mixin label-pad6 { @include label-pad($lineHeight6); }
+
+@mixin label-inline($lineHeight) {
+  line-height: ($lineHeight / 2) * 3; /* 30px */
+  @include align-middle;
+}
+
+@mixin label-inline1 { @include label-inline($lineHeight1); }
+@mixin label-inline2 { @include label-inline($lineHeight2); }
+@mixin label-inline3 { @include label-inline($lineHeight2); }
+@mixin label-inline4 { @include label-inline($lineHeight4); }
 
 /* Scaffolding */
 /* ----------- */

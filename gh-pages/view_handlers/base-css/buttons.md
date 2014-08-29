@@ -50,6 +50,7 @@ Use numbered style classes to size up/down buttons.
   <div class="romo-push0-bottom">
     <button class="romo-btn">.romo-btn</button>
     <button class="romo-btn romo-btn2">.romo-btn2</button>
+    <button class="romo-btn romo-btn-large">.romo-btn-large</button>
   </div>
   <div class="romo-push0-bottom">
     <button class="romo-btn">.romo-btn</button>
@@ -58,15 +59,6 @@ Use numbered style classes to size up/down buttons.
   <div class="romo-push0-bottom">
     <button class="romo-btn">.romo-btn</button>
     <button class="romo-btn romo-btn4">.romo-btn4</button>
-    <button class="romo-btn romo-btn-large">.romo-btn-large</button>
-  </div>
-  <div class="romo-push0-bottom">
-    <button class="romo-btn">.romo-btn</button>
-    <button class="romo-btn romo-btn5">.romo-btn5</button>
-  </div>
-  <div class="romo-push0-bottom">
-    <button class="romo-btn">.romo-btn</button>
-    <button class="romo-btn romo-btn6">.romo-btn6</button>
     <button class="romo-btn romo-btn-small">.romo-btn-small</button>
   </div>
 </div>
@@ -79,6 +71,7 @@ Use numbered style classes to size up/down buttons.
 <div class="romo-push0-bottom">
   <button class="romo-btn">.romo-btn</button>
   <button class="romo-btn romo-btn2">.romo-btn2</button>
+  <button class="romo-btn romo-btn-large">.romo-btn-large</button>
 </div>
 <div class="romo-push0-bottom">
   <button class="romo-btn">.romo-btn</button>
@@ -87,15 +80,6 @@ Use numbered style classes to size up/down buttons.
 <div class="romo-push0-bottom">
   <button class="romo-btn">.romo-btn</button>
   <button class="romo-btn romo-btn4">.romo-btn4</button>
-  <button class="romo-btn romo-btn-large">.romo-btn-large</button>
-</div>
-<div class="romo-push0-bottom">
-  <button class="romo-btn">.romo-btn</button>
-  <button class="romo-btn romo-btn5">.romo-btn5</button>
-</div>
-<div class="romo-push0-bottom">
-  <button class="romo-btn">.romo-btn</button>
-  <button class="romo-btn romo-btn6">.romo-btn6</button>
   <button class="romo-btn romo-btn-small">.romo-btn-small</button>
 </div>
 ```
@@ -110,26 +94,18 @@ Use `.romo-btn-inline` to vertically align text with buttons.
   <div class="romo-push0-bottom">
     <span class="romo-btn-inline2">.romo-btn-inline2</span>
     <button class="romo-btn romo-btn2">.romo-btn2</button>
-  </div>
-  <div class="romo-push0-bottom">
-    <span class="romo-btn-inline3">.romo-btn-inline3</span>
-    <button class="romo-btn romo-btn3">.romo-btn3</button>
-  </div>
-  <div class="romo-push0-bottom">
-    <span class="romo-btn-inline4">.romo-btn-inline4</span>
-    <button class="romo-btn romo-btn4">.romo-btn4</button>
     <span class="romo-btn-inline-large">.romo-btn-inline-large</span>
     <button class="romo-btn romo-btn-large">.romo-btn-large</button>
   </div>
   <div class="romo-push0-bottom">
-    <span class="romo-btn-inline5">.romo-btn-inline5</span>
-    <button class="romo-btn romo-btn5">.romo-btn5</button>
+    <span class="romo-btn-inline3">.romo-btn-inline3</span>
+    <button class="romo-btn romo-btn3">.romo-btn3</button>
     <span class="romo-btn-inline">.romo-btn-inline</span>
     <button class="romo-btn">.romo-btn</button>
   </div>
   <div class="romo-push0-bottom">
-    <span class="romo-btn-inline6">.romo-btn-inline6</span>
-    <button class="romo-btn romo-btn6">.romo-btn6</button>
+    <span class="romo-btn-inline4">.romo-btn-inline4</span>
+    <button class="romo-btn romo-btn4">.romo-btn4</button>
     <span class="romo-btn-inline-small">.romo-btn-inline-small</span>
     <button class="romo-btn romo-btn-small">.romo-btn-small</button>
   </div>
@@ -143,26 +119,18 @@ Use `.romo-btn-inline` to vertically align text with buttons.
 <div class="romo-push0-bottom">
   <span class="romo-btn-inline2">.romo-btn-inline2</span>
   <button class="romo-btn romo-btn2">.romo-btn2</button>
-</div>
-<div class="romo-push0-bottom">
-  <span class="romo-btn-inline3">.romo-btn-inline3</span>
-  <button class="romo-btn romo-btn3">.romo-btn3</button>
-</div>
-<div class="romo-push0-bottom">
-  <span class="romo-btn-inline4">.romo-btn-inline4</span>
-  <button class="romo-btn romo-btn4">.romo-btn4</button>
   <span class="romo-btn-inline-large">.romo-btn-inline-large</span>
   <button class="romo-btn romo-btn-large">.romo-btn-large</button>
 </div>
 <div class="romo-push0-bottom">
-  <span class="romo-btn-inline5">.romo-btn-inline5</span>
-  <button class="romo-btn romo-btn5">.romo-btn5</button>
+  <span class="romo-btn-inline3">.romo-btn-inline3</span>
+  <button class="romo-btn romo-btn3">.romo-btn3</button>
   <span class="romo-btn-inline">.romo-btn-inline</span>
   <button class="romo-btn">.romo-btn</button>
 </div>
 <div class="romo-push0-bottom">
-  <span class="romo-btn-inline6">.romo-btn-inline6</span>
-  <button class="romo-btn romo-btn6">.romo-btn6</button>
+  <span class="romo-btn-inline4">.romo-btn-inline4</span>
+  <button class="romo-btn romo-btn4">.romo-btn4</button>
   <span class="romo-btn-inline-small">.romo-btn-inline-small</span>
   <button class="romo-btn romo-btn-small">.romo-btn-small</button>
 </div>

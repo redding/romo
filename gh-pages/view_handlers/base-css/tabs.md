@@ -93,23 +93,13 @@ Use numbered style classes to size up/down tab items.
     <li><a href="#">...</a></li>
     <li><a href="#">...</a></li>
   </ul>
+  <ul class="romo-tabs romo-tabs-large romo-push0-bottom">
+    <li class="active"><a href="#">romo-tabs-large</a></li>
+    <li><a href="#">...</a></li>
+    <li><a href="#">...</a></li>
+  </ul>
   <ul class="romo-tabs romo-tabs2 romo-push0-bottom">
     <li class="active"><a href="#">romo-tabs2</a></li>
-    <li><a href="#">...</a></li>
-    <li><a href="#">...</a></li>
-  </ul>
-  <ul class="romo-tabs romo-tabs3 romo-push0-bottom">
-    <li class="active"><a href="#">romo-tabs3</a></li>
-    <li><a href="#">...</a></li>
-    <li><a href="#">...</a></li>
-  </ul>
-  <ul class="romo-tabs romo-tabs-large romo-push0-bottom">
-    <li class="active"><a href="#">romo-large</a></li>
-    <li><a href="#">...</a></li>
-    <li><a href="#">...</a></li>
-  </ul>
-  <ul class="romo-tabs romo-tabs4 romo-push0-bottom">
-    <li class="active"><a href="#">romo-tabs4</a></li>
     <li><a href="#">...</a></li>
     <li><a href="#">...</a></li>
   </ul>
@@ -118,8 +108,8 @@ Use numbered style classes to size up/down tab items.
     <li><a href="#">...</a></li>
     <li><a href="#">...</a></li>
   </ul>
-  <ul class="romo-tabs romo-tabs5 romo-push0-bottom">
-    <li class="active"><a href="#">romo-tabs5</a></li>
+  <ul class="romo-tabs romo-tabs3 romo-push0-bottom">
+    <li class="active"><a href="#">romo-tabs3</a></li>
     <li><a href="#">...</a></li>
     <li><a href="#">...</a></li>
   </ul>
@@ -128,8 +118,8 @@ Use numbered style classes to size up/down tab items.
     <li><a href="#">...</a></li>
     <li><a href="#">...</a></li>
   </ul>
-  <ul class="romo-tabs romo-tabs6 romo-push0-bottom">
-    <li class="active"><a href="#">romo-tabs6</a></li>
+  <ul class="romo-tabs romo-tabs4 romo-push0-bottom">
+    <li class="active"><a href="#">romo-tabs4</a></li>
     <li><a href="#">...</a></li>
     <li><a href="#">...</a></li>
   </ul>
@@ -137,14 +127,12 @@ Use numbered style classes to size up/down tab items.
 
 ```html
 <ul class="romo-tabs romo-tabs1 romo-push0-bottom">...</ul>
-<ul class="romo-tabs romo-tabs2 romo-push0-bottom">...</ul>
-<ul class="romo-tabs romo-tabs3 romo-push0-bottom">...</ul>
 <ul class="romo-tabs romo-tabs-large romo-push0-bottom">...</ul>
-<ul class="romo-tabs romo-tabs4 romo-push0-bottom">...</ul>
+<ul class="romo-tabs romo-tabs2 romo-push0-bottom">...</ul>
 <ul class="romo-tabs romo-push0-bottom">...</ul>
-<ul class="romo-tabs romo-tabs5 romo-push0-bottom">...</ul>
+<ul class="romo-tabs romo-tabs3 romo-push0-bottom">...</ul>
 <ul class="romo-tabs romo-tabs-small romo-push0-bottom">...</ul>
-<ul class="romo-tabs romo-tabs6 romo-push0-bottom">...</ul>
+<ul class="romo-tabs romo-tabs4 romo-push0-bottom">...</ul>
 ```
 
 ## Stacked tabs

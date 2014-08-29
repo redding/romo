@@ -8,26 +8,20 @@ $baseFontSize:    14px;
 $baseLineHeight:  $baseFontSize * $lineHeightToSizeRatio;
 $baseSpacingSize: $baseLineHeight / 2;
 
-$fontSize1: ($baseFontSize * 2.75);    /* ~38px */
-$fontSize2: ($baseFontSize * 2.25);    /* ~32px */
-$fontSize3: ($baseFontSize * 1.75);    /* ~24px */
-$fontSize4: ($baseFontSize * 1.25);    /* ~18px */
-$fontSize5: $baseFontSize;             /*  14px */
-$fontSize6: ($baseFontSize * 0.85);    /* ~12px */
+$fontSize1: ($baseFontSize * 1.75);    /* ~24px */
+$fontSize2: ($baseFontSize * 1.25);    /* ~18px */
+$fontSize3: $baseFontSize;             /*  14px */
+$fontSize4: ($baseFontSize * 0.85);    /* ~12px */
 
-$lineHeight1: ($baseLineHeight * 2.00); /* 40px */
-$lineHeight2: ($baseLineHeight * 1.75); /* 35px */
-$lineHeight3: ($baseLineHeight * 1.50); /* 30px */
-$lineHeight4: $baseLineHeight;          /* 20px */
-$lineHeight5: ($baseLineHeight * 0.85); /* 17px */
-$lineHeight6: ($baseLineHeight * 0.75); /* 15px */;
+$lineHeight1: ($baseLineHeight * 1.50); /* 30px */
+$lineHeight2: ($baseLineHeight * 1.20); /* 24px */
+$lineHeight3: $baseLineHeight;          /* 20px */
+$lineHeight4: ($baseLineHeight * 0.75); /* 15px */;
 
-$imgHeight1: $lineHeight1 + (1.0 * $baseSpacingSize); /* 50px */
-$imgHeight2: $lineHeight2 + (1.0 * $baseSpacingSize); /* 45px */
-$imgHeight3: $lineHeight3 + (0.5 * $baseSpacingSize); /* 35px */
-$imgHeight4: $lineHeight4 + (0.5 * $baseSpacingSize); /* 25px */
-$imgHeight5: $lineHeight4 + (0.0 * $baseSpacingSize); /* 20px */
-$imgHeight6: $lineHeight5 + (0.0 * $baseSpacingSize); /* 17px */;
+$imgHeight1: $lineHeight1 + (0.5 * $baseSpacingSize); /* 35px */
+$imgHeight2: $lineHeight2 + (0.5 * $baseSpacingSize); /* 25px */
+$imgHeight3: $lineHeight3 + (0.0 * $baseSpacingSize); /* 20px */
+$imgHeight4: $lineHeight4 + (0.0 * $baseSpacingSize); /* 15px */;
 
 $inputHeight: ($baseLineHeight / 2) * 3; /* 30px */
 $btnPaddingTopBottom: ($inputHeight - 2 - $baseLineHeight) / 2; /* 4px; "2" is for the borders */

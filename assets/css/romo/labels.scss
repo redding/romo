@@ -14,14 +14,22 @@
 }
 
 .romo-label.romo-label1 { @include font-size1; @include font-weight1; @include line-height1; @include label-pad1; }
-.romo-label.romo-label2 { @include font-size2; @include font-weight2; @include line-height1; @include label-pad1; }
-.romo-label.romo-label3 { @include font-size3; @include font-weight3; @include line-height2; @include label-pad2; }
 .romo-label.romo-label-large,
-.romo-label.romo-label4 { @include font-size4; @include font-weight4; @include line-height3; @include label-pad3; }
+.romo-label.romo-label2 { @include font-size2; @include font-weight2; @include line-height2; @include label-pad2; }
 .romo-label,
-.romo-label.romo-label5 { @include font-size5; @include font-weight5; @include line-height4; @include label-pad4; }
+.romo-label.romo-label3 { @include font-size3; @include font-weight3; @include line-height3; @include label-pad3; }
 .romo-label.romo-label-small,
-.romo-label.romo-label6 { @include font-size6; @include font-weight6; @include line-height6; @include label-pad6; }
+.romo-label.romo-label4 { @include font-size4; @include font-weight4; @include line-height4; @include label-pad4; }
+
+.romo-label-inline1 { @include font-size1; @include font-weight1; @include line-height1; @include label-inline1; }
+.romo-label-inline-large,
+.romo-label-inline2 { @include font-size2; @include font-weight2; @include line-height2; @include label-inline2; }
+.romo-label-inline,
+.romo-label-inline3 { @include font-size3; @include font-weight3; @include line-height3; @include label-inline3; }
+.romo-label-inline-small,
+.romo-label-inline4 { @include font-size4; @include font-weight4; @include line-height4; @include label-inline4; }
+
+.romo-label-block { display: block; width: 100%; }
 
 .romo-label.romo-label-alt     { background-color: $btnBackground;                 color: $btnColor; }
 .romo-label.romo-label-primary { background-color: $btnPrimaryBackgroundHighlight; color: $btnPrimaryColor; }

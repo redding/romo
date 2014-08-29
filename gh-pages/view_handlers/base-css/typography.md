@@ -36,22 +36,16 @@ For emphasizing a snippet of text <em>with italics</em>.
 
 ## Headings
 
-All HTML headings, `<h1>` through `<h6>` are available.
+All HTML headings, `<h1>` through `<h3>` are available.
 
 <h1>h1. Heading 1</h1>
 <h2>h2. Heading 2</h2>
 <h3>h3. Heading 3</h3>
-<h4>h4. Heading 4</h4>
-<h5>h5. Heading 5</h5>
-<h6>h6. Heading 6</h6>
 
 ```html
 <h1>h1. Heading 1</h1>
 <h2>h2. Heading 2</h2>
 <h3>h3. Heading 3</h3>
-<h4>h4. Heading 4</h4>
-<h5>h5. Heading 5</h5>
-<h6>h6. Heading 6</h6>
 ```
 
 ## Size classes
@@ -62,28 +56,24 @@ Use style classes to size up/down text corresponding with heading sizes.
 <div class="romo-text2">.romo-text2</div>
 <div class="romo-text3">.romo-text3</div>
 <div class="romo-text4">.romo-text4</div>
-<div class="romo-text5">.romo-text5</div>
-<div class="romo-text6">.romo-text6</div>
 
 ```html
 <div class="romo-text1">.romo-text1</div>
 <div class="romo-text2">.romo-text2</div>
 <div class="romo-text3">.romo-text3</div>
 <div class="romo-text4">.romo-text4</div>
-<div class="romo-text5">.romo-text5</div>
-<div class="romo-text6">.romo-text6</div>
 ```
 
 Or, use these natural-size style classes for the more common sizing needs.
 
-<div class="romo-text-large">.romo-text-large Size (alias for .romo-text4)</div>
+<div class="romo-text-large">.romo-text-large Size (alias for .romo-text2)</div>
 <div>normal text Size</div>
-<div class="romo-text-small">.romo-text-small Size (alias for .romo-text6)</div>
+<div class="romo-text-small">.romo-text-small Size (alias for .romo-text4)</div>
 
 ```html
-<div class="romo-text-large">.romo-text-large Size (alias for .romo-text4)</div>
+<div class="romo-text-large">.romo-text-large Size (alias for .romo-text2)</div>
 <div>normal text Size</div>
-<div class="romo-text-small">.romo-text-small Size (alias for .romo-text6)</div>
+<div class="romo-text-small">.romo-text-small Size (alias for .romo-text4)</div>
 ```
 
 ## Alignment classes
