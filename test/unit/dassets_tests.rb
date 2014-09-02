@@ -38,6 +38,7 @@ module Romo::Dassets
         'css/romo/datepicker.css',
         'css/romo/tooltip.css',
         'css/romo/z_index.css',
+        'css/romo/sortable.css',
       ]
       assert_equal exp_css_sources, Dassets.config.combinations['css/romo.css']
 
@@ -54,6 +55,7 @@ module Romo::Dassets
         'js/romo/modal_form.js',
         'js/romo/tooltip.js',
         'js/romo/indicator.js',
+        'js/romo/sortable.js',
       ]
       assert_equal exp_js_sources, Dassets.config.combinations['js/romo.js']
     end

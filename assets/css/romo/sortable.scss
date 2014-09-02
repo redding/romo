@@ -1,0 +1,14 @@
+@import 'css/romo/mixins';
+
+[data-romo-sortable-item="true"] {
+  @include user-select(text);
+}
+
+.romo-sortable-grab {
+  @include cursor-grab;
+  @include user-select(none);
+}
+
+.romo-sortable-grabbing {
+  @include cursor-grabbing;
+}

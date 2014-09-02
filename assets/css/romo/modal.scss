@@ -6,15 +6,11 @@
 }
 
 .romo-modal-grab {
-  cursor: grab;
-  cursor: -moz-grab;
-  cursor: -webkit-grab;
+  @include cursor-grab;
 }
 
 .romo-modal-grabbing {
-  cursor: grabbing;
-  cursor: -moz-grabbing;
-  cursor: -webkit-grabbing;
+  @include cursor-grabbing;
 }
 
 [data-romo-modal-close="true"]{

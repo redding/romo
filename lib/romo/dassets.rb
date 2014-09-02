@@ -38,6 +38,7 @@ module Romo::Dassets
         'css/romo/datepicker.css',
         'css/romo/tooltip.css',
         'css/romo/z_index.css',
+        'css/romo/sortable.css',
       ]
       c.combination "js/romo.js", [
         'js/romo/base.js',
@@ -52,6 +53,7 @@ module Romo::Dassets
         'js/romo/modal_form.js',
         'js/romo/tooltip.js',
         'js/romo/indicator.js',
+        'js/romo/sortable.js',
       ]
 
     end
