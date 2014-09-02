@@ -296,51 +296,35 @@
 @mixin border-style-bottom($val, $i:"") { border-bottom-style: $val #{$i}; }
 @mixin border-style-left($val, $i:"")   { border-left-style:   $val #{$i}; }
 
-@mixin border($num, $i:"")        { border-width:        (1px * $num) #{$i}; @include border-style(solid); }
-@mixin border-top($num, $i:"")    { border-top-width:    (1px * $num) #{$i}; @include border-style-top(solid); }
-@mixin border-right($num, $i:"")  { border-right-width:  (1px * $num) #{$i}; @include border-style-right(solid); }
-@mixin border-bottom($num, $i:"") { border-bottom-width: (1px * $num) #{$i}; @include border-style-bottom(solid); }
-@mixin border-left($num, $i:"")   { border-left-width:   (1px * $num) #{$i}; @include border-style-left(solid); }
+@mixin border($size, $i:"")        { border-width:        $size #{$i}; @include border-style(solid); }
+@mixin border-top($size, $i:"")    { border-top-width:    $size #{$i}; @include border-style-top(solid); }
+@mixin border-right($size, $i:"")  { border-right-width:  $size #{$i}; @include border-style-right(solid); }
+@mixin border-bottom($size, $i:"") { border-bottom-width: $size #{$i}; @include border-style-bottom(solid); }
+@mixin border-left($size, $i:"")   { border-left-width:   $size #{$i}; @include border-style-left(solid); }
 
-@mixin border1($i:"")   { @include border(1, $i); }
-@mixin border2($i:"")   { @include border(2, $i); }
-@mixin border3($i:"")   { @include border(3, $i); }
-@mixin border4($i:"")   { @include border(4, $i); }
-@mixin border5($i:"")   { @include border(5, $i); }
-@mixin border6($i:"")   { @include border(6, $i); }
-@mixin rm-border($i:"") { @include border(0, $i); }
+@mixin border1($i:"")        { @include border($borderSize1, $i); }
+@mixin border1-top($i:"")    { @include border-top($borderSize1, $i); }
+@mixin border1-right($i:"")  { @include border-right($borderSize1, $i); }
+@mixin border1-bottom($i:"") { @include border-bottom($borderSize1, $i); }
+@mixin border1-left($i:"")   { @include border-left($borderSize1, $i); }
 
-@mixin border1-top($i:"")   { @include border-top(1, $i); }
-@mixin border2-top($i:"")   { @include border-top(2, $i); }
-@mixin border3-top($i:"")   { @include border-top(3, $i); }
-@mixin border4-top($i:"")   { @include border-top(4, $i); }
-@mixin border5-top($i:"")   { @include border-top(5, $i); }
-@mixin border6-top($i:"")   { @include border-top(6, $i); }
-@mixin rm-border-top($i:"") { @include border-top(0, $i); }
+@mixin border0($i:"")        { @include border($borderSize0, $i); }
+@mixin border0-top($i:"")    { @include border-top($borderSize0, $i); }
+@mixin border0-right($i:"")  { @include border-right($borderSize0, $i); }
+@mixin border0-bottom($i:"") { @include border-bottom($borderSize0, $i); }
+@mixin border0-left($i:"")   { @include border-left($borderSize0, $i); }
 
-@mixin border1-right($i:"")   { @include border-right(1, $i); }
-@mixin border2-right($i:"")   { @include border-right(2, $i); }
-@mixin border3-right($i:"")   { @include border-right(3, $i); }
-@mixin border4-right($i:"")   { @include border-right(4, $i); }
-@mixin border5-right($i:"")   { @include border-right(5, $i); }
-@mixin border6-right($i:"")   { @include border-right(6, $i); }
-@mixin rm-border-right($i:"") { @include border-right(0, $i); }
+@mixin border2($i:"")        { @include border($borderSize2, $i); }
+@mixin border2-top($i:"")    { @include border-top($borderSize2, $i); }
+@mixin border2-right($i:"")  { @include border-right($borderSize2, $i); }
+@mixin border2-bottom($i:"") { @include border-bottom($borderSize2, $i); }
+@mixin border2-left($i:"")   { @include border-left($borderSize2, $i); }
 
-@mixin border1-bottom($i:"")   { @include border-bottom(1, $i); }
-@mixin border2-bottom($i:"")   { @include border-bottom(2, $i); }
-@mixin border3-bottom($i:"")   { @include border-bottom(3, $i); }
-@mixin border4-bottom($i:"")   { @include border-bottom(4, $i); }
-@mixin border5-bottom($i:"")   { @include border-bottom(5, $i); }
-@mixin border6-bottom($i:"")   { @include border-bottom(6, $i); }
+@mixin rm-border($i:"")        { @include border(0, $i); }
+@mixin rm-border-top($i:"")    { @include border-top(0, $i); }
+@mixin rm-border-right($i:"")  { @include border-right(0, $i); }
 @mixin rm-border-bottom($i:"") { @include border-bottom(0, $i); }
-
-@mixin border1-left($i:"")   { @include border-left(1, $i); }
-@mixin border2-left($i:"")   { @include border-left(2, $i); }
-@mixin border3-left($i:"")   { @include border-left(3, $i); }
-@mixin border4-left($i:"")   { @include border-left(4, $i); }
-@mixin border5-left($i:"")   { @include border-left(5, $i); }
-@mixin border6-left($i:"")   { @include border-left(6, $i); }
-@mixin rm-border-left($i:"") { @include border-left(0, $i); }
+@mixin rm-border-left($i:"")   { @include border-left(0, $i); }
 
 @mixin border-radius($radius, $i:"") {
   -webkit-border-radius: $radius #{$i};

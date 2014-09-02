@@ -520,12 +520,48 @@ Add hover state to rows within a `<tbody>`.
 </table>
 ```
 
-### `.romo-table-border{1-6}`
+### `.romo-table-border{0-2}`
 
 Adds sized borders to the table.
 
 <div class="romo-pad">
   <table class="romo-table romo-table-border">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="2">1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td rowspan="2">18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td colspan="2">Good Corp.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="romo-pad">
+  <table class="romo-table romo-table-border0">
     <thead>
       <tr>
         <th>#</th>
@@ -632,152 +668,8 @@ Adds sized borders to the table.
   </table>
 </div>
 
-<div class="romo-pad">
-  <table class="romo-table romo-table-border3">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Slug</th>
-        <th>Count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td rowspan="2">1</td>
-        <td>Joe Test</td>
-        <td>joe-test</td>
-        <td>10</td>
-      </tr>
-      <tr>
-        <td>Joe Test</td>
-        <td>joe-test</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Jane Doe</td>
-        <td>jane-doe</td>
-        <td rowspan="2">18</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td colspan="2">Good Corp.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<div class="romo-pad">
-  <table class="romo-table romo-table-border4">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Slug</th>
-        <th>Count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td rowspan="2">1</td>
-        <td>Joe Test</td>
-        <td>joe-test</td>
-        <td>10</td>
-      </tr>
-      <tr>
-        <td>Joe Test</td>
-        <td>joe-test</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Jane Doe</td>
-        <td>jane-doe</td>
-        <td rowspan="2">18</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td colspan="2">Good Corp.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<div class="romo-pad">
-  <table class="romo-table romo-table-border5">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Slug</th>
-        <th>Count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td rowspan="2">1</td>
-        <td>Joe Test</td>
-        <td>joe-test</td>
-        <td>10</td>
-      </tr>
-      <tr>
-        <td>Joe Test</td>
-        <td>joe-test</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Jane Doe</td>
-        <td>jane-doe</td>
-        <td rowspan="2">18</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td colspan="2">Good Corp.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<div class="romo-pad">
-  <table class="romo-table romo-table-border6">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Slug</th>
-        <th>Count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td rowspan="2">1</td>
-        <td>Joe Test</td>
-        <td>joe-test</td>
-        <td>10</td>
-      </tr>
-      <tr>
-        <td>Joe Test</td>
-        <td>joe-test</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Jane Doe</td>
-        <td>jane-doe</td>
-        <td rowspan="2">18</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td colspan="2">Good Corp.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
 ```html
-<table class="romo-table romo-table-border{1-6}">
+<table class="romo-table romo-table-border{0-2}">
   ...
 </table>
 ```

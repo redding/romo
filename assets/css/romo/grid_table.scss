@@ -56,29 +56,20 @@ ol.romo-grid-table { @include list-unstyled(!important); }
 .romo-grid-table-hover:not(.romo-grid-table-header) > .romo-row.romo-inverse:hover,
 .romo-grid-table-hover.romo-grid-table-header > .romo-row.romo-inverse:not(:first-child):hover { @include bg-inverse-hover; }
 
-.romo-grid-table-border  { @include border1; }
+.romo-grid-table-border,
 .romo-grid-table-border1 { @include border1; }
+.romo-grid-table-border0 { @include border0; }
 .romo-grid-table-border2 { @include border2; }
-.romo-grid-table-border3 { @include border3; }
-.romo-grid-table-border4 { @include border4; }
-.romo-grid-table-border5 { @include border5; }
-.romo-grid-table-border6 { @include border6; }
 
-.romo-grid-table.romo-grid-table-border  > .romo-row { @include border1-bottom; }
+.romo-grid-table.romo-grid-table-border  > .romo-row,
 .romo-grid-table.romo-grid-table-border1 > .romo-row { @include border1-bottom; }
+.romo-grid-table.romo-grid-table-border0 > .romo-row { @include border0-bottom; }
 .romo-grid-table.romo-grid-table-border2 > .romo-row { @include border2-bottom; }
-.romo-grid-table.romo-grid-table-border3 > .romo-row { @include border3-bottom; }
-.romo-grid-table.romo-grid-table-border4 > .romo-row { @include border4-bottom; }
-.romo-grid-table.romo-grid-table-border5 > .romo-row { @include border5-bottom; }
-.romo-grid-table.romo-grid-table-border6 > .romo-row { @include border6-bottom; }
 
-.romo-grid-table.romo-grid-table-border  > .romo-row > .romo-span { @include border1-right; white-space: nowrap; overflow: hidden; }
+.romo-grid-table.romo-grid-table-border  > .romo-row > .romo-span,
 .romo-grid-table.romo-grid-table-border1 > .romo-row > .romo-span { @include border1-right; white-space: nowrap; overflow: hidden; }
+.romo-grid-table.romo-grid-table-border0 > .romo-row > .romo-span { @include border0-right; white-space: nowrap; overflow: hidden; }
 .romo-grid-table.romo-grid-table-border2 > .romo-row > .romo-span { @include border2-right; white-space: nowrap; overflow: hidden; }
-.romo-grid-table.romo-grid-table-border3 > .romo-row > .romo-span { @include border3-right; white-space: nowrap; overflow: hidden; }
-.romo-grid-table.romo-grid-table-border4 > .romo-row > .romo-span { @include border4-right; white-space: nowrap; overflow: hidden; }
-.romo-grid-table.romo-grid-table-border5 > .romo-row > .romo-span { @include border5-right; white-space: nowrap; overflow: hidden; }
-.romo-grid-table.romo-grid-table-border6 > .romo-row > .romo-span { @include border6-right; white-space: nowrap; overflow: hidden; }
 
 .romo-grid-table[class*="romo-grid-table-border"] > .romo-row > .romo-span:last-child { @include rm-border-right; }
 .romo-grid-table[class*="romo-grid-table-border"] > .romo-row:last-child { @include rm-border-bottom; }

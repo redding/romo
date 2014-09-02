@@ -127,6 +127,12 @@ $tabColor:            $baseColor;
 $tabColorActive:      #fff;
 $tabColorDisabled:    $disabledColor;
 
+/* borders */
+
+$borderSize1: 1px;
+$borderSize0: $borderSize1 * 1;
+$borderSize2: $borderSize1 * 2;
+
 /* tabs */
 
 $tabDividerSize: 4px;

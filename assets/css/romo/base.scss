@@ -284,49 +284,34 @@ h3 { @include text3; }
 .romo-border-hidden-left { @include border-style-left(hidden, !important); }
 .romo-border-none-left   { @include border-style-left(none,   !important); }
 
-.romo-border  { @include border1(!important); }
-.romo-border1 { @include border1(!important); }
-.romo-border2 { @include border2(!important); }
-.romo-border3 { @include border3(!important); }
-.romo-border4 { @include border4(!important); }
-.romo-border5 { @include border5(!important); }
-.romo-border6 { @include border6(!important); }
+.romo-border,
+.romo-border1   { @include border1(!important); }
+.romo-border0   { @include border0(!important); }
+.romo-border2   { @include border2(!important); }
 .romo-rm-border { @include rm-border(!important); }
 
-.romo-border-top  { @include border1-top(!important); }
-.romo-border1-top { @include border1-top(!important); }
-.romo-border2-top { @include border2-top(!important); }
-.romo-border3-top { @include border3-top(!important); }
-.romo-border4-top { @include border4-top(!important); }
-.romo-border5-top { @include border5-top(!important); }
-.romo-border6-top { @include border6-top(!important); }
+.romo-border-top,
+.romo-border1-top   { @include border1-top(!important); }
+.romo-border0-top   { @include border0-top(!important); }
+.romo-border2-top   { @include border2-top(!important); }
 .romo-rm-border-top { @include rm-border-top(!important); }
 
-.romo-border-right  { @include border1-right(!important); }
-.romo-border1-right { @include border1-right(!important); }
-.romo-border2-right { @include border2-right(!important); }
-.romo-border3-right { @include border3-right(!important); }
-.romo-border4-right { @include border4-right(!important); }
-.romo-border5-right { @include border5-right(!important); }
-.romo-border6-right { @include border6-right(!important); }
+.romo-border-right,
+.romo-border1-right   { @include border1-right(!important); }
+.romo-border0-right   { @include border0-right(!important); }
+.romo-border2-right   { @include border2-right(!important); }
 .romo-rm-border-right { @include rm-border-right(!important); }
 
-.romo-border-bottom  { @include border1-bottom(!important); }
-.romo-border1-bottom { @include border1-bottom(!important); }
-.romo-border2-bottom { @include border2-bottom(!important); }
-.romo-border3-bottom { @include border3-bottom(!important); }
-.romo-border4-bottom { @include border4-bottom(!important); }
-.romo-border5-bottom { @include border5-bottom(!important); }
-.romo-border6-bottom { @include border6-bottom(!important); }
+.romo-border-bottom,
+.romo-border1-bottom   { @include border1-bottom(!important); }
+.romo-border0-bottom   { @include border0-bottom(!important); }
+.romo-border2-bottom   { @include border2-bottom(!important); }
 .romo-rm-border-bottom { @include rm-border-bottom(!important); }
 
-.romo-border-left  { @include border1-left(!important); }
-.romo-border1-left { @include border1-left(!important); }
-.romo-border2-left { @include border2-left(!important); }
-.romo-border3-left { @include border3-left(!important); }
-.romo-border4-left { @include border4-left(!important); }
-.romo-border5-left { @include border5-left(!important); }
-.romo-border6-left { @include border6-left(!important); }
+.romo-border-left,
+.romo-border1-left   { @include border1-left(!important); }
+.romo-border0-left   { @include border0-left(!important); }
+.romo-border2-left   { @include border2-left(!important); }
 .romo-rm-border-left { @include rm-border-left(!important); }
 
 .romo-border-radius  { @include border1-radius(!important); }

@@ -38,28 +38,19 @@
 .romo-table-hover tbody tr.romo-inverse:hover { @include bg-inverse-hover; }
 
 .romo-table-border,
+.romo-table-border0,
 .romo-table-border1,
-.romo-table-border2,
-.romo-table-border3,
-.romo-table-border4,
-.romo-table-border5,
-.romo-table-border6 { border-collapse: separate; *border-collapse: collapse; }
+.romo-table-border2 { border-collapse: separate; *border-collapse: collapse; }
 
-.romo-table-border  { @include border1-top; @include border1-left; }
+.romo-table-border,
 .romo-table-border1 { @include border1-top; @include border1-left; }
+.romo-table-border0 { @include border0-top; @include border0-left; }
 .romo-table-border2 { @include border2-top; @include border2-left; }
-.romo-table-border3 { @include border3-top; @include border3-left; }
-.romo-table-border4 { @include border4-top; @include border4-left; }
-.romo-table-border5 { @include border5-top; @include border5-left; }
-.romo-table-border6 { @include border6-top; @include border6-left; }
 
-.romo-table-border  th, .romo-table-border  td { @include border1-bottom; @include border1-right; }
+.romo-table-border  th, .romo-table-border  td,
 .romo-table-border1 th, .romo-table-border1 td { @include border1-bottom; @include border1-right; }
+.romo-table-border0 th, .romo-table-border0 td { @include border0-bottom; @include border0-right; }
 .romo-table-border2 th, .romo-table-border2 td { @include border2-bottom; @include border2-right; }
-.romo-table-border3 th, .romo-table-border3 td { @include border3-bottom; @include border3-right; }
-.romo-table-border4 th, .romo-table-border4 td { @include border4-bottom; @include border4-right; }
-.romo-table-border5 th, .romo-table-border5 td { @include border5-bottom; @include border5-right; }
-.romo-table-border6 th, .romo-table-border6 td { @include border6-bottom; @include border6-right; }
 
 .romo-table-border-muted   { @include border-muted; }
 .romo-table-border-warning { @include border-warning; }

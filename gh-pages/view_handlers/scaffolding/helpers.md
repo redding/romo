@@ -12,39 +12,24 @@ Use style classes to add borders.
 </div>
 ```
 
-Use numbered classes, 1 through 6, to set specific pixel width.
+Use numbered classes, 0 through 2, to set specific pixel width.
 
 <div style="padding: 10px">
+  <div class="romo-border0">.romo-border0</div>
+  <div>&nbsp;</div>
   <div class="romo-border1">.romo-border1</div>
   <div>&nbsp;</div>
   <div class="romo-border">.romo-border (alias of .romo-border1)</div>
   <div>&nbsp;</div>
   <div class="romo-border2">.romo-border2</div>
-  <div>&nbsp;</div>
-  <div class="romo-border3">.romo-border3</div>
-  <div>&nbsp;</div>
-  <div class="romo-border4">.romo-border4</div>
-  <div>&nbsp;</div>
-  <div class="romo-border5">.romo-border5</div>
-  <div>&nbsp;</div>
-  <div class="romo-border6">.romo-border6</div>
 </div>
 
 ```html
 <div style="padding: 10px">
+  <div class="romo-border0">.romo-border0</div>
   <div class="romo-border1">.romo-border1</div>
-  <div>&nbsp;</div>
   <div class="romo-border">.romo-border (alias of .romo-border1)</div>
-  <div>&nbsp;</div>
   <div class="romo-border2">.romo-border2</div>
-  <div>&nbsp;</div>
-  <div class="romo-border3">.romo-border3</div>
-  <div>&nbsp;</div>
-  <div class="romo-border4">.romo-border4</div>
-  <div>&nbsp;</div>
-  <div class="romo-border5">.romo-border5</div>
-  <div>&nbsp;</div>
-  <div class="romo-border6">.romo-border6</div>
 </div>
 ```
 
@@ -89,73 +74,57 @@ Remove from just specific sides.
 Change style on any border configuration
 
 <div style="padding: 10px">
-  <div class="romo-border-solid romo-border6">.romo-border-solid</div>
+  <div class="romo-border-solid romo-border2">.romo-border-solid</div>
   <div>&nbsp;</div>
-  <div class="romo-border-dashed romo-border6">.romo-border-dashed</div>
+  <div class="romo-border-dashed romo-border2">.romo-border-dashed</div>
   <div>&nbsp;</div>
-  <div class="romo-border-dotted romo-border6">.romo-border-dotted</div>
+  <div class="romo-border-dotted romo-border2">.romo-border-dotted</div>
   <div>&nbsp;</div>
-  <div class="romo-border-double romo-border6">.romo-border-double</div>
+  <div class="romo-border-double romo-border2">.romo-border-double</div>
   <div>&nbsp;</div>
-  <div class="romo-border-groove romo-border6">.romo-border-groove</div>
+  <div class="romo-border-groove romo-border2">.romo-border-groove</div>
   <div>&nbsp;</div>
-  <div class="romo-border-inset romo-border6">.romo-border-inset</div>
+  <div class="romo-border-inset romo-border2">.romo-border-inset</div>
   <div>&nbsp;</div>
-  <div class="romo-border-hidden romo-border6">.romo-border-hidden</div>
+  <div class="romo-border-hidden romo-border2">.romo-border-hidden</div>
   <div>&nbsp;</div>
-  <div class="romo-border-none romo-border6">.romo-border-none</div>
+  <div class="romo-border-none romo-border2">.romo-border-none</div>
 </div>
 
 ```html
-<div style="padding: 10px">
-  <div class="romo-border-solid romo-border6">.romo-border-solid</div>
-  <div>&nbsp;</div>
-  <div class="romo-border-dashed romo-border6">.romo-border-dashed</div>
-  <div>&nbsp;</div>
-  <div class="romo-border-dotted romo-border6">.romo-border-dotted</div>
-  <div>&nbsp;</div>
-  <div class="romo-border-double romo-border6">.romo-border-double</div>
-  <div>&nbsp;</div>
-  <div class="romo-border-groove romo-border6">.romo-border-groove</div>
-  <div>&nbsp;</div>
-  <div class="romo-border-inset romo-border6">.romo-border-inset</div>
-  <div>&nbsp;</div>
-  <div class="romo-border-hidden romo-border6">.romo-border-hidden</div>
-  <div>&nbsp;</div>
-  <div class="romo-border-none romo-border6">.romo-border-none</div>
-</div>
+<div class="romo-border-solid">...</div>
+<div class="romo-border-dashed">...</div>
+<div class="romo-border-dotted">...</div>
+<div class="romo-border-double">...</div>
+<div class="romo-border-groove">...</div>
+<div class="romo-border-inset">...</div>
+<div class="romo-border-hidden">...</div>
+<div class="romo-border-none">...</div>
 ```
 
 Add color emphasis to any border configuration
 
 <div style="padding: 10px">
-  <div class="romo-border-muted romo-border6">.romo-border-muted</div>
+  <div class="romo-border-muted romo-border2">.romo-border-muted</div>
   <div>&nbsp;</div>
-  <div class="romo-border-warning romo-border6">.romo-border-warning</div>
+  <div class="romo-border-warning romo-border2">.romo-border-warning</div>
   <div>&nbsp;</div>
-  <div class="romo-border-error romo-border6">.romo-border-error</div>
+  <div class="romo-border-error romo-border2">.romo-border-error</div>
   <div>&nbsp;</div>
-  <div class="romo-border-info romo-border6">.romo-border-info</div>
+  <div class="romo-border-info romo-border2">.romo-border-info</div>
   <div>&nbsp;</div>
-  <div class="romo-border-success romo-border6">.romo-border-success</div>
+  <div class="romo-border-success romo-border2">.romo-border-success</div>
   <div>&nbsp;</div>
-  <div class="romo-border-inverse romo-border6">.romo-border-inverse</div>
+  <div class="romo-border-inverse romo-border2">.romo-border-inverse</div>
 </div>
 
 ```html
-<div style="padding: 10px">
-  <div class="romo-border-muted romo-border6">.romo-border-muted</div>
-  <div>&nbsp;</div>
-  <div class="romo-border-warning romo-border6">.romo-border-warning</div>
-  <div>&nbsp;</div>
-  <div class="romo-border-error romo-border6">.romo-border-error</div>
-  <div>&nbsp;</div>
-  <div class="romo-border-info romo-border6">.romo-border-info</div>
-  <div>&nbsp;</div>
-  <div class="romo-border-success romo-border6">.romo-border-success</div>
-  <div>&nbsp;</div>
-  <div class="romo-border-inverse romo-border6">.romo-border-inverse</div>
-</div>
+<div class="romo-border-muted">...</div>
+<div class="romo-border-warning">...</div>
+<div class="romo-border-error">...</div>
+<div class="romo-border-info">...</div>
+<div class="romo-border-success">...</div>
+<div class="romo-border-inverse">...</div>
 ```
 
 Add border radius.

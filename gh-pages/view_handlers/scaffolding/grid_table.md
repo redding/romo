@@ -591,7 +591,7 @@ Add hover state to rows
 </ul>
 ```
 
-### `.romo-grid-table-border{1-6}`
+### `.romo-grid-table-border{0-2}`
 
 Adds sized borders to the grid table.
 
@@ -599,6 +599,35 @@ Adds sized borders to the grid table.
 
 <div class="romo-pad">
   <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border">
+    <li class="romo-row">
+      <span class="romo-span romo-1-12">#</span>
+      <span class="romo-span romo-5-12">Name</span>
+      <span class="romo-span romo-5-12">Slug</span>
+      <span class="romo-span romo-1-12">Count</span>
+    </li>
+    <li class="romo-row">
+      <span class="romo-span romo-1-12">1</span>
+      <span class="romo-span romo-5-12">Joe Test</span>
+      <span class="romo-span romo-5-12">joe-test</span>
+      <span class="romo-span romo-1-12">10</span>
+    </li>
+    <li class="romo-row">
+      <span class="romo-span romo-1-12">2</span>
+      <span class="romo-span romo-5-12">Jane Doe</span>
+      <span class="romo-span romo-5-12">jane-doe</span>
+      <span class="romo-span romo-1-12">18</span>
+    </li>
+    <li class="romo-row">
+      <span class="romo-span romo-1-12">3</span>
+      <span class="romo-span romo-5-12">Good Corp.</span>
+      <span class="romo-span romo-5-12">good-corp</span>
+      <span class="romo-span romo-1-12">overflow: 1234567890</span>
+    </li>
+  </ul>
+</div>
+
+<div class="romo-pad">
+  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border0">
     <li class="romo-row">
       <span class="romo-span romo-1-12">#</span>
       <span class="romo-span romo-5-12">Name</span>
@@ -684,124 +713,8 @@ Adds sized borders to the grid table.
   </ul>
 </div>
 
-<div class="romo-pad">
-  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border3">
-    <li class="romo-row">
-      <span class="romo-span romo-1-12">#</span>
-      <span class="romo-span romo-5-12">Name</span>
-      <span class="romo-span romo-5-12">Slug</span>
-      <span class="romo-span romo-1-12">Count</span>
-    </li>
-    <li class="romo-row">
-      <span class="romo-span romo-1-12">1</span>
-      <span class="romo-span romo-5-12">Joe Test</span>
-      <span class="romo-span romo-5-12">joe-test</span>
-      <span class="romo-span romo-1-12">10</span>
-    </li>
-    <li class="romo-row">
-      <span class="romo-span romo-1-12">2</span>
-      <span class="romo-span romo-5-12">Jane Doe</span>
-      <span class="romo-span romo-5-12">jane-doe</span>
-      <span class="romo-span romo-1-12">18</span>
-    </li>
-    <li class="romo-row">
-      <span class="romo-span romo-1-12">3</span>
-      <span class="romo-span romo-5-12">Good Corp.</span>
-      <span class="romo-span romo-5-12">good-corp</span>
-      <span class="romo-span romo-1-12">overflow: 1234567890</span>
-    </li>
-  </ul>
-</div>
-
-<div class="romo-pad">
-  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border4">
-    <li class="romo-row">
-      <span class="romo-span romo-1-12">#</span>
-      <span class="romo-span romo-5-12">Name</span>
-      <span class="romo-span romo-5-12">Slug</span>
-      <span class="romo-span romo-1-12">Count</span>
-    </li>
-    <li class="romo-row">
-      <span class="romo-span romo-1-12">1</span>
-      <span class="romo-span romo-5-12">Joe Test</span>
-      <span class="romo-span romo-5-12">joe-test</span>
-      <span class="romo-span romo-1-12">10</span>
-    </li>
-    <li class="romo-row">
-      <span class="romo-span romo-1-12">2</span>
-      <span class="romo-span romo-5-12">Jane Doe</span>
-      <span class="romo-span romo-5-12">jane-doe</span>
-      <span class="romo-span romo-1-12">18</span>
-    </li>
-    <li class="romo-row">
-      <span class="romo-span romo-1-12">3</span>
-      <span class="romo-span romo-5-12">Good Corp.</span>
-      <span class="romo-span romo-5-12">good-corp</span>
-      <span class="romo-span romo-1-12">overflow: 1234567890</span>
-    </li>
-  </ul>
-</div>
-
-<div class="romo-pad">
-  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border5">
-    <li class="romo-row">
-      <span class="romo-span romo-1-12">#</span>
-      <span class="romo-span romo-5-12">Name</span>
-      <span class="romo-span romo-5-12">Slug</span>
-      <span class="romo-span romo-1-12">Count</span>
-    </li>
-    <li class="romo-row">
-      <span class="romo-span romo-1-12">1</span>
-      <span class="romo-span romo-5-12">Joe Test</span>
-      <span class="romo-span romo-5-12">joe-test</span>
-      <span class="romo-span romo-1-12">10</span>
-    </li>
-    <li class="romo-row">
-      <span class="romo-span romo-1-12">2</span>
-      <span class="romo-span romo-5-12">Jane Doe</span>
-      <span class="romo-span romo-5-12">jane-doe</span>
-      <span class="romo-span romo-1-12">18</span>
-    </li>
-    <li class="romo-row">
-      <span class="romo-span romo-1-12">3</span>
-      <span class="romo-span romo-5-12">Good Corp.</span>
-      <span class="romo-span romo-5-12">good-corp</span>
-      <span class="romo-span romo-1-12">overflow: 1234567890</span>
-    </li>
-  </ul>
-</div>
-
-<div class="romo-pad">
-  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border6">
-    <li class="romo-row">
-      <span class="romo-span romo-1-12">#</span>
-      <span class="romo-span romo-5-12">Name</span>
-      <span class="romo-span romo-5-12">Slug</span>
-      <span class="romo-span romo-1-12">Count</span>
-    </li>
-    <li class="romo-row">
-      <span class="romo-span romo-1-12">1</span>
-      <span class="romo-span romo-5-12">Joe Test</span>
-      <span class="romo-span romo-5-12">joe-test</span>
-      <span class="romo-span romo-1-12">10</span>
-    </li>
-    <li class="romo-row">
-      <span class="romo-span romo-1-12">2</span>
-      <span class="romo-span romo-5-12">Jane Doe</span>
-      <span class="romo-span romo-5-12">jane-doe</span>
-      <span class="romo-span romo-1-12">18</span>
-    </li>
-    <li class="romo-row">
-      <span class="romo-span romo-1-12">3</span>
-      <span class="romo-span romo-5-12">Good Corp.</span>
-      <span class="romo-span romo-5-12">good-corp</span>
-      <span class="romo-span romo-1-12">overflow: 1234567890</span>
-    </li>
-  </ul>
-</div>
-
 ```html
-<ul class="romo-grid-table romo-grid-table-border{1-6}">
+<ul class="romo-grid-table romo-grid-table-border{0-2}">
   ...
 </ul>
 ```
@@ -811,7 +724,7 @@ Adds sized borders to the grid table.
 Adds border color emphasis to the entire grid table.
 
 <div class="romo-pad">
-  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border6 romo-grid-table-border-muted">
+  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border2 romo-grid-table-border-muted">
     <li class="romo-row">
       <span class="romo-span romo-1-12">#</span>
       <span class="romo-span romo-5-12">Name</span>
@@ -840,7 +753,7 @@ Adds border color emphasis to the entire grid table.
 </div>
 
 <div class="romo-pad">
-  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border6 romo-grid-table-border-warning">
+  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border2 romo-grid-table-border-warning">
     <li class="romo-row">
       <span class="romo-span romo-1-12">#</span>
       <span class="romo-span romo-5-12">Name</span>
@@ -869,7 +782,7 @@ Adds border color emphasis to the entire grid table.
 </div>
 
 <div class="romo-pad">
-  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border6 romo-grid-table-border-error">
+  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border2 romo-grid-table-border-error">
     <li class="romo-row">
       <span class="romo-span romo-1-12">#</span>
       <span class="romo-span romo-5-12">Name</span>
@@ -898,7 +811,7 @@ Adds border color emphasis to the entire grid table.
 </div>
 
 <div class="romo-pad">
-  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border6 romo-grid-table-border-info">
+  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border2 romo-grid-table-border-info">
     <li class="romo-row">
       <span class="romo-span romo-1-12">#</span>
       <span class="romo-span romo-5-12">Name</span>
@@ -927,7 +840,7 @@ Adds border color emphasis to the entire grid table.
 </div>
 
 <div class="romo-pad">
-  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border6 romo-grid-table-border-success">
+  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border2 romo-grid-table-border-success">
     <li class="romo-row">
       <span class="romo-span romo-1-12">#</span>
       <span class="romo-span romo-5-12">Name</span>
@@ -956,7 +869,7 @@ Adds border color emphasis to the entire grid table.
 </div>
 
 <div class="romo-pad">
-  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border6 romo-grid-table-border-inverse">
+  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border2 romo-grid-table-border-inverse">
     <li class="romo-row">
       <span class="romo-span romo-1-12">#</span>
       <span class="romo-span romo-5-12">Name</span>
@@ -995,7 +908,7 @@ Adds border color emphasis to the entire grid table.
 Uses the alternate border color for the grid table borders.
 
 <div class="romo-pad">
-  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border6 romo-grid-table-alt romo-grid-table-border-alt">
+  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border2 romo-grid-table-alt romo-grid-table-border-alt">
     <li class="romo-row">
       <span class="romo-span romo-1-12">#</span>
       <span class="romo-span romo-5-12">Name</span>
