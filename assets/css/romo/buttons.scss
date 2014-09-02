@@ -132,81 +132,54 @@ a.romo-btn.romo-btn-link[disabled]:focus { color: $disabledColor; }
 
 .romo-btn-group .romo-btn:not(:last-child) { @include rm-border-right; }
 
-.romo-btn-group.romo-btn-group-border-radius  .romo-btn:first-child { @include border1-top-left-radius; @include border1-bottom-left-radius; }
+.romo-btn-group.romo-btn-group-border-radius  .romo-btn:first-child,
 .romo-btn-group.romo-btn-group-border1-radius .romo-btn:first-child { @include border1-top-left-radius; @include border1-bottom-left-radius; }
+.romo-btn-group.romo-btn-group-border0-radius .romo-btn:first-child { @include border0-top-left-radius; @include border0-bottom-left-radius; }
 .romo-btn-group.romo-btn-group-border2-radius .romo-btn:first-child { @include border2-top-left-radius; @include border2-bottom-left-radius; }
-.romo-btn-group.romo-btn-group-border3-radius .romo-btn:first-child { @include border3-top-left-radius; @include border3-bottom-left-radius; }
-.romo-btn-group.romo-btn-group-border4-radius .romo-btn:first-child { @include border4-top-left-radius; @include border4-bottom-left-radius; }
-.romo-btn-group.romo-btn-group-border5-radius .romo-btn:first-child { @include border5-top-left-radius; @include border5-bottom-left-radius; }
-.romo-btn-group.romo-btn-group-border6-radius .romo-btn:first-child { @include border6-top-left-radius; @include border6-bottom-left-radius; }
 
-.romo-btn-group.romo-btn-group-border-radius  .romo-btn:last-child { @include border1-top-right-radius; @include border1-bottom-right-radius; }
+.romo-btn-group.romo-btn-group-border-radius  .romo-btn:last-child,
 .romo-btn-group.romo-btn-group-border1-radius .romo-btn:last-child { @include border1-top-right-radius; @include border1-bottom-right-radius; }
+.romo-btn-group.romo-btn-group-border0-radius .romo-btn:last-child { @include border0-top-right-radius; @include border0-bottom-right-radius; }
 .romo-btn-group.romo-btn-group-border2-radius .romo-btn:last-child { @include border2-top-right-radius; @include border2-bottom-right-radius; }
-.romo-btn-group.romo-btn-group-border3-radius .romo-btn:last-child { @include border3-top-right-radius; @include border3-bottom-right-radius; }
-.romo-btn-group.romo-btn-group-border4-radius .romo-btn:last-child { @include border4-top-right-radius; @include border4-bottom-right-radius; }
-.romo-btn-group.romo-btn-group-border5-radius .romo-btn:last-child { @include border5-top-right-radius; @include border5-bottom-right-radius; }
-.romo-btn-group.romo-btn-group-border6-radius .romo-btn:last-child { @include border6-top-right-radius; @include border6-bottom-right-radius; }
 
 .romo-btn-group-vertical { display: inline-block; }
 .romo-btn-group-vertical .romo-btn { display: block; max-width: 100%; }
 .romo-btn-group-vertical .romo-btn:not(:last-child) { @include rm-border-bottom; }
 
-.romo-btn-group-vertical.romo-btn-group-border-radius  .romo-btn:first-child { @include border1-top-left-radius; @include border1-top-right-radius; }
+.romo-btn-group-vertical.romo-btn-group-border-radius  .romo-btn:first-child,
 .romo-btn-group-vertical.romo-btn-group-border1-radius .romo-btn:first-child { @include border1-top-left-radius; @include border1-top-right-radius; }
+.romo-btn-group-vertical.romo-btn-group-border0-radius .romo-btn:first-child { @include border0-top-left-radius; @include border0-top-right-radius; }
 .romo-btn-group-vertical.romo-btn-group-border2-radius .romo-btn:first-child { @include border2-top-left-radius; @include border2-top-right-radius; }
-.romo-btn-group-vertical.romo-btn-group-border3-radius .romo-btn:first-child { @include border3-top-left-radius; @include border3-top-right-radius; }
-.romo-btn-group-vertical.romo-btn-group-border4-radius .romo-btn:first-child { @include border4-top-left-radius; @include border4-top-right-radius; }
-.romo-btn-group-vertical.romo-btn-group-border5-radius .romo-btn:first-child { @include border5-top-left-radius; @include border5-top-right-radius; }
-.romo-btn-group-vertical.romo-btn-group-border6-radius .romo-btn:first-child { @include border6-top-left-radius; @include border6-top-right-radius; }
 
-.romo-btn-group-vertical.romo-btn-group-border-radius  .romo-btn:last-child { @include border1-bottom-left-radius; @include border1-bottom-right-radius; }
+.romo-btn-group-vertical.romo-btn-group-border-radius  .romo-btn:last-child,
 .romo-btn-group-vertical.romo-btn-group-border1-radius .romo-btn:last-child { @include border1-bottom-left-radius; @include border1-bottom-right-radius; }
+.romo-btn-group-vertical.romo-btn-group-border0-radius .romo-btn:last-child { @include border0-bottom-left-radius; @include border0-bottom-right-radius; }
 .romo-btn-group-vertical.romo-btn-group-border2-radius .romo-btn:last-child { @include border2-bottom-left-radius; @include border2-bottom-right-radius; }
-.romo-btn-group-vertical.romo-btn-group-border3-radius .romo-btn:last-child { @include border3-bottom-left-radius; @include border3-bottom-right-radius; }
-.romo-btn-group-vertical.romo-btn-group-border4-radius .romo-btn:last-child { @include border4-bottom-left-radius; @include border4-bottom-right-radius; }
-.romo-btn-group-vertical.romo-btn-group-border5-radius .romo-btn:last-child { @include border5-bottom-left-radius; @include border5-bottom-right-radius; }
-.romo-btn-group-vertical.romo-btn-group-border6-radius .romo-btn:last-child { @include border6-bottom-left-radius; @include border6-bottom-right-radius; }
 
 .romo-btn-group .romo-btn-group-vertical:not(:last-child) .romo-btn { @include rm-border-right; }
 .romo-btn-group .romo-btn-group-vertical:last-child .romo-btn { @include border1-right; }
 
-.romo-btn-group.romo-btn-group-border-radius  .romo-btn-group-vertical .romo-btn { @include rm-border-radius; }
+.romo-btn-group.romo-btn-group-border-radius  .romo-btn-group-vertical .romo-btn,
 .romo-btn-group.romo-btn-group-border1-radius .romo-btn-group-vertical .romo-btn { @include rm-border-radius; }
+.romo-btn-group.romo-btn-group-border0-radius .romo-btn-group-vertical .romo-btn { @include rm-border-radius; }
 .romo-btn-group.romo-btn-group-border2-radius .romo-btn-group-vertical .romo-btn { @include rm-border-radius; }
-.romo-btn-group.romo-btn-group-border3-radius .romo-btn-group-vertical .romo-btn { @include rm-border-radius; }
-.romo-btn-group.romo-btn-group-border4-radius .romo-btn-group-vertical .romo-btn { @include rm-border-radius; }
-.romo-btn-group.romo-btn-group-border5-radius .romo-btn-group-vertical .romo-btn { @include rm-border-radius; }
-.romo-btn-group.romo-btn-group-border6-radius .romo-btn-group-vertical .romo-btn { @include rm-border-radius; }
 
-.romo-btn-group.romo-btn-group-border-radius  .romo-btn-group-vertical:first-child .romo-btn:first-child { @include border1-top-left-radius; }
+.romo-btn-group.romo-btn-group-border-radius  .romo-btn-group-vertical:first-child .romo-btn:first-child,
 .romo-btn-group.romo-btn-group-border1-radius .romo-btn-group-vertical:first-child .romo-btn:first-child { @include border1-top-left-radius; }
+.romo-btn-group.romo-btn-group-border0-radius .romo-btn-group-vertical:first-child .romo-btn:first-child { @include border0-top-left-radius; }
 .romo-btn-group.romo-btn-group-border2-radius .romo-btn-group-vertical:first-child .romo-btn:first-child { @include border2-top-left-radius; }
-.romo-btn-group.romo-btn-group-border3-radius .romo-btn-group-vertical:first-child .romo-btn:first-child { @include border3-top-left-radius; }
-.romo-btn-group.romo-btn-group-border4-radius .romo-btn-group-vertical:first-child .romo-btn:first-child { @include border4-top-left-radius; }
-.romo-btn-group.romo-btn-group-border5-radius .romo-btn-group-vertical:first-child .romo-btn:first-child { @include border5-top-left-radius; }
-.romo-btn-group.romo-btn-group-border6-radius .romo-btn-group-vertical:first-child .romo-btn:first-child { @include border6-top-left-radius; }
 
-.romo-btn-group.romo-btn-group-border-radius  .romo-btn-group-vertical:first-child .romo-btn:last-child { @include border1-bottom-left-radius; }
+.romo-btn-group.romo-btn-group-border-radius  .romo-btn-group-vertical:first-child .romo-btn:last-child,
 .romo-btn-group.romo-btn-group-border1-radius .romo-btn-group-vertical:first-child .romo-btn:last-child { @include border1-bottom-left-radius; }
+.romo-btn-group.romo-btn-group-border0-radius .romo-btn-group-vertical:first-child .romo-btn:last-child { @include border0-bottom-left-radius; }
 .romo-btn-group.romo-btn-group-border2-radius .romo-btn-group-vertical:first-child .romo-btn:last-child { @include border2-bottom-left-radius; }
-.romo-btn-group.romo-btn-group-border3-radius .romo-btn-group-vertical:first-child .romo-btn:last-child { @include border3-bottom-left-radius; }
-.romo-btn-group.romo-btn-group-border4-radius .romo-btn-group-vertical:first-child .romo-btn:last-child { @include border4-bottom-left-radius; }
-.romo-btn-group.romo-btn-group-border5-radius .romo-btn-group-vertical:first-child .romo-btn:last-child { @include border5-bottom-left-radius; }
-.romo-btn-group.romo-btn-group-border6-radius .romo-btn-group-vertical:first-child .romo-btn:last-child { @include border6-bottom-left-radius; }
 
-.romo-btn-group.romo-btn-group-border-radius  .romo-btn-group-vertical:last-child .romo-btn:first-child { @include border1-top-right-radius; }
+.romo-btn-group.romo-btn-group-border-radius  .romo-btn-group-vertical:last-child .romo-btn:first-child,
 .romo-btn-group.romo-btn-group-border1-radius .romo-btn-group-vertical:last-child .romo-btn:first-child { @include border1-top-right-radius; }
+.romo-btn-group.romo-btn-group-border0-radius .romo-btn-group-vertical:last-child .romo-btn:first-child { @include border0-top-right-radius; }
 .romo-btn-group.romo-btn-group-border2-radius .romo-btn-group-vertical:last-child .romo-btn:first-child { @include border2-top-right-radius; }
-.romo-btn-group.romo-btn-group-border3-radius .romo-btn-group-vertical:last-child .romo-btn:first-child { @include border3-top-right-radius; }
-.romo-btn-group.romo-btn-group-border4-radius .romo-btn-group-vertical:last-child .romo-btn:first-child { @include border4-top-right-radius; }
-.romo-btn-group.romo-btn-group-border5-radius .romo-btn-group-vertical:last-child .romo-btn:first-child { @include border5-top-right-radius; }
-.romo-btn-group.romo-btn-group-border6-radius .romo-btn-group-vertical:last-child .romo-btn:first-child { @include border6-top-right-radius; }
 
-.romo-btn-group.romo-btn-group-border-radius  .romo-btn-group-vertical:last-child .romo-btn:last-child { @include border1-bottom-right-radius; }
+.romo-btn-group.romo-btn-group-border-radius  .romo-btn-group-vertical:last-child .romo-btn:last-child,
 .romo-btn-group.romo-btn-group-border1-radius .romo-btn-group-vertical:last-child .romo-btn:last-child { @include border1-bottom-right-radius; }
+.romo-btn-group.romo-btn-group-border0-radius .romo-btn-group-vertical:last-child .romo-btn:last-child { @include border0-bottom-right-radius; }
 .romo-btn-group.romo-btn-group-border2-radius .romo-btn-group-vertical:last-child .romo-btn:last-child { @include border2-bottom-right-radius; }
-.romo-btn-group.romo-btn-group-border3-radius .romo-btn-group-vertical:last-child .romo-btn:last-child { @include border3-bottom-right-radius; }
-.romo-btn-group.romo-btn-group-border4-radius .romo-btn-group-vertical:last-child .romo-btn:last-child { @include border4-bottom-right-radius; }
-.romo-btn-group.romo-btn-group-border5-radius .romo-btn-group-vertical:last-child .romo-btn:last-child { @include border5-bottom-right-radius; }
-.romo-btn-group.romo-btn-group-border6-radius .romo-btn-group-vertical:last-child .romo-btn:last-child { @include border6-bottom-right-radius; }

@@ -41,7 +41,6 @@ $disabledColor: #999;
 
 $baseBorderColor:  #ccc;
 $altBorderColor:   #fff;
-$baseBorderRadius: 3px;
 
 $linkColor:      #08c;
 $linkColorHover: darken($linkColor, 15%);
@@ -132,6 +131,10 @@ $tabColorDisabled:    $disabledColor;
 $borderSize1: 1px;
 $borderSize0: $borderSize1 * 1;
 $borderSize2: $borderSize1 * 2;
+
+$borderRadius1: 4px;
+$borderRadius0: 2px;
+$borderRadius2: 6px;
 
 /* tabs */
 

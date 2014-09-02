@@ -361,44 +361,29 @@
           border-bottom-left-radius: $radius #{$i};
 }
 
-@mixin border1-radius($i:"")   { @include border-radius(($baseBorderRadius + 0px), $i); }
-@mixin border2-radius($i:"")   { @include border-radius(($baseBorderRadius + 1px), $i); }
-@mixin border3-radius($i:"")   { @include border-radius(($baseBorderRadius + 2px), $i); }
-@mixin border4-radius($i:"")   { @include border-radius(($baseBorderRadius + 3px), $i); }
-@mixin border5-radius($i:"")   { @include border-radius(($baseBorderRadius + 4px), $i); }
-@mixin border6-radius($i:"")   { @include border-radius(($baseBorderRadius + 5px), $i); }
+@mixin border1-radius($i:"")   { @include border-radius($borderRadius1, $i); }
+@mixin border0-radius($i:"")   { @include border-radius($borderRadius0, $i); }
+@mixin border2-radius($i:"")   { @include border-radius($borderRadius2, $i); }
 @mixin rm-border-radius($i:"") { @include border-radius(0px, $i); }
 
-@mixin border1-top-left-radius($i:"")   { @include border-top-left-radius(($baseBorderRadius + 0px), $i); }
-@mixin border2-top-left-radius($i:"")   { @include border-top-left-radius(($baseBorderRadius + 1px), $i); }
-@mixin border3-top-left-radius($i:"")   { @include border-top-left-radius(($baseBorderRadius + 2px), $i); }
-@mixin border4-top-left-radius($i:"")   { @include border-top-left-radius(($baseBorderRadius + 3px), $i); }
-@mixin border5-top-left-radius($i:"")   { @include border-top-left-radius(($baseBorderRadius + 4px), $i); }
-@mixin border6-top-left-radius($i:"")   { @include border-top-left-radius(($baseBorderRadius + 5px), $i); }
+@mixin border1-top-left-radius($i:"")   { @include border-top-left-radius($borderRadius1, $i); }
+@mixin border0-top-left-radius($i:"")   { @include border-top-left-radius($borderRadius0, $i); }
+@mixin border2-top-left-radius($i:"")   { @include border-top-left-radius($borderRadius2, $i); }
 @mixin rm-border-top-left-radius($i:"") { @include border-top-left-radius(0px, $i); }
 
-@mixin border1-top-right-radius($i:"")   { @include border-top-right-radius(($baseBorderRadius + 0px), $i); }
-@mixin border2-top-right-radius($i:"")   { @include border-top-right-radius(($baseBorderRadius + 1px), $i); }
-@mixin border3-top-right-radius($i:"")   { @include border-top-right-radius(($baseBorderRadius + 2px), $i); }
-@mixin border4-top-right-radius($i:"")   { @include border-top-right-radius(($baseBorderRadius + 3px), $i); }
-@mixin border5-top-right-radius($i:"")   { @include border-top-right-radius(($baseBorderRadius + 4px), $i); }
-@mixin border6-top-right-radius($i:"")   { @include border-top-right-radius(($baseBorderRadius + 5px), $i); }
+@mixin border1-top-right-radius($i:"")   { @include border-top-right-radius($borderRadius1, $i); }
+@mixin border0-top-right-radius($i:"")   { @include border-top-right-radius($borderRadius0, $i); }
+@mixin border2-top-right-radius($i:"")   { @include border-top-right-radius($borderRadius2, $i); }
 @mixin rm-border-top-right-radius($i:"") { @include border-top-right-radius(0px, $i); }
 
-@mixin border1-bottom-right-radius($i:"")   { @include border-bottom-right-radius(($baseBorderRadius + 0px), $i); }
-@mixin border2-bottom-right-radius($i:"")   { @include border-bottom-right-radius(($baseBorderRadius + 1px), $i); }
-@mixin border3-bottom-right-radius($i:"")   { @include border-bottom-right-radius(($baseBorderRadius + 2px), $i); }
-@mixin border4-bottom-right-radius($i:"")   { @include border-bottom-right-radius(($baseBorderRadius + 3px), $i); }
-@mixin border5-bottom-right-radius($i:"")   { @include border-bottom-right-radius(($baseBorderRadius + 4px), $i); }
-@mixin border6-bottom-right-radius($i:"")   { @include border-bottom-right-radius(($baseBorderRadius + 5px), $i); }
+@mixin border1-bottom-right-radius($i:"")   { @include border-bottom-right-radius($borderRadius1, $i); }
+@mixin border0-bottom-right-radius($i:"")   { @include border-bottom-right-radius($borderRadius0, $i); }
+@mixin border2-bottom-right-radius($i:"")   { @include border-bottom-right-radius($borderRadius2, $i); }
 @mixin rm-border-bottom-right-radius($i:"") { @include border-bottom-right-radius(0px, $i); }
 
-@mixin border1-bottom-left-radius($i:"")   { @include border-bottom-left-radius(($baseBorderRadius + 0px), $i); }
-@mixin border2-bottom-left-radius($i:"")   { @include border-bottom-left-radius(($baseBorderRadius + 1px), $i); }
-@mixin border3-bottom-left-radius($i:"")   { @include border-bottom-left-radius(($baseBorderRadius + 2px), $i); }
-@mixin border4-bottom-left-radius($i:"")   { @include border-bottom-left-radius(($baseBorderRadius + 3px), $i); }
-@mixin border5-bottom-left-radius($i:"")   { @include border-bottom-left-radius(($baseBorderRadius + 4px), $i); }
-@mixin border6-bottom-left-radius($i:"")   { @include border-bottom-left-radius(($baseBorderRadius + 5px), $i); }
+@mixin border1-bottom-left-radius($i:"")   { @include border-bottom-left-radius($borderRadius1, $i); }
+@mixin border0-bottom-left-radius($i:"")   { @include border-bottom-left-radius($borderRadius0, $i); }
+@mixin border2-bottom-left-radius($i:"")   { @include border-bottom-left-radius($borderRadius2, $i); }
 @mixin rm-border-bottom-left-radius($i:"") { @include border-bottom-left-radius(0px, $i); }
 
 /* spacing */

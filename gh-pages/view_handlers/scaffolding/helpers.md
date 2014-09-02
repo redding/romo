@@ -130,53 +130,32 @@ Add color emphasis to any border configuration
 Add border radius.
 
 <div style="padding: 10px">
+  <div class="romo-border0 romo-border0-radius">.romo-border0-radius</div>
+  <div>&nbsp;</div>
   <div class="romo-border1 romo-border1-radius">.romo-border1-radius</div>
   <div>&nbsp;</div>
   <div class="romo-border romo-border-radius">.romo-border-radius (alias of .romo-border1-radius)</div>
   <div>&nbsp;</div>
   <div class="romo-border2 romo-border2-radius">.romo-border2-radius</div>
   <div>&nbsp;</div>
-  <div class="romo-border3 romo-border3-radius">.romo-border3-radius</div>
+  <div class="romo-border2 romo-border2-top-left-radius">.romo-border2-top-left-radius</div>
   <div>&nbsp;</div>
-  <div class="romo-border4 romo-border4-radius">.romo-border4-radius</div>
+  <div class="romo-border2 romo-border2-top-right-radius">.romo-border2-top-right-radius</div>
   <div>&nbsp;</div>
-  <div class="romo-border5 romo-border5-radius">.romo-border5-radius</div>
+  <div class="romo-border2 romo-border2-bottom-left-radius">.romo-border2-bottom-left-radius</div>
   <div>&nbsp;</div>
-  <div class="romo-border6 romo-border6-radius">.romo-border6-radius</div>
-  <div>&nbsp;</div>
-  <div class="romo-border6 romo-border6-top-left-radius">.romo-border6-top-left-radius</div>
-  <div>&nbsp;</div>
-  <div class="romo-border6 romo-border6-top-right-radius">.romo-border6-top-right-radius</div>
-  <div>&nbsp;</div>
-  <div class="romo-border6 romo-border6-bottom-left-radius">.romo-border6-bottom-left-radius</div>
-  <div>&nbsp;</div>
-  <div class="romo-border6 romo-border6-bottom-right-radius">.romo-border6-bottom-right-radius</div>
+  <div class="romo-border2 romo-border2-bottom-right-radius">.romo-border2-bottom-right-radius</div>
 </div>
 
 ```html
-<div style="padding: 10px">
-  <div class="romo-border1 romo-border1-radius">.romo-border1-radius</div>
-  <div>&nbsp;</div>
-  <div class="romo-border romo-border-radius">.romo-border-radius (alias of .romo-border1-radius)</div>
-  <div>&nbsp;</div>
-  <div class="romo-border2 romo-border2-radius">.romo-border2-radius</div>
-  <div>&nbsp;</div>
-  <div class="romo-border3 romo-border3-radius">.romo-border3-radius</div>
-  <div>&nbsp;</div>
-  <div class="romo-border4 romo-border4-radius">.romo-border4-radius</div>
-  <div>&nbsp;</div>
-  <div class="romo-border5 romo-border5-radius">.romo-border5-radius</div>
-  <div>&nbsp;</div>
-  <div class="romo-border6 romo-border6-radius">.romo-border6-radius</div>
-  <div>&nbsp;</div>
-  <div class="romo-border6 romo-border6-top-left-radius">.romo-border6-top-left-radius</div>
-  <div>&nbsp;</div>
-  <div class="romo-border6 romo-border6-top-right-radius">.romo-border6-top-right-radius</div>
-  <div>&nbsp;</div>
-  <div class="romo-border6 romo-border6-bottom-left-radius">.romo-border6-bottom-left-radius</div>
-  <div>&nbsp;</div>
-  <div class="romo-border6 romo-border6-bottom-right-radius">.romo-border6-bottom-right-radius</div>
-</div>
+<div class="romo-border3 romo-border0-radius">...</div>
+<div class="romo-border1 romo-border1-radius">...</div>
+<div class="romo-border romo-border-radius">...</div>
+<div class="romo-border2 romo-border2-radius">...</div>
+<div class="romo-border2 romo-border2-top-left-radius">...</div>
+<div class="romo-border2 romo-border2-top-right-radius">...</div>
+<div class="romo-border2 romo-border2-bottom-left-radius">...</div>
+<div class="romo-border2 romo-border2-bottom-right-radius">...</div>
 ```
 
 ## Spacing

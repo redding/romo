@@ -314,49 +314,34 @@ h3 { @include text3; }
 .romo-border2-left   { @include border2-left(!important); }
 .romo-rm-border-left { @include rm-border-left(!important); }
 
-.romo-border-radius  { @include border1-radius(!important); }
-.romo-border1-radius { @include border1-radius(!important); }
-.romo-border2-radius { @include border2-radius(!important); }
-.romo-border3-radius { @include border3-radius(!important); }
-.romo-border4-radius { @include border4-radius(!important); }
-.romo-border5-radius { @include border5-radius(!important); }
-.romo-border6-radius { @include border6-radius(!important); }
+.romo-border-radius,
+.romo-border1-radius   { @include border1-radius(!important); }
+.romo-border0-radius   { @include border0-radius(!important); }
+.romo-border2-radius   { @include border2-radius(!important); }
 .romo-rm-border-radius { @include rm-border-radius(!important); }
 
-.romo-border-top-left-radius  { @include border1-top-left-radius(!important); }
-.romo-border1-top-left-radius { @include border1-top-left-radius(!important); }
-.romo-border2-top-left-radius { @include border2-top-left-radius(!important); }
-.romo-border3-top-left-radius { @include border3-top-left-radius(!important); }
-.romo-border4-top-left-radius { @include border4-top-left-radius(!important); }
-.romo-border5-top-left-radius { @include border5-top-left-radius(!important); }
-.romo-border6-top-left-radius { @include border6-top-left-radius(!important); }
+.romo-border-top-left-radius,
+.romo-border1-top-left-radius   { @include border1-top-left-radius(!important); }
+.romo-border0-top-left-radius   { @include border0-top-left-radius(!important); }
+.romo-border2-top-left-radius   { @include border2-top-left-radius(!important); }
 .romo-rm-border-top-left-radius { @include rm-border-top-left-radius(!important); }
 
-.romo-border-top-right-radius  { @include border1-top-right-radius(!important); }
-.romo-border1-top-right-radius { @include border1-top-right-radius(!important); }
-.romo-border2-top-right-radius { @include border2-top-right-radius(!important); }
-.romo-border3-top-right-radius { @include border3-top-right-radius(!important); }
-.romo-border4-top-right-radius { @include border4-top-right-radius(!important); }
-.romo-border5-top-right-radius { @include border5-top-right-radius(!important); }
-.romo-border6-top-right-radius { @include border6-top-right-radius(!important); }
+.romo-border-top-right-radius,
+.romo-border1-top-right-radius   { @include border1-top-right-radius(!important); }
+.romo-border0-top-right-radius   { @include border0-top-right-radius(!important); }
+.romo-border2-top-right-radius   { @include border2-top-right-radius(!important); }
 .romo-rm-border-top-right-radius { @include rm-border-top-right-radius(!important); }
 
-.romo-border-bottom-right-radius  { @include border1-bottom-right-radius(!important); }
-.romo-border1-bottom-right-radius { @include border1-bottom-right-radius(!important); }
-.romo-border2-bottom-right-radius { @include border2-bottom-right-radius(!important); }
-.romo-border3-bottom-right-radius { @include border3-bottom-right-radius(!important); }
-.romo-border4-bottom-right-radius { @include border4-bottom-right-radius(!important); }
-.romo-border5-bottom-right-radius { @include border5-bottom-right-radius(!important); }
-.romo-border6-bottom-right-radius { @include border6-bottom-right-radius(!important); }
+.romo-border-bottom-right-radius,
+.romo-border1-bottom-right-radius   { @include border1-bottom-right-radius(!important); }
+.romo-border0-bottom-right-radius   { @include border0-bottom-right-radius(!important); }
+.romo-border2-bottom-right-radius   { @include border2-bottom-right-radius(!important); }
 .romo-rm-border-bottom-right-radius { @include rm-border-bottom-right-radius(!important); }
 
-.romo-border-bottom-left-radius  { @include border1-bottom-left-radius(!important); }
-.romo-border1-bottom-left-radius { @include border1-bottom-left-radius(!important); }
-.romo-border2-bottom-left-radius { @include border2-bottom-left-radius(!important); }
-.romo-border3-bottom-left-radius { @include border3-bottom-left-radius(!important); }
-.romo-border4-bottom-left-radius { @include border4-bottom-left-radius(!important); }
-.romo-border5-bottom-left-radius { @include border5-bottom-left-radius(!important); }
-.romo-border6-bottom-left-radius { @include border6-bottom-left-radius(!important); }
+.romo-border-bottom-left-radius,
+.romo-border1-bottom-left-radius   { @include border1-bottom-left-radius(!important); }
+.romo-border0-bottom-left-radius   { @include border0-bottom-left-radius(!important); }
+.romo-border2-bottom-left-radius   { @include border2-bottom-left-radius(!important); }
 .romo-rm-border-bottom-left-radius { @include rm-border-bottom-left-radius(!important); }
 
 /* spacing */

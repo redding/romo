@@ -8,9 +8,7 @@
 .romo-tooltip-popup {
   position: absolute;
   float: left;
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
+  @include border1-radius;
 
   white-space: normal;
   text-align: left;
