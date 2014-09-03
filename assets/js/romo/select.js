@@ -364,5 +364,5 @@ RomoSelect.prototype._highlightItem = function(item) {
 }
 
 Romo.onInitUI(function(e) {
-  $(e.target).find('[data-romo-select-auto="true"]').romoSelect();
+  Romo.initUIElems(e, '[data-romo-select-auto="true"]').romoSelect();
 });

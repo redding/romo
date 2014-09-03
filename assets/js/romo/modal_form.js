@@ -95,6 +95,6 @@ RomoModalForm.prototype.doBindForm = function() {
 }
 
 Romo.onInitUI(function(e) {
-  $(e.target).find('[data-romo-modalForm-auto="true"]').romoModalForm();
+  Romo.initUIElems(e, '[data-romo-modalForm-auto="true"]').romoModalForm();
 });
 

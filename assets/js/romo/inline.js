@@ -72,6 +72,6 @@ RomoInline.prototype.doDismiss = function() {
 }
 
 Romo.onInitUI(function(e) {
-  $(e.target).find('[data-romo-inline-auto="true"]').romoInline();
+  Romo.initUIElems(e, '[data-romo-inline-auto="true"]').romoInline();
 });
 

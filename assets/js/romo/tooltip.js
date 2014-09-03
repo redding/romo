@@ -191,5 +191,5 @@ RomoTooltip.prototype.doSetPopupZIndex = function(relativeElem) {
 }
 
 Romo.onInitUI(function(e) {
-  $(e.target).find('[data-romo-tooltip-auto="true"]').romoTooltip();
+  Romo.initUIElems(e, '[data-romo-tooltip-auto="true"]').romoTooltip();
 });

@@ -298,5 +298,5 @@ RomoDropdown.prototype._parsePositionData = function(posString) {
 }
 
 Romo.onInitUI(function(e) {
-  $(e.target).find('[data-romo-dropdown-auto="true"]').romoDropdown();
+  Romo.initUIElems(e, '[data-romo-dropdown-auto="true"]').romoDropdown();
 });

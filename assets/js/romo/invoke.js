@@ -78,5 +78,5 @@ RomoInvoke.prototype._trigger = function(event_name, event_data) {
 }
 
 Romo.onInitUI(function(e) {
-  $(e.target).find('[data-romo-invoke-auto="true"]').romoInvoke();
+  Romo.initUIElems(e, '[data-romo-invoke-auto="true"]').romoInvoke();
 });

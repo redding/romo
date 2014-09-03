@@ -21,6 +21,14 @@
     elem.trigger('romo:initUI');
   }
 
+  Romo.prototype.initUIElems = function(e, selector) {
+    var elems = $(e.target).find(selector).get();
+    if ($(e.target).is(selector)) {
+      elems.push(e.target)
+    }
+    return $(elems);
+  }
+
   Romo.prototype.initHtml = function(elem, data) {
     elem.html(data);
     this.triggerInitUI(elem);

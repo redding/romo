@@ -307,5 +307,5 @@ RomoModal.prototype.doPlacePopupElem = function() {
 }
 
 Romo.onInitUI(function(e) {
-  $(e.target).find('[data-romo-modal-auto="true"]').romoModal();
+  Romo.initUIElems(e, '[data-romo-modal-auto="true"]').romoModal();
 });

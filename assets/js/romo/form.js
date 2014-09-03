@@ -175,6 +175,6 @@ RomoForm.prototype._getXhrDataType = function() {
 }
 
 Romo.onInitUI(function(e) {
-  $(e.target).find('[data-romo-form-auto="true"]').romoForm();
+  Romo.initUIElems(e, '[data-romo-form-auto="true"]').romoForm();
 });
 

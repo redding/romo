@@ -460,5 +460,5 @@ RomoDatepicker.prototype._UTCDate = function(year, month, day) {
 }
 
 Romo.onInitUI(function(e) {
-  $(e.target).find('[data-romo-datepicker-auto="true"]').romoDatepicker();
+  Romo.initUIElems(e, '[data-romo-datepicker-auto="true"]').romoDatepicker();
 });

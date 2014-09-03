@@ -80,5 +80,5 @@ RomoIndicator.prototype.doStop = function() {
 }
 
 Romo.onInitUI(function(e) {
-  $(e.target).find('[data-romo-indicator-auto="true"]').romoIndicator();
+  Romo.initUIElems(e, '[data-romo-indicator-auto="true"]').romoIndicator();
 });
