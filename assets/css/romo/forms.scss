@@ -164,13 +164,12 @@ label { display: block; }
   line-height: ($baseLineHeight / 2) * 3; /* 30px */
 }
 
-.romo-input1 { width: 480px; }  /* + 140px */
-.romo-input2 { width: 340px; }  /* + 120px */
 .romo-input,
-.romo-input3 { width: 220px; }  /* +  70px */
-.romo-input4 { width: 150px; }  /* +  60px */
-.romo-input5 { width: 90px;  }  /* +  50px */
-.romo-input6 { width: 40px;  }  /* +  40px */
+.romo-input1 { width: $inputSize1; }
+.romo-input-small,
+.romo-input0 { width: $inputSize0; }
+.romo-input-large,
+.romo-input2 { width: $inputSize2; }
 
 .romo-input-block { width: 100%; display: block; }
 

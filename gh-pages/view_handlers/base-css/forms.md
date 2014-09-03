@@ -128,49 +128,45 @@ Add the `.romo-form` class to receive additional styling on the controls.  Add `
 </form>
 ```
 
-## `.romo-input{1-6}`
+## `.romo-input{0-2}`
 
 Use numbered style classes to adjust input width.
 
 <div class="romo-pad">
   <form class="romo-form">
+    <label>.romo-input</label>
+    <input class="romo-input" type="text" placeholder=".romo-input" />
     <label>.romo-input1</label>
     <input class="romo-input1" type="text" placeholder=".romo-input1" />
+    <label>.romo-input-small</label>
+    <select class="romo-input-small">
+      <option>.romo-input-small</option>
+    </select>
+    <label>.romo-input0</label>
+    <select class="romo-input0">
+      <option>.romo-input0</option>
+    </select>
+    <label>.romo-input-large</label>
+    <textarea class="romo-input-large" rows="2" placeholder=".romo-input-large"></textarea>
     <label>.romo-input2</label>
-    <select class="romo-input2">
-      <option>.romo-input2</option>
-    </select>
-    <label>.romo-input3</label>
-    <select class="romo-input3" multiple>
-      <option>.romo-input3</option>
-    </select>
-    <label>.romo-input</label>
-    <textarea class="romo-input" rows="2" placeholder=".romo-input"></textarea>
-    <label>.romo-input4</label>
-    <input class="romo-input4" type="text" placeholder=".romo-input4" />
-    <label>.romo-input5</label>
-    <input class="romo-input5" type="text" placeholder=".romo-input5" />
-    <label>.romo-input6</label>
-    <input class="romo-input6" type="text" placeholder=".romo-input6" />
+    <textarea class="romo-input2" rows="2" placeholder=".romo-input2"></textarea>
   </form>
 </div>
 
 ```html
 <form class="romo-form">
   ...
+  <input class="romo-input" type="text" placeholder=".romo-input" />
+  ...
   <input class="romo-input1" type="text" placeholder=".romo-input1" />
   ...
-  <select class="romo-input2">...</select>
+  <select class="romo-input-small">...</select>
   ...
-  <select class="romo-input3" multiple>...</select>
+  <select class="romo-input0">...</select>
   ...
-  <textarea class="romo-input" rows="2" placeholder=".romo-input"></textarea>
+  <textarea class="romo-input-large" rows="2" placeholder=".romo-input-large"></textarea>
   ...
-  <input class="romo-input4" type="text" placeholder=".romo-input4" />
-  ...
-  <input class="romo-input5" type="text" placeholder=".romo-input5" />
-  ...
-  <input class="romo-input6" type="text" placeholder=".romo-input6" />
+  <textarea class="romo-input2" rows="2" placeholder=".romo-input-large"></textarea>
 </form>
 ```
 
