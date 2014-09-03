@@ -234,6 +234,82 @@ The Romo grid system can utilize either **12 or 24 columns**.  Grids always fill
 </div>
 ```
 
+### {1-12} column grid
+
+<div class="romo-row">
+  <div class="romo-span romo-1-7 romo-bg-alt romo-border romo-align-center">1-7</div>
+  <div class="romo-span romo-1-7 romo-bg-alt romo-border romo-align-center">1-7</div>
+  <div class="romo-span romo-1-7 romo-bg-alt romo-border romo-align-center">1-7</div>
+  <div class="romo-span romo-1-7 romo-bg-alt romo-border romo-align-center">1-7</div>
+  <div class="romo-span romo-1-7 romo-bg-alt romo-border romo-align-center">1-7</div>
+  <div class="romo-span romo-1-7 romo-bg-alt romo-border romo-align-center">1-7</div>
+  <div class="romo-span romo-1-7 romo-bg-alt romo-border romo-align-center">1-7</div>
+</div>
+<div class="romo-row">
+  <div class="romo-span romo-1-6 romo-bg-alt romo-border romo-align-center">1-6</div>
+  <div class="romo-span romo-1-6 romo-bg-alt romo-border romo-align-center">1-6</div>
+  <div class="romo-span romo-1-6 romo-bg-alt romo-border romo-align-center">1-6</div>
+  <div class="romo-span romo-1-6 romo-bg-alt romo-border romo-align-center">1-6</div>
+  <div class="romo-span romo-1-6 romo-bg-alt romo-border romo-align-center">1-6</div>
+  <div class="romo-span romo-1-6 romo-bg-alt romo-border romo-align-center">1-6</div>
+</div>
+<div class="romo-row">
+  <div class="romo-span romo-1-4 romo-bg-alt romo-border romo-align-center">1-4</div>
+  <div class="romo-span romo-1-4 romo-bg-alt romo-border romo-align-center">1-4</div>
+  <div class="romo-span romo-1-4 romo-bg-alt romo-border romo-align-center">1-4</div>
+  <div class="romo-span romo-1-4 romo-bg-alt romo-border romo-align-center">1-4</div>
+</div>
+<div class="romo-row">
+  <div class="romo-span romo-1-3 romo-bg-alt romo-border romo-align-center">1-3</div>
+  <div class="romo-span romo-1-3 romo-bg-alt romo-border romo-align-center">1-3</div>
+  <div class="romo-span romo-1-3 romo-bg-alt romo-border romo-align-center">1-3</div>
+</div>
+<div class="romo-row">
+  <div class="romo-span romo-1-2 romo-bg-alt romo-border romo-align-center">1-2</div>
+  <div class="romo-span romo-1-2 romo-bg-alt romo-border romo-align-center">1-2</div>
+</div>
+<div class="romo-row">
+  <div class="romo-span romo-1-1 romo-bg-alt romo-border romo-align-center">1-1</div>
+</div>
+
+```html
+<div class="romo-row">
+  <div class="romo-span romo-1-7 romo-bg-alt romo-border romo-align-center">1-7</div>
+  <div class="romo-span romo-1-7 romo-bg-alt romo-border romo-align-center">1-7</div>
+  <div class="romo-span romo-1-7 romo-bg-alt romo-border romo-align-center">1-7</div>
+  <div class="romo-span romo-1-7 romo-bg-alt romo-border romo-align-center">1-7</div>
+  <div class="romo-span romo-1-7 romo-bg-alt romo-border romo-align-center">1-7</div>
+  <div class="romo-span romo-1-7 romo-bg-alt romo-border romo-align-center">1-7</div>
+  <div class="romo-span romo-1-7 romo-bg-alt romo-border romo-align-center">1-7</div>
+</div>
+<div class="romo-row">
+  <div class="romo-span romo-1-6 romo-bg-alt romo-border romo-align-center">1-6</div>
+  <div class="romo-span romo-1-6 romo-bg-alt romo-border romo-align-center">1-6</div>
+  <div class="romo-span romo-1-6 romo-bg-alt romo-border romo-align-center">1-6</div>
+  <div class="romo-span romo-1-6 romo-bg-alt romo-border romo-align-center">1-6</div>
+  <div class="romo-span romo-1-6 romo-bg-alt romo-border romo-align-center">1-6</div>
+  <div class="romo-span romo-1-6 romo-bg-alt romo-border romo-align-center">1-6</div>
+</div>
+<div class="romo-row">
+  <div class="romo-span romo-1-4 romo-bg-alt romo-border romo-align-center">1-4</div>
+  <div class="romo-span romo-1-4 romo-bg-alt romo-border romo-align-center">1-4</div>
+  <div class="romo-span romo-1-4 romo-bg-alt romo-border romo-align-center">1-4</div>
+  <div class="romo-span romo-1-4 romo-bg-alt romo-border romo-align-center">1-4</div>
+</div>
+<div class="romo-row">
+  <div class="romo-span romo-1-3 romo-bg-alt romo-border romo-align-center">1-3</div>
+  <div class="romo-span romo-1-3 romo-bg-alt romo-border romo-align-center">1-3</div>
+  <div class="romo-span romo-1-3 romo-bg-alt romo-border romo-align-center">1-3</div>
+</div>
+<div class="romo-row">
+  <div class="romo-span romo-1-2 romo-bg-alt romo-border romo-align-center">1-2</div>
+  <div class="romo-span romo-1-2 romo-bg-alt romo-border romo-align-center">1-2</div>
+</div>
+<div class="romo-row">
+  <div class="romo-span romo-1-1 romo-bg-alt romo-border romo-align-center">1-1</div>
+</div>
+```
+
 ## Offsetting columns
 
 Move columns to the right using `.romo-offset-*` classes. Each class increases the left margin of a column by its number of columns. For example, `.romo-offset-4-12` moves its column over by 4 columns (in a 12 column grid).
