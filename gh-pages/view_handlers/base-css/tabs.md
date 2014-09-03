@@ -88,6 +88,21 @@ To align tab items, use the `.romo-tabs-pull-left` or `.romo-tabs-pull-right` cl
 Use numbered style classes to size up/down tab items.
 
 <div class="romo-pad">
+  <ul class="romo-tabs romo-tabs-small romo-push0-bottom">
+    <li class="active"><a href="#">romo-tabs-small</a></li>
+    <li><a href="#">...</a></li>
+    <li><a href="#">...</a></li>
+  </ul>
+  <ul class="romo-tabs romo-tabs0 romo-push0-bottom">
+    <li class="active"><a href="#">romo-tabs0</a></li>
+    <li><a href="#">...</a></li>
+    <li><a href="#">...</a></li>
+  </ul>
+  <ul class="romo-tabs romo-push0-bottom">
+    <li class="active"><a href="#">Default</a></li>
+    <li><a href="#">...</a></li>
+    <li><a href="#">...</a></li>
+  </ul>
   <ul class="romo-tabs romo-tabs1 romo-push0-bottom">
     <li class="active"><a href="#">romo-tabs1</a></li>
     <li><a href="#">...</a></li>
@@ -103,36 +118,21 @@ Use numbered style classes to size up/down tab items.
     <li><a href="#">...</a></li>
     <li><a href="#">...</a></li>
   </ul>
-  <ul class="romo-tabs romo-push0-bottom">
-    <li class="active"><a href="#">Default</a></li>
-    <li><a href="#">...</a></li>
-    <li><a href="#">...</a></li>
-  </ul>
   <ul class="romo-tabs romo-tabs3 romo-push0-bottom">
     <li class="active"><a href="#">romo-tabs3</a></li>
-    <li><a href="#">...</a></li>
-    <li><a href="#">...</a></li>
-  </ul>
-  <ul class="romo-tabs romo-tabs-small romo-push0-bottom">
-    <li class="active"><a href="#">romo-tabs-small</a></li>
-    <li><a href="#">...</a></li>
-    <li><a href="#">...</a></li>
-  </ul>
-  <ul class="romo-tabs romo-tabs4 romo-push0-bottom">
-    <li class="active"><a href="#">romo-tabs4</a></li>
     <li><a href="#">...</a></li>
     <li><a href="#">...</a></li>
   </ul>
 </div>
 
 ```html
+<ul class="romo-tabs romo-tabs-small romo-push0-bottom">...</ul>
+<ul class="romo-tabs romo-tabs4 romo-push0-bottom">...</ul>
+<ul class="romo-tabs romo-push0-bottom">...</ul>
 <ul class="romo-tabs romo-tabs1 romo-push0-bottom">...</ul>
 <ul class="romo-tabs romo-tabs-large romo-push0-bottom">...</ul>
 <ul class="romo-tabs romo-tabs2 romo-push0-bottom">...</ul>
-<ul class="romo-tabs romo-push0-bottom">...</ul>
 <ul class="romo-tabs romo-tabs3 romo-push0-bottom">...</ul>
-<ul class="romo-tabs romo-tabs-small romo-push0-bottom">...</ul>
-<ul class="romo-tabs romo-tabs4 romo-push0-bottom">...</ul>
 ```
 
 ## Stacked tabs

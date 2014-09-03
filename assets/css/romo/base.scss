@@ -101,10 +101,10 @@ a.romo-text {
   @include box-shadow(0 1px 3px rgba(0, 0, 0, 0.1));
 }
 
+.romo-img0 { height: $imgHeight0 !important; }
 .romo-img1 { height: $imgHeight1 !important; }
 .romo-img2 { height: $imgHeight2 !important; }
 .romo-img3 { height: $imgHeight3 !important; }
-.romo-img4 { height: $imgHeight4 !important; }
 
 /* headings */
 
@@ -118,25 +118,25 @@ h1, h2, h3 {
   }
 }
 
-h1 { @include text1; }
+h1 { @include text3; }
 h2 { @include text2; }
-h3 { @include text3; }
+h3 { @include text1; }
 
 /* text size */
 
+.romo-text0,
 .romo-text1,
 .romo-text2,
-.romo-text3,
-.romo-text4 {
+.romo-text3 {
   text-rendering: optimizelegibility;
 }
 
+.romo-text-small,
+.romo-text0 { @include text0(!important); @include font-weight0; }
 .romo-text1 { @include text1(!important); @include font-weight1; }
 .romo-text-large,
 .romo-text2 { @include text2(!important); @include font-weight2; }
 .romo-text3 { @include text3(!important); @include font-weight3; }
-.romo-text-small,
-.romo-text4 { @include text4(!important); @include font-weight4; }
 
 /* text weight */
 

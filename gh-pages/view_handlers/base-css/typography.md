@@ -43,37 +43,37 @@ All HTML headings, `<h1>` through `<h3>` are available.
 <h3>h3. Heading 3</h3>
 
 ```html
-<h1>h1. Heading 1</h1>
-<h2>h2. Heading 2</h2>
-<h3>h3. Heading 3</h3>
+<h1>...</h1>
+<h2>...</h2>
+<h3>...</h3>
 ```
 
 ## Size classes
 
 Use style classes to size up/down text corresponding with heading sizes.
 
+<div class="romo-text0">.romo-text0</div>
 <div class="romo-text1">.romo-text1</div>
 <div class="romo-text2">.romo-text2</div>
 <div class="romo-text3">.romo-text3</div>
-<div class="romo-text4">.romo-text4</div>
 
 ```html
-<div class="romo-text1">.romo-text1</div>
-<div class="romo-text2">.romo-text2</div>
-<div class="romo-text3">.romo-text3</div>
-<div class="romo-text4">.romo-text4</div>
+<div class="romo-text0">...</div>
+<div class="romo-text1">...</div>
+<div class="romo-text2">...</div>
+<div class="romo-text3">...</div>
 ```
 
 Or, use these natural-size style classes for the more common sizing needs.
 
-<div class="romo-text-large">.romo-text-large Size (alias for .romo-text2)</div>
+<div class="romo-text-small">.romo-text-small Size (alias for .romo-text0)</div>
 <div>normal text Size</div>
-<div class="romo-text-small">.romo-text-small Size (alias for .romo-text4)</div>
+<div class="romo-text-large">.romo-text-large Size (alias for .romo-text2)</div>
 
 ```html
-<div class="romo-text-large">.romo-text-large Size (alias for .romo-text2)</div>
-<div>normal text Size</div>
-<div class="romo-text-small">.romo-text-small Size (alias for .romo-text4)</div>
+<div class="romo-text-small">...</div>
+<div>...</div>
+<div class="romo-text-large">...</div>
 ```
 
 ## Alignment classes
@@ -124,34 +124,34 @@ Or vertical align text.
 
 Use style classes to set font weight.
 
-<div class="romo-text3 romo-text-normal">.romo-text-normal</div>
-<div class="romo-text3 romo-text-lighter">.romo-text-lighter</div>
-<div class="romo-text3 romo-text-bold">.romo-text-bold</div>
-<div class="romo-text3 romo-text-bolder">.romo-text-bolder</div>
-<div class="romo-text3 romo-text-100">.romo-text-100</div>
-<div class="romo-text3 romo-text-200">.romo-text-200</div>
-<div class="romo-text3 romo-text-300">.romo-text-300</div>
-<div class="romo-text3 romo-text-400">.romo-text-400</div>
-<div class="romo-text3 romo-text-500">.romo-text-500</div>
-<div class="romo-text3 romo-text-600">.romo-text-600</div>
-<div class="romo-text3 romo-text-700">.romo-text-700</div>
-<div class="romo-text3 romo-text-800">.romo-text-800</div>
-<div class="romo-text3 romo-text-900">.romo-text-900</div>
+<div class="romo-text-normal">.romo-text-normal</div>
+<div class="romo-text-lighter">.romo-text-lighter</div>
+<div class="romo-text-bold">.romo-text-bold</div>
+<div class="romo-text-bolder">.romo-text-bolder</div>
+<div class="romo-text-100">.romo-text-100</div>
+<div class="romo-text-200">.romo-text-200</div>
+<div class="romo-text-300">.romo-text-300</div>
+<div class="romo-text-400">.romo-text-400</div>
+<div class="romo-text-500">.romo-text-500</div>
+<div class="romo-text-600">.romo-text-600</div>
+<div class="romo-text-700">.romo-text-700</div>
+<div class="romo-text-800">.romo-text-800</div>
+<div class="romo-text-900">.romo-text-900</div>
 
 ```html
-<div class="romo-text3 romo-text-normal">.romo-text-normal</div>
-<div class="romo-text3 romo-text-lighter">.romo-text-lighter</div>
-<div class="romo-text3 romo-text-bold">.romo-text-bold</div>
-<div class="romo-text3 romo-text-bolder">.romo-text-bolder</div>
-<div class="romo-text3 romo-text-100">.romo-text-100</div>
-<div class="romo-text3 romo-text-200">.romo-text-200</div>
-<div class="romo-text3 romo-text-300">.romo-text-300</div>
-<div class="romo-text3 romo-text-400">.romo-text-400</div>
-<div class="romo-text3 romo-text-500">.romo-text-500</div>
-<div class="romo-text3 romo-text-600">.romo-text-600</div>
-<div class="romo-text3 romo-text-700">.romo-text-700</div>
-<div class="romo-text3 romo-text-800">.romo-text-800</div>
-<div class="romo-text3 romo-text-900">.romo-text-900</div>
+<div class="romo-text-normal">.romo-text-normal</div>
+<div class="romo-text-lighter">.romo-text-lighter</div>
+<div class="romo-text-bold">.romo-text-bold</div>
+<div class="romo-text-bolder">.romo-text-bolder</div>
+<div class="romo-text-100">.romo-text-100</div>
+<div class="romo-text-200">.romo-text-200</div>
+<div class="romo-text-300">.romo-text-300</div>
+<div class="romo-text-400">.romo-text-400</div>
+<div class="romo-text-500">.romo-text-500</div>
+<div class="romo-text-600">.romo-text-600</div>
+<div class="romo-text-700">.romo-text-700</div>
+<div class="romo-text-800">.romo-text-800</div>
+<div class="romo-text-900">.romo-text-900</div>
 ```
 
 ## Color emphasis classes

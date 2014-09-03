@@ -56,13 +56,13 @@
   }
 }
 
+.romo-tabs.romo-tabs-small > li > a,
+.romo-tabs.romo-tabs0 > li > a { @include font-size0; @include font-weight0; @include line-height0; @include button-pad0; }
+.romo-tabs > li > a,
 .romo-tabs.romo-tabs1 > li > a { @include font-size1; @include font-weight1; @include line-height1; @include button-pad1; }
 .romo-tabs.romo-tabs-large > li > a,
 .romo-tabs.romo-tabs2 > li > a { @include font-size2; @include font-weight2; @include line-height2; @include button-pad2; }
-.romo-tabs  > li > a,
 .romo-tabs.romo-tabs3 > li > a { @include font-size3; @include font-weight3; @include line-height3; @include button-pad3; }
-.romo-tabs.romo-tabs-small > li > a,
-.romo-tabs.romo-tabs4 > li > a { @include font-size4; @include font-weight4; @include line-height4; @include button-pad4; }
 
 .romo-tabs.romo-tabs-stacked { @include rm-border; }
 .romo-tabs.romo-tabs-stacked > li { float: none; }

@@ -17,6 +17,11 @@ Use numbered style classes to size up/down labels.
 <div class="romo-pad">
   <div class="romo-push0-bottom">
     <span class="romo-label">.romo-label</span>
+    <span class="romo-label romo-label0">.romo-label0</span>
+    <span class="romo-label romo-label-small">.romo-label-small</span>
+  </div>
+  <div class="romo-push0-bottom">
+    <span class="romo-label">.romo-label</span>
     <span class="romo-label romo-label1">.romo-label1</span>
   </div>
   <div class="romo-push0-bottom">
@@ -28,14 +33,14 @@ Use numbered style classes to size up/down labels.
     <span class="romo-label">.romo-label</span>
     <span class="romo-label romo-label3">.romo-label3</span>
   </div>
-  <div class="romo-push0-bottom">
-    <span class="romo-label">.romo-label</span>
-    <span class="romo-label romo-label4">.romo-label4</span>
-    <span class="romo-label romo-label-small">.romo-label-small</span>
-  </div>
 </div>
 
 ```html
+<div class="romo-push0-bottom">
+  <span class="romo-label">.romo-label</span>
+  <span class="romo-label romo-label0">.romo-label0</span>
+  <span class="romo-label romo-label-small">.romo-label-small</span>
+</div>
 <div class="romo-push0-bottom">
   <span class="romo-label">.romo-label</span>
   <span class="romo-label romo-label1">.romo-label1</span>
@@ -49,19 +54,22 @@ Use numbered style classes to size up/down labels.
   <span class="romo-label">.romo-label</span>
   <span class="romo-label romo-label3">.romo-label3</span>
 </div>
-<div class="romo-push0-bottom">
-  <span class="romo-label">.romo-label</span>
-  <span class="romo-label romo-label4">.romo-label4</span>
-  <span class="romo-label romo-label-small">.romo-label-small</span>
-</div>
 ```
 
 Use `.romo-label-inline` to vertically align text with labels.
 
 <div class="romo-pad">
   <div class="romo-push0-bottom">
+    <span class="romo-label-inline0">.romo-label-inline0</span>
+    <span class="romo-label romo-label0">.romo-label0</span>
+    <span class="romo-label-inline-small">.romo-label-inline-small</span>
+    <span class="romo-label romo-label-small">.romo-label-small</span>
+  </div>
+  <div class="romo-push0-bottom">
     <span class="romo-label-inline1">.romo-label-inline1</span>
     <span class="romo-label romo-label1">.romo-label1</span>
+    <span class="romo-label-inline">.romo-label-inline</span>
+    <span class="romo-label">.romo-label</span>
   </div>
   <div class="romo-push0-bottom">
     <span class="romo-label-inline2">.romo-label-inline2</span>
@@ -72,21 +80,21 @@ Use `.romo-label-inline` to vertically align text with labels.
   <div class="romo-push0-bottom">
     <span class="romo-label-inline3">.romo-label-inline3</span>
     <span class="romo-label romo-label3">.romo-label3</span>
-    <span class="romo-label-inline">.romo-label-inline</span>
-    <span class="romo-label">.romo-label</span>
-  </div>
-  <div class="romo-push0-bottom">
-    <span class="romo-label-inline4">.romo-label-inline4</span>
-    <span class="romo-label romo-label4">.romo-label4</span>
-    <span class="romo-label-inline-small">.romo-label-inline-small</span>
-    <span class="romo-label romo-label-small">.romo-label-small</span>
   </div>
 </div>
 
 ```html
 <div class="romo-push0-bottom">
+  <span class="romo-label-inline0">.romo-label-inline0</span>
+  <span class="romo-label romo-label0">.romo-label0</span>
+  <span class="romo-label-inline-small">.romo-label-inline-small</span>
+  <span class="romo-label romo-label-small">.romo-label-small</span>
+</div>
+<div class="romo-push0-bottom">
   <span class="romo-label-inline1">.romo-label-inline1</span>
   <span class="romo-label romo-label1">.romo-label1</span>
+  <span class="romo-label-inline">.romo-label-inline</span>
+  <span class="romo-label">.romo-label</span>
 </div>
 <div class="romo-push0-bottom">
   <span class="romo-label-inline2">.romo-label-inline2</span>
@@ -97,14 +105,6 @@ Use `.romo-label-inline` to vertically align text with labels.
 <div class="romo-push0-bottom">
   <span class="romo-label-inline3">.romo-label-inline3</span>
   <span class="romo-label romo-label3">.romo-label3</span>
-  <span class="romo-label-inline">.romo-label-inline</span>
-  <span class="romo-label">.romo-label</span>
-</div>
-<div class="romo-push0-bottom">
-  <span class="romo-label-inline4">.romo-label-inline4</span>
-  <span class="romo-label romo-label4">.romo-label4</span>
-  <span class="romo-label-inline-small">.romo-label-inline-small</span>
-  <span class="romo-label romo-label-small">.romo-label-small</span>
 </div>
 ```
 

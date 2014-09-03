@@ -56,30 +56,35 @@ Add these classes to an `<img>` element to add optional styling.
 <img src="..." class="romo-img-card">
 ```
 
-### `.romo-img{1-4}`
+### `.romo-img{0-3}`
 
 Add these classes to adjust height.
 
 <div class="romo-pad">
+  <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
+       class="romo-img0">
   <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
        class="romo-img1">
   <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
        class="romo-img2">
   <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
        class="romo-img3">
-  <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
-       class="romo-img4">
 </div>
 
 ```html
+<img src="..." class="romo-img0">
 <img src="..." class="romo-img1">
 <img src="..." class="romo-img2">
 <img src="..." class="romo-img3">
-<img src="..." class="romo-img4">
 ```
 
 Use to align with inline text.
 
+<div class="romo-pad">
+  <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
+       class="romo-img0 romo-align-middle">
+  <span class="romo-text0 romo-align-middle">Img0, text0, middle</span>
+</div>
 <div class="romo-pad">
   <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
        class="romo-img1 romo-align-middle">
@@ -97,18 +102,13 @@ Use to align with inline text.
 </div>
 <div class="romo-pad">
   <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
-       class="romo-img4 romo-align-middle">
-  <span class="romo-text4 romo-align-middle">Img4, text4, middle</span>
+       class="romo-img0 romo-align-middle">
+  <span class="romo-text3 romo-align-middle">Img0, text3, middle</span>
 </div>
 <div class="romo-pad">
   <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
-       class="romo-img1 romo-align-middle">
-  <span class="romo-text4 romo-align-middle">Img1, text4, middle</span>
-</div>
-<div class="romo-pad">
-  <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
-       class="romo-img4 romo-align-middle">
-  <span class="romo-text1 romo-align-middle">Img4, text1, middle</span>
+       class="romo-img3 romo-align-middle">
+  <span class="romo-text0 romo-align-middle">Img3, text0, middle</span>
 </div>
 
 <div class="romo-pad romo-rm-pad-bottom">
@@ -116,6 +116,10 @@ Use to align with inline text.
 </div>
 
 ```html
+<div class="romo-pad">
+  <img class="romo-img0 romo-align-middle" src="...">
+  <span class="romo-text0 romo-align-middle">Img0, text0, middle</span>
+</div>
 <div class="romo-pad">
   <img class="romo-img1 romo-align-middle" src="...">
   <span class="romo-text1 romo-align-middle">Img1, text1, middle</span>
@@ -129,15 +133,11 @@ Use to align with inline text.
   <span class="romo-text3 romo-align-middle">Img3, text3, middle</span>
 </div>
 <div class="romo-pad">
-  <img class="romo-img4 romo-align-middle" src="...">
-  <span class="romo-text4 romo-align-middle">Img4, text4, middle</span>
+  <img class="romo-img0 romo-align-middle" src="...">
+  <span class="romo-text3 romo-align-middle">Img0, text3, middle</span>
 </div>
 <div class="romo-pad">
-  <img class="romo-img1 romo-align-middle" src="...">
-  <span class="romo-text4 romo-align-middle">Img1, text4, middle</span>
-</div>
-<div class="romo-pad">
-  <img class="romo-img4 romo-align-middle" src="...">
-  <span class="romo-text1 romo-align-middle">Img4, text1, middle</span>
+  <img class="romo-img3 romo-align-middle" src="...">
+  <span class="romo-text0 romo-align-middle">Img3, text0, middle</span>
 </div>
 ```
