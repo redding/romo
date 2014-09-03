@@ -6,7 +6,6 @@ $lineHeightToSizeRatio: 20/14;
 $baseFontFamily:  "Helvetica Neue", Helvetica, Arial, sans-serif;
 $baseFontSize:    14px;
 $baseLineHeight:  $baseFontSize * $lineHeightToSizeRatio;
-$baseSpacingSize: $baseLineHeight / 2;
 
 $fontSize1: ($baseFontSize * 1.75);    /* ~24px */
 $fontSize2: ($baseFontSize * 1.25);    /* ~18px */
@@ -18,10 +17,14 @@ $lineHeight2: ($baseLineHeight * 1.20); /* 24px */
 $lineHeight3: $baseLineHeight;          /* 20px */
 $lineHeight4: ($baseLineHeight * 0.75); /* 15px */;
 
-$imgHeight1: $lineHeight1 + (0.5 * $baseSpacingSize); /* 35px */
-$imgHeight2: $lineHeight2 + (0.5 * $baseSpacingSize); /* 25px */
-$imgHeight3: $lineHeight3 + (0.0 * $baseSpacingSize); /* 20px */
-$imgHeight4: $lineHeight4 + (0.0 * $baseSpacingSize); /* 15px */;
+$spacingSize1: $baseLineHeight / 2;
+$spacingSize0: $spacingSize1 * 0.35;
+$spacingSize2: $spacingSize1 * 2;
+
+$imgHeight1: $lineHeight1 + (0.5 * $spacingSize1); /* 35px */
+$imgHeight2: $lineHeight2 + (0.5 * $spacingSize1); /* 29px */
+$imgHeight3: $lineHeight3 + (0.0 * $spacingSize1); /* 20px */
+$imgHeight4: $lineHeight4 + (0.0 * $spacingSize1); /* 15px */;
 
 $inputHeight: ($baseLineHeight / 2) * 3; /* 30px */
 $btnPaddingTopBottom: ($inputHeight - 2 - $baseLineHeight) / 2; /* 4px; "2" is for the borders */

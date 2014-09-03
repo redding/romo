@@ -98,52 +98,32 @@ ol.romo-grid-table { @include list-unstyled(!important); }
 .romo-grid-table-border-inverse > .romo-row > .romo-span { @include border-inverse; }
 .romo-grid-table-border-alt     > .romo-row > .romo-span { @include border-alt; }
 
-.romo-grid-table.romo-grid-table-pad0   > .romo-row > .romo-span { @include pad0; }
-.romo-grid-table.romo-grid-table-pad    > .romo-row > .romo-span { @include pad1; }
+.romo-grid-table.romo-grid-table-pad    > .romo-row > .romo-span,
 .romo-grid-table.romo-grid-table-pad1   > .romo-row > .romo-span { @include pad1; }
+.romo-grid-table.romo-grid-table-pad0   > .romo-row > .romo-span { @include pad0; }
 .romo-grid-table.romo-grid-table-pad2   > .romo-row > .romo-span { @include pad2; }
-.romo-grid-table.romo-grid-table-pad3   > .romo-row > .romo-span { @include pad3; }
-.romo-grid-table.romo-grid-table-pad4   > .romo-row > .romo-span { @include pad4; }
-.romo-grid-table.romo-grid-table-pad5   > .romo-row > .romo-span { @include pad5; }
-.romo-grid-table.romo-grid-table-pad6   > .romo-row > .romo-span { @include pad6; }
 .romo-grid-table.romo-grid-table-rm-pad > .romo-row > .romo-span { @include rm-pad; }
 
-.romo-grid-table.romo-table-pad0-top   > .romo-row > .romo-span { @include pad0-top; }
-.romo-grid-table.romo-table-pad-top    > .romo-row > .romo-span { @include pad1-top; }
+.romo-grid-table.romo-table-pad-top    > .romo-row > .romo-span,
 .romo-grid-table.romo-table-pad1-top   > .romo-row > .romo-span { @include pad1-top; }
+.romo-grid-table.romo-table-pad0-top   > .romo-row > .romo-span { @include pad0-top; }
 .romo-grid-table.romo-table-pad2-top   > .romo-row > .romo-span { @include pad2-top; }
-.romo-grid-table.romo-table-pad3-top   > .romo-row > .romo-span { @include pad3-top; }
-.romo-grid-table.romo-table-pad4-top   > .romo-row > .romo-span { @include pad4-top; }
-.romo-grid-table.romo-table-pad5-top   > .romo-row > .romo-span { @include pad5-top; }
-.romo-grid-table.romo-table-pad6-top   > .romo-row > .romo-span { @include pad6-top; }
 .romo-grid-table.romo-table-rm-pad-top > .romo-row > .romo-span { @include rm-pad-top; }
 
-.romo-grid-table.romo-table-pad0-right   > .romo-row > .romo-span { @include pad0-right; }
-.romo-grid-table.romo-table-pad-right    > .romo-row > .romo-span { @include pad1-right; }
+.romo-grid-table.romo-table-pad-right    > .romo-row > .romo-span,
 .romo-grid-table.romo-table-pad1-right   > .romo-row > .romo-span { @include pad1-right; }
+.romo-grid-table.romo-table-pad0-right   > .romo-row > .romo-span { @include pad0-right; }
 .romo-grid-table.romo-table-pad2-right   > .romo-row > .romo-span { @include pad2-right; }
-.romo-grid-table.romo-table-pad3-right   > .romo-row > .romo-span { @include pad3-right; }
-.romo-grid-table.romo-table-pad4-right   > .romo-row > .romo-span { @include pad4-right; }
-.romo-grid-table.romo-table-pad5-right   > .romo-row > .romo-span { @include pad5-right; }
-.romo-grid-table.romo-table-pad6-right   > .romo-row > .romo-span { @include pad6-right; }
 .romo-grid-table.romo-table-rm-pad-right > .romo-row > .romo-span { @include rm-pad-right; }
 
-.romo-grid-table.romo-table-pad0-bottom   > .romo-row > .romo-span { @include pad0-bottom; }
-.romo-grid-table.romo-table-pad-bottom    > .romo-row > .romo-span { @include pad1-bottom; }
+.romo-grid-table.romo-table-pad-bottom    > .romo-row > .romo-span,
 .romo-grid-table.romo-table-pad1-bottom   > .romo-row > .romo-span { @include pad1-bottom; }
+.romo-grid-table.romo-table-pad0-bottom   > .romo-row > .romo-span { @include pad0-bottom; }
 .romo-grid-table.romo-table-pad2-bottom   > .romo-row > .romo-span { @include pad2-bottom; }
-.romo-grid-table.romo-table-pad3-bottom   > .romo-row > .romo-span { @include pad3-bottom; }
-.romo-grid-table.romo-table-pad4-bottom   > .romo-row > .romo-span { @include pad4-bottom; }
-.romo-grid-table.romo-table-pad5-bottom   > .romo-row > .romo-span { @include pad5-bottom; }
-.romo-grid-table.romo-table-pad6-bottom   > .romo-row > .romo-span { @include pad6-bottom; }
 .romo-grid-table.romo-table-rm-pad-bottom > .romo-row > .romo-span { @include rm-pad-bottom; }
 
-.romo-grid-table.romo-table-pad0-left   > .romo-row > .romo-span { @include pad0-left; }
-.romo-grid-table.romo-table-pad-left    > .romo-row > .romo-span { @include pad1-left; }
+.romo-grid-table.romo-table-pad-left    > .romo-row > .romo-span,
 .romo-grid-table.romo-table-pad1-left   > .romo-row > .romo-span { @include pad1-left; }
+.romo-grid-table.romo-table-pad0-left   > .romo-row > .romo-span { @include pad0-left; }
 .romo-grid-table.romo-table-pad2-left   > .romo-row > .romo-span { @include pad2-left; }
-.romo-grid-table.romo-table-pad3-left   > .romo-row > .romo-span { @include pad3-left; }
-.romo-grid-table.romo-table-pad4-left   > .romo-row > .romo-span { @include pad4-left; }
-.romo-grid-table.romo-table-pad5-left   > .romo-row > .romo-span { @include pad5-left; }
-.romo-grid-table.romo-table-pad6-left   > .romo-row > .romo-span { @include pad6-left; }
 .romo-grid-table.romo-table-rm-pad-left > .romo-row > .romo-span { @include rm-pad-left; }

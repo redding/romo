@@ -1085,162 +1085,6 @@ Adds cell padding to every cell in the table
 </table>
 ```
 
-<div class="romo-pad">
-  <table class="romo-table romo-table-border romo-table-pad3">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Slug</th>
-        <th>Count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Joe Test</td>
-        <td>joe-test</td>
-        <td>10</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Jane Doe</td>
-        <td>jane-doe</td>
-        <td>18</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Good Corp.</td>
-        <td>good-corp</td>
-        <td>5</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-```html
-<table class="romo-table romo-table-pad3">
-  ...
-</table>
-```
-
-<div class="romo-pad">
-  <table class="romo-table romo-table-border romo-table-pad4">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Slug</th>
-        <th>Count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Joe Test</td>
-        <td>joe-test</td>
-        <td>10</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Jane Doe</td>
-        <td>jane-doe</td>
-        <td>18</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Good Corp.</td>
-        <td>good-corp</td>
-        <td>5</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-```html
-<table class="romo-table romo-table-pad4">
-  ...
-</table>
-```
-
-<div class="romo-pad">
-  <table class="romo-table romo-table-border romo-table-pad5">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Slug</th>
-        <th>Count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Joe Test</td>
-        <td>joe-test</td>
-        <td>10</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Jane Doe</td>
-        <td>jane-doe</td>
-        <td>18</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Good Corp.</td>
-        <td>good-corp</td>
-        <td>5</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-```html
-<table class="romo-table romo-table-pad5">
-  ...
-</table>
-```
-
-<div class="romo-pad">
-  <table class="romo-table romo-table-border romo-table-pad6">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Slug</th>
-        <th>Count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Joe Test</td>
-        <td>joe-test</td>
-        <td>10</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Jane Doe</td>
-        <td>jane-doe</td>
-        <td>18</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Good Corp.</td>
-        <td>good-corp</td>
-        <td>5</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-```html
-<table class="romo-table romo-table-pad6">
-  ...
-</table>
-```
-
 ## Custom Styles
 
 Use any helper style classes in any combination on rows/cells.
@@ -1265,7 +1109,7 @@ Use any helper style classes in any combination on rows/cells.
       <tr>
         <td>2</td>
         <td>Jane Doe</td>
-        <td class="romo-pad3">jane-doe</td>
+        <td class="romo-pad0">jane-doe</td>
         <td class="romo-1-12 romo-align-center romo-text-success">18</td>
       </tr>
       <tr class="romo-bg-success">
@@ -1298,7 +1142,7 @@ Use any helper style classes in any combination on rows/cells.
     <tr>
       <td>2</td>
       <td>Jane Doe</td>
-      <td class="romo-pad3">jane-doe</td>
+      <td class="romo-pad0">jane-doe</td>
       <td class="romo-1-12 romo-align-center romo-text-success">18</td>
     </tr>
     <tr class="romo-bg-success">

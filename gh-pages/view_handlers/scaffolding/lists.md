@@ -123,34 +123,6 @@ Add padding separating each item.
   <li>Nulla volutpat</li>
 </ul>
 </div>
-<div>
-<ul class="romo-list-inline romo-list-pad3">
-  <li>Lorem ipsum</li>
-  <li>Phasellus iaculis</li>
-  <li>Nulla volutpat</li>
-</ul>
-</div>
-<div>
-<ul class="romo-list-inline romo-list-pad4">
-  <li>Lorem ipsum</li>
-  <li>Phasellus iaculis</li>
-  <li>Nulla volutpat</li>
-</ul>
-</div>
-<div>
-<ul class="romo-list-inline romo-list-pad5">
-  <li>Lorem ipsum</li>
-  <li>Phasellus iaculis</li>
-  <li>Nulla volutpat</li>
-</ul>
-</div>
-<div>
-<ul class="romo-list-inline romo-list-pad6">
-  <li>Lorem ipsum</li>
-  <li>Phasellus iaculis</li>
-  <li>Nulla volutpat</li>
-</ul>
-</div>
 
 ```html
 <ul class="romo-list-inline romo-list-pad0">
@@ -166,22 +138,6 @@ Add padding separating each item.
 </ul>
 
 <ul class="romo-list-inline romo-list-pad2">
-  <li>...</li>
-</ul>
-
-<ul class="romo-list-inline romo-list-pad3">
-  <li>...</li>
-</ul>
-
-<ul class="romo-list-inline romo-list-pad4">
-  <li>...</li>
-</ul>
-
-<ul class="romo-list-inline romo-list-pad5">
-  <li>...</li>
-</ul>
-
-<ul class="romo-list-inline romo-list-pad6">
   <li>...</li>
 </ul>
 ```
@@ -218,34 +174,6 @@ Add margin separating each item.
   <li>Nulla volutpat</li>
 </ul>
 </div>
-<div>
-<ul class="romo-list-inline romo-list-push3">
-  <li>Lorem ipsum</li>
-  <li>Phasellus iaculis</li>
-  <li>Nulla volutpat</li>
-</ul>
-</div>
-<div>
-<ul class="romo-list-inline romo-list-push4">
-  <li>Lorem ipsum</li>
-  <li>Phasellus iaculis</li>
-  <li>Nulla volutpat</li>
-</ul>
-</div>
-<div>
-<ul class="romo-list-inline romo-list-push5">
-  <li>Lorem ipsum</li>
-  <li>Phasellus iaculis</li>
-  <li>Nulla volutpat</li>
-</ul>
-</div>
-<div>
-<ul class="romo-list-inline romo-list-push6">
-  <li>Lorem ipsum</li>
-  <li>Phasellus iaculis</li>
-  <li>Nulla volutpat</li>
-</ul>
-</div>
 
 ```html
 <ul class="romo-list-inline romo-list-push0">
@@ -261,22 +189,6 @@ Add margin separating each item.
 </ul>
 
 <ul class="romo-list-inline romo-list-push2">
-  <li>...</li>
-</ul>
-
-<ul class="romo-list-inline romo-list-push3">
-  <li>...</li>
-</ul>
-
-<ul class="romo-list-inline romo-list-push4">
-  <li>...</li>
-</ul>
-
-<ul class="romo-list-inline romo-list-push5">
-  <li>...</li>
-</ul>
-
-<ul class="romo-list-inline romo-list-push6">
   <li>...</li>
 </ul>
 ```

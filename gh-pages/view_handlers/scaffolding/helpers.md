@@ -176,17 +176,13 @@ Use style classes to control how elements are spaced (margin/padding).
 </div>
 ```
 
-Use numbered classes, 0 through 6, to set specific spacing size.
+Use numbered classes, 0 through 2, to set specific spacing size.
 
 <div class="romo-border">
   <div class="romo-border romo-push0 romo-pad0">.romo-push0.romo-pad0</div>
   <div class="romo-border romo-push1 romo-pad1">.romo-push1.romo-pad1</div>
   <div class="romo-border romo-push  romo-pad ">.romo-push.romo-pad (alias of 1)</div>
   <div class="romo-border romo-push2 romo-pad2">.romo-push2.romo-pad2</div>
-  <div class="romo-border romo-push3 romo-pad3">.romo-push3.romo-pad3</div>
-  <div class="romo-border romo-push4 romo-pad4">.romo-push4.romo-pad4</div>
-  <div class="romo-border romo-push5 romo-pad5">.romo-push5.romo-pad5</div>
-  <div class="romo-border romo-push6 romo-pad6">.romo-push6.romo-pad6</div>
 </div>
 
 ```html
@@ -195,10 +191,6 @@ Use numbered classes, 0 through 6, to set specific spacing size.
   <div class="romo-border romo-push1 romo-pad1">.romo-push1.romo-pad1</div>
   <div class="romo-border romo-push  romo-pad ">.romo-push.romo-pad (alias of 1)</div>
   <div class="romo-border romo-push2 romo-pad2">.romo-push2.romo-pad2</div>
-  <div class="romo-border romo-push3 romo-pad3">.romo-push3.romo-pad3</div>
-  <div class="romo-border romo-push4 romo-pad4">.romo-push4.romo-pad4</div>
-  <div class="romo-border romo-push5 romo-pad5">.romo-push5.romo-pad5</div>
-  <div class="romo-border romo-push6 romo-pad6">.romo-push6.romo-pad6</div>
 </div>
 ```
 

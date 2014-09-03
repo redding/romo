@@ -302,17 +302,17 @@
 @mixin border-bottom($size, $i:"") { border-bottom-width: $size #{$i}; @include border-style-bottom(solid); }
 @mixin border-left($size, $i:"")   { border-left-width:   $size #{$i}; @include border-style-left(solid); }
 
-@mixin border1($i:"")        { @include border($borderSize1, $i); }
-@mixin border1-top($i:"")    { @include border-top($borderSize1, $i); }
-@mixin border1-right($i:"")  { @include border-right($borderSize1, $i); }
-@mixin border1-bottom($i:"") { @include border-bottom($borderSize1, $i); }
-@mixin border1-left($i:"")   { @include border-left($borderSize1, $i); }
-
 @mixin border0($i:"")        { @include border($borderSize0, $i); }
 @mixin border0-top($i:"")    { @include border-top($borderSize0, $i); }
 @mixin border0-right($i:"")  { @include border-right($borderSize0, $i); }
 @mixin border0-bottom($i:"") { @include border-bottom($borderSize0, $i); }
 @mixin border0-left($i:"")   { @include border-left($borderSize0, $i); }
+
+@mixin border1($i:"")        { @include border($borderSize1, $i); }
+@mixin border1-top($i:"")    { @include border-top($borderSize1, $i); }
+@mixin border1-right($i:"")  { @include border-right($borderSize1, $i); }
+@mixin border1-bottom($i:"") { @include border-bottom($borderSize1, $i); }
+@mixin border1-left($i:"")   { @include border-left($borderSize1, $i); }
 
 @mixin border2($i:"")        { @include border($borderSize2, $i); }
 @mixin border2-top($i:"")    { @include border-top($borderSize2, $i); }
@@ -361,131 +361,91 @@
           border-bottom-left-radius: $radius #{$i};
 }
 
-@mixin border1-radius($i:"")   { @include border-radius($borderRadius1, $i); }
 @mixin border0-radius($i:"")   { @include border-radius($borderRadius0, $i); }
+@mixin border1-radius($i:"")   { @include border-radius($borderRadius1, $i); }
 @mixin border2-radius($i:"")   { @include border-radius($borderRadius2, $i); }
 @mixin rm-border-radius($i:"") { @include border-radius(0px, $i); }
 
-@mixin border1-top-left-radius($i:"")   { @include border-top-left-radius($borderRadius1, $i); }
 @mixin border0-top-left-radius($i:"")   { @include border-top-left-radius($borderRadius0, $i); }
+@mixin border1-top-left-radius($i:"")   { @include border-top-left-radius($borderRadius1, $i); }
 @mixin border2-top-left-radius($i:"")   { @include border-top-left-radius($borderRadius2, $i); }
 @mixin rm-border-top-left-radius($i:"") { @include border-top-left-radius(0px, $i); }
 
-@mixin border1-top-right-radius($i:"")   { @include border-top-right-radius($borderRadius1, $i); }
 @mixin border0-top-right-radius($i:"")   { @include border-top-right-radius($borderRadius0, $i); }
+@mixin border1-top-right-radius($i:"")   { @include border-top-right-radius($borderRadius1, $i); }
 @mixin border2-top-right-radius($i:"")   { @include border-top-right-radius($borderRadius2, $i); }
 @mixin rm-border-top-right-radius($i:"") { @include border-top-right-radius(0px, $i); }
 
-@mixin border1-bottom-right-radius($i:"")   { @include border-bottom-right-radius($borderRadius1, $i); }
 @mixin border0-bottom-right-radius($i:"")   { @include border-bottom-right-radius($borderRadius0, $i); }
+@mixin border1-bottom-right-radius($i:"")   { @include border-bottom-right-radius($borderRadius1, $i); }
 @mixin border2-bottom-right-radius($i:"")   { @include border-bottom-right-radius($borderRadius2, $i); }
 @mixin rm-border-bottom-right-radius($i:"") { @include border-bottom-right-radius(0px, $i); }
 
-@mixin border1-bottom-left-radius($i:"")   { @include border-bottom-left-radius($borderRadius1, $i); }
 @mixin border0-bottom-left-radius($i:"")   { @include border-bottom-left-radius($borderRadius0, $i); }
+@mixin border1-bottom-left-radius($i:"")   { @include border-bottom-left-radius($borderRadius1, $i); }
 @mixin border2-bottom-left-radius($i:"")   { @include border-bottom-left-radius($borderRadius2, $i); }
 @mixin rm-border-bottom-left-radius($i:"") { @include border-bottom-left-radius(0px, $i); }
 
 /* spacing */
 
-@mixin pad($num, $i:"")        { padding:        ($baseSpacingSize * $num) #{$i}; }
-@mixin pad-top($num, $i:"")    { padding-top:    ($baseSpacingSize * $num) #{$i}; }
-@mixin pad-right($num, $i:"")  { padding-right:  ($baseSpacingSize * $num) #{$i}; }
-@mixin pad-bottom($num, $i:"") { padding-bottom: ($baseSpacingSize * $num) #{$i}; }
-@mixin pad-left($num, $i:"")   { padding-left:   ($baseSpacingSize * $num) #{$i}; }
+@mixin pad($size, $i:"")        { padding:        $size #{$i}; }
+@mixin pad-top($size, $i:"")    { padding-top:    $size #{$i}; }
+@mixin pad-right($size, $i:"")  { padding-right:  $size #{$i}; }
+@mixin pad-bottom($size, $i:"") { padding-bottom: $size #{$i}; }
+@mixin pad-left($size, $i:"")   { padding-left:   $size #{$i}; }
 
-@mixin pad0($i:"") { @include pad(0.35, $i); }
-@mixin pad1($i:"") { @include pad(1, $i); }
-@mixin pad2($i:"") { @include pad(2, $i); }
-@mixin pad3($i:"") { @include pad(3, $i); }
-@mixin pad4($i:"") { @include pad(4, $i); }
-@mixin pad5($i:"") { @include pad(5, $i); }
-@mixin pad6($i:"") { @include pad(6, $i); }
+@mixin pad0($i:"")   { @include pad($spacingSize0, $i); }
+@mixin pad1($i:"")   { @include pad($spacingSize1, $i); }
+@mixin pad2($i:"")   { @include pad($spacingSize2, $i); }
 @mixin rm-pad($i:"") { @include pad(0, $i); }
 
-@mixin pad0-top($i:"") { @include pad-top(0.35, $i); }
-@mixin pad1-top($i:"") { @include pad-top(1, $i); }
-@mixin pad2-top($i:"") { @include pad-top(2, $i); }
-@mixin pad3-top($i:"") { @include pad-top(3, $i); }
-@mixin pad4-top($i:"") { @include pad-top(4, $i); }
-@mixin pad5-top($i:"") { @include pad-top(5, $i); }
-@mixin pad6-top($i:"") { @include pad-top(6, $i); }
+@mixin pad0-top($i:"")   { @include pad-top($spacingSize0, $i); }
+@mixin pad1-top($i:"")   { @include pad-top($spacingSize1, $i); }
+@mixin pad2-top($i:"")   { @include pad-top($spacingSize2, $i); }
 @mixin rm-pad-top($i:"") { @include pad-top(0, $i); }
 
-@mixin pad0-right($i:"") { @include pad-right(0.35, $i); }
-@mixin pad1-right($i:"") { @include pad-right(1, $i); }
-@mixin pad2-right($i:"") { @include pad-right(2, $i); }
-@mixin pad3-right($i:"") { @include pad-right(3, $i); }
-@mixin pad4-right($i:"") { @include pad-right(4, $i); }
-@mixin pad5-right($i:"") { @include pad-right(5, $i); }
-@mixin pad6-right($i:"") { @include pad-right(6, $i); }
+@mixin pad0-right($i:"")   { @include pad-right($spacingSize0, $i); }
+@mixin pad1-right($i:"")   { @include pad-right($spacingSize1, $i); }
+@mixin pad2-right($i:"")   { @include pad-right($spacingSize2, $i); }
 @mixin rm-pad-right($i:"") { @include pad-right(0, $i); }
 
-@mixin pad0-bottom($i:"") { @include pad-bottom(0.35, $i); }
-@mixin pad1-bottom($i:"") { @include pad-bottom(1, $i); }
-@mixin pad2-bottom($i:"") { @include pad-bottom(2, $i); }
-@mixin pad3-bottom($i:"") { @include pad-bottom(3, $i); }
-@mixin pad4-bottom($i:"") { @include pad-bottom(4, $i); }
-@mixin pad5-bottom($i:"") { @include pad-bottom(5, $i); }
-@mixin pad6-bottom($i:"") { @include pad-bottom(6, $i); }
+@mixin pad0-bottom($i:"")   { @include pad-bottom($spacingSize0, $i); }
+@mixin pad1-bottom($i:"")   { @include pad-bottom($spacingSize1, $i); }
+@mixin pad2-bottom($i:"")   { @include pad-bottom($spacingSize2, $i); }
 @mixin rm-pad-bottom($i:"") { @include pad-bottom(0, $i); }
 
-@mixin pad0-left($i:"") { @include pad-left(0.35, $i); }
-@mixin pad1-left($i:"") { @include pad-left(1, $i); }
-@mixin pad2-left($i:"") { @include pad-left(2, $i); }
-@mixin pad3-left($i:"") { @include pad-left(3, $i); }
-@mixin pad4-left($i:"") { @include pad-left(4, $i); }
-@mixin pad5-left($i:"") { @include pad-left(5, $i); }
-@mixin pad6-left($i:"") { @include pad-left(6, $i); }
+@mixin pad0-left($i:"")   { @include pad-left($spacingSize0, $i); }
+@mixin pad1-left($i:"")   { @include pad-left($spacingSize1, $i); }
+@mixin pad2-left($i:"")   { @include pad-left($spacingSize2, $i); }
 @mixin rm-pad-left($i:"") { @include pad-left(0, $i); }
 
-@mixin push($num, $i:"")        { margin:        ($baseSpacingSize * $num) #{$i}; }
-@mixin push-top($num, $i:"")    { margin-top:    ($baseSpacingSize * $num) #{$i}; }
-@mixin push-right($num, $i:"")  { margin-right:  ($baseSpacingSize * $num) #{$i}; }
-@mixin push-bottom($num, $i:"") { margin-bottom: ($baseSpacingSize * $num) #{$i}; }
-@mixin push-left($num, $i:"")   { margin-left:   ($baseSpacingSize * $num) #{$i}; }
+@mixin push($size, $i:"")        { margin:        $size #{$i}; }
+@mixin push-top($size, $i:"")    { margin-top:    $size #{$i}; }
+@mixin push-right($size, $i:"")  { margin-right:  $size #{$i}; }
+@mixin push-bottom($size, $i:"") { margin-bottom: $size #{$i}; }
+@mixin push-left($size, $i:"")   { margin-left:   $size #{$i}; }
 
-@mixin push0($i:"") { @include push(0.35, $i); }
-@mixin push1($i:"") { @include push(1, $i); }
-@mixin push2($i:"") { @include push(2, $i); }
-@mixin push3($i:"") { @include push(3, $i); }
-@mixin push4($i:"") { @include push(4, $i); }
-@mixin push5($i:"") { @include push(5, $i); }
-@mixin push6($i:"") { @include push(6, $i); }
+@mixin push0($i:"")   { @include push($spacingSize0, $i); }
+@mixin push1($i:"")   { @include push($spacingSize1, $i); }
+@mixin push2($i:"")   { @include push($spacingSize2, $i); }
 @mixin rm-push($i:"") { @include push(0, $i); }
 
-@mixin push0-top($i:"") { @include push-top(0.35, $i); }
-@mixin push1-top($i:"") { @include push-top(1, $i); }
-@mixin push2-top($i:"") { @include push-top(2, $i); }
-@mixin push3-top($i:"") { @include push-top(3, $i); }
-@mixin push4-top($i:"") { @include push-top(4, $i); }
-@mixin push5-top($i:"") { @include push-top(5, $i); }
-@mixin push6-top($i:"") { @include push-top(6, $i); }
+@mixin push0-top($i:"")   { @include push-top($spacingSize0, $i); }
+@mixin push1-top($i:"")   { @include push-top($spacingSize1, $i); }
+@mixin push2-top($i:"")   { @include push-top($spacingSize2, $i); }
 @mixin rm-push-top($i:"") { @include push-top(0, $i); }
 
-@mixin push0-right($i:"") { @include push-right(0.35, $i); }
-@mixin push1-right($i:"") { @include push-right(1, $i); }
-@mixin push2-right($i:"") { @include push-right(2, $i); }
-@mixin push3-right($i:"") { @include push-right(3, $i); }
-@mixin push4-right($i:"") { @include push-right(4, $i); }
-@mixin push5-right($i:"") { @include push-right(5, $i); }
-@mixin push6-right($i:"") { @include push-right(6, $i); }
+@mixin push0-right($i:"")   { @include push-right($spacingSize0, $i); }
+@mixin push1-right($i:"")   { @include push-right($spacingSize1, $i); }
+@mixin push2-right($i:"")   { @include push-right($spacingSize2, $i); }
 @mixin rm-push-right($i:"") { @include push-right(0, $i); }
 
-@mixin push0-bottom($i:"") { @include push-bottom(0.35, $i); }
-@mixin push1-bottom($i:"") { @include push-bottom(1, $i); }
-@mixin push2-bottom($i:"") { @include push-bottom(2, $i); }
-@mixin push3-bottom($i:"") { @include push-bottom(3, $i); }
-@mixin push4-bottom($i:"") { @include push-bottom(4, $i); }
-@mixin push5-bottom($i:"") { @include push-bottom(5, $i); }
-@mixin push6-bottom($i:"") { @include push-bottom(6, $i); }
+@mixin push0-bottom($i:"")   { @include push-bottom($spacingSize0, $i); }
+@mixin push1-bottom($i:"")   { @include push-bottom($spacingSize1, $i); }
+@mixin push2-bottom($i:"")   { @include push-bottom($spacingSize2, $i); }
 @mixin rm-push-bottom($i:"") { @include push-bottom(0, $i); }
 
-@mixin push0-left($i:"") { @include push-left(0.35, $i); }
-@mixin push1-left($i:"") { @include push-left(1, $i); }
-@mixin push2-left($i:"") { @include push-left(2, $i); }
-@mixin push3-left($i:"") { @include push-left(3, $i); }
-@mixin push4-left($i:"") { @include push-left(4, $i); }
-@mixin push5-left($i:"") { @include push-left(5, $i); }
-@mixin push6-left($i:"") { @include push-left(6, $i); }
+@mixin push0-left($i:"")   { @include push-left($spacingSize0, $i); }
+@mixin push1-left($i:"")   { @include push-left($spacingSize1, $i); }
+@mixin push2-left($i:"")   { @include push-left($spacingSize2, $i); }
 @mixin rm-push-left($i:"") { @include push-left(0, $i); }

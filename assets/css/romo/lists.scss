@@ -16,38 +16,22 @@ ol.romo-list-inline > li { display: inline-block; }
 
 /* spacing helpers */
 
-.romo-list-inline.romo-list-pad0 > li { @include pad0-right; }
-.romo-list-inline.romo-list-pad  > li { @include pad1-right; }
+.romo-list-inline.romo-list-pad  > li,
 .romo-list-inline.romo-list-pad1 > li { @include pad1-right; }
+.romo-list-inline.romo-list-pad0 > li { @include pad0-right; }
 .romo-list-inline.romo-list-pad2 > li { @include pad2-right; }
-.romo-list-inline.romo-list-pad3 > li { @include pad3-right; }
-.romo-list-inline.romo-list-pad4 > li { @include pad4-right; }
-.romo-list-inline.romo-list-pad5 > li { @include pad5-right; }
-.romo-list-inline.romo-list-pad6 > li { @include pad6-right; }
 
-.romo-list-inline.romo-list-pad0 > li:last-child,
 .romo-list-inline.romo-list-pad  > li:last-child,
 .romo-list-inline.romo-list-pad1 > li:last-child,
-.romo-list-inline.romo-list-pad2 > li:last-child,
-.romo-list-inline.romo-list-pad3 > li:last-child,
-.romo-list-inline.romo-list-pad4 > li:last-child,
-.romo-list-inline.romo-list-pad5 > li:last-child,
-.romo-list-inline.romo-list-pad6 > li:last-child { @include rm-pad-right; }
+.romo-list-inline.romo-list-pad0 > li:last-child,
+.romo-list-inline.romo-list-pad2 > li:last-child { @include rm-pad-right; }
 
-.romo-list-inline.romo-list-push0 > li { @include push0-right; }
-.romo-list-inline.romo-list-push  > li { @include push1-right; }
+.romo-list-inline.romo-list-push  > li,
 .romo-list-inline.romo-list-push1 > li { @include push1-right; }
+.romo-list-inline.romo-list-push0 > li { @include push0-right; }
 .romo-list-inline.romo-list-push2 > li { @include push2-right; }
-.romo-list-inline.romo-list-push3 > li { @include push3-right; }
-.romo-list-inline.romo-list-push4 > li { @include push4-right; }
-.romo-list-inline.romo-list-push5 > li { @include push5-right; }
-.romo-list-inline.romo-list-push6 > li { @include push6-right; }
 
-.romo-list-inline.romo-list-push0 > li:last-child,
 .romo-list-inline.romo-list-push  > li:last-child,
 .romo-list-inline.romo-list-push1 > li:last-child,
-.romo-list-inline.romo-list-push2 > li:last-child,
-.romo-list-inline.romo-list-push3 > li:last-child,
-.romo-list-inline.romo-list-push4 > li:last-child,
-.romo-list-inline.romo-list-push5 > li:last-child,
-.romo-list-inline.romo-list-push6 > li:last-child { @include rm-push-right; }
+.romo-list-inline.romo-list-push0 > li:last-child,
+.romo-list-inline.romo-list-push2 > li:last-child { @include rm-push-right; }
