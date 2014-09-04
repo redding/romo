@@ -35,18 +35,39 @@
     return elem;
   }
 
-  Romo.prototype.initReplaceWith = function(elem, data) {
+  Romo.prototype.initReplace = function(elem, data) {
     var replacementElem = $(data);
     elem.replaceWith(replacementElem);
     this.triggerInitUI(replacementElem);
     return replacementElem;
   }
 
+  Romo.prototype.initPrepend = function(elem, data) {
+    var prependedElem = $(data);
+    elem.prepend(prependedElem);
+    this.triggerInitUI(prependedElem);
+    return prependedElem;
+  }
+
   Romo.prototype.initAppend = function(elem, data) {
-    var appendElem = $(data);
-    elem.append(appendElem);
-    this.triggerInitUI(appendElem);
-    return appendElem;
+    var appendedElem = $(data);
+    elem.append(appendedElem);
+    this.triggerInitUI(appendedElem);
+    return appendedElem;
+  }
+
+  Romo.prototype.initBefore = function(elem, data) {
+    var insertedElem = $(data);
+    elem.before(insertedElem);
+    this.triggerInitUI(insertedElem);
+    return insertedElem;
+  }
+
+  Romo.prototype.initAfter = function(elem, data) {
+    var insertedElem = $(data);
+    elem.after(insertedElem);
+    this.triggerInitUI(insertedElem);
+    return insertedElem;
   }
 
   // page handling
