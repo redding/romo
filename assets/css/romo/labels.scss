@@ -22,12 +22,12 @@
 .romo-label.romo-label3 { @include font-size3; @include font-weight3; @include line-height3; @include label-pad3; }
 
 .romo-label-inline-small,
-.romo-label-inline0 { @include font-size0; @include font-weight0; @include line-height0; @include label-inline0; }
+.romo-label-inline0 { @include font-size0; @include font-weight0; @include label-inline0; }
 .romo-label-inline,
-.romo-label-inline1 { @include font-size1; @include font-weight1; @include line-height1; @include label-inline1; }
+.romo-label-inline1 { @include font-size1; @include font-weight1; @include label-inline1; }
 .romo-label-inline-large,
-.romo-label-inline2 { @include font-size2; @include font-weight2; @include line-height2; @include label-inline2; }
-.romo-label-inline3 { @include font-size3; @include font-weight3; @include line-height3; @include label-inline3; }
+.romo-label-inline2 { @include font-size2; @include font-weight2; @include label-inline2; }
+.romo-label-inline3 { @include font-size3; @include font-weight3; @include label-inline3; }
 
 .romo-label-block { display: block; width: 100%; }
 
