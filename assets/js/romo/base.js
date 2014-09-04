@@ -32,6 +32,21 @@
   Romo.prototype.initHtml = function(elem, data) {
     elem.html(data);
     this.triggerInitUI(elem);
+    return elem;
+  }
+
+  Romo.prototype.initReplaceWith = function(elem, data) {
+    var replacementElem = $(data);
+    elem.replaceWith(replacementElem);
+    this.triggerInitUI(replacementElem);
+    return replacementElem;
+  }
+
+  Romo.prototype.initAppend = function(elem, data) {
+    var appendElem = $(data);
+    elem.append(appendElem);
+    this.triggerInitUI(appendElem);
+    return appendElem;
   }
 
   // page handling
