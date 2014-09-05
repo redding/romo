@@ -10,7 +10,9 @@ var RomoTooltip = function(element) {
   this.popupElem.appendTo('body');
   this.doSetPopupZIndex(this.elem);
   this.arrowElem = this.popupElem.find('> .romo-tooltip-arrow');
-  this.bodyElem  = this.popupElem.find('> .romo-tooltip-body');
+  this.bodyElem = this.popupElem.find('> .romo-tooltip-body');
+  this.romoInvoke = this.elem.romoInvoke()[0];
+  this.romoInvoke.doUnBindInvoke(); // disable auto invoke on click
 
   this.hoverState = 'out';
   this.delayEnter = 0;
@@ -35,7 +37,41 @@ var RomoTooltip = function(element) {
       e.stopPropagation();
     }
   })
-  this.bodyElem.addClass(this.elem.data('romo-tooltip-style-class'));
+
+  if (this.elem.data('romo-tooltip-style-class') !== undefined) {
+    this.bodyElem.addClass(this.elem.data('romo-tooltip-style-class'));
+  }
+  this.contentData = this.elem.data('romo-tooltip-content');
+  this.bodyElem.html(this.contentData || '');
+
+  this.elem.on('mouseenter', $.proxy(this.onToggleEnter, this));
+  this.elem.on('mouseleave', $.proxy(this.onToggleLeave, this));
+  this.elem.on('tooltip:triggerPopupOpen', $.proxy(this.onPopupOpen, this));
+  this.elem.on('tooltip:triggerPopupClose', $.proxy(this.onPopupClose, this));
+  this.elem.on('invoke:loadStart', $.proxy(function(e, invoke) {
+    this.doLoadBodyStart();
+  }, this));
+  this.elem.on('invoke:loadSuccess', $.proxy(function(e, data, invoke) {
+    this.doLoadBodySuccess(data);
+  }, this));
+  this.elem.on('invoke:loadError', $.proxy(function(e, xhr, invoke) {
+    this.doLoadBodyError(xhr);
+  }, this));
+  $(window).on('resize', $.proxy(this.onResizeWindow, this))
+
+  this.doInit();
+  this.doInitBody();
+
+  this.elem.trigger('tooltip:ready', [this]);
+}
+
+RomoTooltip.prototype.doInit = function() {
+  // override as needed
+}
+
+RomoTooltip.prototype.doInitBody = function() {
+  this.doResetBody();
+
   this.bodyElem.css({
     'min-width':  this.elem.data('romo-tooltip-min-width'),
     'max-width':  this.elem.data('romo-tooltip-max-width'),
@@ -44,21 +80,35 @@ var RomoTooltip = function(element) {
     'max-height': this.elem.data('romo-tooltip-max-height'),
     'height':     this.elem.data('romo-tooltip-height')
   });
-  this.bodyElem.html(this.elem.data('romo-tooltip-content') || '');
-
-  // TODO: tooltip-href handling
-  this.elem.on('mouseenter', $.proxy(this.onToggleEnter, this));
-  this.elem.on('mouseleave', $.proxy(this.onToggleLeave, this));
-  this.elem.on('tooltip:triggerPopupOpen', $.proxy(this.onPopupOpen, this));
-  this.elem.on('tooltip:triggerPopupClose', $.proxy(this.onPopupClose, this));
-  $(window).on('resize', $.proxy(this.onResizeWindow, this))
-
-  this.doInit();
-  this.elem.trigger('tooltip:ready', [this]);
 }
 
-RomoTooltip.prototype.doInit = function() {
-  // override as needed
+RomoTooltip.prototype.doResetBody = function() {
+  this.bodyElem.css({
+    'min-width':  '',
+    'max-width':  '',
+    'width':      '',
+    'min-height': '',
+    'max-height': '',
+    'height':     '',
+  });
+}
+
+RomoTooltip.prototype.doLoadBodyStart = function() {
+  this.bodyElem.html('');
+  this.doInitBody();
+  this.doPlacePopupElem();
+  this.elem.trigger('tooltip:loadBodyStart', [this]);
+}
+
+RomoTooltip.prototype.doLoadBodySuccess = function(data) {
+  Romo.initHtml(this.bodyElem, data);
+  this.doInitBody();
+  this.doPlacePopupElem();
+  this.elem.trigger('tooltip:loadBodySuccess', [data, this]);
+}
+
+RomoTooltip.prototype.doLoadBodyError = function(xhr) {
+  this.elem.trigger('tooltip:loadBodyError', [xhr, this]);
 }
 
 RomoTooltip.prototype.onToggleEnter = function(e) {
@@ -110,6 +160,9 @@ RomoTooltip.prototype.onPopupOpen = function(e) {
 }
 
 RomoTooltip.prototype.doPopupOpen = function() {
+  if (this.contentData === undefined) {
+    this.romoInvoke.doInvoke();
+  }
   this.popupElem.addClass('romo-tooltip-open');
   this.doPlacePopupElem();
 

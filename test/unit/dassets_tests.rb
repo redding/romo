@@ -37,8 +37,8 @@ module Romo::Dassets
         'css/romo/select.css',
         'css/romo/datepicker.css',
         'css/romo/tooltip.css',
-        'css/romo/z_index.css',
         'css/romo/sortable.css',
+        'css/romo/z_index.css',
       ]
       assert_equal exp_css_sources, Dassets.config.combinations['css/romo.css']
 
