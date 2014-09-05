@@ -45,7 +45,11 @@ RomoSelect.prototype.doBindDropdown = function() {
   this.romoDropdown.elem.on('dropdown:popupOpen', $.proxy(this.onPopupOpen, this));
   this.romoDropdown.elem.on('dropdown:popupClose', $.proxy(this.onPopupClose, this));
   this.romoDropdown.elem.on('blur', $.proxy(function(e) {
-    this.romoDropdown.elem.trigger('dropdown:triggerPopupClose', []);
+    this.blurTimeoutId = setTimeout($.proxy(function() {
+      if (this.popupMouseDown !== true) {
+        this.romoDropdown.elem.trigger('dropdown:triggerPopupClose', []);
+      }
+    }, this), 10);
   }, this));
   this.romoDropdown.elem.on('keydown', $.proxy(this.onElemKeyDown, this));
   this.romoDropdown.popupElem.on('keydown', $.proxy(this.onElemKeyDown, this));
@@ -77,6 +81,9 @@ RomoSelect.prototype.doRefreshUI = function() {
 
   this.romoDropdown.bodyElem.find(this.itemSelector).on('hover', $.proxy(this.onItemHover, this));
   this.romoDropdown.bodyElem.find(this.itemSelector).on('click', $.proxy(this.onItemClick, this));
+
+  this.romoDropdown.popupElem.on('mousedown', $.proxy(this.onPopupMouseDown, this));
+  this.romoDropdown.popupElem.on('mouseup',   $.proxy(this.onPopupMouseUp, this));
 
   this.romoDropdown.elem.find('.romo-select-text').text(this.romoDropdown.bodyElem.find('LI.selected').text());
   this.elemWrapper.find('.romo-select-caret').css({'line-height': this.elemWrapper.css('height')});
@@ -118,15 +125,29 @@ RomoSelect.prototype.onPopupClose = function(e) {
 RomoSelect.prototype.onItemHover = function(e) {
   if (e !== undefined) {
     e.preventDefault();
+    e.stopPropagation();
   }
   this._highlightItem($(e.target));
 }
 
 RomoSelect.prototype.onItemClick = function(e) {
+  if (this.blurTimeoutId !== undefined) {
+    clearTimeout(this.blurTimeoutId);
+    this.blurTimeoutId = undefined;
+  }
   if (e !== undefined) {
     e.preventDefault();
+    e.stopPropagation();
   }
   this.doSelectHighlightedItem();
+}
+
+RomoSelect.prototype.onPopupMouseDown = function(e) {
+  this.popupMouseDown = true;
+}
+
+RomoSelect.prototype.onPopupMouseUp = function(e) {
+  this.popupMouseDown = false;
 }
 
 RomoSelect.prototype.onPopupOpenBodyKeyDown = function(e) {
