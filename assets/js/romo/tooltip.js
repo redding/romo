@@ -11,8 +11,6 @@ var RomoTooltip = function(element) {
   this.doSetPopupZIndex(this.elem);
   this.arrowElem = this.popupElem.find('> .romo-tooltip-arrow');
   this.bodyElem = this.popupElem.find('> .romo-tooltip-body');
-  this.romoInvoke = this.elem.romoInvoke()[0];
-  this.romoInvoke.doUnBindInvoke(); // disable auto invoke on click
 
   this.hoverState = 'out';
   this.delayEnter = 0;
@@ -48,19 +46,13 @@ var RomoTooltip = function(element) {
   this.elem.on('mouseleave', $.proxy(this.onToggleLeave, this));
   this.elem.on('tooltip:triggerPopupOpen', $.proxy(this.onPopupOpen, this));
   this.elem.on('tooltip:triggerPopupClose', $.proxy(this.onPopupClose, this));
-  this.elem.on('invoke:loadStart', $.proxy(function(e, invoke) {
-    this.doLoadBodyStart();
-  }, this));
-  this.elem.on('invoke:loadSuccess', $.proxy(function(e, data, invoke) {
-    this.doLoadBodySuccess(data);
-  }, this));
-  this.elem.on('invoke:loadError', $.proxy(function(e, xhr, invoke) {
-    this.doLoadBodyError(xhr);
-  }, this));
   $(window).on('resize', $.proxy(this.onResizeWindow, this))
 
   this.doInit();
   this.doInitBody();
+  if (this.contentData === undefined) {
+    this.doBindInvoke();
+  }
 
   this.elem.trigger('tooltip:ready', [this]);
 }
@@ -91,6 +83,21 @@ RomoTooltip.prototype.doResetBody = function() {
     'max-height': '',
     'height':     '',
   });
+}
+
+RomoTooltip.prototype.doBindInvoke = function() {
+  this.romoInvoke = this.elem.romoInvoke()[0];
+  this.romoInvoke.doUnBindInvoke(); // disable auto invoke on click
+
+  this.elem.on('invoke:loadStart', $.proxy(function(e, invoke) {
+    this.doLoadBodyStart();
+  }, this));
+  this.elem.on('invoke:loadSuccess', $.proxy(function(e, data, invoke) {
+    this.doLoadBodySuccess(data);
+  }, this));
+  this.elem.on('invoke:loadError', $.proxy(function(e, xhr, invoke) {
+    this.doLoadBodyError(xhr);
+  }, this));
 }
 
 RomoTooltip.prototype.doLoadBodyStart = function() {
@@ -160,7 +167,7 @@ RomoTooltip.prototype.onPopupOpen = function(e) {
 }
 
 RomoTooltip.prototype.doPopupOpen = function() {
-  if (this.contentData === undefined) {
+  if (this.romoInvoke !== undefined) {
     this.romoInvoke.doInvoke();
   }
   this.popupElem.addClass('romo-tooltip-open');
