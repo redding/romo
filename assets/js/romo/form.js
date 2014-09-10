@@ -108,21 +108,21 @@ RomoForm.prototype._doGetSubmit = function() {
     }
 
   } else {
-    this._doAjaxSubmit(data);
+    this._doAjaxSubmit(data, true);
   }
 }
 
 RomoForm.prototype._doNonGetSubmit = function() {
-  this._doAjaxSubmit(this._getFormData());
+  this._doAjaxSubmit(this._getFormData(), false);
 }
 
-RomoForm.prototype._doAjaxSubmit = function(data) {
+RomoForm.prototype._doAjaxSubmit = function(data, process) {
   $.ajax({
     url:         this.elem.attr('action'),
     type:        this.elem.attr('method'),
     dataType:    this._getXhrDataType(),
     data:        data,
-    processData: false,
+    processData: process,
     contentType: false,
     success:     $.proxy(this.onSubmitSuccess, this),
     error:       $.proxy(this.onSubmitError, this)
