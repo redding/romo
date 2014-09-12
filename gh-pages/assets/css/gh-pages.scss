@@ -1,0 +1,109 @@
+@import 'css/romo/vars';
+@import 'css/romo/mixins';
+
+/* vars */
+
+$contentWidth: 1170px;
+
+$navBarHeight: 45px;
+$navBarZIndex: 1300; /* reserved for app use by Romo, (below modals, above everything else) */
+
+$navBackground: #222;
+$navColor:      #ccc;
+$navColorHover: #fff;
+
+
+/* Web Layout */
+
+html,
+body {
+  @include bg-alt;
+  overflow-y: scroll;
+  font-weight: 300;
+}
+
+body { padding-top: $navBarHeight + $spacingSize1 + 2px; }
+
+/* Nav Bar */
+
+#navBar {
+  position: fixed; top: 0; left: 0;
+  display: block;
+  width: 100%;
+  @include clearfix;
+  background-color: $navBackground;
+  font-weight: 300;
+
+  a {
+    display: block;
+    color: $navColor;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      outline: 0;
+      text-decoration: none;
+      color: $navColorHover;
+    }
+  }
+
+  ul { @include list-unstyled; @include clearfix; }
+  li {
+    float: left;
+    @include pad1-left;
+    @include pad1-right;
+    color: $navColor;
+    cursor: default;
+
+    display: block;
+    vertical-align: middle;
+    line-height: $navBarHeight;
+    > * {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: $navBarHeight;
+    }
+  }
+
+  .logo img {
+    height: $navBarHeight - (2 * $spacingSize1);
+    margin-top: -4px;
+  }
+}
+#navBar   { z-index: $navBarZIndex; }
+#navBar * { z-index: inherit; }
+
+/* Content */
+
+#navBar ul,
+#content {
+  width: $contentWidth;
+  margin: 0 auto;
+}
+
+#content {
+  @include pad1;
+  @include bg-base;
+}
+
+/* Code Ray */
+
+code,
+.CodeRay .code pre {
+  font-family: Monaco, Consolas,"Liberation Mono",Menlo,Courier,monospace;
+  color: #333333;
+}
+
+code {
+  font-size: 12px;
+  line-height: 19px;
+}
+.CodeRay .code pre {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+ul, ol {
+  margin-bottom: 10px;
+  padding-left: 30px;
+}

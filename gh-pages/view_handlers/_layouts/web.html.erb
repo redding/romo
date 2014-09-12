@@ -2,7 +2,7 @@
 <html lang="en" xml:lang="en">
 <head>
   <title><%= view.layout_page_title %></title>
-  <link rel="icon" type="image/png" href="/favicon.png"></link>
+  <link rel="icon" type="image/png" href="<%= url_for(Dassets['img/romo-favicon-rocket.png'].href) %>"></link>
   <% view.stylesheets.each do |style| %>
     <link href="<%= url_for(Dassets[style].href) %>" type="text/css" rel="stylesheet" />
   <% end %>
@@ -11,7 +11,17 @@
   <% end %>
 </head>
 <body>
-  <div>
+  <div id="navBar">
+    <ul>
+      <li class="logo">
+        <a href="/">
+          <img src="<%= url_for(Dassets['img/romo-logo.png'].href) %>" alt="Romo" />
+        </a>
+      </li>
+      <li><a href="/css">CSS</a></li>
+    </ul>
+  </div>
+  <div id="content">
     <%= yield %>
   </div>
 </body>

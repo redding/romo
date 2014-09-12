@@ -62,7 +62,8 @@ class RomoGHPages
         s.engine 'erb',  Dassets::Erb::Engine
         s.engine 'scss', Dassets::Sass::Engine, {
           :syntax => 'scss',
-          :output_style => 'compressed'
+          :output_style => 'compressed',
+          :load_paths => [Romo.gem_assets_path]
         }
       end
 
