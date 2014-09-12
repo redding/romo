@@ -1,8 +1,7 @@
 require 'view_handlers/_layouts/docs'
 
 module ViewHandlers; end
-class ViewHandlers::BaseCSS; end
-class ViewHandlers::BaseCSS
+module ViewHandlers::CSS
 
   class Images
     include ViewHandlers::Layouts::Docs
@@ -11,7 +10,7 @@ class ViewHandlers::BaseCSS
     page_title{ 'Images | CSS' }
 
     def run!
-      render 'base-css/images.html'
+      render 'css/images.html'
     end
 
   end

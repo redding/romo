@@ -1,8 +1,7 @@
 require 'view_handlers/_layouts/docs'
 
 module ViewHandlers; end
-class ViewHandlers::BaseCSS; end
-class ViewHandlers::BaseCSS
+module ViewHandlers::CSS
 
   class Buttons
     include ViewHandlers::Layouts::Docs
@@ -10,7 +9,7 @@ class ViewHandlers::BaseCSS
     page_title{ 'Buttons CSS' }
 
     def run!
-      render 'base-css/buttons.html'
+      render 'css/buttons.html'
     end
 
   end

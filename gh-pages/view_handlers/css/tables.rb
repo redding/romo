@@ -1,8 +1,7 @@
 require 'view_handlers/_layouts/docs'
 
 module ViewHandlers; end
-class ViewHandlers::Scaffolding; end
-class ViewHandlers::Scaffolding
+module ViewHandlers::CSS
 
   class Tables
     include ViewHandlers::Layouts::Docs
@@ -10,7 +9,7 @@ class ViewHandlers::Scaffolding
     page_title{ 'Scaffolding: Tables' }
 
     def run!
-      render 'scaffolding/tables.html'
+      render 'css/tables.html'
     end
 
   end

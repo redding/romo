@@ -1,16 +1,15 @@
 require 'view_handlers/_layouts/docs'
 
 module ViewHandlers; end
-class ViewHandlers::BaseCSS; end
-class ViewHandlers::BaseCSS
+module ViewHandlers::CSS
 
-  class Tabs
+  class Labels
     include ViewHandlers::Layouts::Docs
 
-    page_title{ 'Tabs CSS' }
+    page_title{ 'Labels CSS' }
 
     def run!
-      render 'base-css/tabs.html'
+      render 'css/labels.html'
     end
 
   end

@@ -1,8 +1,7 @@
 require 'view_handlers/_layouts/docs'
 
 module ViewHandlers; end
-class ViewHandlers::Scaffolding; end
-class ViewHandlers::Scaffolding
+module ViewHandlers::CSS
 
   class GridTable
     include ViewHandlers::Layouts::Docs
@@ -10,7 +9,7 @@ class ViewHandlers::Scaffolding
     page_title{ 'Grid Table | CSS' }
 
     def run!
-      render 'scaffolding/grid_table.html'
+      render 'css/grid_table.html'
     end
 
   end
