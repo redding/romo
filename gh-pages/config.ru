@@ -47,14 +47,7 @@ class RomoGHPages
   get :css_tables,      'CSS::Tables'
   get :css_grid_tables, 'CSS::GridTable'
 
-  # Testing
-  url :test_index,    '/test/index.html'
-  url :test_kramdown, '/test/kramdown.html'
-
-  get :test_index,    'Test::Index'
-  get :test_kramdown, 'Test::Kramdown'
-
-  # General stuff
+  # General
   get '/index.html', 'Index'
 
   init do
