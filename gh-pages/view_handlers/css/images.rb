@@ -7,7 +7,7 @@ module ViewHandlers::CSS
     include ViewHandlers::Layouts::Docs
 
     script 'js/holder.js'
-    page_title{ 'Images | CSS' }
+    page_title{ 'Images' }
 
     def run!
       render 'css/images.html'

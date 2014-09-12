@@ -1,6 +1,6 @@
 ## Introduction
 
-Grid systems create page layouts through a series of rows and columns:
+Grids create page layouts through a series of rows and columns:
 
 * Use rows (`.romo-row`) to create horizontal groups of cells (`.romo-span*`).
 * Content should be placed within cells, and only cells may be immediate children of rows.

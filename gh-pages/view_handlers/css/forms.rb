@@ -6,7 +6,7 @@ module ViewHandlers::CSS
   class Forms
     include ViewHandlers::Layouts::Docs
 
-    page_title{ 'Forms | CSS' }
+    page_title{ 'Forms' }
 
     def run!
       render 'css/forms.html'

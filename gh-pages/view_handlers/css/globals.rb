@@ -6,7 +6,7 @@ module ViewHandlers::CSS
   class Globals
     include ViewHandlers::Layouts::Docs
 
-    page_title{ 'Base CSS: Globals' }
+    page_title{ 'Globals' }
 
     def run!
       render 'css/globals.html'

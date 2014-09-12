@@ -6,7 +6,7 @@ module ViewHandlers::CSS
   class Typography
     include ViewHandlers::Layouts::Docs
 
-    page_title{ 'Base CSS: Typography' }
+    page_title{ 'Typography' }
 
     def run!
       render 'css/typography.html'

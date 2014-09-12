@@ -6,10 +6,10 @@ module ViewHandlers::CSS
   class Grid
     include ViewHandlers::Layouts::Docs
 
-    page_title{ 'Scaffolding: Grid' }
+    page_title{ 'Grids' }
 
     def run!
-      render 'css/grid.html'
+      render 'css/grids.html'
     end
 
   end

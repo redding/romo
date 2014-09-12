@@ -6,7 +6,7 @@ module ViewHandlers::CSS
   class Buttons
     include ViewHandlers::Layouts::Docs
 
-    page_title{ 'Buttons CSS' }
+    page_title{ 'Buttons' }
 
     def run!
       render 'css/buttons.html'

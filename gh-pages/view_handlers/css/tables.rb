@@ -6,7 +6,7 @@ module ViewHandlers::CSS
   class Tables
     include ViewHandlers::Layouts::Docs
 
-    page_title{ 'Scaffolding: Tables' }
+    page_title{ 'Tables' }
 
     def run!
       render 'css/tables.html'

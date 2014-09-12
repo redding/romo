@@ -6,7 +6,7 @@ module ViewHandlers::CSS
   class Helpers
     include ViewHandlers::Layouts::Docs
 
-    page_title{ 'Scaffolding: Helper Classes' }
+    page_title{ 'Helpers' }
 
     def run!
       render 'css/helpers.html'

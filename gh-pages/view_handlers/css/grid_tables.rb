@@ -6,10 +6,10 @@ module ViewHandlers::CSS
   class GridTable
     include ViewHandlers::Layouts::Docs
 
-    page_title{ 'Grid Table | CSS' }
+    page_title{ 'Grid-Tables' }
 
     def run!
-      render 'css/grid_table.html'
+      render 'css/grid_tables.html'
     end
 
   end

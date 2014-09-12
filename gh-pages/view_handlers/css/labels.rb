@@ -6,7 +6,7 @@ module ViewHandlers::CSS
   class Labels
     include ViewHandlers::Layouts::Docs
 
-    page_title{ 'Labels CSS' }
+    page_title{ 'Labels' }
 
     def run!
       render 'css/labels.html'

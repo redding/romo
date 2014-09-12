@@ -6,7 +6,7 @@ module ViewHandlers::CSS
   class Lists
     include ViewHandlers::Layouts::Docs
 
-    page_title{ 'CSS: Lists' }
+    page_title{ 'Lists' }
 
     def run!
       render 'css/lists.html'
