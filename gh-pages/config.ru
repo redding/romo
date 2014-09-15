@@ -14,8 +14,7 @@ require 'kramdown'
 require 'romo'
 require 'romo/dassets'
 
-class RomoGHPages
-  include Deas::Server
+RomoDocsRouter = Deas::Router.new do
 
   view_handler_ns 'ViewHandlers'
   base_url "/pages/teaminsight/romo"
@@ -50,6 +49,13 @@ class RomoGHPages
   # General
   get '/index.html', 'Index'
 
+end
+
+class RomoDocs
+  include Deas::Server
+
+  router RomoDocsRouter
+
   init do
     Romo::Dassets.configure!
 
@@ -76,6 +82,7 @@ class RomoGHPages
       c.combination "js/web.js", [
         "js/zepto-1-1-4-default-min.js",
         "js/romo.js",
+        "js/gh-pages.js"
       ]
     end
 
@@ -133,4 +140,4 @@ class RomoGHPages
 
 end
 
-run RomoGHPages.new
+run RomoDocs.new

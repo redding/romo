@@ -1,10 +1,10 @@
-require 'view_handlers/_layouts/docs'
+require 'view_handlers/_helpers/css_handler'
 
 module ViewHandlers; end
 module ViewHandlers::CSS
 
   class Labels
-    include ViewHandlers::Layouts::Docs
+    include ViewHandlers::Helpers::CSSHandler
 
     page_title{ 'Labels' }
 
