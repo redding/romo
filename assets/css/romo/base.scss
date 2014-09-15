@@ -428,6 +428,7 @@ h3 { @include text1; }
 }
 .romo-fixed    { position: fixed !important; }
 
+.romo-clearfix { @include clearfix; }
 .romo-pull-left,
 .romo-float-left  { float: left !important; }
 .romo-pull-right,
