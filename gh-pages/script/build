@@ -29,7 +29,7 @@ end
 puts "starting the local gh-pages server..."
 server_cmd = cmd("cd #{gh_pages_dir} && bundle exec rackup --host #{gh_pages_host} --port #{gh_pages_port} config.ru")
 server_cmd.start
-sleep(2)
+sleep(5)
 
 puts "\nbuilding the gh-pages static files to the tmp dir..."
 run!("mkdir -p #{tmp_dir}")
