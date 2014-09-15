@@ -47,7 +47,11 @@ RomoDocsRouter = Deas::Router.new do
   get :css_grid_tables, 'CSS::GridTable'
 
   # General
-  get '/index.html', 'Index'
+  url :index,    '/index.html'
+  url :css_show, '/css.html'
+
+  get :index,    'Index'
+  get :css_show, 'CSSShow'
 
 end
 

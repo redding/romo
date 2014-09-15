@@ -14,11 +14,11 @@
   <div id="navBar">
     <ul>
       <li class="logo">
-        <a href="/">
+        <a href="<%= RomoDocsRouter.url_for(:index) %>">
           <img src="<%= url_for(Dassets['img/romo-logo.png'].href) %>" alt="Romo" />
         </a>
       </li>
-      <li><a href="/css">CSS</a></li>
+      <li><a href="<%= RomoDocsRouter.url_for(:css_show) %>">CSS</a></li>
     </ul>
   </div>
   <div id="content">

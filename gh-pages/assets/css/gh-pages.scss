@@ -84,6 +84,7 @@ body { padding-top: $navBarHeight + $spacingSize1 + 2px; }
 #content {
   @include pad1;
   @include bg-base;
+  min-height: 600px;
 }
 
 /* Code Ray */
