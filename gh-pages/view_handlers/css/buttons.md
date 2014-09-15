@@ -2,7 +2,7 @@
 
 Button styles can be applied to anything with the `.romo-btn` class. However, typically you'll want to apply these to only `<a>` and `<button>` elements for the best rendering.
 
-<div class="romo-pad">
+<div>
   <button class="romo-btn romo-push0-bottom">Button</button>
   <a href="#" class="romo-btn romo-push0-bottom">Anchor</a>
   <input type="button" class="romo-btn romo-push0-bottom" value="Input-button" />
@@ -28,7 +28,7 @@ Button styles can be applied to anything with the `.romo-btn` class. However, ty
 
 Add `.active` to make any button appear pressed.
 
-<div class="romo-pad">
+<div>
   <button class="romo-btn">Default</button>
   <button class="romo-btn active">Active</button>
 </div>
@@ -42,7 +42,7 @@ Add `.active` to make any button appear pressed.
 
 Use numbered style classes to size up/down buttons.
 
-<div class="romo-pad">
+<div>
   <div class="romo-push0-bottom">
     <button class="romo-btn">.romo-btn</button>
     <button class="romo-btn romo-btn0">.romo-btn0</button>
@@ -86,7 +86,7 @@ Use numbered style classes to size up/down buttons.
 
 Use `.romo-btn-inline` to vertically align text with buttons.
 
-<div class="romo-pad">
+<div>
   <div class="romo-push0-bottom">
     <span class="romo-btn-inline0">.romo-btn-inline0</span>
     <button class="romo-btn romo-btn0">.romo-btn0</button>
@@ -138,7 +138,7 @@ Use `.romo-btn-inline` to vertically align text with buttons.
 
 Use `.romo-btn-block` to add blocking full-width buttons.
 
-<div class="romo-pad">
+<div>
   <button class="romo-btn romo-btn-block">Blocking full-width button</button>
 </div>
 
@@ -150,7 +150,7 @@ Use `.romo-btn-block` to add blocking full-width buttons.
 
 Use these as an alternative to the default styles and to add color emphasis to buttons.
 
-<div class="romo-push">
+<div>
   <table class="romo-table romo-table-border romo-table-striped romo-table-pad1">
     <thead>
       <tr>
@@ -243,7 +243,7 @@ Use these as an alternative to the default styles and to add color emphasis to b
 
 Group buttons together by wrapping them in `.romo-btn-group`.
 
-<div class="romo-pad">
+<div>
   <div class="romo-btn-group">
     <button class="romo-btn">Left</button>
     <button class="romo-btn">Middle</button>
@@ -261,7 +261,7 @@ Group buttons together by wrapping them in `.romo-btn-group`.
 
 Optionally with border radius.
 
-<div class="romo-pad">
+<div>
   <div class="romo-pad0-bottom">
     <div class="romo-btn-group romo-btn-group-border0-radius">
       <button class="romo-btn">...</button>
@@ -309,7 +309,7 @@ Optionally with border radius.
 
 With alternate buttons.
 
-<div class="romo-pad">
+<div>
   <div class="romo-btn-group romo-btn-group-border-radius">
     <a href="#" class="romo-btn romo-btn-link disabled"><< Prev</a>
     <strong class="romo-btn romo-btn-link romo-text-bold">Page 1</strong>
@@ -318,12 +318,10 @@ With alternate buttons.
 </div>
 
 ```html
-<div class="romo-pad">
-  <div class="romo-btn-group romo-btn-group-border-radius">
-    <a href="#" class="romo-btn romo-btn-link disabled"><< Prev</a>
-    <strong class="romo-btn romo-btn-link romo-text-bold">Page 1</strong>
-    <a href="#" class="romo-btn romo-btn-link">Next >></a>
-  </div>
+<div class="romo-btn-group romo-btn-group-border-radius">
+  <a href="#" class="romo-btn romo-btn-link disabled"><< Prev</a>
+  <strong class="romo-btn romo-btn-link romo-text-bold">Page 1</strong>
+  <a href="#" class="romo-btn romo-btn-link">Next >></a>
 </div>
 ```
 
@@ -331,7 +329,7 @@ With alternate buttons.
 
 Combine sets of button groups for more complex components.
 
-<div class="romo-pad">
+<div>
   <div class="romo-btn-group">
     <button class="romo-btn">0</button>
     <button class="romo-btn">1</button>
@@ -375,7 +373,7 @@ Make a group of buttons appear vertically stacked rather than horizontally by us
 
 **Note**: you should set a static width on vertical button group buttons so they always line up as expected regardless of their content.
 
-<div class="romo-pad">
+<div>
   <div class="romo-btn-group-vertical romo-align-top">
     <button class="romo-btn" style="width: 40px">1</button>
     <button class="romo-btn" style="width: 40px">2</button>
@@ -405,28 +403,26 @@ Make a group of buttons appear vertically stacked rather than horizontally by us
 
 Optionally with border radius.
 
-<div class="romo-pad">
-  <div class="romo-pad0-bottom">
-    <div class="romo-btn-group-vertical romo-btn-group-border0-radius">
-      <button class="romo-btn" style="width: 120px">...</button>
-      <button class="romo-btn" style="width: 120px">border0-radius</button>
-      <button class="romo-btn" style="width: 120px">...</button>
-    </div>
-    <div class="romo-btn-group-vertical romo-btn-group-border-radius">
-      <button class="romo-btn" style="width: 120px">...</button>
-      <button class="romo-btn" style="width: 120px">border-radius</button>
-      <button class="romo-btn" style="width: 120px">...</button>
-    </div>
-    <div class="romo-btn-group-vertical romo-btn-group-border1-radius">
-      <button class="romo-btn" style="width: 120px">...</button>
-      <button class="romo-btn" style="width: 120px">border1-radius</button>
-      <button class="romo-btn" style="width: 120px">...</button>
-    </div>
-    <div class="romo-btn-group-vertical romo-btn-group-border2-radius">
-      <button class="romo-btn" style="width: 120px">...</button>
-      <button class="romo-btn" style="width: 120px">border2-radius</button>
-      <button class="romo-btn" style="width: 120px">...</button>
-    </div>
+<div class="romo-pad0-bottom">
+  <div class="romo-btn-group-vertical romo-btn-group-border0-radius">
+    <button class="romo-btn" style="width: 120px">...</button>
+    <button class="romo-btn" style="width: 120px">border0-radius</button>
+    <button class="romo-btn" style="width: 120px">...</button>
+  </div>
+  <div class="romo-btn-group-vertical romo-btn-group-border-radius">
+    <button class="romo-btn" style="width: 120px">...</button>
+    <button class="romo-btn" style="width: 120px">border-radius</button>
+    <button class="romo-btn" style="width: 120px">...</button>
+  </div>
+  <div class="romo-btn-group-vertical romo-btn-group-border1-radius">
+    <button class="romo-btn" style="width: 120px">...</button>
+    <button class="romo-btn" style="width: 120px">border1-radius</button>
+    <button class="romo-btn" style="width: 120px">...</button>
+  </div>
+  <div class="romo-btn-group-vertical romo-btn-group-border2-radius">
+    <button class="romo-btn" style="width: 120px">...</button>
+    <button class="romo-btn" style="width: 120px">border2-radius</button>
+    <button class="romo-btn" style="width: 120px">...</button>
   </div>
 </div>
 
@@ -449,7 +445,7 @@ Optionally with border radius.
 
 Combine horizontal and vertical button groups to create grids of buttons.
 
-<div class="romo-pad">
+<div>
   <div class="romo-btn-group">
     <div class="romo-btn-group-vertical romo-align-top">
       <button class="romo-btn" style="width: 40px">7</button>
@@ -509,7 +505,7 @@ Combine horizontal and vertical button groups to create grids of buttons.
 
 Optionally with border radius.
 
-<div class="romo-pad">
+<div>
   <div class="romo-btn-group romo-btn-group-border2-radius">
     <div class="romo-btn-group-vertical romo-align-top">
       <button class="romo-btn" style="width: 40px">7</button>

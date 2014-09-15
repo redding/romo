@@ -2,7 +2,7 @@
 
 Individual form controls receive styling that results in stacked, left-aligned labels on top of form controls.
 
-<div class="romo-pad">
+<div>
   <form>
     <fieldset>
       <legend>Legend</legend>
@@ -78,7 +78,7 @@ Individual form controls receive styling that results in stacked, left-aligned l
 
 Add the `.romo-form` class to receive additional styling on the controls.  Add `.romo-{radio|checkbox}` to vertically align radio and checkbox labeled inputs.
 
-<div class="romo-pad">
+<div>
   <form class="romo-form">
     <fieldset>
       <legend>Legend</legend>
@@ -132,7 +132,7 @@ Add the `.romo-form` class to receive additional styling on the controls.  Add `
 
 Use numbered style classes to adjust input width.
 
-<div class="romo-pad">
+<div>
   <form class="romo-form">
     <label>.romo-input</label>
     <input class="romo-input" type="text" placeholder=".romo-input" />
@@ -172,7 +172,7 @@ Use numbered style classes to adjust input width.
 
 Or use `.romo-input-block` to add blocking full width inputs.
 
-<div class="romo-pad">
+<div>
   <form class="romo-form">
     <input class="romo-input-block romo-push-bottom" type="text" placeholder="Subject..." />
     <textarea class="romo-input-block" rows="5" placeholder="Body..."></textarea>
@@ -190,7 +190,7 @@ Or use `.romo-input-block` to add blocking full width inputs.
 
 Use `.romo-input-help` spans with color emphasis to show help text
 
-<div class="romo-pad">
+<div>
   <form class="romo-form">
     <label for="text3">Input name</label>
     <input id="text3" type="text" placeholder="Type something…" />

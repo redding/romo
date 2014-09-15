@@ -2,7 +2,7 @@
 
 For basic styling with horizontal dividers, add the base class `.romo-table`.
 
-<div class="romo-pad">
+<div>
   <table class="romo-table">
     <thead>
       <tr>
@@ -47,7 +47,7 @@ For basic styling with horizontal dividers, add the base class `.romo-table`.
 
 Add grid column size classes to set table cell widths.
 
-<div class="romo-pad">
+<div>
   <table class="romo-table">
     <thead>
       <tr>
@@ -117,7 +117,7 @@ Add grid column size classes to set table cell widths.
 
 Adds zebra-striping to any table row within the `<tbody>` via the `:nth-child` CSS selector.
 
-<div class="romo-pad">
+<div class="romo-push2-bottom">
   <table class="romo-table romo-table-striped">
     <thead>
       <tr>
@@ -150,7 +150,7 @@ Adds zebra-striping to any table row within the `<tbody>` via the `:nth-child` C
   </table>
 </div>
 
-<div class="romo-pad">
+<div>
   <table class="romo-table romo-table-striped romo-table-striped-alt">
     <thead>
       <tr>
@@ -197,7 +197,7 @@ Adds zebra-striping to any table row within the `<tbody>` via the `:nth-child` C
 
 Uses the alternate bg color for the table background.
 
-<div class="romo-pad">
+<div>
   <table class="romo-table romo-table-alt">
     <thead>
       <tr>
@@ -240,7 +240,7 @@ Uses the alternate bg color for the table background.
 
 Add color emphasis to rows.
 
-<div class="romo-pad">
+<div>
   <table class="romo-table">
     <thead>
       <tr>
@@ -307,7 +307,7 @@ Add color emphasis to rows.
 
 Add hover state to rows within a `<tbody>`.
 
-<div class="romo-pad">
+<div>
   <table class="romo-table romo-table-hover">
     <thead>
       <tr>
@@ -346,7 +346,7 @@ Add hover state to rows within a `<tbody>`.
 </table>
 ```
 
-<div class="romo-pad">
+<div>
   <table class="romo-table romo-table-hover romo-table-striped">
     <thead>
       <tr>
@@ -385,7 +385,7 @@ Add hover state to rows within a `<tbody>`.
 </table>
 ```
 
-<div class="romo-pad">
+<div class="romo-push2-bottom">
   <table class="romo-table romo-table-hover romo-table-alt">
     <thead>
       <tr>
@@ -418,7 +418,7 @@ Add hover state to rows within a `<tbody>`.
   </table>
 </div>
 
-<div class="romo-pad">
+<div>
   <table class="romo-table romo-table-hover romo-table-alt romo-table-striped">
     <thead>
       <tr>
@@ -457,7 +457,7 @@ Add hover state to rows within a `<tbody>`.
 </table>
 ```
 
-<div class="romo-pad">
+<div>
   <table class="romo-table romo-table-hover">
     <thead>
       <tr>
@@ -524,7 +524,7 @@ Add hover state to rows within a `<tbody>`.
 
 Adds sized borders to the table.
 
-<div class="romo-pad">
+<div class="romo-push2-bottom">
   <table class="romo-table romo-table-border">
     <thead>
       <tr>
@@ -560,7 +560,7 @@ Adds sized borders to the table.
   </table>
 </div>
 
-<div class="romo-pad">
+<div class="romo-push2-bottom">
   <table class="romo-table romo-table-border0">
     <thead>
       <tr>
@@ -596,7 +596,7 @@ Adds sized borders to the table.
   </table>
 </div>
 
-<div class="romo-pad">
+<div class="romo-push2-bottom">
   <table class="romo-table romo-table-border1">
     <thead>
       <tr>
@@ -632,7 +632,7 @@ Adds sized borders to the table.
   </table>
 </div>
 
-<div class="romo-pad">
+<div>
   <table class="romo-table romo-table-border2">
     <thead>
       <tr>
@@ -678,7 +678,7 @@ Adds sized borders to the table.
 
 Adds border color empasis to the entire table.
 
-<div class="romo-pad">
+<div class="romo-push2-bottom">
   <table class="romo-table romo-table-border6 romo-table-border-muted">
     <thead>
       <tr>
@@ -711,7 +711,7 @@ Adds border color empasis to the entire table.
   </table>
 </div>
 
-<div class="romo-pad">
+<div class="romo-push2-bottom">
   <table class="romo-table romo-table-border6 romo-table-border-warning">
     <thead>
       <tr>
@@ -744,7 +744,7 @@ Adds border color empasis to the entire table.
   </table>
 </div>
 
-<div class="romo-pad">
+<div class="romo-push2-bottom">
   <table class="romo-table romo-table-border6 romo-table-border-error">
     <thead>
       <tr>
@@ -777,7 +777,7 @@ Adds border color empasis to the entire table.
   </table>
 </div>
 
-<div class="romo-pad">
+<div class="romo-push2-bottom">
   <table class="romo-table romo-table-border6 romo-table-border-info">
     <thead>
       <tr>
@@ -810,7 +810,7 @@ Adds border color empasis to the entire table.
   </table>
 </div>
 
-<div class="romo-pad">
+<div class="romo-push2-bottom">
   <table class="romo-table romo-table-border6 romo-table-border-success">
     <thead>
       <tr>
@@ -843,7 +843,7 @@ Adds border color empasis to the entire table.
   </table>
 </div>
 
-<div class="romo-pad">
+<div>
   <table class="romo-table romo-table-border6 romo-table-border-inverse">
     <thead>
       <tr>
@@ -886,7 +886,7 @@ Adds border color empasis to the entire table.
 
 Uses the alternate border color for the table borders.
 
-<div class="romo-pad">
+<div>
   <table class="romo-table romo-table-border6 romo-table-alt romo-table-border-alt">
     <thead>
       <tr>
@@ -929,7 +929,7 @@ Uses the alternate border color for the table borders.
 
 Adds cell padding to every cell in the table
 
-<div class="romo-pad">
+<div>
   <table class="romo-table romo-table-border romo-table-pad0">
     <thead>
       <tr>
@@ -968,7 +968,7 @@ Adds cell padding to every cell in the table
 </table>
 ```
 
-<div class="romo-pad">
+<div>
   <table class="romo-table romo-table-border romo-table-pad">
     <thead>
       <tr>
@@ -1007,7 +1007,7 @@ Adds cell padding to every cell in the table
 </table>
 ```
 
-<div class="romo-pad">
+<div>
   <table class="romo-table romo-table-border romo-table-pad1">
     <thead>
       <tr>
@@ -1046,7 +1046,7 @@ Adds cell padding to every cell in the table
 </table>
 ```
 
-<div class="romo-pad">
+<div>
   <table class="romo-table romo-table-border romo-table-pad2">
     <thead>
       <tr>
@@ -1089,7 +1089,7 @@ Adds cell padding to every cell in the table
 
 Use any helper style classes in any combination on rows/cells.
 
-<div class="romo-pad">
+<div>
   <table class="romo-table romo-table-pad2">
     <thead>
       <tr>

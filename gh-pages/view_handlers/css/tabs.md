@@ -2,7 +2,7 @@
 
 Take a regular `<ul>` of links and add `.romo-tabs`.
 
-<div class="romo-pad">
+<div>
   <ul class="romo-tabs">
     <li><a href="#">Home</a></li>
     <li><a href="#">Profile</a></li>
@@ -12,9 +12,9 @@ Take a regular `<ul>` of links and add `.romo-tabs`.
 
 ```html
 <ul class="romo-tabs">
-  <li><a href="#">Home</a></li>
-  <li><a href="#">Profile</a></li>
-  <li><a href="#">Settings</a></li>
+  <li><a href="#">...</a></li>
+  <li><a href="#">...</a></li>
+  <li><a href="#">...</a></li>
 </ul>
 ```
 
@@ -22,7 +22,7 @@ Take a regular `<ul>` of links and add `.romo-tabs`.
 
 For any tab items, add `.active` to show the item as active.
 
-<div class="romo-pad">
+<div>
   <ul class="romo-tabs">
     <li class="active"><a href="#">Home</a></li>
     <li><a href="#">Profile</a></li>
@@ -42,7 +42,7 @@ For any tab items, add `.active` to show the item as active.
 
 For any tab items, add `.disabled` for **disabled link UI with no hover effects**.  Links remain clickable unless you remove the `href` attribute or implement custom JavaScript to prevent those clicks.
 
-<div class="romo-pad">
+<div>
   <ul class="romo-tabs">
     <li class="active"><a href="#">Home</a></li>
     <li><a href="#">Profile</a></li>
@@ -62,7 +62,7 @@ For any tab items, add `.disabled` for **disabled link UI with no hover effects*
 
 To align tab items, use the `.romo-tabs-pull-left` or `.romo-tabs-pull-right` classes.
 
-<div class="romo-pad">
+<div class="romo-push2-bottom">
   <ul class="romo-tabs romo-tabs-pull-left">
     <li class="active"><a href="#">Home</a></li>
     <li><a href="#">Profile</a></li>
@@ -70,7 +70,7 @@ To align tab items, use the `.romo-tabs-pull-left` or `.romo-tabs-pull-right` cl
   </ul>
 </div>
 
-<div class="romo-pad">
+<div>
   <ul class="romo-tabs romo-tabs-pull-right">
     <li class="active"><a href="#">Home</a></li>
     <li><a href="#">Profile</a></li>
@@ -87,7 +87,7 @@ To align tab items, use the `.romo-tabs-pull-left` or `.romo-tabs-pull-right` cl
 
 Use numbered style classes to size up/down tab items.
 
-<div class="romo-pad">
+<div>
   <ul class="romo-tabs romo-tabs-small romo-push0-bottom">
     <li class="active"><a href="#">romo-tabs-small</a></li>
     <li><a href="#">...</a></li>
@@ -139,7 +139,7 @@ Use numbered style classes to size up/down tab items.
 
 Tabs are horizontal by default.  Add `.romo-tabs-stacked` to make them appear vertically stacked.
 
-<div class="romo-pad">
+<div>
   <ul class="romo-tabs romo-tabs-stacked">
     <li><a href="#">Home</a></li>
     <li><a href="#">Profile</a></li>
@@ -149,15 +149,15 @@ Tabs are horizontal by default.  Add `.romo-tabs-stacked` to make them appear ve
 
 ```html
 <ul class="romo-tabs romo-tabs-stacked">
-  <li><a href="#">Home</a></li>
-  <li><a href="#">Profile</a></li>
-  <li><a href="#">Settings</a></li>
+  <li><a href="#">...</a></li>
+  <li><a href="#">...</a></li>
+  <li><a href="#">...</a></li>
 </ul>
 ```
 
 Use `.active` and `.disabled` just as you would on normal tabs.
 
-<div class="romo-pad">
+<div>
   <ul class="romo-tabs romo-tabs-stacked">
     <li class="active"><a href="#">Home</a></li>
     <li><a href="#">Profile</a></li>
@@ -177,12 +177,14 @@ Use `.active` and `.disabled` just as you would on normal tabs.
 
 You can mix in non link items into the tabs.
 
-<ul class="romo-tabs">
-  <li><button class="romo-btn romo-push0-right">A button</button></li>
-  <li class="active"><a href="#">Home</a></li>
-  <li><a href="#">Profile</a></li>
-  <li><a href="#">Settings</a></li>
-</ul>
+<div>
+  <ul class="romo-tabs">
+    <li><button class="romo-btn romo-push0-right">A button</button></li>
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">Profile</a></li>
+    <li><a href="#">Settings</a></li>
+  </ul>
+</div>
 
 ```html
 <ul class="romo-tabs">

@@ -29,7 +29,7 @@ All images have some basic styling that removes any border and auto scales down 
   </div>
 </div>
 
-<div class="romo-pad">
+<div>
   <p>"<a href="http://commons.wikimedia.org/wiki/File:F16A_FAP_linksup_KC-10.jpg#mediaviewer/File:F16A_FAP_linksup_KC-10.jpg">F16A FAP linksup KC-10</a>". Licensed under Public domain via <a href="//commons.wikimedia.org/wiki/">Wikimedia Commons</a>.</p>
 </div>
 
@@ -39,12 +39,12 @@ All images have some basic styling that removes any border and auto scales down 
 
 Add these classes to an `<img>` element to add optional styling.
 
-<div class="romo-pad">
+<div class="romo-push0-bottom">
   <img data-src="holder.js/24x24" class="romo-img-rounded">
   <img data-src="holder.js/24x24" class="romo-img-circle">
   <img data-src="holder.js/24x24" class="romo-img-card">
 </div>
-<div class="romo-pad">
+<div>
   <img data-src="holder.js/120x120" class="romo-img-rounded">
   <img data-src="holder.js/120x120" class="romo-img-circle">
   <img data-src="holder.js/120x120" class="romo-img-card">
@@ -60,7 +60,7 @@ Add these classes to an `<img>` element to add optional styling.
 
 Add these classes to adjust height.
 
-<div class="romo-pad">
+<div>
   <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
        class="romo-img0">
   <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
@@ -80,63 +80,63 @@ Add these classes to adjust height.
 
 Use to align with inline text.
 
-<div class="romo-pad">
+<div class="romo-push0-bottom">
   <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
        class="romo-img0 romo-align-middle">
   <span class="romo-text0 romo-align-middle">Img0, text0, middle</span>
 </div>
-<div class="romo-pad">
+<div class="romo-push0-bottom">
   <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
        class="romo-img1 romo-align-middle">
   <span class="romo-text1 romo-align-middle">Img1, text1, middle</span>
 </div>
-<div class="romo-pad">
+<div class="romo-push0-bottom">
   <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
        class="romo-img2 romo-align-middle">
   <span class="romo-text2 romo-align-middle">Img2, text2, middle</span>
 </div>
-<div class="romo-pad">
+<div class="romo-push0-bottom">
   <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
        class="romo-img3 romo-align-middle">
   <span class="romo-text3 romo-align-middle">Img3, text3, middle</span>
 </div>
-<div class="romo-pad">
+<div class="romo-push0-bottom">
   <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
        class="romo-img0 romo-align-middle">
   <span class="romo-text3 romo-align-middle">Img0, text3, middle</span>
 </div>
-<div class="romo-pad">
+<div class="romo-push0-bottom">
   <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
        class="romo-img3 romo-align-middle">
   <span class="romo-text0 romo-align-middle">Img3, text0, middle</span>
 </div>
 
-<div class="romo-pad romo-rm-pad-bottom">
+<div>
   <p>"<a href="http://commons.wikimedia.org/wiki/File:F16A_FAP_linksup_KC-10.jpg#mediaviewer/File:F16A_FAP_linksup_KC-10.jpg">F16A FAP linksup KC-10</a>". Licensed under Public domain via <a href="//commons.wikimedia.org/wiki/">Wikimedia Commons</a>.</p>
 </div>
 
 ```html
-<div class="romo-pad">
+<div>
   <img class="romo-img0 romo-align-middle" src="...">
   <span class="romo-text0 romo-align-middle">Img0, text0, middle</span>
 </div>
-<div class="romo-pad">
+<div>
   <img class="romo-img1 romo-align-middle" src="...">
   <span class="romo-text1 romo-align-middle">Img1, text1, middle</span>
 </div>
-<div class="romo-pad">
+<div>
   <img class="romo-img2 romo-align-middle" src="...">
   <span class="romo-text2 romo-align-middle">Img2, text2, middle</span>
 </div>
-<div class="romo-pad">
+<div>
   <img class="romo-img3 romo-align-middle" src="...">
   <span class="romo-text3 romo-align-middle">Img3, text3, middle</span>
 </div>
-<div class="romo-pad">
+<div>
   <img class="romo-img0 romo-align-middle" src="...">
   <span class="romo-text3 romo-align-middle">Img0, text3, middle</span>
 </div>
-<div class="romo-pad">
+<div>
   <img class="romo-img3 romo-align-middle" src="...">
   <span class="romo-text0 romo-align-middle">Img3, text0, middle</span>
 </div>
