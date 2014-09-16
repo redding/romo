@@ -64,6 +64,7 @@ RomoDropdown.prototype.doInitBody = function() {
   if (this.contentElem.size() === 0) {
     this.contentElem = this.bodyElem;
   }
+  this.closeElem = this.popupElem.find('[data-romo-dropdown-close="true"]');
 
   this.contentElem.css({
     'min-height': this.elem.data('romo-dropdown-min-height'),
@@ -92,6 +93,9 @@ RomoDropdown.prototype.doInitBody = function() {
       'width':      this.elem.data('romo-dropdown-width')
     });
   }
+
+  this.closeElem.unbind('click');
+  this.closeElem.on('click', $.proxy(this.onPopupClose, this));
 }
 
 RomoDropdown.prototype.doResetBody = function() {
