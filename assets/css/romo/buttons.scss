@@ -73,21 +73,21 @@ input[type="button"].romo-btn-block,
 .romo-btn-block { display: block; width: 100%; }
 
 .romo-btn.romo-btn-alt,
-a.romo-btn.romo-btn-alt     { @include button-bg($btnAltBackground,     $btnAltBackgroundHighlight,     $btnAltColor, !important); }
+a.romo-btn.romo-btn-alt     { @include button-bg($btnAltBackground,     $btnAltBackgroundHighlight,     $btnAltColor); }
 .romo-btn.romo-btn-primary,
-a.romo-btn.romo-btn-primary { @include button-bg($btnPrimaryBackground, $btnPrimaryBackgroundHighlight, $btnPrimaryColor, !important); }
+a.romo-btn.romo-btn-primary { @include button-bg($btnPrimaryBackground, $btnPrimaryBackgroundHighlight, $btnPrimaryColor); }
 .romo-btn.romo-btn-warning,
-a.romo-btn.romo-btn-warning { @include button-bg($btnWarningBackground, $btnWarningBackgroundHighlight, $btnWarningColor, !important); }
+a.romo-btn.romo-btn-warning { @include button-bg($btnWarningBackground, $btnWarningBackgroundHighlight, $btnWarningColor); }
 .romo-btn.romo-btn-error,
 a.romo-btn.romo-btn-error,
 .romo-btn.romo-btn-danger,
-a.romo-btn.romo-btn-danger  { @include button-bg($btnDangerBackground,  $btnDangerBackgroundHighlight,  $btnDangerColor, !important); }
+a.romo-btn.romo-btn-danger  { @include button-bg($btnDangerBackground,  $btnDangerBackgroundHighlight,  $btnDangerColor); }
 .romo-btn.romo-btn-info,
-a.romo-btn.romo-btn-info    { @include button-bg($btnInfoBackground,    $btnInfoBackgroundHighlight,    $btnInfoColor, !important); }
+a.romo-btn.romo-btn-info    { @include button-bg($btnInfoBackground,    $btnInfoBackgroundHighlight,    $btnInfoColor); }
 .romo-btn.romo-btn-success,
-a.romo-btn.romo-btn-success { @include button-bg($btnSuccessBackground, $btnSuccessBackgroundHighlight, $btnSuccessColor, !important); }
+a.romo-btn.romo-btn-success { @include button-bg($btnSuccessBackground, $btnSuccessBackgroundHighlight, $btnSuccessColor); }
 .romo-btn.romo-btn-inverse,
-a.romo-btn.romo-btn-inverse { @include button-bg($btnInverseBackground, $btnInverseBackgroundHighlight, $btnInverseColor, !important); }
+a.romo-btn.romo-btn-inverse { @include button-bg($btnInverseBackground, $btnInverseBackgroundHighlight, $btnInverseColor); }
 
 .romo-btn.romo-btn-link,
 a.romo-btn.romo-btn-link,

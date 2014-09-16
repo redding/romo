@@ -219,9 +219,8 @@
 /* Buttons */
 /* ------- */
 
-@mixin button-bg($start, $end, $text, $shadow: 0 -1px 0 rgba(0,0,0,.25)) {
+@mixin button-bg($start, $end, $text) {
   color: $text;
-  text-shadow: $shadow;
   border-color: $end $end darken($end, 10%);
 
   background-color: mix($start, $end, 60%);
