@@ -84,6 +84,14 @@ RomoDatepicker.prototype.doBindDropdown = function() {
   this.romoDropdown.bodyElem.addClass('romo-datepicker-calendar');
   this.romoDropdown.elem.on('dropdown:popupOpen', $.proxy(this.onPopupOpen, this));
   this.romoDropdown.elem.on('dropdown:popupClose', $.proxy(this.onPopupClose, this));
+  this.romoDropdown.elem.on('blur', $.proxy(function(e) {
+    this.blurTimeoutId = setTimeout($.proxy(function() {
+      if (this.popupMouseDown !== true) {
+        this.romoDropdown.elem.trigger('dropdown:triggerPopupClose', []);
+      }
+    }, this), 10);
+  }, this));
+  this.romoDropdown.elem.on('keydown', $.proxy(this.onElemKeyDown, this));
 
   this.romoDropdown.elem.on('dropdown:toggle', $.proxy(function(e, dropdown) {
     this.elem.trigger('datepicker:dropdown:toggle', [dropdown, this]);
@@ -122,6 +130,9 @@ RomoDatepicker.prototype.doRefreshUI = function(date) {
 
   this.calTable.find(this.itemSelector).on('hover', $.proxy(this.onItemHover, this));
   this.calTable.find(this.itemSelector).on('click', $.proxy(this.onItemClick, this));
+
+  this.romoDropdown.popupElem.on('mousedown', $.proxy(this.onPopupMouseDown, this));
+  this.romoDropdown.popupElem.on('mouseup',   $.proxy(this.onPopupMouseUp, this));
 }
 
 RomoDatepicker.prototype.doRefreshToPrevMonth = function() {
@@ -167,11 +178,21 @@ RomoDatepicker.prototype.doSelectHighlightedItem = function() {
   }
 }
 
-RomoDatepicker.prototype.onIndicatorClick = function(e) {
-  if (this.elem.prop('disabled') === false) {
-    this.elem.focus();
-    this.elem.trigger('datepicker:triggerPopupOpen');
+RomoDatepicker.prototype.onElemKeyDown = function(e) {
+  if (this.elem.hasClass('disabled') === false) {
+    if (this.romoDropdown.popupElem.hasClass('romo-dropdown-open')) {
+      return true;
+    } else {
+      if(e.keyCode === 40 /* Down */ ) {
+        this.romoDropdown.doPopupOpen();
+        this.romoDropdown.popupElem.focus();
+        return false;
+      } else {
+        return true;
+      }
+    }
   }
+  return true;
 }
 
 RomoDatepicker.prototype.onPopupOpen = function(e) {
@@ -188,29 +209,63 @@ RomoDatepicker.prototype.onPopupClose = function(e) {
 RomoDatepicker.prototype.onItemHover = function(e) {
   if (e !== undefined) {
     e.preventDefault();
+    e.stopPropagation();
   }
   this._highlightItem($(e.target));
 }
 
-RomoDatepicker.prototype.onItemClick = function(e) {
+RomoDatepicker.prototype.onIndicatorClick = function(e) {
+  this._clearBlurTimeout();
   if (e !== undefined) {
     e.preventDefault();
+    e.stopPropagation();
+  }
+  if (this.elem.prop('disabled') === false) {
+    this.elem.focus();
+    this.elem.trigger('datepicker:triggerPopupOpen');
+  }
+}
+
+RomoDatepicker.prototype.onItemClick = function(e) {
+  this._clearBlurTimeout();
+  if (e !== undefined) {
+    e.preventDefault();
+    e.stopPropagation();
   }
   this.doSelectHighlightedItem();
 }
 
 RomoDatepicker.prototype.onPrevClick = function(e) {
+  this._clearBlurTimeout();
   if (e !== undefined) {
     e.preventDefault();
+    e.stopPropagation();
   }
   this.doRefreshToPrevMonth();
 }
 
 RomoDatepicker.prototype.onNextClick = function(e) {
+  this._clearBlurTimeout();
   if (e !== undefined) {
     e.preventDefault();
+    e.stopPropagation();
   }
   this.doRefreshToNextMonth();
+}
+
+RomoDatepicker.prototype.onPopupMouseDown = function(e) {
+  this.popupMouseDown = true;
+}
+
+RomoDatepicker.prototype.onPopupMouseUp = function(e) {
+  this.popupMouseDown = false;
+}
+
+RomoDatepicker.prototype._clearBlurTimeout = function() {
+  if (this.blurTimeoutId !== undefined) {
+    clearTimeout(this.blurTimeoutId);
+    this.blurTimeoutId = undefined;
+  }
 }
 
 RomoDatepicker.prototype._refreshCalendar = function(date) {
