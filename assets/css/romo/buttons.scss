@@ -47,17 +47,17 @@ button.romo-btn:focus {
 a.romo-btn.romo-btn-small,
 .romo-btn.romo-btn-small,
 a.romo-btn.romo-btn0,
-.romo-btn.romo-btn0 { @include font-size0; @include font-weight0; @include line-height0; @include button-pad0; }
+.romo-btn.romo-btn0 { @include font-size0; @include font-weight0; @include button-height0; @include button-pad0; }
 a.romo-btn,
 .romo-btn,
 a.romo-btn.romo-btn1,
-.romo-btn.romo-btn1 { @include font-size1; @include font-weight1; @include line-height1; @include button-pad1; }
+.romo-btn.romo-btn1 { @include font-size1; @include font-weight1; @include button-height1; @include button-pad1; }
 a.romo-btn.romo-btn-large,
 .romo-btn.romo-btn-large,
 a.romo-btn.romo-btn2,
-.romo-btn.romo-btn2 { @include font-size2; @include font-weight2; @include line-height2; @include button-pad2; }
+.romo-btn.romo-btn2 { @include font-size2; @include font-weight2; @include button-height2; @include button-pad2; }
 a.romo-btn.romo-btn3,
-.romo-btn.romo-btn3 { @include font-size3; @include font-weight3; @include line-height3; @include button-pad3; }
+.romo-btn.romo-btn3 { @include font-size3; @include font-weight3; @include button-height3; @include button-pad3; }
 
 .romo-btn-inline-small,
 .romo-btn-inline0 { @include font-size0; @include font-weight0; @include button-inline0; }

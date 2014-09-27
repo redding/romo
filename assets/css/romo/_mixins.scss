@@ -246,6 +246,16 @@
 @mixin button-pad2 { @include button-pad($lineHeight2); }
 @mixin button-pad3 { @include button-pad($lineHeight3); }
 
+@mixin button-height($lineHeight) {
+  height: ($lineHeight / 2) * 3; /* 30px */
+  line-height: $lineHeight;
+}
+
+@mixin button-height0 { @include button-height($lineHeight0); }
+@mixin button-height1 { @include button-height($lineHeight1); }
+@mixin button-height2 { @include button-height($lineHeight2); }
+@mixin button-height3 { @include button-height($lineHeight3); }
+
 @mixin button-inline($lineHeight) {
   line-height: ($lineHeight / 2) * 3; /* 30px */
   @include align-middle;
