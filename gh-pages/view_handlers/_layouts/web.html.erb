@@ -2,12 +2,12 @@
 <html lang="en" xml:lang="en">
 <head>
   <title><%= view.layout_page_title %></title>
-  <link rel="icon" type="image/png" href="<%= url_for(Dassets['img/romo-favicon-rocket.png'].href) %>"></link>
-  <% view.stylesheets.each do |style| %>
-    <link href="<%= url_for(Dassets[style].href) %>" type="text/css" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="<%= view.favicon_url %>"></link>
+  <% view.stylesheet_urls.each do |style_url| %>
+    <link href="<%= style_url %>" type="text/css" rel="stylesheet" />
   <% end %>
-  <% view.javascripts.each do |script| %>
-    <script src="<%= url_for(Dassets[script].href) %>" type="text/javascript"></script>
+  <% view.javascript_urls.each do |script_url| %>
+    <script src="<%= script_url %>" type="text/javascript"></script>
   <% end %>
 </head>
 <body>
@@ -15,7 +15,7 @@
     <ul>
       <li class="logo">
         <a href="<%= RomoDocsRouter.url_for(:index) %>">
-          <img src="<%= url_for(Dassets['img/romo-logo.png'].href) %>" alt="Romo" />
+          <img src="<%= view.logo_url %>" alt="Romo" />
         </a>
       </li>
       <li><a href="<%= RomoDocsRouter.url_for(:css_show) %>">CSS</a></li>

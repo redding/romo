@@ -6,7 +6,7 @@ gem 'rake'
 gem 'pry', "~> 0.9.0"
 
 gem 'rack'
-gem "deas",         "~> 0.25"
+gem "deas",         "~> 0.26"
 gem "dassets",      '~> 0.9'
 gem "dassets-sass", "~> 0.3"
 gem "dassets-erb",  "~> 0.1"
