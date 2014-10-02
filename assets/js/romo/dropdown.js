@@ -18,6 +18,7 @@ var RomoDropdown = function(element) {
   this.popupAlignment = positionData.alignment || 'left';
   this.popupElem.attr('data-romo-dropdown-position',  this.popupPosition);
   this.popupElem.attr('data-romo-dropdown-alignment', this.popupAlignment);
+  this.popupElem.attr('data-romo-dropdown-fixed', this.elem.data('romo-dropdown-fixed'));
   // don't propagate click events on the popup elem.  this prevents the popup
   // from closing when clicked (see body click event bind on popup open)
   this.popupElem.on('click', function(e) {

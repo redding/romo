@@ -16,6 +16,10 @@
   border-style: solid;
 }
 
+.romo-dropdown-popup[data-romo-dropdown-fixed="true"] {
+  position: fixed;
+}
+
 .romo-dropdown-popup,
 .romo-dropdown-body,
 .romo-dropdown-content {
