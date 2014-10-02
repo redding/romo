@@ -82,7 +82,8 @@ RomoDropdownForm.prototype.doBindForm = function() {
   }, this));
 
   var submitElement = this.dropdown.popupElem.find('[data-romo-form-submit="true"]')[0];
-  this.form = formElem.romoForm(submitElement)[0];
+  var indicatorElements = this.dropdown.popupElem.find('[data-romo-indicator-auto="true"]');
+  this.form = formElem.romoForm(submitElement, indicatorElements)[0];
 }
 
 Romo.onInitUI(function(e) {

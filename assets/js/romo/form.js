@@ -1,13 +1,15 @@
-$.fn.romoForm = function(givenSubmitElement) {
+$.fn.romoForm = function(givenSubmitElement, givenIndicatorElements) {
   return $.map(this, function(element) {
-    return new RomoForm(element, givenSubmitElement);
+    return new RomoForm(element, givenSubmitElement, givenIndicatorElements);
   });
 }
 
-var RomoForm = function(element, givenSubmitElement) {
+var RomoForm = function(element, givenSubmitElement, givenIndicatorElements) {
   this.elem = $(element);
   this.defaultSubmitElem = this.elem.find('button[type="submit"], input[type="submit"], [data-romo-form-submit="true"]');
   this.submitElem = $(givenSubmitElement || this.defaultSubmitElem);
+  this.defaultIndicatorElems = this.elem.find('[data-romo-indicator-auto="true"]');
+  this.indicatorElems = $(givenIndicatorElements || this.defaultIndicatorElems);
   this.changeSubmitElems = this.elem.find('[data-romo-form-change-submit="true"]');
 
   this.elem.on('keypress', $.proxy(this.onFormKeyPress, this));
@@ -67,7 +69,7 @@ RomoForm.prototype.onSubmitClick = function(e) {
 
 RomoForm.prototype.doSubmit = function() {
   this.elem.trigger('form:beforeSubmit', [this]);
-  this.submitElem.trigger('indicator:triggerStart');
+  this.indicatorElems.trigger('indicator:triggerStart');
 
   if (this.elem.attr('method').toUpperCase() === 'GET') {
     this._doGetSubmit();
