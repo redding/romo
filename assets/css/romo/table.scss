@@ -40,7 +40,7 @@
 .romo-table-border,
 .romo-table-border0,
 .romo-table-border1,
-.romo-table-border2 { border-collapse: separate; *border-collapse: collapse; }
+.romo-table-border2 { border-collapse: collapse; *border-collapse: collapse; }
 
 .romo-table-border,
 .romo-table-border1 { @include border1-top; @include border1-left; }
