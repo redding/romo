@@ -679,7 +679,7 @@ Adds sized borders to the table.
 Adds border color empasis to the entire table.
 
 <div class="romo-push2-bottom">
-  <table class="romo-table romo-table-border6 romo-table-border-muted">
+  <table class="romo-table romo-table-border2 romo-table-border-muted">
     <thead>
       <tr>
         <th>#</th>
@@ -712,7 +712,7 @@ Adds border color empasis to the entire table.
 </div>
 
 <div class="romo-push2-bottom">
-  <table class="romo-table romo-table-border6 romo-table-border-warning">
+  <table class="romo-table romo-table-border2 romo-table-border-warning">
     <thead>
       <tr>
         <th>#</th>
@@ -745,7 +745,7 @@ Adds border color empasis to the entire table.
 </div>
 
 <div class="romo-push2-bottom">
-  <table class="romo-table romo-table-border6 romo-table-border-error">
+  <table class="romo-table romo-table-border2 romo-table-border-error">
     <thead>
       <tr>
         <th>#</th>
@@ -778,7 +778,7 @@ Adds border color empasis to the entire table.
 </div>
 
 <div class="romo-push2-bottom">
-  <table class="romo-table romo-table-border6 romo-table-border-info">
+  <table class="romo-table romo-table-border2 romo-table-border-info">
     <thead>
       <tr>
         <th>#</th>
@@ -811,7 +811,7 @@ Adds border color empasis to the entire table.
 </div>
 
 <div class="romo-push2-bottom">
-  <table class="romo-table romo-table-border6 romo-table-border-success">
+  <table class="romo-table romo-table-border2 romo-table-border-success">
     <thead>
       <tr>
         <th>#</th>
@@ -844,7 +844,7 @@ Adds border color empasis to the entire table.
 </div>
 
 <div>
-  <table class="romo-table romo-table-border6 romo-table-border-inverse">
+  <table class="romo-table romo-table-border2 romo-table-border-inverse">
     <thead>
       <tr>
         <th>#</th>
@@ -877,7 +877,7 @@ Adds border color empasis to the entire table.
 </div>
 
 ```html
-<table class="romo-table romo-table-border6 romo-table-border-{muted|warning|error|info|success|inverse}">
+<table class="romo-table romo-table-border2 romo-table-border-{muted|warning|error|info|success|inverse}">
   ...
 </table>
 ```
@@ -887,7 +887,7 @@ Adds border color empasis to the entire table.
 Uses the alternate border color for the table borders.
 
 <div>
-  <table class="romo-table romo-table-border6 romo-table-alt romo-table-border-alt">
+  <table class="romo-table romo-table-border2 romo-table-alt romo-table-border-alt">
     <thead>
       <tr>
         <th>#</th>
@@ -920,7 +920,7 @@ Uses the alternate border color for the table borders.
 </div>
 
 ```html
-<table class="romo-table romo-table-border6 romo-table-alt romo-table-border-alt">
+<table class="romo-table romo-table-border2 romo-table-alt romo-table-border-alt">
   ...
 </table>
 ```
