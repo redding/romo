@@ -11,7 +11,7 @@
   @include border1-radius;
 
   white-space: normal;
-  text-align: left;
+  text-align: center;
 
   font-size: 11px;
   line-height: 1.4;
@@ -57,6 +57,10 @@
   top: 50%;
   margin-top: -6px;
 }
+
+.romo-tooltip-popup[data-romo-tooltip-alignment="left"]   { text-align: left; }
+.romo-tooltip-popup[data-romo-tooltip-alignment="center"] { text-align: center; }
+.romo-tooltip-popup[data-romo-tooltip-alignment="right"]  { text-align: right; }
 
 .romo-tooltip-body {
   padding: 6px 8px;
