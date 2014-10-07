@@ -141,3 +141,29 @@ Use to align with inline text.
   <span class="romo-text0 romo-align-middle">Img3, text0, middle</span>
 </div>
 ```
+
+Or use `.romo-img-inline` to manually vertically align text that isn't inline with an image.
+
+<div class="romo-row romo-push0-bottom">
+  <div class="romo-span romo-2-24 romo-align-right romo-pad0-right">
+    <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
+         class="romo-img3">
+  </div>
+  <div class="romo-span romo-3-24 romo-text1">
+    <span class="romo-img-inline3">Img3, text1</span>
+  </div>
+  <div class="romo-span romo-offset-19-24"></div>
+</div>
+
+```html
+<div class="romo-row romo-push0-bottom">
+  <div class="romo-span romo-2-24 romo-align-right romo-pad0-right">
+    <img src="http://upload.wikimedia.org/wikipedia/commons/1/15/F16A_FAP_linksup_KC-10.jpg"
+         class="romo-img3">
+  </div>
+  <div class="romo-span romo-3-24 romo-text1">
+    <span class="romo-img-inline3">Img3, text1</span>
+  </div>
+  <div class="romo-span romo-offset-19-24"></div>
+</div>
+```
