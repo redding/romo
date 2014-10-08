@@ -17,8 +17,8 @@
     this._addEventCallback('romo:initUI', callback);
   }
 
-  Romo.prototype.triggerInitUI = function(elem) {
-    elem.trigger('romo:initUI');
+  Romo.prototype.triggerInitUI = function(elems) {
+    elems.trigger('romo:initUI');
   }
 
   Romo.prototype.initUIElems = function(e, selector) {
@@ -30,9 +30,10 @@
   }
 
   Romo.prototype.initHtml = function(elem, data) {
-    elem.html(data);
-    this.triggerInitUI(elem);
-    return elem;
+    var htmlElems = $(data)
+    elem.html(htmlElems);
+    this.triggerInitUI(htmlElems);
+    return htmlElems;
   }
 
   Romo.prototype.initReplace = function(elem, data) {
