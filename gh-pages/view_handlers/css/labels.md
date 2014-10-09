@@ -56,55 +56,79 @@ Use numbered style classes to size up/down labels.
 </div>
 ```
 
-Use `.romo-label-inline` to vertically align text with labels.
+Use to align with inline text.
 
 <div>
   <div class="romo-push0-bottom">
-    <span class="romo-label-inline0">.romo-label-inline0</span>
+    <span class="romo-text0 romo-align-middle">.romo-text0</span>
     <span class="romo-label romo-label0">.romo-label0</span>
-    <span class="romo-label-inline-small">.romo-label-inline-small</span>
+    <span class="romo-text-small romo-align-middle">.romo-text-small</span>
     <span class="romo-label romo-label-small">.romo-label-small</span>
   </div>
   <div class="romo-push0-bottom">
-    <span class="romo-label-inline1">.romo-label-inline1</span>
+    <span class="romo-text1 romo-align-middle">.romo-text1</span>
     <span class="romo-label romo-label1">.romo-label1</span>
-    <span class="romo-label-inline">.romo-label-inline</span>
+    <span class="romo-text romo-align-middle">.romo-text</span>
     <span class="romo-label">.romo-label</span>
   </div>
   <div class="romo-push0-bottom">
-    <span class="romo-label-inline2">.romo-label-inline2</span>
+    <span class="romo-text2 romo-align-middle">.romo-text2</span>
     <span class="romo-label romo-label2">.romo-label2</span>
-    <span class="romo-label-inline-large">.romo-label-inline-large</span>
+    <span class="romo-text-large romo-align-middle">.romo-text-large</span>
     <span class="romo-label romo-label-large">.romo-label-large</span>
   </div>
   <div class="romo-push0-bottom">
-    <span class="romo-label-inline3">.romo-label-inline3</span>
+    <span class="romo-text3 romo-align-middle">.romo-text3</span>
     <span class="romo-label romo-label3">.romo-label3</span>
   </div>
 </div>
 
 ```html
 <div class="romo-push0-bottom">
-  <span class="romo-label-inline0">...</span>
-  <span class="romo-label romo-label0">...</span>
-  <span class="romo-label-inline-small">...</span>
-  <span class="romo-label romo-label-small">...</span>
+  <span class="romo-text0 romo-align-middle">.romo-text0</span>
+  <span class="romo-label romo-label0">.romo-label0</span>
+  <span class="romo-text-small romo-align-middle">.romo-text-small</span>
+  <span class="romo-label romo-label-small">.romo-label-small</span>
 </div>
 <div class="romo-push0-bottom">
-  <span class="romo-label-inline1">...</span>
-  <span class="romo-label romo-label1">...</span>
-  <span class="romo-label-inline">...</span>
-  <span class="romo-label">...</span>
+  <span class="romo-text1 romo-align-middle">.romo-text1</span>
+  <span class="romo-label romo-label1">.romo-label1</span>
+  <span class="romo-text romo-align-middle">.romo-text</span>
+  <span class="romo-label">.romo-label</span>
 </div>
 <div class="romo-push0-bottom">
-  <span class="romo-label-inline2">...</span>
-  <span class="romo-label romo-label2">...</span>
-  <span class="romo-label-inline-large">...</span>
-  <span class="romo-label romo-label-large">...</span>
+  <span class="romo-text2 romo-align-middle">.romo-text2</span>
+  <span class="romo-label romo-label2">.romo-label2</span>
+  <span class="romo-text-large romo-align-middle">.romo-text-large</span>
+  <span class="romo-label romo-label-large">.romo-label-large</span>
 </div>
 <div class="romo-push0-bottom">
-  <span class="romo-label-inline3">...</span>
-  <span class="romo-label romo-label3">...</span>
+  <span class="romo-text3 romo-align-middle">.romo-text3</span>
+  <span class="romo-label romo-label3">.romo-label3</span>
+</div>
+```
+
+Or use `.romo-label-inline` to manually vertically align text that isn't inline with an image.
+
+<div class="romo-row romo-push0-bottom">
+  <div class="romo-span romo-3-12 romo-align-right romo-pad0-right">
+    <span class="romo-label romo-label-large">.romo-label-large</span>
+  </div>
+  <div class="romo-span romo-2-12 romo-text-small">
+    <span class="romo-label-inline-large">.romo-text-small</span>
+  </div>
+  <div class="romo-span romo-offset-7-12"></div>
+</div>
+
+```html
+<div class="romo-row romo-push0-bottom">
+  <div class="romo-span romo-3-12 romo-align-right romo-pad0-right">
+    <span class="romo-label romo-label-large">.romo-label-large</span>
+  </div>
+  <div class="romo-span romo-2-12 romo-text-small">
+    <span class="romo-label-inline-large">.romo-text-small</span>
+  </div>
+  <div class="romo-span romo-offset-7-12"></div>
 </div>
 ```
 

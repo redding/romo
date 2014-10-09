@@ -106,10 +106,10 @@ a.romo-text {
 .romo-img2 { height: $imgHeight2 !important; }
 .romo-img3 { height: $imgHeight3 !important; }
 
-.romo-img-inline0 { line-height: $imgHeight0 !important; }
-.romo-img-inline1 { line-height: $imgHeight1 !important; }
-.romo-img-inline2 { line-height: $imgHeight2 !important; }
-.romo-img-inline3 { line-height: $imgHeight3 !important; }
+.romo-img-inline0 { line-height: $imgHeight0 !important; @include align-middle; }
+.romo-img-inline1 { line-height: $imgHeight1 !important; @include align-middle; }
+.romo-img-inline2 { line-height: $imgHeight2 !important; @include align-middle; }
+.romo-img-inline3 { line-height: $imgHeight3 !important; @include align-middle; }
 
 /* headings */
 

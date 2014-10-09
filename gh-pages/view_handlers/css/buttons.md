@@ -84,55 +84,79 @@ Use numbered style classes to size up/down buttons.
 </div>
 ```
 
-Use `.romo-btn-inline` to vertically align text with buttons.
+Use to align with inline text.
 
 <div>
   <div class="romo-push0-bottom">
-    <span class="romo-btn-inline0">.romo-btn-inline0</span>
+    <span class="romo-text0 romo-align-middle">.romo-text0</span>
     <button class="romo-btn romo-btn0">.romo-btn0</button>
-    <span class="romo-btn-inline-small">.romo-btn-inline-small</span>
+    <span class="romo-text-small romo-align-middle">.romo-text-small</span>
     <button class="romo-btn romo-btn-small">.romo-btn-small</button>
   </div>
   <div class="romo-push0-bottom">
-    <span class="romo-btn-inline1">.romo-btn-inline1</span>
+    <span class="romo-text1 romo-align-middle">.romo-text1</span>
     <button class="romo-btn romo-btn1">.romo-btn1</button>
-    <span class="romo-btn-inline">.romo-btn-inline</span>
+    <span class="romo-align-middle">.romo-text</span>
     <button class="romo-btn">.romo-btn</button>
   </div>
-  <div class="romo-push0-bottom">
-    <span class="romo-btn-inline2">.romo-btn-inline2</span>
+  <div class="romo-push0-bottom romo-text2">
+    <span class="romo-text2 romo-align-middle">.romo-text2</span>
     <button class="romo-btn romo-btn2">.romo-btn2</button>
-    <span class="romo-btn-inline-large">.romo-btn-inline-large</span>
+    <span class="romo-text-large romo-align-middle">.romo-text-large</span>
     <button class="romo-btn romo-btn-large">.romo-btn-large</button>
   </div>
-  <div class="romo-push0-bottom">
-    <span class="romo-btn-inline3">.romo-btn-inline3</span>
+  <div class="romo-push0-bottom romo-text3">
+    <span class="romo-text3 romo-align-middle">.romo-text3</span>
     <button class="romo-btn romo-btn3">.romo-btn3</button>
   </div>
 </div>
 
 ```html
 <div class="romo-push0-bottom">
-  <span class="romo-btn-inline0">.romo-btn-inline0</span>
+  <span class="romo-text0 romo-align-middle">.romo-text0</span>
   <button class="romo-btn romo-btn0">.romo-btn0</button>
-  <span class="romo-btn-inline-small">.romo-btn-inline-small</span>
+  <span class="romo-text-small romo-align-middle">.romo-text-small</span>
   <button class="romo-btn romo-btn-small">.romo-btn-small</button>
 </div>
 <div class="romo-push0-bottom">
-  <span class="romo-btn-inline1">.romo-btn-inline1</span>
+  <span class="romo-text1 romo-align-middle">.romo-text1</span>
   <button class="romo-btn romo-btn1">.romo-btn1</button>
-  <span class="romo-btn-inline">.romo-btn-inline</span>
+  <span class="romo-align-middle">.romo-text</span>
   <button class="romo-btn">.romo-btn</button>
 </div>
-<div class="romo-push0-bottom">
-  <span class="romo-btn-inline2">.romo-btn-inline2</span>
+<div class="romo-push0-bottom romo-text2">
+  <span class="romo-text2 romo-align-middle">.romo-text2</span>
   <button class="romo-btn romo-btn2">.romo-btn2</button>
-  <span class="romo-btn-inline-large">.romo-btn-inline-large</span>
+  <span class="romo-text-large romo-align-middle">.romo-text-large</span>
   <button class="romo-btn romo-btn-large">.romo-btn-large</button>
 </div>
-<div class="romo-push0-bottom">
-  <span class="romo-btn-inline3">.romo-btn-inline3</span>
+<div class="romo-push0-bottom romo-text3">
+  <span class="romo-text3 romo-align-middle">.romo-text3</span>
   <button class="romo-btn romo-btn3">.romo-btn3</button>
+</div>
+```
+
+Or use `.romo-btn-inline` to manually vertically align text that isn't inline with an image.
+
+<div class="romo-row romo-push0-bottom">
+  <div class="romo-span romo-1-6 romo-align-right romo-pad0-right">
+    <button class="romo-btn romo-btn-large">.romo-btn-large</button>
+  </div>
+  <div class="romo-span romo-1-6 romo-text-small">
+    <span class="romo-btn-inline-large">.romo-text-small</span>
+  </div>
+  <div class="romo-span romo-offset-4-6"></div>
+</div>
+
+```html
+<div class="romo-row romo-push0-bottom">
+  <div class="romo-span romo-1-6 romo-align-right romo-pad0-right">
+    <button class="romo-btn romo-btn-large">.romo-btn-large</button>
+  </div>
+  <div class="romo-span romo-1-6 romo-text-small">
+    <span class="romo-btn-inline-large">.romo-text-small</span>
+  </div>
+  <div class="romo-span romo-offset-4-6"></div>
 </div>
 ```
 
