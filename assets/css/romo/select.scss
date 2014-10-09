@@ -47,8 +47,8 @@
   padding: 4px 0;
   @include user-select(none);
 
-  background-color: $baseBackground;
-  color: $baseColor;
+  background-color: $inputBackground;
+  color: $inputColor;
 }
 
 .romo-select-option-list UL {
@@ -74,13 +74,13 @@
   line-height: $lineHeight0;
   height: $lineHeight0;
 
-  background-color: #$baseColor;
-  color: $baseBackground;
+  background-color: $inputColor;
+  color: $inputBackground;
 }
 
 .romo-select-option-list LI.romo-select-highlight {
-  background-color: #3c83c7;
-  color: #ffffff;
+  background-color: $inputHighlight;
+  color: $inputBackground;
 }
 
 .romo-select-option-list LI.disabled {
@@ -89,6 +89,6 @@
 
 .romo-select-option-list LI.disabled,
 .romo-select-option-list LI.disabled.romo-select-highlight {
-  background-color: $baseBackground;
+  background-color: $inputBackground;
   color: $disabledColor;
 }
