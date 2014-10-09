@@ -6,6 +6,7 @@
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   cursor: pointer;
   @include user-select(none);
+  position: relative;
 }
 
 .romo-select {
@@ -19,11 +20,13 @@
   padding-right: 6px;
 }
 
-.romo-select.disabled,
-.romo-select[disabled] { cursor: $notAllowedCursor; }
+.romo-select:focus{ @include input-focus; }
 
-.romo-select-wrapper {
-  position: relative;
+.romo-select:active,
+.romo-select.active {
+  background-image: none;
+  outline: 0;
+  @include box-shadow((inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)));
 }
 
 .romo-select-text {
@@ -43,6 +46,9 @@
   font-weight: normal;
   padding: 4px 0;
   @include user-select(none);
+
+  background-color: $baseBackground;
+  color: $baseColor;
 }
 
 .romo-select-option-list UL {
@@ -53,10 +59,6 @@
   overflow: hidden;
 }
 
-.romo-select-option-list LI.disabled { cursor: $notAllowedCursor; }
-
-/* variable */
-
 .romo-select-option-list LI {
   font-size: $baseFontSize;
   line-height: $baseLineHeight;
@@ -64,48 +66,29 @@
   padding: 0 $spacingSize1;
 }
 
+.romo-select-option-list UL.romo-select-optgroup LI {
+  padding-left: $spacingSize1 * 2;
+}
 .romo-select-option-list LI[data-romo-select-item="optgroup"] {
   font-size: $fontSize0;
   line-height: $lineHeight0;
   height: $lineHeight0;
-}
 
-.romo-select-option-list UL.romo-select-optgroup LI {
-  padding-left: $spacingSize1 * 2;
-}
-
-/* theme */
-
-.romo-select:focus{ @include input-focus; }
-
-.romo-select:active,
-.romo-select.active {
-  background-image: none;
-  outline: 0;
-  @include box-shadow((inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)));
-}
-
-.romo-select.disabled,
-.romo-select[disabled] {
-  color: $disabledColor;
-}
-.romo-select-option-list {
-  background-color: #ffffff;
-  color: #333333;
-}
-
-.romo-select-option-list LI[data-romo-select-item="optgroup"] {
-  background-color: #333333;
-  color: #ffffff;
-}
-
-.romo-select-option-list LI.disabled,
-.romo-select-option-list LI.disabled.romo-select-highlight {
-  background-color: #ffffff;
-  color: $disabledColor;
+  background-color: #$baseColor;
+  color: $baseBackground;
 }
 
 .romo-select-option-list LI.romo-select-highlight {
   background-color: #3c83c7;
   color: #ffffff;
+}
+
+.romo-select-option-list LI.disabled {
+  cursor: $notAllowedCursor;
+}
+
+.romo-select-option-list LI.disabled,
+.romo-select-option-list LI.disabled.romo-select-highlight {
+  background-color: $baseBackground;
+  color: $disabledColor;
 }
