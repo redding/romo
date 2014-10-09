@@ -240,7 +240,7 @@ RomoSelect.prototype._scrollBottomToItem = function(item) {
 }
 
 RomoSelect.prototype._buildDropdownElem = function() {
-  var romoDropdownElem = $('<div class="romo-select" tabindex="0"><span class="romo-select-text"></span></div>');
+  var romoDropdownElem = $('<div class="romo-select romo-btn" tabindex="0"><span class="romo-select-text"></span></div>');
 
   romoDropdownElem.attr('data-romo-dropdown-position', this.elem.data('romo-select-dropdown-position'));
   romoDropdownElem.attr('data-romo-dropdown-style-class', this.elem.data('romo-select-dropdown-style-class'));

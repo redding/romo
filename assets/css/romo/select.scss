@@ -2,10 +2,6 @@
 @import 'css/romo/mixins';
 
 .romo-select-wrapper {
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 20px;
-
   text-align: left;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   cursor: pointer;
@@ -17,11 +13,10 @@
   *display: inline;
 
   min-width: 50px;
-  padding: 4px 6px;
-  border-width: 1px;
-  border-style: solid;
-  @include border-box;
-
+  font-weight: normal;
+  text-align: left;
+  padding-left: 6px;
+  padding-right: 6px;
 }
 
 .romo-select.disabled,
@@ -29,16 +24,13 @@
 
 .romo-select-wrapper {
   position: relative;
-  @include border-box;
 }
 
 .romo-select-text {
-  vertical-align: middle;
   white-space: nowrap;
   overflow: hidden;
   display: inline-block;
   width: 100%;
-  @include border-box;
 }
 .romo-select-caret {
   position: absolute;
@@ -66,76 +58,37 @@
 /* variable */
 
 .romo-select-option-list LI {
-  font-size: 14px;
-  line-height: 20px;
-  height: 20px;
-  padding: 0 10px;
+  font-size: $baseFontSize;
+  line-height: $baseLineHeight;
+  height: $baseLineHeight;
+  padding: 0 $spacingSize1;
 }
 
 .romo-select-option-list LI[data-romo-select-item="optgroup"] {
-  font-size: 12px;
-  line-height: 16px;
-  height: 16px;
+  font-size: $fontSize0;
+  line-height: $lineHeight0;
+  height: $lineHeight0;
 }
 
 .romo-select-option-list UL.romo-select-optgroup LI {
-  padding-left: 20px;
+  padding-left: $spacingSize1 * 2;
 }
 
 /* theme */
-
-.romo-select-wrapper {
-  color: #333333;
-
-  background-color: #f5f5f5;
-  *background-color: #e6e6e6;
-  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
-  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
-  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
-  background-repeat: repeat-x;
-
-  border-color: #cccccc;
-  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  border-bottom-color: #b3b3b3;
-}
-
-.romo-select-wrapper:hover,
-.romo-select:focus,
-.romo-select:active,
-.romo-select.active,
-.romo-select.disabled,
-.romo-select[disabled] {
-  color: #333333;
-  background-color: #e6e6e6;
-  *background-color: #d9d9d9;
-}
-
-.romo-select-wrapper:hover,
-.romo-select:focus {
-  color: #333333;
-  text-decoration: none;
-  background-position: 0 -15px;
-  @include box-shadow(background-position 0.1s linear);
-}
 
 .romo-select:focus{ @include input-focus; }
 
 .romo-select:active,
 .romo-select.active {
-  background-color: #e6e6e6;
   background-image: none;
   outline: 0;
-  @include box-shadow((inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05)));
+  @include box-shadow((inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)));
 }
 
 .romo-select.disabled,
 .romo-select[disabled] {
   color: $disabledColor;
 }
-
 .romo-select-option-list {
   background-color: #ffffff;
   color: #333333;
