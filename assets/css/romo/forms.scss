@@ -30,7 +30,6 @@ label { display: block; }
   font-size: 100%;
   @include rm-push;
   @include align-middle;
-  @include border1-radius;
 }
 
 .romo-form label.romo-radio,
