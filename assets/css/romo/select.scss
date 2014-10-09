@@ -59,27 +59,20 @@
   overflow: hidden;
 }
 
-.romo-select-option-list LI {
-  font-size: $baseFontSize;
-  line-height: $baseLineHeight;
-  height: $baseLineHeight;
-  padding: 0 $spacingSize1;
-}
-
 .romo-select-option-list UL.romo-select-optgroup LI {
-  padding-left: $spacingSize1 * 2;
+  padding-left: $spacingSize1;
 }
-.romo-select-option-list LI[data-romo-select-item="optgroup"] {
-  font-size: $fontSize0;
-  line-height: $lineHeight0;
-  height: $lineHeight0;
 
-  background-color: $inputColor;
-  color: $inputBackground;
+.romo-select-option-list LI {
+  @include select-option;
+}
+
+.romo-select-option-list LI[data-romo-select-item="optgroup"] {
+  @include select-optgroup;
 }
 
 .romo-select-option-list LI.romo-select-highlight {
-  background-color: $inputHighlight;
+  background-color: $inputHighlightBackround;
   color: $inputBackground;
 }
 

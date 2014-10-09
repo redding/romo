@@ -12,11 +12,26 @@ Individual form controls receive styling that results in stacked, left-aligned l
       <select id="select1">
         <option>Opt 1</option>
         <option>Opt 2</option>
+        <option>Opt 3</option>
+        <option>Opt 4</option>
       </select>
       <label for="multiSelect1">Multi Select name</label>
       <select id="multiSelect1" multiple>
         <option>Opt 1</option>
         <option>Opt 2</option>
+        <option>Opt 3</option>
+        <option>Opt 4</option>
+      </select>
+      <label for="multiGroupedSelect1">Grouped Multi Select name</label>
+      <select id="multiGroupedSelect1" multiple>
+        <optgroup label="Grp 1">
+          <option>Opt 1</option>
+          <option>Opt 2</option>
+        </optgroup>
+        <optgroup label="Grp 2">
+          <option>Opt 3</option>
+          <option>Opt 4</option>
+        </optgroup>
       </select>
       <label for="textarea1">Textarea name</label>
       <textarea id="textarea1" rows="2" placeholder="Type something..."></textarea>
@@ -47,11 +62,26 @@ Individual form controls receive styling that results in stacked, left-aligned l
     <select id="select1">
       <option>Opt 1</option>
       <option>Opt 2</option>
+      <option>Opt 3</option>
+      <option>Opt 4</option>
     </select>
     <label for="multiSelect1">Multi Select name</label>
     <select id="multiSelect1" multiple>
       <option>Opt 1</option>
       <option>Opt 2</option>
+      <option>Opt 3</option>
+      <option>Opt 4</option>
+    </select>
+    <label for="multiGroupedSelect1">Grouped Multi Select name</label>
+    <select id="multiGroupedSelect1" multiple>
+      <optgroup label="Grp 1">
+        <option>Opt 1</option>
+        <option>Opt 2</option>
+      </optgroup>
+      <optgroup label="Grp 2">
+        <option>Opt 3</option>
+        <option>Opt 4</option>
+      </optgroup>
     </select>
     <label for="textarea1">Textarea name</label>
     <textarea id="textarea1" rows="2" placeholder="Type something..."></textarea>
@@ -84,15 +114,30 @@ Add the `.romo-form` class to receive additional styling on the controls.  Add `
       <legend>Legend</legend>
       <label for="text2">Input name</label>
       <input id="text2" type="text" placeholder="Type something…" />
-      <label for="select2">Select name</label>
-      <select id="select2">
+      <label for="select1">Select name</label>
+      <select id="select1">
         <option>Opt 1</option>
         <option>Opt 2</option>
+        <option>Opt 3</option>
+        <option>Opt 4</option>
       </select>
-      <label for="multiSelect2">Multi Select name</label>
-      <select id="multiSelect2" multiple>
+      <label for="multiSelect1">Multi Select name</label>
+      <select id="multiSelect1" multiple>
         <option>Opt 1</option>
         <option>Opt 2</option>
+        <option>Opt 3</option>
+        <option>Opt 4</option>
+      </select>
+      <label for="multiGroupedSelect1">Grouped Multi Select name</label>
+      <select id="multiGroupedSelect1" multiple>
+        <optgroup label="Grp 1">
+          <option>Opt 1</option>
+          <option>Opt 2</option>
+        </optgroup>
+        <optgroup label="Grp 2">
+          <option>Opt 3</option>
+          <option>Opt 4</option>
+        </optgroup>
       </select>
       <label for="textarea2">Textarea name</label>
       <textarea id="textarea2" rows="2" placeholder="Type something..."></textarea>
