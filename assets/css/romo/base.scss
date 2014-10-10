@@ -413,6 +413,8 @@ h3 { @include text1; }
 
 /* other helpers */
 
+.romo-match-line-height { line-height: 1 !important; }
+
 .romo-nowrap { white-space: nowrap !important; }
 .romo-crop   { white-space: nowrap !important; overflow: hidden !important; }
 
