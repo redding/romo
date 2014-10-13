@@ -1,15 +1,18 @@
-$.fn.romoSelectDropdown = function(optionElems) {
+$.fn.romoSelectDropdown = function(optionElemsParent) {
   return $.map(this, function(element) {
-    return new RomoSelectDropdown(element, optionElems);
+    return new RomoSelectDropdown(element, optionElemsParent);
   });
 }
 
-var RomoSelectDropdown = function(element, optionElems) {
+var RomoSelectDropdown = function(element, optionElemsParent) {
   this.elem = $(element);
   this.defaultCaretClass = '';
   this.itemSelector = 'LI[data-romo-select-item="opt"]:not(.disabled)';
   this.prevValue = '';
-  this.optionList = this._buildOptionList(optionElems || []);
+
+  var optsParent = (optionElemsParent || this.elem.find('.romo-select-dropdown-options-parent'));
+  this.optionElems = optsParent.children();
+  this.optionList = this._buildOptionList(this.optionElems);
 
   this.doInit();
   this.doBindDropdown();
@@ -89,7 +92,6 @@ RomoSelectDropdown.prototype.doSelectHighlightedItem = function() {
   var newValue = this.romoDropdown.bodyElem.find('LI.romo-select-highlight').data('romo-select-option-value');
 
   this.romoDropdown.doPopupClose();
-  this.romoDropdown.elem.focus();
   this.elem.trigger('selectDropdown:itemSelected', [newValue, prevValue, this]);
 
   if (newValue !== prevValue) {
@@ -168,6 +170,9 @@ RomoSelectDropdown.prototype.onPopupOpenBodyKeyDown = function(e) {
     }
 
     return false;
+  } else if (e.keyCode === 13 /* Enter */ ) {
+    this.doSelectHighlightedItem();
+    return false;
   } else {
     return true;
   }
@@ -175,17 +180,9 @@ RomoSelectDropdown.prototype.onPopupOpenBodyKeyDown = function(e) {
 
 RomoSelectDropdown.prototype.onElemKeyDown = function(e) {
   if (this.elem.hasClass('disabled') === false) {
-    if (this.romoDropdown.popupElem.hasClass('romo-dropdown-open')) {
-      if(e.keyCode === 13 /* Enter */ ) {
-        this.doSelectHighlightedItem();
-        return false;
-      } else {
-        return true;
-      }
-    } else {
+    if (this.romoDropdown.popupElem.hasClass('romo-dropdown-open') === false) {
       if(e.keyCode === 40 /* Down */ ) {
         this.romoDropdown.doPopupOpen();
-        this.romoDropdown.popupElem.focus();
         return false;
       } else {
         return true;

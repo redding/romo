@@ -36,7 +36,7 @@ RomoSelect.prototype.doInit = function() {
 }
 
 RomoSelect.prototype.doBindSelectDropdown = function() {
-  this.romoSelectDropdown = this._buildSelectDropdownElem().romoSelectDropdown(this.elem.children())[0];
+  this.romoSelectDropdown = this._buildSelectDropdownElem().romoSelectDropdown(this.elem)[0];
 
   this.romoSelectDropdown.elem.on('selectDropdown:dropdown:toggle', $.proxy(function(e, dropdown, selectDropdown) {
     this.elem.trigger('select:dropdown:toggle', [dropdown, this]);
@@ -49,6 +49,7 @@ RomoSelect.prototype.doBindSelectDropdown = function() {
   }, this));
 
   this.romoSelectDropdown.elem.on('selectDropdown:itemSelected', $.proxy(function(e, newValue, prevValue, selectDropdown) {
+    this.romoSelectDropdown.elem.focus();
     this.elem.trigger('select:itemSelected', [newValue, prevValue, this]);
   }, this));
   this.romoSelectDropdown.elem.on('selectDropdown:change', $.proxy(function(e, newValue, prevValue, selectDropdown) {

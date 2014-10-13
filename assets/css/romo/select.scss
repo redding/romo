@@ -1,6 +1,10 @@
 @import 'css/romo/vars';
 @import 'css/romo/mixins';
 
+.romo-select-dropdown-options-parent {
+  display: none;
+}
+
 .romo-select-wrapper {
   text-align: left;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
