@@ -46,6 +46,7 @@ module Romo::Dassets
         'js/romo/form.js',
         'js/romo/dropdown.js',
         'js/romo/dropdown_form.js',
+        'js/romo/select_dropdown.js',
         'js/romo/select.js',
         'js/romo/datepicker.js',
         'js/romo/inline.js',
