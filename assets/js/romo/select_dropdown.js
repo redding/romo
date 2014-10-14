@@ -237,7 +237,7 @@ RomoSelectDropdown.prototype._buildOptionListItem = function(optionElem) {
   var item = $('<li data-romo-select-item="opt"></li>');
 
   item.attr('data-romo-select-option-value', opt.attr('value'));
-  item.text(opt.text().trim());
+  item.html(opt.text().trim() || '&nbsp;');
   if (opt.prop('selected')) {
     item.addClass('selected');
   }
