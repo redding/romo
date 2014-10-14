@@ -36,6 +36,9 @@ RomoDatepicker.prototype.doInit = function() {
 RomoDatepicker.prototype.doBindElem = function() {
   var elemWrapper = $('<div class="romo-datepicker-wrapper"></div>');
   elemWrapper.css({'display': (this.elem.data('romo-datepicker-elem-display') || 'inline-block')});
+  if (this.elem.data('romo-datepicker-btn-group') === true) {
+    elemWrapper.addClass('romo-btn-group');
+  }
 
   this.elem.before(elemWrapper);
   elemWrapper.append(this.elem);
