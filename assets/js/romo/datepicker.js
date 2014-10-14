@@ -42,17 +42,25 @@ RomoDatepicker.prototype.doBindElem = function() {
 
   this.elem.attr('autocomplete', 'off');
 
+  this.indicatorElem = $();
   var indicatorClass = this.elem.data('romo-datepicker-indicator') || this.defaultIndicatorClass;
   if (indicatorClass !== undefined && indicatorClass !== 'none') {
-    var indicator = $('<i class="romo-datepicker-indicator '+indicatorClass+'"></i>');
-    indicator.css({'line-height': this.elem.css('height')});
+    this.indicatorElem = $('<i class="romo-datepicker-indicator '+indicatorClass+'"></i>');
+    this.indicatorElem.css({'line-height': this.elem.css('height')});
     if (this.elem.prop('disabled') === true) {
-      indicator.addClass('disabled');
+      this.indicatorElem.addClass('disabled');
     }
-    indicator.on('click', $.proxy(this.onIndicatorClick, this));
+    this.indicatorElem.on('click', $.proxy(this.onIndicatorClick, this));
     this.elem.css({'padding-right': '22px'});
-    this.elem.after(indicator);
+    this.elem.after(this.indicatorElem);
   }
+
+  this.elem.on('datepicker:triggerEnable', $.proxy(function(e) {
+    this.doEnable();
+  }, this));
+  this.elem.on('datepicker:triggerDisable', $.proxy(function(e) {
+    this.doDisable();
+  }, this));
 }
 
 RomoDatepicker.prototype.doSetFormat = function() {
@@ -67,6 +75,18 @@ RomoDatepicker.prototype.doSetDate = function(value) {
   } else {
     this.elem.val(value);
   }
+}
+
+RomoDatepicker.prototype.doEnable = function() {
+  this.elem.prop('disabled', false);
+  this.elem.removeClass('disabled');
+  this.indicatorElem.removeClass('disabled');
+}
+
+RomoDatepicker.prototype.doDisable = function() {
+  this.elem.prop('disabled', true);
+  this.elem.addClass('disabled');
+  this.indicatorElem.addClass('disabled');
 }
 
 RomoDatepicker.prototype.doBindDropdown = function() {
