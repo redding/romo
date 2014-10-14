@@ -8,7 +8,7 @@ var RomoSelectDropdown = function(element, optionElemsParent) {
   this.elem = $(element);
   this.defaultCaretClass = '';
   this.itemSelector = 'LI[data-romo-select-item="opt"]:not(.disabled)';
-  this.prevValue = '';
+  this.prevValue = undefined;
 
   var optsParent = (optionElemsParent || this.elem.find('.romo-select-dropdown-options-parent'));
   this.optionElems = optsParent.children();
