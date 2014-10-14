@@ -6,6 +6,7 @@
 }
 
 .romo-select-wrapper {
+  display: inline-block;
   text-align: left;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   cursor: pointer;
@@ -14,9 +15,6 @@
 }
 
 .romo-select {
-  display: inline-block;
-  *display: inline;
-
   min-width: 50px;
   font-weight: normal;
   text-align: left;

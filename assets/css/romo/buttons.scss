@@ -153,10 +153,10 @@ a.romo-btn.romo-btn-link[disabled]:focus,
 button.romo-btn.romo-btn-link[disabled]:focus,
 .romo-btn.romo-btn-link[disabled]:focus { color: $disabledColor; }
 
-.romo-btn-group { @include display-inline-flex; }
+.romo-btn-group { @include display-inline-flex(!important); }
 .romo-btn-group > * { display: inherit; }
 
-.romo-btn-group .romo-btn:not(:last-child) { @include rm-border-right; }
+.romo-btn-group .romo-btn:not(.romo-btn:last-child) { @include rm-border-right; }
 
 .romo-btn-group.romo-btn-group-border-radius  .romo-btn:first-child,
 .romo-btn-group.romo-btn-group-border1-radius .romo-btn:first-child { @include border1-top-left-radius; @include border1-bottom-left-radius; }

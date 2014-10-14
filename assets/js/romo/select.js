@@ -116,7 +116,9 @@ RomoSelect.prototype._buildSelectDropdownElem = function() {
   this.elem.hide();
 
   this.elemWrapper = $('<div class="romo-select-wrapper"></div>');
-  this.elemWrapper.css({'display': romoSelectDropdownElem.css('display')});
+  if (this.elem.data('romo-select-btn-group') === true) {
+    this.elemWrapper.addClass('romo-btn-group');
+  }
   romoSelectDropdownElem.before(this.elemWrapper);
   this.elemWrapper.append(romoSelectDropdownElem);
 
