@@ -40,6 +40,10 @@ var RomoIndicator = function(element) {
   this.elem.on('indicator:triggerStart', $.proxy(this.onStart, this));
   this.elem.on('indicator:triggerStop', $.proxy(this.onStop, this));
 
+  $(window).on("pageshow", $.proxy(function(e) {
+    this.elem.trigger('indicator:triggerStop');
+  }, this));
+
   this.elem.trigger('indicator:ready', [this]);
 }
 
