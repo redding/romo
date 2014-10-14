@@ -26,7 +26,6 @@ button.romo-btn:focus {
   color: $btnColorHover;
   text-decoration: none;
   background-position: 0 -15px;
-  @include transition(background-position .1s linear);
 }
 
 .romo-btn:focus{ outline: none; }

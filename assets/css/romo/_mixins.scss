@@ -15,13 +15,6 @@
           box-shadow: $shadow #{$i};
 }
 
-@mixin transition($transition, $i:"") {
-  -webkit-transition: $transition #{$i};
-     -moz-transition: $transition #{$i};
-       -o-transition: $transition #{$i};
-          transition: $transition #{$i};
-}
-
 @mixin opacity($opacity, $i:"") {
   opacity: $opacity / 100;
 }
