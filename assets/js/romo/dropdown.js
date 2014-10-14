@@ -135,12 +135,10 @@ RomoDropdown.prototype.onToggleClick = function(e) {
     e.preventDefault();
   }
 
-  if (this.elem.hasClass('disabled') === false) {
-    if (!this.popupElem.hasClass('romo-dropdown-open') ||
-         this.elem.data('romo-dropdown-disable-toggle') !== true) {
-      this.doToggle();
-      return true;
-    }
+  if (this.elem.hasClass('disabled') === false &&
+      this.elem.data('romo-dropdown-disable-toggle') !== true) {
+    this.doToggle();
+    return true;
   }
   return false;
 }
@@ -163,8 +161,8 @@ RomoDropdown.prototype.onPopupOpen = function(e) {
     e.preventDefault();
   }
 
-  if ((this.elem.hasClass('disabled') === false) &&
-      (this.popupElem.hasClass('romo-dropdown-open') === false)) {
+  if (this.elem.hasClass('disabled') === false &&
+      this.popupElem.hasClass('romo-dropdown-open') === false) {
     setTimeout($.proxy(function() {
       this.doPopupOpen();
     }, this), 100);
@@ -196,7 +194,8 @@ RomoDropdown.prototype.onPopupClose = function(e) {
     e.preventDefault();
   }
 
-  if (this.elem.hasClass('disabled') === false) {
+  if (this.elem.hasClass('disabled') === false &&
+      this.popupElem.hasClass('romo-dropdown-open') === true) {
     setTimeout($.proxy(function() {
       this.doPopupClose();
     }, this), 100);
@@ -231,8 +230,11 @@ RomoDropdown.prototype.onElemKeyUp = function(e) {
 }
 
 RomoDropdown.prototype.onWindowBodyClick = function(e) {
-  // if not clicked on the popup elem
-  if (e !== undefined && $(e.target).parents('.romo-dropdown-popup').size() === 0) {
+  // if not clicked on the popup elem or the elem
+  var target = $(e.target);
+  if (e !== undefined &&
+      target.parents('.romo-dropdown-popup').size() === 0 &&
+      target.closest(this.elem).size() === 0) {
     this.doPopupClose();
   }
   return true;
