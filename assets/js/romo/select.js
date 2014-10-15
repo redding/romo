@@ -71,7 +71,6 @@ RomoSelect.prototype.doBindSelectDropdown = function() {
 
 RomoSelect.prototype.doRefreshUI = function() {
   this.romoSelectDropdown.elem.find('.romo-select-text').text(this.romoSelectDropdown.selectedListing().text());
-  this.elemWrapper.find('.romo-select-caret').css({'line-height': this.elemWrapper.css('height')});
 }
 
 RomoSelect.prototype.onCaretClick = function(e) {
@@ -125,10 +124,10 @@ RomoSelect.prototype._buildSelectDropdownElem = function() {
   var caretClass = this.elem.data('romo-select-caret') || this.defaultCaretClass;
   if (caretClass !== undefined && caretClass !== 'none') {
     var caret = $('<i class="romo-select-caret '+caretClass+'"></i>');
-    caret.css({'line-height': this.elemWrapper.css('height')});
+    caret.css({'line-height': romoSelectDropdownElem.css('line-height')});
     caret.on('click', $.proxy(this.onCaretClick, this));
     romoSelectDropdownElem.css({'padding-right': '22px'});
-    romoSelectDropdownElem.after(caret);
+    romoSelectDropdownElem.append(caret);
   }
 
   return romoSelectDropdownElem;
