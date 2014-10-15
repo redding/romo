@@ -92,7 +92,7 @@ RomoForm.prototype.onSubmitError = function(xhr, errorType, error) {
     this.elem.trigger('form:submitXhrError', [xhr, this]);
   }
   this.elem.trigger('form:submitError', [xhr, this]);
-  this.submitElem.trigger('indicator:triggerStop');
+  this.indicatorElems.trigger('indicator:triggerStop');
 }
 
 RomoForm.prototype._doGetSubmit = function() {
