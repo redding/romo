@@ -70,7 +70,8 @@ RomoSelect.prototype.doBindSelectDropdown = function() {
 }
 
 RomoSelect.prototype.doRefreshUI = function() {
-  this.romoSelectDropdown.elem.find('.romo-select-text').text(this.romoSelectDropdown.selectedListing().text());
+  var text = this.romoSelectDropdown.selectedListing().text() || '&nbsp;';
+  this.romoSelectDropdown.elem.find('.romo-select-text').html(text);
 }
 
 RomoSelect.prototype.onCaretClick = function(e) {
