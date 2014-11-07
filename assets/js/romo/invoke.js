@@ -9,6 +9,7 @@ var RomoInvoke = function(element) {
   this.targetElem = $(this.elem.data('romo-invoke-target'));
   this.invokeOn = this.elem.data('romo-invoke-on') || 'click';
   this.invokeAttr = this.elem.data('romo-invoke-attr') || 'href';
+  this.loadOnlyOnce = this.elem.data('romo-invoke-load-once') === true;
 
   this.elem.unbind(this.invokeOn);
 
@@ -44,6 +45,9 @@ RomoInvoke.prototype.onInvoke = function(e) {
 
 RomoInvoke.prototype.doInvoke = function() {
   var loadHref = this.elem.attr(this.invokeAttr);
+  if (this.loadOnlyOnce === true) {
+    this.elem.removeAttr(this.invokeAttr);
+  }
   if (loadHref !== undefined) {
     this.doLoad(loadHref);
   } else {
