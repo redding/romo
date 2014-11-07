@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+  <title>Helpers | Romo</title>
+  <link rel="icon" type="image/png" href="/romo/img/romo-favicon-rocket-5e42f12b8aa9d60fad6879a72d9cedad.png"></link>
+  
+    <link href="/romo/css/web-2d45f65741be1727673c44153e71221b.css" type="text/css" rel="stylesheet" />
+  
+  
+    <script src="/romo/js/web-0b85083089afce4f98f1291d0dfccb30.js" type="text/javascript"></script>
+  
+</head>
+<body>
+  <div id="navBar">
+    <ul>
+      <li class="logo">
+        <a href="/romo/index.html">
+          <img src="/romo/img/romo-logo-0e2ec4d4f2c83fe6c97f0ae03c39c962.png" alt="Romo" />
+        </a>
+      </li>
+      <li><a href="/romo/css.html">CSS</a></li>
+    </ul>
+  </div>
+  <div id="content">
+    <div class="romo-row">
+  <div class="romo-10-12">
+    <h2 id="borders">Borders</h2>
+
+<p>Use style classes to add borders.</p>
+
+<div class="romo-border">.romo-border</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Use numbered classes, 0 through 2, to set specific pixel width.</p>
+
+<div>
+  <div class="romo-border0 romo-push0-bottom">.romo-border0</div>
+  <div class="romo-border1 romo-push0-bottom">.romo-border1</div>
+  <div class="romo-border romo-push0-bottom">.romo-border (alias of .romo-border1)</div>
+  <div class="romo-border2">.romo-border2</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border</span><span class="delimiter">&quot;</span></span> <span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Or, add borders to specific sides.</p>
+
+<div>
+  <div class="romo-border-top romo-push0-bottom">.romo-border-top</div>
+  <div class="romo-border-bottom romo-push0-bottom">.romo-border-bottom</div>
+  <div class="romo-border-left romo-border-right">.romo-border-left.romo-border-right</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border-top</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border-bottom</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border-left romo-border-right</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Remove from just specific sides.</p>
+
+<div>
+  <div class="romo-border romo-rm-border-top romo-push0-bottom">.romo-rm-border-top</div>
+  <div class="romo-border romo-rm-border-right romo-push0-bottom">.romo-rm-border-right</div>
+  <div class="romo-border romo-rm-border-left romo-push0-bottom">.romo-rm-border-left</div>
+  <div class="romo-border romo-rm-border-bottom">.romo-rm-border-bottom</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border romo-rm-border-top</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border romo-rm-border-right</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border romo-rm-border-left</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border romo-rm-border-bottom</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Change style on any border configuration</p>
+
+<div>
+  <div class="romo-border-solid romo-border2 romo-push0-bottom">.romo-border-solid</div>
+  <div class="romo-border-dashed romo-border2 romo-push0-bottom">.romo-border-dashed</div>
+  <div class="romo-border-dotted romo-border2 romo-push0-bottom">.romo-border-dotted</div>
+  <div class="romo-border-double romo-border2 romo-push0-bottom">.romo-border-double</div>
+  <div class="romo-border-groove romo-border2 romo-push0-bottom">.romo-border-groove</div>
+  <div class="romo-border-inset romo-border2 romo-push0-bottom">.romo-border-inset</div>
+  <div class="romo-border-hidden romo-border2 romo-push0-bottom">.romo-border-hidden</div>
+  <div class="romo-border-none romo-border2">.romo-border-none</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border-solid</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border-dashed</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border-dotted</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border-double</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border-groove</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border-inset</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border-hidden</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border-none</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Add color emphasis to any border configuration</p>
+
+<div>
+  <div class="romo-border-muted romo-border2 romo-push0-bottom">.romo-border-muted</div>
+  <div class="romo-border-warning romo-border2 romo-push0-bottom">.romo-border-warning</div>
+  <div class="romo-border-error romo-border2 romo-push0-bottom">.romo-border-error</div>
+  <div class="romo-border-info romo-border2 romo-push0-bottom">.romo-border-info</div>
+  <div class="romo-border-success romo-border2 romo-push0-bottom">.romo-border-success</div>
+  <div class="romo-border-inverse romo-border2">.romo-border-inverse</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border-muted</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border-warning</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border-error</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border-info</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border-success</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border-inverse</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Add border radius.</p>
+
+<div>
+  <div class="romo-border0 romo-border0-radius romo-push0-bottom">.romo-border0-radius</div>
+  <div class="romo-border1 romo-border1-radius romo-push0-bottom">.romo-border1-radius</div>
+  <div class="romo-border romo-border-radius romo-push0-bottom">.romo-border-radius (alias of .romo-border1-radius)</div>
+  <div class="romo-border2 romo-border2-radius romo-push0-bottom">.romo-border2-radius</div>
+  <div class="romo-border2 romo-border2-top-left-radius romo-push0-bottom">.romo-border2-top-left-radius</div>
+  <div class="romo-border2 romo-border2-top-right-radius romo-push0-bottom">.romo-border2-top-right-radius</div>
+  <div class="romo-border2 romo-border2-bottom-left-radius romo-push0-bottom">.romo-border2-bottom-left-radius</div>
+  <div class="romo-border2 romo-border2-bottom-right-radius">.romo-border2-bottom-right-radius</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border3 romo-border0-radius</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border1 romo-border1-radius</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border romo-border-radius</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border2 romo-border2-radius</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border2 romo-border2-top-left-radius</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border2 romo-border2-top-right-radius</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border2 romo-border2-bottom-left-radius</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border2 romo-border2-bottom-right-radius</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="spacing">Spacing</h2>
+
+<p>Use style classes to control how elements are spaced (margin/padding).</p>
+
+<div class="romo-border">
+  <div class="romo-border romo-push">.romo-push</div>
+  <div class="romo-border romo-pad">.romo-pad</div>
+  <div class="romo-border romo-push romo-pad">.romo-push.romo-pad</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border romo-push</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border romo-pad</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border romo-push romo-pad</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Use numbered classes, 0 through 2, to set specific spacing size.</p>
+
+<div class="romo-border">
+  <div class="romo-border romo-push0 romo-pad0">.romo-push0.romo-pad0</div>
+  <div class="romo-border romo-push1 romo-pad1">.romo-push1.romo-pad1</div>
+  <div class="romo-border romo-push  romo-pad ">.romo-push.romo-pad (alias of 1)</div>
+  <div class="romo-border romo-push2 romo-pad2">.romo-push2.romo-pad2</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border romo-push0 romo-pad0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border romo-push1 romo-pad1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border romo-push  romo-pad </span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border romo-push2 romo-pad2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Add to just specific sides.</p>
+
+<div class="romo-border">
+  <div class="romo-border romo-push-top romo-pad-top">.romo-push-top.romo-pad-top</div>
+  <div class="romo-border romo-push-right romo-pad-right">.romo-push-right.romo-pad-right</div>
+  <div class="romo-border romo-push-left romo-pad-left">.romo-push-left.romo-pad-left</div>
+  <div class="romo-border romo-push-bottom romo-pad-bottom">.romo-push-bottom.romo-pad-bottom</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border romo-push-top romo-pad-top</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border romo-push-right romo-pad-right</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border romo-push-left romo-pad-left</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border romo-push-bottom romo-pad-bottom</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Remove from just specific sides.</p>
+
+<div class="romo-border">
+  <div class="romo-border romo-push romo-pad romo-rm-push-top romo-rm-pad-top">.romo-rm-push-top.romo-rm-pad-top</div>
+  <div class="romo-border romo-push romo-pad romo-rm-push-right romo-rm-pad-right">.romo-rm-push-right.romo-rm-pad-right</div>
+  <div class="romo-border romo-push romo-pad romo-rm-push-left romo-rm-pad-left">.romo-rm-push-left.romo-rm-pad-left</div>
+  <div class="romo-border romo-push romo-pad romo-rm-push-bottom romo-rm-pad-bottom">.romo-rm-push-bottom.romo-rm-pad-bottom</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border romo-push romo-pad romo-rm-push-top romo-rm-pad-top</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border romo-push romo-pad romo-rm-push-right romo-rm-pad-right</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border romo-push romo-pad romo-rm-push-left romo-rm-pad-left</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border romo-push romo-pad romo-rm-push-bottom romo-rm-pad-bottom</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="display">Display</h2>
+
+<p>Use style classes to set specific display values.</p>
+
+<div class="romo-inline">-.romo-inline-</div>
+<div class="romo-inline-block">-.romo-inline-block-</div>
+<div class="romo-block">-.romo-block-</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-inline</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-inline-block</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-block</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="position">Position</h2>
+
+<p>Use style classes to set specific position values.</p>
+
+<div class="romo-relative romo-border">
+  <div>-.romo-relative-</div>
+  <div>-.romo-relative-</div>
+  <div class="romo-absolute" style="top: 0; right: 0">-.romo-absolute-</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-relative romo-border</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-absolute</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">top</span>: <span class="float">0</span>; <span class="key">right</span>: <span class="float">0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Or, use <code>romo-fixed</code> to position as fixed.</p>
+
+<h2 id="floating">Floating</h2>
+
+<p>Use style classes to float elements.</p>
+
+<div class="romo-border romo-clearfix">
+  <div class="romo-float-left">-.romo-float-left-</div>
+  <div class="romo-float-right">-.romo-float-right-</div>
+  <div class="romo-pull-left">-.romo-pull-left-</div>
+  <div class="romo-pull-right">-.romo-pull-right-</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border romo-clearfix</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-float-left</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-float-right</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-pull-left</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-pull-right</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="overflow">Overflow</h2>
+
+<p>Use style classes to handle common overflow cases.</p>
+
+<div style="width: 150px" class="romo-border romo-inline-block romo-crop">.romo-crop: content that will overflow</div>
+<div></div>
+<div style="width: 150px" class="romo-border romo-inline-block romo-nowrap">.romo-nowrap: content that will overflow</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">150px</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border romo-inline-block romo-crop</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div&gt;</span><span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">150px</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-border romo-inline-block romo-nowrap</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+  </div>
+  <div class="romo-2-12 romo-pad-left">
+    <ul id="docsLinks" class="romo-tabs romo-tabs-stacked">
+      
+        <li class="">
+          <a href="/romo/css/globals.html">Globals</a>
+        </li>
+      
+        <li class="active">
+          <a href="/romo/css/helpers.html">Helpers</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/typography.html">Typography</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/images.html">Images</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/forms.html">Forms</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/buttons.html">Buttons</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/labels.html">Labels</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/tabs.html">Tabs</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/lists.html">Lists</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/grids.html">Grid</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/tables.html">Tables</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/grid-tables.html">Grid Table</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+  </div>
+</body>
+</html>

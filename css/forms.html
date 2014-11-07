@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+  <title>Forms | Romo</title>
+  <link rel="icon" type="image/png" href="/romo/img/romo-favicon-rocket-5e42f12b8aa9d60fad6879a72d9cedad.png"></link>
+  
+    <link href="/romo/css/web-2d45f65741be1727673c44153e71221b.css" type="text/css" rel="stylesheet" />
+  
+  
+    <script src="/romo/js/web-0b85083089afce4f98f1291d0dfccb30.js" type="text/javascript"></script>
+  
+</head>
+<body>
+  <div id="navBar">
+    <ul>
+      <li class="logo">
+        <a href="/romo/index.html">
+          <img src="/romo/img/romo-logo-0e2ec4d4f2c83fe6c97f0ae03c39c962.png" alt="Romo" />
+        </a>
+      </li>
+      <li><a href="/romo/css.html">CSS</a></li>
+    </ul>
+  </div>
+  <div id="content">
+    <div class="romo-row">
+  <div class="romo-10-12">
+    <h2 id="default-styles">Default Styles</h2>
+
+<p>Individual form controls receive styling that results in stacked, left-aligned labels on top of form controls.</p>
+
+<div>
+  <form>
+    <fieldset>
+      <legend>Legend</legend>
+      <label for="text1">Input name</label>
+      <input id="text1" type="text" placeholder="Type something…" />
+      <label for="select1">Select name</label>
+      <select id="select1">
+        <option>Opt 1</option>
+        <option>Opt 2</option>
+        <option>Opt 3</option>
+        <option>Opt 4</option>
+      </select>
+      <label for="multiSelect1">Multi Select name</label>
+      <select id="multiSelect1" multiple="">
+        <option>Opt 1</option>
+        <option>Opt 2</option>
+        <option>Opt 3</option>
+        <option>Opt 4</option>
+      </select>
+      <label for="multiGroupedSelect1">Grouped Multi Select name</label>
+      <select id="multiGroupedSelect1" multiple="">
+        <optgroup label="Grp 1">
+          <option>Opt 1</option>
+          <option>Opt 2</option>
+        </optgroup>
+        <optgroup label="Grp 2">
+          <option>Opt 3</option>
+          <option>Opt 4</option>
+        </optgroup>
+      </select>
+      <label for="textarea1">Textarea name</label>
+      <textarea id="textarea1" rows="2" placeholder="Type something..."></textarea>
+      <label>
+        <input type="radio" />
+        <span>Radio 1</span>
+      </label>
+      <label>
+        <input type="radio" />
+        <span>Radio 2</span>
+      </label>
+      <label>
+        <input type="checkbox" />
+        <span>Checkbox 1</span>
+      </label>
+      <button type="submit">Submit</button>
+    </fieldset>
+  </form>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;form&gt;</span>
+  <span class="tag">&lt;fieldset&gt;</span>
+    <span class="tag">&lt;legend&gt;</span>Legend<span class="tag">&lt;/legend&gt;</span>
+    <span class="tag">&lt;label</span> <span class="attribute-name">for</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Input name<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;input</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text1</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">placeholder</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Type something…</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+    <span class="tag">&lt;label</span> <span class="attribute-name">for</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">select1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Select name<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;select</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">select1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;option&gt;</span>Opt 1<span class="tag">&lt;/option&gt;</span>
+      <span class="tag">&lt;option&gt;</span>Opt 2<span class="tag">&lt;/option&gt;</span>
+      <span class="tag">&lt;option&gt;</span>Opt 3<span class="tag">&lt;/option&gt;</span>
+      <span class="tag">&lt;option&gt;</span>Opt 4<span class="tag">&lt;/option&gt;</span>
+    <span class="tag">&lt;/select&gt;</span>
+    <span class="tag">&lt;label</span> <span class="attribute-name">for</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">multiSelect1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Multi Select name<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;select</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">multiSelect1</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">multiple</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;option&gt;</span>Opt 1<span class="tag">&lt;/option&gt;</span>
+      <span class="tag">&lt;option&gt;</span>Opt 2<span class="tag">&lt;/option&gt;</span>
+      <span class="tag">&lt;option&gt;</span>Opt 3<span class="tag">&lt;/option&gt;</span>
+      <span class="tag">&lt;option&gt;</span>Opt 4<span class="tag">&lt;/option&gt;</span>
+    <span class="tag">&lt;/select&gt;</span>
+    <span class="tag">&lt;label</span> <span class="attribute-name">for</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">multiGroupedSelect1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Grouped Multi Select name<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;select</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">multiGroupedSelect1</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">multiple</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;optgroup</span> <span class="attribute-name">label</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Grp 1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;option&gt;</span>Opt 1<span class="tag">&lt;/option&gt;</span>
+        <span class="tag">&lt;option&gt;</span>Opt 2<span class="tag">&lt;/option&gt;</span>
+      <span class="tag">&lt;/optgroup&gt;</span>
+      <span class="tag">&lt;optgroup</span> <span class="attribute-name">label</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Grp 2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;option&gt;</span>Opt 3<span class="tag">&lt;/option&gt;</span>
+        <span class="tag">&lt;option&gt;</span>Opt 4<span class="tag">&lt;/option&gt;</span>
+      <span class="tag">&lt;/optgroup&gt;</span>
+    <span class="tag">&lt;/select&gt;</span>
+    <span class="tag">&lt;label</span> <span class="attribute-name">for</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">textarea1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Textarea name<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;textarea</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">textarea1</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">rows</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">placeholder</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Type something...</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/textarea&gt;</span>
+    <span class="tag">&lt;label&gt;</span>
+      <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">radio</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;span&gt;</span>Radio 1<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;label&gt;</span>
+      <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">radio</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;span&gt;</span>Radio 2<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;label&gt;</span>
+      <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">checkbox</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;span&gt;</span>Checkbox 1<span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">submit</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Submit<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;/fieldset&gt;</span>
+<span class="tag">&lt;/form&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="optional-styles">Optional Styles</h2>
+
+<h3 id="romo-form-romo-radiocheckbox"><code>.romo-form</code> <code>.romo-{radio|checkbox}</code></h3>
+
+<p>Add the <code>.romo-form</code> class to receive additional styling on the controls.  Add <code>.romo-{radio|checkbox}</code> to vertically align radio and checkbox labeled inputs.</p>
+
+<div>
+  <form class="romo-form">
+    <fieldset>
+      <legend>Legend</legend>
+      <label for="text2">Input name</label>
+      <input id="text2" type="text" placeholder="Type something…" />
+      <label for="select1">Select name</label>
+      <select id="select1">
+        <option>Opt 1</option>
+        <option>Opt 2</option>
+        <option>Opt 3</option>
+        <option>Opt 4</option>
+      </select>
+      <label for="multiSelect1">Multi Select name</label>
+      <select id="multiSelect1" multiple="">
+        <option>Opt 1</option>
+        <option>Opt 2</option>
+        <option>Opt 3</option>
+        <option>Opt 4</option>
+      </select>
+      <label for="multiGroupedSelect1">Grouped Multi Select name</label>
+      <select id="multiGroupedSelect1" multiple="">
+        <optgroup label="Grp 1">
+          <option>Opt 1</option>
+          <option>Opt 2</option>
+        </optgroup>
+        <optgroup label="Grp 2">
+          <option>Opt 3</option>
+          <option>Opt 4</option>
+        </optgroup>
+      </select>
+      <label for="textarea2">Textarea name</label>
+      <textarea id="textarea2" rows="2" placeholder="Type something..."></textarea>
+      <label class="romo-radio">
+        <input type="radio" />
+        <span>Radio 1</span>
+      </label>
+      <label class="romo-radio">
+        <input type="radio" />
+        <span>Radio 2</span>
+      </label>
+      <label class="romo-checkbox">
+        <input type="checkbox" />
+        <span>Checkbox 1</span>
+      </label>
+      <button type="submit" class="romo-btn">Submit</button>
+    </fieldset>
+  </form>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;form</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-form</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+ ...
+ <span class="tag">&lt;label</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-radio</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+   ...
+ <span class="tag">&lt;/label&gt;</span>
+ <span class="tag">&lt;label</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-radio</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+   ...
+ <span class="tag">&lt;/label&gt;</span>
+ <span class="tag">&lt;label</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-checkbox</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+   ...
+ <span class="tag">&lt;/label&gt;</span>
+<span class="tag">&lt;/form&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="romo-input0-2"><code>.romo-input{0-2}</code></h2>
+
+<p>Use numbered style classes to adjust input width.</p>
+
+<div>
+  <form class="romo-form">
+    <label>.romo-input</label>
+    <input class="romo-input" type="text" placeholder=".romo-input" />
+    <label>.romo-input1</label>
+    <input class="romo-input1" type="text" placeholder=".romo-input1" />
+    <label>.romo-input-small</label>
+    <select class="romo-input-small">
+      <option>.romo-input-small</option>
+    </select>
+    <label>.romo-input0</label>
+    <select class="romo-input0">
+      <option>.romo-input0</option>
+    </select>
+    <label>.romo-input-large</label>
+    <textarea class="romo-input-large" rows="2" placeholder=".romo-input-large"></textarea>
+    <label>.romo-input2</label>
+    <textarea class="romo-input2" rows="2" placeholder=".romo-input2"></textarea>
+  </form>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;form</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-form</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+  <span class="tag">&lt;input</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-input</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">placeholder</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">.romo-input</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+  ...
+  <span class="tag">&lt;input</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-input1</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">placeholder</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">.romo-input1</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+  ...
+  <span class="tag">&lt;select</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-input-small</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/select&gt;</span>
+  ...
+  <span class="tag">&lt;select</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-input0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/select&gt;</span>
+  ...
+  <span class="tag">&lt;textarea</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-input-large</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">rows</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">placeholder</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">.romo-input-large</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/textarea&gt;</span>
+  ...
+  <span class="tag">&lt;textarea</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-input2</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">rows</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">placeholder</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">.romo-input-large</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/textarea&gt;</span>
+<span class="tag">&lt;/form&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Or use <code>.romo-input-block</code> to add blocking full width inputs.</p>
+
+<div>
+  <form class="romo-form">
+    <input class="romo-input-block romo-push-bottom" type="text" placeholder="Subject..." />
+    <textarea class="romo-input-block" rows="5" placeholder="Body..."></textarea>
+  </form>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;form</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-form</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-input-block romo-push-bottom</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">placeholder</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Subject...</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;textarea</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-input-block</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">rows</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">5</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">placeholder</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Body...</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/textarea&gt;</span>
+<span class="tag">&lt;/form&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="romo-input-help"><code>.romo-input-help</code></h3>
+
+<p>Use <code>.romo-input-help</code> spans with color emphasis to show help text</p>
+
+<div>
+  <form class="romo-form">
+    <label for="text3">Input name</label>
+    <input id="text3" type="text" placeholder="Type something…" />
+    <span class="romo-input-help romo-text-error">Example error message</span>
+  </form>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;form</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-form</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;label&gt;</span>Input name<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">placeholder</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Type something…</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-input-help romo-text-error</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Example error message<span class="tag">&lt;/span&gt;</span>
+<span class="tag">&lt;/form&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="custom-components">Custom components</h2>
+
+<h3 id="buttons">Buttons</h3>
+
+<p>TODO: Show example and link to buttons css page.</p>
+
+<h3 id="selects">Selects</h3>
+
+<p>TODO: Show example and link to the romo select js component page</p>
+
+<h2 id="layouts">Layouts</h2>
+
+<p>TODO: Show example and link to form layouts examples page.</p>
+
+  </div>
+  <div class="romo-2-12 romo-pad-left">
+    <ul id="docsLinks" class="romo-tabs romo-tabs-stacked">
+      
+        <li class="">
+          <a href="/romo/css/globals.html">Globals</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/helpers.html">Helpers</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/typography.html">Typography</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/images.html">Images</a>
+        </li>
+      
+        <li class="active">
+          <a href="/romo/css/forms.html">Forms</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/buttons.html">Buttons</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/labels.html">Labels</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/tabs.html">Tabs</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/lists.html">Lists</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/grids.html">Grid</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/tables.html">Tables</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/grid-tables.html">Grid Table</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+  </div>
+</body>
+</html>

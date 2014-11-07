@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+  <title>Lists | Romo</title>
+  <link rel="icon" type="image/png" href="/romo/img/romo-favicon-rocket-5e42f12b8aa9d60fad6879a72d9cedad.png"></link>
+  
+    <link href="/romo/css/web-2d45f65741be1727673c44153e71221b.css" type="text/css" rel="stylesheet" />
+  
+  
+    <script src="/romo/js/web-0b85083089afce4f98f1291d0dfccb30.js" type="text/javascript"></script>
+  
+</head>
+<body>
+  <div id="navBar">
+    <ul>
+      <li class="logo">
+        <a href="/romo/index.html">
+          <img src="/romo/img/romo-logo-0e2ec4d4f2c83fe6c97f0ae03c39c962.png" alt="Romo" />
+        </a>
+      </li>
+      <li><a href="/romo/css.html">CSS</a></li>
+    </ul>
+  </div>
+  <div id="content">
+    <div class="romo-row">
+  <div class="romo-10-12">
+    <h2 id="unordered">Unordered</h2>
+
+<p>A list of items in which the order <em>does not</em> explicitly matter.  Default styling positions <code>outside</code> with left padding proportional to <code>$baseFontSize</code>.</p>
+
+<ul>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing elit</li>
+  <li>Integer molestie lorem at massa</li>
+  <li>Facilisis in pretium nisl aliquet</li>
+  <li>Nulla volutpat aliquam velit</li>
+  <li>Phasellus iaculis neque</li>
+  <li>Purus sodales ultricies</li>
+  <li>Vestibulum laoreet porttitor sem</li>
+  <li>Ac tristique libero volutpat at</li>
+  <li>Faucibus porta lacus fringilla vel</li>
+  <li>Aenean sit amet erat nunc</li>
+  <li>Eget porttitor lorem</li>
+</ul>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;ul&gt;</span>
+  <span class="tag">&lt;li&gt;</span>...<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="ordered">Ordered</h2>
+
+<p>A list of items in which the order <em>does</em> explicitly matter.  As with unordered lists, default styling positions <code>outside</code> with left padding proportional to <code>$baseFontSize</code>.</p>
+
+<ol>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing elit</li>
+  <li>Integer molestie lorem at massa</li>
+  <li>Facilisis in pretium nisl aliquet</li>
+  <li>Nulla volutpat aliquam velit</li>
+  <li>Faucibus porta lacus fringilla vel</li>
+  <li>Aenean sit amet erat nunc</li>
+  <li>Eget porttitor lorem</li>
+</ol>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;ol&gt;</span>
+  <span class="tag">&lt;li&gt;</span>...<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ol&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="unstyled">Unstyled</h2>
+
+<p>Remove the default list-style and left padding on list items (immediate children only).</p>
+
+<ul class="romo-list-unstyled">
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing elit</li>
+  <li>Integer molestie lorem at massa</li>
+  <li>Facilisis in pretium nisl aliquet</li>
+  <li>Nulla volutpat aliquam velit</li>
+  <ul>
+    <li>Phasellus iaculis neque</li>
+    <li>Purus sodales ultricies</li>
+    <li>Vestibulum laoreet porttitor sem</li>
+  </ul>
+  <li>Ac tristique libero volutpat at</li>
+  <ol>
+    <li>Faucibus porta lacus fringilla vel</li>
+    <li>Aenean sit amet erat nunc</li>
+  </ol>
+  <li>Eget porttitor lorem</li>
+</ul>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-list-unstyled</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li&gt;</span>...<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="inline">Inline</h2>
+
+<p>Place all list items on a single line with inline-block.</p>
+
+<ul class="romo-list-inline">
+  <li>Lorem ipsum</li>
+  <li>Phasellus iaculis</li>
+  <li>Nulla volutpat</li>
+</ul>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-list-inline</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li&gt;</span>...<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="optional-classes">Optional classes</h3>
+
+<h4 id="romo-list-padn"><code>.romo-list-pad{N}</code></h4>
+
+<p>Add padding separating each item.</p>
+
+<div>
+<ul class="romo-list-inline romo-list-pad0">
+  <li>Lorem ipsum</li>
+  <li>Phasellus iaculis</li>
+  <li>Nulla volutpat</li>
+</ul>
+</div>
+<div>
+<ul class="romo-list-inline romo-list-pad">
+  <li>Lorem ipsum</li>
+  <li>Phasellus iaculis</li>
+  <li>Nulla volutpat</li>
+</ul>
+</div>
+<div>
+<ul class="romo-list-inline romo-list-pad1">
+  <li>Lorem ipsum</li>
+  <li>Phasellus iaculis</li>
+  <li>Nulla volutpat</li>
+</ul>
+</div>
+<div>
+<ul class="romo-list-inline romo-list-pad2">
+  <li>Lorem ipsum</li>
+  <li>Phasellus iaculis</li>
+  <li>Nulla volutpat</li>
+</ul>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-list-inline romo-list-pad0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li&gt;</span>...<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+
+<span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-list-inline romo-list-pad</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li&gt;</span>...<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+
+<span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-list-inline romo-list-pad1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li&gt;</span>...<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+
+<span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-list-inline romo-list-pad2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li&gt;</span>...<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="romo-list-pushn"><code>.romo-list-push{N}</code></h4>
+
+<p>Add margin separating each item.</p>
+
+<div>
+<ul class="romo-list-inline romo-list-push0">
+  <li>Lorem ipsum</li>
+  <li>Phasellus iaculis</li>
+  <li>Nulla volutpat</li>
+</ul>
+</div>
+<div>
+<ul class="romo-list-inline romo-list-push">
+  <li>Lorem ipsum</li>
+  <li>Phasellus iaculis</li>
+  <li>Nulla volutpat</li>
+</ul>
+</div>
+<div>
+<ul class="romo-list-inline romo-list-push1">
+  <li>Lorem ipsum</li>
+  <li>Phasellus iaculis</li>
+  <li>Nulla volutpat</li>
+</ul>
+</div>
+<div>
+<ul class="romo-list-inline romo-list-push2">
+  <li>Lorem ipsum</li>
+  <li>Phasellus iaculis</li>
+  <li>Nulla volutpat</li>
+</ul>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-list-inline romo-list-push0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li&gt;</span>...<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+
+<span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-list-inline romo-list-push</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li&gt;</span>...<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+
+<span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-list-inline romo-list-push1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li&gt;</span>...<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+
+<span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-list-inline romo-list-push2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li&gt;</span>...<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+</div>
+
+  </div>
+  <div class="romo-2-12 romo-pad-left">
+    <ul id="docsLinks" class="romo-tabs romo-tabs-stacked">
+      
+        <li class="">
+          <a href="/romo/css/globals.html">Globals</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/helpers.html">Helpers</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/typography.html">Typography</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/images.html">Images</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/forms.html">Forms</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/buttons.html">Buttons</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/labels.html">Labels</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/tabs.html">Tabs</a>
+        </li>
+      
+        <li class="active">
+          <a href="/romo/css/lists.html">Lists</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/grids.html">Grid</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/tables.html">Tables</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/grid-tables.html">Grid Table</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+  </div>
+</body>
+</html>

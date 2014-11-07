@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+  <title>Tabs | Romo</title>
+  <link rel="icon" type="image/png" href="/romo/img/romo-favicon-rocket-5e42f12b8aa9d60fad6879a72d9cedad.png"></link>
+  
+    <link href="/romo/css/web-2d45f65741be1727673c44153e71221b.css" type="text/css" rel="stylesheet" />
+  
+  
+    <script src="/romo/js/web-0b85083089afce4f98f1291d0dfccb30.js" type="text/javascript"></script>
+  
+</head>
+<body>
+  <div id="navBar">
+    <ul>
+      <li class="logo">
+        <a href="/romo/index.html">
+          <img src="/romo/img/romo-logo-0e2ec4d4f2c83fe6c97f0ae03c39c962.png" alt="Romo" />
+        </a>
+      </li>
+      <li><a href="/romo/css.html">CSS</a></li>
+    </ul>
+  </div>
+  <div id="content">
+    <div class="romo-row">
+  <div class="romo-10-12">
+    <h2 id="basic-tabs">Basic tabs</h2>
+
+<p>Take a regular <code>&lt;ul&gt;</code> of links and add <code>.romo-tabs</code>.</p>
+
+<div>
+  <ul class="romo-tabs">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Profile</a></li>
+    <li><a href="#">Settings</a></li>
+  </ul>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-tabs</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="active-state">Active state</h3>
+
+<p>For any tab items, add <code>.active</code> to show the item as active.</p>
+
+<div>
+  <ul class="romo-tabs">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">Profile</a></li>
+    <li><a href="#">Settings</a></li>
+  </ul>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-tabs</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">active</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span>...<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span>...<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="disabled-state">Disabled state</h3>
+
+<p>For any tab items, add <code>.disabled</code> for <strong>disabled link UI with no hover effects</strong>.  Links remain clickable unless you remove the <code>href</code> attribute or implement custom JavaScript to prevent those clicks.</p>
+
+<div>
+  <ul class="romo-tabs">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">Profile</a></li>
+    <li class="disabled"><a href="#">Settings</a></li>
+  </ul>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-tabs</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">active</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span>...<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">disabled</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="link-alignment">Link alignment</h3>
+
+<p>To align tab items, use the <code>.romo-tabs-pull-left</code> or <code>.romo-tabs-pull-right</code> classes.</p>
+
+<div class="romo-push2-bottom">
+  <ul class="romo-tabs romo-tabs-pull-left">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">Profile</a></li>
+    <li><a href="#">Settings</a></li>
+  </ul>
+</div>
+
+<div>
+  <ul class="romo-tabs romo-tabs-pull-right">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">Profile</a></li>
+    <li><a href="#">Settings</a></li>
+  </ul>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-tabs romo-tabs-pull-left</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/ul&gt;</span>
+<span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-tabs romo-tabs-pull-right</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="sizes">Sizes</h3>
+
+<p>Use numbered style classes to size up/down tab items.</p>
+
+<div>
+  <ul class="romo-tabs romo-tabs-small romo-push0-bottom">
+    <li class="active"><a href="#">romo-tabs-small</a></li>
+    <li><a href="#">...</a></li>
+    <li><a href="#">...</a></li>
+  </ul>
+  <ul class="romo-tabs romo-tabs0 romo-push0-bottom">
+    <li class="active"><a href="#">romo-tabs0</a></li>
+    <li><a href="#">...</a></li>
+    <li><a href="#">...</a></li>
+  </ul>
+  <ul class="romo-tabs romo-push0-bottom">
+    <li class="active"><a href="#">Default</a></li>
+    <li><a href="#">...</a></li>
+    <li><a href="#">...</a></li>
+  </ul>
+  <ul class="romo-tabs romo-tabs1 romo-push0-bottom">
+    <li class="active"><a href="#">romo-tabs1</a></li>
+    <li><a href="#">...</a></li>
+    <li><a href="#">...</a></li>
+  </ul>
+  <ul class="romo-tabs romo-tabs-large romo-push0-bottom">
+    <li class="active"><a href="#">romo-tabs-large</a></li>
+    <li><a href="#">...</a></li>
+    <li><a href="#">...</a></li>
+  </ul>
+  <ul class="romo-tabs romo-tabs2 romo-push0-bottom">
+    <li class="active"><a href="#">romo-tabs2</a></li>
+    <li><a href="#">...</a></li>
+    <li><a href="#">...</a></li>
+  </ul>
+  <ul class="romo-tabs romo-tabs3 romo-push0-bottom">
+    <li class="active"><a href="#">romo-tabs3</a></li>
+    <li><a href="#">...</a></li>
+    <li><a href="#">...</a></li>
+  </ul>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-tabs romo-tabs-small romo-push0-bottom</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/ul&gt;</span>
+<span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-tabs romo-tabs4 romo-push0-bottom</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/ul&gt;</span>
+<span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-tabs romo-push0-bottom</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/ul&gt;</span>
+<span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-tabs romo-tabs1 romo-push0-bottom</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/ul&gt;</span>
+<span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-tabs romo-tabs-large romo-push0-bottom</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/ul&gt;</span>
+<span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-tabs romo-tabs2 romo-push0-bottom</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/ul&gt;</span>
+<span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-tabs romo-tabs3 romo-push0-bottom</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="stacked-tabs">Stacked tabs</h2>
+
+<p>Tabs are horizontal by default.  Add <code>.romo-tabs-stacked</code> to make them appear vertically stacked.</p>
+
+<div>
+  <ul class="romo-tabs romo-tabs-stacked">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Profile</a></li>
+    <li><a href="#">Settings</a></li>
+  </ul>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-tabs romo-tabs-stacked</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Use <code>.active</code> and <code>.disabled</code> just as you would on normal tabs.</p>
+
+<div>
+  <ul class="romo-tabs romo-tabs-stacked">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">Profile</a></li>
+    <li class="disabled"><a href="#">Settings</a></li>
+  </ul>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-tabs romo-tabs-stacked</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">active</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span>...<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">disabled</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="non-link-items">Non-link items</h2>
+
+<p>You can mix in non link items into the tabs.</p>
+
+<div>
+  <ul class="romo-tabs">
+    <li><button class="romo-btn romo-push0-right">A button</button></li>
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">Profile</a></li>
+    <li><a href="#">Settings</a></li>
+  </ul>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;ul</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-tabs</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn romo-push0-right</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>A button<span class="tag">&lt;/button&gt;</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">active</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Home<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Profile<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Settings<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+</div>
+
+  </div>
+  <div class="romo-2-12 romo-pad-left">
+    <ul id="docsLinks" class="romo-tabs romo-tabs-stacked">
+      
+        <li class="">
+          <a href="/romo/css/globals.html">Globals</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/helpers.html">Helpers</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/typography.html">Typography</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/images.html">Images</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/forms.html">Forms</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/buttons.html">Buttons</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/labels.html">Labels</a>
+        </li>
+      
+        <li class="active">
+          <a href="/romo/css/tabs.html">Tabs</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/lists.html">Lists</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/grids.html">Grid</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/tables.html">Tables</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/grid-tables.html">Grid Table</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+  </div>
+</body>
+</html>

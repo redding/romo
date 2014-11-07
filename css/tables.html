@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+  <title>Tables | Romo</title>
+  <link rel="icon" type="image/png" href="/romo/img/romo-favicon-rocket-5e42f12b8aa9d60fad6879a72d9cedad.png"></link>
+  
+    <link href="/romo/css/web-2d45f65741be1727673c44153e71221b.css" type="text/css" rel="stylesheet" />
+  
+  
+    <script src="/romo/js/web-0b85083089afce4f98f1291d0dfccb30.js" type="text/javascript"></script>
+  
+</head>
+<body>
+  <div id="navBar">
+    <ul>
+      <li class="logo">
+        <a href="/romo/index.html">
+          <img src="/romo/img/romo-logo-0e2ec4d4f2c83fe6c97f0ae03c39c962.png" alt="Romo" />
+        </a>
+      </li>
+      <li><a href="/romo/css.html">CSS</a></li>
+    </ul>
+  </div>
+  <div id="content">
+    <div class="romo-row">
+  <div class="romo-10-12">
+    <h2 id="default-styles">Default styles</h2>
+
+<p>For basic styling with horizontal dividers, add the base class <code>.romo-table</code>.</p>
+
+<div>
+  <table class="romo-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;table</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-table</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/table&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="optional-classes">Optional classes</h2>
+
+<h3 id="thtdromo-n-n"><code>{th|td}.romo-N-N</code></h3>
+
+<p>Add grid column size classes to set table cell widths.</p>
+
+<div>
+  <table class="romo-table">
+    <thead>
+      <tr>
+        <th class="romo-1-12">#</th>
+        <th class="romo-7-12">Name</th>
+        <th class="romo-2-12">Slug</th>
+        <th class="romo-2-12">Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="romo-1-12">1</td>
+        <td class="romo-7-12">Joe Test</td>
+        <td class="romo-2-12">joe-test</td>
+        <td class="romo-2-12">10</td>
+      </tr>
+      <tr>
+        <td class="romo-1-12">2</td>
+        <td class="romo-7-12">Jane Doe</td>
+        <td class="romo-2-12">jane-doe</td>
+        <td class="romo-2-12">18</td>
+      </tr>
+      <tr>
+        <td class="romo-1-12">3</td>
+        <td class="romo-7-12">Good Corp.</td>
+        <td class="romo-2-12">good-corp</td>
+        <td class="romo-2-12">5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;table</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-table</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;thead&gt;</span>
+    <span class="tag">&lt;tr&gt;</span>
+      <span class="tag">&lt;th</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-1-12</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>#<span class="tag">&lt;/th&gt;</span>
+      <span class="tag">&lt;th</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-7-12</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Name<span class="tag">&lt;/th&gt;</span>
+      <span class="tag">&lt;th</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-2-12</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Slug<span class="tag">&lt;/th&gt;</span>
+      <span class="tag">&lt;th</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-2-12</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Count<span class="tag">&lt;/th&gt;</span>
+    <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;/thead&gt;</span>
+  <span class="tag">&lt;tbody&gt;</span>
+    <span class="tag">&lt;tr&gt;</span>
+      <span class="tag">&lt;td</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-1-12</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>1<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-7-12</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Joe Test<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-2-12</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>joe-test<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-2-12</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>10<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;/tr&gt;</span>
+    <span class="tag">&lt;tr&gt;</span>
+      <span class="tag">&lt;td</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-1-12</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>2<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-7-12</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Jane Doe<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-2-12</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>jane-doe<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-2-12</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>18<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;/tr&gt;</span>
+    <span class="tag">&lt;tr&gt;</span>
+      <span class="tag">&lt;td</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romoromo-1-12</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>3<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romoromo-7-12</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Good Corp.<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romoromo-2-12</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>good-corp<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romoromo-2-12</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>5<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;/tbody&gt;</span>
+<span class="tag">&lt;/table&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="romo-table-striped"><code>.romo-table-striped</code></h3>
+
+<p>Adds zebra-striping to any table row within the <code>&lt;tbody&gt;</code> via the <code>:nth-child</code> CSS selector.</p>
+
+<div class="romo-push2-bottom">
+  <table class="romo-table romo-table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <table class="romo-table romo-table-striped romo-table-striped-alt">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;table</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-table romo-table-striped</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/table&gt;</span>
+
+<span class="tag">&lt;table</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-table romo-table-striped romo-table-striped-alt</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/table&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="romo-table-alt"><code>.romo-table-alt</code></h3>
+
+<p>Uses the alternate bg color for the table background.</p>
+
+<div>
+  <table class="romo-table romo-table-alt">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;table</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-table romo-table-alt</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/table&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="trromo-mutedwarningerrorinfosuccessinverse"><code>tr.romo-{muted|warning|error|info|success|inverse}</code></h3>
+
+<p>Add color emphasis to rows.</p>
+
+<div>
+  <table class="romo-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="romo-muted romo-text-muted">
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr class="romo-warning">
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr class="romo-error">
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+      <tr class="romo-info">
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr class="romo-success">
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr class="romo-inverse romo-text-inverse">
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;table</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-table romo-table-hover</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+  <span class="tag">&lt;tr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-muted romo-text-muted</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;tr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-warning</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;tr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-error</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;tr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-info</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;tr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-success</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;tr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-inverse romo-text-inverse</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/tr&gt;</span>
+<span class="tag">&lt;/table&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="romo-table-hover"><code>.romo-table-hover</code></h3>
+
+<p>Add hover state to rows within a <code>&lt;tbody&gt;</code>.</p>
+
+<div>
+  <table class="romo-table romo-table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;table</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-table romo-table-hover</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/table&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<div>
+  <table class="romo-table romo-table-hover romo-table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;table</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-table romo-table-hover romo-table-striped</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/table&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<div class="romo-push2-bottom">
+  <table class="romo-table romo-table-hover romo-table-alt">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <table class="romo-table romo-table-hover romo-table-alt romo-table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;table</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-table romo-table-hover romo-table-alt</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/table&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<div>
+  <table class="romo-table romo-table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="romo-muted romo-text-muted">
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr class="romo-warning">
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr class="romo-error">
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+      <tr class="romo-info">
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr class="romo-success">
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr class="romo-inverse romo-text-inverse">
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;table</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-table romo-table-hover</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+  <span class="tag">&lt;tr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-muted romo-text-muted</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;tr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-warning</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;tr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-error</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;tr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-info</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;tr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-success</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;tr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-inverse romo-text-inverse</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>...<span class="tag">&lt;/tr&gt;</span>
+<span class="tag">&lt;/table&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="romo-table-border0-2"><code>.romo-table-border{0-2}</code></h3>
+
+<p>Adds sized borders to the table.</p>
+
+<div class="romo-push2-bottom">
+  <table class="romo-table romo-table-border">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="2">1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td rowspan="2">18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td colspan="2">Good Corp.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="romo-push2-bottom">
+  <table class="romo-table romo-table-border0">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="2">1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td rowspan="2">18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td colspan="2">Good Corp.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="romo-push2-bottom">
+  <table class="romo-table romo-table-border1">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="2">1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td rowspan="2">18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td colspan="2">Good Corp.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <table class="romo-table romo-table-border2">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="2">1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td rowspan="2">18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td colspan="2">Good Corp.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;table</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-table romo-table-border{0-2}</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/table&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="romo-table-border-mutedwarningerrorinfosuccessinverse"><code>.romo-table-border-{muted|warning|error|info|success|inverse}</code></h3>
+
+<p>Adds border color empasis to the entire table.</p>
+
+<div class="romo-push2-bottom">
+  <table class="romo-table romo-table-border2 romo-table-border-muted">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="romo-push2-bottom">
+  <table class="romo-table romo-table-border2 romo-table-border-warning">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="romo-push2-bottom">
+  <table class="romo-table romo-table-border2 romo-table-border-error">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="romo-push2-bottom">
+  <table class="romo-table romo-table-border2 romo-table-border-info">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="romo-push2-bottom">
+  <table class="romo-table romo-table-border2 romo-table-border-success">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <table class="romo-table romo-table-border2 romo-table-border-inverse">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;table</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-table romo-table-border2 romo-table-border-{muted|warning|error|info|success|inverse}</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/table&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="romo-table-border-alt"><code>.romo-table-border-alt</code></h3>
+
+<p>Uses the alternate border color for the table borders.</p>
+
+<div>
+  <table class="romo-table romo-table-border2 romo-table-alt romo-table-border-alt">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;table</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-table romo-table-border2 romo-table-alt romo-table-border-alt</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/table&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="romo-table-padn-top-right-bottom-left"><code>.romo-table-padN{-top|-right|-bottom|-left|}</code></h3>
+
+<p>Adds cell padding to every cell in the table</p>
+
+<div>
+  <table class="romo-table romo-table-border romo-table-pad0">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;table</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-table romo-table-pad0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/table&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<div>
+  <table class="romo-table romo-table-border romo-table-pad">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;table</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-table romo-table-pad</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/table&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<div>
+  <table class="romo-table romo-table-border romo-table-pad1">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;table</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-table romo-table-pad1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/table&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<div>
+  <table class="romo-table romo-table-border romo-table-pad2">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;table</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-table romo-table-pad2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/table&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="custom-styles">Custom Styles</h2>
+
+<p>Use any helper style classes in any combination on rows/cells.</p>
+
+<div>
+  <table class="romo-table romo-table-pad2">
+    <thead>
+      <tr>
+        <th class="romo-pad2">#</th>
+        <th>Name</th>
+        <th class="romo-text2 romo-pad2-left">Slug</th>
+        <th class="romo-1-12 romo-align-center romo-align-top">Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td class="romo-bg-info">Joe Test</td>
+        <td>joe-test</td>
+        <td class="romo-1-12 romo-text2 romo-border-error romo-border4">10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td class="romo-pad0">jane-doe</td>
+        <td class="romo-1-12 romo-align-center romo-text-success">18</td>
+      </tr>
+      <tr class="romo-bg-success">
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td class="romo-1-12">5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;table</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-table romo-table-pad2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;thead&gt;</span>
+    <span class="tag">&lt;tr&gt;</span>
+      <span class="tag">&lt;th</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-pad2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>#<span class="tag">&lt;/th&gt;</span>
+      <span class="tag">&lt;th&gt;</span>Name<span class="tag">&lt;/th&gt;</span>
+      <span class="tag">&lt;th</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-text2 romo-pad2-left</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Slug<span class="tag">&lt;/th&gt;</span>
+      <span class="tag">&lt;th</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-1-12 romo-align-center romo-align-top</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Count<span class="tag">&lt;/th&gt;</span>
+    <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;/thead&gt;</span>
+  <span class="tag">&lt;tbody&gt;</span>
+    <span class="tag">&lt;tr&gt;</span>
+      <span class="tag">&lt;td&gt;</span>1<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-bg-info</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Joe Test<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td&gt;</span>joe-test<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-1-12 romo-text2 romo-border-error romo-border4</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>10<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;/tr&gt;</span>
+    <span class="tag">&lt;tr&gt;</span>
+      <span class="tag">&lt;td&gt;</span>2<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td&gt;</span>Jane Doe<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-pad0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>jane-doe<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-1-12 romo-align-center romo-text-success</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>18<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;/tr&gt;</span>
+    <span class="tag">&lt;tr</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-bg-success</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;td&gt;</span>3<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td&gt;</span>Good Corp.<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td&gt;</span>good-corp<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-1-12</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>5<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;/tbody&gt;</span>
+<span class="tag">&lt;/table&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="supported-table-markup">Supported table markup</h2>
+
+<p>List of supported table HTML elements and how they should be used.</p>
+
+<div>
+<table class="romo-table romo-table-striped romo-table-pad romo-table-border">
+  <thead>
+    <tr>
+      <th>Tag</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;table&gt;</code></td>
+      <td>Wrapping element for displaying data in a tabular format</td>
+    </tr>
+    <tr>
+      <td><code>&lt;thead&gt;</code></td>
+      <td>(optional) Container element for table header rows to label table columns</td>
+    </tr>
+    <tr>
+      <td><code>&lt;tfoot&gt;</code></td>
+      <td>(optional) Container element for table footer rows</td>
+    </tr>
+    <tr>
+      <td><code>&lt;tbody&gt;</code></td>
+      <td>Container element for table rows in the body of the table</td>
+    </tr>
+    <tr>
+      <td><code>&lt;tr&gt;</code></td>
+      <td>Container element for a set of table cells that appears on a single row</td>
+    </tr>
+    <tr>
+      <td><code>&lt;td&gt;</code></td>
+      <td>Default table cell</td>
+    </tr>
+    <tr>
+      <td><code>&lt;th&gt;</code></td>
+      <td>Special table cell for column (or row, depending on scope and placement) labels</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;table&gt;</span>
+  <span class="tag">&lt;thead&gt;</span>
+    <span class="tag">&lt;tr&gt;</span>
+      <span class="tag">&lt;th&gt;</span>...<span class="tag">&lt;/th&gt;</span>
+      <span class="tag">&lt;th&gt;</span>...<span class="tag">&lt;/th&gt;</span>
+    <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;/thead&gt;</span>
+  <span class="tag">&lt;tfoot&gt;</span>
+    <span class="tag">&lt;tr&gt;</span>
+      <span class="tag">&lt;td&gt;</span>...<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td&gt;</span>...<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;/tfoot&gt;</span>
+  <span class="tag">&lt;tbody&gt;</span>
+    <span class="tag">&lt;tr&gt;</span>
+      <span class="tag">&lt;td&gt;</span>...<span class="tag">&lt;/td&gt;</span>
+      <span class="tag">&lt;td&gt;</span>...<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;/tbody&gt;</span>
+<span class="tag">&lt;/table&gt;</span>
+</pre></div>
+</div>
+</div>
+
+  </div>
+  <div class="romo-2-12 romo-pad-left">
+    <ul id="docsLinks" class="romo-tabs romo-tabs-stacked">
+      
+        <li class="">
+          <a href="/romo/css/globals.html">Globals</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/helpers.html">Helpers</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/typography.html">Typography</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/images.html">Images</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/forms.html">Forms</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/buttons.html">Buttons</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/labels.html">Labels</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/tabs.html">Tabs</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/lists.html">Lists</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/grids.html">Grid</a>
+        </li>
+      
+        <li class="active">
+          <a href="/romo/css/tables.html">Tables</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/grid-tables.html">Grid Table</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+  </div>
+</body>
+</html>

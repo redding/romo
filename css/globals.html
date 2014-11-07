@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+  <title>Globals | Romo</title>
+  <link rel="icon" type="image/png" href="/romo/img/romo-favicon-rocket-5e42f12b8aa9d60fad6879a72d9cedad.png"></link>
+  
+    <link href="/romo/css/web-2d45f65741be1727673c44153e71221b.css" type="text/css" rel="stylesheet" />
+  
+  
+    <script src="/romo/js/web-0b85083089afce4f98f1291d0dfccb30.js" type="text/javascript"></script>
+  
+</head>
+<body>
+  <div id="navBar">
+    <ul>
+      <li class="logo">
+        <a href="/romo/index.html">
+          <img src="/romo/img/romo-logo-0e2ec4d4f2c83fe6c97f0ae03c39c962.png" alt="Romo" />
+        </a>
+      </li>
+      <li><a href="/romo/css.html">CSS</a></li>
+    </ul>
+  </div>
+  <div id="content">
+    <div class="romo-row">
+  <div class="romo-10-12">
+    <h2 id="html5-doctype">HTML5 doctype</h2>
+
+<p>Romo requires the use of the HTML5 doctype. Include it at the beginning of all your projects:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/html&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="reset-with-normalize">Reset with Normalize</h2>
+
+<p>Romo uses <a href="http://necolas.github.io/normalize.css/" target="_blank">Normalize.css</a> to reset the CSS.  From their website:</p>
+
+<blockquote>
+  <p>Normalize.css makes browsers render all elements more consistently and in line with modern standards. It precisely targets only the styles that need normalizing.</p>
+</blockquote>
+
+<h2 id="box-sizing-border-box--ftw">* { Box-sizing: Border-box } FTW</h2>
+
+<p>Romo uses <a href="http://www.paulirish.com/2012/box-sizing-border-box-ftw/" target="_blank">border-box</a> on all elements:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="comment">/* apply a natural box layout model to all elements */</span>
+<span class="tag">*</span>, <span class="tag">*</span><span class="pseudo-class">:before</span>, <span class="tag">*</span><span class="pseudo-class">:after</span> {
+  <span class="key">-webkit-box-sizing</span>: <span class="value">border-box</span>;
+     <span class="key">-moz-box-sizing</span>: <span class="value">border-box</span>;
+          <span class="key">box-sizing</span>: <span class="value">border-box</span>;
+ }
+</pre></div>
+</div>
+</div>
+
+<h2 id="other-settings">Other Settings</h2>
+
+<ul>
+  <li>Remove <code>margin</code> on the body</li>
+  <li>Set <code>background-color: white;</code> on the body</li>
+  <li>Set <code>$baseFontFamily</code>, <code>$baseFontSize</code> and <code>$baseLineHeight</code> as our typographical base</li>
+  <li>Set the global link color with <code>$linkColor</code> and <code>$linkColorHover</code> and only apply link underlines on <code>:hover</code></li>
+  <li>Remove any link color and styling by adding the <code>romo-text</code> class to any link</li>
+  <li>Add a pointer cursor to any element by adding the <code>romo-pointer</code> class</li>
+</ul>
+
+  </div>
+  <div class="romo-2-12 romo-pad-left">
+    <ul id="docsLinks" class="romo-tabs romo-tabs-stacked">
+      
+        <li class="active">
+          <a href="/romo/css/globals.html">Globals</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/helpers.html">Helpers</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/typography.html">Typography</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/images.html">Images</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/forms.html">Forms</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/buttons.html">Buttons</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/labels.html">Labels</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/tabs.html">Tabs</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/lists.html">Lists</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/grids.html">Grid</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/tables.html">Tables</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/grid-tables.html">Grid Table</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+  </div>
+</body>
+</html>

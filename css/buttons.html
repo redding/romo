@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+  <title>Buttons | Romo</title>
+  <link rel="icon" type="image/png" href="/romo/img/romo-favicon-rocket-5e42f12b8aa9d60fad6879a72d9cedad.png"></link>
+  
+    <link href="/romo/css/web-2d45f65741be1727673c44153e71221b.css" type="text/css" rel="stylesheet" />
+  
+  
+    <script src="/romo/js/web-0b85083089afce4f98f1291d0dfccb30.js" type="text/javascript"></script>
+  
+</head>
+<body>
+  <div id="navBar">
+    <ul>
+      <li class="logo">
+        <a href="/romo/index.html">
+          <img src="/romo/img/romo-logo-0e2ec4d4f2c83fe6c97f0ae03c39c962.png" alt="Romo" />
+        </a>
+      </li>
+      <li><a href="/romo/css.html">CSS</a></li>
+    </ul>
+  </div>
+  <div id="content">
+    <div class="romo-row">
+  <div class="romo-10-12">
+    <h2 id="default-buttons">Default buttons</h2>
+
+<p>Button styles can be applied to anything with the <code>.romo-btn</code> class. However, typically you&#8217;ll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements for the best rendering.</p>
+
+<div>
+  <button class="romo-btn romo-push0-bottom">Button</button>
+  <a href="#" class="romo-btn romo-push0-bottom">Anchor</a>
+  <input type="button" class="romo-btn romo-push0-bottom" value="Input-button" />
+  <input type="submit" class="romo-btn romo-push0-bottom" value="Input-submit" />
+  <input type="reset" class="romo-btn romo-push0-bottom" value="Input-reset" />
+  <button class="romo-btn romo-push0-bottom" disabled="">Disabled by prop button</button>
+  <button class="romo-btn disabled romo-push0-bottom">Disabled by class button</button>
+  <button class="romo-btn active romo-push0-bottom">Active button</button>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Button<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;a</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Anchor<span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Input-button</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+<span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">submit</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Input-submit</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+<span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">reset</span><span class="delimiter">&quot;</span></span>  <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Input-reset</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+<span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">disabled</span><span class="tag">&gt;</span>Disabled by prop button<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn disabled</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Disabled by class button<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn active</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Active button<span class="tag">&lt;/button&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="active-state">Active state</h2>
+
+<p>Add <code>.active</code> to make any button appear pressed.</p>
+
+<div>
+  <button class="romo-btn">Default</button>
+  <button class="romo-btn active">Active</button>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Default<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn active</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Active<span class="tag">&lt;/button&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="button-sizes">Button sizes</h2>
+
+<p>Use numbered style classes to size up/down buttons.</p>
+
+<div>
+  <div class="romo-push0-bottom">
+    <button class="romo-btn">.romo-btn</button>
+    <button class="romo-btn romo-btn0">.romo-btn0</button>
+    <button class="romo-btn romo-btn-small">.romo-btn-small</button>
+  </div>
+  <div class="romo-push0-bottom">
+    <button class="romo-btn">.romo-btn</button>
+    <button class="romo-btn romo-btn1">.romo-btn1</button>
+  </div>
+  <div class="romo-push0-bottom">
+    <button class="romo-btn">.romo-btn</button>
+    <button class="romo-btn romo-btn2">.romo-btn2</button>
+    <button class="romo-btn romo-btn-large">.romo-btn-large</button>
+  </div>
+  <div class="romo-push0-bottom">
+    <button class="romo-btn">.romo-btn</button>
+    <button class="romo-btn romo-btn3">.romo-btn3</button>
+  </div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-push0-bottom</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-btn<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn romo-btn0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-btn0<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn romo-btn-small</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-btn-small<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-push0-bottom</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-btn<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn romo-btn1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-btn1<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-push0-bottom</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-btn<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn romo-btn2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-btn2<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn romo-btn-large</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-btn-large<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-push0-bottom</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-btn<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn romo-btn3</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-btn3<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Use to align with inline text.</p>
+
+<div>
+  <div class="romo-push0-bottom">
+    <span class="romo-text0 romo-align-middle">.romo-text0</span>
+    <button class="romo-btn romo-btn0">.romo-btn0</button>
+    <span class="romo-text-small romo-align-middle">.romo-text-small</span>
+    <button class="romo-btn romo-btn-small">.romo-btn-small</button>
+  </div>
+  <div class="romo-push0-bottom">
+    <span class="romo-text1 romo-align-middle">.romo-text1</span>
+    <button class="romo-btn romo-btn1">.romo-btn1</button>
+    <span class="romo-align-middle">.romo-text</span>
+    <button class="romo-btn">.romo-btn</button>
+  </div>
+  <div class="romo-push0-bottom romo-text2">
+    <span class="romo-text2 romo-align-middle">.romo-text2</span>
+    <button class="romo-btn romo-btn2">.romo-btn2</button>
+    <span class="romo-text-large romo-align-middle">.romo-text-large</span>
+    <button class="romo-btn romo-btn-large">.romo-btn-large</button>
+  </div>
+  <div class="romo-push0-bottom romo-text3">
+    <span class="romo-text3 romo-align-middle">.romo-text3</span>
+    <button class="romo-btn romo-btn3">.romo-btn3</button>
+  </div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-push0-bottom</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-text0 romo-align-middle</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-text0<span class="tag">&lt;/span&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn romo-btn0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-btn0<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-text-small romo-align-middle</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-text-small<span class="tag">&lt;/span&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn romo-btn-small</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-btn-small<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-push0-bottom</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-text1 romo-align-middle</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-text1<span class="tag">&lt;/span&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn romo-btn1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-btn1<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-align-middle</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-text<span class="tag">&lt;/span&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-btn<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-push0-bottom romo-text2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-text2 romo-align-middle</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-text2<span class="tag">&lt;/span&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn romo-btn2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-btn2<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-text-large romo-align-middle</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-text-large<span class="tag">&lt;/span&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn romo-btn-large</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-btn-large<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-push0-bottom romo-text3</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-text3 romo-align-middle</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-text3<span class="tag">&lt;/span&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn romo-btn3</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-btn3<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Or use <code>.romo-btn-inline</code> to manually vertically align text that isn&#8217;t inline with an image.</p>
+
+<div class="romo-row romo-push0-bottom">
+  <div class="romo-span romo-1-6 romo-align-right romo-pad0-right">
+    <button class="romo-btn romo-btn-large">.romo-btn-large</button>
+  </div>
+  <div class="romo-span romo-1-6 romo-text-small">
+    <span class="romo-btn-inline-large">.romo-text-small</span>
+  </div>
+  <div class="romo-span romo-offset-4-6"></div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-row romo-push0-bottom</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-span romo-1-6 romo-align-right romo-pad0-right</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn romo-btn-large</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-btn-large<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-span romo-1-6 romo-text-small</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-inline-large</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.romo-text-small<span class="tag">&lt;/span&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-span romo-offset-4-6</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Use <code>.romo-btn-block</code> to add blocking full-width buttons.</p>
+
+<div>
+  <button class="romo-btn romo-btn-block">Blocking full-width button</button>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn romo-btn-block</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Blocking full-width button<span class="tag">&lt;/button&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="alternate-buttons">Alternate buttons</h2>
+
+<p>Use these as an alternative to the default styles and to add color emphasis to buttons.</p>
+
+<div>
+  <table class="romo-table romo-table-border romo-table-striped romo-table-pad1">
+    <thead>
+      <tr>
+        <th>Disabled state</th>
+        <th>Active state</th>
+        <th>Large size</th>
+        <th>Default size</th>
+        <th>Small size</th>
+        <th>class=""</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><button href="#" class="romo-btn romo-btn-large disabled">Default</button></td>
+        <td><button href="#" class="romo-btn romo-btn-large active">Default</button></td>
+        <td><button href="#" class="romo-btn romo-btn-large">Default</button></td>
+        <td><button href="#" class="romo-btn">Default</button></td>
+        <td><button href="#" class="romo-btn romo-btn-small">Default</button></td>
+        <td><code>romo-btn</code></td>
+      </tr>
+      <tr>
+        <td><button href="#" class="romo-btn romo-btn-alt romo-btn-large disabled">Alt</button></td>
+        <td><button href="#" class="romo-btn romo-btn-alt romo-btn-large active">Alt</button></td>
+        <td><button href="#" class="romo-btn romo-btn-alt romo-btn-large">Alt</button></td>
+        <td><button href="#" class="romo-btn romo-btn-alt">Alt</button></td>
+        <td><button href="#" class="romo-btn romo-btn-alt romo-btn-small">Alt</button></td>
+        <td><code>romo-btn romo-btn-alt</code></td>
+      </tr>
+      <tr>
+        <td><button href="#" class="romo-btn romo-btn-primary romo-btn-large disabled">Primary</button></td>
+        <td><button href="#" class="romo-btn romo-btn-primary romo-btn-large active">Primary</button></td>
+        <td><button href="#" class="romo-btn romo-btn-primary romo-btn-large">Primary</button></td>
+        <td><button href="#" class="romo-btn romo-btn-primary">Primary</button></td>
+        <td><button href="#" class="romo-btn romo-btn-primary romo-btn-small">Primary</button></td>
+        <td><code>romo-btn romo-btn-primary</code></td>
+      </tr>
+      <tr>
+        <td><button href="#" class="romo-btn romo-btn-warning romo-btn-large disabled">Warning</button></td>
+        <td><button href="#" class="romo-btn romo-btn-warning romo-btn-large active">Warning</button></td>
+        <td><button href="#" class="romo-btn romo-btn-warning romo-btn-large">Warning</button></td>
+        <td><button href="#" class="romo-btn romo-btn-warning">Warning</button></td>
+        <td><button href="#" class="romo-btn romo-btn-warning romo-btn-small">Warning</button></td>
+        <td><code>romo-btn romo-btn-warning</code></td>
+      </tr>
+      <tr>
+        <td><button href="#" class="romo-btn romo-btn-danger romo-btn-large disabled">Danger</button></td>
+        <td><button href="#" class="romo-btn romo-btn-danger romo-btn-large active">Danger</button></td>
+        <td><button href="#" class="romo-btn romo-btn-danger romo-btn-large">Danger</button></td>
+        <td><button href="#" class="romo-btn romo-btn-error">Danger</button></td>
+        <td><button href="#" class="romo-btn romo-btn-error romo-btn-small">Danger</button></td>
+        <td><code>romo-btn romo-btn-danger</code><br />Or, <code>romo-btn romo-btn-error</code></td>
+      </tr>
+      <tr>
+        <td><button href="#" class="romo-btn romo-btn-info romo-btn-large disabled">Info</button></td>
+        <td><button href="#" class="romo-btn romo-btn-info romo-btn-large active">Info</button></td>
+        <td><button href="#" class="romo-btn romo-btn-info romo-btn-large">Info</button></td>
+        <td><button href="#" class="romo-btn romo-btn-info">Info</button></td>
+        <td><button href="#" class="romo-btn romo-btn-info romo-btn-small">Info</button></td>
+        <td><code>romo-btn romo-btn-info</code></td>
+      </tr>
+      <tr>
+        <td><button href="#" class="romo-btn romo-btn-success romo-btn-large disabled">Success</button></td>
+        <td><button href="#" class="romo-btn romo-btn-success romo-btn-large active">Success</button></td>
+        <td><button href="#" class="romo-btn romo-btn-success romo-btn-large">Success</button></td>
+        <td><button href="#" class="romo-btn romo-btn-success">Success</button></td>
+        <td><button href="#" class="romo-btn romo-btn-success romo-btn-small">Success</button></td>
+        <td><code>romo-btn romo-btn-success</code></td>
+      </tr>
+      <tr>
+        <td><button href="#" class="romo-btn romo-btn-inverse romo-btn-large disabled">Inverse</button></td>
+        <td><button href="#" class="romo-btn romo-btn-inverse romo-btn-large active">Inverse</button></td>
+        <td><button href="#" class="romo-btn romo-btn-inverse romo-btn-large">Inverse</button></td>
+        <td><button href="#" class="romo-btn romo-btn-inverse">Inverse</button></td>
+        <td><button href="#" class="romo-btn romo-btn-inverse romo-btn-small">Inverse</button></td>
+        <td><code>romo-btn romo-btn-inverse</code></td>
+      </tr>
+      <tr>
+        <td><button href="#" class="romo-btn romo-btn-link romo-btn-large disabled">Link</button></td>
+        <td><button href="#" class="romo-btn romo-btn-link romo-btn-large active">Link</button></td>
+        <td><button href="#" class="romo-btn romo-btn-link romo-btn-large">Link</button></td>
+        <td><button href="#" class="romo-btn romo-btn-link">Link</button></td>
+        <td><button href="#" class="romo-btn romo-btn-link romo-btn-small">Link</button></td>
+        <td><code>romo-btn romo-btn-link</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 id="button-groups">Button groups</h2>
+
+<p>Group buttons together by wrapping them in <code>.romo-btn-group</code>.</p>
+
+<div>
+  <div class="romo-btn-group">
+    <button class="romo-btn">Left</button>
+    <button class="romo-btn">Middle</button>
+    <button class="romo-btn">Right</button>
+  </div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Left<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Middle<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Right<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Optionally with border radius.</p>
+
+<div>
+  <div class="romo-pad0-bottom">
+    <div class="romo-btn-group romo-btn-group-border0-radius">
+      <button class="romo-btn">...</button>
+      <button class="romo-btn">border0-radius</button>
+      <button class="romo-btn">...</button>
+    </div>
+  </div>
+  <div class="romo-pad0-bottom">
+    <div class="romo-btn-group romo-btn-group-border-radius">
+      <button class="romo-btn">...</button>
+      <button class="romo-btn">border-radius</button>
+      <button class="romo-btn">...</button>
+    </div>
+  </div>
+  <div class="romo-pad0-bottom">
+    <div class="romo-btn-group romo-btn-group-border1-radius">
+      <button class="romo-btn">...</button>
+      <button class="romo-btn">border1-radius</button>
+      <button class="romo-btn">...</button>
+    </div>
+  </div>
+  <div class="romo-pad0-bottom">
+    <div class="romo-btn-group romo-btn-group-border2-radius">
+      <button class="romo-btn">...</button>
+      <button class="romo-btn">border2-radius</button>
+      <button class="romo-btn">...</button>
+    </div>
+  </div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group romo-btn-group-border0-radius</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group romo-btn-group-border-radius</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group romo-btn-group-border1-radius</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group romo-btn-group-border2-radius</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>With alternate buttons.</p>
+
+<div>
+  <div class="romo-btn-group romo-btn-group-border-radius">
+    <a href="#" class="romo-btn romo-btn-link disabled">&lt;&lt; Prev</a>
+    <strong class="romo-btn romo-btn-link romo-text-bold">Page 1</strong>
+    <a href="#" class="romo-btn romo-btn-link">Next &gt;&gt;</a>
+  </div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group romo-btn-group-border-radius</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn romo-btn-link disabled</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="error">&lt;</span><span class="error">&lt;</span> Prev<span class="tag">&lt;/a&gt;</span>
+  <span class="tag">&lt;strong</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn romo-btn-link romo-text-bold</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Page 1<span class="tag">&lt;/strong&gt;</span>
+  <span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn romo-btn-link</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Next <span class="error">&gt;</span><span class="error">&gt;</span><span class="tag">&lt;/a&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="multiple-button-groups">Multiple button groups</h3>
+
+<p>Combine sets of button groups for more complex components.</p>
+
+<div>
+  <div class="romo-btn-group">
+    <button class="romo-btn">0</button>
+    <button class="romo-btn">1</button>
+    <button class="romo-btn">2</button>
+    <button class="romo-btn">3</button>
+  </div>
+  <div class="romo-btn-group">
+    <button class="romo-btn">4</button>
+    <button class="romo-btn">5</button>
+    <button class="romo-btn">6</button>
+    <button class="romo-btn">7</button>
+    <button class="romo-btn">8</button>
+  </div>
+  <div class="romo-btn-group">
+    <button class="romo-btn">9</button>
+  </div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>0<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>1<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>2<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>3<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>4<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>5<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>6<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>7<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>8<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>9<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="vertical-button-groups">Vertical button groups</h3>
+
+<p>Make a group of buttons appear vertically stacked rather than horizontally by using <code>.romo-btn-group-vertical</code>.</p>
+
+<p><strong>Note</strong>: you should set a static width on vertical button group buttons so they always line up as expected regardless of their content.</p>
+
+<div>
+  <div class="romo-btn-group-vertical romo-align-top">
+    <button class="romo-btn" style="width: 40px">1</button>
+    <button class="romo-btn" style="width: 40px">2</button>
+    <button class="romo-btn" style="width: 40px">3</button>
+    <button class="romo-btn" style="width: 40px">4</button>
+  </div>
+  <div class="romo-btn-group-vertical romo-align-top">
+    <button class="romo-btn" style="width: 80px">First</button>
+    <button class="romo-btn" style="width: 80px">Second</button>
+    <button class="romo-btn" style="width: 80px">Third</button>
+  </div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group-vertical romo-align-top</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">40px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>1<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">40px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>2<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">40px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>3<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">40px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>4<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group-vertical romo-align-top</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">80px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>First<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">80px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Second<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">80px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Third<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Optionally with border radius.</p>
+
+<div class="romo-pad0-bottom">
+  <div class="romo-btn-group-vertical romo-btn-group-border0-radius">
+    <button class="romo-btn" style="width: 120px">...</button>
+    <button class="romo-btn" style="width: 120px">border0-radius</button>
+    <button class="romo-btn" style="width: 120px">...</button>
+  </div>
+  <div class="romo-btn-group-vertical romo-btn-group-border-radius">
+    <button class="romo-btn" style="width: 120px">...</button>
+    <button class="romo-btn" style="width: 120px">border-radius</button>
+    <button class="romo-btn" style="width: 120px">...</button>
+  </div>
+  <div class="romo-btn-group-vertical romo-btn-group-border1-radius">
+    <button class="romo-btn" style="width: 120px">...</button>
+    <button class="romo-btn" style="width: 120px">border1-radius</button>
+    <button class="romo-btn" style="width: 120px">...</button>
+  </div>
+  <div class="romo-btn-group-vertical romo-btn-group-border2-radius">
+    <button class="romo-btn" style="width: 120px">...</button>
+    <button class="romo-btn" style="width: 120px">border2-radius</button>
+    <button class="romo-btn" style="width: 120px">...</button>
+  </div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group-vertical romo-btn-group-border0-radius</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group-vertical romo-btn-group-border-radius</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group-vertical romo-btn-group-border1-radius</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group-vertical romo-btn-group-border2-radius</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="combined-button-groups">Combined button groups</h2>
+
+<p>Combine horizontal and vertical button groups to create grids of buttons.</p>
+
+<div>
+  <div class="romo-btn-group">
+    <div class="romo-btn-group-vertical romo-align-top">
+      <button class="romo-btn" style="width: 40px">7</button>
+      <button class="romo-btn" style="width: 40px">4</button>
+      <button class="romo-btn" style="width: 40px">1</button>
+      <button class="romo-btn" style="width: 40px">.</button>
+    </div>
+    <div class="romo-btn-group-vertical romo-align-top">
+      <button class="romo-btn" style="width: 40px">8</button>
+      <button class="romo-btn" style="width: 40px">5</button>
+      <button class="romo-btn" style="width: 40px">3</button>
+      <button class="romo-btn" style="width: 40px">0</button>
+    </div>
+    <div class="romo-btn-group-vertical romo-align-top">
+      <button class="romo-btn" style="width: 40px">9</button>
+      <button class="romo-btn" style="width: 40px">6</button>
+      <button class="romo-btn" style="width: 40px">3</button>
+      <button class="romo-btn" style="width: 40px">=</button>
+    </div>
+    <div class="romo-btn-group-vertical romo-align-top">
+      <button class="romo-btn" style="width: 40px">/</button>
+      <button class="romo-btn" style="width: 40px">*</button>
+      <button class="romo-btn" style="width: 40px">-</button>
+      <button class="romo-btn" style="width: 40px">+</button>
+    </div>
+  </div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group-vertical romo-align-top</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">40px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>7<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">40px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>4<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">40px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>1<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">40px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>.<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group-vertical romo-align-top</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">40px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>8<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">40px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>5<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">40px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>3<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">40px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>0<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group-vertical romo-align-top</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">40px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>9<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">40px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>6<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">40px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>3<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">40px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>=<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group-vertical romo-align-top</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">40px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>/<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">40px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>*<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">40px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>-<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">style</span>=<span class="string"><span class="delimiter">&quot;</span><span class="key">width</span>: <span class="float">40px</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>+<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Optionally with border radius.</p>
+
+<div>
+  <div class="romo-btn-group romo-btn-group-border2-radius">
+    <div class="romo-btn-group-vertical romo-align-top">
+      <button class="romo-btn" style="width: 40px">7</button>
+      <button class="romo-btn" style="width: 40px">4</button>
+      <button class="romo-btn" style="width: 40px">1</button>
+      <button class="romo-btn" style="width: 40px">.</button>
+    </div>
+    <div class="romo-btn-group-vertical romo-align-top">
+      <button class="romo-btn" style="width: 40px">8</button>
+      <button class="romo-btn" style="width: 40px">5</button>
+      <button class="romo-btn" style="width: 40px">3</button>
+      <button class="romo-btn" style="width: 40px">0</button>
+    </div>
+    <div class="romo-btn-group-vertical romo-align-top">
+      <button class="romo-btn" style="width: 40px">9</button>
+      <button class="romo-btn" style="width: 40px">6</button>
+      <button class="romo-btn" style="width: 40px">3</button>
+      <button class="romo-btn" style="width: 40px">=</button>
+    </div>
+    <div class="romo-btn-group-vertical romo-align-top">
+      <button class="romo-btn" style="width: 40px">/</button>
+      <button class="romo-btn" style="width: 40px">*</button>
+      <button class="romo-btn" style="width: 40px">-</button>
+      <button class="romo-btn" style="width: 40px">+</button>
+    </div>
+  </div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group romo-btn-group-border2-radius</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group-vertical romo-align-top</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    ...
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group-vertical romo-align-top</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    ...
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group-vertical romo-align-top</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    ...
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-btn-group-vertical romo-align-top</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    ...
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+  </div>
+  <div class="romo-2-12 romo-pad-left">
+    <ul id="docsLinks" class="romo-tabs romo-tabs-stacked">
+      
+        <li class="">
+          <a href="/romo/css/globals.html">Globals</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/helpers.html">Helpers</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/typography.html">Typography</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/images.html">Images</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/forms.html">Forms</a>
+        </li>
+      
+        <li class="active">
+          <a href="/romo/css/buttons.html">Buttons</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/labels.html">Labels</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/tabs.html">Tabs</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/lists.html">Lists</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/grids.html">Grid</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/tables.html">Tables</a>
+        </li>
+      
+        <li class="">
+          <a href="/romo/css/grid-tables.html">Grid Table</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+  </div>
+</body>
+</html>
