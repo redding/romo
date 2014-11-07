@@ -1,7 +1,8 @@
 @import 'css/romo/vars';
 @import 'css/romo/mixins';
 
-.romo-modal {
+.romo-modal,
+[data-romo-modal-close="true"] {
   cursor: pointer;
 }
 
@@ -13,28 +14,19 @@
   @include cursor-grabbing;
 }
 
-[data-romo-modal-close="true"]{
-  cursor: pointer;
-}
-
 .romo-modal-popup {
   position: fixed;
   top: 50%;
   left: 50%;
   float: left;
-  border-width: 1px;
-  border-style: solid;
+  @include border0;
   @include box-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+
+  background-color: $baseBackground;
+  border-color: $baseBorderColor;
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
 .romo-modal-popup:not([class*="romo-modal-open"]) {
   display: none;
-}
-
-/* theme */
-
-.romo-modal-popup {
-  background-color: #ffffff;
-  border-color: #cccccc;
-  border-color: rgba(0, 0, 0, 0.2);
 }
