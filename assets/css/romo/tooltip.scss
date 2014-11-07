@@ -58,9 +58,9 @@
   margin-top: -6px;
 }
 
-.romo-tooltip-popup[data-romo-tooltip-alignment="left"]   { text-align: left; }
-.romo-tooltip-popup[data-romo-tooltip-alignment="center"] { text-align: center; }
-.romo-tooltip-popup[data-romo-tooltip-alignment="right"]  { text-align: right; }
+.romo-tooltip-popup[data-romo-tooltip-alignment="left"]   { @include align-left; }
+.romo-tooltip-popup[data-romo-tooltip-alignment="center"] { @include align-center; }
+.romo-tooltip-popup[data-romo-tooltip-alignment="right"]  { @include align-right; }
 
 .romo-tooltip-body {
   padding: 6px 8px;
@@ -71,22 +71,19 @@
 /* theme */
 
 .romo-tooltip-popup {
-  background-color: #202020;
-  color: #e0e0e0;
+  background-color: $tooltipBackground;
+  color: $tooltipColor;
 }
 
 .romo-tooltip-popup[data-romo-tooltip-position="top"] .romo-tooltip-arrow {
-  border-top-color: #202020;
+  border-top-color: $tooltipBackground;
 }
-
 .romo-tooltip-popup[data-romo-tooltip-position="right"] .romo-tooltip-arrow {
-  border-right-color: #202020;
+  border-right-color: $tooltipBackground;
 }
-
 .romo-tooltip-popup[data-romo-tooltip-position="bottom"] .romo-tooltip-arrow {
-  border-bottom-color: #202020;
+  border-bottom-color: $tooltipBackground;
 }
-
 .romo-tooltip-popup[data-romo-tooltip-position="left"] .romo-tooltip-arrow {
-  border-left-color: #202020;
+  border-left-color: $tooltipBackground;
 }
