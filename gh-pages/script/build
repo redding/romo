@@ -5,7 +5,7 @@ require 'pathname'
 require 'scmd'
 require 'pry'
 
-base_url = "/pages/teaminsight/romo"
+base_url = "/romo"
 root = Pathname.new(File.expand_path('../../..', __FILE__))
 tmp_dir = root.join('tmp/gh-pages')
 gh_pages_dir = root.join('gh-pages')

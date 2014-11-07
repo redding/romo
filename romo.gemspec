@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version     = Romo::VERSION
   gem.authors     = ["Kelly Redding", "Collin Redding"]
   gem.email       = ["kelly@kellyredding.com", "collin.redding@me.com"]
-  gem.description = %q{UI Toolkit}
-  gem.summary     = %q{UI Toolkit}
+  gem.description = %q{A UI Toolkit}
+  gem.summary     = %q{A UI Toolkit}
   gem.homepage    = "http://github.com/redding/romo"
   gem.license     = 'MIT'
 

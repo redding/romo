@@ -17,7 +17,7 @@ require 'romo/dassets'
 RomoDocsRouter = Deas::Router.new do
 
   view_handler_ns 'ViewHandlers'
-  base_url "/pages/teaminsight/romo"
+  base_url "/romo"
 
   # CSS
   url :css_globals,     '/css/globals.html'

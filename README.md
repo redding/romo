@@ -1,10 +1,10 @@
 # Romo
 
-UI Toolkit
+A UI Toolkit _loosely_ based on conventions from [Bootstrap v2.3.2](http://getbootstrap.com/2.3.2/index.html).
 
 ## Usage
 
-TODO: Write code samples and usage instructions here
+http://redding.github.io/romo/index.html
 
 ## Installation
 
