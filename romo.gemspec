@@ -6,11 +6,11 @@ require "romo/version"
 Gem::Specification.new do |gem|
   gem.name        = "romo"
   gem.version     = Romo::VERSION
-  gem.authors     = ["Kelly Redding"]
-  gem.email       = ["kelly@kellyredding.com"]
+  gem.authors     = ["Kelly Redding", "Collin Redding"]
+  gem.email       = ["kelly@kellyredding.com", "collin.redding@me.com"]
   gem.description = %q{UI Toolkit}
   gem.summary     = %q{UI Toolkit}
-  gem.homepage    = "http://github.com/__/romo"
+  gem.homepage    = "http://github.com/redding/romo"
   gem.license     = 'MIT'
 
   gem_files = `git ls-files`.split($/)
@@ -20,6 +20,6 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_development_dependency("assert", ["~> 2.10"])
+  gem.add_development_dependency("assert", ["~> 2.12"])
 
 end
