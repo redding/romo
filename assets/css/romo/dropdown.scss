@@ -1,29 +1,23 @@
 @import 'css/romo/vars';
 @import 'css/romo/mixins';
 
-.romo-dropdown {
-  cursor: pointer;
-}
-
-[data-romo-dropdown-close="true"]{
+.romo-dropdown,
+[data-romo-dropdown-close="true"] {
   cursor: pointer;
 }
 
 .romo-dropdown-popup {
   position: absolute;
   float: left;
-  border-width: 1px;
-  border-style: solid;
+  @include border0;
+
+  background-color: $baseBackground;
+  border-color: $baseBorderColor;
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
 .romo-dropdown-popup[data-romo-dropdown-fixed="true"] {
   position: fixed;
-}
-
-.romo-dropdown-popup,
-.romo-dropdown-body,
-.romo-dropdown-content {
-  @include border-box;
 }
 
 .romo-dropdown-popup[data-romo-dropdown-position="bottom"] {
@@ -36,12 +30,4 @@
 
 .romo-dropdown-popup:not([class*="romo-dropdown-open"]) {
   display: none;
-}
-
-/* theme */
-
-.romo-dropdown-popup {
-  background-color: #ffffff;
-  border-color: #cccccc;
-  border-color: rgba(0, 0, 0, 0.2);
 }
