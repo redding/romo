@@ -8,12 +8,14 @@ You **won't** get:
 
 * semantic header, body, footer, etc.
 * auto sizing columns based on their content
-* consistant cell heights across rows.
+* consistent cell heights across rows.
 
 You **will** get:
 
 * raw markup that can be more easily manipulated (ie drag n drop, etc).
 * more flexible styling control
+
+**Also note**: Romo grid tables aren't designed to be nested in one another.  Doing so causes the styles of the parent grid table to be forced on the child grid table.
 
 ### Default styles
 
@@ -610,7 +612,7 @@ Add hover state to rows
 
 Adds sized borders to the grid table.
 
-**Note**: This makes all cells hide any overflow.  Since grid tables don't keep all cell heights the same (like normal tables do), uneven grid heights break the borders.  If you need cells to overflow with borders, use a normal table.
+**Note**: This makes all cells hide any overflow.  Since grid tables don't keep all cell heights the same (like normal tables do), uneven grid heights break the borders.  If you need cells to overflow with borders, use a standard romo table.
 
 <div class="romo-pad2-bottom">
   <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border">
@@ -730,6 +732,47 @@ Adds sized borders to the grid table.
 
 ```html
 <ul class="romo-grid-table romo-grid-table-border{0-2}">
+  ...
+</ul>
+```
+
+### `.romo-grid-table-border-none`
+
+Remove all borders from the grid table.
+
+**Note**: This makes all cells hide any overflow.  Since grid tables don't keep all cell heights the same (like normal tables do), uneven grid heights break the borders.  If you need cells to overflow with borders, use a standard romo table.
+
+<div class="romo-pad2-bottom">
+  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border-none">
+    <li class="romo-row">
+      <span class="romo-span romo-1-12">#</span>
+      <span class="romo-span romo-5-12">Name</span>
+      <span class="romo-span romo-5-12">Slug</span>
+      <span class="romo-span romo-1-12">Count</span>
+    </li>
+    <li class="romo-row">
+      <span class="romo-span romo-1-12">1</span>
+      <span class="romo-span romo-5-12">Joe Test</span>
+      <span class="romo-span romo-5-12">joe-test</span>
+      <span class="romo-span romo-1-12">10</span>
+    </li>
+    <li class="romo-row">
+      <span class="romo-span romo-1-12">2</span>
+      <span class="romo-span romo-5-12">Jane Doe</span>
+      <span class="romo-span romo-5-12">jane-doe</span>
+      <span class="romo-span romo-1-12">18</span>
+    </li>
+    <li class="romo-row">
+      <span class="romo-span romo-1-12">3</span>
+      <span class="romo-span romo-5-12">Good Corp.</span>
+      <span class="romo-span romo-5-12">good-corp</span>
+      <span class="romo-span romo-1-12">overflow: 1234567890</span>
+    </li>
+  </ul>
+</div>
+
+```html
+<ul class="romo-grid-table romo-grid-table-border-none">
   ...
 </ul>
 ```
