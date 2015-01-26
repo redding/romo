@@ -56,9 +56,7 @@ RomoIndicator.prototype.onStart = function(e) {
     e.preventDefault();
   }
 
-  if (this.elem.hasClass('disabled') === false) {
-    this.doStart();
-  }
+  this.doStart();
 }
 
 RomoIndicator.prototype.onStop = function(e) {
@@ -66,9 +64,7 @@ RomoIndicator.prototype.onStop = function(e) {
     e.preventDefault();
   }
 
-  if (this.elem.hasClass('disabled') === false) {
-    this.doStop();
-  }
+  this.doStop();
 }
 
 RomoIndicator.prototype.doStart = function() {
