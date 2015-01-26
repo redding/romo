@@ -30,6 +30,10 @@ RomoModalForm.prototype.doInit = function() {
 }
 
 RomoModalForm.prototype.doBindModal = function() {
+  if (this.elem.data('romo-modal-clear-content') === undefined) {
+    this.elem.attr('data-romo-modal-clear-content', 'true');
+  }
+
   this.elem.on('modal:ready', $.proxy(function(e, modal) {
     this.elem.trigger('modalForm:modal:ready', [modal, this]);
   }, this));

@@ -210,6 +210,11 @@ RomoDropdown.prototype.doPopupClose = function() {
   $('body').off('keyup', $.proxy(this.onWindowBodyKeyUp, this));
   $(window).off('resize', $.proxy(this.onResizeWindow, this));
 
+  // clear the content elem markup if configured to
+  if (this.elem.data('romo-dropdown-clear-content') === true) {
+    this.contentElem.html('');
+  }
+
   this.elem.trigger('dropdown:popupClose', [this]);
 }
 

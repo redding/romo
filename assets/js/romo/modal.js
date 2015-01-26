@@ -195,6 +195,11 @@ RomoModal.prototype.doPopupClose = function() {
   // unbind window resizes reposition modal
   $(window).off('resize', $.proxy(this.onResizeWindow, this));
 
+  // clear the content elem markup if configured to
+  if (this.elem.data('romo-modal-clear-content') === true) {
+    this.contentElem.html('');
+  }
+
   this.elem.trigger('modal:popupClose', [this]);
 }
 
