@@ -30,6 +30,10 @@ RomoDropdownForm.prototype.doInit = function() {
 }
 
 RomoDropdownForm.prototype.doBindDropdown = function() {
+if (this.elem.data('romo-dropdown-clear-content') === undefined) {
+    this.elem.attr('data-romo-dropdown-clear-content', 'true');
+  }
+
   this.elem.on('dropdown:ready', $.proxy(function(e, dropdown) {
     this.elem.trigger('dropdownForm:dropdown:ready', [dropdown, this]);
   }, this));
