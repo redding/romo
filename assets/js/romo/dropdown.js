@@ -268,19 +268,33 @@ RomoDropdown.prototype.doPlacePopupElem = function() {
   var h = this.popupElem[0].offsetHeight;
   var offset = {};
 
-  var maxAvailHeight = this._getPopupMaxAvailableHeight(this.popupPosition);
   var configHeight = this.elem.data('romo-dropdown-height') || this.elem.data('romo-dropdown-max-height');
+  var configPosition = this.popupPosition;
 
   if (configHeight === 'detect') {
-    configHeight = maxAvailHeight;
-    this.contentElem.css({'max-height': maxAvailHeight.toString() + 'px'});
+    var popupHeight = this.popupElem.height();
+    var topAvailHeight = this._getPopupMaxAvailableHeight('top');
+    var bottomAvailHeight = this._getPopupMaxAvailableHeight('bottom');
+
+    if (popupHeight < topAvailHeight && popupHeight < bottomAvailHeight) {
+      // if it fits both ways, use the config position way
+      configHeight = this._getPopupMaxAvailableHeight(configPosition);
+    } else if (topAvailHeight > bottomAvailHeight) {
+      configPosition = 'top';
+      configHeight = topAvailHeight;
+    } else {
+      configPosition = 'bottom';
+      configHeight = bottomAvailHeight;
+    }
+
+    this.contentElem.css({'max-height': configHeight.toString() + 'px'});
   }
 
   if(h > configHeight) {
     h = configHeight;
   }
 
-  switch (this.popupPosition) {
+  switch (configPosition) {
     case 'top':
       var pad = 2;
       $.extend(offset, { top: pos.top - h - pad });
