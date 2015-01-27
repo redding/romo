@@ -260,6 +260,7 @@ RomoDropdown.prototype.onResizeWindow = function(e) {
 RomoDropdown.prototype.doPlacePopupElem = function() {
   if (this.elem.parents('.romo-modal-popup').size() !== 0) {
     this.popupElem.css({'position': 'fixed'});
+    this.popupElem.offset(this.elem.offset());
   }
 
   var pos = $.extend({}, this.elem[0].getBoundingClientRect(), this.elem.offset());
