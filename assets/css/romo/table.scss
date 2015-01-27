@@ -40,17 +40,20 @@
 .romo-table-border,
 .romo-table-border0,
 .romo-table-border1,
-.romo-table-border2 { border-collapse: collapse; *border-collapse: collapse; }
+.romo-table-border2,
+.romo-table-border-none { border-collapse: collapse; *border-collapse: collapse; }
 
 .romo-table-border,
-.romo-table-border1 { @include border1-top; @include border1-left; }
-.romo-table-border0 { @include border0-top; @include border0-left; }
-.romo-table-border2 { @include border2-top; @include border2-left; }
+.romo-table-border1     { @include border1-top; @include border1-left; }
+.romo-table-border0     { @include border0-top; @include border0-left; }
+.romo-table-border2     { @include border2-top; @include border2-left; }
+.romo-table-border-none { @include border-style(none); }
 
-.romo-table-border  th, .romo-table-border  td,
-.romo-table-border1 th, .romo-table-border1 td { @include border1-bottom; @include border1-right; }
-.romo-table-border0 th, .romo-table-border0 td { @include border0-bottom; @include border0-right; }
-.romo-table-border2 th, .romo-table-border2 td { @include border2-bottom; @include border2-right; }
+.romo-table-border      th, .romo-table-border      td,
+.romo-table-border1     th, .romo-table-border1     td { @include border1-bottom; @include border1-right; }
+.romo-table-border0     th, .romo-table-border0     td { @include border0-bottom; @include border0-right; }
+.romo-table-border2     th, .romo-table-border2     td { @include border2-bottom; @include border2-right; }
+.romo-table-border-none th, .romo-table-border-none td { @include border-style(none); }
 
 .romo-table-border-muted   { @include border-muted; }
 .romo-table-border-warning { @include border-warning; }

@@ -1,3 +1,7 @@
+## Notes
+
+*   Romo tables aren't designed to be nested in one another.  Doing so causes the styles of the parent table to be forced on the child table.
+
 ## Default styles
 
 For basic styling with horizontal dividers, add the base class `.romo-table`.
@@ -670,6 +674,52 @@ Adds sized borders to the table.
 
 ```html
 <table class="romo-table romo-table-border{0-2}">
+  ...
+</table>
+```
+
+### `.romo-table-border-none`
+
+Remove all borders from the table.
+
+<div class="romo-push2-bottom">
+  <table class="romo-table romo-table-border-none">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="2">1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td rowspan="2">18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td colspan="2">Good Corp.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+```html
+<table class="romo-table romo-table-border-none">
   ...
 </table>
 ```
