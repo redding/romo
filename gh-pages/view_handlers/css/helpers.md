@@ -252,12 +252,16 @@ Use style classes to float elements.
 
 Use style classes to handle common overflow cases.
 
+<div style="width: 150px" class="romo-border romo-inline-block romo-nowrap">.romo-nowrap: content that will overflow</div>
+<div></div>
 <div style="width: 150px" class="romo-border romo-inline-block romo-crop">.romo-crop: content that will overflow</div>
 <div></div>
-<div style="width: 150px" class="romo-border romo-inline-block romo-nowrap">.romo-nowrap: content that will overflow</div>
+<div style="width: 150px" class="romo-border romo-inline-block romo-crop-ellipsis">.romo-crop-ellipsis: content that will overflow</div>
 
 ```html
+<div style="width: 150px" class="romo-border romo-inline-block romo-nowrap">...</div>
+<div></div>
 <div style="width: 150px" class="romo-border romo-inline-block romo-crop">...</div>
 <div></div>
-<div style="width: 150px" class="romo-border romo-inline-block romo-nowrap">...</div>
+<div style="width: 150px" class="romo-border romo-inline-block romo-crop-ellipsis">...</div>
 ```
