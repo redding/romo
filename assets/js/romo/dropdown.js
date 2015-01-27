@@ -268,19 +268,21 @@ RomoDropdown.prototype.doPlacePopupElem = function() {
   var h = this.popupElem[0].offsetHeight;
   var offset = {};
 
-  var maxAvailHeight = this._getPopupMaxAvailableHeight();
-  var popupHeight = this.elem.data('romo-dropdown-height') || this.elem.data('romo-dropdown-max-height') || maxAvailHeight;
-  if(h > maxAvailHeight) {
-    h = maxAvailHeight;
+  var maxAvailHeight = this._getPopupMaxAvailableHeight(this.popupPosition);
+  var configHeight = this.elem.data('romo-dropdown-height') || this.elem.data('romo-dropdown-max-height');
+
+  if (configHeight === 'detect') {
+    configHeight = maxAvailHeight;
+    this.contentElem.css({'max-height': maxAvailHeight.toString() + 'px'});
   }
 
-  if (this.elem.data('romo-dropdown-max-height') === 'detect') {
-    this.contentElem.css({'max-height': maxAvailHeight.toString() + 'px'});
+  if(h > configHeight) {
+    h = configHeight;
   }
 
   switch (this.popupPosition) {
     case 'top':
-      var pad = 4;
+      var pad = 2;
       $.extend(offset, { top: pos.top - h - pad });
       break;
     case 'bottom':
@@ -310,22 +312,25 @@ RomoDropdown.prototype._parsePositionData = function(posString) {
   return { position: posData[0], alignment: posData[1] };
 }
 
-RomoDropdown.prototype._getPopupMaxAvailableHeight = function() {
-  var pad = this.elem.data('romo-dropdown-max-height-detect-pad') || 10;
+RomoDropdown.prototype._getPopupMaxAvailableHeight = function(position) {
   var maxHeight = undefined;
 
-  switch (this.popupPosition) {
+  switch (position) {
     case 'top':
       var elemTop = this.elem[0].getBoundingClientRect().top;
-      maxHeight = elemTop - pad;
+      maxHeight = elemTop - this._getPopupMaxHeightDetectPad(position);
       break;
     case 'bottom':
       var elemBottom = this.elem[0].getBoundingClientRect().bottom;
-      maxHeight = $(window).height() - elemBottom - pad;
+      maxHeight = $(window).height() - elemBottom - this._getPopupMaxHeightDetectPad(position);
       break;
   }
 
   return maxHeight;
+}
+
+RomoDropdown.prototype._getPopupMaxHeightDetectPad = function(position) {
+  return this.elem.data('romo-dropdown-max-height-detect-pad-'+position) || this.elem.data('romo-dropdown-max-height-detect-pad') || 10;
 }
 
 Romo.onInitUI(function(e) {
