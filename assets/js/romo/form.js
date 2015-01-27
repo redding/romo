@@ -68,8 +68,8 @@ RomoForm.prototype.onSubmitClick = function(e) {
 }
 
 RomoForm.prototype.doSubmit = function() {
-  this.elem.trigger('form:beforeSubmit', [this]);
   this.indicatorElems.trigger('indicator:triggerStart');
+  this.elem.trigger('form:beforeSubmit', [this]);
 
   if (this.elem.attr('method').toUpperCase() === 'GET') {
     this._doGetSubmit();
@@ -81,6 +81,7 @@ RomoForm.prototype.doSubmit = function() {
 RomoForm.prototype.onSubmitSuccess = function(data, status, xhr) {
   this.elem.trigger('form:clearMsgs');
   this.elem.trigger('form:submitSuccess', [data, this]);
+  this.elem.trigger('form:submitComplete', [this]);
 }
 
 RomoForm.prototype.onSubmitError = function(xhr, errorType, error) {
@@ -92,6 +93,7 @@ RomoForm.prototype.onSubmitError = function(xhr, errorType, error) {
     this.elem.trigger('form:submitXhrError', [xhr, this]);
   }
   this.elem.trigger('form:submitError', [xhr, this]);
+  this.elem.trigger('form:submitComplete', [this]);
   this.indicatorElems.trigger('indicator:triggerStop');
 }
 
