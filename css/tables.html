@@ -4,10 +4,10 @@
   <title>Tables | Romo</title>
   <link rel="icon" type="image/png" href="/romo/img/romo-favicon-rocket-5e42f12b8aa9d60fad6879a72d9cedad.png"></link>
   
-    <link href="/romo/css/web-2d45f65741be1727673c44153e71221b.css" type="text/css" rel="stylesheet" />
+    <link href="/romo/css/web-ef45765c6d7e0422dce721a0047d7022.css" type="text/css" rel="stylesheet" />
   
   
-    <script src="/romo/js/web-0b85083089afce4f98f1291d0dfccb30.js" type="text/javascript"></script>
+    <script src="/romo/js/web-099c5a8cf9128c7fbb679dc6055c5944.js" type="text/javascript"></script>
   
 </head>
 <body>
@@ -24,7 +24,13 @@
   <div id="content">
     <div class="romo-row">
   <div class="romo-10-12">
-    <h2 id="default-styles">Default styles</h2>
+    <h2 id="notes">Notes</h2>
+
+<ul>
+  <li>Romo tables aren&#8217;t designed to be nested in one another.  Doing so causes the styles of the parent table to be forced on the child table.</li>
+</ul>
+
+<h2 id="default-styles">Default styles</h2>
 
 <p>For basic styling with horizontal dividers, add the base class <code>.romo-table</code>.</p>
 
@@ -714,6 +720,54 @@
 
 <div class="highlighter-coderay"><div class="CodeRay">
   <div class="code"><pre><span class="tag">&lt;table</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-table romo-table-border{0-2}</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  ...
+<span class="tag">&lt;/table&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="romo-table-border-none"><code>.romo-table-border-none</code></h3>
+
+<p>Remove all borders from the table.</p>
+
+<div class="romo-push2-bottom">
+  <table class="romo-table romo-table-border-none">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="2">1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td rowspan="2">18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td colspan="2">Good Corp.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="tag">&lt;table</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">romo-table romo-table-border-none</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
   ...
 <span class="tag">&lt;/table&gt;</span>
 </pre></div>
