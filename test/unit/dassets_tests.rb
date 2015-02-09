@@ -45,6 +45,7 @@ module Romo::Dassets
       exp_js_sources = [
         'js/romo/base.js',
         'js/romo/invoke.js',
+        'js/romo/keypress.js',
         'js/romo/form.js',
         'js/romo/dropdown.js',
         'js/romo/dropdown_form.js',
