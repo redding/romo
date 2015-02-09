@@ -12,22 +12,9 @@ var RomoForm = function(element, givenSubmitElement, givenIndicatorElements) {
   this.indicatorElems = $(givenIndicatorElements || this.defaultIndicatorElems);
   this.changeSubmitElems = this.elem.find('[data-romo-form-change-submit="true"]');
 
-  this.elem.on('keypress', $.proxy(this.onFormKeyPress, this));
-  this.defaultSubmitElem.unbind('click');
-  this.submitElem.unbind('click');
-  this.submitElem.on('click', $.proxy(this.onSubmitClick, this));
-  this.changeSubmitElems.on('change', $.proxy(function(e) {
-    this.elem.trigger('form:triggerSubmit');
-  }, this));
-  this.elem.on('form:triggerSubmit', $.proxy(this.onSubmitClick, this));
-
-  if (this.elem.data('romo-form-reload-page') === true) {
-    this.elem.on('form:submitSuccess', function(e, data, form) {
-      Romo.reloadPage();
-    })
-  }
-
   this.defaultListValuesDelim = ',';
+  this.submitQueued  = false;
+  this.submitRunning = false;
 
   this.removeEmptyGetParams = this.elem.data('romo-form-remove-empty-get-params')
   if (this.removeEmptyGetParams === undefined) {
@@ -40,6 +27,7 @@ var RomoForm = function(element, givenSubmitElement, givenIndicatorElements) {
   }
 
   this.doInit();
+  this.doBindForm();
   this.elem.trigger('form:clearMsgs', [this]);
   this.elem.trigger('form:ready', [this]);
 }
@@ -48,10 +36,30 @@ RomoForm.prototype.doInit = function() {
   // override as needed
 }
 
+RomoForm.prototype.doBindForm = function() {
+  this.defaultSubmitElem.unbind('click');
+  this.submitElem.unbind('click');
+  this.submitElem.on('click', $.proxy(this.onSubmitClick, this));
+
+  this.changeSubmitElems.on('change', $.proxy(function(e) {
+    this.elem.trigger('form:triggerSubmit');
+  }, this));
+  this.elem.on('form:triggerSubmit', $.proxy(this.onSubmitClick, this));
+
+  this.elem.on('keypress', $.proxy(this.onFormKeyPress, this));
+
+  if (this.elem.data('romo-form-reload-page') === true) {
+    this.elem.on('form:submitSuccess', function(e, data, form) {
+      Romo.reloadPage();
+    })
+  }
+
+}
+
 RomoForm.prototype.onFormKeyPress = function(e) {
   var target = $(e.target);
 
-  if(target.is(':not(TEXTAREA)') && e.which === 13 /* Enter */) {
+  if(target.is(':not(TEXTAREA)') && e.keyCode === 13 /* Enter */) {
     e.preventDefault();
     this.onSubmitClick();
   }
@@ -68,20 +76,16 @@ RomoForm.prototype.onSubmitClick = function(e) {
 }
 
 RomoForm.prototype.doSubmit = function() {
-  this.indicatorElems.trigger('indicator:triggerStart');
-  this.elem.trigger('form:beforeSubmit', [this]);
-
-  if (this.elem.attr('method').toUpperCase() === 'GET') {
-    this._doGetSubmit();
-  } else {
-    this._doNonGetSubmit();
+  this.submitQueued = true;
+  if (this.submitRunning === false) {
+    this._doSubmit();
   }
 }
 
 RomoForm.prototype.onSubmitSuccess = function(data, status, xhr) {
   this.elem.trigger('form:clearMsgs');
   this.elem.trigger('form:submitSuccess', [data, this]);
-  this.elem.trigger('form:submitComplete', [this]);
+  this._doCompleteSubmit();
 }
 
 RomoForm.prototype.onSubmitError = function(xhr, errorType, error) {
@@ -93,8 +97,32 @@ RomoForm.prototype.onSubmitError = function(xhr, errorType, error) {
     this.elem.trigger('form:submitXhrError', [xhr, this]);
   }
   this.elem.trigger('form:submitError', [xhr, this]);
-  this.elem.trigger('form:submitComplete', [this]);
   this.indicatorElems.trigger('indicator:triggerStop');
+  this._doCompleteSubmit();
+}
+
+// private
+
+RomoForm.prototype._doCompleteSubmit = function() {
+  this.elem.trigger('form:submitComplete', [this]);
+  if (this.submitQueued === true) {
+    this._doSubmit();
+  } else {
+    this.submitRunning = false;
+  }
+}
+
+RomoForm.prototype._doSubmit = function() {
+  this.submitQueued  = false;
+  this.submitRunning = true;
+  this.indicatorElems.trigger('indicator:triggerStart');
+  this.elem.trigger('form:beforeSubmit', [this]);
+
+  if (this.elem.attr('method').toUpperCase() === 'GET') {
+    this._doGetSubmit();
+  } else {
+    this._doNonGetSubmit();
+  }
 }
 
 RomoForm.prototype._doGetSubmit = function() {
