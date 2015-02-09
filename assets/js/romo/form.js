@@ -11,8 +11,10 @@ var RomoForm = function(element, givenSubmitElement, givenIndicatorElements) {
   this.defaultIndicatorElems = this.elem.find('[data-romo-indicator-auto="true"]');
   this.indicatorElems = $(givenIndicatorElements || this.defaultIndicatorElems);
   this.changeSubmitElems = this.elem.find('[data-romo-form-change-submit="true"]');
+  this.keypressSubmitElems = this.elem.find('[data-romo-form-keypress-submit="true"]');
 
   this.defaultListValuesDelim = ',';
+  this.keypressSubmitDelay = 300;  // 0.3 secs
   this.submitQueued  = false;
   this.submitRunning = false;
 
@@ -43,6 +45,12 @@ RomoForm.prototype.doBindForm = function() {
 
   this.changeSubmitElems.on('change', $.proxy(function(e) {
     this.elem.trigger('form:triggerSubmit');
+  }, this));
+  this.keypressSubmitElems.on('keypress:trigger', $.proxy(function(e) {
+    clearTimeout(this.keypressSubmitTimeout);
+    this.keypressSubmitTimeout = setTimeout($.proxy(function() {
+      this.elem.trigger('form:triggerSubmit');
+    }, this), this.keypressSubmitDelay);
   }, this));
   this.elem.on('form:triggerSubmit', $.proxy(this.onSubmitClick, this));
 
