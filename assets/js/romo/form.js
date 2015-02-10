@@ -14,7 +14,7 @@ var RomoForm = function(element, givenSubmitElement, givenIndicatorElements) {
   this.onkeySubmitElems = this.elem.find('[data-romo-form-onkey-submit="true"]');
 
   this.defaultListValuesDelim = ',';
-  this.onkeySubmitDelay = 300;  // 0.3 secs
+  this.onkeyDefaultSubmitDelay = 300;  // 0.3 secs
   this.submitQueued  = false;
   this.submitRunning = false;
 
@@ -46,11 +46,11 @@ RomoForm.prototype.doBindForm = function() {
   this.changeSubmitElems.on('change', $.proxy(function(e) {
     this.elem.trigger('form:triggerSubmit');
   }, this));
-  this.onkeySubmitElems.on('onkey:trigger', $.proxy(function(e) {
+  this.onkeySubmitElems.on('onkey:trigger', $.proxy(function(e, triggerEvent, onkey) {
     clearTimeout(this.onkeySubmitTimeout);
     this.onkeySubmitTimeout = setTimeout($.proxy(function() {
       this.elem.trigger('form:triggerSubmit');
-    }, this), this.onkeySubmitDelay);
+    }, this), onkey.elem.data('romo-form-onkey-submit-delay') || this.onkeyDefaultSubmitDelay);
   }, this));
   this.elem.on('form:triggerSubmit', $.proxy(this.onSubmitClick, this));
 
