@@ -29,46 +29,52 @@
     return $(elems);
   }
 
-  Romo.prototype.initHtml = function(elem, data) {
-    var htmlElems = $(data)
-    elem.html(htmlElems);
-    this.triggerInitUI(htmlElems);
-    return htmlElems;
+  Romo.prototype.initHtml = function(elems, data) {
+    elems.each($.proxy(function(index, elem) {
+      var htmlElems = $(data)
+      $(elem).html(htmlElems);
+      this.triggerInitUI(htmlElems);
+    }, this));
   }
 
-  Romo.prototype.initReplace = function(elem, data) {
-    var replacementElem = $(data);
-    elem.replaceWith(replacementElem);
-    this.triggerInitUI(replacementElem);
-    return replacementElem;
+  Romo.prototype.initReplace = function(elems, data) {
+    elems.each($.proxy(function(index, elem) {
+      var replacementElem = $(data);
+      $(elem).replaceWith(replacementElem);
+      this.triggerInitUI(replacementElem);
+    }, this));
   }
 
-  Romo.prototype.initPrepend = function(elem, data) {
-    var prependedElem = $(data);
-    elem.prepend(prependedElem);
-    this.triggerInitUI(prependedElem);
-    return prependedElem;
+  Romo.prototype.initPrepend = function(elems, data) {
+    elems.each($.proxy(function(index, elem) {
+      var prependedElem = $(data);
+      $(elem).prepend(prependedElem);
+      this.triggerInitUI(prependedElem);
+    }, this));
   }
 
-  Romo.prototype.initAppend = function(elem, data) {
-    var appendedElem = $(data);
-    elem.append(appendedElem);
-    this.triggerInitUI(appendedElem);
-    return appendedElem;
+  Romo.prototype.initAppend = function(elems, data) {
+    elems.each($.proxy(function(index, elem) {
+      var appendedElem = $(data);
+      $(elem).append(appendedElem);
+      this.triggerInitUI(appendedElem);
+    }, this));
   }
 
-  Romo.prototype.initBefore = function(elem, data) {
-    var insertedElem = $(data);
-    elem.before(insertedElem);
-    this.triggerInitUI(insertedElem);
-    return insertedElem;
+  Romo.prototype.initBefore = function(elems, data) {
+    elems.each($.proxy(function(index, elem) {
+      var insertedElem = $(data);
+      $(elem).before(insertedElem);
+      this.triggerInitUI(insertedElem);
+    }, this));
   }
 
-  Romo.prototype.initAfter = function(elem, data) {
-    var insertedElem = $(data);
-    elem.after(insertedElem);
-    this.triggerInitUI(insertedElem);
-    return insertedElem;
+  Romo.prototype.initAfter = function(elems, data) {
+    elems.each($.proxy(function(index, elem) {
+      var insertedElem = $(data);
+      $(elem).after(insertedElem);
+      this.triggerInitUI(insertedElem);
+    }, this));
   }
 
   // page handling
