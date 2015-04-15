@@ -194,6 +194,18 @@ Remove from just specific sides.
 </div>
 ```
 
+Use margin to center (only works on fixed width elems)
+
+<div class="romo-border">
+  <div class="romo-border romo-push-center" style="width: 150px">.romo-push-center</div>
+</div>
+
+```html
+<div class="romo-border">
+  <div class="romo-border romo-push-center">...</div>
+</div>
+```
+
 ## Display
 
 Use style classes to set specific display values.

@@ -435,6 +435,8 @@ h3 { @include text1; }
 .romo-push-none-left,
 .romo-rm-push-left { @include rm-push-left(!important); }
 
+.romo-push-center { margin: 0 auto !important; }
+
 /* other helpers */
 
 .romo-full-width  { width: 100%; }
