@@ -369,60 +369,70 @@ h3 { @include text1; }
 .romo-pad1   { @include pad1(!important); }
 .romo-pad0   { @include pad0(!important); }
 .romo-pad2   { @include pad2(!important); }
+.romo-pad-none,
 .romo-rm-pad { @include rm-pad(!important); }
 
 .romo-pad-top,
 .romo-pad1-top   { @include pad1-top(!important); }
 .romo-pad0-top   { @include pad0-top(!important); }
 .romo-pad2-top   { @include pad2-top(!important); }
+.romo-pad-none-top,
 .romo-rm-pad-top { @include rm-pad-top(!important); }
 
 .romo-pad-right,
 .romo-pad1-right   { @include pad1-right(!important); }
 .romo-pad0-right   { @include pad0-right(!important); }
 .romo-pad2-right   { @include pad2-right(!important); }
+.romo-pad-none-right,
 .romo-rm-pad-right { @include rm-pad-right(!important); }
 
 .romo-pad-bottom,
 .romo-pad1-bottom   { @include pad1-bottom(!important); }
 .romo-pad0-bottom   { @include pad0-bottom(!important); }
 .romo-pad2-bottom   { @include pad2-bottom(!important); }
+.romo-pad-none-bottom,
 .romo-rm-pad-bottom { @include rm-pad-bottom(!important); }
 
 .romo-pad-left,
 .romo-pad1-left   { @include pad1-left(!important); }
 .romo-pad0-left   { @include pad0-left(!important); }
 .romo-pad2-left   { @include pad2-left(!important); }
+.romo-pad-none-left,
 .romo-rm-pad-left { @include rm-pad-left(!important); }
 
 .romo-push,
 .romo-push1   { @include push1(!important); }
 .romo-push0   { @include push0(!important); }
 .romo-push2   { @include push2(!important); }
+.romo-push-none,
 .romo-rm-push { @include rm-push(!important); }
 
 .romo-push-top,
 .romo-push1-top   { @include push1-top(!important); }
 .romo-push0-top   { @include push0-top(!important); }
 .romo-push2-top   { @include push2-top(!important); }
+.romo-push-none-top,
 .romo-rm-push-top { @include rm-push-top(!important); }
 
 .romo-push-right,
 .romo-push1-right   { @include push1-right(!important); }
 .romo-push0-right   { @include push0-right(!important); }
 .romo-push2-right   { @include push2-right(!important); }
+.romo-push-none-right,
 .romo-rm-push-right { @include rm-push-right(!important); }
 
 .romo-push-bottom,
 .romo-push1-bottom   { @include push1-bottom(!important); }
 .romo-push0-bottom   { @include push0-bottom(!important); }
 .romo-push2-bottom   { @include push2-bottom(!important); }
+.romo-push-none-bottom,
 .romo-rm-push-bottom { @include rm-push-bottom(!important); }
 
 .romo-push-left,
 .romo-push1-left   { @include push1-left(!important); }
 .romo-push0-left   { @include push0-left(!important); }
 .romo-push2-left   { @include push2-left(!important); }
+.romo-push-none-left,
 .romo-rm-push-left { @include rm-push-left(!important); }
 
 /* other helpers */

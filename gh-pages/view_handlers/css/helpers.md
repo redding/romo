@@ -180,17 +180,17 @@ Remove from just specific sides.
 
 <div class="romo-border">
   <div class="romo-border romo-push romo-pad romo-rm-push-top romo-rm-pad-top">.romo-rm-push-top.romo-rm-pad-top</div>
-  <div class="romo-border romo-push romo-pad romo-rm-push-right romo-rm-pad-right">.romo-rm-push-right.romo-rm-pad-right</div>
+  <div class="romo-border romo-push romo-pad romo-push-none-right romo-rm-pad-right">.romo-push-none-right.romo-rm-pad-right</div>
   <div class="romo-border romo-push romo-pad romo-rm-push-left romo-rm-pad-left">.romo-rm-push-left.romo-rm-pad-left</div>
-  <div class="romo-border romo-push romo-pad romo-rm-push-bottom romo-rm-pad-bottom">.romo-rm-push-bottom.romo-rm-pad-bottom</div>
+  <div class="romo-border romo-push romo-pad romo-rm-push-bottom romo-pad-none-bottom">.romo-rm-push-bottom.romo-pad-none-bottom</div>
 </div>
 
 ```html
 <div class="romo-border">
   <div class="romo-border romo-push romo-pad romo-rm-push-top romo-rm-pad-top">...</div>
-  <div class="romo-border romo-push romo-pad romo-rm-push-right romo-rm-pad-right">...</div>
+  <div class="romo-border romo-push romo-pad romo-push-none-right romo-rm-pad-right">...</div>
   <div class="romo-border romo-push romo-pad romo-rm-push-left romo-rm-pad-left">...</div>
-  <div class="romo-border romo-push romo-pad romo-rm-push-bottom romo-rm-pad-bottom">...</div>
+  <div class="romo-border romo-push romo-pad romo-rm-push-bottom romo-pad-none-bottom">...</div>
 </div>
 ```
 
