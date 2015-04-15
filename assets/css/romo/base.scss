@@ -427,6 +427,8 @@ h3 { @include text1; }
 
 /* other helpers */
 
+.romo-full-width  { width: 100%; }
+.romo-full-height { width: 100%; }
 .romo-match-line-height { line-height: 1 !important; }
 
 .romo-nowrap        { white-space: nowrap !important; }
