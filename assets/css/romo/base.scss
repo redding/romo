@@ -159,6 +159,20 @@ h3 { @include text1; }
 .romo-text-800     { @include font-weight(800,     !important); }
 .romo-text-900     { @include font-weight(900,     !important); }
 
+/* text decoration */
+
+.romo-text-underline     { @include text-decoration-underline(!important); }
+.romo-text-overline      { @include text-decoration-overline(!important); }
+.romo-text-line-through,
+.romo-text-strikethrough { @include text-decoration-line-through(!important); }
+.romo-text-no-line       { @include text-decoration-none(!important); }
+
+.romo-text-underline-hover:hover     { @include text-decoration-underline(!important); }
+.romo-text-overline-hover:hover      { @include text-decoration-overline(!important); }
+.romo-text-line-through-hover:hover,
+.romo-text-strikethrough-hover:hover { @include text-decoration-line-through(!important); }
+.romo-text-no-line-hover:hover       { @include text-decoration-none(!important); }
+
 /* alignment */
 
 .romo-align-left   { @include align-left(!important); }

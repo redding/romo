@@ -78,6 +78,40 @@ Or, use these natural-size style classes for the more common sizing needs.
 <div class="romo-text-large">...</div>
 ```
 
+## Line decoration classes
+
+Use style classes to set text decoration.
+
+<p class="romo-text-underline">.romo-text-underline</p>
+<p class="romo-text-overline">.romo-text-overline</p>
+<p class="romo-text-line-through">.romo-text-line-through</p>
+<p class="romo-text-strikethrough">.romo-text-strikethrough</p>
+<p class="romo-text-no-line">.romo-text-no-line</p>
+
+```html
+<p class="romo-text-underline">...</p>
+<p class="romo-text-overline">...</p>
+<p class="romo-text-line-through">...</p>
+<p class="romo-text-strikethrough">...</p>
+<p class="romo-text-no-line">...</p>
+```
+
+Or only set text decoration on hover.
+
+<p class="romo-text-underline-hover">.romo-text-underline-hover</p>
+<p class="romo-text-overline-hover">.romo-text-overline-hover</p>
+<p class="romo-text-line-through-hover">.romo-text-line-through-hover</p>
+<p class="romo-text-strikethrough-hover">.romo-text-strikethrough-hover</p>
+<p class="romo-text-no-line-hover">.romo-text-no-line-hover</p>
+
+```html
+<p class="romo-text-underline-hover">...</p>
+<p class="romo-text-overline-hover">...</p>
+<p class="romo-text-line-through-hover">...</p>
+<p class="romo-text-strikethrough-hover">...</p>
+<p class="romo-text-no-line-hover">...</p>
+```
+
 ## Alignment classes
 
 Use style classes to align text.

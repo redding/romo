@@ -120,6 +120,13 @@
 @mixin text2($i:"") { @include font-size2($i); @include line-height2($i); }
 @mixin text3($i:"") { @include font-size3($i); @include line-height3($i); }
 
+/* text decoration */
+
+@mixin text-decoration-underline($i:"")    { text-decoration: underline #{$i};    }
+@mixin text-decoration-overline($i:"")     { text-decoration: overline #{$i};     }
+@mixin text-decoration-line-through($i:"") { text-decoration: line-through #{$i}; }
+@mixin text-decoration-none($i:"")         { text-decoration: none #{$i};         }
+
 /* text alignment */
 
 @mixin align-left($i:"")   { text-align: left #{$i}; }
