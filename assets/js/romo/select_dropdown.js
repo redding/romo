@@ -80,7 +80,7 @@ RomoSelectDropdown.prototype.doBindDropdown = function() {
   this.romoDropdown.bodyElem.html('');
   this.romoDropdown.bodyElem.append(this.optionList);
 
-  this.romoDropdown.bodyElem.find(this.itemSelector).on('hover', $.proxy(this.onItemHover, this));
+  this.romoDropdown.bodyElem.find(this.itemSelector).on('mouseenter', $.proxy(this.onItemEnter, this));
   this.romoDropdown.bodyElem.find(this.itemSelector).on('click', $.proxy(this.onItemClick, this));
 
   this.romoDropdown.popupElem.on('mousedown', $.proxy(this.onPopupMouseDown, this));
@@ -113,7 +113,7 @@ RomoSelectDropdown.prototype.onPopupClose = function(e) {
   $('body').off('keydown', $.proxy(this.onPopupOpenBodyKeyDown, this));
 }
 
-RomoSelectDropdown.prototype.onItemHover = function(e) {
+RomoSelectDropdown.prototype.onItemEnter = function(e) {
   if (e !== undefined) {
     e.preventDefault();
     e.stopPropagation();

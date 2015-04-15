@@ -150,7 +150,7 @@ RomoDatepicker.prototype.doRefreshUI = function(date) {
   this._refreshCalendar(rDate);
   this.elem.trigger('datepicker:refresh', [rDate, this]);
 
-  this.calTable.find(this.itemSelector).on('hover', $.proxy(this.onItemHover, this));
+  this.calTable.find(this.itemSelector).on('mouseenter', $.proxy(this.onItemEnter, this));
   this.calTable.find(this.itemSelector).on('click', $.proxy(this.onItemClick, this));
 
   this.romoDropdown.popupElem.on('mousedown', $.proxy(this.onPopupMouseDown, this));
@@ -228,7 +228,7 @@ RomoDatepicker.prototype.onPopupClose = function(e) {
   this._highlightItem($());
 }
 
-RomoDatepicker.prototype.onItemHover = function(e) {
+RomoDatepicker.prototype.onItemEnter = function(e) {
   if (e !== undefined) {
     e.preventDefault();
     e.stopPropagation();
