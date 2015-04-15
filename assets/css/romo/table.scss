@@ -1,7 +1,8 @@
 @import 'css/romo/vars';
 @import 'css/romo/mixins';
 
-.romo-table { width: 100%; }
+.romo-table       { width: 100%; }
+.romo-table-fixed { table-layout: fixed; }
 
 .romo-table th,
 .romo-table td {

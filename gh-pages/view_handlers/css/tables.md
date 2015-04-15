@@ -47,6 +47,49 @@ For basic styling with horizontal dividers, add the base class `.romo-table`.
 
 ## Optional classes
 
+### `.romo-table-fixed`
+
+Use the "fixed" table layout algorithm.
+
+<div>
+  <table class="romo-table romo-table-fixed">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp. with really really long content that would normally cause the layout to adjust to fit it.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+```html
+<table class="romo-table">
+  ...
+</table>
+```
+
 ### `{th|td}.romo-N-N`
 
 Add grid column size classes to set table cell widths.
