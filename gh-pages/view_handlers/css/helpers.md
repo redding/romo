@@ -201,11 +201,13 @@ Use style classes to set specific display values.
 <div class="romo-inline">-.romo-inline-</div>
 <div class="romo-inline-block">-.romo-inline-block-</div>
 <div class="romo-block">-.romo-block-</div>
+<div class="romo-display-none">-.romo-display-none-</div>
 
 ```html
 <div class="romo-inline">...</div>
 <div class="romo-inline-block">...</div>
 <div class="romo-block">...</div>
+<div class="romo-display-none">...</div>
 ```
 
 ## Position

@@ -440,6 +440,7 @@ h3 { @include text1; }
 .romo-inline-flex  { @include display-inline-flex(!important); }
 .romo-flex         { @include display-flex(!important); }
 .romo-block        { display: block !important; }
+.romo-display-none { display: none !important;}
 
 .romo-relative { position: relative !important; }
 .romo-absolute { position: absolute !important; }
