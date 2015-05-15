@@ -143,6 +143,13 @@ h3 { @include text1; }
 .romo-text2 { @include text2(!important); @include font-weight2; }
 .romo-text3 { @include text3(!important); @include font-weight3; }
 
+.romo-text-inline-small,
+.romo-text-inline0 { @include line-height0(!important); }
+.romo-text-inline1 { @include line-height1(!important); }
+.romo-text-inline-large,
+.romo-text-inline2 { @include line-height2(!important); }
+.romo-text-inline3 { @include line-height3(!important); }
+
 /* text weight */
 
 .romo-text-normal  { @include font-weight(normal,  !important); }
