@@ -78,7 +78,25 @@ Or, use these natural-size style classes for the more common sizing needs.
 <div class="romo-text-large">...</div>
 ```
 
-## Line decoration classes
+Or only set a specific size on hover.
+
+<div class="romo-text0 romo-text1-hover">.romo-text0.romo-text1-hover</div>
+<div class="romo-text1 romo-text2-hover">.romo-text1.romo-text2-hover</div>
+<div class="romo-text2 romo-text3-hover">.romo-text2.romo-text3-hover</div>
+<div class="romo-text3 romo-text1-hover">.romo-text3.romo-text1-hover</div>
+<div class="romo-text-small romo-text-large-hover">.romo-text-small.romo-text-large-hover</div>
+<div class="romo-text-large romo-text-small-hover">.romo-text-large.romo-text-small-hover</div>
+
+```html
+<div class="romo-text0 romo-text1-hover">...</div>
+<div class="romo-text1 romo-text2-hover">...</div>
+<div class="romo-text2 romo-text3-hover">...</div>
+<div class="romo-text3 romo-text1-hover">...</div>
+<div class="romo-text-small romo-text-large-hover">...</div>
+<div class="romo-text-large romo-text-small-hover">...</div>
+```
+
+## Text decoration classes
 
 Use style classes to set text decoration.
 
@@ -188,6 +206,38 @@ Use style classes to set font weight.
 <div class="romo-text-700">...</div>
 <div class="romo-text-800">...</div>
 <div class="romo-text-900">...</div>
+```
+
+Or only set a font weight on hover.
+
+<div class="romo-text-normal-hover">.romo-text-normal-hover</div>
+<div class="romo-text-lighter-hover">.romo-text-lighter-hover</div>
+<div class="romo-text-bold-hover">.romo-text-bold-hover</div>
+<div class="romo-text-bolder-hover">.romo-text-bolder-hover</div>
+<div class="romo-text-100-hover">.romo-text-100-hover</div>
+<div class="romo-text-200-hover">.romo-text-200-hover</div>
+<div class="romo-text-300-hover">.romo-text-300-hover</div>
+<div class="romo-text-400-hover">.romo-text-400-hover</div>
+<div class="romo-text-500-hover">.romo-text-500-hover</div>
+<div class="romo-text-600-hover">.romo-text-600-hover</div>
+<div class="romo-text-700-hover">.romo-text-700-hover</div>
+<div class="romo-text-800-hover">.romo-text-800-hover</div>
+<div class="romo-text-900-hover">.romo-text-900-hover</div>
+
+```html
+<div class="romo-text-normal-hover">...</div>
+<div class="romo-text-lighter-hover">...</div>
+<div class="romo-text-bold-hover">...</div>
+<div class="romo-text-bolder-hover">...</div>
+<div class="romo-text-100-hover">...</div>
+<div class="romo-text-200-hover">...</div>
+<div class="romo-text-300-hover">...</div>
+<div class="romo-text-400-hover">...</div>
+<div class="romo-text-500-hover">...</div>
+<div class="romo-text-600-hover">...</div>
+<div class="romo-text-700-hover">...</div>
+<div class="romo-text-800-hover">...</div>
+<div class="romo-text-900-hover">...</div>
 ```
 
 ## Color emphasis classes
