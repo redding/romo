@@ -309,7 +309,7 @@ RomoDropdown.prototype.doPlacePopupElem = function() {
       $.extend(offset, { left: pos.left });
       break;
     case 'right':
-      $.extend(offset, { left: pos.right - w });
+      $.extend(offset, { left: pos.left + pos.width - w });
       break;
   }
 
