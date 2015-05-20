@@ -143,6 +143,13 @@ h3 { @include text1; }
 .romo-text2 { @include text2(!important); @include font-weight2; }
 .romo-text3 { @include text3(!important); @include font-weight3; }
 
+.romo-text-small-hover:hover,
+.romo-text0-hover:hover { @include text0(!important); @include font-weight0; }
+.romo-text1-hover:hover { @include text1(!important); @include font-weight1; }
+.romo-text-large-hover:hover,
+.romo-text2-hover:hover { @include text2(!important); @include font-weight2; }
+.romo-text3-hover:hover { @include text3(!important); @include font-weight3; }
+
 .romo-text-inline-small,
 .romo-text-inline0 { @include line-height0(!important); }
 .romo-text-inline1 { @include line-height1(!important); }
@@ -165,6 +172,20 @@ h3 { @include text1; }
 .romo-text-700     { @include font-weight(700,     !important); }
 .romo-text-800     { @include font-weight(800,     !important); }
 .romo-text-900     { @include font-weight(900,     !important); }
+
+.romo-text-normal-hover:hover  { @include font-weight(normal,  !important); }
+.romo-text-lighter-hover:hover { @include font-weight(lighter, !important); }
+.romo-text-bold-hover:hover    { @include font-weight(bold,    !important); }
+.romo-text-bolder-hover:hover  { @include font-weight(bolder,  !important); }
+.romo-text-100-hover:hover     { @include font-weight(100,     !important); }
+.romo-text-200-hover:hover     { @include font-weight(200,     !important); }
+.romo-text-300-hover:hover     { @include font-weight(300,     !important); }
+.romo-text-400-hover:hover     { @include font-weight(400,     !important); }
+.romo-text-500-hover:hover     { @include font-weight(500,     !important); }
+.romo-text-600-hover:hover     { @include font-weight(600,     !important); }
+.romo-text-700-hover:hover     { @include font-weight(700,     !important); }
+.romo-text-800-hover:hover     { @include font-weight(800,     !important); }
+.romo-text-900-hover:hover     { @include font-weight(900,     !important); }
 
 /* text decoration */
 
