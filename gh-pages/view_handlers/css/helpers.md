@@ -14,7 +14,11 @@ Use numbered classes, 0 through 2, to set specific pixel width.
   <div class="romo-border0 romo-push0-bottom">.romo-border0</div>
   <div class="romo-border1 romo-push0-bottom">.romo-border1</div>
   <div class="romo-border romo-push0-bottom">.romo-border (alias of .romo-border1)</div>
-  <div class="romo-border2">.romo-border2</div>
+  <div class="romo-border2 romo-push0-bottom">.romo-border2</div>
+  <div class="romo-border0-hover romo-push0-bottom">.romo-border0-hover</div>
+  <div class="romo-border1-hover romo-push0-bottom">.romo-border1-hover</div>
+  <div class="romo-border-hover romo-push0-bottom">.romo-border-hover (alias of .romo-border1-hover)</div>
+  <div class="romo-border2-hover">.romo-border2-hover</div>
 </div>
 
 ```html
@@ -22,6 +26,10 @@ Use numbered classes, 0 through 2, to set specific pixel width.
 <div class="romo-border1">...</div>
 <div class="romo-border" >...</div>
 <div class="romo-border2">...</div>
+<div class="romo-border0-hover">...</div>
+<div class="romo-border1-hover">...</div>
+<div class="romo-border-hover" >...</div>
+<div class="romo-border2-hover">...</div>
 ```
 
 Or, add borders to specific sides.
@@ -29,13 +37,19 @@ Or, add borders to specific sides.
 <div>
   <div class="romo-border-top romo-push0-bottom">.romo-border-top</div>
   <div class="romo-border-bottom romo-push0-bottom">.romo-border-bottom</div>
-  <div class="romo-border-left romo-border-right">.romo-border-left.romo-border-right</div>
+  <div class="romo-border-left romo-border-right romo-push0-bottom">.romo-border-left.romo-border-right</div>
+  <div class="romo-border-top-hover romo-push0-bottom">.romo-border-top-hover</div>
+  <div class="romo-border-bottom-hover romo-push0-bottom">.romo-border-bottom-hover</div>
+  <div class="romo-border-left-hover romo-border-right-hover">.romo-border-left-hover.romo-border-right-hover</div>
 </div>
 
 ```html
 <div class="romo-border-top">...</div>
 <div class="romo-border-bottom">...</div>
 <div class="romo-border-left romo-border-right">...</div>
+<div class="romo-border-top-hover">...</div>
+<div class="romo-border-bottom-hover">...</div>
+<div class="romo-border-left-hover romo-border-right-hover">...</div>
 ```
 
 Remove from just specific sides.
@@ -44,7 +58,11 @@ Remove from just specific sides.
   <div class="romo-border romo-rm-border-top romo-push0-bottom">.romo-rm-border-top</div>
   <div class="romo-border romo-rm-border-right romo-push0-bottom">.romo-rm-border-right</div>
   <div class="romo-border romo-rm-border-left romo-push0-bottom">.romo-rm-border-left</div>
-  <div class="romo-border romo-rm-border-bottom">.romo-rm-border-bottom</div>
+  <div class="romo-border romo-rm-border-bottom romo-push0-bottom">.romo-rm-border-bottom</div>
+  <div class="romo-border romo-rm-border-top-hover romo-push0-bottom">.romo-rm-border-top-hover</div>
+  <div class="romo-border romo-rm-border-right-hover romo-push0-bottom">.romo-rm-border-right-hover</div>
+  <div class="romo-border romo-rm-border-left-hover romo-push0-bottom">.romo-rm-border-left-hover</div>
+  <div class="romo-border romo-rm-border-bottom-hover">.romo-rm-border-bottom-hover</div>
 </div>
 
 ```html
@@ -52,6 +70,10 @@ Remove from just specific sides.
 <div class="romo-border romo-rm-border-right">...</div>
 <div class="romo-border romo-rm-border-left">...</div>
 <div class="romo-border romo-rm-border-bottom">...</div>
+<div class="romo-border romo-rm-border-top-hover">...</div>
+<div class="romo-border romo-rm-border-right-hover">...</div>
+<div class="romo-border romo-rm-border-left-hover">...</div>
+<div class="romo-border romo-rm-border-bottom-hover">...</div>
 ```
 
 Change style on any border configuration
@@ -64,7 +86,15 @@ Change style on any border configuration
   <div class="romo-border-groove romo-border2 romo-push0-bottom">.romo-border-groove</div>
   <div class="romo-border-inset romo-border2 romo-push0-bottom">.romo-border-inset</div>
   <div class="romo-border-hidden romo-border2 romo-push0-bottom">.romo-border-hidden</div>
-  <div class="romo-border-none romo-border2">.romo-border-none</div>
+  <div class="romo-border-none romo-border2 romo-push0-bottom">.romo-border-none</div>
+  <div class="romo-border-solid-hover romo-border2 romo-push0-bottom">.romo-border-solid-hover</div>
+  <div class="romo-border-dashed-hover romo-border2 romo-push0-bottom">.romo-border-dashed-hover</div>
+  <div class="romo-border-dotted-hover romo-border2 romo-push0-bottom">.romo-border-dotted-hover</div>
+  <div class="romo-border-double-hover romo-border2 romo-push0-bottom">.romo-border-double-hover</div>
+  <div class="romo-border-groove-hover romo-border2 romo-push0-bottom">.romo-border-groove-hover</div>
+  <div class="romo-border-inset-hover romo-border2 romo-push0-bottom">.romo-border-inset-hover</div>
+  <div class="romo-border-hidden-hover romo-border2 romo-push0-bottom">.romo-border-hidden-hover</div>
+  <div class="romo-border-none-hover romo-border2">.romo-border-none-hover</div>
 </div>
 
 ```html
@@ -76,6 +106,14 @@ Change style on any border configuration
 <div class="romo-border-inset">...</div>
 <div class="romo-border-hidden">...</div>
 <div class="romo-border-none">...</div>
+<div class="romo-border-solid-hover">...</div>
+<div class="romo-border-dashed-hover">...</div>
+<div class="romo-border-dotted-hover">...</div>
+<div class="romo-border-double-hover">...</div>
+<div class="romo-border-groove-hover">...</div>
+<div class="romo-border-inset-hover">...</div>
+<div class="romo-border-hidden-hover">...</div>
+<div class="romo-border-none-hover">...</div>
 ```
 
 Add color emphasis to any border configuration
@@ -86,7 +124,13 @@ Add color emphasis to any border configuration
   <div class="romo-border-error romo-border2 romo-push0-bottom">.romo-border-error</div>
   <div class="romo-border-info romo-border2 romo-push0-bottom">.romo-border-info</div>
   <div class="romo-border-success romo-border2 romo-push0-bottom">.romo-border-success</div>
-  <div class="romo-border-inverse romo-border2">.romo-border-inverse</div>
+  <div class="romo-border-inverse romo-border2 romo-push0-bottom">.romo-border-inverse</div>
+  <div class="romo-border-muted-hover romo-border2 romo-push0-bottom">.romo-border-muted-hover</div>
+  <div class="romo-border-warning-hover romo-border2 romo-push0-bottom">.romo-border-warning-hover</div>
+  <div class="romo-border-error-hover romo-border2 romo-push0-bottom">.romo-border-error-hover</div>
+  <div class="romo-border-info-hover romo-border2 romo-push0-bottom">.romo-border-info-hover</div>
+  <div class="romo-border-success-hover romo-border2 romo-push0-bottom">.romo-border-success-hover</div>
+  <div class="romo-border-inverse-hover romo-border2">.romo-border-inverse-hover</div>
 </div>
 
 ```html
@@ -96,6 +140,12 @@ Add color emphasis to any border configuration
 <div class="romo-border-info">...</div>
 <div class="romo-border-success">...</div>
 <div class="romo-border-inverse">...</div>
+<div class="romo-border-muted-hover">...</div>
+<div class="romo-border-warning-hover">...</div>
+<div class="romo-border-error-hover">...</div>
+<div class="romo-border-info-hover">...</div>
+<div class="romo-border-success-hover">...</div>
+<div class="romo-border-inverse-hover">...</div>
 ```
 
 Add border radius.
@@ -108,11 +158,19 @@ Add border radius.
   <div class="romo-border2 romo-border2-top-left-radius romo-push0-bottom">.romo-border2-top-left-radius</div>
   <div class="romo-border2 romo-border2-top-right-radius romo-push0-bottom">.romo-border2-top-right-radius</div>
   <div class="romo-border2 romo-border2-bottom-left-radius romo-push0-bottom">.romo-border2-bottom-left-radius</div>
-  <div class="romo-border2 romo-border2-bottom-right-radius">.romo-border2-bottom-right-radius</div>
+  <div class="romo-border2 romo-border2-bottom-right-radius romo-push0-bottom">.romo-border2-bottom-right-radius</div>
+  <div class="romo-border0 romo-border0-radius-hover romo-push0-bottom">.romo-border0-radius-hover</div>
+  <div class="romo-border1 romo-border1-radius-hover romo-push0-bottom">.romo-border1-radius-hover</div>
+  <div class="romo-border romo-border-radius-hover romo-push0-bottom">.romo-border-radius-hover (alias of .romo-border1-radius-hover)</div>
+  <div class="romo-border2 romo-border2-radius-hover romo-push0-bottom">.romo-border2-radius-hover</div>
+  <div class="romo-border2 romo-border2-top-left-radius-hover romo-push0-bottom">.romo-border2-top-left-radius-hover</div>
+  <div class="romo-border2 romo-border2-top-right-radius-hover romo-push0-bottom">.romo-border2-top-right-radius-hover</div>
+  <div class="romo-border2 romo-border2-bottom-left-radius-hover romo-push0-bottom">.romo-border2-bottom-left-radius-hover</div>
+  <div class="romo-border2 romo-border2-bottom-right-radius-hover">.romo-border2-bottom-right-radius-hover</div>
 </div>
 
 ```html
-<div class="romo-border3 romo-border0-radius">...</div>
+<div class="romo-border0 romo-border0-radius">...</div>
 <div class="romo-border1 romo-border1-radius">...</div>
 <div class="romo-border romo-border-radius">...</div>
 <div class="romo-border2 romo-border2-radius">...</div>
@@ -120,6 +178,14 @@ Add border radius.
 <div class="romo-border2 romo-border2-top-right-radius">...</div>
 <div class="romo-border2 romo-border2-bottom-left-radius">...</div>
 <div class="romo-border2 romo-border2-bottom-right-radius">...</div>
+<div class="romo-border0 romo-border0-radius-hover">...</div>
+<div class="romo-border1 romo-border1-radius-hover">...</div>
+<div class="romo-border romo-border-radius-hover">...</div>
+<div class="romo-border2 romo-border2-radius-hover">...</div>
+<div class="romo-border2 romo-border2-top-left-radius-hover">...</div>
+<div class="romo-border2 romo-border2-top-right-radius-hover">...</div>
+<div class="romo-border2 romo-border2-bottom-left-radius-hover">...</div>
+<div class="romo-border2 romo-border2-bottom-right-radius-hover">...</div>
 ```
 
 ## Spacing
