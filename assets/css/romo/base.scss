@@ -281,6 +281,25 @@ h3 { @include text1; }
 .romo-border-success { @include border-success(!important); }
 .romo-border-inverse { @include border-inverse(!important); }
 
+.romo-border-muted-hover:hover, a.romo-border-muted:hover, a.romo-border-muted:focus {
+  @include border-muted(!important);
+}
+.romo-border-warning-hover:hover, a.romo-border-warning:hover, a.romo-border-warning:focus {
+  @include border-warning(!important);
+}
+.romo-border-error-hover:hover, a.romo-border-error:hover, a.romo-border-error:focus {
+  @include border-error(!important);
+}
+.romo-border-info-hover:hover, a.romo-border-info:hover, a.romo-border-info:focus {
+  @include border-info(!important);
+}
+.romo-border-success-hover:hover, a.romo-border-success:hover, a.romo-border-success:focus {
+  @include border-success(!important);
+}
+.romo-border-inverse-hover:hover, a.romo-border-inverse:hover, a.romo-border-inverse:focus {
+  @include border-inverse(!important);
+}
+
 /* Scaffolding */
 /* ----------- */
 
@@ -295,6 +314,15 @@ h3 { @include text1; }
 .romo-border-hidden { @include border-style(hidden, !important); }
 .romo-border-none   { @include border-style(none,   !important); }
 
+.romo-border-solid-hover:hover  { @include border-style(solid,  !important); }
+.romo-border-dashed-hover:hover { @include border-style(dashed, !important); }
+.romo-border-dotted-hover:hover { @include border-style(dotted, !important); }
+.romo-border-double-hover:hover { @include border-style(double, !important); }
+.romo-border-groove-hover:hover { @include border-style(groove, !important); }
+.romo-border-inset-hover:hover  { @include border-style(inset,  !important); }
+.romo-border-hidden-hover:hover { @include border-style(hidden, !important); }
+.romo-border-none-hover:hover   { @include border-style(none,   !important); }
+
 .romo-border-solid-top  { @include border-style-top(solid,  !important); }
 .romo-border-dashed-top { @include border-style-top(dashed, !important); }
 .romo-border-dotted-top { @include border-style-top(dotted, !important); }
@@ -303,6 +331,15 @@ h3 { @include text1; }
 .romo-border-inset-top  { @include border-style-top(inset,  !important); }
 .romo-border-hidden-top { @include border-style-top(hidden, !important); }
 .romo-border-none-top   { @include border-style-top(none,   !important); }
+
+.romo-border-solid-top-hover:hover  { @include border-style-top(solid,  !important); }
+.romo-border-dashed-top-hover:hover { @include border-style-top(dashed, !important); }
+.romo-border-dotted-top-hover:hover { @include border-style-top(dotted, !important); }
+.romo-border-double-top-hover:hover { @include border-style-top(double, !important); }
+.romo-border-groove-top-hover:hover { @include border-style-top(groove, !important); }
+.romo-border-inset-top-hover:hover  { @include border-style-top(inset,  !important); }
+.romo-border-hidden-top-hover:hover { @include border-style-top(hidden, !important); }
+.romo-border-none-top-hover:hover   { @include border-style-top(none,   !important); }
 
 .romo-border-solid-right  { @include border-style-right(solid,  !important); }
 .romo-border-dashed-right { @include border-style-right(dashed, !important); }
@@ -313,6 +350,15 @@ h3 { @include text1; }
 .romo-border-hidden-right { @include border-style-right(hidden, !important); }
 .romo-border-none-right   { @include border-style-right(none,   !important); }
 
+.romo-border-solid-right-hover:hover  { @include border-style-right(solid,  !important); }
+.romo-border-dashed-right-hover:hover { @include border-style-right(dashed, !important); }
+.romo-border-dotted-right-hover:hover { @include border-style-right(dotted, !important); }
+.romo-border-double-right-hover:hover { @include border-style-right(double, !important); }
+.romo-border-groove-right-hover:hover { @include border-style-right(groove, !important); }
+.romo-border-inset-right-hover:hover  { @include border-style-right(inset,  !important); }
+.romo-border-hidden-right-hover:hover { @include border-style-right(hidden, !important); }
+.romo-border-none-right-hover:hover   { @include border-style-right(none,   !important); }
+
 .romo-border-solid-bottom  { @include border-style-bottom(solid,  !important); }
 .romo-border-dashed-bottom { @include border-style-bottom(dashed, !important); }
 .romo-border-dotted-bottom { @include border-style-bottom(dotted, !important); }
@@ -321,6 +367,15 @@ h3 { @include text1; }
 .romo-border-inset-bottom  { @include border-style-bottom(inset,  !important); }
 .romo-border-hidden-bottom { @include border-style-bottom(hidden, !important); }
 .romo-border-none-bottom   { @include border-style-bottom(none,   !important); }
+
+.romo-border-solid-bottom-hover:hover  { @include border-style-bottom(solid,  !important); }
+.romo-border-dashed-bottom-hover:hover { @include border-style-bottom(dashed, !important); }
+.romo-border-dotted-bottom-hover:hover { @include border-style-bottom(dotted, !important); }
+.romo-border-double-bottom-hover:hover { @include border-style-bottom(double, !important); }
+.romo-border-groove-bottom-hover:hover { @include border-style-bottom(groove, !important); }
+.romo-border-inset-bottom-hover:hover  { @include border-style-bottom(inset,  !important); }
+.romo-border-hidden-bottom-hover:hover { @include border-style-bottom(hidden, !important); }
+.romo-border-none-bottom-hover:hover   { @include border-style-bottom(none,   !important); }
 
 .romo-border-solid-left  { @include border-style-left(solid,  !important); }
 .romo-border-dashed-left { @include border-style-left(dashed, !important); }
@@ -331,11 +386,26 @@ h3 { @include text1; }
 .romo-border-hidden-left { @include border-style-left(hidden, !important); }
 .romo-border-none-left   { @include border-style-left(none,   !important); }
 
+.romo-border-solid-left-hover:hover  { @include border-style-left(solid,  !important); }
+.romo-border-dashed-left-hover:hover { @include border-style-left(dashed, !important); }
+.romo-border-dotted-left-hover:hover { @include border-style-left(dotted, !important); }
+.romo-border-double-left-hover:hover { @include border-style-left(double, !important); }
+.romo-border-groove-left-hover:hover { @include border-style-left(groove, !important); }
+.romo-border-inset-left-hover:hover  { @include border-style-left(inset,  !important); }
+.romo-border-hidden-left-hover:hover { @include border-style-left(hidden, !important); }
+.romo-border-none-left-hover:hover   { @include border-style-left(none,   !important); }
+
 .romo-border,
 .romo-border1   { @include border1(!important); }
 .romo-border0   { @include border0(!important); }
 .romo-border2   { @include border2(!important); }
 .romo-rm-border { @include rm-border(!important); }
+
+.romo-border-hover:hover,
+.romo-border1-hover:hover   { @include border1(!important); }
+.romo-border0-hover:hover   { @include border0(!important); }
+.romo-border2-hover:hover   { @include border2(!important); }
+.romo-rm-border-hover:hover { @include rm-border(!important); }
 
 .romo-border-top,
 .romo-border1-top   { @include border1-top(!important); }
@@ -343,11 +413,23 @@ h3 { @include text1; }
 .romo-border2-top   { @include border2-top(!important); }
 .romo-rm-border-top { @include rm-border-top(!important); }
 
+.romo-border-top-hover:hover,
+.romo-border1-top-hover:hover   { @include border1-top(!important); }
+.romo-border0-top-hover:hover   { @include border0-top(!important); }
+.romo-border2-top-hover:hover   { @include border2-top(!important); }
+.romo-rm-border-top-hover:hover { @include rm-border-top(!important); }
+
 .romo-border-right,
 .romo-border1-right   { @include border1-right(!important); }
 .romo-border0-right   { @include border0-right(!important); }
 .romo-border2-right   { @include border2-right(!important); }
 .romo-rm-border-right { @include rm-border-right(!important); }
+
+.romo-border-right-hover:hover,
+.romo-border1-right-hover:hover   { @include border1-right(!important); }
+.romo-border0-right-hover:hover   { @include border0-right(!important); }
+.romo-border2-right-hover:hover   { @include border2-right(!important); }
+.romo-rm-border-right-hover:hover { @include rm-border-right(!important); }
 
 .romo-border-bottom,
 .romo-border1-bottom   { @include border1-bottom(!important); }
@@ -355,11 +437,23 @@ h3 { @include text1; }
 .romo-border2-bottom   { @include border2-bottom(!important); }
 .romo-rm-border-bottom { @include rm-border-bottom(!important); }
 
+.romo-border-bottom-hover:hover,
+.romo-border1-bottom-hover:hover   { @include border1-bottom(!important); }
+.romo-border0-bottom-hover:hover   { @include border0-bottom(!important); }
+.romo-border2-bottom-hover:hover   { @include border2-bottom(!important); }
+.romo-rm-border-bottom-hover:hover { @include rm-border-bottom(!important); }
+
 .romo-border-left,
 .romo-border1-left   { @include border1-left(!important); }
 .romo-border0-left   { @include border0-left(!important); }
 .romo-border2-left   { @include border2-left(!important); }
 .romo-rm-border-left { @include rm-border-left(!important); }
+
+.romo-border-left-hover:hover,
+.romo-border1-left-hover:hover   { @include border1-left(!important); }
+.romo-border0-left-hover:hover   { @include border0-left(!important); }
+.romo-border2-left-hover:hover   { @include border2-left(!important); }
+.romo-rm-border-left-hover:hover { @include rm-border-left(!important); }
 
 .romo-border-radius,
 .romo-border1-radius   { @include border1-radius(!important); }
@@ -367,11 +461,23 @@ h3 { @include text1; }
 .romo-border2-radius   { @include border2-radius(!important); }
 .romo-rm-border-radius { @include rm-border-radius(!important); }
 
+.romo-border-radius-hover:hover,
+.romo-border1-radius-hover:hover   { @include border1-radius(!important); }
+.romo-border0-radius-hover:hover   { @include border0-radius(!important); }
+.romo-border2-radius-hover:hover   { @include border2-radius(!important); }
+.romo-rm-border-radius-hover:hover { @include rm-border-radius(!important); }
+
 .romo-border-top-left-radius,
 .romo-border1-top-left-radius   { @include border1-top-left-radius(!important); }
 .romo-border0-top-left-radius   { @include border0-top-left-radius(!important); }
 .romo-border2-top-left-radius   { @include border2-top-left-radius(!important); }
 .romo-rm-border-top-left-radius { @include rm-border-top-left-radius(!important); }
+
+.romo-border-top-left-radius-hover:hover,
+.romo-border1-top-left-radius-hover:hover   { @include border1-top-left-radius(!important); }
+.romo-border0-top-left-radius-hover:hover   { @include border0-top-left-radius(!important); }
+.romo-border2-top-left-radius-hover:hover   { @include border2-top-left-radius(!important); }
+.romo-rm-border-top-left-radius-hover:hover { @include rm-border-top-left-radius(!important); }
 
 .romo-border-top-right-radius,
 .romo-border1-top-right-radius   { @include border1-top-right-radius(!important); }
@@ -379,17 +485,35 @@ h3 { @include text1; }
 .romo-border2-top-right-radius   { @include border2-top-right-radius(!important); }
 .romo-rm-border-top-right-radius { @include rm-border-top-right-radius(!important); }
 
+.romo-border-top-right-radius-hover:hover,
+.romo-border1-top-right-radius-hover:hover   { @include border1-top-right-radius(!important); }
+.romo-border0-top-right-radius-hover:hover   { @include border0-top-right-radius(!important); }
+.romo-border2-top-right-radius-hover:hover   { @include border2-top-right-radius(!important); }
+.romo-rm-border-top-right-radius-hover:hover { @include rm-border-top-right-radius(!important); }
+
 .romo-border-bottom-right-radius,
 .romo-border1-bottom-right-radius   { @include border1-bottom-right-radius(!important); }
 .romo-border0-bottom-right-radius   { @include border0-bottom-right-radius(!important); }
 .romo-border2-bottom-right-radius   { @include border2-bottom-right-radius(!important); }
 .romo-rm-border-bottom-right-radius { @include rm-border-bottom-right-radius(!important); }
 
+.romo-border-bottom-right-radius-hover:hover,
+.romo-border1-bottom-right-radius-hover:hover   { @include border1-bottom-right-radius(!important); }
+.romo-border0-bottom-right-radius-hover:hover   { @include border0-bottom-right-radius(!important); }
+.romo-border2-bottom-right-radius-hover:hover   { @include border2-bottom-right-radius(!important); }
+.romo-rm-border-bottom-right-radius-hover:hover { @include rm-border-bottom-right-radius(!important); }
+
 .romo-border-bottom-left-radius,
 .romo-border1-bottom-left-radius   { @include border1-bottom-left-radius(!important); }
 .romo-border0-bottom-left-radius   { @include border0-bottom-left-radius(!important); }
 .romo-border2-bottom-left-radius   { @include border2-bottom-left-radius(!important); }
 .romo-rm-border-bottom-left-radius { @include rm-border-bottom-left-radius(!important); }
+
+.romo-border-bottom-left-radius-hover:hover,
+.romo-border1-bottom-left-radius-hover:hover   { @include border1-bottom-left-radius(!important); }
+.romo-border0-bottom-left-radius-hover:hover   { @include border0-bottom-left-radius(!important); }
+.romo-border2-bottom-left-radius-hover:hover   { @include border2-bottom-left-radius(!important); }
+.romo-rm-border-bottom-left-radius-hover:hover { @include rm-border-bottom-left-radius(!important); }
 
 /* spacing */
 
