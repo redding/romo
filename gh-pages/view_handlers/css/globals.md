@@ -36,3 +36,5 @@ Romo uses <a href="http://www.paulirish.com/2012/box-sizing-border-box-ftw/" tar
 * Set the global link color with `$linkColor` and `$linkColorHover` and only apply link underlines on `:hover`
 * Remove any link color and styling by adding the `romo-text` class to any link
 * Add a pointer cursor to any element by adding the `romo-pointer` class
+* Add a grab cursor to any element by adding the `romo-grab` class
+* Add a grabing cursor to any element by adding the `romo-grabbing` class
