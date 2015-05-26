@@ -87,7 +87,9 @@ a.romo-text {
   color: $baseColor;
   text-decoration: none;
 }
-.romo-pointer { cursor: pointer; }
+.romo-pointer  { cursor: pointer; }
+.romo-grab     { @include cursor-grab; }
+.romo-grabbing { @include cursor-grabbing; }
 
 /* images */
 
