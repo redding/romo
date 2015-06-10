@@ -126,14 +126,21 @@ RomoForm.prototype._doSubmit = function() {
   this.indicatorElems.trigger('indicator:triggerStart');
   this.elem.trigger('form:beforeSubmit', [this]);
 
-  if (this.elem.attr('method').toUpperCase() === 'GET') {
-    this._doGetSubmit();
+  if(this.elem.data('romo-form-browser-submit') === true) {
+    this._doBrowserSubmit();
+  } else if (this.elem.attr('method').toUpperCase() === 'GET') {
+    this._doNonBrowserGetSubmit();
   } else {
-    this._doNonGetSubmit();
+    this._doNonBrowserNonGetSubmit();
   }
 }
 
-RomoForm.prototype._doGetSubmit = function() {
+RomoForm.prototype._doBrowserSubmit = function() {
+  this.elem.submit();
+  this.elem.trigger('form:browserSubmit', [this]);
+}
+
+RomoForm.prototype._doNonBrowserGetSubmit = function() {
   var data = this._getSerializeObj();
 
   if (this.elem.data('romo-form-redirect-page') === true) {
@@ -152,7 +159,7 @@ RomoForm.prototype._doGetSubmit = function() {
   }
 }
 
-RomoForm.prototype._doNonGetSubmit = function() {
+RomoForm.prototype._doNonBrowserNonGetSubmit = function() {
   this._doAjaxSubmit(this._getFormData(), false);
 }
 

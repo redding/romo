@@ -84,6 +84,9 @@ RomoDropdownForm.prototype.doBindForm = function() {
   formElem.on('form:submitError', $.proxy(function(e, xhr, form) {
     this.elem.trigger('dropdownForm:form:submitError', [xhr, form, this]);
   }, this));
+  formElem.on('form:browserSubmit', $.proxy(function(e, form) {
+    this.elem.trigger('dropdownForm:form:browserSubmit', [form, this]);
+  }, this));
 
   var submitElement = this.dropdown.popupElem.find('[data-romo-form-submit="true"]')[0];
   var indicatorElements = this.dropdown.popupElem.find('[data-romo-indicator-auto="true"]');

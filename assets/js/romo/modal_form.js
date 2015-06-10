@@ -93,6 +93,9 @@ RomoModalForm.prototype.doBindForm = function() {
   formElem.on('form:submitError', $.proxy(function(e, xhr, form) {
     this.elem.trigger('modalForm:form:submitError', [xhr, form, this]);
   }, this));
+  formElem.on('form:browserSubmit', $.proxy(function(e, form) {
+    this.elem.trigger('modalForm:form:browserSubmit', [form, this]);
+  }, this));
 
   var submitElement = this.modal.popupElem.find('[data-romo-form-submit="true"]')[0];
   var indicatorElements = this.modal.popupElem.find('[data-romo-indicator-auto="true"]');
