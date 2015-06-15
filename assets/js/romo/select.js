@@ -23,9 +23,12 @@ var RomoSelect = function(element) {
       selectedVal = '';
     }
     if (selectedVal !== this.elem[0].value) {
-      this.romoSelectDropdown.doSetNewValue(selectedVal);
-      this._setNewValue(selectedVal);
+      this.doSetValue(selectedVal);
     }
+  }, this));
+
+  this.elem.on('select:triggerSetValue', $.proxy(function(e, value) {
+    this.doSetValue(value)
   }, this));
 
   this.elem.trigger('select:ready', [this]);
@@ -72,6 +75,11 @@ RomoSelect.prototype.doBindSelectDropdown = function() {
 RomoSelect.prototype.doRefreshUI = function() {
   var text = this.romoSelectDropdown.selectedListing().text() || '&nbsp;';
   this.romoSelectDropdown.elem.find('.romo-select-text').html(text);
+}
+
+RomoSelect.prototype.doSetValue = function(value) {
+  this.romoSelectDropdown.doSetNewValue(value);
+  this._setNewValue(value);
 }
 
 RomoSelect.prototype.onCaretClick = function(e) {
