@@ -167,6 +167,9 @@ Add border radius.
   <div class="romo-border2 romo-border2-top-right-radius-hover romo-push0-bottom">.romo-border2-top-right-radius-hover</div>
   <div class="romo-border2 romo-border2-bottom-left-radius-hover romo-push0-bottom">.romo-border2-bottom-left-radius-hover</div>
   <div class="romo-border2 romo-border2-bottom-right-radius-hover">.romo-border2-bottom-right-radius-hover</div>
+  <div class="romo-border2 romo-border-radius-circle romo-push0-bottom">.romo-border-radius-circle</div>
+  <div class="romo-border2 romo-border-radius-circle-hover romo-push0-bottom">.romo-border-radius-circle-hover</div>
+
 </div>
 
 ```html
