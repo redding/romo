@@ -8,7 +8,7 @@
   @include list-unstyled;
   @include clearfix;
 
-  border-bottom: $tabDividerSize solid $tabBackgroundActive;
+  border-bottom: $tabDividerSize solid $tabBgColorActive;
 }
 
 .romo-tabs > li {
@@ -25,22 +25,22 @@
   cursor: pointer;
 
   @include border1;
-  background-color: $tabBackground;
-  border-color: $tabBackground;
+  background-color: $tabBgColor;
+  border-color: $tabBgColor;
   color: $tabColor;
 
   &:hover,
   &:focus {
     outline: 0;
     text-decoration: none;
-    background-color: $tabBackgroundHover;
-    border-color: $tabBackgroundHover;
+    background-color: $tabBgColorHover;
+    border-color: $tabBgColorHover;
   }
 }
 
 .romo-tabs > li.active > a {
-  background-color: $tabBackgroundActive;
-  border-color: $tabBackgroundActive;
+  background-color: $tabBgColorActive;
+  border-color: $tabBgColorActive;
   color: $tabColorActive;
 }
 
@@ -51,8 +51,8 @@
 
   &:hover,
   &:focus {
-    background-color: $tabBackground;
-    border-color: $tabBackgroundHover;
+    background-color: $tabBgColor;
+    border-color: $tabBgColorHover;
   }
 }
 
@@ -67,5 +67,5 @@
 .romo-tabs.romo-tabs-stacked { @include rm-border; }
 .romo-tabs.romo-tabs-stacked > li { float: none; }
 .romo-tabs.romo-tabs-stacked > li > a { @include border1; border-color: $baseBorderColor; }
-.romo-tabs.romo-tabs-stacked > li.active > a { border-color: $tabBackgroundActive; }
+.romo-tabs.romo-tabs-stacked > li.active > a { border-color: $tabBgColorActive; }
 .romo-tabs.romo-tabs-stacked > li:not(:last-child) > a { @include rm-border-bottom; }

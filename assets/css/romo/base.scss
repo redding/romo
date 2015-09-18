@@ -97,7 +97,7 @@ a.romo-text {
 .romo-img-circle  { @include border-radius(500px); }
 .romo-img-card {
   padding: 3px;
-  background-color: $baseBackground;
+  background-color: $baseBgColor;
   border: 1px solid;
   border: 1px solid rgba(0, 0, 0, 0.2);
   @include box-shadow(0 1px 3px rgba(0, 0, 0, 0.1));
@@ -224,6 +224,8 @@ h3 { @include text1; }
 
 .romo-text-border-base { @include text-border-base(!important); }
 .romo-text-border-alt  { @include text-border-alt(!important); }
+.romo-text-base        { @include text-base(!important); }
+.romo-text-alt         { @include text-alt(!important); }
 .romo-text-muted       { @include text-muted(!important); }
 .romo-text-warning     { @include text-warning(!important); }
 .romo-text-error       { @include text-error(!important); }
@@ -231,6 +233,12 @@ h3 { @include text1; }
 .romo-text-success     { @include text-success(!important); }
 .romo-text-inverse     { @include text-inverse(!important); }
 
+.romo-text-base-hover:hover, a.romo-text-base:hover, a.romo-text-base:focus {
+  @include text-base-hover(!important);
+}
+.romo-text-alt-hover:hover, a.romo-text-alt:hover, a.romo-text-alt:focus {
+  @include text-alt-hover(!important);
+}
 .romo-text-muted-hover:hover, a.romo-text-muted:hover, a.romo-text-muted:focus {
   @include text-muted-hover(!important);
 }
@@ -250,6 +258,8 @@ h3 { @include text1; }
   @include text-inverse-hover(!important);
 }
 
+.romo-bg-base    { @include bg-base(!important); }
+.romo-bg-alt     { @include bg-alt(!important); }
 .romo-bg-muted   { @include bg-muted(!important); }
 .romo-bg-warning { @include bg-warning(!important); }
 .romo-bg-error   { @include bg-error(!important); }
@@ -257,6 +267,12 @@ h3 { @include text1; }
 .romo-bg-success { @include bg-success(!important); }
 .romo-bg-inverse { @include bg-inverse(!important); }
 
+.romo-bg-base-hover:hover, a.romo-bg-base:hover, a.romo-bg-base:focus {
+  @include bg-base-hover(!important);
+}
+.romo-bg-alt-hover:hover, a.romo-bg-alt:hover, a.romo-bg-alt:focus {
+  @include bg-alt-hover(!important);
+}
 .romo-bg-muted-hover:hover, a.romo-bg-muted:hover, a.romo-bg-muted:focus {
   @include bg-muted-hover(!important);
 }

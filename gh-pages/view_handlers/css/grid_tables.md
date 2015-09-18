@@ -244,6 +244,18 @@ Add color emphasis to grid table rows.
       <span class="romo-span romo-5-12">Slug</span>
       <span class="romo-span romo-1-12">Count</span>
     </li>
+    <li class="romo-row romo-base">
+      <span class="romo-span romo-1-12">1</span>
+      <span class="romo-span romo-5-12">Joe Test</span>
+      <span class="romo-span romo-5-12">joe-test</span>
+      <span class="romo-span romo-1-12">10</span>
+    </li>
+    <li class="romo-row romo-alt">
+      <span class="romo-span romo-1-12">1</span>
+      <span class="romo-span romo-5-12">Joe Test</span>
+      <span class="romo-span romo-5-12">joe-test</span>
+      <span class="romo-span romo-1-12">10</span>
+    </li>
     <li class="romo-row romo-muted">
       <span class="romo-span romo-1-12">1</span>
       <span class="romo-span romo-5-12">Joe Test</span>
@@ -286,6 +298,8 @@ Add color emphasis to grid table rows.
 ```html
 <ul class="romo-grid-table romo-grid-table-header">
   <li class="romo-row">...</li>
+  <li class="romo-row romo-base">...</li>
+  <li class="romo-row romo-alt">...</li>
   <li class="romo-row romo-muted">...</li>
   <li class="romo-row romo-warning">...</li>
   <li class="romo-row romo-error">...</li>
@@ -510,6 +524,18 @@ Add hover state to rows
 
 <div class="romo-pad2-bottom">
   <ul class="romo-grid-table romo-grid-table-hover">
+    <li class="romo-row romo-base">
+      <span class="romo-span romo-1-12">1</span>
+      <span class="romo-span romo-5-12">Joe Test</span>
+      <span class="romo-span romo-5-12">joe-test</span>
+      <span class="romo-span romo-1-12">10</span>
+    </li>
+    <li class="romo-row romo-alt">
+      <span class="romo-span romo-1-12">1</span>
+      <span class="romo-span romo-5-12">Joe Test</span>
+      <span class="romo-span romo-5-12">joe-test</span>
+      <span class="romo-span romo-1-12">10</span>
+    </li>
     <li class="romo-row romo-muted">
       <span class="romo-span romo-1-12">1</span>
       <span class="romo-span romo-5-12">Joe Test</span>
@@ -549,6 +575,19 @@ Add hover state to rows
   </ul>
 </div>
 
+```html
+<ul class="romo-grid-table romo-grid-table-hover">
+  <li class="romo-row romo-base">...</li>
+  <li class="romo-row romo-alt">...</li>
+  <li class="romo-row romo-muted">...</li>
+  <li class="romo-row romo-warning">...</li>
+  <li class="romo-row romo-error">...</li>
+  <li class="romo-row romo-info">...</li>
+  <li class="romo-row romo-success">...</li>
+  <li class="romo-row romo-inverse romo-text-inverse">...</li>
+</ul>
+```
+
 <div>
   <ul class="romo-grid-table romo-grid-table-header romo-grid-table-hover">
     <li class="romo-row">
@@ -556,6 +595,18 @@ Add hover state to rows
       <span class="romo-span romo-5-12">Name</span>
       <span class="romo-span romo-5-12">Slug</span>
       <span class="romo-span romo-1-12">Count</span>
+    </li>
+    <li class="romo-row romo-base">
+      <span class="romo-span romo-1-12">1</span>
+      <span class="romo-span romo-5-12">Joe Test</span>
+      <span class="romo-span romo-5-12">joe-test</span>
+      <span class="romo-span romo-1-12">10</span>
+    </li>
+    <li class="romo-row romo-alt">
+      <span class="romo-span romo-1-12">1</span>
+      <span class="romo-span romo-5-12">Joe Test</span>
+      <span class="romo-span romo-5-12">joe-test</span>
+      <span class="romo-span romo-1-12">10</span>
     </li>
     <li class="romo-row romo-muted">
       <span class="romo-span romo-1-12">1</span>
@@ -599,6 +650,8 @@ Add hover state to rows
 ```html
 <ul class="romo-grid-table romo-grid-table-header romo-grid-table-hover">
   <li class="romo-row">...</li>
+  <li class="romo-row romo-base">...</li>
+  <li class="romo-row romo-alt">...</li>
   <li class="romo-row romo-muted">...</li>
   <li class="romo-row romo-warning">...</li>
   <li class="romo-row romo-error">...</li>
@@ -782,6 +835,64 @@ Remove all borders from the grid table.
 Adds border color emphasis to the entire grid table.
 
 <div class="romo-pad2-bottom">
+  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border2 romo-grid-table-border-base">
+    <li class="romo-row">
+      <span class="romo-span romo-1-12">#</span>
+      <span class="romo-span romo-5-12">Name</span>
+      <span class="romo-span romo-5-12">Slug</span>
+      <span class="romo-span romo-1-12">Count</span>
+    </li>
+    <li class="romo-row">
+      <span class="romo-span romo-1-12">1</span>
+      <span class="romo-span romo-5-12">Joe Test</span>
+      <span class="romo-span romo-5-12">joe-test</span>
+      <span class="romo-span romo-1-12">10</span>
+    </li>
+    <li class="romo-row">
+      <span class="romo-span romo-1-12">2</span>
+      <span class="romo-span romo-5-12">Jane Doe</span>
+      <span class="romo-span romo-5-12">jane-doe</span>
+      <span class="romo-span romo-1-12">18</span>
+    </li>
+    <li class="romo-row">
+      <span class="romo-span romo-1-12">3</span>
+      <span class="romo-span romo-5-12">Good Corp.</span>
+      <span class="romo-span romo-5-12">good-corp</span>
+      <span class="romo-span romo-1-12">5</span>
+    </li>
+  </ul>
+</div>
+
+<div class="romo-pad2-bottom">
+  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border2 romo-grid-table-border-alt">
+    <li class="romo-row">
+      <span class="romo-span romo-1-12">#</span>
+      <span class="romo-span romo-5-12">Name</span>
+      <span class="romo-span romo-5-12">Slug</span>
+      <span class="romo-span romo-1-12">Count</span>
+    </li>
+    <li class="romo-row">
+      <span class="romo-span romo-1-12">1</span>
+      <span class="romo-span romo-5-12">Joe Test</span>
+      <span class="romo-span romo-5-12">joe-test</span>
+      <span class="romo-span romo-1-12">10</span>
+    </li>
+    <li class="romo-row">
+      <span class="romo-span romo-1-12">2</span>
+      <span class="romo-span romo-5-12">Jane Doe</span>
+      <span class="romo-span romo-5-12">jane-doe</span>
+      <span class="romo-span romo-1-12">18</span>
+    </li>
+    <li class="romo-row">
+      <span class="romo-span romo-1-12">3</span>
+      <span class="romo-span romo-5-12">Good Corp.</span>
+      <span class="romo-span romo-5-12">good-corp</span>
+      <span class="romo-span romo-1-12">5</span>
+    </li>
+  </ul>
+</div>
+
+<div class="romo-pad2-bottom">
   <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border2 romo-grid-table-border-muted">
     <li class="romo-row">
       <span class="romo-span romo-1-12">#</span>
@@ -956,7 +1067,7 @@ Adds border color emphasis to the entire grid table.
 </div>
 
 ```html
-<ul class="romo-grid-table romo-grid-table-border-{muted|warning|error|info|success|inverse}">
+<ul class="romo-grid-table romo-grid-table-border-{base|alt|muted|warning|error|info|success|inverse}">
   ...
 </ul>
 ```

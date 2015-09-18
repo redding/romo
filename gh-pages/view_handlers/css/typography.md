@@ -245,6 +245,8 @@ Or only set a font weight on hover.
 Use style classes to add color to text.
 
 <div>
+  <span class="romo-text-base">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
+  <span class="romo-text-alt">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
   <span class="romo-text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
   <span class="romo-text-warning">Etiam porta sem malesuada magna mollis euismod.</span><br />
   <span class="romo-text-error">Donec ullamcorper nulla non metus auctor fringilla.</span><br />
@@ -254,6 +256,8 @@ Use style classes to add color to text.
 </div>
 
 ```html
+<span class="romo-text-base">...</span><br />
+<span class="romo-text-alt">...</span><br />
 <span class="romo-text-muted">...</span><br />
 <span class="romo-text-warning">...</span><br />
 <span class="romo-text-error">...</span><br />
@@ -265,6 +269,8 @@ Use style classes to add color to text.
 Or, to links.
 
 <div>
+  <a href="#" class="romo-text-base">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</a><br />
+  <a href="#" class="romo-text-alt">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</a><br />
   <a href="#" class="romo-text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</a><br />
   <a href="#" class="romo-text-warning">Etiam porta sem malesuada magna mollis euismod.</a><br />
   <a href="#" class="romo-text-error">Donec ullamcorper nulla non metus auctor fringilla.</a><br />
@@ -274,6 +280,8 @@ Or, to links.
 </div>
 
 ```html
+<a href="#" class="romo-text-base">...</a><br />
+<a href="#" class="romo-text-alt">...</a><br />
 <a href="#" class="romo-text-muted">...</a><br />
 <a href="#" class="romo-text-warning">...</a><br />
 <a href="#" class="romo-text-error">...</a><br />
@@ -285,6 +293,8 @@ Or, to links.
 Or, on hover only (non-links).
 
 <div>
+  <span class="romo-text-base-hover">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
+  <span class="romo-text-alt-hover">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
   <span class="romo-text-muted-hover">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
   <span class="romo-text-warning-hover">Etiam porta sem malesuada magna mollis euismod.</span><br />
   <span class="romo-text-error-hover">Donec ullamcorper nulla non metus auctor fringilla.</span><br />
@@ -294,6 +304,8 @@ Or, on hover only (non-links).
 </div>
 
 ```html
+<span class="romo-text-base-hover">...</span><br />
+<span class="romo-text-alt-hover">...</span><br />
 <span class="romo-text-muted-hover">...</span><br />
 <span class="romo-text-warning-hover">...</span><br />
 <span class="romo-text-error-hover">...</span><br />
@@ -305,6 +317,8 @@ Or, on hover only (non-links).
 Or, to the background instead of the text.
 
 <div>
+  <span class="romo-bg-base">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
+  <span class="romo-bg-alt">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
   <span class="romo-bg-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
   <span class="romo-bg-warning">Etiam porta sem malesuada magna mollis euismod.</span><br />
   <span class="romo-bg-error">Donec ullamcorper nulla non metus auctor fringilla.</span><br />
@@ -314,6 +328,8 @@ Or, to the background instead of the text.
 </div>
 
 ```html
+<span class="romo-bg-base">...</span><br />
+<span class="romo-bg-alt">...</span><br />
 <span class="romo-bg-muted">...</span><br />
 <span class="romo-bg-warning">...</span><br />
 <span class="romo-bg-error">...</span><br />
@@ -325,6 +341,8 @@ Or, to the background instead of the text.
 Or, to the background instead of the text on hover only.
 
 <div>
+  <span class="romo-bg-base-hover">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
+  <span class="romo-bg-alt-hover">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
   <span class="romo-bg-muted-hover">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
   <span class="romo-bg-warning-hover">Etiam porta sem malesuada magna mollis euismod.</span><br />
   <span class="romo-bg-error-hover">Donec ullamcorper nulla non metus auctor fringilla.</span><br />
@@ -334,6 +352,8 @@ Or, to the background instead of the text on hover only.
 </div>
 
 ```html
+<span class="romo-bg-base-hover">...</span><br />
+<span class="romo-bg-alt-hover">...</span><br />
 <span class="romo-bg-muted-hover">...</span><br />
 <span class="romo-bg-warning-hover">...</span><br />
 <span class="romo-bg-error-hover">...</span><br />
@@ -350,6 +370,7 @@ Or, combine in any number of ways.
   <span class="romo-text-error romo-bg-warning">Donec ullamcorper nulla non metus auctor fringilla.</span><br />
   <span class="romo-text-info romo-bg-inverse-hover">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.</span><br />
   <span class="romo-text-error-hover romo-bg-success-hover">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</span><br />
+  <span class="romo-text-warning-hover romo-bg-base-hover">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</span><br />
   <a href="#" class="romo-text-inverse romo-bg-inverse">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</a><br />
 </div>
 
@@ -359,5 +380,6 @@ Or, combine in any number of ways.
 <span class="romo-text-error romo-bg-warning">...</span><br />
 <span class="romo-text-info romo-bg-inverse-hover">...</span><br />
 <span class="romo-text-error-hover romo-bg-success-hover">...</span><br />
+<span class="romo-text-warning-hover romo-bg-base-hover">...</span><br />
 <a href="#" class="romo-text-inverse romo-bg-inverse">...</a><br />
 ```

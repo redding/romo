@@ -49,7 +49,7 @@
   padding: 4px 0;
   @include user-select(none);
 
-  background-color: $inputBackground;
+  background-color: $inputBgColor;
   color: $inputColor;
 }
 
@@ -74,8 +74,8 @@
 }
 
 .romo-select-option-list LI.romo-select-highlight {
-  background-color: $inputHighlightBackround;
-  color: $inputBackground;
+  background-color: $inputHighlightBgColor;
+  color: $inputBgColor;
 }
 
 .romo-select-option-list LI.disabled {
@@ -84,6 +84,6 @@
 
 .romo-select-option-list LI.disabled,
 .romo-select-option-list LI.disabled.romo-select-highlight {
-  background-color: $inputBackground;
+  background-color: $inputBgColor;
   color: $disabledColor;
 }
