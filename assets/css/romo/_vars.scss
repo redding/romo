@@ -35,13 +35,14 @@ $notAllowedCursor: not-allowed;
 
 /* colors */
 
-$baseBackground:    #fff;
-$altBackground:     #ededed;
-$stripedBackground: #fafafa;
-$backgroundHover:   #f5f5f5;
-
 $baseColor:     #444;
+$altColor:      #444;
 $disabledColor: #999;
+
+$baseBgColor:    #fff;
+$altBgColor:     #ededed;
+$stripedBgColor: #fafafa;
+$bgColorHover:   #f5f5f5;
 
 $baseBorderColor:  #ccc;
 $altBorderColor:   #fff;
@@ -49,20 +50,20 @@ $altBorderColor:   #fff;
 $linkColor:      #08c;
 $linkColorHover: darken($linkColor, 15%);
 
-$inputBackground:         #fff;
-$inputAltBackground:      #eee;
-$inputColor:              #444;
-$inputDisabledColor:      #eee;
-$inputFocusColor:         rgba(82, 168, 236, 0.8);
-$inputHighlightBackround: #3c83c7;
+$inputBgColor:          #fff;
+$inputAltBgColor:       #eee;
+$inputColor:            #444;
+$inputDisabledColor:    #eee;
+$inputFocusColor:       rgba(82, 168, 236, 0.8);
+$inputHighlightBgColor: #3c83c7;
 
 $btnBorder:                     $baseBorderColor;
-$btnBackground:                 $baseBackground;
+$btnBackground:                 $baseBgColor;
 $btnBackgroundHighlight:        darken($btnBackground, 10%);
 $btnColor:                      $baseColor;
 $btnColorHover:                 #333;
 
-$btnAltBackground:              $altBackground;
+$btnAltBackground:              $altBgColor;
 $btnAltBackgroundHighlight:     darken($btnAltBackground, 10%);
 $btnAltColor:                   $btnColor;
 
@@ -89,6 +90,18 @@ $btnSuccessColor:               #fff;
 $btnInverseBackground:          #444;
 $btnInverseBackgroundHighlight: #222;
 $btnInverseColor:               #fff;
+
+$baseText:               $baseColor;
+$baseTextHover:          $baseText;
+$baseBackground:         $baseBgColor;
+$baseBackgroundHover:    $baseBackground;
+$baseBorder:             $baseBorderColor;
+
+$altText:                $altColor;
+$altTextHover:           $altColor;
+$altBackground:          $altBgColor;
+$altBackgroundHover:     $altBackground;
+$altBorder:              $altBorderColor;
 
 $mutedText:              #999999;
 $mutedTextHover:         darken($mutedText, 10%);
@@ -126,15 +139,15 @@ $inverseBackground:      #444444;
 $inverseBackgroundHover: darken($inverseBackground, 5%);
 $inverseBorder:          darken(adjust_hue($inverseBackground, -10), 3%);
 
-$tabBackground:       $altBackground;
-$tabBackgroundHover:  darken($altBackground, 5%);
-$tabBackgroundActive: #222;
-$tabColor:            $baseColor;
-$tabColorActive:      #fff;
-$tabColorDisabled:    $disabledColor;
+$tabBgColor:       $altBgColor;
+$tabBgColorHover:  darken($altBgColor, 5%);
+$tabBgColorActive: #222;
+$tabColor:         $baseColor;
+$tabColorActive:   #fff;
+$tabColorDisabled: $disabledColor;
 
-$tooltipBackground:   #222;
-$tooltipColor:        #eee;
+$tooltipBgColor:   #222;
+$tooltipColor:     #eee;
 
 /* borders */
 

@@ -71,19 +71,19 @@
 /* theme */
 
 .romo-tooltip-popup {
-  background-color: $tooltipBackground;
+  background-color: $tooltipBgColor;
   color: $tooltipColor;
 }
 
 .romo-tooltip-popup[data-romo-tooltip-position="top"] .romo-tooltip-arrow {
-  border-top-color: $tooltipBackground;
+  border-top-color: $tooltipBgColor;
 }
 .romo-tooltip-popup[data-romo-tooltip-position="right"] .romo-tooltip-arrow {
-  border-right-color: $tooltipBackground;
+  border-right-color: $tooltipBgColor;
 }
 .romo-tooltip-popup[data-romo-tooltip-position="bottom"] .romo-tooltip-arrow {
-  border-bottom-color: $tooltipBackground;
+  border-bottom-color: $tooltipBgColor;
 }
 .romo-tooltip-popup[data-romo-tooltip-position="left"] .romo-tooltip-arrow {
-  border-left-color: $tooltipBackground;
+  border-left-color: $tooltipBgColor;
 }

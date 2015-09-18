@@ -298,6 +298,18 @@ Add color emphasis to rows.
       </tr>
     </thead>
     <tbody>
+      <tr class="romo-base">
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr class="romo-alt">
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
       <tr class="romo-muted romo-text-muted">
         <td>1</td>
         <td>Joe Test</td>
@@ -341,6 +353,8 @@ Add color emphasis to rows.
 ```html
 <table class="romo-table romo-table-hover">
   ...
+  <tr class="romo-base">...</tr>
+  <tr class="romo-alt">...</tr>
   <tr class="romo-muted romo-text-muted">...</tr>
   <tr class="romo-warning">...</tr>
   <tr class="romo-error">...</tr>
@@ -515,6 +529,18 @@ Add hover state to rows within a `<tbody>`.
       </tr>
     </thead>
     <tbody>
+      <tr class="romo-base">
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr class="romo-alt">
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
       <tr class="romo-muted romo-text-muted">
         <td>1</td>
         <td>Joe Test</td>
@@ -558,6 +584,8 @@ Add hover state to rows within a `<tbody>`.
 ```html
 <table class="romo-table romo-table-hover">
   ...
+  <tr class="romo-base">...</tr>
+  <tr class="romo-alt">...</tr>
   <tr class="romo-muted romo-text-muted">...</tr>
   <tr class="romo-warning">...</tr>
   <tr class="romo-error">...</tr>
@@ -772,6 +800,72 @@ Remove all borders from the table.
 Adds border color empasis to the entire table.
 
 <div class="romo-push2-bottom">
+  <table class="romo-table romo-table-border2 romo-table-border-base">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="romo-push2-bottom">
+  <table class="romo-table romo-table-border2 romo-table-border-alt">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Joe Test</td>
+        <td>joe-test</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Doe</td>
+        <td>jane-doe</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Good Corp.</td>
+        <td>good-corp</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="romo-push2-bottom">
   <table class="romo-table romo-table-border2 romo-table-border-muted">
     <thead>
       <tr>
@@ -970,50 +1064,7 @@ Adds border color empasis to the entire table.
 </div>
 
 ```html
-<table class="romo-table romo-table-border2 romo-table-border-{muted|warning|error|info|success|inverse}">
-  ...
-</table>
-```
-
-### `.romo-table-border-alt`
-
-Uses the alternate border color for the table borders.
-
-<div>
-  <table class="romo-table romo-table-border2 romo-table-alt romo-table-border-alt">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Slug</th>
-        <th>Count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Joe Test</td>
-        <td>joe-test</td>
-        <td>10</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Jane Doe</td>
-        <td>jane-doe</td>
-        <td>18</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Good Corp.</td>
-        <td>good-corp</td>
-        <td>5</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-```html
-<table class="romo-table romo-table-border2 romo-table-alt romo-table-border-alt">
+<table class="romo-table romo-table-border2 romo-table-border-{base|alt|muted|warning|error|info|success|inverse}">
   ...
 </table>
 ```

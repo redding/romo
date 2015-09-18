@@ -139,15 +139,23 @@
 
 /* color emphasis */
 
-@mixin bg-base($i:"")    { background-color: $baseBackground #{$i}; }
-@mixin bg-alt($i:"")     { background-color: $altBackground #{$i}; }
-@mixin bg-striped($i:"") { background-color: $stripedBackground #{$i}; }
-@mixin bg-hover($i:"")   { background-color: $backgroundHover #{$i}; }
+@mixin bg-striped($i:"") { background-color: $stripedBgColor #{$i}; }
+@mixin bg-hover($i:"")   { background-color: $bgColorHover #{$i}; }
 
-@mixin border-base($i:"") { border-color: $baseBorderColor #{$i}; }
-@mixin border-alt($i:"")  { border-color: $altBorderColor #{$i}; }
-@mixin text-border-base($i:"")   { color: $baseBorderColor #{$i}; }
-@mixin text-border-alt($i:"")    { color: $altBorderColor #{$i}; }
+@mixin text-border-base($i:"") { color: $baseBorderColor #{$i}; }
+@mixin text-border-alt($i:"")  { color: $altBorderColor #{$i}; }
+
+@mixin text-base($i:"")       { color: $baseText #{$i}; }
+@mixin text-base-hover($i:"") { color: $baseTextHover #{$i}; }
+@mixin bg-base($i:"")         { background-color: $baseBackground #{$i}; }
+@mixin bg-base-hover($i:"")   { background-color: $baseBackgroundHover #{$i}; }
+@mixin border-base($i:"")     {     border-color: $baseBorder #{$i}; }
+
+@mixin text-alt($i:"")       { color: $altText #{$i}; }
+@mixin text-alt-hover($i:"") { color: $altTextHover #{$i}; }
+@mixin bg-alt($i:"")         { background-color: $altBackground #{$i}; }
+@mixin bg-alt-hover($i:"")   { background-color: $altBackgroundHover #{$i}; }
+@mixin border-alt($i:"")     {     border-color: $altBorder #{$i}; }
 
 @mixin text-muted($i:"")       { color: $mutedText #{$i}; }
 @mixin text-muted-hover($i:"") { color: $mutedTextHover #{$i}; }
@@ -221,7 +229,7 @@
   line-height: $lineHeight0;
 
   background-color: $inputColor;
-  color: $inputBackground;
+  color: $inputBgColor;
 }
 
 @mixin select-option {
@@ -229,7 +237,7 @@
   line-height: $baseLineHeight;
   padding: 0 $spacingSize0;
 
-  background-color: $inputBackground;
+  background-color: $inputBgColor;
   color: $inputColor;
 }
 

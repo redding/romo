@@ -8,7 +8,7 @@ $contentWidth: 1170px;
 $navBarHeight: 45px;
 $navBarZIndex: 1300; /* reserved for app use by Romo, (below modals, above everything else) */
 
-$navBackground: #222;
+$navBgColor:    #222;
 $navColor:      #ccc;
 $navColorHover: #fff;
 
@@ -31,7 +31,7 @@ body { padding-top: $navBarHeight + $spacingSize1 + 2px; }
   display: block;
   width: 100%;
   @include clearfix;
-  background-color: $navBackground;
+  background-color: $navBgColor;
   font-weight: 300;
 
   a {

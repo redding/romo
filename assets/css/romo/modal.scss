@@ -22,7 +22,7 @@
   @include border0;
   @include box-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
 
-  background-color: $baseBackground;
+  background-color: $baseBgColor;
   border-color: $baseBorderColor;
   border-color: rgba(0, 0, 0, 0.2);
 }
