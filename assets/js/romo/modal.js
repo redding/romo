@@ -33,6 +33,8 @@ var RomoModal = function(element) {
     this.doLoadBodyError(xhr);
   }, this));
 
+  this.doBindElemKeyUp();
+
   this.doInit();
   this.doInitBody();
 
@@ -158,11 +160,11 @@ RomoModal.prototype.doPopupOpen = function() {
   // event, then the toggle click will propagate which will call
   // this event and immediately close the popup.
   setTimeout($.proxy(function() {
-    $('body').on('click', $.proxy(this.onWindowBodyClick, this));
+    this.doBindWindowBodyClick();
   }, this), 100);
 
   // bind "esc" keystroke to toggle close
-  $('body').on('keyup', $.proxy(this.onWindowBodyKeyUp, this));
+  this.doBindWindowBodyKeyUp();
 
   // bind window resizes reposition modal
   $(window).on('resize', $.proxy(this.onResizeWindow, this));
@@ -187,10 +189,10 @@ RomoModal.prototype.doPopupClose = function() {
   this.popupElem.removeClass('romo-modal-open');
 
   // unbind any event to close the popup when clicking away from it
-  $('body').off('click', $.proxy(this.onWindowBodyClick, this));
+  this.doUnBindWindowBodyClick();
 
   // unbind "esc" keystroke to toggle close
-  $('body').off('keyup', $.proxy(this.onWindowBodyKeyUp, this));
+  this.doUnBindWindowBodyKeyUp();
 
   // unbind window resizes reposition modal
   $(window).off('resize', $.proxy(this.onResizeWindow, this));
@@ -262,12 +264,54 @@ RomoModal.prototype.doDragStop = function(e) {
   this.elem.trigger("modal:dragStop", [this]);
 }
 
+RomoModal.prototype.doBindElemKeyUp = function() {
+  this.elem.on('keyup', $.proxy(this.onElemKeyUp, this));
+  this.popupElem.on('keyup', $.proxy(this.onElemKeyUp, this));
+}
+
+RomoModal.prototype.doUnBindElemKeyUp = function() {
+  this.elem.off('keyup', $.proxy(this.onElemKeyUp, this));
+  this.popupElem.off('keyup', $.proxy(this.onElemKeyUp, this));
+}
+
+RomoModal.prototype.onElemKeyUp = function(e) {
+  if (this.elem.hasClass('disabled') === false) {
+    if (this.popupElem.hasClass('romo-modal-open')) {
+      if(e.keyCode === 27 /* Esc */ ) {
+        this.doPopupClose();
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      return true;
+    }
+  }
+  return true;
+}
+
+RomoModal.prototype.doBindWindowBodyClick = function() {
+  $('body').on('click', $.proxy(this.onWindowBodyClick, this));
+}
+
+RomoModal.prototype.doUnBindWindowBodyClick = function() {
+  $('body').off('click', $.proxy(this.onWindowBodyClick, this));
+}
+
 RomoModal.prototype.onWindowBodyClick = function(e) {
   // if not clicked on the popup elem
   if (e !== undefined && $(e.target).parents('.romo-modal-popup').size() === 0) {
     this.doPopupClose();
   }
   return true;
+}
+
+RomoModal.prototype.doBindWindowBodyKeyUp = function() {
+  $('body').on('keyup', $.proxy(this.onWindowBodyKeyUp, this));
+}
+
+RomoModal.prototype.doUnBindWindowBodyKeyUp = function() {
+  $('body').off('keyup', $.proxy(this.onWindowBodyKeyUp, this));
 }
 
 RomoModal.prototype.onWindowBodyKeyUp = function(e) {

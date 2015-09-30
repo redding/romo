@@ -45,8 +45,8 @@ var RomoDropdown = function(element) {
   this.elem.on('invoke:loadError', $.proxy(function(e, xhr, invoke) {
     this.doLoadBodyError(xhr);
   }, this));
-  this.elem.on('keyup', $.proxy(this.onElemKeyUp, this));
-  this.popupElem.on('keyup', $.proxy(this.onElemKeyUp, this));
+
+  this.doBindElemKeyUp();
 
   this.doInit();
   this.doInitBody();
@@ -180,10 +180,13 @@ RomoDropdown.prototype.doPopupOpen = function() {
   // event, then the toggle click will propagate which will call
   // this event and immediately close the popup.
   setTimeout($.proxy(function() {
-    $('body').on('click', $.proxy(this.onWindowBodyClick, this));
-    $('body').on('modal:mousedown', $.proxy(this.onWindowBodyClick, this));
+    this.doBindWindowBodyClick();
   }, this), 100);
-  $('body').on('keyup', $.proxy(this.onWindowBodyKeyUp, this));
+
+  // bind "esc" keystroke to toggle close
+  this.doBindWindowBodyKeyUp();
+
+  // bind window resizes reposition dropdown
   $(window).on('resize', $.proxy(this.onResizeWindow, this));
 
   this.elem.trigger('dropdown:popupOpen', [this]);
@@ -205,9 +208,13 @@ RomoDropdown.prototype.onPopupClose = function(e) {
 RomoDropdown.prototype.doPopupClose = function() {
   this.popupElem.removeClass('romo-dropdown-open');
 
-  $('body').off('click', $.proxy(this.onWindowBodyClick, this));
-  $('body').off('modal:mousedown', $.proxy(this.onWindowBodyClick, this));
-  $('body').off('keyup', $.proxy(this.onWindowBodyKeyUp, this));
+  // unbind any event to close the popup when clicking away from it
+  this.doUnBindWindowBodyClick();
+
+  // unbind "esc" keystroke to toggle close
+  this.doUnBindWindowBodyKeyUp();
+
+  // unbind window resizes reposition dropdown
   $(window).off('resize', $.proxy(this.onResizeWindow, this));
 
   // clear the content elem markup if configured to
@@ -216,6 +223,16 @@ RomoDropdown.prototype.doPopupClose = function() {
   }
 
   this.elem.trigger('dropdown:popupClose', [this]);
+}
+
+RomoDropdown.prototype.doBindElemKeyUp = function() {
+  this.elem.on('keyup', $.proxy(this.onElemKeyUp, this));
+  this.popupElem.on('keyup', $.proxy(this.onElemKeyUp, this));
+}
+
+RomoDropdown.prototype.doUnBindElemKeyUp = function() {
+  this.elem.off('keyup', $.proxy(this.onElemKeyUp, this));
+  this.popupElem.off('keyup', $.proxy(this.onElemKeyUp, this));
 }
 
 RomoDropdown.prototype.onElemKeyUp = function(e) {
@@ -234,6 +251,16 @@ RomoDropdown.prototype.onElemKeyUp = function(e) {
   return true;
 }
 
+RomoDropdown.prototype.doBindWindowBodyClick = function() {
+  $('body').on('click', $.proxy(this.onWindowBodyClick, this));
+  $('body').on('modal:mousedown', $.proxy(this.onWindowBodyClick, this));
+}
+
+RomoDropdown.prototype.doUnBindWindowBodyClick = function() {
+  $('body').off('click', $.proxy(this.onWindowBodyClick, this));
+  $('body').off('modal:mousedown', $.proxy(this.onWindowBodyClick, this));
+}
+
 RomoDropdown.prototype.onWindowBodyClick = function(e) {
   // if not clicked on the popup elem or the elem
   var target = $(e.target);
@@ -243,6 +270,14 @@ RomoDropdown.prototype.onWindowBodyClick = function(e) {
     this.doPopupClose();
   }
   return true;
+}
+
+RomoDropdown.prototype.doBindWindowBodyKeyUp = function() {
+  $('body').on('keyup', $.proxy(this.onWindowBodyKeyUp, this));
+}
+
+RomoDropdown.prototype.doUnBindWindowBodyKeyUp = function() {
+  $('body').off('keyup', $.proxy(this.onWindowBodyKeyUp, this));
 }
 
 RomoDropdown.prototype.onWindowBodyKeyUp = function(e) {
