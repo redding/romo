@@ -58,7 +58,7 @@ module Romo::Dassets
         'js/romo/modal_form.js',
         'js/romo/tooltip.js',
         'js/romo/indicator.js',
-        'js/romo/sortable.js',
+        'js/romo/sortable.js'
       ]
       assert_equal exp_js_sources, Dassets.config.combinations['js/romo.js']
     end
