@@ -31,12 +31,6 @@ var RomoIndicator = function(element) {
   this.doInit();
   this.spinner = new Spinner(this.spinnerOpts);
 
-  this.elemHtml = this.elem.html();
-  this.elem.css({
-    'position': 'relative',
-    'width':    this.elem.css('width'),
-    'height':   this.elem.css('height'),
-  });
   this.elem.on('indicator:triggerStart', $.proxy(this.onStart, this));
   this.elem.on('indicator:triggerStop', $.proxy(this.onStop, this));
 
@@ -70,6 +64,13 @@ RomoIndicator.prototype.onStop = function(e) {
 }
 
 RomoIndicator.prototype.doStart = function() {
+  this.elemHtml  = this.elem.html();
+  this.elemStyle = this.elem.attr('style');
+  this.elem.css({
+    'position': 'relative',
+    'width':    this.elem.css('width'),
+    'height':   this.elem.css('height'),
+  });
   this.elem.html('');
   this.spinner.spin(this.elem[0]);
   this.elem.trigger('indicator:start', [this]);
@@ -77,7 +78,17 @@ RomoIndicator.prototype.doStart = function() {
 
 RomoIndicator.prototype.doStop = function() {
   this.spinner.stop();
-  this.elem.html(this.elemHtml);
+  if (this.elemHtml !== undefined) {
+    this.elem.html(this.elemHtml);
+  }
+  this.elem.css({
+    'position': '',
+    'width':    '',
+    'height':   '',
+  });
+  if (this.elemStyle !== undefined) {
+    this.elem.attr('style', this.elemStyle);
+  }
   this.elem.trigger('indicator:stop', [this]);
 }
 
