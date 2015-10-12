@@ -224,6 +224,7 @@ h3 { @include text1; }
 
 .romo-text-border-base { @include text-border-base(!important); }
 .romo-text-border-alt  { @include text-border-alt(!important); }
+.romo-text-disabled    { @include text-disabled(!important); }
 .romo-text-base        { @include text-base(!important); }
 .romo-text-alt         { @include text-alt(!important); }
 .romo-text-muted       { @include text-muted(!important); }

@@ -145,6 +145,8 @@
 @mixin text-border-base($i:"") { color: $baseBorderColor #{$i}; }
 @mixin text-border-alt($i:"")  { color: $altBorderColor #{$i}; }
 
+@mixin text-disabled($i:"") { color: $disabledColor #{$i}; }
+
 @mixin text-base($i:"")       { color: $baseText #{$i}; }
 @mixin text-base-hover($i:"") { color: $baseTextHover #{$i}; }
 @mixin bg-base($i:"")         { background-color: $baseBackground #{$i}; }
