@@ -42,18 +42,17 @@ var RomoTooltip = function(element) {
   if (this.elem.data('romo-tooltip-style-class') !== undefined) {
     this.bodyElem.addClass(this.elem.data('romo-tooltip-style-class'));
   }
-  this.contentData = this.elem.data('romo-tooltip-content');
-  this.bodyElem.html(this.contentData || '');
 
   this.elem.on('mouseenter', $.proxy(this.onToggleEnter, this));
   this.elem.on('mouseleave', $.proxy(this.onToggleLeave, this));
   this.elem.on('tooltip:triggerPopupOpen', $.proxy(this.onPopupOpen, this));
   this.elem.on('tooltip:triggerPopupClose', $.proxy(this.onPopupClose, this));
+  this.elem.on('tooltip:triggerSetContent', $.proxy(this.onSetContent, this));
   $(window).on('resize', $.proxy(this.onResizeWindow, this))
 
   this.doInit();
   this.doInitBody();
-  if (this.contentData === undefined) {
+  if (this.elem.data('romo-tooltip-content') === undefined) {
     this.doBindInvoke();
   }
 
@@ -104,7 +103,7 @@ RomoTooltip.prototype.doBindInvoke = function() {
 }
 
 RomoTooltip.prototype.doLoadBodyStart = function() {
-  this.bodyElem.html('');
+  this._setBodyHtml('');
   this.doInitBody();
   this.doPlacePopupElem();
   this.elem.trigger('tooltip:loadBodyStart', [this]);
@@ -172,6 +171,8 @@ RomoTooltip.prototype.onPopupOpen = function(e) {
 RomoTooltip.prototype.doPopupOpen = function() {
   if (this.romoInvoke !== undefined) {
     this.romoInvoke.doInvoke();
+  } else {
+    this._setBodyHtml(this.elem.data('romo-tooltip-content'));
   }
   this.popupElem.addClass('romo-tooltip-open');
   this.doPlacePopupElem();
@@ -214,6 +215,19 @@ RomoTooltip.prototype.onModalPopupChange = function(e) {
   return true;
 }
 
+RomoTooltip.prototype.onSetContent = function(e, value) {
+  if (e !== undefined) {
+    e.preventDefault();
+  }
+  this.doSetContent(value);
+}
+
+RomoTooltip.prototype.doSetContent = function(value) {
+  this.elem.data('romo-tooltip-content', value);
+  this._setBodyHtml(this.elem.data('romo-tooltip-content'));
+  this.doPlacePopupElem();
+}
+
 RomoTooltip.prototype.onResizeWindow = function(e) {
   this.doPlacePopupElem();
   return true;
@@ -251,6 +265,12 @@ RomoTooltip.prototype.doPlacePopupElem = function() {
 RomoTooltip.prototype.doSetPopupZIndex = function(relativeElem) {
   var relativeZIndex = Romo.parseZIndex(relativeElem);
   this.popupElem.css({'z-index': relativeZIndex + 1100}); // see z-index.css
+}
+
+// private
+
+RomoTooltip.prototype._setBodyHtml = function(content) {
+  this.bodyElem.html(content || '');
 }
 
 Romo.onInitUI(function(e) {
