@@ -7,7 +7,7 @@ $.fn.romoTooltip = function() {
 var RomoTooltip = function(element) {
   this.elem = $(element);
   this.popupElem = $('<div class="romo-tooltip-popup"><div class="romo-tooltip-arrow"></div><div class="romo-tooltip-body"></div></div>');
-  this.popupElem.appendTo('body');
+  this.popupElem.appendTo(this.elem.closest(this.elem.data('romo-tooltip-append-to-closest') || 'body'));
   this.doSetPopupZIndex(this.elem);
   this.arrowElem = this.popupElem.find('> .romo-tooltip-arrow');
   this.bodyElem = this.popupElem.find('> .romo-tooltip-body');

@@ -7,7 +7,7 @@ $.fn.romoDropdown = function() {
 var RomoDropdown = function(element) {
   this.elem = $(element);
   this.popupElem = $('<div class="romo-dropdown-popup"><div class="romo-dropdown-body"></div></div>');
-  this.popupElem.appendTo('body');
+  this.popupElem.appendTo(this.elem.closest(this.elem.data('romo-dropdown-append-to-closest') || 'body'));
   this.doSetPopupZIndex(this.elem);
   this.bodyElem = this.popupElem.find('> .romo-dropdown-body');
   this.contentElem = $();

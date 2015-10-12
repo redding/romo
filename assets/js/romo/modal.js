@@ -7,7 +7,7 @@ $.fn.romoModal = function() {
 var RomoModal = function(element) {
   this.elem = $(element);
   this.popupElem = $('<div class="romo-modal-popup"><div class="romo-modal-body"></div></div>');
-  this.popupElem.appendTo('body');
+  this.popupElem.appendTo(this.elem.closest(this.elem.data('romo-modal-append-to-closest') || 'body'));
   this.bodyElem = this.popupElem.find('> .romo-modal-body');
   this.contentElem = $();
   this.closeElem = $();
