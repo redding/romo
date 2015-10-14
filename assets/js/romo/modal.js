@@ -206,7 +206,6 @@ RomoModal.prototype.doPopupClose = function() {
 }
 
 RomoModal.prototype.onMouseDown = function(e) {
-  $('body').trigger('modal:mousedown');
   e.preventDefault();
   e.stopPropagation();
   this.doDragStart(e);
@@ -229,6 +228,7 @@ RomoModal.prototype.doDragStart = function(e) {
 }
 
 RomoModal.prototype.onMouseMove = function(e) {
+  $('body').trigger('modal:mousemove');
   e.preventDefault();
   e.stopPropagation();
   this.doDragMove(e.clientX, e.clientY);

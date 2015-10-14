@@ -61,6 +61,16 @@ RomoDropdown.prototype.doInit = function() {
 RomoDropdown.prototype.doInitBody = function() {
   this.doResetBody();
 
+  this.popupElem.on('modal:popupOpen', $.proxy(function(e) {
+    this.doUnBindWindowBodyClick();
+    this.doUnBindWindowBodyKeyUp();
+    this.doUnBindElemKeyUp();
+  }, this));
+  this.popupElem.on('modal:popupClose', $.proxy(function(e) {
+    this.doBindWindowBodyClick();
+    this.doBindWindowBodyKeyUp();
+    this.doBindElemKeyUp();
+  }, this));
   this.contentElem = this.bodyElem.find('.romo-dropdown-content').last();
   if (this.contentElem.size() === 0) {
     this.contentElem = this.bodyElem;
@@ -253,12 +263,12 @@ RomoDropdown.prototype.onElemKeyUp = function(e) {
 
 RomoDropdown.prototype.doBindWindowBodyClick = function() {
   $('body').on('click', $.proxy(this.onWindowBodyClick, this));
-  $('body').on('modal:mousedown', $.proxy(this.onWindowBodyClick, this));
+  $('body').on('modal:mousemove', $.proxy(this.onWindowBodyClick, this));
 }
 
 RomoDropdown.prototype.doUnBindWindowBodyClick = function() {
   $('body').off('click', $.proxy(this.onWindowBodyClick, this));
-  $('body').off('modal:mousedown', $.proxy(this.onWindowBodyClick, this));
+  $('body').off('modal:mousemove', $.proxy(this.onWindowBodyClick, this));
 }
 
 RomoDropdown.prototype.onWindowBodyClick = function(e) {
