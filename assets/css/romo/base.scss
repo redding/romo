@@ -628,6 +628,15 @@ h3 { @include text1; }
 .romo-block        { display: block !important; }
 .romo-display-none { display: none !important;}
 
+.romo-hover:hover {
+  .romo-inline-hover       { display: inline !important; }
+  .romo-inline-block-hover { display: inline-block !important; }
+  .romo-inline-flex-hover  { @include display-inline-flex(!important); }
+  .romo-flex-hover         { @include display-flex(!important); }
+  .romo-block-hover        { display: block !important; }
+  .romo-display-none-hover { display: none !important;}
+}
+
 .romo-relative { position: relative !important; }
 .romo-absolute { position: absolute !important; }
 .romo-absolute-fill {
