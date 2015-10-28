@@ -9,6 +9,7 @@ var RomoInvoke = function(element) {
   this.targetElem = $(this.elem.data('romo-invoke-target'));
   this.invokeOn = this.elem.data('romo-invoke-on') || 'click';
   this.invokeAttr = this.elem.data('romo-invoke-attr') || 'href';
+  this.invokeMethod = this.elem.data('romo-invoke-method') || 'GET';
   this.loadOnlyOnce = this.elem.data('romo-invoke-load-once') === true;
 
   this.elem.unbind(this.invokeOn);
@@ -59,6 +60,7 @@ RomoInvoke.prototype.doLoad = function(href) {
   this._trigger('invoke:loadStart', [this]);
 
   $.ajax({
+    type:    this.invokeMethod,
     url:     href,
     success: $.proxy(this.onLoadAjaxSuccess, this),
     error:   $.proxy(this.onLoadAjaxError,   this)
