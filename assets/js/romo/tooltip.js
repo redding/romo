@@ -6,11 +6,7 @@ $.fn.romoTooltip = function() {
 
 var RomoTooltip = function(element) {
   this.elem = $(element);
-  this.popupElem = $('<div class="romo-tooltip-popup"><div class="romo-tooltip-arrow"></div><div class="romo-tooltip-body"></div></div>');
-  this.popupElem.appendTo(this.elem.closest(this.elem.data('romo-tooltip-append-to-closest') || 'body'));
-  this.doSetPopupZIndex(this.elem);
-  this.arrowElem = this.popupElem.find('> .romo-tooltip-arrow');
-  this.bodyElem = this.popupElem.find('> .romo-tooltip-body');
+  this.doInitPopup();
 
   this.hoverState = 'out';
   this.delayEnter = 0;
@@ -25,19 +21,6 @@ var RomoTooltip = function(element) {
   if (this.elem.data('romo-tooltip-delay-leave') !== undefined && this.elem.data('romo-tooltip-delay-leave') !== '') {
     this.delayLeave = this.elem.data('romo-tooltip-delay-leave');
   }
-
-  this.popupPosition = this.elem.data('romo-tooltip-position') || 'top';
-  this.popupElem.attr('data-romo-tooltip-position', this.popupPosition);
-  this.popupAlignment = this.elem.data('romo-tooltip-alignment') || 'center';
-  this.popupElem.attr('data-romo-tooltip-alignment', this.popupAlignment);
-
-  // don't propagate click events on the popup elem.  this prevents the popup
-  // from closing when clicked (see body click event bind on popup open)
-  this.popupElem.on('click', function(e) {
-    if (e !== undefined) {
-      e.stopPropagation();
-    }
-  })
 
   if (this.elem.data('romo-tooltip-style-class') !== undefined) {
     this.bodyElem.addClass(this.elem.data('romo-tooltip-style-class'));
@@ -61,6 +44,33 @@ var RomoTooltip = function(element) {
 
 RomoTooltip.prototype.doInit = function() {
   // override as needed
+}
+
+RomoTooltip.prototype.doInitPopup = function() {
+  this.popupElem = $('<div class="romo-tooltip-popup"><div class="romo-tooltip-arrow"></div><div class="romo-tooltip-body"></div></div>');
+  this.popupElem.appendTo(this.elem.closest(this.elem.data('romo-tooltip-append-to-closest') || 'body'));
+
+  this.bodyElem = this.popupElem.find('> .romo-tooltip-body');
+
+  this.popupPosition = this.elem.data('romo-tooltip-position') || 'top';
+  this.popupElem.attr('data-romo-tooltip-position', this.popupPosition);
+
+  this.popupAlignment = this.elem.data('romo-tooltip-alignment') || 'center';
+  this.popupElem.attr('data-romo-tooltip-alignment', this.popupAlignment);
+
+  this.doSetPopupZIndex(this.elem);
+
+  // don't propagate click events on the popup elem.  this prevents the popup
+  // from closing when clicked (see body click event bind on popup open)
+  this.popupElem.on('click', function(e) {
+    if (e !== undefined) {
+      e.stopPropagation();
+    }
+  })
+
+  // the popup should be treated like a child elem.  add it to Romo's
+  // parent-child elems so it will be removed when the elem is removed.
+  Romo.parentChildElems.add(this.elem, [this.popupElem]);
 }
 
 RomoTooltip.prototype.doInitBody = function() {

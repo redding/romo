@@ -43,6 +43,15 @@ RomoDatepicker.prototype.doBindElem = function() {
   this.elem.before(elemWrapper);
   elemWrapper.append(this.elem);
 
+  // the elem wrapper should be treated like a child elem.  add it to Romo's
+  // parent-child elems so it will be removed when the elem (input) is removed.
+  // delay adding it b/c the `append` statement above is not a "move", it is
+  // a "remove" and "add" so if added immediately the "remove" part will
+  // incorrectly remove the wrapper.  Any value will do - I chose 100 arbitrarily.
+  setTimeout($.proxy(function() {
+    Romo.parentChildElems.add(this.elem, [elemWrapper]);
+  }, this), 100);
+
   this.elem.attr('autocomplete', 'off');
 
   this.indicatorElem = $();

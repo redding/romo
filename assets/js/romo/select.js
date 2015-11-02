@@ -130,6 +130,10 @@ RomoSelect.prototype._buildSelectDropdownElem = function() {
   romoSelectDropdownElem.before(this.elemWrapper);
   this.elemWrapper.append(romoSelectDropdownElem);
 
+  // the elem wrapper should be treated like a child elem.  add it to Romo's
+  // parent-child elems so it will be removed when the elem (select) is removed.
+  Romo.parentChildElems.add(this.elem, [this.elemWrapper]);
+
   var caretClass = this.elem.data('romo-select-caret') || this.defaultCaretClass;
   if (caretClass !== undefined && caretClass !== 'none') {
     var caret = $('<i class="romo-select-caret '+caretClass+'"></i>');
