@@ -6,17 +6,8 @@ $.fn.romoModal = function() {
 
 var RomoModal = function(element) {
   this.elem = $(element);
-  this.popupElem = $('<div class="romo-modal-popup"><div class="romo-modal-body"></div></div>');
-  this.popupElem.appendTo(this.elem.closest(this.elem.data('romo-modal-append-to-closest') || 'body'));
-  this.bodyElem = this.popupElem.find('> .romo-modal-body');
-  this.contentElem = $();
-  this.closeElem = $();
-  this.dragElem = $();
+  this.doInitPopup();
   this.romoInvoke = this.elem.romoInvoke()[0];
-
-  if (this.elem.data('romo-modal-style-class') !== undefined) {
-    this.bodyElem.addClass(this.elem.data('romo-modal-style-class'));
-  }
 
   this.elem.unbind('click');
   this.elem.on('click', $.proxy(this.onToggleClick, this));
@@ -45,6 +36,24 @@ RomoModal.prototype.doInit = function() {
   // override as needed
 }
 
+RomoModal.prototype.doInitPopup = function() {
+  this.popupElem = $('<div class="romo-modal-popup"><div class="romo-modal-body"></div></div>');
+  this.popupElem.appendTo(this.elem.closest(this.elem.data('romo-modal-append-to-closest') || 'body'));
+
+  this.bodyElem = this.popupElem.find('> .romo-modal-body');
+  if (this.elem.data('romo-modal-style-class') !== undefined) {
+    this.bodyElem.addClass(this.elem.data('romo-modal-style-class'));
+  }
+
+  this.contentElem = $();
+  this.closeElem   = $();
+  this.dragElem    = $();
+
+  // the popup should be treated like a child elem.  add it to Romo's
+  // parent-child elems so it will be removed when the elem is removed.
+  Romo.parentChildElems.add(this.elem, [this.popupElem]);
+}
+
 RomoModal.prototype.doInitBody = function() {
   this.doResetBody();
 
@@ -52,8 +61,14 @@ RomoModal.prototype.doInitBody = function() {
   if (this.contentElem.size() === 0) {
     this.contentElem = this.bodyElem;
   }
+
   this.closeElem = this.popupElem.find('[data-romo-modal-close="true"]');
+  this.closeElem.unbind('click');
+  this.closeElem.on('click', $.proxy(this.onPopupClose, this));
+
   this.dragElem = this.popupElem.find('[data-romo-modal-drag="true"]');
+  this.dragElem.addClass('romo-modal-grab');
+  this.dragElem.on('mousedown', $.proxy(this.onMouseDown, this));
 
   var css = {
     'min-width':  this.elem.data('romo-modal-min-width'),
@@ -73,12 +88,6 @@ RomoModal.prototype.doInitBody = function() {
   }
 
   this.contentElem.css(css);
-
-  this.closeElem.unbind('click');
-  this.closeElem.on('click', $.proxy(this.onPopupClose, this));
-
-  this.dragElem.addClass('romo-modal-grab');
-  this.dragElem.on('mousedown', $.proxy(this.onMouseDown, this));
 }
 
 RomoModal.prototype.doResetBody = function() {

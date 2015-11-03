@@ -4,6 +4,8 @@
   }
 
   Romo.prototype.doInit = function() {
+    this.parentChildElems = new RomoParentChildElems();
+
     $.each(this._eventCallbacks, function(idx, eventCallback) {
       $('body').on(eventCallback.eventName, eventCallback.callback);
     });
@@ -181,3 +183,62 @@ $(function() {
   Romo.doInit();
 
 })
+
+var RomoParentChildElems = function() {
+  this.attrName = 'romo-parent-elem-id';
+  this.elemId   = 0;
+  this.elems    = {};
+
+  var childRemovedObserver = new MutationObserver($.proxy(function(mutationRecords) {
+    mutationRecords.forEach($.proxy(function(mutationRecord) {
+      if (mutationRecord.type === 'childList' && mutationRecord.removedNodes.length > 0) {
+        $.each($(mutationRecord.removedNodes), $.proxy(function(idx, node) {
+          this.remove($(node));
+        }, this));
+      }
+    }, this));
+  }, this));
+
+  childRemovedObserver.observe($('body')[0], {
+    childList: true,
+    subtree:   true
+  });
+}
+
+RomoParentChildElems.prototype.add = function(parentElem, childElems) {
+  parentElem.attr('data-'+this.attrName, this._push(childElems, parentElem.data(this.attrName)));
+}
+
+RomoParentChildElems.prototype.remove = function(nodeElem) {
+  if(nodeElem.data(this.attrName) !== undefined) {
+    this._removeChildElems(nodeElem);  // node is a parent elem itself
+  }
+  $.each(nodeElem.find('[data-'+this.attrName+']'), $.proxy(function(idx, parent) {
+    this._removeChildElems($(parent));
+  }, this));
+}
+
+// private
+
+RomoParentChildElems.prototype._removeChildElems = function(parentElem) {
+  $.each(this._pop(parentElem.data(this.attrName)), function(idx, elem) {
+    $(elem).remove();
+  });
+};
+
+RomoParentChildElems.prototype._push = function(items, id) {
+  if (id === undefined) {
+    id = String(this.elemId++);
+  }
+  if (this.elems[id] === undefined) {
+    this.elems[id] = []
+  }
+  items.forEach($.proxy(function(item){ this.elems[id].push(item) }, this));
+  return id;
+};
+
+RomoParentChildElems.prototype._pop = function(id) {
+  var items = this.elems[id];
+  delete this.elems[id];
+  return items || [];
+}

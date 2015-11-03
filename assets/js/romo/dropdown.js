@@ -6,30 +6,8 @@ $.fn.romoDropdown = function() {
 
 var RomoDropdown = function(element) {
   this.elem = $(element);
-  this.popupElem = $('<div class="romo-dropdown-popup"><div class="romo-dropdown-body"></div></div>');
-  this.popupElem.appendTo(this.elem.closest(this.elem.data('romo-dropdown-append-to-closest') || 'body'));
-  this.doSetPopupZIndex(this.elem);
-  this.bodyElem = this.popupElem.find('> .romo-dropdown-body');
-  this.contentElem = $();
+  this.doInitPopup();
   this.romoInvoke = this.elem.romoInvoke()[0];
-
-  var positionData = this._parsePositionData(this.elem.data('romo-dropdown-position'));
-  this.popupPosition  = positionData.position  || 'bottom';
-  this.popupAlignment = positionData.alignment || 'left';
-  this.popupElem.attr('data-romo-dropdown-position',  this.popupPosition);
-  this.popupElem.attr('data-romo-dropdown-alignment', this.popupAlignment);
-  this.popupElem.attr('data-romo-dropdown-fixed', this.elem.data('romo-dropdown-fixed'));
-  // don't propagate click events on the popup elem.  this prevents the popup
-  // from closing when clicked (see body click event bind on popup open)
-  this.popupElem.on('click', function(e) {
-    if (e !== undefined) {
-      e.stopPropagation();
-    }
-  })
-
-  if (this.elem.data('romo-dropdown-style-class') !== undefined) {
-    this.bodyElem.addClass(this.elem.data('romo-dropdown-style-class'));
-  }
 
   this.elem.unbind('click');
   this.elem.on('click', $.proxy(this.onToggleClick, this));
@@ -58,8 +36,9 @@ RomoDropdown.prototype.doInit = function() {
   // override as needed
 }
 
-RomoDropdown.prototype.doInitBody = function() {
-  this.doResetBody();
+RomoDropdown.prototype.doInitPopup = function() {
+  this.popupElem = $('<div class="romo-dropdown-popup"><div class="romo-dropdown-body"></div></div>');
+  this.popupElem.appendTo(this.elem.closest(this.elem.data('romo-dropdown-append-to-closest') || 'body'));
 
   this.popupElem.on('modal:popupOpen', $.proxy(function(e) {
     this.doUnBindWindowBodyClick();
@@ -71,11 +50,47 @@ RomoDropdown.prototype.doInitBody = function() {
     this.doBindWindowBodyKeyUp();
     this.doBindElemKeyUp();
   }, this));
+
+  this.bodyElem = this.popupElem.find('> .romo-dropdown-body');
+  if (this.elem.data('romo-dropdown-style-class') !== undefined) {
+    this.bodyElem.addClass(this.elem.data('romo-dropdown-style-class'));
+  }
+
+  this.contentElem = $();
+
+  var positionData = this._parsePositionData(this.elem.data('romo-dropdown-position'));
+  this.popupPosition  = positionData.position  || 'bottom';
+  this.popupAlignment = positionData.alignment || 'left';
+  this.popupElem.attr('data-romo-dropdown-position',  this.popupPosition);
+  this.popupElem.attr('data-romo-dropdown-alignment', this.popupAlignment);
+  this.popupElem.attr('data-romo-dropdown-fixed', this.elem.data('romo-dropdown-fixed'));
+
+  this.doSetPopupZIndex(this.elem);
+
+  // don't propagate click events on the popup elem.  this prevents the popup
+  // from closing when clicked (see body click event bind on popup open)
+  this.popupElem.on('click', function(e) {
+    if (e !== undefined) {
+      e.stopPropagation();
+    }
+  })
+
+  // the popup should be treated like a child elem.  add it to Romo's
+  // parent-child elems so it will be removed when the elem is removed.
+  Romo.parentChildElems.add(this.elem, [this.popupElem]);
+}
+
+RomoDropdown.prototype.doInitBody = function() {
+  this.doResetBody();
+
   this.contentElem = this.bodyElem.find('.romo-dropdown-content').last();
   if (this.contentElem.size() === 0) {
     this.contentElem = this.bodyElem;
   }
+
   this.closeElem = this.popupElem.find('[data-romo-dropdown-close="true"]');
+  this.closeElem.unbind('click');
+  this.closeElem.on('click', $.proxy(this.onPopupClose, this));
 
   this.contentElem.css({
     'min-height': this.elem.data('romo-dropdown-min-height'),
@@ -104,9 +119,6 @@ RomoDropdown.prototype.doInitBody = function() {
       'width':      this.elem.data('romo-dropdown-width')
     });
   }
-
-  this.closeElem.unbind('click');
-  this.closeElem.on('click', $.proxy(this.onPopupClose, this));
 }
 
 RomoDropdown.prototype.doResetBody = function() {
