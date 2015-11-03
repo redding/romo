@@ -50,7 +50,7 @@ RomoDatepicker.prototype.doBindElem = function() {
   // incorrectly remove the wrapper.  Any value will do - I chose 100 arbitrarily.
   setTimeout($.proxy(function() {
     Romo.parentChildElems.add(this.elem, [elemWrapper]);
-  }, this), 100);
+  }, this), 1);
 
   this.elem.attr('autocomplete', 'off');
 

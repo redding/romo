@@ -70,7 +70,12 @@ RomoTooltip.prototype.doInitPopup = function() {
 
   // the popup should be treated like a child elem.  add it to Romo's
   // parent-child elems so it will be removed when the elem is removed.
-  Romo.parentChildElems.add(this.elem, [this.popupElem]);
+  // delay adding it b/c other components may `append` generated tooltips
+  // meaning the tooltip is removed and then re-added.  if added immediately
+  // the "remove" part will incorrectly remove the popup.
+  setTimeout($.proxy(function() {
+    Romo.parentChildElems.add(this.elem, [this.popupElem]);
+  }, this), 1);
 }
 
 RomoTooltip.prototype.doInitBody = function() {

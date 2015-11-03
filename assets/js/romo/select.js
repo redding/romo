@@ -132,7 +132,12 @@ RomoSelect.prototype._buildSelectDropdownElem = function() {
 
   // the elem wrapper should be treated like a child elem.  add it to Romo's
   // parent-child elems so it will be removed when the elem (select) is removed.
-  Romo.parentChildElems.add(this.elem, [this.elemWrapper]);
+  // delay adding it b/c other components may `append` generated selects
+  // meaning the select is removed and then re-added.  if added immediately
+  // the "remove" part will incorrectly remove the wrapper.
+  setTimeout($.proxy(function() {
+    Romo.parentChildElems.add(this.elem, [this.elemWrapper]);
+  }, this), 1);
 
   var caretClass = this.elem.data('romo-select-caret') || this.defaultCaretClass;
   if (caretClass !== undefined && caretClass !== 'none') {

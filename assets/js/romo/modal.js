@@ -51,7 +51,12 @@ RomoModal.prototype.doInitPopup = function() {
 
   // the popup should be treated like a child elem.  add it to Romo's
   // parent-child elems so it will be removed when the elem is removed.
-  Romo.parentChildElems.add(this.elem, [this.popupElem]);
+  // delay adding it b/c other components may `append` generated modals
+  // meaning the modal is removed and then re-added.  if added immediately
+  // the "remove" part will incorrectly remove the popup.
+  setTimeout($.proxy(function() {
+    Romo.parentChildElems.add(this.elem, [this.popupElem]);
+  }, this), 1);
 }
 
 RomoModal.prototype.doInitBody = function() {
