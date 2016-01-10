@@ -10,6 +10,8 @@ module Romo::Dassets
   # eventually would have a gem, "romo-dassets", do this or something
 
   def self.configure!
+    return if @configured
+
     Dassets.configure do |c|
       c.source Romo.gem_assets_path do |s|
         s.filter{ |paths| paths.reject{ |p| File.basename(p) =~ /^_/ } }
@@ -58,8 +60,11 @@ module Romo::Dassets
         'js/romo/indicator.js',
         'js/romo/sortable.js'
       ]
-
     end
+
+    @configured = true
   end
+
+  def self.reset!; @configured = false; end
 
 end
