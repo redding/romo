@@ -11,6 +11,8 @@ module Romo::Dassets
     desc "Romo::Dassets"
     subject{ Romo::Dassets }
 
+    should have_imeths :configure!, :reset!
+
     should "configure Romo with Dassets" do
       subject.configure!
 
@@ -61,6 +63,24 @@ module Romo::Dassets
         'js/romo/sortable.js'
       ]
       assert_equal exp_js_sources, Dassets.config.combinations['js/romo.js']
+    end
+
+    should "only configure itself once unless reset" do
+      subject.configure!
+      # modify the romo css so we can see that it isn't altered by calling
+      # configure again unless we call reset
+      Dassets.configure do |c|
+        c.combination "css/romo.css", []
+      end
+      assert_equal [], Dassets.config.combinations['css/romo.css']
+      subject.configure!
+      assert_equal [], Dassets.config.combinations['css/romo.css']
+
+      subject.reset!
+
+      assert_equal [], Dassets.config.combinations['css/romo.css']
+      subject.configure!
+      assert_not_equal [], Dassets.config.combinations['css/romo.css']
     end
 
   end
