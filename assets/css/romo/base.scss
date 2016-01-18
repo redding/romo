@@ -619,6 +619,7 @@ h3 { @include text1; }
 
 .romo-nowrap        { white-space: nowrap !important; }
 .romo-crop          { white-space: nowrap !important; overflow: hidden !important; }
+.romo-ellipsis      { overflow: hidden !important; text-overflow: ellipsis !important; }
 .romo-crop-ellipsis { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; }
 
 .romo-inline       { display: inline !important; }
