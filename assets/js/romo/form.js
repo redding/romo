@@ -6,7 +6,7 @@ $.fn.romoForm = function(givenSubmitElement, givenIndicatorElements) {
 
 var RomoForm = function(element, givenSubmitElement, givenIndicatorElements) {
   this.elem = $(element);
-  this.defaultSubmitElem = this.elem.find('button[type="submit"], input[type="submit"], [data-romo-form-submit="true"]');
+  this.defaultSubmitElem = this.elem.find('button[type="submit"], input[type="submit"], [data-romo-form-submit]');
   this.submitElem = $(givenSubmitElement || this.defaultSubmitElem);
   this.defaultIndicatorElems = this.elem.find('[data-romo-indicator-auto="true"]');
   this.indicatorElems = $(givenIndicatorElements || this.defaultIndicatorElems);
@@ -80,7 +80,9 @@ RomoForm.prototype.onSubmitClick = function(e) {
     e.preventDefault();
   }
 
-  if (this.submitElem.hasClass('disabled') === false) {
+  if (this.submitElem.data('romo-form-submit') === 'confirm') {
+    this.elem.trigger('form:confirmSubmit', [this]);
+  } else if (this.submitElem.hasClass('disabled') === false) {
     this.doSubmit();
   }
 }

@@ -59,6 +59,9 @@ RomoInlineForm.prototype.doBindForm = function() {
   formElem.on('form:ready', $.proxy(function(e, form) {
     this.elem.trigger('inlineForm:form:ready', [form, this]);
   }, this));
+  formElem.on('form:confirmSubmit', $.proxy(function(e, form) {
+    this.elem.trigger('inlineForm:form:confirmSubmit', [form, this]);
+  }, this));
   formElem.on('form:beforeSubmit', $.proxy(function(e, form) {
     this.elem.trigger('inlineForm:form:beforeSubmit', [form, this]);
   }, this));
@@ -75,7 +78,7 @@ RomoInlineForm.prototype.doBindForm = function() {
     this.elem.trigger('inlineForm:form:submitError', [xhr, form, this]);
   }, this));
 
-  var submitElement = this.elem.find('[data-romo-form-submit="true"]')[0];
+  var submitElement = this.elem.find('[data-romo-form-submit]')[0];
   var indicatorElements = this.elem.find('[data-romo-indicator-auto="true"]');
   this.form = formElem.romoForm(submitElement, indicatorElements)[0];
 }
