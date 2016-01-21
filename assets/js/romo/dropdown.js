@@ -8,6 +8,7 @@ var RomoDropdown = function(element) {
   this.elem = $(element);
   this.doInitPopup();
   this.romoInvoke = this.elem.romoInvoke()[0];
+  this.romoInvoke.doUnBindInvoke(); // disable auto invoke on click
 
   this.elem.unbind('click');
   this.elem.on('click', $.proxy(this.onToggleClick, this));
