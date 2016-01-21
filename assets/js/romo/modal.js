@@ -10,8 +10,10 @@ var RomoModal = function(element) {
   this.romoInvoke = this.elem.romoInvoke()[0];
   this.romoInvoke.doUnBindInvoke(); // disable auto invoke on click
 
-  this.elem.unbind('click');
-  this.elem.on('click', $.proxy(this.onToggleClick, this));
+  if (this.elem.data('romo-modal-disable-click-invoke') !== true) {
+    this.elem.unbind('click');
+    this.elem.on('click', $.proxy(this.onToggleClick, this));
+  }
   this.elem.on('modal:triggerToggle', $.proxy(this.onToggleClick, this));
   this.elem.on('modal:triggerPopupOpen', $.proxy(this.onPopupOpen, this));
   this.elem.on('modal:triggerPopupClose', $.proxy(this.onPopupClose, this));
