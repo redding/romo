@@ -170,7 +170,13 @@ RomoModal.prototype.onPopupOpen = function(e) {
 }
 
 RomoModal.prototype.doPopupOpen = function() {
-  this.romoInvoke.doInvoke();
+  if (this.elem.data('romo-modal-content-elem') !== undefined) {
+    Romo.initHtml(this.bodyElem, $(this.elem.data('romo-modal-content-elem')).html());
+    this.doInitBody();
+  } else {
+    this.romoInvoke.doInvoke();
+  }
+
   this.popupElem.addClass('romo-modal-open');
   this.doPlacePopupElem();
 

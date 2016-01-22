@@ -203,7 +203,13 @@ RomoDropdown.prototype.onPopupOpen = function(e) {
 }
 
 RomoDropdown.prototype.doPopupOpen = function() {
-  this.romoInvoke.doInvoke();
+  if (this.elem.data('romo-dropdown-content-elem') !== undefined) {
+    Romo.initHtml(this.bodyElem, $(this.elem.data('romo-dropdown-content-elem')).html());
+    this.doInitBody();
+  } else {
+    this.romoInvoke.doInvoke();
+  }
+
   this.popupElem.addClass('romo-dropdown-open');
   this.doPlacePopupElem();
 
