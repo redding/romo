@@ -16,6 +16,12 @@ var RomoInlineForm = function(element) {
       this.form.elem.trigger('form:triggerSubmit', []);
     }
   }, this));
+  this.elem.on('inlineForm:inline:triggerInvoke', $.proxy(function(e) {
+    this.inline.elem.trigger('inline:triggerInvoke', []);
+  }, this));
+  this.elem.on('inlineForm:inline:triggerDismiss', $.proxy(function(e) {
+    this.inline.elem.trigger('inline:triggerDismiss', []);
+  }, this));
   this.doBindForm();
   this.elem.on('inline:loadSuccess', $.proxy(function(e, data, inline) {
     this.doBindForm();

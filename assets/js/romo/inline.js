@@ -8,6 +8,11 @@ var RomoInline = function(element) {
   this.elem = $(element);
   this.toggleElem = $(this.elem.data('romo-inline-toggle'));
 
+  this.elem.on('inline:triggerDismiss', $.proxy(this.onDismissClick, this));
+  this.elem.on('inline:triggerInvoke',  $.proxy(function(e) {
+    this.doInvoke();
+  }, this));
+
   this.elem.on('invoke:invoke', $.proxy(function(e, invoke) {
     this.doInvoke();
     return false;
