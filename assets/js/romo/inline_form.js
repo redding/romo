@@ -19,6 +19,7 @@ var RomoInlineForm = function(element) {
   this.doBindForm();
   this.elem.on('inline:loadSuccess', $.proxy(function(e, data, inline) {
     this.doBindForm();
+    this.elem.trigger('inlineForm:formReady', [this.form, this]);
   }, this));
 
   this.doInit();

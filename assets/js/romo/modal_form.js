@@ -19,6 +19,7 @@ var RomoModalForm = function(element) {
   this.doBindForm();
   this.elem.on('modal:loadBodySuccess', $.proxy(function(e, data, modal) {
     this.doBindForm();
+    this.elem.trigger('modalForm:formReady', [this.form, this]);
   }, this));
 
   this.doInit();

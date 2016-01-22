@@ -19,6 +19,7 @@ var RomoDropdownForm = function(element) {
   this.doBindForm();
   this.elem.on('dropdown:loadBodySuccess', $.proxy(function(e, data, dropdown) {
     this.doBindForm();
+    this.elem.trigger('dropdownForm:formReady', [this.form, this]);
   }, this));
 
   this.doInit();
