@@ -55,6 +55,9 @@ RomoInlineForm.prototype.doBindInline = function() {
   this.elem.on('inline:dismiss', $.proxy(function(e, inline) {
     this.elem.trigger('inlineForm:inline:dismiss', [inline, this]);
   }, this));
+  this.elem.on('inline:confirmDismiss', $.proxy(function(e, inline) {
+    this.elem.trigger('inlineForm:inline:confirmDismiss', [inline, this]);
+  }, this));
 }
 
 RomoInlineForm.prototype.doBindForm = function() {
