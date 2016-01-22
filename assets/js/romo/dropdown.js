@@ -204,8 +204,7 @@ RomoDropdown.prototype.onPopupOpen = function(e) {
 
 RomoDropdown.prototype.doPopupOpen = function() {
   if (this.elem.data('romo-dropdown-content-elem') !== undefined) {
-    Romo.initHtml(this.bodyElem, $(this.elem.data('romo-dropdown-content-elem')).html());
-    this.doInitBody();
+    this.doLoadBodySuccess($(this.elem.data('romo-dropdown-content-elem')).html())
   } else {
     this.romoInvoke.doInvoke();
   }

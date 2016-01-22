@@ -171,8 +171,7 @@ RomoModal.prototype.onPopupOpen = function(e) {
 
 RomoModal.prototype.doPopupOpen = function() {
   if (this.elem.data('romo-modal-content-elem') !== undefined) {
-    Romo.initHtml(this.bodyElem, $(this.elem.data('romo-modal-content-elem')).html());
-    this.doInitBody();
+    this.doLoadBodySuccess($(this.elem.data('romo-modal-content-elem')).html())
   } else {
     this.romoInvoke.doInvoke();
   }
