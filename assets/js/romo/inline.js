@@ -10,15 +10,19 @@ var RomoInline = function(element) {
 
   this.elem.on('invoke:invoke', $.proxy(function(e, invoke) {
     this.doInvoke();
+    return false;
   }, this));
   this.elem.on('invoke:loadStart', $.proxy(function(e, invoke) {
     this.doLoadStart();
+    return false;
   }, this));
   this.elem.on('invoke:loadSuccess', $.proxy(function(e, data, invoke) {
     this.doLoadSuccess(data);
+    return false;
   }, this));
   this.elem.on('invoke:loadError', $.proxy(function(e, xhr, invoke) {
     this.doLoadError(xhr);
+    return false;
   }, this));
 
   this.doBindDismiss();

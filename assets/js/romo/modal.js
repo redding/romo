@@ -19,12 +19,15 @@ var RomoModal = function(element) {
   this.elem.on('modal:triggerPopupClose', $.proxy(this.onPopupClose, this));
   this.elem.on('invoke:loadStart', $.proxy(function(e, invoke) {
     this.doLoadBodyStart();
+    return false;
   }, this));
   this.elem.on('invoke:loadSuccess', $.proxy(function(e, data, invoke) {
     this.doLoadBodySuccess(data);
+    return false;
   }, this));
   this.elem.on('invoke:loadError', $.proxy(function(e, xhr, invoke) {
     this.doLoadBodyError(xhr);
+    return false;
   }, this));
 
   this.doBindElemKeyUp();
