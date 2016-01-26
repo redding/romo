@@ -10,14 +10,10 @@ var RomoInline = function(element) {
   this.dismissElem = undefined;
 
   this.elem.on('inline:triggerDismiss', $.proxy(this.onDismissClick, this));
-  this.elem.on('inline:triggerInvoke',  $.proxy(function(e) {
-    this.doInvoke();
+  this.elem.on('inline:triggerShow',  $.proxy(function(e) {
+    this.doShow();
   }, this));
 
-  this.elem.on('invoke:invoke', $.proxy(function(e, invoke) {
-    this.doInvoke();
-    return false;
-  }, this));
   this.elem.on('invoke:loadStart', $.proxy(function(e, invoke) {
     this.doLoadStart();
     return false;
@@ -40,24 +36,20 @@ RomoInline.prototype.doInit = function() {
   // override as needed
 }
 
-RomoInline.prototype.doInvoke = function() {
-  this.elem.show();
-  this.toggleElem.hide();
-  this.elem.trigger('inline:invoke', [this]);
-}
-
 RomoInline.prototype.doLoadStart = function() {
   this.elem.html('');
   this.elem.trigger('inline:loadStart', [this]);
 }
 
 RomoInline.prototype.doLoadSuccess = function(data) {
+  this.doShow();
   Romo.initHtml(this.elem, data);
   this.doBindDismiss();
   this.elem.trigger('inline:loadSuccess', [data, this]);
 }
 
 RomoInline.prototype.doLoadError = function(xhr) {
+  this.doShow();
   this.elem.trigger('inline:loadError', [xhr, this]);
 }
 
@@ -83,6 +75,12 @@ RomoInline.prototype.doDismiss = function() {
   this.toggleElem.show();
   this.elem.hide();
   this.elem.trigger('inline:dismiss', [this]);
+}
+
+RomoInline.prototype.doShow = function() {
+  this.elem.show();
+  this.toggleElem.hide();
+  this.elem.trigger('inline:show', [this]);
 }
 
 Romo.onInitUI(function(e) {
