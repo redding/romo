@@ -436,7 +436,15 @@ If a rows cells do not span the full number of columns, you can control how the 
 
 You can justify cells to the left or right.
 
+<div class="romo-row romo-row-align-left">
+  <div class="romo-span romo-2-12 romo-bg-alt romo-border romo-align-center">2</div>
+  <div class="romo-span romo-2-12 romo-bg-alt romo-border romo-align-center">2</div>
+</div>
 <div class="romo-row romo-row-pull-left">
+  <div class="romo-span romo-2-12 romo-bg-alt romo-border romo-align-center">2</div>
+  <div class="romo-span romo-2-12 romo-bg-alt romo-border romo-align-center">2</div>
+</div>
+<div class="romo-row romo-row-align-right">
   <div class="romo-span romo-2-12 romo-bg-alt romo-border romo-align-center">2</div>
   <div class="romo-span romo-2-12 romo-bg-alt romo-border romo-align-center">2</div>
 </div>
@@ -451,7 +459,9 @@ You can justify cells to the left or right.
 </div>
 
 ```html
+<div class="romo-row romo-row-align-left">...</div>
 <div class="romo-row romo-row-pull-left">...</div>
+<div class="romo-row romo-row-align-right">...</div>
 <div class="romo-row romo-row-pull-right">...</div>
 <div class="romo-row">...</div>
 ```

@@ -11,8 +11,10 @@
 
 .romo-span { min-height: 1px; }
 
-.romo-row-pull-left  { @include flex-justify-content(flex-start); }
-.romo-row-pull-right { @include flex-justify-content(flex-end); }
+.romo-row-pull-left,
+.romo-row-align-left   { @include flex-justify-content(flex-start); }
+.romo-row-pull-right,
+.romo-row-align-right  { @include flex-justify-content(flex-end); }
 .romo-row-push-between { @include flex-justify-content(space-between); }
 .romo-row-push-around  { @include flex-justify-content(space-around); }
 
