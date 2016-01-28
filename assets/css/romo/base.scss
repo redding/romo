@@ -666,3 +666,5 @@ h3 { @include text1; }
 .romo-overflow-y-hidden { overflow-y: hidden !important; }
 .romo-overflow-y-auto   { overflow-y: auto !important; }
 .romo-overflow-y-scroll { overflow-y: scroll !important; }
+
+.romo-user-select-none{ @include user-select(none); }
