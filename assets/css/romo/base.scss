@@ -87,6 +87,10 @@ a.romo-text {
   color: $baseColor;
   text-decoration: none;
 }
+.romo-link             { color: $linkColor !important; }
+.romo-link:hover,
+.romo-link-hover:hover { color: $linkColorHover !important;}
+
 .romo-pointer  { cursor: pointer; }
 .romo-grab     { @include cursor-grab; }
 .romo-grabbing { @include cursor-grabbing; }
