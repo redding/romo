@@ -100,9 +100,10 @@ RomoInvoke.prototype._doInvoke = function() {
 }
 
 RomoInvoke.prototype._trigger = function(event_name, event_data) {
-  this.elem.trigger(event_name, event_data);
-  if (this.targetElem !== undefined) {
+  if (this.targetElem[0] !== undefined) {
     this.targetElem.trigger(event_name, event_data);
+  } else {
+    this.elem.trigger(event_name, event_data);
   }
 }
 
