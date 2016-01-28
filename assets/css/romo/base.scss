@@ -91,6 +91,8 @@ a.romo-text {
 .romo-grab     { @include cursor-grab; }
 .romo-grabbing { @include cursor-grabbing; }
 
+.romo-user-select-none{ @include user-select(none); }
+
 /* images */
 
 .romo-img-rounded { @include border-radius(6px); }
@@ -666,5 +668,3 @@ h3 { @include text1; }
 .romo-overflow-y-hidden { overflow-y: hidden !important; }
 .romo-overflow-y-auto   { overflow-y: auto !important; }
 .romo-overflow-y-scroll { overflow-y: scroll !important; }
-
-.romo-user-select-none{ @include user-select(none); }
