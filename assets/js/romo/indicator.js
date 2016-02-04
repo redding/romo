@@ -28,6 +28,7 @@ var RomoIndicator = function(element) {
     left: '50%'// Left position relative to parent
   };
 
+  this.elemStyle = this.elem.attr('style');
   this.doInit();
   this.spinner = new Spinner(this.spinnerOpts);
 
