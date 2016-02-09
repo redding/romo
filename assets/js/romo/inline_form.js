@@ -40,9 +40,6 @@ RomoInlineForm.prototype.doBindInline = function() {
   this.elem.on('inline:ready', $.proxy(function(e, inline) {
     this.elem.trigger('inlineForm:inline:ready', [inline, this]);
   }, this));
-  this.elem.on('inline:invoke', $.proxy(function(e, inline) {
-    this.elem.trigger('inlineForm:inline:invoke', [inline, this]);
-  }, this));
   this.elem.on('inline:loadStart', $.proxy(function(e, inline) {
     this.elem.trigger('inlineForm:inline:loadStart', [inline, this]);
   }, this));
@@ -51,6 +48,9 @@ RomoInlineForm.prototype.doBindInline = function() {
   }, this));
   this.elem.on('inline:loadError', $.proxy(function(e, xhr, inline) {
     this.elem.trigger('inlineForm:inline:loadError', [xhr, inline, this]);
+  }, this));
+  this.elem.on('inline:show', $.proxy(function(e, inline) {
+    this.elem.trigger('inlineForm:inline:show', [inline, this]);
   }, this));
   this.elem.on('inline:dismiss', $.proxy(function(e, inline) {
     this.elem.trigger('inlineForm:inline:dismiss', [inline, this]);
