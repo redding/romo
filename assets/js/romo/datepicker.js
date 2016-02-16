@@ -11,13 +11,14 @@ var RomoDatepicker = function(element) {
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ]
-  this.defaultPrevClass = undefined;
-  this.defaultNextClass = undefined;
-  this.defaultIndicatorClass  = undefined;
-  this.itemSelector = 'TD.romo-datepicker-day:not(.disabled)';
-  this.calTable = $();
-  this.date = undefined;
-  this.today = new Date;
+  this.defaultPrevClass      = undefined;
+  this.defaultNextClass      = undefined;
+  this.defaultIndicatorClass = undefined;
+  this.itemSelector          = 'TD.romo-datepicker-day:not(.disabled)';
+  this.calTable              = $();
+  this.date                  = undefined;
+  this.today                 = new Date;
+  this.prevValue             = undefined;
 
   this.doInit();
   this.doBindElem();
@@ -67,6 +68,13 @@ RomoDatepicker.prototype.doBindElem = function() {
     this.elem.after(this.indicatorElem);
   }
 
+  this.prevValue = this.elem.val();
+  this.elem.on('change', $.proxy(function(e) {
+    var newValue = this.elem.val();
+    this.elem.trigger('datepicker:change', [newValue, this.prevValue, this]);
+    this.prevValue = newValue;
+  }, this));
+
   this.elem.on('datepicker:triggerEnable', $.proxy(function(e) {
     this.doEnable();
   }, this));
@@ -76,9 +84,7 @@ RomoDatepicker.prototype.doBindElem = function() {
   this.elem.on('datepicker:triggerSetFormat', $.proxy(function(e) {
     this.doSetFormat();
   }, this));
-  this.elem.on('datepicker:triggerSetDate', $.proxy(function(e, value) {
-    this.doSetDate(value);
-  }, this));
+  this.elem.on('datepicker:triggerSetDate', $.proxy(this.onTriggerSetDate, this));
 }
 
 RomoDatepicker.prototype.doSetFormat = function() {
@@ -201,18 +207,18 @@ RomoDatepicker.prototype.doRefreshToNextMonth = function() {
 }
 
 RomoDatepicker.prototype.doSelectHighlightedItem = function() {
-  var prevValue = this.elem.val();
-  var newValue = this.calTable.find('TD.romo-datepicker-highlight').data('romo-datepicker-value');
+  var newValue  = this.calTable.find('TD.romo-datepicker-highlight').data('romo-datepicker-value');
 
   this.romoDropdown.doPopupClose();
   this.doSetDate(newValue);
   this.elem.focus();
-  this.elem.trigger('datepicker:itemSelected', [newValue, prevValue, this]);
+  this.elem.trigger('datepicker:itemSelected', [newValue, this.prevValue, this]);
+  this._triggerSetDateChangeEvent();
+}
 
-  if (newValue !== prevValue) {
-    this.elem.trigger('change');
-    this.elem.trigger('datepicker:change', [newValue, prevValue, this]);
-  }
+RomoDatepicker.prototype.onTriggerSetDate = function(e, value) {
+  this.doSetDate(value);
+  this._triggerSetDateChangeEvent();
 }
 
 RomoDatepicker.prototype.onElemKeyDown = function(e) {
@@ -296,6 +302,14 @@ RomoDatepicker.prototype.onPopupMouseDown = function(e) {
 
 RomoDatepicker.prototype.onPopupMouseUp = function(e) {
   this.popupMouseDown = false;
+}
+
+// private
+
+RomoDatepicker.prototype._triggerSetDateChangeEvent = function() {
+  if (this.elem.val() !== this.prevValue) {
+    this.elem.trigger('change');
+  }
 }
 
 RomoDatepicker.prototype._clearBlurTimeout = function() {
