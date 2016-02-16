@@ -73,6 +73,12 @@ RomoDatepicker.prototype.doBindElem = function() {
   this.elem.on('datepicker:triggerDisable', $.proxy(function(e) {
     this.doDisable();
   }, this));
+  this.elem.on('datepicker:triggerSetFormat', $.proxy(function(e) {
+    this.doSetFormat();
+  }, this));
+  this.elem.on('datepicker:triggerSetDate', $.proxy(function(e, value) {
+    this.doSetDate(value);
+  }, this));
 }
 
 RomoDatepicker.prototype.doSetFormat = function() {
