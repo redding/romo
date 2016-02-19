@@ -63,6 +63,9 @@ RomoDatepicker.prototype.doBindElem = function() {
     if (this.elem.prop('disabled') === true) {
       this.indicatorElem.addClass('disabled');
     }
+    if (this.elem.css('display') === 'none') {
+      this._hide(this.indicatorElem);
+    }
     this.indicatorElem.on('click', $.proxy(this.onIndicatorClick, this));
     this.elem.css({'padding-right': '22px'});
     this.elem.after(this.indicatorElem);
@@ -80,6 +83,12 @@ RomoDatepicker.prototype.doBindElem = function() {
   }, this));
   this.elem.on('datepicker:triggerDisable', $.proxy(function(e) {
     this.doDisable();
+  }, this));
+  this.elem.on('datepicker:triggerShow', $.proxy(function(e) {
+    this.doShow();
+  }, this));
+  this.elem.on('datepicker:triggerHide', $.proxy(function(e) {
+    this.doHide();
   }, this));
   this.elem.on('datepicker:triggerSetFormat', $.proxy(function(e) {
     this.doSetFormat();
@@ -111,6 +120,16 @@ RomoDatepicker.prototype.doDisable = function() {
   this.elem.prop('disabled', true);
   this.elem.addClass('disabled');
   this.indicatorElem.addClass('disabled');
+}
+
+RomoDatepicker.prototype.doShow = function() {
+  this._show(this.elem);
+  this._show(this.indicatorElem);
+}
+
+RomoDatepicker.prototype.doHide = function() {
+  this._hide(this.elem);
+  this._hide(this.indicatorElem);
 }
 
 RomoDatepicker.prototype.doBindDropdown = function() {
@@ -305,6 +324,14 @@ RomoDatepicker.prototype.onPopupMouseUp = function(e) {
 }
 
 // private
+
+RomoDatepicker.prototype._show = function(elem) {
+  elem.css('display', '');
+}
+
+RomoDatepicker.prototype._hide = function(elem) {
+  elem.css('display', 'none');
+}
 
 RomoDatepicker.prototype._triggerSetDateChangeEvent = function() {
   if (this.elem.val() !== this.prevValue) {
