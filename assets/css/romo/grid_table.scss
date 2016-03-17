@@ -41,7 +41,9 @@ ol.romo-grid-table { @include list-unstyled(!important); }
 .romo-grid-table .romo-row.romo-inverse { @include bg-inverse; }
 
 .romo-grid-table-hover:not(.romo-grid-table-header) > .romo-row:hover,
-.romo-grid-table-hover:not(.romo-grid-table-header).romo-grid-table-alt > .romo-row:hover { @include bg-hover; }
+.romo-grid-table-hover:not(.romo-grid-table-header).romo-grid-table-alt > .romo-row:hover,
+.romo-grid-table-hover:not(.romo-grid-table-header).romo-grid-table-striped > .romo-row:hover,
+.romo-grid-table-hover:not(.romo-grid-table-header).romo-grid-table-striped-alt > .romo-row:hover { @include bg-hover; }
 .romo-grid-table-hover.romo-grid-table-header > .romo-row:not(:first-child):hover,
 .romo-grid-table-hover.romo-grid-table-header.romo-grid-table-alt > .romo-row:not(:first-child):hover { @include bg-hover; }
 

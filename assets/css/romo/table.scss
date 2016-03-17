@@ -31,7 +31,9 @@
 .romo-table tr.romo-inverse { @include bg-inverse; }
 
 .romo-table-hover tbody tr:hover,
-.romo-table-hover.romo-table-alt tbody tr:hover { @include bg-hover; }
+.romo-table-hover.romo-table-alt tbody tr:hover,
+.romo-table-hover.romo-table-striped tbody tr:hover,
+.romo-table-hover.romo-table-striped-alt tbody tr:hover { @include bg-hover; }
 
 .romo-table-hover tbody tr.romo-base:hover    { @include bg-base-hover; }
 .romo-table-hover tbody tr.romo-alt:hover     { @include bg-alt-hover; }
