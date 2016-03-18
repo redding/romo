@@ -31,14 +31,14 @@ ol.romo-grid-table { @include list-unstyled(!important); }
 .romo-grid-table-striped.romo-grid-table-header.romo-grid-table-striped-alt > .romo-row:nth-child(even) { @include bg-base; }
 .romo-grid-table-striped.romo-grid-table-striped-alt { @include bg-striped; }
 
-.romo-grid-table .romo-row.romo-base    { @include bg-base; }
-.romo-grid-table .romo-row.romo-alt     { @include bg-alt; }
-.romo-grid-table .romo-row.romo-muted   { @include bg-muted; }
-.romo-grid-table .romo-row.romo-warning { @include bg-warning; }
-.romo-grid-table .romo-row.romo-error   { @include bg-error; }
-.romo-grid-table .romo-row.romo-info    { @include bg-info; }
-.romo-grid-table .romo-row.romo-success { @include bg-success; }
-.romo-grid-table .romo-row.romo-inverse { @include bg-inverse; }
+.romo-grid-table .romo-row.romo-base    { @include bg-base(!important); }
+.romo-grid-table .romo-row.romo-alt     { @include bg-alt(!important); }
+.romo-grid-table .romo-row.romo-muted   { @include bg-muted(!important); }
+.romo-grid-table .romo-row.romo-warning { @include bg-warning(!important); }
+.romo-grid-table .romo-row.romo-error   { @include bg-error(!important); }
+.romo-grid-table .romo-row.romo-info    { @include bg-info(!important); }
+.romo-grid-table .romo-row.romo-success { @include bg-success(!important); }
+.romo-grid-table .romo-row.romo-inverse { @include bg-inverse(!important); }
 
 .romo-grid-table-hover:not(.romo-grid-table-header) > .romo-row:hover,
 .romo-grid-table-hover:not(.romo-grid-table-header).romo-grid-table-alt > .romo-row:hover,
@@ -48,21 +48,21 @@ ol.romo-grid-table { @include list-unstyled(!important); }
 .romo-grid-table-hover.romo-grid-table-header.romo-grid-table-alt > .romo-row:not(:first-child):hover { @include bg-hover; }
 
 .romo-grid-table-hover:not(.romo-grid-table-header) > .romo-row.romo-base:hover,
-.romo-grid-table-hover.romo-grid-table-header > .romo-row.romo-base:not(:first-child):hover { @include bg-base-hover; }
+.romo-grid-table-hover.romo-grid-table-header > .romo-row.romo-base:not(:first-child):hover { @include bg-base-hover(!important); }
 .romo-grid-table-hover:not(.romo-grid-table-header) > .romo-row.romo-alt:hover,
-.romo-grid-table-hover.romo-grid-table-header > .romo-row.romo-alt:not(:first-child):hover { @include bg-alt-hover; }
+.romo-grid-table-hover.romo-grid-table-header > .romo-row.romo-alt:not(:first-child):hover { @include bg-alt-hover(!important); }
 .romo-grid-table-hover:not(.romo-grid-table-header) > .romo-row.romo-muted:hover,
-.romo-grid-table-hover.romo-grid-table-header > .romo-row.romo-muted:not(:first-child):hover { @include bg-muted-hover; }
+.romo-grid-table-hover.romo-grid-table-header > .romo-row.romo-muted:not(:first-child):hover { @include bg-muted-hover(!important); }
 .romo-grid-table-hover:not(.romo-grid-table-header) > .romo-row.romo-warning:hover,
-.romo-grid-table-hover.romo-grid-table-header > .romo-row.romo-warning:not(:first-child):hover { @include bg-warning-hover; }
+.romo-grid-table-hover.romo-grid-table-header > .romo-row.romo-warning:not(:first-child):hover { @include bg-warning-hover(!important); }
 .romo-grid-table-hover:not(.romo-grid-table-header) > .romo-row.romo-error:hover,
-.romo-grid-table-hover.romo-grid-table-header > .romo-row.romo-error:not(:first-child):hover { @include bg-error-hover; }
+.romo-grid-table-hover.romo-grid-table-header > .romo-row.romo-error:not(:first-child):hover { @include bg-error-hover(!important); }
 .romo-grid-table-hover:not(.romo-grid-table-header) > .romo-row.romo-info:hover,
-.romo-grid-table-hover.romo-grid-table-header > .romo-row.romo-info:not(:first-child):hover { @include bg-info-hover; }
+.romo-grid-table-hover.romo-grid-table-header > .romo-row.romo-info:not(:first-child):hover { @include bg-info-hover(!important); }
 .romo-grid-table-hover:not(.romo-grid-table-header) > .romo-row.romo-success:hover,
-.romo-grid-table-hover.romo-grid-table-header > .romo-row.romo-success:not(:first-child):hover { @include bg-success-hover; }
+.romo-grid-table-hover.romo-grid-table-header > .romo-row.romo-success:not(:first-child):hover { @include bg-success-hover(!important); }
 .romo-grid-table-hover:not(.romo-grid-table-header) > .romo-row.romo-inverse:hover,
-.romo-grid-table-hover.romo-grid-table-header > .romo-row.romo-inverse:not(:first-child):hover { @include bg-inverse-hover; }
+.romo-grid-table-hover.romo-grid-table-header > .romo-row.romo-inverse:not(:first-child):hover { @include bg-inverse-hover(!important); }
 
 .romo-grid-table-border,
 .romo-grid-table-border1     { @include border1; }
