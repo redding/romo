@@ -11,14 +11,15 @@ var RomoDatepicker = function(element) {
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ]
-  this.defaultPrevClass      = undefined;
-  this.defaultNextClass      = undefined;
-  this.defaultIndicatorClass = undefined;
-  this.itemSelector          = 'TD.romo-datepicker-day:not(.disabled)';
-  this.calTable              = $();
-  this.date                  = undefined;
-  this.today                 = new Date;
-  this.prevValue             = undefined;
+  this.defaultPrevClass        = undefined;
+  this.defaultNextClass        = undefined;
+  this.defaultIndicatorClass   = undefined;
+  this.defaultIndicatorWidthPx = 0;
+  this.itemSelector            = 'TD.romo-datepicker-day:not(.disabled)';
+  this.calTable                = $();
+  this.date                    = undefined;
+  this.today                   = new Date;
+  this.prevValue               = undefined;
 
   this.doInit();
   this.doBindElem();
@@ -67,7 +68,13 @@ RomoDatepicker.prototype.doBindElem = function() {
       this._hide(this.indicatorElem);
     }
     this.indicatorElem.on('click', $.proxy(this.onIndicatorClick, this));
-    this.elem.css({'padding-right': '22px'});
+
+    var indicatorWidthPx   = this.elem.data('romo-datepicker-indicator-width-px') || this.defaultIndicatorWidthPx;
+    // left-side spacing
+    // + indicator width
+    // + right-side spacing
+    var indicatorPaddingPx = 4 + indicatorWidthPx + 4;
+    this.elem.css({'padding-right': indicatorPaddingPx + 'px'});
     this.elem.after(this.indicatorElem);
   }
 
