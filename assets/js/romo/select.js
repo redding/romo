@@ -7,6 +7,9 @@ $.fn.romoSelect = function() {
 var RomoSelect = function(element) {
   this.elem = $(element);
 
+  this.defaultCaretClass   = undefined;
+  this.defaultCaretWidthPx = 0;
+
   this.doInit();
   this.doBindSelectDropdown();
   this.doRefreshUI();
@@ -144,7 +147,14 @@ RomoSelect.prototype._buildSelectDropdownElem = function() {
     var caret = $('<i class="romo-select-caret '+caretClass+'"></i>');
     caret.css({'line-height': romoSelectDropdownElem.css('line-height')});
     caret.on('click', $.proxy(this.onCaretClick, this));
-    romoSelectDropdownElem.css({'padding-right': '22px'});
+
+    var caretWidthPx   = this.elem.data('romo-select-caret-width-px') || this.defaultCaretWidthPx;
+    // left-side spacing
+    // + caret width
+    // - 1 px select styling optical illusion
+    // + right-side spacing
+    var caretPaddingPx = 4 + caretWidthPx - 1 + 4;
+    romoSelectDropdownElem.css({'padding-right': caretPaddingPx + 'px'});
     romoSelectDropdownElem.append(caret);
   }
 

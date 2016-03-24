@@ -6,7 +6,6 @@ $.fn.romoSelectDropdown = function(optionElemsParent) {
 
 var RomoSelectDropdown = function(element, optionElemsParent) {
   this.elem = $(element);
-  this.defaultCaretClass = '';
   this.itemSelector = 'LI[data-romo-select-item="opt"]:not(.disabled)';
   this.prevValue = undefined;
 

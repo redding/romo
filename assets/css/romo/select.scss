@@ -39,7 +39,7 @@
 }
 .romo-select-caret {
   position: absolute;
-  right: 6px;
+  right: 4px + 1px; /* 4 px for desired spacing + 1 px select styling optical illusion */
   vertical-align: middle;
 }
 
