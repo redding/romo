@@ -6,9 +6,9 @@ gem 'pry', "~> 0.9.0"
 
 gem 'rack'
 gem "deas",         "~> 0.40.0"
-gem "dassets",      "~> 0.13.2"
-gem "dassets-sass", "~> 0.3.0"
-gem "dassets-erb",  "~> 0.1.0"
+gem "dassets",      "~> 0.14.0"
+gem "dassets-sass", "~> 0.4.0"
+gem "dassets-erb",  "~> 0.2.0"
 gem "scmd",         "~> 3.0.2"
 gem "kramdown",     "~> 1.10"
 
