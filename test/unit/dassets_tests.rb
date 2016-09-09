@@ -3,7 +3,6 @@ require 'romo/dassets'
 
 require 'dassets'
 require 'dassets-sass'
-require 'dassets-erb'
 
 module Romo::Dassets
 
@@ -21,7 +20,6 @@ module Romo::Dassets
       end
       assert source
       assert_instance_of Dassets::Sass::Engine, source.engines["scss"]
-      assert_instance_of Dassets::Erb::Engine,  source.engines["erb"]
 
       exp_css_sources = [
         'css/romo/normalize.css',

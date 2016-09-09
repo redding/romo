@@ -1,6 +1,5 @@
 require 'dassets'
 require 'dassets-sass'
-require 'dassets-erb'
 require 'romo'
 
 module Romo; end
@@ -16,9 +15,8 @@ module Romo::Dassets
       c.source Romo.gem_assets_path do |s|
         s.filter{ |paths| paths.reject{ |p| File.basename(p) =~ /^_/ } }
 
-        s.engine 'erb', Dassets::Erb::Engine
         s.engine 'scss', Dassets::Sass::Engine, {
-          :syntax => 'scss',
+          :syntax       => 'scss',
           :output_style => 'compressed' # TODO: let them override output style
         }
       end
