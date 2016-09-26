@@ -25,15 +25,16 @@ var RomoSortable = function(element) {
   this.elem.on('dragend',   $.proxy(this.onDragEnd,   this));
   this.elem.on('drop',      $.proxy(this.onDragDrop,  this));
 
-  this.draggableElems.on('dragstart',  $.proxy(this.onDragStart, this));
-  this.draggableElems.on('dragenter',  $.proxy(this.onDragEnter, this));
-  this.draggableElems.on('dragover',   $.proxy(this.onDragOver,  this));
-  this.draggableElems.on('dragend',    $.proxy(this.onDragEnd,   this));
-  this.draggableElems.on('drop',       $.proxy(this.onDragDrop,  this));
+  this.draggableElems.on('dragstart',  $.proxy(this.onDragStart,          this));
+  this.draggableElems.on('dragenter',  $.proxy(this.onDragEnter,          this));
+  this.draggableElems.on('dragover',   $.proxy(this.onDragOver,           this));
+  this.draggableElems.on('dragend',    $.proxy(this.onDragEnd,            this));
+  this.draggableElems.on('drop',       $.proxy(this.onDragDrop,           this));
+  this.draggableElems.on('mousedown',  $.proxy(this.onDraggableMouseDown, this));
 
-  this.draggableElems.on('mousedown', $.proxy(this.onDraggableMouseDown, this));
-  var handleElems = this.draggableElems.find(this.handleSelector)
+  var handleElems = this.draggableElems.find(this.handleSelector);
   handleElems.on('mousedown', $.proxy(this.onHandleMouseDown, this));
+
   $('body').on('mouseup', $.proxy(this.onWindowBodyMouseUp, this));
 
   this._resetGrabClasses();
@@ -182,6 +183,7 @@ RomoSortable.prototype.onHandleMouseDown = function(e) {
 
 RomoSortable.prototype.onWindowBodyMouseUp = function(e) {
   this.draggableSelected = false;
+  this._resetGrabClasses();
 }
 
 RomoSortable.prototype._resetGrabClasses = function() {
