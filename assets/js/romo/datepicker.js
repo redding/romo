@@ -18,7 +18,7 @@ var RomoDatepicker = function(element) {
   this.itemSelector            = 'TD.romo-datepicker-day:not(.disabled)';
   this.calTable                = $();
   this.date                    = undefined;
-  this.today                   = new Date;
+  this.today                   = this._getTodaysDate();
   this.prevValue               = undefined;
 
   this.doInit();
@@ -593,6 +593,15 @@ RomoDatepicker.prototype._regexMatches = function(value, regex) {
 
 RomoDatepicker.prototype._currentYear = function() {
   return (new Date).getUTCFullYear();
+}
+
+RomoDatepicker.prototype._getTodaysDate = function() {
+  var today = new Date();
+  var dd    = today.getDate();
+  var mm    = today.getMonth();
+  var yyyy  = today.getFullYear();
+
+  return this._UTCDate(yyyy, mm, dd);
 }
 
 RomoDatepicker.prototype._UTCDate = function(year, month, day) {
