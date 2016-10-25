@@ -5,13 +5,13 @@ $.fn.romoSelectDropdown = function(optionElemsParent) {
 }
 
 var RomoSelectDropdown = function(element, optionElemsParent) {
-  this.elem = $(element);
+  this.elem         = $(element);
   this.itemSelector = 'LI[data-romo-select-item="opt"]:not(.disabled)';
-  this.prevValue = undefined;
+  this.prevValue    = '';
 
-  var optsParent = (optionElemsParent || this.elem.find('.romo-select-dropdown-options-parent'));
+  var optsParent   = (optionElemsParent || this.elem.find('.romo-select-dropdown-options-parent'));
   this.optionElems = optsParent.children();
-  this.optionList = this._buildOptionList(this.optionElems);
+  this.optionList  = this._buildOptionList(this.optionElems);
 
   this.doInit();
   this.doBindDropdown();
@@ -88,7 +88,7 @@ RomoSelectDropdown.prototype.doBindDropdown = function() {
 
 RomoSelectDropdown.prototype.doSelectHighlightedItem = function() {
   var prevValue = this.prevValue;
-  var newValue = this.romoDropdown.bodyElem.find('LI.romo-select-highlight').data('romo-select-option-value');
+  var newValue  = this.romoDropdown.bodyElem.find('LI.romo-select-highlight').data('romo-select-option-value');
 
   this.romoDropdown.doPopupClose();
   this.elem.trigger('selectDropdown:itemSelected', [newValue, prevValue, this]);
@@ -232,13 +232,15 @@ RomoSelectDropdown.prototype._buildOptionList = function(optionElems, listClass)
 }
 
 RomoSelectDropdown.prototype._buildOptionListItem = function(optionElem) {
-  var opt = $(optionElem);
-  var item = $('<li data-romo-select-item="opt"></li>');
+  var opt   = $(optionElem);
+  var item  = $('<li data-romo-select-item="opt"></li>');
+  var value = opt.attr('value') || '';
 
-  item.attr('data-romo-select-option-value', opt.attr('value'));
+  item.attr('data-romo-select-option-value', value);
   item.html(opt.text().trim() || '&nbsp;');
   if (opt.prop('selected')) {
     item.addClass('selected');
+    this.prevValue = value; // the last option marked selected is used
   }
   if (opt.attr('disabled') !== undefined) {
     item.addClass('disabled');
