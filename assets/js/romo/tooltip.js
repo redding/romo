@@ -86,9 +86,17 @@ RomoTooltip.prototype.doInitBody = function() {
     'max-width':  this.elem.data('romo-tooltip-max-width'),
     'width':      this.elem.data('romo-tooltip-width'),
     'min-height': this.elem.data('romo-tooltip-min-height'),
-    'max-height': this.elem.data('romo-tooltip-max-height'),
     'height':     this.elem.data('romo-tooltip-height')
   });
+
+  if (this.elem.data('romo-tooltip-max-height') === undefined) {
+    this.elem.attr('data-romo-tooltip-max-height', 'detect');
+  }
+  if (this.elem.data('romo-tooltip-max-height') !== 'detect') {
+    this.bodyElem.css({
+      'max-height': this.elem.data('romo-tooltip-max-height')
+    });
+  }
 }
 
 RomoTooltip.prototype.doResetBody = function() {
@@ -262,7 +270,39 @@ RomoTooltip.prototype.doPlacePopupElem = function() {
   var pad = 6 + 1; // arrow size + spacing
   var offset = {};
 
-  switch (this.popupPosition) {
+  var configHeight = this.elem.data('romo-tooltip-height') || this.elem.data('romo-tooltip-max-height');
+  var configPosition = this.popupPosition;
+
+  if (configHeight === 'detect' && (configPosition === 'top' || configPosition === 'bottom')) {
+    var popupHeight = this.popupElem.height();
+    var topAvailHeight = this._getPopupMaxAvailableHeight('top');
+    var bottomAvailHeight = this._getPopupMaxAvailableHeight('bottom');
+
+    if (popupHeight < topAvailHeight && popupHeight < bottomAvailHeight) {
+      // if it fits both ways, use the config position way
+      configHeight = this._getPopupMaxAvailableHeight(configPosition);
+      this.popupElem.attr('data-romo-tooltip-arrow-position', configPosition);
+    } else if (topAvailHeight > bottomAvailHeight) {
+      configPosition = 'top';
+      configHeight = topAvailHeight;
+      this.popupElem.attr('data-romo-tooltip-arrow-position', 'top');
+    } else {
+      configPosition = 'bottom';
+      configHeight = bottomAvailHeight;
+      this.popupElem.attr('data-romo-tooltip-arrow-position', 'bottom');
+    }
+
+    this.bodyElem.css({'max-height': configHeight.toString() + 'px'});
+  } else {
+    this.popupElem.attr('data-romo-tooltip-arrow-position', configPosition);
+  }
+
+
+  if(h > configHeight) {
+    h = configHeight;
+  }
+
+  switch (configPosition) {
     case 'top':
       $.extend(offset, { top: pos.top - h - pad, left: pos.left + pos.width / 2 - w / 2 });
       break;
@@ -286,6 +326,27 @@ RomoTooltip.prototype.doSetPopupZIndex = function(relativeElem) {
 }
 
 // private
+
+RomoTooltip.prototype._getPopupMaxAvailableHeight = function(position) {
+  var maxHeight = undefined;
+
+  switch (position) {
+    case 'top':
+      var elemTop = this.elem[0].getBoundingClientRect().top;
+      maxHeight = elemTop - this._getPopupMaxHeightDetectPad(position);
+      break;
+    case 'bottom':
+      var elemBottom = this.elem[0].getBoundingClientRect().bottom;
+      maxHeight = $(window).height() - elemBottom - this._getPopupMaxHeightDetectPad(position);
+      break;
+  }
+
+  return maxHeight;
+}
+
+RomoTooltip.prototype._getPopupMaxHeightDetectPad = function(position) {
+  return this.elem.data('romo-tooltip-max-height-detect-pad-'+position) || this.elem.data('romo-tooltip-max-height-detect-pad') || 10;
+}
 
 RomoTooltip.prototype._setBodyHtml = function(content) {
   this.bodyElem.html(content || '');
