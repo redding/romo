@@ -149,24 +149,32 @@
   // style handling
 
   Romo.prototype.parseZIndex = function(elem) {
-    // for the case where the browser doesn't suck and can read inherited z-index
-    var val = parseInt(elem.css('z-index'));
-    if (!isNaN(val)) {
+    // for the case where z-index is set directly on the elem
+    var val = this.parseElemZIndex(elem);
+    if (val !== 0) {
       return val;
     }
 
-    // for the case where the browser sucks and can't read inherited z-index - we'll do it for you!
+    // for the case where z-index is inherited from a parent elem
     var parentIndexes = $.map(elem.parents(), function(item) {
       return item; // converts the collection to an array
     }).reduce($.proxy(function(prev, curr) {
-      var pval = parseInt($(curr).css('z-index'));
-      if (!isNaN(pval)) {
+      var pval = this.parseElemZIndex($(curr));
+      if (pval !== 0) {
         prev.push(pval);
       }
       return prev;
     }, this), []);
     parentIndexes.push(0); // in case z-index is 'auto' all the way up
     return parentIndexes[0];
+  }
+
+  Romo.prototype.parseElemZIndex = function(elem) {
+    var val = parseInt(document.defaultView.getComputedStyle(elem[0], null).getPropertyValue("z-index"));
+    if (!isNaN(val)) {
+      return val;
+    }
+    return 0;
   }
 
   // private
