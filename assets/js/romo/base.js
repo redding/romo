@@ -156,9 +156,7 @@
     }
 
     // for the case where z-index is inherited from a parent elem
-    var parentIndexes = $.map(elem.parents(), function(item) {
-      return item; // converts the collection to an array
-    }).reduce($.proxy(function(prev, curr) {
+    var parentIndexes = this.toArray(elem.parents()).reduce($.proxy(function(prev, curr) {
       var pval = this.parseElemZIndex($(curr));
       if (pval !== 0) {
         prev.push(pval);
@@ -175,6 +173,13 @@
       return val;
     }
     return 0;
+  }
+
+  // elem handling
+
+  Romo.prototype.toArray = function(elems) {
+    // converts a collection of elements (`$()`) to an array of nodes
+    return $.map(elems, function(node){ return node; })
   }
 
   // private
