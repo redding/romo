@@ -66,11 +66,13 @@ RomoForm.prototype.doBindForm = function() {
 
 RomoForm.prototype.onFormKeyPress = function(e) {
   if (this.elem.data('romo-form-disable-keypress') !== true) {
-    var target = $(e.target);
-
-    if (target.is(':not(TEXTAREA)') && e.keyCode === 13 /* Enter */) {
+    var targetElem = $(e.target);
+    if (targetElem.is(':not(TEXTAREA)') && e.keyCode === 13 /* Enter */) {
       e.preventDefault();
-      this.onSubmitClick();
+      if (this.elem.data('romo-form-disable-enter-submit') !== true &&
+          targetElem.data('romo-form-disable-enter-submit') !== true) {
+        this.onSubmitClick();
+      }
     }
   }
 }
