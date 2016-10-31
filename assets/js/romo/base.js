@@ -148,6 +148,10 @@
 
   // style handling
 
+  Romo.prototype.getComputedStyle = function(node, styleName) {
+    return window.getComputedStyle(node, null).getPropertyValue(styleName);
+  }
+
   Romo.prototype.parseZIndex = function(elem) {
     // for the case where z-index is set directly on the elem
     var val = this.parseElemZIndex(elem);
@@ -168,7 +172,7 @@
   }
 
   Romo.prototype.parseElemZIndex = function(elem) {
-    var val = parseInt(document.defaultView.getComputedStyle(elem[0], null).getPropertyValue("z-index"));
+    var val = parseInt(this.getComputedStyle(elem[0], "z-index"));
     if (!isNaN(val)) {
       return val;
     }
