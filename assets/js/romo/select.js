@@ -110,6 +110,15 @@ RomoSelect.prototype._buildSelectDropdownElem = function() {
   if (romoSelectDropdownElem.data('romo-dropdown-max-height') === undefined) {
     romoSelectDropdownElem.attr('data-romo-dropdown-max-height', 'detect');
   }
+  if (this.elem.data('romo-select-filter-placeholder') !== undefined) {
+    romoSelectDropdownElem.attr('data-romo-select-dropdown-filter-placeholder', this.elem.data('romo-select-filter-placeholder'));
+  }
+  if (this.elem.data('romo-select-filter-indicator') !== undefined) {
+    romoSelectDropdownElem.attr('data-romo-select-dropdown-filter-indicator', this.elem.data('romo-select-filter-indicator'));
+  }
+  if (this.elem.data('romo-select-no-filter') !== undefined) {
+    romoSelectDropdownElem.attr('data-romo-select-dropdown-no-filter', this.elem.data('romo-select-no-filter'));
+  }
 
   var classList = this.elem.attr('class') !== undefined ? this.elem.attr('class').split(/\s+/) : [];
   $.each(classList, function(idx, classItem) {
@@ -148,7 +157,7 @@ RomoSelect.prototype._buildSelectDropdownElem = function() {
     caret.css({'line-height': romoSelectDropdownElem.css('line-height')});
     caret.on('click', $.proxy(this.onCaretClick, this));
 
-    var caretWidthPx   = this.elem.data('romo-select-caret-width-px') || this.defaultCaretWidthPx;
+    var caretWidthPx = this.elem.data('romo-select-caret-width-px') || this.defaultCaretWidthPx;
     // left-side spacing
     // + caret width
     // - 1 px select styling optical illusion

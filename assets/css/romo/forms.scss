@@ -26,7 +26,8 @@ label { display: block; }
 
 .romo-form input,
 .romo-form select,
-.romo-form textarea {
+.romo-form textarea,
+input.romo-select-dropdown-option-filter {
   font-size: 100%;
   @include rm-push;
   @include align-middle;
@@ -42,8 +43,15 @@ label { display: block; }
   }
 }
 
-.romo-form input    { *overflow: visible; line-height: normal; }
-.romo-form textarea {  overflow: auto; @include align-top; }
+.romo-form input,
+input.romo-select-dropdown-option-filter {
+  *overflow: visible;
+  line-height: normal;
+}
+
+.romo-form textarea {
+  overflow: auto; @include align-top;
+}
 
 .romo-form label,
 .romo-form select,
@@ -58,7 +66,9 @@ label { display: block; }
 .romo-form textarea[disabled],
 .romo-form input[readonly],
 .romo-form select[readonly],
-.romo-form textarea[readonly] { cursor: $notAllowedCursor; }
+.romo-form textarea[readonly],
+input.romo-select-dropdown-option-filter[disabled],
+input.romo-select-dropdown-option-filter[readonly] { cursor: $notAllowedCursor; }
 
 .romo-form select {
   font-weight: normal;
@@ -82,7 +92,8 @@ label { display: block; }
 .romo-form input[type="url"],
 .romo-form input[type="search"],
 .romo-form input[type="tel"],
-.romo-form input[type="color"] {
+.romo-form input[type="color"],
+input.romo-select-dropdown-option-filter {
   font-weight: normal;
   background-color: $inputBgColor;
   @include border1;
@@ -104,7 +115,8 @@ label { display: block; }
 .romo-form input[type="url"]:focus,
 .romo-form input[type="search"]:focus,
 .romo-form input[type="tel"]:focus,
-.romo-form input[type="color"]:focus {
+.romo-form input[type="color"]:focus,
+input.romo-select-dropdown-option-filter:focus {
   @include input-focus;
 }
 
@@ -113,7 +125,9 @@ label { display: block; }
 .romo-form textarea[disabled],
 .romo-form input[readonly],
 .romo-form select[readonly],
-.romo-form textarea[readonly] { background-color: $inputDisabledColor; }
+.romo-form textarea[readonly],
+input.romo-select-dropdown-option-filter[disabled],
+input.romo-select-dropdown-option-filter[readonly] { background-color: $inputDisabledColor; }
 
 .romo-form input[type="radio"][disabled],
 .romo-form input[type="checkbox"][disabled],
@@ -134,10 +148,15 @@ label { display: block; }
 .romo-form input[type="url"],
 .romo-form input[type="search"],
 .romo-form input[type="tel"],
-.romo-form input[type="color"] {
+.romo-form input[type="color"],
+input.romo-select-dropdown-option-filter {
   height: $inputHeight;
   line-height: $baseLineHeight;
   @include align-middle;
+}
+
+input.romo-select-dropdown-option-filter {
+  height: $inputFilterHeight;
 }
 
 .romo-form textarea,
@@ -154,10 +173,16 @@ label { display: block; }
 .romo-form input[type="url"],
 .romo-form input[type="search"],
 .romo-form input[type="tel"],
-.romo-form input[type="color"] {
+.romo-form input[type="color"],
+input.romo-select-dropdown-option-filter {
   display: inline-block;
   padding: 4px 6px;
   color: $inputColor;
+}
+
+input.romo-select-dropdown-option-filter {
+  display: block;
+  width: 100%;
 }
 
 .romo-form textarea,

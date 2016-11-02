@@ -22,7 +22,8 @@
   padding-right: 6px;
 }
 
-.romo-select:focus{ @include input-focus; }
+.romo-select:focus,
+.romo-select.romo-select-focus { @include input-focus; }
 
 .romo-select:active,
 .romo-select.active {
@@ -41,6 +42,12 @@
   position: absolute;
   right: 4px + 1px; /* 4 px for desired spacing + 1 px select styling optical illusion */
   vertical-align: middle;
+}
+
+.romo-select-dropdown-option-filter-wrapper {
+  @include border1-bottom();
+  padding: 4px 0;
+  margin: 0 4px;
 }
 
 .romo-select-option-list {
