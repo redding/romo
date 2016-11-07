@@ -27,6 +27,8 @@ $spacingSize0: $spacingSize1 * 0.35;
 $spacingSize2: $spacingSize1 * 2;
 
 $inputHeight: ($baseLineHeight / 2) * 3; /* 30px */
+$inputFilterHeight: $baseLineHeight;     /* 20px */
+
 $inputSize1: 220px;
 $inputSize0: $inputSize1 - 120px;
 $inputSize2: $inputSize1 + 120px;

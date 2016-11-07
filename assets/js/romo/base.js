@@ -212,6 +212,49 @@
     return el;
   }
 
+  // input handling
+
+  Romo.prototype.nonInputTextKeyCodes = function() {
+    // https://css-tricks.com/snippets/javascript/javascript-keycodes/
+    return [
+      9,   /* tab */
+      13,  /* enter */
+      16,  /* shift */
+      17,  /* ctrl */
+      18,  /* alt */
+      19,  /* pausebreak */
+      20,  /* capslock */
+      27,  /* escape */
+      33,  /* pageup */
+      34,  /* pagedown */
+      35,  /* end */
+      36,  /* home */
+      37,  /* leftarrow */
+      38,  /* uparrow */
+      39,  /* rightarrow */
+      40,  /* downarrow */
+      45,  /* insert */
+      46,  /* delete */
+      91,  /* leftwindowkey */
+      92,  /* rightwindowkey */
+      93,  /* selectkey */
+      112, /* f1 */
+      113, /* f2 */
+      114, /* f3 */
+      115, /* f4 */
+      116, /* f5 */
+      117, /* f6 */
+      118, /* f7 */
+      119, /* f8 */
+      120, /* f9 */
+      121, /* f10 */
+      122, /* f11 */
+      123, /* f12 */
+      144, /* numlock */
+      145, /* scrolllock */
+    ];
+  }
+
   // private
 
   Romo.prototype._addEventCallback = function(name, callback) {

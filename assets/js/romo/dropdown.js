@@ -278,6 +278,7 @@ RomoDropdown.prototype.onElemKeyUp = function(e) {
     if (this.popupElem.hasClass('romo-dropdown-open')) {
       if(e.keyCode === 27 /* Esc */ ) {
         this.doPopupClose();
+        this.elem.trigger('dropdown:popupClosedByEsc', [this]);
         return false;
       } else {
         return true;
@@ -321,6 +322,7 @@ RomoDropdown.prototype.doUnBindWindowBodyKeyUp = function() {
 RomoDropdown.prototype.onWindowBodyKeyUp = function(e) {
   if (e.keyCode === 27 /* Esc */) {
     this.doPopupClose();
+    this.elem.trigger('dropdown:popupClosedByEsc', [this]);
   }
   return true;
 }
