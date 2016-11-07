@@ -88,7 +88,7 @@ RomoSelectDropdown.prototype.doBindDropdown = function() {
 
 RomoSelectDropdown.prototype.doSelectHighlightedItem = function() {
   var prevValue = this.prevValue;
-  var newValue  = this.romoDropdown.bodyElem.find('LI.romo-select-highlight').data('romo-select-option-value');
+  var newValue  = this._getHighlightedItem().data('romo-select-option-value');
 
   this.romoDropdown.doPopupClose();
   this.elem.trigger('selectDropdown:itemSelected', [newValue, prevValue, this]);
@@ -172,6 +172,9 @@ RomoSelectDropdown.prototype.onPopupOpenBodyKeyDown = function(e) {
   } else if (e.keyCode === 13 /* Enter */ ) {
     this.doSelectHighlightedItem();
     return false;
+  } else if (e.keyCode === 9 /* Tab */ ) {
+    e.preventDefault();
+    return false;
   } else {
     return true;
   }
@@ -180,7 +183,7 @@ RomoSelectDropdown.prototype.onPopupOpenBodyKeyDown = function(e) {
 RomoSelectDropdown.prototype.onElemKeyDown = function(e) {
   if (this.elem.hasClass('disabled') === false) {
     if (this.romoDropdown.popupElem.hasClass('romo-dropdown-open') === false) {
-      if(e.keyCode === 40 /* Down */ ) {
+      if (e.keyCode === 40 /* Down */  || e.keyCode === 38 /* Up */) {
         this.romoDropdown.doPopupOpen();
         return false;
       } else {
@@ -259,66 +262,44 @@ RomoSelectDropdown.prototype._buildOptGroupListItem = function(optGroupElem) {
 }
 
 RomoSelectDropdown.prototype._nextListItem = function() {
-  var listOrItemSelector = 'UL, '+this.itemSelector;
-  var curr = this.romoDropdown.bodyElem.find('LI.romo-select-highlight');
-  var next = this._nextAll(curr, listOrItemSelector).first();
+  var curr     = this._getHighlightedItem();
+  var currList = curr.closest('UL');
+  var next     = Romo.selectNext(curr, this.itemSelector);
 
-  if (next.size() === 0) {
-    next = this._nextAll(curr.closest('UL'), listOrItemSelector).first();
-  }
-  if (next.size() !== 0 && next[0].tagName === 'UL') {
-    next = next.find(this.itemSelector).first()
-  }
-  if (next.size() === 0) {
-    next = this.romoDropdown.bodyElem.find(this.itemSelector).first();
+  while (next.length === 0) {
+    currList = Romo.selectNext(currList, 'UL');
+    if (currList.length !== 0) {
+      next = currList.find(this.itemSelector).first();
+    } else {
+      next = this.romoDropdown.bodyElem.find(this.itemSelector).first();
+    }
   }
   return next;
 }
 
 RomoSelectDropdown.prototype._prevListItem = function() {
-  var listOrItemSelector = 'UL, '+this.itemSelector;
-  var curr = this.romoDropdown.bodyElem.find('LI.romo-select-highlight');
-  var prev = this._prevAll(curr, listOrItemSelector).last();
+  var curr     = this._getHighlightedItem();
+  var currList = curr.closest('UL');
+  var prev     = Romo.selectPrev(curr, this.itemSelector);
 
-  if (prev.size() === 0) {
-    prev = this._prevAll(curr.closest('UL'), listOrItemSelector).last();
-  }
-  if (prev.size() !== 0 && prev[0].tagName === 'UL') {
-    prev = prev.find(this.itemSelector).last()
-  }
-  if (prev.size() === 0) {
-    prev = this.romoDropdown.bodyElem.find(this.itemSelector).last();
+  while (prev.length === 0) {
+    currList = Romo.selectPrev(currList, 'UL');
+    if (currList.length !== 0) {
+      prev = currList.find(this.itemSelector).last();
+    } else {
+      prev = this.romoDropdown.bodyElem.find(this.itemSelector).last();
+    }
   }
   return prev;
 }
 
-RomoSelectDropdown.prototype._nextAll = function(elem, selector) {
-  var els = $();
-  var el = elem.next();
-  while( el.length ) {
-    if (selector === undefined || el.is(selector)) {
-      els = els.add(el);
-    }
-    el = el.next();
-  }
-  return els;
-}
-
-RomoSelectDropdown.prototype._prevAll = function(elem, selector) {
-  var els = $();
-  var el = elem.prev();
-  while( el.length ) {
-    if (selector === undefined || el.is(selector)) {
-      els = els.add(el);
-    }
-    el = el.prev();
-  }
-  return els;
-}
-
 RomoSelectDropdown.prototype._highlightItem = function(item) {
-  this.romoDropdown.bodyElem.find('LI.romo-select-highlight').removeClass('romo-select-highlight');
+  this._getHighlightedItem().removeClass('romo-select-highlight');
   item.addClass('romo-select-highlight');
+}
+
+RomoSelectDropdown.prototype._getHighlightedItem = function() {
+  return this.romoDropdown.bodyElem.find('LI.romo-select-highlight');
 }
 
 Romo.onInitUI(function(e) {
