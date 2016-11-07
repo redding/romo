@@ -182,8 +182,34 @@
   // elem handling
 
   Romo.prototype.toArray = function(elems) {
-    // converts a collection of elements (`$()`) to an array of nodes
+    // converts a collection of elements `$()` to an array of nodes
     return $.map(elems, function(node){ return node; })
+  }
+
+  Romo.prototype.selectNext = function(elem, selector) {
+    // like `$().next()`, but takes a selector; returns first next elem that
+    // matches the given selector or an empty collection if non matches
+    var el = elem.next();
+    while(el.length) {
+      if (selector === undefined || el.is(selector)) {
+        return el;
+      }
+      el = el.next();
+    }
+    return el;
+  }
+
+  Romo.prototype.selectPrev = function(elem, selector) {
+    // like `$().prev()`, but takes a selector; returns first prev elem that
+    // matches the given selector or an empty collection if non matches
+    var el = elem.prev();
+    while(el.length) {
+      if (selector === undefined || el.is(selector)) {
+        return el;
+      }
+      el = el.prev();
+    }
+    return el;
   }
 
   // private
