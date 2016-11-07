@@ -333,7 +333,6 @@ RomoDropdown.prototype.onResizeWindow = function(e) {
 RomoDropdown.prototype.doPlacePopupElem = function() {
   if (this.elem.parents('.romo-modal-popup').size() !== 0) {
     this.popupElem.css({'position': 'fixed'});
-    this.popupElem.offset(this.elem.offset());
   }
 
   var pos = $.extend({}, this.elem[0].getBoundingClientRect(), this.elem.offset());
@@ -360,6 +359,9 @@ RomoDropdown.prototype.doPlacePopupElem = function() {
       configHeight = bottomAvailHeight;
     }
 
+    // remove any height difference between the popup and content elems
+    // assumes popup height always greater than or equal to content height
+    configHeight = configHeight - (h - this.contentElem[0].offsetHeight);
     this.contentElem.css({'max-height': configHeight.toString() + 'px'});
   }
 
@@ -386,6 +388,10 @@ RomoDropdown.prototype.doPlacePopupElem = function() {
       break;
   }
 
+  $.extend(offset, {
+    top:  this._roundPosOffsetVal(offset['top']),
+    left: this._roundPosOffsetVal(offset['left'])
+  });
   this.popupElem.offset(offset);
 }
 
@@ -418,6 +424,10 @@ RomoDropdown.prototype._getPopupMaxAvailableHeight = function(position) {
 
 RomoDropdown.prototype._getPopupMaxHeightDetectPad = function(position) {
   return this.elem.data('romo-dropdown-max-height-detect-pad-'+position) || this.elem.data('romo-dropdown-max-height-detect-pad') || 10;
+}
+
+RomoDropdown.prototype._roundPosOffsetVal = function(value) {
+  return Math.round(value*100) / 100;
 }
 
 Romo.onInitUI(function(e) {
