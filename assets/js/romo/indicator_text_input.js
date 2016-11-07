@@ -38,8 +38,6 @@ RomoIndicatorTextInput.prototype.doBindElem = function() {
     Romo.parentChildElems.add(this.elem, [elemWrapper]);
   }, this), 1);
 
-  this.elem.attr('autocomplete', 'off');
-
   this.indicatorElem = $();
   var indicatorClass = this.elem.data('romo-indicator-text-input-indicator') || this.defaultIndicatorClass;
   if (indicatorClass !== undefined && indicatorClass !== 'none') {
@@ -116,6 +114,7 @@ RomoIndicatorTextInput.prototype.onIndicatorClick = function(e) {
   }
   if (this.elem.prop('disabled') === false) {
     this.elem.focus();
+    this.elem.trigger('indicatorTextInput:indicatorClick');
   }
 }
 
