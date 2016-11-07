@@ -44,22 +44,13 @@ RomoIndicatorTextInput.prototype.doBindElem = function() {
   var indicatorClass = this.elem.data('romo-indicator-text-input-indicator') || this.defaultIndicatorClass;
   if (indicatorClass !== undefined && indicatorClass !== 'none') {
     this.indicatorElem = $('<i class="romo-indicator-text-input-indicator '+indicatorClass+'"></i>');
-    this.indicatorElem.css({'line-height': this.elem.css('height')});
-    if (this.elem.prop('disabled') === true) {
-      this.indicatorElem.addClass('disabled');
-    }
-    if (this.elem.css('display') === 'none') {
-      this._hide(this.indicatorElem);
-    }
-    this.indicatorElem.on('click', $.proxy(this.onIndicatorClick, this));
-
-    var indicatorWidthPx = this.elem.data('romo-indicator-text-input-indicator-width-px') || this.defaultIndicatorWidthPx;
-    // left-side spacing
-    // + indicator width
-    // + right-side spacing
-    var indicatorPaddingPx = 4 + indicatorWidthPx + 4;
-    this.elem.css({'padding-right': indicatorPaddingPx + 'px'});
     this.elem.after(this.indicatorElem);
+    this.indicatorElem.on('click', $.proxy(this.onIndicatorClick, this));
+    this.doPlaceIndicatorElem();
+
+    this.elem.on('indicatorTextInput:triggerPlaceIndicator', $.proxy(function(e) {
+      this.doPlaceIndicatorElem();
+    }, this));
   }
 
   this.elem.on('indicatorTextInput:triggerEnable', $.proxy(function(e) {
@@ -74,6 +65,25 @@ RomoIndicatorTextInput.prototype.doBindElem = function() {
   this.elem.on('indicatorTextInput:triggerHide', $.proxy(function(e) {
     this.doHide();
   }, this));
+}
+
+RomoIndicatorTextInput.prototype.doPlaceIndicatorElem = function() {
+  if (this.indicatorElem !== undefined) {
+    this.indicatorElem.css({'line-height': this.elem.css('height')});
+    if (this.elem.prop('disabled') === true) {
+      this.indicatorElem.addClass('disabled');
+    }
+    if (this.elem.css('display') === 'none') {
+      this._hide(this.indicatorElem);
+    }
+
+    var indicatorWidthPx = this.elem.data('romo-indicator-text-input-indicator-width-px') || this.defaultIndicatorWidthPx;
+    // left-side spacing
+    // + indicator width
+    // + right-side spacing
+    var indicatorPaddingPx = 4 + indicatorWidthPx + 4;
+    this.elem.css({'padding-right': indicatorPaddingPx + 'px'});
+  }
 }
 
 RomoIndicatorTextInput.prototype.doEnable = function() {
@@ -91,6 +101,7 @@ RomoIndicatorTextInput.prototype.doDisable = function() {
 RomoIndicatorTextInput.prototype.doShow = function() {
   this._show(this.elem);
   this._show(this.indicatorElem);
+  this.doPlaceIndicatorElem();
 }
 
 RomoIndicatorTextInput.prototype.doHide = function() {
