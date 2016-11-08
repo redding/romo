@@ -11,15 +11,13 @@ var RomoDatepicker = function(element) {
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ]
-  this.defaultPrevClass        = undefined;
-  this.defaultNextClass        = undefined;
-  this.defaultIndicatorClass   = undefined;
-  this.defaultIndicatorWidthPx = 0;
-  this.itemSelector            = 'TD.romo-datepicker-day:not(.disabled)';
-  this.calTable                = $();
-  this.date                    = undefined;
-  this.today                   = this._getTodaysDate();
-  this.prevValue               = undefined;
+  this.defaultPrevClass = undefined;
+  this.defaultNextClass = undefined;
+  this.itemSelector     = 'TD.romo-datepicker-day:not(.disabled)';
+  this.calTable         = $();
+  this.date             = undefined;
+  this.today            = this._getTodaysDate();
+  this.prevValue        = undefined;
 
   this.doInit();
   this.doBindElem();
@@ -36,47 +34,22 @@ RomoDatepicker.prototype.doInit = function() {
 }
 
 RomoDatepicker.prototype.doBindElem = function() {
-  var elemWrapper = $('<div class="romo-datepicker-wrapper"></div>');
-  elemWrapper.css({'display': (this.elem.data('romo-datepicker-elem-display') || 'inline-block')});
-  if (this.elem.data('romo-datepicker-btn-group') === true) {
-    elemWrapper.addClass('romo-btn-group');
-  }
-
-  this.elem.before(elemWrapper);
-  elemWrapper.append(this.elem);
-
-  // the elem wrapper should be treated like a child elem.  add it to Romo's
-  // parent-child elems so it will be removed when the elem (input) is removed.
-  // delay adding it b/c the `append` statement above is not a "move", it is
-  // a "remove" and "add" so if added immediately the "remove" part will
-  // incorrectly remove the wrapper.  Any value will do - I chose 1 arbitrarily.
-  setTimeout($.proxy(function() {
-    Romo.parentChildElems.add(this.elem, [elemWrapper]);
-  }, this), 1);
-
   this.elem.attr('autocomplete', 'off');
 
-  this.indicatorElem = $();
-  var indicatorClass = this.elem.data('romo-datepicker-indicator') || this.defaultIndicatorClass;
-  if (indicatorClass !== undefined && indicatorClass !== 'none') {
-    this.indicatorElem = $('<i class="romo-datepicker-indicator '+indicatorClass+'"></i>');
-    this.indicatorElem.css({'line-height': this.elem.css('height')});
-    if (this.elem.prop('disabled') === true) {
-      this.indicatorElem.addClass('disabled');
-    }
-    if (this.elem.css('display') === 'none') {
-      this._hide(this.indicatorElem);
-    }
-    this.indicatorElem.on('click', $.proxy(this.onIndicatorClick, this));
-
-    var indicatorWidthPx   = this.elem.data('romo-datepicker-indicator-width-px') || this.defaultIndicatorWidthPx;
-    // left-side spacing
-    // + indicator width
-    // + right-side spacing
-    var indicatorPaddingPx = 4 + indicatorWidthPx + 4;
-    this.elem.css({'padding-right': indicatorPaddingPx + 'px'});
-    this.elem.after(this.indicatorElem);
+  if (this.elem.data('romo-datepicker-indicator') !== undefined) {
+    this.elem.attr('data-romo-indicator-text-input-indicator', this.elem.data('romo-datepicker-indicator'));
   }
+  if (this.elem.data('romo-datepicker-indicator-width-px') !== undefined) {
+    this.elem.attr('data-romo-indicator-text-input-indicator-width-px', this.elem.data('romo-datepicker-indicator-width-px'));
+  }
+  if (this.elem.data('romo-datepicker-btn-group') === true) {
+    this.elem.attr('data-romo-indicator-text-input-btn-group', this.elem.data('romo-datepicker-btn-group'));
+  }
+  if (this.elem.data('romo-datepicker-elem-display') !== undefined) {
+    this.elem.attr('data-romo-indicator-text-input-elem-display', this.elem.data('romo-datepicker-elem-display'));
+  }
+
+  this.elem.romoIndicatorTextInput();
 
   this.prevValue = this.elem.val();
   this.elem.on('change', $.proxy(function(e) {
@@ -85,18 +58,24 @@ RomoDatepicker.prototype.doBindElem = function() {
     this.prevValue = newValue;
   }, this));
 
+  this.elem.on('indicatorTextInput:indicatorClick', $.proxy(function(e) {
+    this._clearBlurTimeout();
+    this.elem.trigger('datepicker:triggerPopupOpen');
+  }, this));
+
   this.elem.on('datepicker:triggerEnable', $.proxy(function(e) {
-    this.doEnable();
+    this.elem.trigger('indicatorTextInput:triggerEnable', []);
   }, this));
   this.elem.on('datepicker:triggerDisable', $.proxy(function(e) {
-    this.doDisable();
+    this.elem.trigger('indicatorTextInput:triggerDisable', []);
   }, this));
   this.elem.on('datepicker:triggerShow', $.proxy(function(e) {
-    this.doShow();
+    this.elem.trigger('indicatorTextInput:triggerShow', []);
   }, this));
   this.elem.on('datepicker:triggerHide', $.proxy(function(e) {
-    this.doHide();
+    this.elem.trigger('indicatorTextInput:triggerHide', []);
   }, this));
+
   this.elem.on('datepicker:triggerSetFormat', $.proxy(function(e) {
     this.doSetFormat();
   }, this));
@@ -115,28 +94,6 @@ RomoDatepicker.prototype.doSetDate = function(value) {
   } else {
     this.elem.val(value);
   }
-}
-
-RomoDatepicker.prototype.doEnable = function() {
-  this.elem.prop('disabled', false);
-  this.elem.removeClass('disabled');
-  this.indicatorElem.removeClass('disabled');
-}
-
-RomoDatepicker.prototype.doDisable = function() {
-  this.elem.prop('disabled', true);
-  this.elem.addClass('disabled');
-  this.indicatorElem.addClass('disabled');
-}
-
-RomoDatepicker.prototype.doShow = function() {
-  this._show(this.elem);
-  this._show(this.indicatorElem);
-}
-
-RomoDatepicker.prototype.doHide = function() {
-  this._hide(this.elem);
-  this._hide(this.indicatorElem);
 }
 
 RomoDatepicker.prototype.doBindDropdown = function() {
@@ -281,18 +238,6 @@ RomoDatepicker.prototype.onItemEnter = function(e) {
     e.stopPropagation();
   }
   this._highlightItem($(e.target));
-}
-
-RomoDatepicker.prototype.onIndicatorClick = function(e) {
-  this._clearBlurTimeout();
-  if (e !== undefined) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
-  if (this.elem.prop('disabled') === false) {
-    this.elem.focus();
-    this.elem.trigger('datepicker:triggerPopupOpen');
-  }
 }
 
 RomoDatepicker.prototype.onItemClick = function(e) {

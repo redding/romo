@@ -388,8 +388,13 @@ RomoSelectDropdown.prototype._buildOptionFilter = function() {
   if (this.elem.data('romo-select-dropdown-filter-indicator') !== undefined) {
     filter.attr('data-romo-indicator-text-input-indicator', this.elem.data('romo-select-dropdown-filter-indicator'));
   }
+  if (this.elem.data('romo-select-dropdown-filter-indicator-width-px') !== undefined) {
+    filter.attr('data-romo-indicator-text-input-indicator-width-px', this.elem.data('romo-select-dropdown-filter-indicator-width-px'));
+  }
   filter.attr('data-romo-form-disable-enter-submit', "true");
   filter.attr('data-romo-onkey-on', "keydown");
+
+  filter.attr('autocomplete', 'off');
 
   return filter;
 }

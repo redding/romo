@@ -116,6 +116,9 @@ RomoSelect.prototype._buildSelectDropdownElem = function() {
   if (this.elem.data('romo-select-filter-indicator') !== undefined) {
     romoSelectDropdownElem.attr('data-romo-select-dropdown-filter-indicator', this.elem.data('romo-select-filter-indicator'));
   }
+  if (this.elem.data('romo-select-filter-indicator-width-px') !== undefined) {
+    romoSelectDropdownElem.attr('data-romo-select-dropdown-filter-indicator-width-px', this.elem.data('romo-select-filter-indicator-width-px'));
+  }
   if (this.elem.data('romo-select-no-filter') !== undefined) {
     romoSelectDropdownElem.attr('data-romo-select-dropdown-no-filter', this.elem.data('romo-select-no-filter'));
   }
