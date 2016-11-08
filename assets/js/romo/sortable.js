@@ -10,15 +10,28 @@ var RomoSortable = function(element) {
   this.draggableSelector = '[data-romo-sortable-item="true"]';
   this.handleSelector = '[data-romo-sortable-handle="true"]';
 
-  this.draggableElems = this.elem.find(this.draggableSelector);
-  this.draggableElems.prop('draggable', 'true');
-
-  this.draggingClass = this.elem.data('romo-sortable-dragging-class') || '';
-  this.dragOverClass = this.elem.data('romo-sortable-dragover-class') || '';
-  this.placeholderClass = this.elem.data('romo-sortable-placeholder-class') || '';
-
   this.draggedElem = this.draggedIndex = this.draggableSelected = null;
   this.draggedOverElem = this.dragDirection = this.lastY = null;
+
+  this.doInit();
+  this.doBindDraggables();
+  this.doInitPlaceholder();
+  this._resetGrabClasses();
+
+  this.elem.trigger('sortable:ready', [this]);
+}
+
+RomoSortable.prototype.doInit = function() {
+  // override as needed
+}
+
+RomoSortable.prototype.doBindDraggables = function() {
+  this.draggingClass    = this.elem.data('romo-sortable-dragging-class') || '';
+  this.dragOverClass    = this.elem.data('romo-sortable-dragover-class') || '';
+  this.placeholderClass = this.elem.data('romo-sortable-placeholder-class') || '';
+
+  this.draggableElems = this.elem.find(this.draggableSelector);
+  this.draggableElems.prop('draggable', 'true');
 
   this.elem.on('dragenter', $.proxy(this.onDragEnter, this));
   this.elem.on('dragover',  $.proxy(this.onDragOver,  this));
@@ -36,16 +49,6 @@ var RomoSortable = function(element) {
   handleElems.on('mousedown', $.proxy(this.onHandleMouseDown, this));
 
   $('body').on('mouseup', $.proxy(this.onWindowBodyMouseUp, this));
-
-  this._resetGrabClasses();
-  this.doInit();
-  this.doInitPlaceholder();
-
-  this.elem.trigger('sortable:ready', [this]);
-}
-
-RomoSortable.prototype.doInit = function() {
-  // override as needed
 }
 
 RomoSortable.prototype.doInitPlaceholder = function() {
