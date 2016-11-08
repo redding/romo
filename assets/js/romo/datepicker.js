@@ -6,11 +6,12 @@ $.fn.romoDatepicker = function() {
 
 var RomoDatepicker = function(element) {
   this.elem = $(element);
-  this.defaultFormat = 'yyyy-mm-dd'
   this.monthNames = [
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ]
+
+  this.defaultFormat    = 'yyyy-mm-dd'
   this.defaultPrevClass = undefined;
   this.defaultNextClass = undefined;
   this.itemSelector     = 'TD.romo-datepicker-day:not(.disabled)';
