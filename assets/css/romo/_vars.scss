@@ -49,15 +49,41 @@ $bgColorHover:   #f5f5f5;
 $baseBorderColor:  #ccc;
 $altBorderColor:   #fff;
 
-$linkColor:      #08c;
-$linkColorHover: darken($linkColor, 15%);
-
 $inputBgColor:          #fff;
 $inputAltBgColor:       #eee;
 $inputColor:            #444;
 $inputDisabledColor:    #eee;
 $inputFocusColor:       rgba(82, 168, 236, 0.8);
 $inputHighlightBgColor: #3c83c7;
+
+$darkRed:      #e7040f;
+$red:          #ff4136;
+$lightRed:     #ff725c;
+$orange:       #ff6300;
+$gold:         #ffb700;
+$yellow:       #ffde37;
+$lightYellow:  #fbf1a9;
+$purple:       #5e2ca5;
+$lightPurple:  #a463f2;
+$darkPink:     #d5008f;
+$hotPink:      #ff41b4;
+$pink:         #ff80cc;
+$lightPink:    #ffa3d7;
+$darkGreen:    #137752;
+$green:        #19a974;
+$lightGreen:   #9eebcf;
+$navy:         #001b44;
+$darkBlue:     #00449e;
+$blue:         #357edd;
+$lightBlue:    #96ccff;
+$lightestBlue: #cdecff;
+$washedBlue:   #f6fffe;
+$washedGreen:  #e8fdf5;
+$washedYellow: #fffceb;
+$washedRed:    #ffdfdf;
+
+$linkColor:      #08c;
+$linkColorHover: darken($linkColor, 15%);
 
 $btnBorder:                     $baseBorderColor;
 $btnBackground:                 $baseBgColor;
