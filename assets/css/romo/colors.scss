@@ -1,0 +1,158 @@
+@import 'css/romo/vars';
+@import 'css/romo/mixins';
+
+.romo-text-dark-red      { @include text-dark-red(!important);      }
+.romo-text-red           { @include text-red(!important);           }
+.romo-text-light-red     { @include text-light-red(!important);     }
+.romo-text-orange        { @include text-orange(!important);        }
+.romo-text-gold          { @include text-gold(!important);          }
+.romo-text-yellow        { @include text-yellow(!important);        }
+.romo-text-light-yellow  { @include text-light-yellow(!important);  }
+.romo-text-purple        { @include text-purple(!important);        }
+.romo-text-light-purple  { @include text-light-purple(!important);  }
+.romo-text-dark-pink     { @include text-dark-pink(!important);     }
+.romo-text-hot-pink      { @include text-hot-pink(!important);      }
+.romo-text-pink          { @include text-pink(!important);          }
+.romo-text-light-pink    { @include text-light-pink(!important);    }
+.romo-text-dark-green    { @include text-dark-green(!important);    }
+.romo-text-green         { @include text-green(!important);         }
+.romo-text-light-green   { @include text-light-green(!important);   }
+.romo-text-navy          { @include text-navy(!important);          }
+.romo-text-dark-blue     { @include text-dark-blue(!important);     }
+.romo-text-blue          { @include text-blue(!important);          }
+.romo-text-light-blue    { @include text-light-blue(!important);    }
+.romo-text-lightest-blue { @include text-lightest-blue(!important); }
+.romo-text-washed-blue   { @include text-washed-blue(!important);   }
+.romo-text-washed-green  { @include text-washed-green(!important);  }
+.romo-text-washed-yellow { @include text-washed-yellow(!important); }
+.romo-text-washed-red    { @include text-washed-red(!important);    }
+
+.romo-text-dark-red-hover:hover,      a.romo-text-dark-red-hover:hover,      a.romo-text-dark-red-hover:focus      { @include text-dark-red(!important);      }
+.romo-text-red-hover:hover,           a.romo-text-red-hover:hover,           a.romo-text-red-hover:focus           { @include text-red(!important);           }
+.romo-text-light-red-hover:hover,     a.romo-text-light-red-hover:hover,     a.romo-text-light-red-hover:focus     { @include text-light-red(!important);     }
+.romo-text-orange-hover:hover,        a.romo-text-orange-hover:hover,        a.romo-text-orange-hover:focus        { @include text-orange(!important);        }
+.romo-text-gold-hover:hover,          a.romo-text-gold-hover:hover,          a.romo-text-gold-hover:focus          { @include text-gold(!important);          }
+.romo-text-yellow-hover:hover,        a.romo-text-yellow-hover:hover,        a.romo-text-yellow-hover:focus        { @include text-yellow(!important);        }
+.romo-text-light-yellow-hover:hover,  a.romo-text-light-yellow-hover:hover,  a.romo-text-light-yellow-hover:focus  { @include text-light-yellow(!important);  }
+.romo-text-purple-hover:hover,        a.romo-text-purple-hover:hover,        a.romo-text-purple-hover:focus        { @include text-purple(!important);        }
+.romo-text-light-purple-hover:hover,  a.romo-text-light-purple-hover:hover,  a.romo-text-light-purple-hover:focus  { @include text-light-purple(!important);  }
+.romo-text-dark-pink-hover:hover,     a.romo-text-dark-pink-hover:hover,     a.romo-text-dark-pink-hover:focus     { @include text-dark-pink(!important);     }
+.romo-text-hot-pink-hover:hover,      a.romo-text-hot-pink-hover:hover,      a.romo-text-hot-pink-hover:focus      { @include text-hot-pink(!important);      }
+.romo-text-pink-hover:hover,          a.romo-text-pink-hover:hover,          a.romo-text-pink-hover:focus          { @include text-pink(!important);          }
+.romo-text-light-pink-hover:hover,    a.romo-text-light-pink-hover:hover,    a.romo-text-light-pink-hover:focus    { @include text-light-pink(!important);    }
+.romo-text-dark-green-hover:hover,    a.romo-text-dark-green-hover:hover,    a.romo-text-dark-green-hover:focus    { @include text-dark-green(!important);    }
+.romo-text-green-hover:hover,         a.romo-text-green-hover:hover,         a.romo-text-green-hover:focus         { @include text-green(!important);         }
+.romo-text-light-green-hover:hover,   a.romo-text-light-green-hover:hover,   a.romo-text-light-green-hover:focus   { @include text-light-green(!important);   }
+.romo-text-navy-hover:hover,          a.romo-text-navy-hover:hover,          a.romo-text-navy-hover:focus          { @include text-navy(!important);          }
+.romo-text-dark-blue-hover:hover,     a.romo-text-dark-blue-hover:hover,     a.romo-text-dark-blue-hover:focus     { @include text-dark-blue(!important);     }
+.romo-text-blue-hover:hover,          a.romo-text-blue-hover:hover,          a.romo-text-blue-hover:focus          { @include text-blue(!important);          }
+.romo-text-light-blue-hover:hover,    a.romo-text-light-blue-hover:hover,    a.romo-text-light-blue-hover:focus    { @include text-light-blue(!important);    }
+.romo-text-lightest-blue-hover:hover, a.romo-text-lightest-blue-hover:hover, a.romo-text-lightest-blue-hover:focus { @include text-lightest-blue(!important); }
+.romo-text-washed-blue-hover:hover,   a.romo-text-washed-blue-hover:hover,   a.romo-text-washed-blue-hover:focus   { @include text-washed-blue(!important);   }
+.romo-text-washed-green-hover:hover,  a.romo-text-washed-green-hover:hover,  a.romo-text-washed-green-hover:focus  { @include text-washed-green(!important);  }
+.romo-text-washed-yellow-hover:hover, a.romo-text-washed-yellow-hover:hover, a.romo-text-washed-yellow-hover:focus { @include text-washed-yellow(!important); }
+.romo-text-washed-red-hover:hover,    a.romo-text-washed-red-hover:hover,    a.romo-text-washed-red-hover:focus    { @include text-washed-red(!important);    }
+
+.romo-bg-dark-red      { @include bg-dark-red(!important);      }
+.romo-bg-red           { @include bg-red(!important);           }
+.romo-bg-light-red     { @include bg-light-red(!important);     }
+.romo-bg-orange        { @include bg-orange(!important);        }
+.romo-bg-gold          { @include bg-gold(!important);          }
+.romo-bg-yellow        { @include bg-yellow(!important);        }
+.romo-bg-light-yellow  { @include bg-light-yellow(!important);  }
+.romo-bg-purple        { @include bg-purple(!important);        }
+.romo-bg-light-purple  { @include bg-light-purple(!important);  }
+.romo-bg-dark-pink     { @include bg-dark-pink(!important);     }
+.romo-bg-hot-pink      { @include bg-hot-pink(!important);      }
+.romo-bg-pink          { @include bg-pink(!important);          }
+.romo-bg-light-pink    { @include bg-light-pink(!important);    }
+.romo-bg-dark-green    { @include bg-dark-green(!important);    }
+.romo-bg-green         { @include bg-green(!important);         }
+.romo-bg-light-green   { @include bg-light-green(!important);   }
+.romo-bg-navy          { @include bg-navy(!important);          }
+.romo-bg-dark-blue     { @include bg-dark-blue(!important);     }
+.romo-bg-blue          { @include bg-blue(!important);          }
+.romo-bg-light-blue    { @include bg-light-blue(!important);    }
+.romo-bg-lightest-blue { @include bg-lightest-blue(!important); }
+.romo-bg-washed-blue   { @include bg-washed-blue(!important);   }
+.romo-bg-washed-green  { @include bg-washed-green(!important);  }
+.romo-bg-washed-yellow { @include bg-washed-yellow(!important); }
+.romo-bg-washed-red    { @include bg-washed-red(!important);    }
+
+.romo-bg-dark-red-hover:hover,      a.romo-bg-dark-red-hover:hover,      a.romo-bg-dark-red-hover:focus      { @include bg-dark-red(!important);      }
+.romo-bg-red-hover:hover,           a.romo-bg-red-hover:hover,           a.romo-bg-red-hover:focus           { @include bg-red(!important);           }
+.romo-bg-light-red-hover:hover,     a.romo-bg-light-red-hover:hover,     a.romo-bg-light-red-hover:focus     { @include bg-light-red(!important);     }
+.romo-bg-orange-hover:hover,        a.romo-bg-orange-hover:hover,        a.romo-bg-orange-hover:focus        { @include bg-orange(!important);        }
+.romo-bg-gold-hover:hover,          a.romo-bg-gold-hover:hover,          a.romo-bg-gold-hover:focus          { @include bg-gold(!important);          }
+.romo-bg-yellow-hover:hover,        a.romo-bg-yellow-hover:hover,        a.romo-bg-yellow-hover:focus        { @include bg-yellow(!important);        }
+.romo-bg-light-yellow-hover:hover,  a.romo-bg-light-yellow-hover:hover,  a.romo-bg-light-yellow-hover:focus  { @include bg-light-yellow(!important);  }
+.romo-bg-purple-hover:hover,        a.romo-bg-purple-hover:hover,        a.romo-bg-purple-hover:focus        { @include bg-purple(!important);        }
+.romo-bg-light-purple-hover:hover,  a.romo-bg-light-purple-hover:hover,  a.romo-bg-light-purple-hover:focus  { @include bg-light-purple(!important);  }
+.romo-bg-dark-pink-hover:hover,     a.romo-bg-dark-pink-hover:hover,     a.romo-bg-dark-pink-hover:focus     { @include bg-dark-pink(!important);     }
+.romo-bg-hot-pink-hover:hover,      a.romo-bg-hot-pink-hover:hover,      a.romo-bg-hot-pink-hover:focus      { @include bg-hot-pink(!important);      }
+.romo-bg-pink-hover:hover,          a.romo-bg-pink-hover:hover,          a.romo-bg-pink-hover:focus          { @include bg-pink(!important);          }
+.romo-bg-light-pink-hover:hover,    a.romo-bg-light-pink-hover:hover,    a.romo-bg-light-pink-hover:focus    { @include bg-light-pink(!important);    }
+.romo-bg-dark-green-hover:hover,    a.romo-bg-dark-green-hover:hover,    a.romo-bg-dark-green-hover:focus    { @include bg-dark-green(!important);    }
+.romo-bg-green-hover:hover,         a.romo-bg-green-hover:hover,         a.romo-bg-green-hover:focus         { @include bg-green(!important);         }
+.romo-bg-light-green-hover:hover,   a.romo-bg-light-green-hover:hover,   a.romo-bg-light-green-hover:focus   { @include bg-light-green(!important);   }
+.romo-bg-navy-hover:hover,          a.romo-bg-navy-hover:hover,          a.romo-bg-navy-hover:focus          { @include bg-navy(!important);          }
+.romo-bg-dark-blue-hover:hover,     a.romo-bg-dark-blue-hover:hover,     a.romo-bg-dark-blue-hover:focus     { @include bg-dark-blue(!important);     }
+.romo-bg-blue-hover:hover,          a.romo-bg-blue-hover:hover,          a.romo-bg-blue-hover:focus          { @include bg-blue(!important);          }
+.romo-bg-light-blue-hover:hover,    a.romo-bg-light-blue-hover:hover,    a.romo-bg-light-blue-hover:focus    { @include bg-light-blue(!important);    }
+.romo-bg-lightest-blue-hover:hover, a.romo-bg-lightest-blue-hover:hover, a.romo-bg-lightest-blue-hover:focus { @include bg-lightest-blue(!important); }
+.romo-bg-washed-blue-hover:hover,   a.romo-bg-washed-blue-hover:hover,   a.romo-bg-washed-blue-hover:focus   { @include bg-washed-blue(!important);   }
+.romo-bg-washed-green-hover:hover,  a.romo-bg-washed-green-hover:hover,  a.romo-bg-washed-green-hover:focus  { @include bg-washed-green(!important);  }
+.romo-bg-washed-yellow-hover:hover, a.romo-bg-washed-yellow-hover:hover, a.romo-bg-washed-yellow-hover:focus { @include bg-washed-yellow(!important); }
+.romo-bg-washed-red-hover:hover,    a.romo-bg-washed-red-hover:hover,    a.romo-bg-washed-red-hover:focus    { @include bg-washed-red(!important);    }
+
+.romo-border-dark-red      { @include border-dark-red(!important);      }
+.romo-border-red           { @include border-red(!important);           }
+.romo-border-light-red     { @include border-light-red(!important);     }
+.romo-border-orange        { @include border-orange(!important);        }
+.romo-border-gold          { @include border-gold(!important);          }
+.romo-border-yellow        { @include border-yellow(!important);        }
+.romo-border-light-yellow  { @include border-light-yellow(!important);  }
+.romo-border-purple        { @include border-purple(!important);        }
+.romo-border-light-purple  { @include border-light-purple(!important);  }
+.romo-border-dark-pink     { @include border-dark-pink(!important);     }
+.romo-border-hot-pink      { @include border-hot-pink(!important);      }
+.romo-border-pink          { @include border-pink(!important);          }
+.romo-border-light-pink    { @include border-light-pink(!important);    }
+.romo-border-dark-green    { @include border-dark-green(!important);    }
+.romo-border-green         { @include border-green(!important);         }
+.romo-border-light-green   { @include border-light-green(!important);   }
+.romo-border-navy          { @include border-navy(!important);          }
+.romo-border-dark-blue     { @include border-dark-blue(!important);     }
+.romo-border-blue          { @include border-blue(!important);          }
+.romo-border-light-blue    { @include border-light-blue(!important);    }
+.romo-border-lightest-blue { @include border-lightest-blue(!important); }
+.romo-border-washed-blue   { @include border-washed-blue(!important);   }
+.romo-border-washed-green  { @include border-washed-green(!important);  }
+.romo-border-washed-yellow { @include border-washed-yellow(!important); }
+.romo-border-washed-red    { @include border-washed-red(!important);    }
+
+.romo-border-dark-red-hover:hover,      a.romo-border-dark-red-hover:hover,      a.romo-border-dark-red-hover:focus      { @include border-dark-red(!important);      }
+.romo-border-red-hover:hover,           a.romo-border-red-hover:hover,           a.romo-border-red-hover:focus           { @include border-red(!important);           }
+.romo-border-light-red-hover:hover,     a.romo-border-light-red-hover:hover,     a.romo-border-light-red-hover:focus     { @include border-light-red(!important);     }
+.romo-border-orange-hover:hover,        a.romo-border-orange-hover:hover,        a.romo-border-orange-hover:focus        { @include border-orange(!important);        }
+.romo-border-gold-hover:hover,          a.romo-border-gold-hover:hover,          a.romo-border-gold-hover:focus          { @include border-gold(!important);          }
+.romo-border-yellow-hover:hover,        a.romo-border-yellow-hover:hover,        a.romo-border-yellow-hover:focus        { @include border-yellow(!important);        }
+.romo-border-light-yellow-hover:hover,  a.romo-border-light-yellow-hover:hover,  a.romo-border-light-yellow-hover:focus  { @include border-light-yellow(!important);  }
+.romo-border-purple-hover:hover,        a.romo-border-purple-hover:hover,        a.romo-border-purple-hover:focus        { @include border-purple(!important);        }
+.romo-border-light-purple-hover:hover,  a.romo-border-light-purple-hover:hover,  a.romo-border-light-purple-hover:focus  { @include border-light-purple(!important);  }
+.romo-border-dark-pink-hover:hover,     a.romo-border-dark-pink-hover:hover,     a.romo-border-dark-pink-hover:focus     { @include border-dark-pink(!important);     }
+.romo-border-hot-pink-hover:hover,      a.romo-border-hot-pink-hover:hover,      a.romo-border-hot-pink-hover:focus      { @include border-hot-pink(!important);      }
+.romo-border-pink-hover:hover,          a.romo-border-pink-hover:hover,          a.romo-border-pink-hover:focus          { @include border-pink(!important);          }
+.romo-border-light-pink-hover:hover,    a.romo-border-light-pink-hover:hover,    a.romo-border-light-pink-hover:focus    { @include border-light-pink(!important);    }
+.romo-border-dark-green-hover:hover,    a.romo-border-dark-green-hover:hover,    a.romo-border-dark-green-hover:focus    { @include border-dark-green(!important);    }
+.romo-border-green-hover:hover,         a.romo-border-green-hover:hover,         a.romo-border-green-hover:focus         { @include border-green(!important);         }
+.romo-border-light-green-hover:hover,   a.romo-border-light-green-hover:hover,   a.romo-border-light-green-hover:focus   { @include border-light-green(!important);   }
+.romo-border-navy-hover:hover,          a.romo-border-navy-hover:hover,          a.romo-border-navy-hover:focus          { @include border-navy(!important);          }
+.romo-border-dark-blue-hover:hover,     a.romo-border-dark-blue-hover:hover,     a.romo-border-dark-blue-hover:focus     { @include border-dark-blue(!important);     }
+.romo-border-blue-hover:hover,          a.romo-border-blue-hover:hover,          a.romo-border-blue-hover:focus          { @include border-blue(!important);          }
+.romo-border-light-blue-hover:hover,    a.romo-border-light-blue-hover:hover,    a.romo-border-light-blue-hover:focus    { @include border-light-blue(!important);    }
+.romo-border-lightest-blue-hover:hover, a.romo-border-lightest-blue-hover:hover, a.romo-border-lightest-blue-hover:focus { @include border-lightest-blue(!important); }
+.romo-border-washed-blue-hover:hover,   a.romo-border-washed-blue-hover:hover,   a.romo-border-washed-blue-hover:focus   { @include border-washed-blue(!important);   }
+.romo-border-washed-green-hover:hover,  a.romo-border-washed-green-hover:hover,  a.romo-border-washed-green-hover:focus  { @include border-washed-green(!important);  }
+.romo-border-washed-yellow-hover:hover, a.romo-border-washed-yellow-hover:hover, a.romo-border-washed-yellow-hover:focus { @include border-washed-yellow(!important); }
+.romo-border-washed-red-hover:hover,    a.romo-border-washed-red-hover:hover,    a.romo-border-washed-red-hover:focus    { @include border-washed-red(!important);    }
