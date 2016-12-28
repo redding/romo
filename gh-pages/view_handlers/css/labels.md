@@ -170,10 +170,10 @@ Use these as an alternative to the default styles and to add color emphasis to l
         <td><code>romo-label romo-label-alt</code></td>
       </tr>
       <tr>
-        <td><span class="romo-label romo-label-primary romo-label-large">Primary</span></td>
-        <td><span class="romo-label romo-label-primary ">Primary</span></td>
-        <td><span class="romo-label romo-label-primary romo-label-small">Primary</span></td>
-        <td><code>romo-label romo-label-primary</code></td>
+        <td><span class="romo-label romo-label-inverse romo-label-large">Inverse</span></td>
+        <td><span class="romo-label romo-label-inverse ">Inverse</span></td>
+        <td><span class="romo-label romo-label-inverse romo-label-small">Inverse</span></td>
+        <td><code>romo-label romo-label-inverse</code></td>
       </tr>
       <tr>
         <td><span class="romo-label romo-label-warning romo-label-large">Warning</span></td>
@@ -198,12 +198,6 @@ Use these as an alternative to the default styles and to add color emphasis to l
         <td><span class="romo-label romo-label-success ">Success</span></td>
         <td><span class="romo-label romo-label-success romo-label-small">Success</span></td>
         <td><code>romo-label romo-label-success</code></td>
-      </tr>
-      <tr>
-        <td><span class="romo-label romo-label-inverse romo-label-large">Inverse</span></td>
-        <td><span class="romo-label romo-label-inverse ">Inverse</span></td>
-        <td><span class="romo-label romo-label-inverse romo-label-small">Inverse</span></td>
-        <td><code>romo-label romo-label-inverse</code></td>
       </tr>
     </tbody>
   </table>
