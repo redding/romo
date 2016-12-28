@@ -6,6 +6,7 @@ require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
 
 require 'pathname'
 require 'deas'
+require 'deas-erubis'
 require 'dassets'
 require 'dassets-sass'
 require 'dassets-erb'
@@ -61,19 +62,34 @@ class RomoDocs
   router RomoDocsRouter
 
   init do
+    root   Utils.app_root
+    logger Logger.new($stdout)
+
+    show_exceptions true
+    verbose_logging true
+
+    ts = ::Deas::TemplateSource.new(Utils.views_path).tap do |s|
+      s.engine('erb', Deas::Erubis::TemplateEngine, {
+        'cache'   => false,
+        'helpers' => [TemplateHelpers]
+      })
+    end
+    template_source ts
+
     Romo::Dassets.configure!
 
     Dassets.configure do |c|
-      c.cache Dassets::Cache::MemCache.new
-      c.base_url self.base_url
+      c.fingerprint_cache ::Dassets::Cache::MemCache.new
+
+      c.base_url self.router.base_url
 
       c.source Utils.app_path('assets').to_s do |s|
         s.filter{ |paths| paths.reject{ |p| File.basename(p) =~ /^_.*\.scss$/ } }
         s.engine 'erb',  Dassets::Erb::Engine
         s.engine 'scss', Dassets::Sass::Engine, {
-          :syntax => 'scss',
+          :syntax       => 'scss',
           :output_style => 'compressed',
-          :load_paths => [Romo.gem_assets_path]
+          :load_paths   => [Romo.gem_assets_path]
         }
       end
 
@@ -98,16 +114,6 @@ class RomoDocs
     Utils.require_rb 'view_handlers'
   end
 
-  logger     proc{ Logger.new($stdout) }
-  root       proc{ Utils.app_root }
-  views_root proc{ Utils.app_path('view_handlers') }
-
-  show_exceptions  true
-  reload_templates true
-
-  module TemplateHelpers; end
-  template_helpers TemplateHelpers
-
   private
 
   module Utils
@@ -126,16 +132,28 @@ class RomoDocs
       @app_root ||= Pathname.new(File.expand_path('..', __FILE__))
     end
 
+    def self.views_path
+      @views_path ||= 'view_handlers'
+    end
+
+    def self.views_root
+      @views_root ||= self.app_root.join(self.views_path)
+    end
+
   end
 
   module TemplateHelpers
 
+    def h(html)
+      Rack::Utils.escape_html(html)
+    end
+
     def kramdown(template_path)
-      text = File.read(self.sinatra_call.settings.views.join(template_path))
+      text = File.read(Utils.views_root.join(template_path))
       opts = {
-        :input => 'GFM',
+        :input                => 'GFM',
         :coderay_line_numbers => nil,
-        :coderay_css => :class
+        :coderay_css          => :class
       }
       Kramdown::Document.new(text, opts).to_html
     end

@@ -31,24 +31,19 @@ module ViewHandlers::Layouts
     end
 
     def stylesheet_urls
-      @stylesheet_urls ||= self.class.stylesheets.map do |style_path|
-        RomoDocsRouter.prepend_base_url(Dassets[style_path].href)
-      end
+      @stylesheet_urls ||= self.class.stylesheets.map{ |path| ::Dassets[path].url }
     end
 
     def javascript_urls
-      self.class.javascripts
-      @javascript_urls ||= self.class.javascripts.map do |script_path|
-        RomoDocsRouter.prepend_base_url(Dassets[script_path].href)
-      end
+      @javascript_urls ||= self.class.javascripts.map{ |path| ::Dassets[path].url }
     end
 
     def favicon_url
-      RomoDocsRouter.prepend_base_url(Dassets['img/romo-favicon-rocket.png'].href)
+      @favicon_url ||= Dassets['img/romo-favicon-rocket.png'].url
     end
 
     def logo_url
-      RomoDocsRouter.prepend_base_url(Dassets['img/romo-logo.png'].href)
+      @logo_url ||= Dassets['img/romo-logo.png'].url
     end
 
   end

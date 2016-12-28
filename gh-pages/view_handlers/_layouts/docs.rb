@@ -30,7 +30,7 @@ module ViewHandlers::Layouts
       end
 
       def request_path_info
-        self.request.path_info
+        request.path_info
       end
 
     end
