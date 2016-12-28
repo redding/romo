@@ -92,83 +92,83 @@ $washedBlue:   #f6fffe;
 $linkColor:      $blue;
 $linkColorHover: darken($linkColor, 15%);
 
-$btnBorder:                     $baseBorderColor;
-$btnBackground:                 darken($baseBgColor, 3%);
-$btnBackgroundHighlight:        darken($btnBackground, 10%);
-$btnColor:                      $baseColor;
-$btnColorHover:                 #333;
+$btnBorder:             $baseBorderColor;
+$btnBg:                 darken($baseBgColor, 3%);
+$btnBgHighlight:        darken($btnBg, 10%);
+$btnColor:              $baseColor;
+$btnColorHover:         #333;
 
-$btnAltBackground:              darken($altBgColor, 4%);
-$btnAltBackgroundHighlight:     darken($btnAltBackground, 10%);
-$btnAltColor:                   $btnColor;
+$btnAltBg:              darken($altBgColor, 4%);
+$btnAltBgHighlight:     darken($btnAltBg, 10%);
+$btnAltColor:           $btnColor;
 
-$btnInverseBackground:          $inverseBgColor;
-$btnInverseBackgroundHighlight: darken($btnInverseBackground, 10%);
-$btnInverseColor:               #fff;
+$btnInverseBg:          $inverseBgColor;
+$btnInverseBgHighlight: darken($btnInverseBg, 10%);
+$btnInverseColor:       #fff;
 
-$btnWarningBackground:          $orange;
-$btnWarningBackgroundHighlight: darken($btnWarningBackground, 5%);
-$btnWarningColor:               #fff;
+$btnWarningBg:          $orange;
+$btnWarningBgHighlight: darken($btnWarningBg, 5%);
+$btnWarningColor:       #fff;
 
-$btnDangerBackground:           $red;
-$btnDangerBackgroundHighlight:  darken($btnDangerBackground, 10%);
-$btnDangerColor:                #fff;
+$btnDangerBg:           $red;
+$btnDangerBgHighlight:  darken($btnDangerBg, 10%);
+$btnDangerColor:        #fff;
 
-$btnInfoBackground:             $blue;
-$btnInfoBackgroundHighlight:    darken($btnInfoBackground, 10%);
-$btnInfoColor:                  #fff;
+$btnInfoBg:             $blue;
+$btnInfoBgHighlight:    darken($btnInfoBg, 10%);
+$btnInfoColor:          #fff;
 
-$btnSuccessBackground:          $green;
-$btnSuccessBackgroundHighlight: darken($btnSuccessBackground, 10%);
-$btnSuccessColor:               #fff;
+$btnSuccessBg:          $green;
+$btnSuccessBgHighlight: darken($btnSuccessBg, 10%);
+$btnSuccessColor:       #fff;
 
-$baseText:               $baseColor;
-$baseTextHover:          $baseText;
-$baseBackground:         $baseBgColor;
-$baseBackgroundHover:    $baseBackground;
-$baseBorder:             $baseBorderColor;
+$baseText:         $baseColor;
+$baseTextHover:    $baseText;
+$baseBg:           $baseBgColor;
+$baseBgHover:      $baseBg;
+$baseBorder:       $baseBorderColor;
 
-$altText:                $altColor;
-$altTextHover:           $altColor;
-$altBackground:          $altBgColor;
-$altBackgroundHover:     $altBackground;
-$altBorder:              $altBorderColor;
+$altText:          $altColor;
+$altTextHover:     $altColor;
+$altBg:            $altBgColor;
+$altBgHover:       $altBg;
+$altBorder:        $altBorderColor;
 
-$inverseText:            $inverseColor;
-$inverseTextHover:       darken($inverseText, 10%);
-$inverseBackground:      $inverseBgColor;
-$inverseBackgroundHover: darken($inverseBackground, 5%);
-$inverseBorder:          darken(adjust_hue($inverseBackground, -10), 7%);
+$inverseText:      $inverseColor;
+$inverseTextHover: darken($inverseText, 10%);
+$inverseBg:        $inverseBgColor;
+$inverseBgHover:   darken($inverseBg, 5%);
+$inverseBorder:    darken(adjust_hue($inverseBg, -10), 7%);
 
-$mutedText:              $disabledColor;
-$mutedTextHover:         darken($mutedText, 10%);
-$mutedBackground:        $disabledBgColor;
-$mutedBackgroundHover:   darken($mutedBackground, 5%);
-$mutedBorder:            darken(adjust_hue($mutedBackground, -10), 7%);
+$mutedText:        $disabledColor;
+$mutedTextHover:   darken($mutedText, 10%);
+$mutedBg:          $disabledBgColor;
+$mutedBgHover:     darken($mutedBg, 5%);
+$mutedBorder:      darken(adjust_hue($mutedBg, -10), 7%);
 
-$warningText:            darken($orange, 5%);
-$warningTextHover:       darken($warningText, 10%);
-$warningBackground:      $pastelYellow;
-$warningBackgroundHover: darken($warningBackground, 5%);
-$warningBorder:          darken(adjust_hue($warningBackground, -10), 7%);
+$warningText:      darken($orange, 5%);
+$warningTextHover: darken($warningText, 10%);
+$warningBg:        $pastelYellow;
+$warningBgHover:   darken($warningBg, 5%);
+$warningBorder:    darken(adjust_hue($warningBg, -10), 7%);
 
-$errorText:              darken($red, 5%);
-$errorTextHover:         darken($errorText, 10%);
-$errorBackground:        $pastelRed;
-$errorBackgroundHover:   darken($errorBackground, 5%);
-$errorBorder:            darken(adjust_hue($errorBackground, -10), 7%);
+$dangerText:       darken($red, 5%);
+$dangerTextHover:  darken($dangerText, 10%);
+$dangerBg:         $pastelRed;
+$dangerBgHover:    darken($dangerBg, 5%);
+$dangerBorder:     darken(adjust_hue($dangerBg, -10), 7%);
 
-$infoText:               darken($blue, 5%);
-$infoTextHover:          darken($infoText, 10%);
-$infoBackground:         $pastelBlue;
-$infoBackgroundHover:    darken($infoBackground, 5%);
-$infoBorder:             darken(adjust_hue($infoBackground, -10), 7%);
+$infoText:         darken($blue, 5%);
+$infoTextHover:    darken($infoText, 10%);
+$infoBg:           $pastelBlue;
+$infoBgHover:      darken($infoBg, 5%);
+$infoBorder:       darken(adjust_hue($infoBg, -10), 7%);
 
-$successText:            darken($green, 5%);
-$successTextHover:       darken($successText, 10%);
-$successBackground:      $pastelGreen;
-$successBackgroundHover: darken($successBackground, 5%);
-$successBorder:          darken(adjust_hue($successBackground, -10), 7%);
+$successText:      darken($green, 5%);
+$successTextHover: darken($successText, 10%);
+$successBg:        $pastelGreen;
+$successBgHover:   darken($successBg, 5%);
+$successBorder:    darken(adjust_hue($successBg, -10), 7%);
 
 $tabBgColor:       $altBgColor;
 $tabBgColorHover:  darken($altBgColor, 5%);

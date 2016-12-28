@@ -183,9 +183,9 @@ Use these as an alternative to the default styles and to add color emphasis to l
       </tr>
       <tr>
         <td><span class="romo-label romo-label-danger romo-label-large">Danger</span></td>
-        <td><span class="romo-label romo-label-danger ">Danger</span></td>
-        <td><span class="romo-label romo-label-error romo-label-small">Danger</span></td>
-        <td><code>romo-label romo-label-danger</code><br/>Or, <code>romo-label romo-label-error</code></td>
+        <td><span class="romo-label romo-label-danger">Danger</span></td>
+        <td><span class="romo-label romo-label-danger romo-label-small">Danger</span></td>
+        <td><code>romo-label romo-label-danger</code></td>
       </tr>
       <tr>
         <td><span class="romo-label romo-label-info romo-label-large">Info</span></td>

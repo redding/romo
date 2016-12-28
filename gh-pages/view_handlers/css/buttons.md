@@ -223,9 +223,9 @@ Use these as an alternative to the default styles and to add color emphasis to b
         <td><button href="#" class="romo-btn romo-btn-danger romo-btn-large disabled">Danger</button></td>
         <td><button href="#" class="romo-btn romo-btn-danger romo-btn-large active">Danger</button></td>
         <td><button href="#" class="romo-btn romo-btn-danger romo-btn-large">Danger</button></td>
-        <td><button href="#" class="romo-btn romo-btn-error" >Danger</button></td>
-        <td><button href="#" class="romo-btn romo-btn-error romo-btn-small" >Danger</button></td>
-        <td><code>romo-btn romo-btn-danger</code><br/>Or, <code>romo-btn romo-btn-error</code></td>
+        <td><button href="#" class="romo-btn romo-btn-danger">Danger</button></td>
+        <td><button href="#" class="romo-btn romo-btn-danger romo-btn-small" >Danger</button></td>
+        <td><code>romo-btn romo-btn-danger</code></td>
       </tr>
       <tr>
         <td><button href="#" class="romo-btn romo-btn-info romo-btn-large disabled">Info</button></td>
