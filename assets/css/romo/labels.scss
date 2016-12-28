@@ -5,7 +5,7 @@
   display:          inline-block;
   font-size:        $baseFontSize;
   line-height:      $baseLineHeight;
-  background-color: $btnAltBgHighlight;
+  background-color: $btnAltBgHover;
   color:            $btnAltColor;
 
   @include label-pad($baseLineHeight);

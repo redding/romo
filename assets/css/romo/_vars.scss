@@ -92,35 +92,39 @@ $washedBlue:   #f6fffe;
 $linkColor:      $blue;
 $linkColorHover: darken($linkColor, 15%);
 
-$btnBorder:             $baseBorderColor;
-$btnBg:                 darken($baseBgColor, 3%);
-$btnBgHighlight:        darken($btnBg, 10%);
-$btnColor:              $baseColor;
-$btnColorHover:         #333;
+/* btn emphasis colors */
 
-$btnAltBg:              darken($altBgColor, 4%);
-$btnAltBgHighlight:     darken($btnAltBg, 10%);
-$btnAltColor:           $btnColor;
+$btnBorder:         $baseBorderColor;
+$btnBg:             darken($baseBgColor, 3%);
+$btnBgHover:        darken($btnBg, 10%);
+$btnColor:          $baseColor;
+$btnColorHover:     #333;
 
-$btnInverseBg:          $inverseBgColor;
-$btnInverseBgHighlight: darken($btnInverseBg, 10%);
-$btnInverseColor:       #fff;
+$btnAltBg:          darken($altBgColor, 4%);
+$btnAltBgHover:     darken($btnAltBg, 10%);
+$btnAltColor:       $btnColor;
 
-$btnWarningBg:          $orange;
-$btnWarningBgHighlight: darken($btnWarningBg, 5%);
-$btnWarningColor:       #fff;
+$btnInverseBg:      $inverseBgColor;
+$btnInverseBgHover: darken($btnInverseBg, 10%);
+$btnInverseColor:   #fff;
 
-$btnDangerBg:           $red;
-$btnDangerBgHighlight:  darken($btnDangerBg, 10%);
-$btnDangerColor:        #fff;
+$btnWarningBg:      $orange;
+$btnWarningBgHover: darken($btnWarningBg, 5%);
+$btnWarningColor:   #fff;
 
-$btnInfoBg:             $blue;
-$btnInfoBgHighlight:    darken($btnInfoBg, 10%);
-$btnInfoColor:          #fff;
+$btnDangerBg:       $red;
+$btnDangerBgHover:  darken($btnDangerBg, 10%);
+$btnDangerColor:    #fff;
 
-$btnSuccessBg:          $green;
-$btnSuccessBgHighlight: darken($btnSuccessBg, 10%);
-$btnSuccessColor:       #fff;
+$btnInfoBg:         $blue;
+$btnInfoBgHover:    darken($btnInfoBg, 10%);
+$btnInfoColor:      #fff;
+
+$btnSuccessBg:      $green;
+$btnSuccessBgHover: darken($btnSuccessBg, 10%);
+$btnSuccessColor:   #fff;
+
+/* text emphasis colors */
 
 $baseText:         $baseColor;
 $baseTextHover:    $baseText;

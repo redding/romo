@@ -9,7 +9,7 @@ button.romo-btn,
   @include align-center;
   @include align-middle;
 
-  @include button-bg($btnBg, $btnBgHighlight, $btnColor);
+  @include button-bg($btnBg, $btnBgHover, $btnColor);
   @include border1;
   border-color: $btnBorder;
   border-bottom-color: darken($btnBorder, 10%);
@@ -81,12 +81,12 @@ input[type="button"].romo-btn-block,
 
 /* implicit colored buttons */
 
-a.romo-btn.romo-btn-alt,     button.romo-btn.romo-btn-alt,     .romo-btn.romo-btn-alt     { @include button-bg($btnAltBg,     $btnAltBgHighlight,     $btnAltColor);     }
-a.romo-btn.romo-btn-inverse, button.romo-btn.romo-btn-inverse, .romo-btn.romo-btn-inverse { @include button-bg($btnInverseBg, $btnInverseBgHighlight, $btnInverseColor); }
-a.romo-btn.romo-btn-warning, button.romo-btn.romo-btn-warning, .romo-btn.romo-btn-warning { @include button-bg($btnWarningBg, $btnWarningBgHighlight, $btnWarningColor); }
-a.romo-btn.romo-btn-danger,  button.romo-btn.romo-btn-danger,  .romo-btn.romo-btn-danger  { @include button-bg($btnDangerBg,  $btnDangerBgHighlight,  $btnDangerColor);  }
-a.romo-btn.romo-btn-info,    button.romo-btn.romo-btn-info,    .romo-btn.romo-btn-info    { @include button-bg($btnInfoBg,    $btnInfoBgHighlight,    $btnInfoColor);    }
-a.romo-btn.romo-btn-success, button.romo-btn.romo-btn-success, .romo-btn.romo-btn-success { @include button-bg($btnSuccessBg, $btnSuccessBgHighlight, $btnSuccessColor); }
+a.romo-btn.romo-btn-alt,     button.romo-btn.romo-btn-alt,     .romo-btn.romo-btn-alt     { @include button-bg($btnAltBg,     $btnAltBgHover,     $btnAltColor);     }
+a.romo-btn.romo-btn-inverse, button.romo-btn.romo-btn-inverse, .romo-btn.romo-btn-inverse { @include button-bg($btnInverseBg, $btnInverseBgHover, $btnInverseColor); }
+a.romo-btn.romo-btn-warning, button.romo-btn.romo-btn-warning, .romo-btn.romo-btn-warning { @include button-bg($btnWarningBg, $btnWarningBgHover, $btnWarningColor); }
+a.romo-btn.romo-btn-danger,  button.romo-btn.romo-btn-danger,  .romo-btn.romo-btn-danger  { @include button-bg($btnDangerBg,  $btnDangerBgHover,  $btnDangerColor);  }
+a.romo-btn.romo-btn-info,    button.romo-btn.romo-btn-info,    .romo-btn.romo-btn-info    { @include button-bg($btnInfoBg,    $btnInfoBgHover,    $btnInfoColor);    }
+a.romo-btn.romo-btn-success, button.romo-btn.romo-btn-success, .romo-btn.romo-btn-success { @include button-bg($btnSuccessBg, $btnSuccessBgHover, $btnSuccessColor); }
 
 /* link buttons */
 
