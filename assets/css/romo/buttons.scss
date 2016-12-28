@@ -82,9 +82,9 @@ input[type="button"].romo-btn-block,
 a.romo-btn.romo-btn-alt,
 button.romo-btn.romo-btn-alt,
 .romo-btn.romo-btn-alt     { @include button-bg($btnAltBackground,     $btnAltBackgroundHighlight,     $btnAltColor); }
-a.romo-btn.romo-btn-primary,
-button.romo-btn.romo-btn-primary,
-.romo-btn.romo-btn-primary { @include button-bg($btnPrimaryBackground, $btnPrimaryBackgroundHighlight, $btnPrimaryColor); }
+a.romo-btn.romo-btn-inverse,
+button.romo-btn.romo-btn-inverse,
+.romo-btn.romo-btn-inverse { @include button-bg($btnInverseBackground, $btnInverseBackgroundHighlight, $btnInverseColor); }
 a.romo-btn.romo-btn-warning,
 button.romo-btn.romo-btn-warning,
 .romo-btn.romo-btn-warning { @include button-bg($btnWarningBackground, $btnWarningBackgroundHighlight, $btnWarningColor); }
@@ -100,9 +100,6 @@ button.romo-btn.romo-btn-info,
 a.romo-btn.romo-btn-success,
 button.romo-btn.romo-btn-success,
 .romo-btn.romo-btn-success { @include button-bg($btnSuccessBackground, $btnSuccessBackgroundHighlight, $btnSuccessColor); }
-a.romo-btn.romo-btn-inverse,
-button.romo-btn.romo-btn-inverse,
-.romo-btn.romo-btn-inverse { @include button-bg($btnInverseBackground, $btnInverseBackgroundHighlight, $btnInverseColor); }
 
 a.romo-btn.romo-btn-link,
 button.romo-btn.romo-btn-link,

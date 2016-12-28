@@ -204,12 +204,12 @@ Use these as an alternative to the default styles and to add color emphasis to b
         <td><code>romo-btn romo-btn-alt</code></td>
       </tr>
       <tr>
-        <td><button href="#" class="romo-btn romo-btn-primary romo-btn-large disabled">Primary</button></td>
-        <td><button href="#" class="romo-btn romo-btn-primary romo-btn-large active">Primary</button></td>
-        <td><button href="#" class="romo-btn romo-btn-primary romo-btn-large">Primary</button></td>
-        <td><button href="#" class="romo-btn romo-btn-primary">Primary</button></td>
-        <td><button href="#" class="romo-btn romo-btn-primary romo-btn-small">Primary</button></td>
-        <td><code>romo-btn romo-btn-primary</code></td>
+        <td><button href="#" class="romo-btn romo-btn-inverse romo-btn-large disabled">Inverse</button></td>
+        <td><button href="#" class="romo-btn romo-btn-inverse romo-btn-large active">Inverse</button></td>
+        <td><button href="#" class="romo-btn romo-btn-inverse romo-btn-large">Inverse</button></td>
+        <td><button href="#" class="romo-btn romo-btn-inverse">Inverse</button></td>
+        <td><button href="#" class="romo-btn romo-btn-inverse romo-btn-small">Inverse</button></td>
+        <td><code>romo-btn romo-btn-inverse</code></td>
       </tr>
       <tr>
         <td><button href="#" class="romo-btn romo-btn-warning romo-btn-large disabled">Warning</button></td>
@@ -242,14 +242,6 @@ Use these as an alternative to the default styles and to add color emphasis to b
         <td><button href="#" class="romo-btn romo-btn-success">Success</button></td>
         <td><button href="#" class="romo-btn romo-btn-success romo-btn-small">Success</button></td>
         <td><code>romo-btn romo-btn-success</code></td>
-      </tr>
-      <tr>
-        <td><button href="#" class="romo-btn romo-btn-inverse romo-btn-large disabled">Inverse</button></td>
-        <td><button href="#" class="romo-btn romo-btn-inverse romo-btn-large active">Inverse</button></td>
-        <td><button href="#" class="romo-btn romo-btn-inverse romo-btn-large">Inverse</button></td>
-        <td><button href="#" class="romo-btn romo-btn-inverse">Inverse</button></td>
-        <td><button href="#" class="romo-btn romo-btn-inverse romo-btn-small">Inverse</button></td>
-        <td><code>romo-btn romo-btn-inverse</code></td>
       </tr>
       <tr>
         <td><button href="#" class="romo-btn romo-btn-link romo-btn-large disabled">Link</button></td>

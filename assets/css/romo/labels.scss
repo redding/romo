@@ -31,11 +31,10 @@
 
 .romo-label-block { display: block; width: 100%; }
 
-.romo-label.romo-label-alt     { background-color: $btnBackground;                 color: $btnColor; }
-.romo-label.romo-label-primary { background-color: $btnPrimaryBackgroundHighlight; color: $btnPrimaryColor; }
-.romo-label.romo-label-warning { background-color: $btnWarningBackgroundHighlight; color: $btnWarningColor; }
+.romo-label.romo-label-alt     { background-color: $btnBackground;        color: $btnColor; }
+.romo-label.romo-label-inverse { background-color: $btnInverseBackground; color: $btnInverseColor; }
+.romo-label.romo-label-warning { background-color: $btnWarningBackground; color: $btnWarningColor; }
 .romo-label.romo-label-error,
-.romo-label.romo-label-danger  { background-color: $btnDangerBackgroundHighlight;  color: $btnDangerColor; }
-.romo-label.romo-label-info    { background-color: $btnInfoBackgroundHighlight;    color: $btnInfoColor; }
-.romo-label.romo-label-success { background-color: $btnSuccessBackgroundHighlight; color: $btnSuccessColor; }
-.romo-label.romo-label-inverse { background-color: $btnInverseBackgroundHighlight; color: $btnInverseColor; }
+.romo-label.romo-label-danger  { background-color: $btnDangerBackground;  color: $btnDangerColor; }
+.romo-label.romo-label-info    { background-color: $btnInfoBackground;    color: $btnInfoColor; }
+.romo-label.romo-label-success { background-color: $btnSuccessBackground; color: $btnSuccessColor; }

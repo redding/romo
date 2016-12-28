@@ -360,18 +360,14 @@
 /* Buttons */
 /* ------- */
 
-@mixin button-bg($start, $end, $text) {
+@mixin button-bg($bg, $hover, $text) {
+  background-color: $bg;
   color: $text;
-  border-color: $end $end darken($end, 10%);
+  border-color: $hover $hover darken($hover, 10%);
 
-  background-color: mix($start, $end, 60%);
-  *background-color: $end; /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  /* in these cases the gradient won't cover the background, so we override */
   &:hover, &:focus, &.active, &:active, &.disabled, &[disabled] {
     color: $text;
-    background-color: $end;
-    *background-color: darken($end, 5%);
+    background-color: $hover;
   }
 }
 
