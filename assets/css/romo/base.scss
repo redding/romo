@@ -236,7 +236,7 @@ h3 { @include text1; }
 .romo-text-alt         { @include text-alt(!important); }
 .romo-text-muted       { @include text-muted(!important); }
 .romo-text-warning     { @include text-warning(!important); }
-.romo-text-error       { @include text-error(!important); }
+.romo-text-danger      { @include text-danger(!important); }
 .romo-text-info        { @include text-info(!important); }
 .romo-text-success     { @include text-success(!important); }
 .romo-text-inverse     { @include text-inverse(!important); }
@@ -253,8 +253,8 @@ h3 { @include text1; }
 .romo-text-warning-hover:hover, a.romo-text-warning:hover, a.romo-text-warning:focus {
   @include text-warning-hover(!important);
 }
-.romo-text-error-hover:hover, a.romo-text-error:hover, a.romo-text-error:focus {
-  @include text-error-hover(!important);
+.romo-text-danger-hover:hover, a.romo-text-danger:hover, a.romo-text-danger:focus {
+  @include text-danger-hover(!important);
 }
 .romo-text-info-hover:hover, a.romo-text-info:hover, a.romo-text-info:focus {
   @include text-info-hover(!important);
@@ -270,7 +270,7 @@ h3 { @include text1; }
 .romo-bg-alt     { @include bg-alt(!important); }
 .romo-bg-muted   { @include bg-muted(!important); }
 .romo-bg-warning { @include bg-warning(!important); }
-.romo-bg-error   { @include bg-error(!important); }
+.romo-bg-danger  { @include bg-danger(!important); }
 .romo-bg-info    { @include bg-info(!important); }
 .romo-bg-success { @include bg-success(!important); }
 .romo-bg-inverse { @include bg-inverse(!important); }
@@ -287,8 +287,8 @@ h3 { @include text1; }
 .romo-bg-warning-hover:hover, a.romo-bg-warning:hover, a.romo-bg-warning:focus {
   @include bg-warning-hover(!important);
 }
-.romo-bg-error-hover:hover, a.romo-bg-error:hover, a.romo-bg-error:focus {
-  @include bg-error-hover(!important);
+.romo-bg-danger-hover:hover, a.romo-bg-danger:hover, a.romo-bg-danger:focus {
+  @include bg-danger-hover(!important);
 }
 .romo-bg-info-hover:hover, a.romo-bg-info:hover, a.romo-bg-info:focus {
   @include bg-info-hover(!important);
@@ -302,7 +302,7 @@ h3 { @include text1; }
 
 .romo-border-muted   { @include border-muted(!important); }
 .romo-border-warning { @include border-warning(!important); }
-.romo-border-error   { @include border-error(!important); }
+.romo-border-danger  { @include border-danger(!important); }
 .romo-border-info    { @include border-info(!important); }
 .romo-border-success { @include border-success(!important); }
 .romo-border-inverse { @include border-inverse(!important); }
@@ -313,8 +313,8 @@ h3 { @include text1; }
 .romo-border-warning-hover:hover, a.romo-border-warning:hover, a.romo-border-warning:focus {
   @include border-warning(!important);
 }
-.romo-border-error-hover:hover, a.romo-border-error:hover, a.romo-border-error:focus {
-  @include border-error(!important);
+.romo-border-danger-hover:hover, a.romo-border-danger:hover, a.romo-border-danger:focus {
+  @include border-danger(!important);
 }
 .romo-border-info-hover:hover, a.romo-border-info:hover, a.romo-border-info:focus {
   @include border-info(!important);

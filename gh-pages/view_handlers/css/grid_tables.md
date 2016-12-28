@@ -232,7 +232,7 @@ Uses the alternate bg color for the table background.
 </ul>
 ```
 
-### `.romo-row.romo-{muted|warning|error|info|success|inverse}`
+### `.romo-row.romo-{muted|warning|danger|info|success|inverse}`
 
 Add color emphasis to grid table rows.
 
@@ -268,7 +268,7 @@ Add color emphasis to grid table rows.
       <span class="romo-span romo-5-12">jane-doe</span>
       <span class="romo-span romo-1-12">18</span>
     </li>
-    <li class="romo-row romo-error">
+    <li class="romo-row romo-danger">
       <span class="romo-span romo-1-12">3</span>
       <span class="romo-span romo-5-12">Good Corp.</span>
       <span class="romo-span romo-5-12">good-corp</span>
@@ -302,7 +302,7 @@ Add color emphasis to grid table rows.
   <li class="romo-row romo-alt">...</li>
   <li class="romo-row romo-muted">...</li>
   <li class="romo-row romo-warning">...</li>
-  <li class="romo-row romo-error">...</li>
+  <li class="romo-row romo-danger">...</li>
   <li class="romo-row romo-info">...</li>
   <li class="romo-row romo-success">...</li>
   <li class="romo-row romo-inverse romo-text-inverse">...</li>
@@ -548,7 +548,7 @@ Add hover state to rows
       <span class="romo-span romo-5-12">jane-doe</span>
       <span class="romo-span romo-1-12">18</span>
     </li>
-    <li class="romo-row romo-error">
+    <li class="romo-row romo-danger">
       <span class="romo-span romo-1-12">3</span>
       <span class="romo-span romo-5-12">Good Corp.</span>
       <span class="romo-span romo-5-12">good-corp</span>
@@ -581,7 +581,7 @@ Add hover state to rows
   <li class="romo-row romo-alt">...</li>
   <li class="romo-row romo-muted">...</li>
   <li class="romo-row romo-warning">...</li>
-  <li class="romo-row romo-error">...</li>
+  <li class="romo-row romo-danger">...</li>
   <li class="romo-row romo-info">...</li>
   <li class="romo-row romo-success">...</li>
   <li class="romo-row romo-inverse romo-text-inverse">...</li>
@@ -620,7 +620,7 @@ Add hover state to rows
       <span class="romo-span romo-5-12">jane-doe</span>
       <span class="romo-span romo-1-12">18</span>
     </li>
-    <li class="romo-row romo-error">
+    <li class="romo-row romo-danger">
       <span class="romo-span romo-1-12">3</span>
       <span class="romo-span romo-5-12">Good Corp.</span>
       <span class="romo-span romo-5-12">good-corp</span>
@@ -654,7 +654,7 @@ Add hover state to rows
   <li class="romo-row romo-alt">...</li>
   <li class="romo-row romo-muted">...</li>
   <li class="romo-row romo-warning">...</li>
-  <li class="romo-row romo-error">...</li>
+  <li class="romo-row romo-danger">...</li>
   <li class="romo-row romo-info">...</li>
   <li class="romo-row romo-success">...</li>
   <li class="romo-row romo-inverse romo-text-inverse">...</li>
@@ -830,7 +830,7 @@ Remove all borders from the grid table.
 </ul>
 ```
 
-### `.romo-grid-table-border-{muted|warning|error|info|success|inverse}`
+### `.romo-grid-table-border-{muted|warning|danger|info|success|inverse}`
 
 Adds border color emphasis to the entire grid table.
 
@@ -951,7 +951,7 @@ Adds border color emphasis to the entire grid table.
 </div>
 
 <div class="romo-pad2-bottom">
-  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border2 romo-grid-table-border-error">
+  <ul class="romo-grid-table romo-grid-table-header romo-grid-table-border2 romo-grid-table-border-danger">
     <li class="romo-row">
       <span class="romo-span romo-1-12">#</span>
       <span class="romo-span romo-5-12">Name</span>
@@ -1067,7 +1067,7 @@ Adds border color emphasis to the entire grid table.
 </div>
 
 ```html
-<ul class="romo-grid-table romo-grid-table-border-{base|alt|muted|warning|error|info|success|inverse}">
+<ul class="romo-grid-table romo-grid-table-border-{base|alt|muted|warning|danger|info|success|inverse}">
   ...
 </ul>
 ```
@@ -1277,7 +1277,7 @@ Use any helper style classes in any combination on rows/cells.
       <span class="romo-span romo-1-12">1</span>
       <span class="romo-span romo-5-12 romo-bg-info">Joe Test</span>
       <span class="romo-span romo-5-12">joe-test</span>
-      <span class="romo-span romo-1-12 romo-span romo-1-12 romo-text2 romo-border-error romo-border4">10</span>
+      <span class="romo-span romo-1-12 romo-span romo-1-12 romo-text2 romo-border-danger romo-border4">10</span>
     </li>
     <li class="romo-row">
       <span class="romo-span romo-1-12">2</span>
@@ -1312,7 +1312,7 @@ Use any helper style classes in any combination on rows/cells.
     <span class="romo-span romo-1-12">1</span>
     <span class="romo-span romo-5-12 romo-bg-info">Joe Test</span>
     <span class="romo-span romo-5-12">joe-test</span>
-    <span class="romo-span romo-1-12 romo-span romo-1-12 romo-text2 romo-border-error romo-border4">10</span>
+    <span class="romo-span romo-1-12 romo-span romo-1-12 romo-text2 romo-border-danger romo-border4">10</span>
   </li>
   <li class="romo-row">
     <span class="romo-span romo-1-12">2</span>

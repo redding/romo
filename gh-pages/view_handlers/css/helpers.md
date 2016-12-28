@@ -121,13 +121,13 @@ Add color emphasis to any border configuration
 <div>
   <div class="romo-border-muted romo-border2 romo-push0-bottom">.romo-border-muted</div>
   <div class="romo-border-warning romo-border2 romo-push0-bottom">.romo-border-warning</div>
-  <div class="romo-border-error romo-border2 romo-push0-bottom">.romo-border-error</div>
+  <div class="romo-border-danger romo-border2 romo-push0-bottom">.romo-border-danger</div>
   <div class="romo-border-info romo-border2 romo-push0-bottom">.romo-border-info</div>
   <div class="romo-border-success romo-border2 romo-push0-bottom">.romo-border-success</div>
   <div class="romo-border-inverse romo-border2 romo-push0-bottom">.romo-border-inverse</div>
   <div class="romo-border-muted-hover romo-border2 romo-push0-bottom">.romo-border-muted-hover</div>
   <div class="romo-border-warning-hover romo-border2 romo-push0-bottom">.romo-border-warning-hover</div>
-  <div class="romo-border-error-hover romo-border2 romo-push0-bottom">.romo-border-error-hover</div>
+  <div class="romo-border-danger-hover romo-border2 romo-push0-bottom">.romo-border-danger-hover</div>
   <div class="romo-border-info-hover romo-border2 romo-push0-bottom">.romo-border-info-hover</div>
   <div class="romo-border-success-hover romo-border2 romo-push0-bottom">.romo-border-success-hover</div>
   <div class="romo-border-inverse-hover romo-border2">.romo-border-inverse-hover</div>
@@ -136,13 +136,13 @@ Add color emphasis to any border configuration
 ```html
 <div class="romo-border-muted">...</div>
 <div class="romo-border-warning">...</div>
-<div class="romo-border-error">...</div>
+<div class="romo-border-danger">...</div>
 <div class="romo-border-info">...</div>
 <div class="romo-border-success">...</div>
 <div class="romo-border-inverse">...</div>
 <div class="romo-border-muted-hover">...</div>
 <div class="romo-border-warning-hover">...</div>
-<div class="romo-border-error-hover">...</div>
+<div class="romo-border-danger-hover">...</div>
 <div class="romo-border-info-hover">...</div>
 <div class="romo-border-success-hover">...</div>
 <div class="romo-border-inverse-hover">...</div>

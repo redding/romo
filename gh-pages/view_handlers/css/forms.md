@@ -239,7 +239,7 @@ Use `.romo-input-help` spans with color emphasis to show help text
   <form class="romo-form">
     <label for="text3">Input name</label>
     <input id="text3" type="text" placeholder="Type something…" />
-    <span class="romo-input-help romo-text-error">Example error message</span>
+    <span class="romo-input-help romo-text-danger">Example error message</span>
   </form>
 </div>
 
@@ -247,7 +247,7 @@ Use `.romo-input-help` spans with color emphasis to show help text
 <form class="romo-form">
   <label>Input name</label>
   <input type="text" placeholder="Type something…" />
-  <span class="romo-input-help romo-text-error">Example error message</span>
+  <span class="romo-input-help romo-text-danger">Example error message</span>
 </form>
 ```
 

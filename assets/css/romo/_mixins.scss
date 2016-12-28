@@ -147,91 +147,91 @@
 
 @mixin text-disabled($i:"") { color: $disabledColor #{$i}; }
 
-@mixin text-base($i:"")       {            color: $baseText #{$i}; }
-@mixin text-base-hover($i:"") {            color: $baseTextHover #{$i}; }
-@mixin bg-base($i:"")         { background-color: $baseBackground #{$i}; }
-@mixin bg-base-hover($i:"")   { background-color: $baseBackgroundHover #{$i}; }
-@mixin border-base($i:"")     {     border-color: $baseBorder #{$i}; }
+@mixin text-base($i:"")          {            color: $baseText #{$i}; }
+@mixin text-base-hover($i:"")    {            color: $baseTextHover #{$i}; }
+@mixin bg-base($i:"")            { background-color: $baseBg #{$i}; }
+@mixin bg-base-hover($i:"")      { background-color: $baseBgHover #{$i}; }
+@mixin border-base($i:"")        {     border-color: $baseBorder #{$i}; }
 
-@mixin text-alt($i:"")       {            color: $altText #{$i}; }
-@mixin text-alt-hover($i:"") {            color: $altTextHover #{$i}; }
-@mixin bg-alt($i:"")         { background-color: $altBackground #{$i}; }
-@mixin bg-alt-hover($i:"")   { background-color: $altBackgroundHover #{$i}; }
-@mixin border-alt($i:"")     {     border-color: $altBorder #{$i}; }
+@mixin text-alt($i:"")           {            color: $altText #{$i}; }
+@mixin text-alt-hover($i:"")     {            color: $altTextHover #{$i}; }
+@mixin bg-alt($i:"")             { background-color: $altBg #{$i}; }
+@mixin bg-alt-hover($i:"")       { background-color: $altBgHover #{$i}; }
+@mixin border-alt($i:"")         {     border-color: $altBorder #{$i}; }
 
-@mixin text-muted($i:"")       {            color: $mutedText #{$i}; }
-@mixin text-muted-hover($i:"") {            color: $mutedTextHover #{$i}; }
-@mixin bg-muted($i:"")         { background-color: $mutedBackground #{$i}; }
-@mixin bg-muted-hover($i:"")   { background-color: $mutedBackgroundHover #{$i}; }
-@mixin border-muted($i:"")     {     border-color: $mutedBorder #{$i}; }
+@mixin text-muted($i:"")         {            color: $mutedText #{$i}; }
+@mixin text-muted-hover($i:"")   {            color: $mutedTextHover #{$i}; }
+@mixin bg-muted($i:"")           { background-color: $mutedBg #{$i}; }
+@mixin bg-muted-hover($i:"")     { background-color: $mutedBgHover #{$i}; }
+@mixin border-muted($i:"")       {     border-color: $mutedBorder #{$i}; }
 
 @mixin text-warning($i:"")       {            color: $warningText #{$i}; }
 @mixin text-warning-hover($i:"") {            color: $warningTextHover #{$i}; }
-@mixin bg-warning($i:"")         { background-color: $warningBackground #{$i}; }
-@mixin bg-warning-hover($i:"")   { background-color: $warningBackgroundHover #{$i}; }
+@mixin bg-warning($i:"")         { background-color: $warningBg #{$i}; }
+@mixin bg-warning-hover($i:"")   { background-color: $warningBgHover #{$i}; }
 @mixin border-warning($i:"")     {     border-color: $warningBorder #{$i}; }
 
-@mixin text-error($i:"")       {            color: $errorText #{$i}; }
-@mixin text-error-hover($i:"") {            color: $errorTextHover #{$i}; }
-@mixin bg-error($i:"")         { background-color: $errorBackground #{$i}; }
-@mixin bg-error-hover($i:"")   { background-color: $errorBackgroundHover #{$i}; }
-@mixin border-error($i:"")     {     border-color: $errorBorder #{$i}; }
+@mixin text-danger($i:"")        {            color: $dangerText #{$i}; }
+@mixin text-danger-hover($i:"")  {            color: $dangerTextHover #{$i}; }
+@mixin bg-danger($i:"")          { background-color: $dangerBg #{$i}; }
+@mixin bg-danger-hover($i:"")    { background-color: $dangerBgHover #{$i}; }
+@mixin border-danger($i:"")      {     border-color: $dangerBorder #{$i}; }
 
-@mixin text-info($i:"")       {            color: $infoText #{$i}; }
-@mixin text-info-hover($i:"") {            color: $infoTextHover #{$i}; }
-@mixin bg-info($i:"")         { background-color: $infoBackground #{$i}; }
-@mixin bg-info-hover($i:"")   { background-color: $infoBackgroundHover #{$i}; }
-@mixin border-info($i:"")     {     border-color: $infoBorder #{$i}; }
+@mixin text-info($i:"")          {            color: $infoText #{$i}; }
+@mixin text-info-hover($i:"")    {            color: $infoTextHover #{$i}; }
+@mixin bg-info($i:"")            { background-color: $infoBg #{$i}; }
+@mixin bg-info-hover($i:"")      { background-color: $infoBgHover #{$i}; }
+@mixin border-info($i:"")        {     border-color: $infoBorder #{$i}; }
 
 @mixin text-success($i:"")       {            color: $successText #{$i}; }
 @mixin text-success-hover($i:"") {            color: $successTextHover #{$i}; }
-@mixin bg-success($i:"")         { background-color: $successBackground #{$i}; }
-@mixin bg-success-hover($i:"")   { background-color: $successBackgroundHover #{$i}; }
+@mixin bg-success($i:"")         { background-color: $successBg #{$i}; }
+@mixin bg-success-hover($i:"")   { background-color: $successBgHover #{$i}; }
 @mixin border-success($i:"")     {     border-color: $successBorder #{$i}; }
 
 @mixin text-inverse($i:"")       {            color: $inverseText #{$i}; }
 @mixin text-inverse-hover($i:"") {            color: $inverseTextHover #{$i}; }
-@mixin bg-inverse($i:"")         { background-color: $inverseBackground #{$i}; }
-@mixin bg-inverse-hover($i:"")   { background-color: $inverseBackgroundHover #{$i}; }
+@mixin bg-inverse($i:"")         { background-color: $inverseBg #{$i}; }
+@mixin bg-inverse-hover($i:"")   { background-color: $inverseBgHover #{$i}; }
 @mixin border-inverse($i:"")     {     border-color: $inverseBorder #{$i}; }
 
 /* explicit colors */
 
-@mixin text-dark-red($i:"")   {            color: $darkRed #{$i}; }
-@mixin bg-dark-red($i:"")     { background-color: $darkRed #{$i}; }
-@mixin border-dark-red($i:"") {     border-color: $darkRed #{$i}; }
+@mixin text-dark-red($i:"")        {            color: $darkRed #{$i}; }
+@mixin bg-dark-red($i:"")          { background-color: $darkRed #{$i}; }
+@mixin border-dark-red($i:"")      {     border-color: $darkRed #{$i}; }
 
-@mixin text-red($i:"")   {            color: $red #{$i}; }
-@mixin bg-red($i:"")     { background-color: $red #{$i}; }
-@mixin border-red($i:"") {     border-color: $red #{$i}; }
+@mixin text-red($i:"")             {            color: $red #{$i}; }
+@mixin bg-red($i:"")               { background-color: $red #{$i}; }
+@mixin border-red($i:"")           {     border-color: $red #{$i}; }
 
-@mixin text-light-red($i:"")   {            color: $lightRed #{$i}; }
-@mixin bg-light-red($i:"")     { background-color: $lightRed #{$i}; }
-@mixin border-light-red($i:"") {     border-color: $lightRed #{$i}; }
+@mixin text-light-red($i:"")       {            color: $lightRed #{$i}; }
+@mixin bg-light-red($i:"")         { background-color: $lightRed #{$i}; }
+@mixin border-light-red($i:"")     {     border-color: $lightRed #{$i}; }
 
-@mixin text-pastel-red($i:"")   {            color: $pastelRed #{$i}; }
-@mixin bg-pastel-red($i:"")     { background-color: $pastelRed #{$i}; }
-@mixin border-pastel-red($i:"") {     border-color: $pastelRed #{$i}; }
+@mixin text-pastel-red($i:"")      {            color: $pastelRed #{$i}; }
+@mixin bg-pastel-red($i:"")        { background-color: $pastelRed #{$i}; }
+@mixin border-pastel-red($i:"")    {     border-color: $pastelRed #{$i}; }
 
-@mixin text-washed-red($i:"")   {            color: $washedRed #{$i}; }
-@mixin bg-washed-red($i:"")     { background-color: $washedRed #{$i}; }
-@mixin border-washed-red($i:"") {     border-color: $washedRed #{$i}; }
+@mixin text-washed-red($i:"")      {            color: $washedRed #{$i}; }
+@mixin bg-washed-red($i:"")        { background-color: $washedRed #{$i}; }
+@mixin border-washed-red($i:"")    {     border-color: $washedRed #{$i}; }
 
-@mixin text-dark-orange($i:"")   {            color: $darkOrange #{$i}; }
-@mixin bg-dark-orange($i:"")     { background-color: $darkOrange #{$i}; }
-@mixin border-dark-orange($i:"") {     border-color: $darkOrange #{$i}; }
+@mixin text-dark-orange($i:"")     {            color: $darkOrange #{$i}; }
+@mixin bg-dark-orange($i:"")       { background-color: $darkOrange #{$i}; }
+@mixin border-dark-orange($i:"")   {     border-color: $darkOrange #{$i}; }
 
-@mixin text-orange($i:"")   {            color: $orange #{$i}; }
-@mixin bg-orange($i:"")     { background-color: $orange #{$i}; }
-@mixin border-orange($i:"") {     border-color: $orange #{$i}; }
+@mixin text-orange($i:"")          {            color: $orange #{$i}; }
+@mixin bg-orange($i:"")            { background-color: $orange #{$i}; }
+@mixin border-orange($i:"")        {     border-color: $orange #{$i}; }
 
-@mixin text-yellow($i:"")   {            color: $yellow #{$i}; }
-@mixin bg-yellow($i:"")     { background-color: $yellow #{$i}; }
-@mixin border-yellow($i:"") {     border-color: $yellow #{$i}; }
+@mixin text-yellow($i:"")          {            color: $yellow #{$i}; }
+@mixin bg-yellow($i:"")            { background-color: $yellow #{$i}; }
+@mixin border-yellow($i:"")        {     border-color: $yellow #{$i}; }
 
-@mixin text-light-yellow($i:"")   {            color: $lightYellow #{$i}; }
-@mixin bg-light-yellow($i:"")     { background-color: $lightYellow #{$i}; }
-@mixin border-light-yellow($i:"") {     border-color: $lightYellow #{$i}; }
+@mixin text-light-yellow($i:"")    {            color: $lightYellow #{$i}; }
+@mixin bg-light-yellow($i:"")      { background-color: $lightYellow #{$i}; }
+@mixin border-light-yellow($i:"")  {     border-color: $lightYellow #{$i}; }
 
 @mixin text-pastel-yellow($i:"")   {            color: $pastelYellow #{$i}; }
 @mixin bg-pastel-yellow($i:"")     { background-color: $pastelYellow #{$i}; }
@@ -241,73 +241,73 @@
 @mixin bg-washed-yellow($i:"")     { background-color: $washedYellow #{$i}; }
 @mixin border-washed-yellow($i:"") {     border-color: $washedYellow #{$i}; }
 
-@mixin text-purple($i:"")   {            color: $purple #{$i}; }
-@mixin bg-purple($i:"")     { background-color: $purple #{$i}; }
-@mixin border-purple($i:"") {     border-color: $purple #{$i}; }
+@mixin text-purple($i:"")          {            color: $purple #{$i}; }
+@mixin bg-purple($i:"")            { background-color: $purple #{$i}; }
+@mixin border-purple($i:"")        {     border-color: $purple #{$i}; }
 
-@mixin text-light-purple($i:"")   {            color: $lightPurple #{$i}; }
-@mixin bg-light-purple($i:"")     { background-color: $lightPurple #{$i}; }
-@mixin border-light-purple($i:"") {     border-color: $lightPurple #{$i}; }
+@mixin text-light-purple($i:"")    {            color: $lightPurple #{$i}; }
+@mixin bg-light-purple($i:"")      { background-color: $lightPurple #{$i}; }
+@mixin border-light-purple($i:"")  {     border-color: $lightPurple #{$i}; }
 
-@mixin text-dark-pink($i:"")   {            color: $darkPink #{$i}; }
-@mixin bg-dark-pink($i:"")     { background-color: $darkPink #{$i}; }
-@mixin border-dark-pink($i:"") {     border-color: $darkPink #{$i}; }
+@mixin text-dark-pink($i:"")       {            color: $darkPink #{$i}; }
+@mixin bg-dark-pink($i:"")         { background-color: $darkPink #{$i}; }
+@mixin border-dark-pink($i:"")     {     border-color: $darkPink #{$i}; }
 
-@mixin text-hot-pink($i:"")   {            color: $hotPink #{$i}; }
-@mixin bg-hot-pink($i:"")     { background-color: $hotPink #{$i}; }
-@mixin border-hot-pink($i:"") {     border-color: $hotPink #{$i}; }
+@mixin text-hot-pink($i:"")        {            color: $hotPink #{$i}; }
+@mixin bg-hot-pink($i:"")          { background-color: $hotPink #{$i}; }
+@mixin border-hot-pink($i:"")      {     border-color: $hotPink #{$i}; }
 
-@mixin text-pink($i:"")   {            color: $pink #{$i}; }
-@mixin bg-pink($i:"")     { background-color: $pink #{$i}; }
-@mixin border-pink($i:"") {     border-color: $pink #{$i}; }
+@mixin text-pink($i:"")            {            color: $pink #{$i}; }
+@mixin bg-pink($i:"")              { background-color: $pink #{$i}; }
+@mixin border-pink($i:"")          {     border-color: $pink #{$i}; }
 
-@mixin text-light-pink($i:"")   {            color: $lightPink #{$i}; }
-@mixin bg-light-pink($i:"")     { background-color: $lightPink #{$i}; }
-@mixin border-light-pink($i:"") {     border-color: $lightPink #{$i}; }
+@mixin text-light-pink($i:"")      {            color: $lightPink #{$i}; }
+@mixin bg-light-pink($i:"")        { background-color: $lightPink #{$i}; }
+@mixin border-light-pink($i:"")    {     border-color: $lightPink #{$i}; }
 
-@mixin text-dark-green($i:"")   {            color: $darkGreen #{$i}; }
-@mixin bg-dark-green($i:"")     { background-color: $darkGreen #{$i}; }
-@mixin border-dark-green($i:"") {     border-color: $darkGreen #{$i}; }
+@mixin text-dark-green($i:"")      {            color: $darkGreen #{$i}; }
+@mixin bg-dark-green($i:"")        { background-color: $darkGreen #{$i}; }
+@mixin border-dark-green($i:"")    {     border-color: $darkGreen #{$i}; }
 
-@mixin text-green($i:"")   {            color: $green #{$i}; }
-@mixin bg-green($i:"")     { background-color: $green #{$i}; }
-@mixin border-green($i:"") {     border-color: $green #{$i}; }
+@mixin text-green($i:"")           {            color: $green #{$i}; }
+@mixin bg-green($i:"")             { background-color: $green #{$i}; }
+@mixin border-green($i:"")         {     border-color: $green #{$i}; }
 
-@mixin text-light-green($i:"")   {            color: $lightGreen #{$i}; }
-@mixin bg-light-green($i:"")     { background-color: $lightGreen #{$i}; }
-@mixin border-light-green($i:"") {     border-color: $lightGreen #{$i}; }
+@mixin text-light-green($i:"")     {            color: $lightGreen #{$i}; }
+@mixin bg-light-green($i:"")       { background-color: $lightGreen #{$i}; }
+@mixin border-light-green($i:"")   {     border-color: $lightGreen #{$i}; }
 
-@mixin text-pastel-green($i:"")   {            color: $pastelGreen #{$i}; }
-@mixin bg-pastel-green($i:"")     { background-color: $pastelGreen #{$i}; }
-@mixin border-pastel-green($i:"") {     border-color: $pastelGreen #{$i}; }
+@mixin text-pastel-green($i:"")    {            color: $pastelGreen #{$i}; }
+@mixin bg-pastel-green($i:"")      { background-color: $pastelGreen #{$i}; }
+@mixin border-pastel-green($i:"")  {     border-color: $pastelGreen #{$i}; }
 
-@mixin text-washed-green($i:"")   {            color: $washedGreen #{$i}; }
-@mixin bg-washed-green($i:"")     { background-color: $washedGreen #{$i}; }
-@mixin border-washed-green($i:"") {     border-color: $washedGreen #{$i}; }
+@mixin text-washed-green($i:"")    {            color: $washedGreen #{$i}; }
+@mixin bg-washed-green($i:"")      { background-color: $washedGreen #{$i}; }
+@mixin border-washed-green($i:"")  {     border-color: $washedGreen #{$i}; }
 
-@mixin text-navy($i:"")   {            color: $navy #{$i}; }
-@mixin bg-navy($i:"")     { background-color: $navy #{$i}; }
-@mixin border-navy($i:"") {     border-color: $navy #{$i}; }
+@mixin text-navy($i:"")            {            color: $navy #{$i}; }
+@mixin bg-navy($i:"")              { background-color: $navy #{$i}; }
+@mixin border-navy($i:"")          {     border-color: $navy #{$i}; }
 
-@mixin text-dark-blue($i:"")   {            color: $darkBlue #{$i}; }
-@mixin bg-dark-blue($i:"")     { background-color: $darkBlue #{$i}; }
-@mixin border-dark-blue($i:"") {     border-color: $darkBlue #{$i}; }
+@mixin text-dark-blue($i:"")       {            color: $darkBlue #{$i}; }
+@mixin bg-dark-blue($i:"")         { background-color: $darkBlue #{$i}; }
+@mixin border-dark-blue($i:"")     {     border-color: $darkBlue #{$i}; }
 
-@mixin text-blue($i:"")   {            color: $blue #{$i}; }
-@mixin bg-blue($i:"")     { background-color: $blue #{$i}; }
-@mixin border-blue($i:"") {     border-color: $blue #{$i}; }
+@mixin text-blue($i:"")            {            color: $blue #{$i}; }
+@mixin bg-blue($i:"")              { background-color: $blue #{$i}; }
+@mixin border-blue($i:"")          {     border-color: $blue #{$i}; }
 
-@mixin text-light-blue($i:"")   {            color: $lightBlue #{$i}; }
-@mixin bg-light-blue($i:"")     { background-color: $lightBlue #{$i}; }
-@mixin border-light-blue($i:"") {     border-color: $lightBlue #{$i}; }
+@mixin text-light-blue($i:"")      {            color: $lightBlue #{$i}; }
+@mixin bg-light-blue($i:"")        { background-color: $lightBlue #{$i}; }
+@mixin border-light-blue($i:"")    {     border-color: $lightBlue #{$i}; }
 
-@mixin text-pastel-blue($i:"")   {            color: $pastelBlue #{$i}; }
-@mixin bg-pastel-blue($i:"")     { background-color: $pastelBlue #{$i}; }
-@mixin border-pastel-blue($i:"") {     border-color: $pastelBlue #{$i}; }
+@mixin text-pastel-blue($i:"")     {            color: $pastelBlue #{$i}; }
+@mixin bg-pastel-blue($i:"")       { background-color: $pastelBlue #{$i}; }
+@mixin border-pastel-blue($i:"")   {     border-color: $pastelBlue #{$i}; }
 
-@mixin text-washed-blue($i:"")   {            color: $washedBlue #{$i}; }
-@mixin bg-washed-blue($i:"")     { background-color: $washedBlue #{$i}; }
-@mixin border-washed-blue($i:"") {     border-color: $washedBlue #{$i}; }
+@mixin text-washed-blue($i:"")     {            color: $washedBlue #{$i}; }
+@mixin bg-washed-blue($i:"")       { background-color: $washedBlue #{$i}; }
+@mixin border-washed-blue($i:"")   {     border-color: $washedBlue #{$i}; }
 
 /* Gradients */
 /* --------- */

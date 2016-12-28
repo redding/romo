@@ -283,7 +283,7 @@ Uses the alternate bg color for the table background.
 </table>
 ```
 
-### `tr.romo-{muted|warning|error|info|success|inverse}`
+### `tr.romo-{muted|warning|danger|info|success|inverse}`
 
 Add color emphasis to rows.
 
@@ -322,7 +322,7 @@ Add color emphasis to rows.
         <td>jane-doe</td>
         <td>18</td>
       </tr>
-      <tr class="romo-error">
+      <tr class="romo-danger">
         <td>3</td>
         <td>Good Corp.</td>
         <td>good-corp</td>
@@ -357,7 +357,7 @@ Add color emphasis to rows.
   <tr class="romo-alt">...</tr>
   <tr class="romo-muted romo-text-muted">...</tr>
   <tr class="romo-warning">...</tr>
-  <tr class="romo-error">...</tr>
+  <tr class="romo-danger">...</tr>
   <tr class="romo-info">...</tr>
   <tr class="romo-success">...</tr>
   <tr class="romo-inverse romo-text-inverse">...</tr>
@@ -553,7 +553,7 @@ Add hover state to rows within a `<tbody>`.
         <td>jane-doe</td>
         <td>18</td>
       </tr>
-      <tr class="romo-error">
+      <tr class="romo-danger">
         <td>3</td>
         <td>Good Corp.</td>
         <td>good-corp</td>
@@ -588,7 +588,7 @@ Add hover state to rows within a `<tbody>`.
   <tr class="romo-alt">...</tr>
   <tr class="romo-muted romo-text-muted">...</tr>
   <tr class="romo-warning">...</tr>
-  <tr class="romo-error">...</tr>
+  <tr class="romo-danger">...</tr>
   <tr class="romo-info">...</tr>
   <tr class="romo-success">...</tr>
   <tr class="romo-inverse romo-text-inverse">...</tr>
@@ -795,7 +795,7 @@ Remove all borders from the table.
 </table>
 ```
 
-### `.romo-table-border-{muted|warning|error|info|success|inverse}`
+### `.romo-table-border-{muted|warning|danger|info|success|inverse}`
 
 Adds border color empasis to the entire table.
 
@@ -932,7 +932,7 @@ Adds border color empasis to the entire table.
 </div>
 
 <div class="romo-push2-bottom">
-  <table class="romo-table romo-table-border2 romo-table-border-error">
+  <table class="romo-table romo-table-border2 romo-table-border-danger">
     <thead>
       <tr>
         <th>#</th>
@@ -1064,7 +1064,7 @@ Adds border color empasis to the entire table.
 </div>
 
 ```html
-<table class="romo-table romo-table-border2 romo-table-border-{base|alt|muted|warning|error|info|success|inverse}">
+<table class="romo-table romo-table-border2 romo-table-border-{base|alt|muted|warning|danger|info|success|inverse}">
   ...
 </table>
 ```
@@ -1248,7 +1248,7 @@ Use any helper style classes in any combination on rows/cells.
         <td>1</td>
         <td class="romo-bg-info">Joe Test</td>
         <td>joe-test</td>
-        <td class="romo-1-12 romo-text2 romo-border-error romo-border4">10</td>
+        <td class="romo-1-12 romo-text2 romo-border-danger romo-border4">10</td>
       </tr>
       <tr>
         <td>2</td>
@@ -1281,7 +1281,7 @@ Use any helper style classes in any combination on rows/cells.
       <td>1</td>
       <td class="romo-bg-info">Joe Test</td>
       <td>joe-test</td>
-      <td class="romo-1-12 romo-text2 romo-border-error romo-border4">10</td>
+      <td class="romo-1-12 romo-text2 romo-border-danger romo-border4">10</td>
     </tr>
     <tr>
       <td>2</td>
