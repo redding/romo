@@ -195,7 +195,7 @@
 @mixin bg-inverse-hover($i:"")   { background-color: $inverseBackgroundHover #{$i}; }
 @mixin border-inverse($i:"")     {     border-color: $inverseBorder #{$i}; }
 
-/* specific colors */
+/* explicit colors */
 
 @mixin text-dark-red($i:"")   {            color: $darkRed #{$i}; }
 @mixin bg-dark-red($i:"")     { background-color: $darkRed #{$i}; }
@@ -209,13 +209,21 @@
 @mixin bg-light-red($i:"")     { background-color: $lightRed #{$i}; }
 @mixin border-light-red($i:"") {     border-color: $lightRed #{$i}; }
 
+@mixin text-pastel-red($i:"")   {            color: $pastelRed #{$i}; }
+@mixin bg-pastel-red($i:"")     { background-color: $pastelRed #{$i}; }
+@mixin border-pastel-red($i:"") {     border-color: $pastelRed #{$i}; }
+
+@mixin text-washed-red($i:"")   {            color: $washedRed #{$i}; }
+@mixin bg-washed-red($i:"")     { background-color: $washedRed #{$i}; }
+@mixin border-washed-red($i:"") {     border-color: $washedRed #{$i}; }
+
+@mixin text-dark-orange($i:"")   {            color: $darkOrange #{$i}; }
+@mixin bg-dark-orange($i:"")     { background-color: $darkOrange #{$i}; }
+@mixin border-dark-orange($i:"") {     border-color: $darkOrange #{$i}; }
+
 @mixin text-orange($i:"")   {            color: $orange #{$i}; }
 @mixin bg-orange($i:"")     { background-color: $orange #{$i}; }
 @mixin border-orange($i:"") {     border-color: $orange #{$i}; }
-
-@mixin text-gold($i:"")   {            color: $gold #{$i}; }
-@mixin bg-gold($i:"")     { background-color: $gold #{$i}; }
-@mixin border-gold($i:"") {     border-color: $gold #{$i}; }
 
 @mixin text-yellow($i:"")   {            color: $yellow #{$i}; }
 @mixin bg-yellow($i:"")     { background-color: $yellow #{$i}; }
@@ -224,6 +232,14 @@
 @mixin text-light-yellow($i:"")   {            color: $lightYellow #{$i}; }
 @mixin bg-light-yellow($i:"")     { background-color: $lightYellow #{$i}; }
 @mixin border-light-yellow($i:"") {     border-color: $lightYellow #{$i}; }
+
+@mixin text-pastel-yellow($i:"")   {            color: $pastelYellow #{$i}; }
+@mixin bg-pastel-yellow($i:"")     { background-color: $pastelYellow #{$i}; }
+@mixin border-pastel-yellow($i:"") {     border-color: $pastelYellow #{$i}; }
+
+@mixin text-washed-yellow($i:"")   {            color: $washedYellow #{$i}; }
+@mixin bg-washed-yellow($i:"")     { background-color: $washedYellow #{$i}; }
+@mixin border-washed-yellow($i:"") {     border-color: $washedYellow #{$i}; }
 
 @mixin text-purple($i:"")   {            color: $purple #{$i}; }
 @mixin bg-purple($i:"")     { background-color: $purple #{$i}; }
@@ -261,6 +277,14 @@
 @mixin bg-light-green($i:"")     { background-color: $lightGreen #{$i}; }
 @mixin border-light-green($i:"") {     border-color: $lightGreen #{$i}; }
 
+@mixin text-pastel-green($i:"")   {            color: $pastelGreen #{$i}; }
+@mixin bg-pastel-green($i:"")     { background-color: $pastelGreen #{$i}; }
+@mixin border-pastel-green($i:"") {     border-color: $pastelGreen #{$i}; }
+
+@mixin text-washed-green($i:"")   {            color: $washedGreen #{$i}; }
+@mixin bg-washed-green($i:"")     { background-color: $washedGreen #{$i}; }
+@mixin border-washed-green($i:"") {     border-color: $washedGreen #{$i}; }
+
 @mixin text-navy($i:"")   {            color: $navy #{$i}; }
 @mixin bg-navy($i:"")     { background-color: $navy #{$i}; }
 @mixin border-navy($i:"") {     border-color: $navy #{$i}; }
@@ -277,25 +301,13 @@
 @mixin bg-light-blue($i:"")     { background-color: $lightBlue #{$i}; }
 @mixin border-light-blue($i:"") {     border-color: $lightBlue #{$i}; }
 
-@mixin text-lightest-blue($i:"")   {            color: $lightestBlue #{$i}; }
-@mixin bg-lightest-blue($i:"")     { background-color: $lightestBlue #{$i}; }
-@mixin border-lightest-blue($i:"") {     border-color: $lightestBlue #{$i}; }
+@mixin text-pastel-blue($i:"")   {            color: $pastelBlue #{$i}; }
+@mixin bg-pastel-blue($i:"")     { background-color: $pastelBlue #{$i}; }
+@mixin border-pastel-blue($i:"") {     border-color: $pastelBlue #{$i}; }
 
 @mixin text-washed-blue($i:"")   {            color: $washedBlue #{$i}; }
 @mixin bg-washed-blue($i:"")     { background-color: $washedBlue #{$i}; }
 @mixin border-washed-blue($i:"") {     border-color: $washedBlue #{$i}; }
-
-@mixin text-washed-green($i:"")   {            color: $washedGreen #{$i}; }
-@mixin bg-washed-green($i:"")     { background-color: $washedGreen #{$i}; }
-@mixin border-washed-green($i:"") {     border-color: $washedGreen #{$i}; }
-
-@mixin text-washed-yellow($i:"")   {            color: $washedYellow #{$i}; }
-@mixin bg-washed-yellow($i:"")     { background-color: $washedYellow #{$i}; }
-@mixin border-washed-yellow($i:"") {     border-color: $washedYellow #{$i}; }
-
-@mixin text-washed-red($i:"")   {            color: $washedRed #{$i}; }
-@mixin bg-washed-red($i:"")     { background-color: $washedRed #{$i}; }
-@mixin border-washed-red($i:"") {     border-color: $washedRed #{$i}; }
 
 /* Gradients */
 /* --------- */
