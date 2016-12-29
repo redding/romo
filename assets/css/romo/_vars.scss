@@ -53,46 +53,49 @@ $baseBorderColor:    #ccc;
 $altBorderColor:     #fff;
 $inverseBorderColor: #000;
 
-$inputBgColor:          #fff;
-$inputAltBgColor:       #eee;
-$inputColor:            #444;
-$inputDisabledColor:    #eee;
-$inputFocusColor:       rgba(82, 168, 236, 0.8);
-$inputHighlightBgColor: #3c83c7;
-
-$darkRed:      #e7040f;
+$darkRed:      #ce040d;
 $red:          #ee4136;
 $lightRed:     #ff725c;
-$pastelRed:    #f2dede;
-$washedRed:    #ffdfdf;
+$pastelRed:    #ffdfdf;
 $darkOrange:   #ff6300;
 $orange:       #ffa700;
 $yellow:       #ffde37;
-$lightYellow:  #fbf1a9;
-$pastelYellow: #fcf8e3;
-$washedYellow: #fffceb;
+$pastelYellow: #fbf5d5;
 $purple:       #5e2ca5;
 $lightPurple:  #a463f2;
 $darkPink:     #d5008f;
 $hotPink:      #ff41b4;
-$pink:         #ff80cc;
-$lightPink:    #ffa3d7;
+$pink:         #ff8fd2;
 $darkGreen:    #137752;
 $green:        #51a351;
 $lightGreen:   #9eebcf;
 $pastelGreen:  #dff0d8;
-$washedGreen:  #e8fdf5;
 $navy:         #001b44;
 $darkBlue:     #00449e;
 $blue:         #357edd;
 $lightBlue:    #96ccff;
 $pastelBlue:   #d9edf7;
-$washedBlue:   #f6fffe;
+
+/* basics colors */
 
 $linkColor:      $blue;
 $linkColorHover: darken($linkColor, 15%);
 
-/* btn emphasis colors */
+$inputBgColor:          $baseBgColor;
+$inputColor:            $baseColor;
+$inputDisabledColor:    $altBgColor;
+$inputFocusColor:       rgba(82, 168, 236, 0.8);
+$inputHighlightBgColor: $blue;
+
+$tabBgColor:       $altBgColor;
+$tabBgColorHover:  darken($altBgColor, 5%);
+$tabBgColorActive: $inverseBgColor;
+$tabColor:         $baseColor;
+$tabColorActive:   $inverseColor;
+$tabColorDisabled: $disabledColor;
+
+$tooltipBgColor:   $inverseBgColor;
+$tooltipColor:     $inverseColor;
 
 $btnBorder:         $baseBorderColor;
 $btnBg:             darken($baseBgColor, 3%);
@@ -104,9 +107,25 @@ $btnAltBg:          darken($altBgColor, 4%);
 $btnAltBgHover:     darken($btnAltBg, 10%);
 $btnAltColor:       $btnColor;
 
-$btnInverseBg:      $inverseBgColor;
-$btnInverseBgHover: darken($btnInverseBg, 10%);
-$btnInverseColor:   #fff;
+$baseText:         $baseColor;
+$baseTextHover:    $baseText;
+$baseBg:           $baseBgColor;
+$baseBgHover:      $baseBg;
+$baseBorder:       $baseBorderColor;
+
+$altText:          $altColor;
+$altTextHover:     $altColor;
+$altBg:            $altBgColor;
+$altBgHover:       $altBg;
+$altBorder:        $altBorderColor;
+
+$mutedText:        $disabledColor;
+$mutedTextHover:   darken($mutedText, 10%);
+$mutedBg:          $disabledBgColor;
+$mutedBgHover:     darken($mutedBg, 5%);
+$mutedBorder:      darken(adjust_hue($mutedBg, -10), 7%);
+
+/* emphasis colors */
 
 $btnWarningBg:      $orange;
 $btnWarningBgHover: darken($btnWarningBg, 5%);
@@ -124,31 +143,9 @@ $btnSuccessBg:      $green;
 $btnSuccessBgHover: darken($btnSuccessBg, 10%);
 $btnSuccessColor:   #fff;
 
-/* text emphasis colors */
-
-$baseText:         $baseColor;
-$baseTextHover:    $baseText;
-$baseBg:           $baseBgColor;
-$baseBgHover:      $baseBg;
-$baseBorder:       $baseBorderColor;
-
-$altText:          $altColor;
-$altTextHover:     $altColor;
-$altBg:            $altBgColor;
-$altBgHover:       $altBg;
-$altBorder:        $altBorderColor;
-
-$inverseText:      $inverseColor;
-$inverseTextHover: darken($inverseText, 10%);
-$inverseBg:        $inverseBgColor;
-$inverseBgHover:   darken($inverseBg, 5%);
-$inverseBorder:    darken(adjust_hue($inverseBg, -10), 7%);
-
-$mutedText:        $disabledColor;
-$mutedTextHover:   darken($mutedText, 10%);
-$mutedBg:          $disabledBgColor;
-$mutedBgHover:     darken($mutedBg, 5%);
-$mutedBorder:      darken(adjust_hue($mutedBg, -10), 7%);
+$btnInverseBg:      $inverseBgColor;
+$btnInverseBgHover: darken($btnInverseBg, 10%);
+$btnInverseColor:   #fff;
 
 $warningText:      darken($orange, 5%);
 $warningTextHover: darken($warningText, 10%);
@@ -174,15 +171,58 @@ $successBg:        $pastelGreen;
 $successBgHover:   darken($successBg, 5%);
 $successBorder:    darken(adjust_hue($successBg, -10), 7%);
 
-$tabBgColor:       $altBgColor;
-$tabBgColorHover:  darken($altBgColor, 5%);
-$tabBgColorActive: $inverseBgColor;
-$tabColor:         $baseColor;
-$tabColorActive:   $inverseColor;
-$tabColorDisabled: $disabledColor;
+$inverseText:      $inverseColor;
+$inverseTextHover: darken($inverseText, 10%);
+$inverseBg:        $inverseBgColor;
+$inverseBgHover:   darken($inverseBg, 5%);
+$inverseBorder:    darken(adjust_hue($inverseBg, -10), 7%);
 
-$tooltipBgColor:   $inverseBgColor;
-$tooltipColor:     $inverseColor;
+/* explicit hover colors */
+
+$darkRedTextHover:      darken($darkRed, 10%);
+$darkRedBgHover:        darken($darkRed, 5%);
+$redTextHover:          darken($red, 10%);
+$redBgHover:            darken($red, 5%);
+$lightRedTextHover:     darken($lightRed, 10%);
+$lightRedBgHover:       darken($lightRed, 5%);
+$pastelRedTextHover:    darken($pastelRed, 10%);
+$pastelRedBgHover:      darken($pastelRed, 5%);
+$darkOrangeTextHover:   darken($darkOrange, 10%);
+$darkOrangeBgHover:     darken($darkOrange, 5%);
+$orangeTextHover:       darken($orange, 10%);
+$orangeBgHover:         darken($orange, 5%);
+$yellowTextHover:       darken($yellow, 10%);
+$yellowBgHover:         darken($yellow, 10%);
+$pastelYellowTextHover: darken($pastelYellow, 10%);
+$pastelYellowBgHover:   darken($pastelYellow, 5%);
+$purpleTextHover:       darken($purple, 10%);
+$purpleBgHover:         darken($purple, 5%);
+$lightPurpleTextHover:  darken($lightPurple, 10%);
+$lightPurpleBgHover:    darken($lightPurple, 5%);
+$darkPinkTextHover:     darken($darkPink, 10%);
+$darkPinkBgHover:       darken($darkPink, 5%);
+$hotPinkTextHover:      darken($hotPink, 10%);
+$hotPinkBgHover:        darken($hotPink, 5%);
+$pinkTextHover:         darken($pink, 10%);
+$pinkBgHover:           darken($pink, 5%);
+$darkGreenTextHover:    darken($darkGreen, 10%);
+$darkGreenBgHover:      darken($darkGreen, 5%);
+$greenTextHover:        darken($green, 10%);
+$greenBgHover:          darken($green, 5%);
+$lightGreenTextHover:   darken($lightGreen, 10%);
+$lightGreenBgHover:     darken($lightGreen, 5%);
+$pastelGreenTextHover:  darken($pastelGreen, 10%);
+$pastelGreenBgHover:    darken($pastelGreen, 5%);
+$navyTextHover:         darken($navy, 10%);
+$navyBgHover:           darken($navy, 5%);
+$darkBlueTextHover:     darken($darkBlue, 10%);
+$darkBlueBgHover:       darken($darkBlue, 5%);
+$blueTextHover:         darken($blue, 10%);
+$blueBgHover:           darken($blue, 5%);
+$lightBlueTextHover:    darken($lightBlue, 10%);
+$lightBlueBgHover:      darken($lightBlue, 5%);
+$pastelBlueTextHover:   darken($pastelBlue, 10%);
+$pastelBlueBgHover:     darken($pastelBlue, 5%);
 
 /* borders */
 

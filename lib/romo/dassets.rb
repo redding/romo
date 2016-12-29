@@ -24,6 +24,7 @@ module Romo::Dassets
       c.combination "css/romo.css", [
         'css/romo/normalize.css',
         'css/romo/base.css',
+        'css/romo/colors.css',
         'css/romo/forms.css',
         'css/romo/buttons.css',
         'css/romo/labels.css',

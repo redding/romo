@@ -24,6 +24,7 @@ module Romo::Dassets
       exp_css_sources = [
         'css/romo/normalize.css',
         'css/romo/base.css',
+        'css/romo/colors.css',
         'css/romo/forms.css',
         'css/romo/buttons.css',
         'css/romo/labels.css',

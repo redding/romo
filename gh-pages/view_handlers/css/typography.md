@@ -240,146 +240,505 @@ Or only set a font weight on hover.
 <div class="romo-text-900-hover">...</div>
 ```
 
-## Color emphasis classes
+## Colors
 
-Use style classes to add color to text.
+Use style classes to add color (with optional hover color to text and backgrounds based on an implicit emphasis OR an explicit name.  These also work for links and hover-only use cases.
 
-<div>
-  <span class="romo-text-base">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
-  <span class="romo-text-alt">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
-  <span class="romo-text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
-  <span class="romo-text-warning">Etiam porta sem malesuada magna mollis euismod.</span><br />
-  <span class="romo-text-danger">Donec ullamcorper nulla non metus auctor fringilla.</span><br />
-  <span class="romo-text-info">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.</span><br />
-  <span class="romo-text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</span><br />
-  <span class="romo-text-inverse">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</span><br />
+### Basic
+
+<div class="romo-push2-bottom">
+  <table class="romo-table romo-table-border romo-table-pad1">
+    <thead>
+      <tr>
+        <th class="romo-align-center">Bg</th>
+        <th class="romo-align-center">Text</th>
+        <th class="romo-align-center">Anchor</th>
+        <th class="romo-align-center">class=""</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-base romo-bg-base-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-base romo-text-base-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-base">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-base.romo-bg-base-hover</code></div>
+          <div><code> .romo-text-base.romo-text-base-hover</code></div>
+          <div><code>a.romo-text-base</code></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-alt romo-bg-alt-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-alt romo-text-alt-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-alt">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-alt.romo-bg-alt-hover</code></div>
+          <div><code> .romo-text-alt.romo-text-alt-hover</code></div>
+          <div><code>a.romo-text-alt</code></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-muted romo-bg-muted-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-muted romo-text-muted-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-muted">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-muted.romo-bg-muted-hover</code></div>
+          <div><code> .romo-text-muted.romo-text-muted-hover</code></div>
+          <div><code>a.romo-text-muted</code></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
-```html
-<span class="romo-text-base">...</span><br />
-<span class="romo-text-alt">...</span><br />
-<span class="romo-text-muted">...</span><br />
-<span class="romo-text-warning">...</span><br />
-<span class="romo-text-danger">...</span><br />
-<span class="romo-text-info">...</span><br />
-<span class="romo-text-success">...</span><br />
-<span class="romo-text-inverse">...</span><br />
-```
+### Explicit
 
-Or, to links.
-
-<div>
-  <a href="#" class="romo-text-base">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</a><br />
-  <a href="#" class="romo-text-alt">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</a><br />
-  <a href="#" class="romo-text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</a><br />
-  <a href="#" class="romo-text-warning">Etiam porta sem malesuada magna mollis euismod.</a><br />
-  <a href="#" class="romo-text-danger">Donec ullamcorper nulla non metus auctor fringilla.</a><br />
-  <a href="#" class="romo-text-info">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.</a><br />
-  <a href="#" class="romo-text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</a><br />
-  <a href="#" class="romo-text-inverse">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</a><br />
+<div class="romo-push2-bottom">
+  <table class="romo-table romo-table-border romo-table-pad1">
+    <thead>
+      <tr>
+        <th class="romo-align-center" style="width: 100px">Bg</th>
+        <th class="romo-align-center">Text</th>
+        <th class="romo-align-center">Anchor</th>
+        <th class="romo-align-center">class=""</th>
+        <th class="romo-align-center">Value - Var Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-dark-red romo-bg-dark-red-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-dark-red romo-text-dark-red-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-dark-red">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-dark-red.romo-bg-dark-red-hover</code></div>
+          <div><code> .romo-text-dark-red.romo-text-dark-red-hover</code></div>
+          <div><code>a.romo-text-dark-red</code></div>
+        </td>
+        <td class="romo-text-small">
+          <code>#e7040f - $darkRed</code>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-red romo-bg-red-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-red romo-text-red-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-red">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-red.romo-bg-red-hover</code></div>
+          <div><code> .romo-text-red.romo-text-red-hover</code></div>
+          <div><code>a.romo-text-red</code></div>
+        </td>
+        <td class="romo-text-small">
+          <code>#ee4136 - $red</code>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-light-red romo-bg-light-red-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-light-red romo-text-light-red-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-light-red">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-light-red.romo-bg-light-red-hover</code></div>
+          <div><code> .romo-text-light-red.romo-text-light-red-hover</code></div>
+          <div><code>a.romo-text-light-red</code></div>
+        </td>
+        <td class="romo-text-small">
+          <code>#ff725c - $lightRed</code>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-pastel-red romo-bg-pastel-red-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-pastel-red romo-text-pastel-red-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-pastel-red">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-pastel-red.romo-bg-pastel-red-hover</code></div>
+          <div><code> .romo-text-pastel-red.romo-text-pastel-red-hover</code></div>
+          <div><code>a.romo-text-pastel-red</code></div>
+        </td>
+        <td class="romo-text-small">
+          <code>#ffdfdf - $pastelRed</code>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-dark-orange romo-bg-dark-orange-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-dark-orange romo-text-dark-orange-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-dark-orange">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-dark-orange.romo-bg-dark-orange-hover</code></div>
+          <div><code> .romo-text-dark-orange.romo-text-dark-orange-hover</code></div>
+          <div><code>a.romo-text-dark-orange</code></div>
+        </td>
+        <td class="romo-text-small">
+          <code>#ff6300 - $darkOrange</code>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-orange romo-bg-orange-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-orange romo-text-orange-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-orange">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-orange.romo-bg-orange-hover</code></div>
+          <div><code> .romo-text-orange.romo-text-orange-hover</code></div>
+          <div><code>a.romo-text-orange</code></div>
+        </td>
+        <td class="romo-text-small">
+          <code>#ffa700 - $orange</code>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-yellow romo-bg-yellow-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-yellow romo-text-yellow-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-yellow">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-yellow.romo-bg-yellow-hover</code></div>
+          <div><code> .romo-text-yellow.romo-text-yellow-hover</code></div>
+          <div><code>a.romo-text-yellow</code></div>
+        </td>
+        <td class="romo-text-small">
+          <code>#ffde37 - $yellow</code>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-pastel-yellow romo-bg-pastel-yellow-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-pastel-yellow romo-text-pastel-yellow-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-pastel-yellow">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-pastel-yellow.romo-bg-pastel-yellow-hover</code></div>
+          <div><code> .romo-text-pastel-yellow.romo-text-pastel-yellow-hover</code></div>
+          <div><code>a.romo-text-pastel-yellow</code></div>
+        </td>
+        <td class="romo-text-small">
+          <code>#fcf8e3 - $pastelYellow</code>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-purple romo-bg-purple-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-purple romo-text-purple-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-purple">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-purple.romo-bg-purple-hover</code></div>
+          <div><code> .romo-text-purple.romo-text-purple-hover</code></div>
+          <div><code>a.romo-text-purple</code></div>
+        </td>
+        <td class="romo-text-small">
+          <code>#5e2ca5 - $purple</code>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-light-purple romo-bg-light-purple-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-light-purple romo-text-light-purple-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-light-purple">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-light-purple.romo-bg-light-purple-hover</code></div>
+          <div><code> .romo-text-light-purple.romo-text-light-purple-hover</code></div>
+          <div><code>a.romo-text-light-purple</code></div>
+        </td>
+        <td class="romo-text-small">
+          <code>#a463f2 - $lightPurple</code>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-dark-pink romo-bg-dark-pink-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-dark-pink romo-text-dark-pink-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-dark-pink">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-dark-pink.romo-bg-dark-pink-hover</code></div>
+          <div><code> .romo-text-dark-pink.romo-text-dark-pink-hover</code></div>
+          <div><code>a.romo-text-dark-pink</code></div>
+        </td>
+        <td class="romo-text-small">
+          <code>#d5008f - $darkPink</code>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-hot-pink romo-bg-hot-pink-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-hot-pink romo-text-hot-pink-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-hot-pink">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-hot-pink.romo-bg-hot-pink-hover</code></div>
+          <div><code> .romo-text-hot-pink.romo-text-hot-pink-hover</code></div>
+          <div><code>a.romo-text-hot-pink</code></div>
+        </td>
+        <td class="romo-text-small">
+          <code>#ff41b4 - $hotPink</code>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-pink romo-bg-pink-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-pink romo-text-pink-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-pink">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-pink.romo-bg-pink-hover</code></div>
+          <div><code> .romo-text-pink.romo-text-pink-hover</code></div>
+          <div><code>a.romo-text-pink</code></div>
+        </td>
+        <td class="romo-text-small">
+          <code>#ff8fd2 - $pink</code>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-dark-green romo-bg-dark-green-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-dark-green romo-text-dark-green-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-dark-green">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-dark-green.romo-bg-dark-green-hover</code></div>
+          <div><code> .romo-text-dark-green.romo-text-dark-green-hover</code></div>
+          <div><code>a.romo-text-dark-green</code></div>
+        </td>
+        <td class="romo-text-small">
+          <code>#137752 - $darkGreen</code>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-green romo-bg-green-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-green romo-text-green-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-green">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-green.romo-bg-green-hover</code></div>
+          <div><code> .romo-text-green.romo-text-green-hover</code></div>
+          <div><code>a.romo-text-green</code></div>
+        </td>
+        <td class="romo-text-small">
+          <code>#51a351 - $green</code>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-light-green romo-bg-light-green-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-light-green romo-text-light-green-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-light-green">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-light-green.romo-bg-light-green-hover</code></div>
+          <div><code> .romo-text-light-green.romo-text-light-green-hover</code></div>
+          <div><code>a.romo-text-light-green</code></div>
+        </td>
+        <td class="romo-text-small">
+          <code>#9eebcf - $lightGreen</code>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-pastel-green romo-bg-pastel-green-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-pastel-green romo-text-pastel-green-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-pastel-green">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-pastel-green.romo-bg-pastel-green-hover</code></div>
+          <div><code> .romo-text-pastel-green.romo-text-pastel-green-hover</code></div>
+          <div><code>a.romo-text-pastel-green</code></div>
+        </td>
+        <td class="romo-text-small">
+          <code>#dff0d8 - $pastelGreen</code>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-navy romo-bg-navy-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-navy romo-text-navy-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-navy">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-navy.romo-bg-navy-hover</code></div>
+          <div><code> .romo-text-navy.romo-text-navy-hover</code></div>
+          <div><code>a.romo-text-navy</code></div>
+        </td>
+        <td class="romo-text-small">
+          <code>#001b44 - $navy</code>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-dark-blue romo-bg-dark-blue-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-dark-blue romo-text-dark-blue-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-dark-blue">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-dark-blue.romo-bg-dark-blue-hover</code></div>
+          <div><code> .romo-text-dark-blue.romo-text-dark-blue-hover</code></div>
+          <div><code>a.romo-text-dark-blue</code></div>
+        </td>
+        <td class="romo-text-small">
+          <code>#00449e - $darkBlue</code>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-blue romo-bg-blue-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-blue romo-text-blue-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-blue">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-blue.romo-bg-blue-hover</code></div>
+          <div><code> .romo-text-blue.romo-text-blue-hover</code></div>
+          <div><code>a.romo-text-blue</code></div>
+        </td>
+        <td class="romo-text-small">
+          <code>#357edd - $blue</code>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-light-blue romo-bg-light-blue-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-light-blue romo-text-light-blue-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-light-blue">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-light-blue.romo-bg-light-blue-hover</code></div>
+          <div><code> .romo-text-light-blue.romo-text-light-blue-hover</code></div>
+          <div><code>a.romo-text-light-blue</code></div>
+        </td>
+        <td class="romo-text-small">
+          <code>#96ccff - $lightBlue</code>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-pastel-blue romo-bg-pastel-blue-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-pastel-blue romo-text-pastel-blue-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-pastel-blue">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-pastel-blue.romo-bg-pastel-blue-hover</code></div>
+          <div><code> .romo-text-pastel-blue.romo-text-pastel-blue-hover</code></div>
+          <div><code>a.romo-text-pastel-blue</code></div>
+        </td>
+        <td class="romo-text-small">
+          <code>#d9edf7 - $pastelBlue</code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
-```html
-<a href="#" class="romo-text-base">...</a><br />
-<a href="#" class="romo-text-alt">...</a><br />
-<a href="#" class="romo-text-muted">...</a><br />
-<a href="#" class="romo-text-warning">...</a><br />
-<a href="#" class="romo-text-danger">...</a><br />
-<a href="#" class="romo-text-info">...</a><br />
-<a href="#" class="romo-text-success">...</a><br />
-<a href="#" class="romo-text-inverse">...</a><br />
-```
+### Emphasis
 
-Or, on hover only (non-links).
-
-<div>
-  <span class="romo-text-base-hover">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
-  <span class="romo-text-alt-hover">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
-  <span class="romo-text-muted-hover">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
-  <span class="romo-text-warning-hover">Etiam porta sem malesuada magna mollis euismod.</span><br />
-  <span class="romo-text-danger-hover">Donec ullamcorper nulla non metus auctor fringilla.</span><br />
-  <span class="romo-text-info-hover">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.</span><br />
-  <span class="romo-text-success-hover">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</span><br />
-  <span class="romo-text-inverse-hover">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</span><br />
+<div class="romo-push2-bottom">
+  <table class="romo-table romo-table-border romo-table-pad1">
+    <thead>
+      <tr>
+        <th class="romo-align-center" style="width: 100px">Bg</th>
+        <th class="romo-align-center">Text</th>
+        <th class="romo-align-center">Anchor</th>
+        <th class="romo-align-center">class=""</th>
+        <th class="romo-align-center">Default Basis Color</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-warning romo-bg-warning-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-warning romo-text-warning-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-warning">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-warning.romo-bg-warning-hover</code></div>
+          <div><code> .romo-text-warning.romo-text-warning-hover</code></div>
+          <div><code>a.romo-text-warning</code></div>
+        </td>
+        <td class="romo-text-small">
+          <div><code>$pastelYellow</code> (bg)</div>
+          <div><code>$orange</code> (text)</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-danger romo-bg-danger-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-danger romo-text-danger-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-danger">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-danger.romo-bg-danger-hover</code></div>
+          <div><code> .romo-text-danger.romo-text-danger-hover</code></div>
+          <div><code>a.romo-text-danger</code></div>
+        </td>
+        <td class="romo-text-small">
+          <div><code>$pastelRed</code> (bg)</div>
+          <div><code>$red</code> (text)</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-info romo-bg-info-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-info romo-text-info-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-info">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-info.romo-bg-info-hover</code></div>
+          <div><code> .romo-text-info.romo-text-info-hover</code></div>
+          <div><code>a.romo-text-info</code></div>
+        </td>
+        <td class="romo-text-small">
+          <div><code>$pastelBlue</code> (bg)</div>
+          <div><code>$blue</code> (text)</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-success romo-bg-success-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-success romo-text-success-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-success">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-success.romo-bg-success-hover</code></div>
+          <div><code> .romo-text-success.romo-text-success-hover</code></div>
+          <div><code>a.romo-text-success</code></div>
+        </td>
+        <td class="romo-text-small">
+          <div><code>$pastelGreen</code> (bg)</div>
+          <div><code>$green</code> (text)</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="romo-text-large romo-align-center romo-bg-inverse romo-bg-inverse-hover">&nbsp;</td>
+        <td class="romo-text-large romo-align-center romo-text-bold romo-text-inverse romo-text-inverse-hover">AaBbCc</td>
+        <td class="romo-text-large romo-align-center">
+          <a class="romo-text-inverse">example.com</a>
+        </td>
+        <td class="romo-text-small">
+          <div><code> .romo-bg-inverse.romo-bg-inverse-hover</code></div>
+          <div><code> .romo-text-inverse.romo-text-inverse-hover</code></div>
+          <div><code>a.romo-text-inverse</code></div>
+        </td>
+        <td class="romo-text-small">
+          <div><code>$inverseBgColor</code> (bg)</div>
+          <div><code>$inverseColor</code> (text)</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-
-```html
-<span class="romo-text-base-hover">...</span><br />
-<span class="romo-text-alt-hover">...</span><br />
-<span class="romo-text-muted-hover">...</span><br />
-<span class="romo-text-warning-hover">...</span><br />
-<span class="romo-text-danger-hover">...</span><br />
-<span class="romo-text-info-hover">...</span><br />
-<span class="romo-text-success-hover">...</span><br />
-<span class="romo-text-inverse-hover">...</span><br />
-```
-
-Or, to the background instead of the text.
-
-<div>
-  <span class="romo-bg-base">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
-  <span class="romo-bg-alt">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
-  <span class="romo-bg-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
-  <span class="romo-bg-warning">Etiam porta sem malesuada magna mollis euismod.</span><br />
-  <span class="romo-bg-danger">Donec ullamcorper nulla non metus auctor fringilla.</span><br />
-  <span class="romo-bg-info">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.</span><br />
-  <span class="romo-bg-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</span><br />
-  <span class="romo-bg-inverse">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</span><br />
-</div>
-
-```html
-<span class="romo-bg-base">...</span><br />
-<span class="romo-bg-alt">...</span><br />
-<span class="romo-bg-muted">...</span><br />
-<span class="romo-bg-warning">...</span><br />
-<span class="romo-bg-danger">...</span><br />
-<span class="romo-bg-info">...</span><br />
-<span class="romo-bg-success">...</span><br />
-<span class="romo-bg-inverse">...</span><br />
-```
-
-Or, to the background instead of the text on hover only.
-
-<div>
-  <span class="romo-bg-base-hover">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
-  <span class="romo-bg-alt-hover">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
-  <span class="romo-bg-muted-hover">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</span><br />
-  <span class="romo-bg-warning-hover">Etiam porta sem malesuada magna mollis euismod.</span><br />
-  <span class="romo-bg-danger-hover">Donec ullamcorper nulla non metus auctor fringilla.</span><br />
-  <span class="romo-bg-info-hover">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.</span><br />
-  <span class="romo-bg-success-hover">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</span><br />
-  <span class="romo-bg-inverse-hover">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</span><br />
-</div>
-
-```html
-<span class="romo-bg-base-hover">...</span><br />
-<span class="romo-bg-alt-hover">...</span><br />
-<span class="romo-bg-muted-hover">...</span><br />
-<span class="romo-bg-warning-hover">...</span><br />
-<span class="romo-bg-danger-hover">...</span><br />
-<span class="romo-bg-info-hover">...</span><br />
-<span class="romo-bg-success-hover">...</span><br />
-<span class="romo-bg-inverse-hover">...</span><br />
-```
-
-Or, combine in any number of ways.
-
-<div>
-  <span class="romo-text-inverse romo-bg-inverse">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</span><br />
-  <span class="romo-text-success romo-bg-info">Etiam porta sem malesuada magna mollis euismod.</span><br />
-  <span class="romo-text-danger romo-bg-warning">Donec ullamcorper nulla non metus auctor fringilla.</span><br />
-  <span class="romo-text-info romo-bg-inverse-hover">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.</span><br />
-  <span class="romo-text-danger-hover romo-bg-success-hover">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</span><br />
-  <span class="romo-text-warning-hover romo-bg-base-hover">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</span><br />
-  <a href="#" class="romo-text-inverse romo-bg-inverse">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</a><br />
-</div>
-
-```html
-<span class="romo-text-inverse romo-bg-inverse">...</span><br />
-<span class="romo-text-success romo-bg-info">...</span><br />
-<span class="romo-text-danger romo-bg-warning">...</span><br />
-<span class="romo-text-info romo-bg-inverse-hover">...</span><br />
-<span class="romo-text-danger-hover romo-bg-success-hover">...</span><br />
-<span class="romo-text-warning-hover romo-bg-base-hover">...</span><br />
-<a href="#" class="romo-text-inverse romo-bg-inverse">...</a><br />
-```
