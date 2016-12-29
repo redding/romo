@@ -242,7 +242,7 @@ Or only set a font weight on hover.
 
 ## Colors
 
-Use style classes to add color (with optional hover color to text and backgrounds based on an implicit emphasis OR an explicit name.  These also work for links and hover-only use cases.
+Use style classes to add color (with optional hover color) to text and backgrounds based on an implicit emphasis OR an explicit name.  These also work for links and hover-only use cases.
 
 ### Basic
 
@@ -655,7 +655,7 @@ Use style classes to add color (with optional hover color to text and background
         <th class="romo-align-center">Text</th>
         <th class="romo-align-center">Anchor</th>
         <th class="romo-align-center">class=""</th>
-        <th class="romo-align-center">Default Basis Color</th>
+        <th class="romo-align-center">Basis Color</th>
       </tr>
     </thead>
     <tbody>

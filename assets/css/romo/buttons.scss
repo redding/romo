@@ -79,7 +79,7 @@ input[type="reset"].romo-btn-block,
 input[type="button"].romo-btn-block,
 .romo-btn-block { display: block; width: 100%; }
 
-/* implicit colored buttons */
+/* emphasis colored buttons */
 
 a.romo-btn.romo-btn-alt,     button.romo-btn.romo-btn-alt,     .romo-btn.romo-btn-alt     { @include button-bg($btnAltBg,     $btnAltBgHover,     $btnAltColor);     }
 a.romo-btn.romo-btn-inverse, button.romo-btn.romo-btn-inverse, .romo-btn.romo-btn-inverse { @include button-bg($btnInverseBg, $btnInverseBgHover, $btnInverseColor); }
@@ -87,6 +87,31 @@ a.romo-btn.romo-btn-warning, button.romo-btn.romo-btn-warning, .romo-btn.romo-bt
 a.romo-btn.romo-btn-danger,  button.romo-btn.romo-btn-danger,  .romo-btn.romo-btn-danger  { @include button-bg($btnDangerBg,  $btnDangerBgHover,  $btnDangerColor);  }
 a.romo-btn.romo-btn-info,    button.romo-btn.romo-btn-info,    .romo-btn.romo-btn-info    { @include button-bg($btnInfoBg,    $btnInfoBgHover,    $btnInfoColor);    }
 a.romo-btn.romo-btn-success, button.romo-btn.romo-btn-success, .romo-btn.romo-btn-success { @include button-bg($btnSuccessBg, $btnSuccessBgHover, $btnSuccessColor); }
+
+/* explicit colored buttons */
+
+a.romo-btn.romo-btn-dark-red,      button.romo-btn.romo-btn-dark-red,      .romo-btn.romo-btn-dark-red      { @include button-bg($btnDarkRedBg,      $btnDarkRedBgHover,      $btnDarkRedColor);      }
+a.romo-btn.romo-btn-red,           button.romo-btn.romo-btn-red,           .romo-btn.romo-btn-red           { @include button-bg($btnRedBg,          $btnRedBgHover,          $btnRedColor);          }
+a.romo-btn.romo-btn-light-red,     button.romo-btn.romo-btn-light-red,     .romo-btn.romo-btn-light-red     { @include button-bg($btnLightRedBg,     $btnLightRedBgHover,     $btnLightRedColor);     }
+a.romo-btn.romo-btn-pastel-red,    button.romo-btn.romo-btn-pastel-red,    .romo-btn.romo-btn-pastel-red    { @include button-bg($btnPastelRedBg,    $btnPastelRedBgHover,    $btnPastelRedColor);    }
+a.romo-btn.romo-btn-dark-orange,   button.romo-btn.romo-btn-dark-orange,   .romo-btn.romo-btn-dark-orange   { @include button-bg($btnDarkOrangeBg,   $btnDarkOrangeBgHover,   $btnDarkOrangeColor);   }
+a.romo-btn.romo-btn-orange,        button.romo-btn.romo-btn-orange,        .romo-btn.romo-btn-orange        { @include button-bg($btnOrangeBg,       $btnOrangeBgHover,       $btnOrangeColor);       }
+a.romo-btn.romo-btn-yellow,        button.romo-btn.romo-btn-yellow,        .romo-btn.romo-btn-yellow        { @include button-bg($btnYellowBg,       $btnYellowBgHover,       $btnYellowColor);       }
+a.romo-btn.romo-btn-pastel-yellow, button.romo-btn.romo-btn-pastel-yellow, .romo-btn.romo-btn-pastel-yellow { @include button-bg($btnPastelYellowBg, $btnPastelYellowBgHover, $btnPastelYellowColor); }
+a.romo-btn.romo-btn-purple,        button.romo-btn.romo-btn-purple,        .romo-btn.romo-btn-purple        { @include button-bg($btnPurpleBg,       $btnPurpleBgHover,       $btnPurpleColor);       }
+a.romo-btn.romo-btn-light-purple,  button.romo-btn.romo-btn-light-purple,  .romo-btn.romo-btn-light-purple  { @include button-bg($btnLightPurpleBg,  $btnLightPurpleBgHover,  $btnLightPurpleColor);  }
+a.romo-btn.romo-btn-dark-pink,     button.romo-btn.romo-btn-dark-pink,     .romo-btn.romo-btn-dark-pink     { @include button-bg($btnDarkPinkBg,     $btnDarkPinkBgHover,     $btnDarkPinkColor);     }
+a.romo-btn.romo-btn-hot-pink,      button.romo-btn.romo-btn-hot-pink,      .romo-btn.romo-btn-hot-pink      { @include button-bg($btnHotPinkBg,      $btnHotPinkBgHover,      $btnHotPinkColor);      }
+a.romo-btn.romo-btn-pink,          button.romo-btn.romo-btn-pink,          .romo-btn.romo-btn-pink          { @include button-bg($btnPinkBg,         $btnPinkBgHover,         $btnPinkColor);         }
+a.romo-btn.romo-btn-dark-green,    button.romo-btn.romo-btn-dark-green,    .romo-btn.romo-btn-dark-green    { @include button-bg($btnDarkGreenBg,    $btnDarkGreenBgHover,    $btnDarkGreenColor);    }
+a.romo-btn.romo-btn-green,         button.romo-btn.romo-btn-green,         .romo-btn.romo-btn-green         { @include button-bg($btnGreenBg,        $btnGreenBgHover,        $btnGreenColor);        }
+a.romo-btn.romo-btn-light-green,   button.romo-btn.romo-btn-light-green,   .romo-btn.romo-btn-light-green   { @include button-bg($btnLightGreenBg,   $btnLightGreenBgHover,   $btnLightGreenColor);   }
+a.romo-btn.romo-btn-pastel-green,  button.romo-btn.romo-btn-pastel-green,  .romo-btn.romo-btn-pastel-green  { @include button-bg($btnPastelGreenBg,  $btnPastelGreenBgHover,  $btnPastelGreenColor);  }
+a.romo-btn.romo-btn-navy,          button.romo-btn.romo-btn-navy,          .romo-btn.romo-btn-navy          { @include button-bg($btnNavyBg,         $btnNavyBgHover,         $btnNavyColor);         }
+a.romo-btn.romo-btn-dark-blue,     button.romo-btn.romo-btn-dark-blue,     .romo-btn.romo-btn-dark-blue     { @include button-bg($btnDarkBlueBg,     $btnDarkBlueBgHover,     $btnDarkBlueColor);     }
+a.romo-btn.romo-btn-blue,          button.romo-btn.romo-btn-blue,          .romo-btn.romo-btn-blue          { @include button-bg($btnBlueBg,         $btnBlueBgHover,         $btnBlueColor);         }
+a.romo-btn.romo-btn-light-blue,    button.romo-btn.romo-btn-light-blue,    .romo-btn.romo-btn-light-blue    { @include button-bg($btnLightBlueBg,    $btnLightBlueBgHover,    $btnLightBlueColor);    }
+a.romo-btn.romo-btn-pastel-blue,   button.romo-btn.romo-btn-pastel-blue,   .romo-btn.romo-btn-pastel-blue   { @include button-bg($btnPastelBlueBg,   $btnPastelBlueBgHover,   $btnPastelBlueColor);   }
 
 /* link buttons */
 
