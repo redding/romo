@@ -44,6 +44,7 @@ module Romo::Dassets
       ]
       c.combination "js/romo.js", [
         'js/romo/base.js',
+        'js/romo/date.js',
         'js/romo/word_boundary_filter.js',
         'js/romo/invoke.js',
         'js/romo/onkey.js',
