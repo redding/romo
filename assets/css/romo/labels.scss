@@ -32,9 +32,36 @@
 
 .romo-label-block { display: block; width: 100%; }
 
-.romo-label.romo-label-alt     { background-color: $btnBg;        color: $btnColor; }
+/* emphasis colored labels */
+
+.romo-label.romo-label-alt     { background-color: $btnBg;        color: $btnColor;        }
 .romo-label.romo-label-inverse { background-color: $btnInverseBg; color: $btnInverseColor; }
 .romo-label.romo-label-warning { background-color: $btnWarningBg; color: $btnWarningColor; }
-.romo-label.romo-label-danger  { background-color: $btnDangerBg;  color: $btnDangerColor; }
-.romo-label.romo-label-info    { background-color: $btnInfoBg;    color: $btnInfoColor; }
+.romo-label.romo-label-danger  { background-color: $btnDangerBg;  color: $btnDangerColor;  }
+.romo-label.romo-label-info    { background-color: $btnInfoBg;    color: $btnInfoColor;    }
 .romo-label.romo-label-success { background-color: $btnSuccessBg; color: $btnSuccessColor; }
+
+/* explicit colored labels */
+
+.romo-label.romo-label-dark-red      { background-color: $btnDarkRedBg;      color: $btnDarkRedColor;      }
+.romo-label.romo-label-red           { background-color: $btnRedBg;          color: $btnRedColor;          }
+.romo-label.romo-label-light-red     { background-color: $btnLightRedBg;     color: $btnLightRedColor;     }
+.romo-label.romo-label-pastel-red    { background-color: $btnPastelRedBg;    color: $btnPastelRedColor;    }
+.romo-label.romo-label-dark-orange   { background-color: $btnDarkOrangeBg;   color: $btnDarkOrangeColor;   }
+.romo-label.romo-label-orange        { background-color: $btnOrangeBg;       color: $btnOrangeColor;       }
+.romo-label.romo-label-yellow        { background-color: $btnYellowBg;       color: $btnYellowColor;       }
+.romo-label.romo-label-pastel-yellow { background-color: $btnPastelYellowBg; color: $btnPastelYellowColor; }
+.romo-label.romo-label-purple        { background-color: $btnPurpleBg;       color: $btnPurpleColor;       }
+.romo-label.romo-label-light-purple  { background-color: $btnLightPurpleBg;  color: $btnLightPurpleColor;  }
+.romo-label.romo-label-dark-pink     { background-color: $btnDarkPinkBg;     color: $btnDarkPinkColor;     }
+.romo-label.romo-label-hot-pink      { background-color: $btnHotPinkBg;      color: $btnHotPinkColor;      }
+.romo-label.romo-label-pink          { background-color: $btnPinkBg;         color: $btnPinkColor;         }
+.romo-label.romo-label-dark-green    { background-color: $btnDarkGreenBg;    color: $btnDarkGreenColor;    }
+.romo-label.romo-label-green         { background-color: $btnGreenBg;        color: $btnGreenColor;        }
+.romo-label.romo-label-light-green   { background-color: $btnLightGreenBg;   color: $btnLightGreenColor;   }
+.romo-label.romo-label-pastel-green  { background-color: $btnPastelGreenBg;  color: $btnPastelGreenColor;  }
+.romo-label.romo-label-navy          { background-color: $btnNavyBg;         color: $btnNavyColor;         }
+.romo-label.romo-label-dark-blue     { background-color: $btnDarkBlueBg;     color: $btnDarkBlueColor;     }
+.romo-label.romo-label-blue          { background-color: $btnBlueBg;         color: $btnBlueColor;         }
+.romo-label.romo-label-light-blue    { background-color: $btnLightBlueBg;    color: $btnLightBlueColor;    }
+.romo-label.romo-label-pastel-blue   { background-color: $btnPastelBlueBg;   color: $btnPastelBlueColor;   }

@@ -129,23 +129,23 @@ $mutedBorder:      darken(adjust_hue($mutedBg, -10), 7%);
 
 $btnWarningBg:      $orange;
 $btnWarningBgHover: darken($btnWarningBg, 5%);
-$btnWarningColor:   #fff;
+$btnWarningColor:   $inverseColor;
 
 $btnDangerBg:       $red;
 $btnDangerBgHover:  darken($btnDangerBg, 10%);
-$btnDangerColor:    #fff;
+$btnDangerColor:    $inverseColor;
 
 $btnInfoBg:         $blue;
 $btnInfoBgHover:    darken($btnInfoBg, 10%);
-$btnInfoColor:      #fff;
+$btnInfoColor:      $inverseColor;
 
 $btnSuccessBg:      $green;
 $btnSuccessBgHover: darken($btnSuccessBg, 10%);
-$btnSuccessColor:   #fff;
+$btnSuccessColor:   $inverseColor;
 
 $btnInverseBg:      $inverseBgColor;
 $btnInverseBgHover: darken($btnInverseBg, 10%);
-$btnInverseColor:   #fff;
+$btnInverseColor:   $inverseColor;
 
 $warningText:      darken($orange, 5%);
 $warningTextHover: darken($warningText, 10%);
@@ -177,7 +177,7 @@ $inverseBg:        $inverseBgColor;
 $inverseBgHover:   darken($inverseBg, 5%);
 $inverseBorder:    darken(adjust_hue($inverseBg, -10), 7%);
 
-/* explicit hover colors */
+/* explicit colors */
 
 $darkRedTextHover:      darken($darkRed, 10%);
 $darkRedBgHover:        darken($darkRed, 5%);
@@ -223,6 +223,95 @@ $lightBlueTextHover:    darken($lightBlue, 10%);
 $lightBlueBgHover:      darken($lightBlue, 5%);
 $pastelBlueTextHover:   darken($pastelBlue, 10%);
 $pastelBlueBgHover:     darken($pastelBlue, 5%);
+
+
+$btnDarkRedBg:           $darkRed;
+$btnDarkRedBgHover:      $darkRedBgHover;
+$btnDarkRedColor:        $inverseColor;
+
+$btnRedBg:               $red;
+$btnRedBgHover:          $redBgHover;
+$btnRedColor:            $inverseColor;
+
+$btnLightRedBg:          $lightRed;
+$btnLightRedBgHover:     $lightRedBgHover;
+$btnLightRedColor:       $inverseColor;
+
+$btnPastelRedBg:         $pastelRed;
+$btnPastelRedBgHover:    $pastelRedBgHover;
+$btnPastelRedColor:      $baseColor;
+
+$btnDarkOrangeBg:        $darkOrange;
+$btnDarkOrangeBgHover:   $darkOrangeBgHover;
+$btnDarkOrangeColor:     $inverseColor;
+
+$btnOrangeBg:            $orange;
+$btnOrangeBgHover:       $orangeBgHover;
+$btnOrangeColor:         $inverseColor;
+
+$btnYellowBg:            $yellow;
+$btnYellowBgHover:       $yellowBgHover;
+$btnYellowColor:         $baseColor;
+
+$btnPastelYellowBg:      $pastelYellow;
+$btnPastelYellowBgHover: $pastelYellowBgHover;
+$btnPastelYellowColor:   $baseColor;
+
+$btnPurpleBg:            $purple;
+$btnPurpleBgHover:       $purpleBgHover;
+$btnPurpleColor:         $inverseColor;
+
+$btnLightPurpleBg:       $lightPurple;
+$btnLightPurpleBgHover:  $lightPurpleBgHover;
+$btnLightPurpleColor:    $inverseColor;
+
+$btnDarkPinkBg:          $darkPink;
+$btnDarkPinkBgHover:     $darkPinkBgHover;
+$btnDarkPinkColor:       $inverseColor;
+
+$btnHotPinkBg:           $hotPink;
+$btnHotPinkBgHover:      $hotPinkBgHover;
+$btnHotPinkColor:        $inverseColor;
+
+$btnPinkBg:              $pink;
+$btnPinkBgHover:         $pinkBgHover;
+$btnPinkColor:           $inverseColor;
+
+$btnDarkGreenBg:         $darkGreen;
+$btnDarkGreenBgHover:    $darkGreenBgHover;
+$btnDarkGreenColor:      $inverseColor;
+
+$btnGreenBg:             $green;
+$btnGreenBgHover:        $greenBgHover;
+$btnGreenColor:          $inverseColor;
+
+$btnLightGreenBg:        $lightGreen;
+$btnLightGreenBgHover:   $lightGreenBgHover;
+$btnLightGreenColor:     $baseColor;
+
+$btnPastelGreenBg:       $pastelGreen;
+$btnPastelGreenBgHover:  $pastelGreenBgHover;
+$btnPastelGreenColor:    $baseColor;
+
+$btnNavyBg:              $navy;
+$btnNavyBgHover:         $navyBgHover;
+$btnNavyColor:           $inverseColor;
+
+$btnDarkBlueBg:          $darkBlue;
+$btnDarkBlueBgHover:     $darkBlueBgHover;
+$btnDarkBlueColor:       $inverseColor;
+
+$btnBlueBg:              $blue;
+$btnBlueBgHover:         $blueBgHover;
+$btnBlueColor:           $inverseColor;
+
+$btnLightBlueBg:         $lightBlue;
+$btnLightBlueBgHover:    $lightBlueBgHover;
+$btnLightBlueColor:      $inverseColor;
+
+$btnPastelBlueBg:        $pastelBlue;
+$btnPastelBlueBgHover:   $pastelBlueBgHover;
+$btnPastelBlueColor:     $baseColor;
 
 /* borders */
 
