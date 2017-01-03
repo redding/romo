@@ -334,16 +334,22 @@ RomoDatepicker.prototype._buildCalendarTitle = function(date) {
 }
 
 RomoDatepicker.prototype._buildCalendarBody = function(date) {
-  var fom    = RomoDate.firstDateOfMonth(date); // first-of-month
-  var fomday = fom.getDay();
-  if (fomday == 0) { // don't start calendar starting on the first-of-the-month.
-    fomday = 7;      // show it starting on the last week of the prev month.
-  }
-  var iDate = RomoDate.vector(fom, -fomday);
-  var iWeek = 0;
-
   var html = [];
 
+  // prefer showing as many past dates in each month as possible
+  // calc the most post days we can show and still fit the date's
+  // month in 6 weeks of displayed days:
+  // 7 days * 6 weeks = 42 displayed days
+  // 42 displayed days - {days in month} = {max past days}
+  var fom  = RomoDate.firstDateOfMonth(date); // first-of-month
+  var dim  = RomoDate.daysInMonth(date);      // days-in-month
+  var past = fom.getDay();                    // start on this week's Sunday
+  if ((past+7) <= (42-dim)) {                 // if there is enough room,
+    past = past+7;                            // start on prev week's Sunday
+  }
+  var iDate = RomoDate.vector(fom, -past);
+
+  var iWeek = 0;
   while (iWeek < 6) { // render 6 weeks in the calendar
     var cls = [];
 
