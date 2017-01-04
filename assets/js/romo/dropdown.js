@@ -7,8 +7,8 @@ $.fn.romoDropdown = function() {
 var RomoDropdown = function(element) {
   this.elem = $(element);
   this.doInitPopup();
-  this.romoInvoke = this.elem.romoInvoke()[0];
-  this.romoInvoke.doUnBindInvoke(); // disable auto invoke on click
+  this.romoAjax = this.elem.romoAjax()[0];
+  this.romoAjax.doUnbindElem(); // disable auto invoke on click
 
   if (this.elem.data('romo-dropdown-disable-click-invoke') !== true) {
     this.elem.unbind('click');
@@ -17,15 +17,15 @@ var RomoDropdown = function(element) {
   this.elem.on('dropdown:triggerToggle', $.proxy(this.onToggleClick, this));
   this.elem.on('dropdown:triggerPopupOpen', $.proxy(this.onPopupOpen, this));
   this.elem.on('dropdown:triggerPopupClose', $.proxy(this.onPopupClose, this));
-  this.elem.on('invoke:loadStart', $.proxy(function(e, invoke) {
+  this.elem.on('romoAjax:callStart', $.proxy(function(e, romoAjax) {
     this.doLoadBodyStart();
     return false;
   }, this));
-  this.elem.on('invoke:loadSuccess', $.proxy(function(e, data, invoke) {
+  this.elem.on('romoAjax:callSuccess', $.proxy(function(e, data, romoAjax) {
     this.doLoadBodySuccess(data);
     return false;
   }, this));
-  this.elem.on('invoke:loadError', $.proxy(function(e, xhr, invoke) {
+  this.elem.on('romoAjax:callError', $.proxy(function(e, xhr, romoAjax) {
     this.doLoadBodyError(xhr);
     return false;
   }, this));
@@ -206,7 +206,7 @@ RomoDropdown.prototype.doPopupOpen = function() {
   if (this.elem.data('romo-dropdown-content-elem') !== undefined) {
     this.doLoadBodySuccess($(this.elem.data('romo-dropdown-content-elem')).html())
   } else {
-    this.romoInvoke.doInvoke();
+    this.romoAjax.doInvoke();
   }
 
   this.popupElem.addClass('romo-dropdown-open');
