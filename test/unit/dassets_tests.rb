@@ -48,7 +48,7 @@ module Romo::Dassets
         'js/romo/base.js',
         'js/romo/date.js',
         'js/romo/word_boundary_filter.js',
-        'js/romo/invoke.js',
+        'js/romo/ajax.js',
         'js/romo/onkey.js',
         'js/romo/form.js',
         'js/romo/dropdown.js',

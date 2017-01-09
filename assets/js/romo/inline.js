@@ -14,15 +14,15 @@ var RomoInline = function(element) {
     this.doShow();
   }, this));
 
-  this.elem.on('invoke:loadStart', $.proxy(function(e, invoke) {
+  this.elem.on('romoAjax:callStart', $.proxy(function(e, romoAjax) {
     this.doLoadStart();
     return false;
   }, this));
-  this.elem.on('invoke:loadSuccess', $.proxy(function(e, data, invoke) {
+  this.elem.on('romoAjax:callSuccess', $.proxy(function(e, data, romoAjax) {
     this.doLoadSuccess(data);
     return false;
   }, this));
-  this.elem.on('invoke:loadError', $.proxy(function(e, xhr, invoke) {
+  this.elem.on('romoAjax:callError', $.proxy(function(e, xhr, romoAjax) {
     this.doLoadError(xhr);
     return false;
   }, this));
