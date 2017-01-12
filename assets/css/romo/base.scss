@@ -101,7 +101,7 @@ a.romo-text {
 /* images */
 
 .romo-img-rounded { @include border-radius(6px); }
-.romo-img-circle  { @include border-radius(500px); }
+.romo-img-circle  { @include border-radius(50%); }
 .romo-img-card {
   padding: 3px;
   background-color: $baseBgColor;
@@ -435,8 +435,10 @@ h3 { @include text1; }
 .romo-border2-bottom-left-radius-hover:hover   { @include border2-bottom-left-radius(!important); }
 .romo-rm-border-bottom-left-radius-hover:hover { @include rm-border-bottom-left-radius(!important); }
 
-.romo-border-radius-circle { @include border-radius(500px); }
-.romo-border-radius-circle-hover:hover { @include border-radius(500px); }
+.romo-border-radius-circle             { @include border-radius(50%); }
+.romo-border-radius-circle-hover:hover { @include border-radius(50%); }
+.romo-border-radius-pill               { @include border-radius(500px); }
+.romo-border-radius-pill-hover:hover   { @include border-radius(500px); }
 
 /* spacing */
 
