@@ -6,8 +6,10 @@ $.fn.romoIndicatorTextInput = function() {
 
 var RomoIndicatorTextInput = function(element) {
   this.elem = $(element);
-  this.defaultIndicatorClass   = undefined;
-  this.defaultIndicatorWidthPx = 0;
+
+  this.defaultIndicatorClass     = undefined;
+  this.defaultIndicatorPaddingPx = 5;
+  this.defaultIndicatorPosition  = 'right';
 
   this.doInit();
   this.doBindElem();
@@ -75,12 +77,18 @@ RomoIndicatorTextInput.prototype.doPlaceIndicatorElem = function() {
       this._hide(this.indicatorElem);
     }
 
-    var indicatorWidthPx = this.elem.data('romo-indicator-text-input-indicator-width-px') || this.defaultIndicatorWidthPx;
-    // left-side spacing
+    var indicatorPaddingPx = this._getIndicatorPaddingPx();
+    var indicatorWidthPx   = this._getIndicatorWidthPx();
+    var indicatorPosition  = this._getIndicatorPosition();
+
+    // add a pixel to account for the default input border
+    this.indicatorElem.css(indicatorPosition, indicatorPaddingPx+1);
+
+    // left-side padding
     // + indicator width
-    // + right-side spacing
-    var indicatorPaddingPx = 4 + indicatorWidthPx + 4;
-    this.elem.css({'padding-right': indicatorPaddingPx + 'px'});
+    // + right-side padding
+    var inputPaddingPx = indicatorPaddingPx + indicatorWidthPx + indicatorPaddingPx;
+    this.elem.css('padding-'+indicatorPosition, inputPaddingPx+'px');
   }
 }
 
@@ -126,6 +134,27 @@ RomoIndicatorTextInput.prototype._show = function(elem) {
 
 RomoIndicatorTextInput.prototype._hide = function(elem) {
   elem.css('display', 'none');
+}
+
+RomoIndicatorTextInput.prototype._getIndicatorPaddingPx = function() {
+  return (
+    this.elem.data('romo-indicator-text-input-indicator-padding-px') ||
+    this.defaultIndicatorPaddingPx
+  );
+}
+
+RomoIndicatorTextInput.prototype._getIndicatorWidthPx = function() {
+  return (
+    this.elem.data('romo-indicator-text-input-indicator-width-px') ||
+    parseInt(Romo.getComputedStyle(this.indicatorElem[0], "width"), 10)
+  );
+}
+
+RomoIndicatorTextInput.prototype._getIndicatorPosition = function() {
+  return (
+    this.elem.data('romo-indicator-text-input-indicator-position') ||
+    this.defaultIndicatorPosition
+  );
 }
 
 Romo.onInitUI(function(e) {
