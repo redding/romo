@@ -385,6 +385,7 @@ RomoSelectDropdown.prototype._buildOptionFilter = function() {
     filter.attr('placeholder', this.elem.data('romo-select-dropdown-filter-placeholder'));
   }
   filter.attr('data-romo-indicator-text-input-elem-display', "block");
+  filter.attr('data-romo-indicator-text-input-indicator-position', "right");
   if (this.elem.data('romo-select-dropdown-filter-indicator') !== undefined) {
     filter.attr('data-romo-indicator-text-input-indicator', this.elem.data('romo-select-dropdown-filter-indicator'));
   }

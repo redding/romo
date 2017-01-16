@@ -32,6 +32,7 @@ RomoDatepicker.prototype.doInit = function() {
 
 RomoDatepicker.prototype.doBindElem = function() {
   this.elem.attr('autocomplete', 'off');
+  this.elem.attr('data-romo-indicator-text-input-indicator-position', "right");
 
   if (this.elem.data('romo-datepicker-indicator') !== undefined) {
     this.elem.attr('data-romo-indicator-text-input-indicator', this.elem.data('romo-datepicker-indicator'));
