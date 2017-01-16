@@ -47,6 +47,7 @@ module Romo::Dassets
       exp_js_sources = [
         'js/romo/base.js',
         'js/romo/date.js',
+        'js/romo/currency.js',
         'js/romo/word_boundary_filter.js',
         'js/romo/ajax.js',
         'js/romo/onkey.js',
@@ -54,6 +55,7 @@ module Romo::Dassets
         'js/romo/dropdown.js',
         'js/romo/dropdown_form.js',
         'js/romo/indicator_text_input.js',
+        'js/romo/currency_text_input.js',
         'js/romo/select_dropdown.js',
         'js/romo/select.js',
         'js/romo/datepicker.js',
