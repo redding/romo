@@ -79,6 +79,18 @@ RomoSortable.prototype.onDragStart = function(e) {
 
   this.draggedElem = $(e.target);
   this.draggedElem.addClass(this.draggingClass);
+
+  // we need to disable Romo's parentRemovedObserver mutation
+  // observer which would remove any child elems (ie modal,
+  // dropdown, tooltip popups).
+  // we don't want any child elems of the draggedElem removed
+  // just b/c it is temporarily removed from the DOM due to
+  // it being dragged.  It will be returned to the DOM once
+  // the drag is finished.
+  // we manually enable the mutation observer for the dragged
+  // elem below after we do the `insertBefore` call.
+  this.draggedElem.data('romo-parent-removed-observer-disabled', true);
+
   this.draggedIndex = this.draggedElem.index();
 
   this.placeholderElem.css({ 'height': this.draggedElem.height() });
@@ -159,6 +171,15 @@ RomoSortable.prototype.onDragDrop = function(e) {
 
   this.draggedElem.insertBefore(this.placeholderElem);
   this.draggedElem.show();
+
+  // manually enable Romo's parentRemovedObserver mutation
+  // observer which resumes removing any child elems (ie modal,
+  // dropdown, tooltip popups) like normal.
+  // we have to put this in a timeout so the reactor loop has a
+  // chance to run the mutation observer before we re-enable
+  setTimeout($.proxy(function() {
+    this.draggedElem.data('romo-parent-removed-observer-disabled', false);
+  }, this), 1);
 
   var newIndex = this.draggedElem.index();
   if (newIndex !== this.draggedIndex) {

@@ -275,7 +275,7 @@ var RomoParentChildElems = function() {
   this.elemId   = 0;
   this.elems    = {};
 
-  var childRemovedObserver = new MutationObserver($.proxy(function(mutationRecords) {
+  var parentRemovedObserver = new MutationObserver($.proxy(function(mutationRecords) {
     mutationRecords.forEach($.proxy(function(mutationRecord) {
       if (mutationRecord.type === 'childList' && mutationRecord.removedNodes.length > 0) {
         $.each($(mutationRecord.removedNodes), $.proxy(function(idx, node) {
@@ -285,7 +285,7 @@ var RomoParentChildElems = function() {
     }, this));
   }, this));
 
-  childRemovedObserver.observe($('body')[0], {
+  parentRemovedObserver.observe($('body')[0], {
     childList: true,
     subtree:   true
   });
@@ -296,12 +296,14 @@ RomoParentChildElems.prototype.add = function(parentElem, childElems) {
 }
 
 RomoParentChildElems.prototype.remove = function(nodeElem) {
-  if(nodeElem.data(this.attrName) !== undefined) {
-    this._removeChildElems(nodeElem);  // node is a parent elem itself
+  if (nodeElem.data('romo-parent-removed-observer-disabled') !== true) {
+    if (nodeElem.data(this.attrName) !== undefined) {
+      this._removeChildElems(nodeElem);  // node is a parent elem itself
+    }
+    $.each(nodeElem.find('[data-'+this.attrName+']'), $.proxy(function(idx, parent) {
+      this._removeChildElems($(parent));
+    }, this));
   }
-  $.each(nodeElem.find('[data-'+this.attrName+']'), $.proxy(function(idx, parent) {
-    this._removeChildElems($(parent));
-  }, this));
 }
 
 // private
