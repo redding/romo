@@ -14,7 +14,7 @@ var RomoSortable = function(element) {
   this.draggedOverElem = this.dragDirection = this.lastY = null;
 
   this.doInit();
-  this.doBindDraggables();
+  this.doBindDrag();
   this.doInitPlaceholder();
   this._resetGrabClasses();
 
@@ -25,30 +25,43 @@ RomoSortable.prototype.doInit = function() {
   // override as needed
 }
 
-RomoSortable.prototype.doBindDraggables = function() {
+RomoSortable.prototype.doBindDrag = function() {
   this.draggingClass    = this.elem.data('romo-sortable-dragging-class') || '';
   this.dragOverClass    = this.elem.data('romo-sortable-dragover-class') || '';
   this.placeholderClass = this.elem.data('romo-sortable-placeholder-class') || '';
 
-  this.draggableElems = this.elem.find(this.draggableSelector);
-  this.draggableElems.prop('draggable', 'true');
+  this.draggableElems = $();
+  this.doBindDraggableElems(this.elem.find(this.draggableSelector));
+
+  this.elem.on('sortable:bindDraggableElems', $.proxy(this.onBindDraggableElems, this));
 
   this.elem.on('dragenter', $.proxy(this.onDragEnter, this));
   this.elem.on('dragover',  $.proxy(this.onDragOver,  this));
   this.elem.on('dragend',   $.proxy(this.onDragEnd,   this));
   this.elem.on('drop',      $.proxy(this.onDragDrop,  this));
 
-  this.draggableElems.on('dragstart',  $.proxy(this.onDragStart,          this));
-  this.draggableElems.on('dragenter',  $.proxy(this.onDragEnter,          this));
-  this.draggableElems.on('dragover',   $.proxy(this.onDragOver,           this));
-  this.draggableElems.on('dragend',    $.proxy(this.onDragEnd,            this));
-  this.draggableElems.on('drop',       $.proxy(this.onDragDrop,           this));
-  this.draggableElems.on('mousedown',  $.proxy(this.onDraggableMouseDown, this));
+  $('body').on('mouseup', $.proxy(this.onWindowBodyMouseUp, this));
+}
 
-  var handleElems = this.draggableElems.find(this.handleSelector);
+RomoSortable.prototype.onBindDraggableElems = function(e, draggableElems) {
+  this.doBindDraggableElems(draggableElems);
+}
+
+RomoSortable.prototype.doBindDraggableElems = function(draggableElems) {
+  draggableElems.prop('draggable', 'true');
+
+  draggableElems.on('dragstart',  $.proxy(this.onDragStart,          this));
+  draggableElems.on('dragenter',  $.proxy(this.onDragEnter,          this));
+  draggableElems.on('dragover',   $.proxy(this.onDragOver,           this));
+  draggableElems.on('dragend',    $.proxy(this.onDragEnd,            this));
+  draggableElems.on('drop',       $.proxy(this.onDragDrop,           this));
+  draggableElems.on('mousedown',  $.proxy(this.onDraggableMouseDown, this));
+
+  var handleElems = draggableElems.find(this.handleSelector);
   handleElems.on('mousedown', $.proxy(this.onHandleMouseDown, this));
 
-  $('body').on('mouseup', $.proxy(this.onWindowBodyMouseUp, this));
+  this.draggableElems = this.draggableElems.add(draggableElems);
+  this._resetGrabClasses();
 }
 
 RomoSortable.prototype.doInitPlaceholder = function() {
@@ -212,13 +225,11 @@ RomoSortable.prototype.onWindowBodyMouseUp = function(e) {
 
 RomoSortable.prototype._resetGrabClasses = function() {
   this.draggableElems.each($.proxy(function(index, item) {
-
     draggableElem = $(item);
     handleElem = draggableElem.find(this.handleSelector);
     if(handleElem.size() === 0){ handleElem = draggableElem; }
     handleElem.addClass('romo-sortable-grab');
     handleElem.removeClass('romo-sortable-grabbing');
-
   }, this));
 }
 
