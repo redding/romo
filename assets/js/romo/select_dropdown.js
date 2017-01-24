@@ -379,7 +379,7 @@ RomoSelectDropdown.prototype._buildOptGroupListItem = function(optGroupElem) {
 }
 
 RomoSelectDropdown.prototype._buildOptionFilter = function() {
-  var filter = $('<input type="text" class="romo-select-dropdown-option-filter"></input>');
+  var filter = $('<input type="text" size="1" class="romo-select-dropdown-option-filter"></input>');
 
   if (this.elem.data('romo-select-dropdown-filter-placeholder') !== undefined) {
     filter.attr('placeholder', this.elem.data('romo-select-dropdown-filter-placeholder'));
