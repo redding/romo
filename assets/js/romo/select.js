@@ -7,8 +7,9 @@ $.fn.romoSelect = function() {
 var RomoSelect = function(element) {
   this.elem = $(element);
 
-  this.defaultCaretClass   = undefined;
-  this.defaultCaretWidthPx = 0;
+  this.defaultCaretClass     = undefined;
+  this.defaultCaretPaddingPx = 5;
+  this.defaultCaretPosition  = 'right'
 
   this.doInit();
   this.doBindSelectDropdown();
@@ -154,23 +155,50 @@ RomoSelect.prototype._buildSelectDropdownElem = function() {
     Romo.parentChildElems.add(this.elem, [this.elemWrapper]);
   }, this), 1);
 
+  this.caretElem = $();
   var caretClass = this.elem.data('romo-select-caret') || this.defaultCaretClass;
   if (caretClass !== undefined && caretClass !== 'none') {
-    var caret = $('<i class="romo-select-caret '+caretClass+'"></i>');
-    caret.css({'line-height': romoSelectDropdownElem.css('line-height')});
-    caret.on('click', $.proxy(this.onCaretClick, this));
+    this.caretElem = $('<i class="romo-select-caret '+caretClass+'"></i>');
+    this.caretElem.css('line-height', parseInt(Romo.getComputedStyle(romoSelectDropdownElem[0], "line-height"), 10)+'px');
+    this.caretElem.on('click', $.proxy(this.onCaretClick, this));
+    romoSelectDropdownElem.append(this.caretElem);
 
-    var caretWidthPx = this.elem.data('romo-select-caret-width-px') || this.defaultCaretWidthPx;
-    // left-side spacing
+    var caretPaddingPx = this._getCaretPaddingPx();
+    var caretWidthPx   = this._getCaretWidthPx();
+    var caretPosition  = this._getCaretPosition();
+
+    // add a pixel to account for the default input border
+    this.caretElem.css(caretPosition, caretPaddingPx+1);
+
+    // left-side padding
     // + caret width
-    // - 1 px select styling optical illusion
-    // + right-side spacing
-    var caretPaddingPx = 4 + caretWidthPx - 1 + 4;
-    romoSelectDropdownElem.css({'padding-right': caretPaddingPx + 'px'});
-    romoSelectDropdownElem.append(caret);
+    // + right-side padding
+    var dropdownPaddingPx = caretPaddingPx + caretWidthPx + caretPaddingPx;
+    romoSelectDropdownElem.css('padding-'+caretPosition, dropdownPaddingPx+'px');
   }
 
   return romoSelectDropdownElem;
+}
+
+RomoSelect.prototype._getCaretPaddingPx = function() {
+  return (
+    this.elem.data('romo-select-caret-padding-px') ||
+    this.defaultCaretPaddingPx
+  );
+}
+
+RomoSelect.prototype._getCaretWidthPx = function() {
+  return (
+    this.elem.data('romo-select-caret-width-px') ||
+    parseInt(Romo.getComputedStyle(this.caretElem[0], "width"), 10)
+  );
+}
+
+RomoSelect.prototype._getCaretPosition = function() {
+  return (
+    this.elem.data('romo-select-caret-position') ||
+    this.defaultCaretPosition
+  );
 }
 
 Romo.onInitUI(function(e) {

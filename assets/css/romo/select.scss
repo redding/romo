@@ -39,9 +39,10 @@
   width: 100%;
 }
 .romo-select-caret {
+  display: inline-block;
   position: absolute;
-  right: 4px + 1px; /* 4 px for desired spacing + 1 px select styling optical illusion */
   vertical-align: middle;
+  cursor: pointer;
 }
 
 .romo-select-dropdown-option-filter-wrapper {
