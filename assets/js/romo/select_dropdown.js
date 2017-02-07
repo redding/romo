@@ -171,7 +171,10 @@ RomoSelectDropdown.prototype.doFilterOptionElems = function() {
     this.optionFilter.val(),
     this.romoDropdown.bodyElem.find('LI[data-romo-select-item="opt"]'),
     function(elem) {
-      return elem[0].textContent;
+      // The romo word boundary filter by default considers a space, "-" and "_" as word boundaries.
+      // We want to also consider other non-word characters (such as ":", "/", ".", "?", "=", "&")
+      // as word boundaries as well.
+      return elem[0].textContent.replace(/\W/g, ' ');
     }
   );
 
