@@ -1,33 +1,37 @@
 @import 'css/romo/vars';
 @import 'css/romo/mixins';
 
-.romo-dropdown,
-[data-romo-dropdown-close="true"] {
-  cursor: pointer;
-}
+.romo {
 
-.romo-dropdown-popup {
-  position: absolute;
-  float: left;
-  @include border0;
+  .romo-dropdown,
+  [data-romo-dropdown-close="true"] {
+    cursor: pointer;
+  }
 
-  background-color: $baseBgColor;
-  border-color: $baseBorderColor;
-  border-color: rgba(0, 0, 0, 0.2);
-}
+  .romo-dropdown-popup {
+    position: absolute;
+    float: left;
+    @include border0;
 
-.romo-dropdown-popup[data-romo-dropdown-fixed="true"] {
-  position: fixed;
-}
+    background-color: $baseBgColor;
+    border-color: $baseBorderColor;
+    border-color: rgba(0, 0, 0, 0.2);
+  }
 
-.romo-dropdown-popup[data-romo-dropdown-position="bottom"] {
-  @include box-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
-}
+  .romo-dropdown-popup[data-romo-dropdown-fixed="true"] {
+    position: fixed;
+  }
 
-.romo-dropdown-popup[data-romo-dropdown-position="top"] {
-  @include box-shadow(0 -3px 10px rgba(0, 0, 0, 0.2));
-}
+  .romo-dropdown-popup[data-romo-dropdown-position="bottom"] {
+    @include box-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+  }
 
-.romo-dropdown-popup:not([class*="romo-dropdown-open"]) {
-  display: none;
+  .romo-dropdown-popup[data-romo-dropdown-position="top"] {
+    @include box-shadow(0 -3px 10px rgba(0, 0, 0, 0.2));
+  }
+
+  .romo-dropdown-popup:not([class*="romo-dropdown-open"]) {
+    display: none;
+  }
+
 }

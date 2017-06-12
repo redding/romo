@@ -1,89 +1,93 @@
 @import 'css/romo/vars';
 @import 'css/romo/mixins';
 
-.romo-tooltip {
-  cursor: pointer;
-}
+.romo {
 
-.romo-tooltip-popup {
-  position: absolute;
-  float: left;
-  @include border1-radius;
+  .romo-tooltip {
+    cursor: pointer;
+  }
 
-  white-space: normal;
-  text-align: center;
+  .romo-tooltip-popup {
+    position: absolute;
+    float: left;
+    @include border1-radius;
 
-  font-size: 11px;
-  line-height: 1.4;
-  font-weight: 300;
-}
+    white-space: normal;
+    text-align: center;
 
-.romo-tooltip-popup:not([class*="romo-tooltip-open"]) {
-  display: none;
-}
+    font-size: 11px;
+    line-height: 1.4;
+    font-weight: 300;
+  }
 
-.romo-tooltip-arrow {
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-}
+  .romo-tooltip-popup:not([class*="romo-tooltip-open"]) {
+    display: none;
+  }
 
-.romo-tooltip-popup[data-romo-tooltip-arrow-position="top"] .romo-tooltip-arrow {
-  border-width: 6px 6px 0;
-  bottom: -6px;
-  left: 50%;
-  margin-left: -6px;
-}
+  .romo-tooltip-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+  }
 
-.romo-tooltip-popup[data-romo-tooltip-arrow-position="right"] .romo-tooltip-arrow {
-  border-width: 6px 6px 6px 0;
-  left: -6px;
-  top: 50%;
-  margin-top: -6px;
-}
+  .romo-tooltip-popup[data-romo-tooltip-arrow-position="top"] .romo-tooltip-arrow {
+    border-width: 6px 6px 0;
+    bottom: -6px;
+    left: 50%;
+    margin-left: -6px;
+  }
 
-.romo-tooltip-popup[data-romo-tooltip-arrow-position="bottom"] .romo-tooltip-arrow {
-  border-width: 0 6px 6px;
-  top: -6px;
-  left: 50%;
-  margin-left: -6px;
-}
+  .romo-tooltip-popup[data-romo-tooltip-arrow-position="right"] .romo-tooltip-arrow {
+    border-width: 6px 6px 6px 0;
+    left: -6px;
+    top: 50%;
+    margin-top: -6px;
+  }
 
-.romo-tooltip-popup[data-romo-tooltip-arrow-position="left"] .romo-tooltip-arrow {
-  border-width: 6px 0 6px 6px;
-  right: -6px;
-  top: 50%;
-  margin-top: -6px;
-}
+  .romo-tooltip-popup[data-romo-tooltip-arrow-position="bottom"] .romo-tooltip-arrow {
+    border-width: 0 6px 6px;
+    top: -6px;
+    left: 50%;
+    margin-left: -6px;
+  }
 
-.romo-tooltip-popup[data-romo-tooltip-alignment="left"]   { @include align-left; }
-.romo-tooltip-popup[data-romo-tooltip-alignment="center"] { @include align-center; }
-.romo-tooltip-popup[data-romo-tooltip-alignment="right"]  { @include align-right; }
+  .romo-tooltip-popup[data-romo-tooltip-arrow-position="left"] .romo-tooltip-arrow {
+    border-width: 6px 0 6px 6px;
+    right: -6px;
+    top: 50%;
+    margin-top: -6px;
+  }
 
-.romo-tooltip-body {
-  padding: 6px 8px;
-  overflow: hidden;
-}
+  .romo-tooltip-popup[data-romo-tooltip-alignment="left"]   { @include align-left; }
+  .romo-tooltip-popup[data-romo-tooltip-alignment="center"] { @include align-center; }
+  .romo-tooltip-popup[data-romo-tooltip-alignment="right"]  { @include align-right; }
+
+  .romo-tooltip-body {
+    padding: 6px 8px;
+    overflow: hidden;
+  }
 
 
-/* theme */
+  /* theme */
 
-.romo-tooltip-popup {
-  background-color: $tooltipBgColor;
-  color: $tooltipColor;
-}
+  .romo-tooltip-popup {
+    background-color: $tooltipBgColor;
+    color: $tooltipColor;
+  }
 
-.romo-tooltip-popup[data-romo-tooltip-arrow-position="top"] .romo-tooltip-arrow {
-  border-top-color: $tooltipBgColor;
-}
-.romo-tooltip-popup[data-romo-tooltip-arrow-position="right"] .romo-tooltip-arrow {
-  border-right-color: $tooltipBgColor;
-}
-.romo-tooltip-popup[data-romo-tooltip-arrow-position="bottom"] .romo-tooltip-arrow {
-  border-bottom-color: $tooltipBgColor;
-}
-.romo-tooltip-popup[data-romo-tooltip-arrow-position="left"] .romo-tooltip-arrow {
-  border-left-color: $tooltipBgColor;
+  .romo-tooltip-popup[data-romo-tooltip-arrow-position="top"] .romo-tooltip-arrow {
+    border-top-color: $tooltipBgColor;
+  }
+  .romo-tooltip-popup[data-romo-tooltip-arrow-position="right"] .romo-tooltip-arrow {
+    border-right-color: $tooltipBgColor;
+  }
+  .romo-tooltip-popup[data-romo-tooltip-arrow-position="bottom"] .romo-tooltip-arrow {
+    border-bottom-color: $tooltipBgColor;
+  }
+  .romo-tooltip-popup[data-romo-tooltip-arrow-position="left"] .romo-tooltip-arrow {
+    border-left-color: $tooltipBgColor;
+  }
+
 }

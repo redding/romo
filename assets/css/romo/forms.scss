@@ -1,218 +1,222 @@
 @import 'css/romo/vars';
 @import 'css/romo/mixins';
 
-/* defaults */
+.romo {
 
-form { @include rm-push; @include rm-pad; }
-label { display: block; }
+  /* defaults */
 
-/* basic */
+  form { @include rm-push; @include rm-pad; }
+  label { display: block; }
 
-.romo-form fieldset {
-  @include rm-push;
-  @include rm-pad;
-  @include rm-border;
-}
+  /* basic */
 
-.romo-form legend {
-  display: block;
-  width: 100%;
-  @include rm-push;
-  @include rm-pad;
-  @include push0-bottom;
-  @include rm-border;
-  @include border1-bottom;
-}
+  .romo-form fieldset {
+    @include rm-push;
+    @include rm-pad;
+    @include rm-border;
+  }
 
-.romo-form input,
-.romo-form select,
-.romo-form textarea,
-input.romo-select-dropdown-option-filter {
-  font-size: 100%;
-  @include rm-push;
-  @include align-middle;
-}
+  .romo-form legend {
+    display: block;
+    width: 100%;
+    @include rm-push;
+    @include rm-pad;
+    @include push0-bottom;
+    @include rm-border;
+    @include border1-bottom;
+  }
 
-.romo-form label.romo-radio,
-.romo-form label.romo-checkbox {
-  span,
-  input[type="radio"],
-  input[type="checkbox"] {
-    line-height: 1;
+  .romo-form input,
+  .romo-form select,
+  .romo-form textarea,
+  input.romo-select-dropdown-option-filter {
+    font-size: 100%;
+    @include rm-push;
     @include align-middle;
   }
-}
 
-.romo-form input,
-input.romo-select-dropdown-option-filter {
-  *overflow: visible;
-  line-height: normal;
-}
+  .romo-form label.romo-radio,
+  .romo-form label.romo-checkbox {
+    span,
+    input[type="radio"],
+    input[type="checkbox"] {
+      line-height: 1;
+      @include align-middle;
+    }
+  }
 
-.romo-form textarea {
-  overflow: auto; @include align-top;
-}
+  .romo-form input,
+  input.romo-select-dropdown-option-filter {
+    *overflow: visible;
+    line-height: normal;
+  }
 
-.romo-form label,
-.romo-form select,
-.romo-form input[type="button"],
-.romo-form input[type="reset"],
-.romo-form input[type="submit"],
-.romo-form input[type="radio"],
-.romo-form input[type="checkbox"] { cursor: pointer; }
+  .romo-form textarea {
+    overflow: auto; @include align-top;
+  }
 
-.romo-form input[disabled],
-.romo-form select[disabled],
-.romo-form textarea[disabled],
-.romo-form input[readonly],
-.romo-form select[readonly],
-.romo-form textarea[readonly],
-input.romo-select-dropdown-option-filter[disabled],
-input.romo-select-dropdown-option-filter[readonly] { cursor: $notAllowedCursor; }
+  .romo-form label,
+  .romo-form select,
+  .romo-form input[type="button"],
+  .romo-form input[type="reset"],
+  .romo-form input[type="submit"],
+  .romo-form input[type="radio"],
+  .romo-form input[type="checkbox"] { cursor: pointer; }
 
-.romo-form select {
-  font-weight: normal;
-  background-color: $inputBgColor;
-  @include border1;
-}
-.romo-form select optgroup { @include select-optgroup; }
-.romo-form select option { @include select-option; }
+  .romo-form input[disabled],
+  .romo-form select[disabled],
+  .romo-form textarea[disabled],
+  .romo-form input[readonly],
+  .romo-form select[readonly],
+  .romo-form textarea[readonly],
+  input.romo-select-dropdown-option-filter[disabled],
+  input.romo-select-dropdown-option-filter[readonly] { cursor: $notAllowedCursor; }
 
-.romo-form textarea,
-.romo-form input[type="text"],
-.romo-form input[type="password"],
-.romo-form input[type="datetime"],
-.romo-form input[type="datetime-local"],
-.romo-form input[type="date"],
-.romo-form input[type="month"],
-.romo-form input[type="time"],
-.romo-form input[type="week"],
-.romo-form input[type="number"],
-.romo-form input[type="email"],
-.romo-form input[type="url"],
-.romo-form input[type="search"],
-.romo-form input[type="tel"],
-.romo-form input[type="color"],
-input.romo-select-dropdown-option-filter {
-  font-weight: normal;
-  background-color: $inputBgColor;
-  @include border1;
-  @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075));
-}
+  .romo-form select {
+    font-weight: normal;
+    background-color: $inputBgColor;
+    @include border1;
+  }
+  .romo-form select optgroup { @include select-optgroup; }
+  .romo-form select option { @include select-option; }
 
-.romo-form select:focus,
-.romo-form textarea:focus,
-.romo-form input[type="text"]:focus,
-.romo-form input[type="password"]:focus,
-.romo-form input[type="datetime"]:focus,
-.romo-form input[type="datetime-local"]:focus,
-.romo-form input[type="date"]:focus,
-.romo-form input[type="month"]:focus,
-.romo-form input[type="time"]:focus,
-.romo-form input[type="week"]:focus,
-.romo-form input[type="number"]:focus,
-.romo-form input[type="email"]:focus,
-.romo-form input[type="url"]:focus,
-.romo-form input[type="search"]:focus,
-.romo-form input[type="tel"]:focus,
-.romo-form input[type="color"]:focus,
-input.romo-select-dropdown-option-filter:focus {
-  @include input-focus;
-}
+  .romo-form textarea,
+  .romo-form input[type="text"],
+  .romo-form input[type="password"],
+  .romo-form input[type="datetime"],
+  .romo-form input[type="datetime-local"],
+  .romo-form input[type="date"],
+  .romo-form input[type="month"],
+  .romo-form input[type="time"],
+  .romo-form input[type="week"],
+  .romo-form input[type="number"],
+  .romo-form input[type="email"],
+  .romo-form input[type="url"],
+  .romo-form input[type="search"],
+  .romo-form input[type="tel"],
+  .romo-form input[type="color"],
+  input.romo-select-dropdown-option-filter {
+    font-weight: normal;
+    background-color: $inputBgColor;
+    @include border1;
+    @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075));
+  }
 
-.romo-form input[disabled],
-.romo-form select[disabled],
-.romo-form textarea[disabled],
-.romo-form input[readonly],
-.romo-form select[readonly],
-.romo-form textarea[readonly],
-input.romo-select-dropdown-option-filter[disabled],
-input.romo-select-dropdown-option-filter[readonly] { background-color: $inputDisabledColor; }
+  .romo-form select:focus,
+  .romo-form textarea:focus,
+  .romo-form input[type="text"]:focus,
+  .romo-form input[type="password"]:focus,
+  .romo-form input[type="datetime"]:focus,
+  .romo-form input[type="datetime-local"]:focus,
+  .romo-form input[type="date"]:focus,
+  .romo-form input[type="month"]:focus,
+  .romo-form input[type="time"]:focus,
+  .romo-form input[type="week"]:focus,
+  .romo-form input[type="number"]:focus,
+  .romo-form input[type="email"]:focus,
+  .romo-form input[type="url"]:focus,
+  .romo-form input[type="search"]:focus,
+  .romo-form input[type="tel"]:focus,
+  .romo-form input[type="color"]:focus,
+  input.romo-select-dropdown-option-filter:focus {
+    @include input-focus;
+  }
 
-.romo-form input[type="radio"][disabled],
-.romo-form input[type="checkbox"][disabled],
-.romo-form input[type="radio"][readonly],
-.romo-form input[type="checkbox"][readonly] { background-color: transparent };
+  .romo-form input[disabled],
+  .romo-form select[disabled],
+  .romo-form textarea[disabled],
+  .romo-form input[readonly],
+  .romo-form select[readonly],
+  .romo-form textarea[readonly],
+  input.romo-select-dropdown-option-filter[disabled],
+  input.romo-select-dropdown-option-filter[readonly] { background-color: $inputDisabledColor; }
 
-.romo-form select,
-.romo-form input[type="text"],
-.romo-form input[type="password"],
-.romo-form input[type="datetime"],
-.romo-form input[type="datetime-local"],
-.romo-form input[type="date"],
-.romo-form input[type="month"],
-.romo-form input[type="time"],
-.romo-form input[type="week"],
-.romo-form input[type="number"],
-.romo-form input[type="email"],
-.romo-form input[type="url"],
-.romo-form input[type="search"],
-.romo-form input[type="tel"],
-.romo-form input[type="color"],
-input.romo-select-dropdown-option-filter {
-  height: $inputHeight;
-  line-height: $baseLineHeight;
-  @include align-middle;
-}
+  .romo-form input[type="radio"][disabled],
+  .romo-form input[type="checkbox"][disabled],
+  .romo-form input[type="radio"][readonly],
+  .romo-form input[type="checkbox"][readonly] { background-color: transparent };
 
-input.romo-select-dropdown-option-filter {
-  height: $inputFilterHeight;
-}
+  .romo-form select,
+  .romo-form input[type="text"],
+  .romo-form input[type="password"],
+  .romo-form input[type="datetime"],
+  .romo-form input[type="datetime-local"],
+  .romo-form input[type="date"],
+  .romo-form input[type="month"],
+  .romo-form input[type="time"],
+  .romo-form input[type="week"],
+  .romo-form input[type="number"],
+  .romo-form input[type="email"],
+  .romo-form input[type="url"],
+  .romo-form input[type="search"],
+  .romo-form input[type="tel"],
+  .romo-form input[type="color"],
+  input.romo-select-dropdown-option-filter {
+    height: $inputHeight;
+    line-height: $baseLineHeight;
+    @include align-middle;
+  }
 
-.romo-form textarea,
-.romo-form input[type="text"],
-.romo-form input[type="password"],
-.romo-form input[type="datetime"],
-.romo-form input[type="datetime-local"],
-.romo-form input[type="date"],
-.romo-form input[type="month"],
-.romo-form input[type="time"],
-.romo-form input[type="week"],
-.romo-form input[type="number"],
-.romo-form input[type="email"],
-.romo-form input[type="url"],
-.romo-form input[type="search"],
-.romo-form input[type="tel"],
-.romo-form input[type="color"],
-input.romo-select-dropdown-option-filter {
-  display: inline-block;
-  padding: 4px 6px;
-  color: $inputColor;
-}
+  input.romo-select-dropdown-option-filter {
+    height: $inputFilterHeight;
+  }
 
-input.romo-select-dropdown-option-filter {
-  display: block;
-  width: 100%;
-}
+  .romo-form textarea,
+  .romo-form input[type="text"],
+  .romo-form input[type="password"],
+  .romo-form input[type="datetime"],
+  .romo-form input[type="datetime-local"],
+  .romo-form input[type="date"],
+  .romo-form input[type="month"],
+  .romo-form input[type="time"],
+  .romo-form input[type="week"],
+  .romo-form input[type="number"],
+  .romo-form input[type="email"],
+  .romo-form input[type="url"],
+  .romo-form input[type="search"],
+  .romo-form input[type="tel"],
+  .romo-form input[type="color"],
+  input.romo-select-dropdown-option-filter {
+    display: inline-block;
+    padding: 4px 6px;
+    color: $inputColor;
+  }
 
-.romo-form textarea,
-.romo-form select[multiple],
-.romo-form select[size] { height: auto; }
+  input.romo-select-dropdown-option-filter {
+    display: block;
+    width: 100%;
+  }
 
-.romo-form input[type="file"] {
-  height: ($baseLineHeight / 2) * 3;      /* 30px */
-  line-height: ($baseLineHeight / 2) * 3; /* 30px */
-}
+  .romo-form textarea,
+  .romo-form select[multiple],
+  .romo-form select[size] { height: auto; }
 
-.romo-input,
-.romo-input1 { width: $inputSize1; }
-.romo-input-small,
-.romo-input0 { width: $inputSize0; }
-.romo-input-large,
-.romo-input2 { width: $inputSize2; }
+  .romo-form input[type="file"] {
+    height: ($baseLineHeight / 2) * 3;      /* 30px */
+    line-height: ($baseLineHeight / 2) * 3; /* 30px */
+  }
 
-.romo-input-block { width: 100%; display: block; }
+  .romo-input,
+  .romo-input1 { width: $inputSize1; }
+  .romo-input-small,
+  .romo-input0 { width: $inputSize0; }
+  .romo-input-large,
+  .romo-input2 { width: $inputSize2; }
 
-.romo-form input[type="file"],
-.romo-form input[type="image"],
-.romo-form input[type="submit"],
-.romo-form input[type="reset"],
-.romo-form input[type="button"],
-.romo-form input[type="radio"],
-.romo-form input[type="checkbox"] { width: auto; }
+  .romo-input-block { width: 100%; display: block; }
 
-.romo-form .romo-input-inline,
-.romo-form .romo-input-help {
-  line-height: $inputHeight;
-  @include align-middle;
+  .romo-form input[type="file"],
+  .romo-form input[type="image"],
+  .romo-form input[type="submit"],
+  .romo-form input[type="reset"],
+  .romo-form input[type="button"],
+  .romo-form input[type="radio"],
+  .romo-form input[type="checkbox"] { width: auto; }
+
+  .romo-form .romo-input-inline,
+  .romo-form .romo-input-help {
+    line-height: $inputHeight;
+    @include align-middle;
+  }
+
 }

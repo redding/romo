@@ -1,97 +1,101 @@
 @import 'css/romo/vars';
 @import 'css/romo/mixins';
 
-.romo-select-dropdown-options-parent {
-  display: none;
-}
+.romo {
 
-.romo-select-wrapper {
-  display: inline-block;
-  text-align: left;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-  cursor: pointer;
-  @include user-select(none);
-  position: relative;
-}
+  .romo-select-dropdown-options-parent {
+    display: none;
+  }
 
-.romo-select {
-  min-width: 50px;
-  font-weight: normal;
-  text-align: left;
-  padding-left: 6px;
-  padding-right: 6px;
-}
+  .romo-select-wrapper {
+    display: inline-block;
+    text-align: left;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    cursor: pointer;
+    @include user-select(none);
+    position: relative;
+  }
 
-.romo-select:focus,
-.romo-select.romo-select-focus { @include input-focus; }
+  .romo-select {
+    min-width: 50px;
+    font-weight: normal;
+    text-align: left;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
 
-.romo-select:active,
-.romo-select.active {
-  background-image: none;
-  outline: 0;
-  @include box-shadow((inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)));
-}
+  .romo-select:focus,
+  .romo-select.romo-select-focus { @include input-focus; }
 
-.romo-select-text {
-  white-space: nowrap;
-  overflow: hidden;
-  display: inline-block;
-  width: 100%;
-}
-.romo-select-caret {
-  display: inline-block;
-  position: absolute;
-  vertical-align: middle;
-  cursor: pointer;
-}
+  .romo-select:active,
+  .romo-select.active {
+    background-image: none;
+    outline: 0;
+    @include box-shadow((inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)));
+  }
 
-.romo-select-dropdown-option-filter-wrapper {
-  @include border1-bottom();
-  padding: 4px 0;
-  margin: 0 4px;
-}
+  .romo-select-text {
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    width: 100%;
+  }
+  .romo-select-caret {
+    display: inline-block;
+    position: absolute;
+    vertical-align: middle;
+    cursor: pointer;
+  }
 
-.romo-select-option-list {
-  cursor: pointer;
-  font-weight: normal;
-  padding: 4px 0;
-  @include user-select(none);
+  .romo-select-dropdown-option-filter-wrapper {
+    @include border1-bottom();
+    padding: 4px 0;
+    margin: 0 4px;
+  }
 
-  background-color: $inputBgColor;
-  color: $inputColor;
-}
+  .romo-select-option-list {
+    cursor: pointer;
+    font-weight: normal;
+    padding: 4px 0;
+    @include user-select(none);
 
-.romo-select-option-list UL {
-  list-style: none outside none;
-  margin: 0;
-  padding: 0;
-  white-space: nowrap;
-  overflow: hidden;
-}
+    background-color: $inputBgColor;
+    color: $inputColor;
+  }
 
-.romo-select-option-list UL.romo-select-optgroup LI {
-  padding-left: $spacingSize1;
-}
+  .romo-select-option-list UL {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 
-.romo-select-option-list LI {
-  @include select-option;
-}
+  .romo-select-option-list UL.romo-select-optgroup LI {
+    padding-left: $spacingSize1;
+  }
 
-.romo-select-option-list LI[data-romo-select-item="optgroup"] {
-  @include select-optgroup;
-}
+  .romo-select-option-list LI {
+    @include select-option;
+  }
 
-.romo-select-option-list LI.romo-select-highlight {
-  background-color: $inputHighlightBgColor;
-  color: $inputBgColor;
-}
+  .romo-select-option-list LI[data-romo-select-item="optgroup"] {
+    @include select-optgroup;
+  }
 
-.romo-select-option-list LI.disabled {
-  cursor: $notAllowedCursor;
-}
+  .romo-select-option-list LI.romo-select-highlight {
+    background-color: $inputHighlightBgColor;
+    color: $inputBgColor;
+  }
 
-.romo-select-option-list LI.disabled,
-.romo-select-option-list LI.disabled.romo-select-highlight {
-  background-color: $inputBgColor;
-  color: $disabledColor;
+  .romo-select-option-list LI.disabled {
+    cursor: $notAllowedCursor;
+  }
+
+  .romo-select-option-list LI.disabled,
+  .romo-select-option-list LI.disabled.romo-select-highlight {
+    background-color: $inputBgColor;
+    color: $disabledColor;
+  }
+
 }

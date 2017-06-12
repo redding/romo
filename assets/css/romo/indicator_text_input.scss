@@ -1,18 +1,22 @@
 @import 'css/romo/vars';
 @import 'css/romo/mixins';
 
-.romo-indicator-text-input-wrapper {
-  position: relative;
-}
+.romo {
 
-.romo-indicator-text-input-indicator {
-  display: inline-block;
-  position: absolute;
-  top: 0px;
-  vertical-align: middle;
-  cursor: pointer;
-}
-.romo-indicator-text-input-indicator.disabled {
-  cursor: $notAllowedCursor;
-  color: $disabledColor;
+  .romo-indicator-text-input-wrapper {
+    position: relative;
+  }
+
+  .romo-indicator-text-input-indicator {
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+  .romo-indicator-text-input-indicator.disabled {
+    cursor: $notAllowedCursor;
+    color: $disabledColor;
+  }
+
 }

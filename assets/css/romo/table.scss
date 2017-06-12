@@ -1,211 +1,215 @@
 @import 'css/romo/vars';
 @import 'css/romo/mixins';
 
-.romo-table       { width: 100%; }
-.romo-table-fixed { table-layout: fixed; }
+.romo {
 
-.romo-table th,
-.romo-table td {
-  @include rm-pad;
-  @include align-left;
-  @include align-middle;
-  @include border1-bottom;
+  .romo-table       { width: 100%; }
+  .romo-table-fixed { table-layout: fixed; }
+
+  .romo-table th,
+  .romo-table td {
+    @include rm-pad;
+    @include align-left;
+    @include align-middle;
+    @include border1-bottom;
+  }
+
+  .romo-table th { @include font-weight(bold); }
+  .romo-table thead th { @include align-bottom; }
+
+  .romo-table-alt { @include bg-alt; }
+
+  .romo-table-striped tbody > tr:nth-child(odd) { @include bg-striped; }
+  .romo-table-striped.romo-table-striped-alt tbody > tr:nth-child(odd) { @include bg-base; }
+  .romo-table-striped.romo-table-striped-alt { @include bg-striped; }
+
+  .romo-table-hover tbody tr:hover,
+  .romo-table-hover.romo-table-alt tbody tr:hover,
+  .romo-table-hover.romo-table-striped tbody tr:hover,
+  .romo-table-hover.romo-table-striped-alt tbody tr:hover { @include bg-hover; }
+
+  .romo-table-border,
+  .romo-table-border0,
+  .romo-table-border1,
+  .romo-table-border2,
+  .romo-table-border-none { border-collapse: collapse; *border-collapse: collapse; }
+
+  .romo-table-border,
+  .romo-table-border1     { @include border1-top; @include border1-left; }
+  .romo-table-border0     { @include border0-top; @include border0-left; }
+  .romo-table-border2     { @include border2-top; @include border2-left; }
+  .romo-table-border-none { @include border-style(none); }
+
+  .romo-table-border      th, .romo-table-border      td,
+  .romo-table-border1     th, .romo-table-border1     td { @include border1-bottom; @include border1-right; }
+  .romo-table-border0     th, .romo-table-border0     td { @include border0-bottom; @include border0-right; }
+  .romo-table-border2     th, .romo-table-border2     td { @include border2-bottom; @include border2-right; }
+  .romo-table-border-none th, .romo-table-border-none td { @include border-style(none); }
+
+  .romo-table-pad    th, .romo-table-pad    td,
+  .romo-table-pad1   th, .romo-table-pad1   td { @include pad1;   }
+  .romo-table-pad0   th, .romo-table-pad0   td { @include pad0;   }
+  .romo-table-pad2   th, .romo-table-pad2   td { @include pad2;   }
+  .romo-table-rm-pad th, .romo-table-rm-pad td { @include rm-pad; }
+
+  .romo-table-pad-top    th, .romo-table-pad-top    td,
+  .romo-table-pad1-top   th, .romo-table-pad1-top   td { @include pad1-top;   }
+  .romo-table-pad0-top   th, .romo-table-pad0-top   td { @include pad0-top;   }
+  .romo-table-pad2-top   th, .romo-table-pad2-top   td { @include pad2-top;   }
+  .romo-table-rm-pad-top th, .romo-table-rm-pad-top td { @include rm-pad-top; }
+
+  .romo-table-pad-right    th, .romo-table-pad-right    td,
+  .romo-table-pad1-right   th, .romo-table-pad1-right   td { @include pad1-right;   }
+  .romo-table-pad0-right   th, .romo-table-pad0-right   td { @include pad0-right;   }
+  .romo-table-pad2-right   th, .romo-table-pad2-right   td { @include pad2-right;   }
+  .romo-table-rm-pad-right th, .romo-table-rm-pad-right td { @include rm-pad-right; }
+
+  .romo-table-pad-bottom    th, .romo-table-pad-bottom    td,
+  .romo-table-pad1-bottom   th, .romo-table-pad1-bottom   td { @include pad1-bottom;   }
+  .romo-table-pad0-bottom   th, .romo-table-pad0-bottom   td { @include pad0-bottom;   }
+  .romo-table-pad2-bottom   th, .romo-table-pad2-bottom   td { @include pad2-bottom;   }
+  .romo-table-rm-pad-bottom th, .romo-table-rm-pad-bottom td { @include rm-pad-bottom; }
+
+  .romo-table-pad-left    th, .romo-table-pad-left    td,
+  .romo-table-pad1-left   th, .romo-table-pad1-left   td { @include pad1-left;   }
+  .romo-table-pad0-left   th, .romo-table-pad0-left   td { @include pad0-left;   }
+  .romo-table-pad2-left   th, .romo-table-pad2-left   td { @include pad2-left;   }
+  .romo-table-rm-pad-left th, .romo-table-rm-pad-left td { @include rm-pad-left; }
+
+  /* emphasis colored rows */
+
+  .romo-table tr.romo-base    { @include bg-base(!important);    }
+  .romo-table tr.romo-alt     { @include bg-alt(!important);     }
+  .romo-table tr.romo-muted   { @include bg-muted(!important);   }
+  .romo-table tr.romo-warning { @include bg-warning(!important); }
+  .romo-table tr.romo-danger  { @include bg-danger(!important);  }
+  .romo-table tr.romo-info    { @include bg-info(!important);    }
+  .romo-table tr.romo-success { @include bg-success(!important); }
+  .romo-table tr.romo-inverse { @include bg-inverse(!important); }
+
+  .romo-table-hover tbody tr.romo-base:hover    { @include bg-base-hover(!important);    }
+  .romo-table-hover tbody tr.romo-alt:hover     { @include bg-alt-hover(!important);     }
+  .romo-table-hover tbody tr.romo-muted:hover   { @include bg-muted-hover(!important);   }
+  .romo-table-hover tbody tr.romo-warning:hover { @include bg-warning-hover(!important); }
+  .romo-table-hover tbody tr.romo-danger:hover  { @include bg-danger-hover(!important);  }
+  .romo-table-hover tbody tr.romo-info:hover    { @include bg-info-hover(!important);    }
+  .romo-table-hover tbody tr.romo-success:hover { @include bg-success-hover(!important); }
+  .romo-table-hover tbody tr.romo-inverse:hover { @include bg-inverse-hover(!important); }
+
+  /* explicit colored rows */
+
+  .romo-table tr.romo-dark-red      { @include bg-dark-red(!important);      }
+  .romo-table tr.romo-red           { @include bg-red(!important);           }
+  .romo-table tr.romo-light-red     { @include bg-light-red(!important);     }
+  .romo-table tr.romo-pastel-red    { @include bg-pastel-red(!important);    }
+  .romo-table tr.romo-dark-orange   { @include bg-dark-orange(!important);   }
+  .romo-table tr.romo-orange        { @include bg-orange(!important);        }
+  .romo-table tr.romo-yellow        { @include bg-yellow(!important);        }
+  .romo-table tr.romo-pastel-yellow { @include bg-pastel-yellow(!important); }
+  .romo-table tr.romo-purple        { @include bg-purple(!important);        }
+  .romo-table tr.romo-light-purple  { @include bg-light-purple(!important);  }
+  .romo-table tr.romo-dark-pink     { @include bg-dark-pink(!important);     }
+  .romo-table tr.romo-hot-pink      { @include bg-hot-pink(!important);      }
+  .romo-table tr.romo-pink          { @include bg-pink(!important);          }
+  .romo-table tr.romo-dark-green    { @include bg-dark-green(!important);    }
+  .romo-table tr.romo-green         { @include bg-green(!important);         }
+  .romo-table tr.romo-light-green   { @include bg-light-green(!important);   }
+  .romo-table tr.romo-pastel-green  { @include bg-pastel-green(!important);  }
+  .romo-table tr.romo-navy          { @include bg-navy(!important);          }
+  .romo-table tr.romo-dark-blue     { @include bg-dark-blue(!important);     }
+  .romo-table tr.romo-blue          { @include bg-blue(!important);          }
+  .romo-table tr.romo-light-blue    { @include bg-light-blue(!important);    }
+  .romo-table tr.romo-pastel-blue   { @include bg-pastel-blue(!important);   }
+
+  .romo-table-hover tbody tr.romo-dark-red:hover      { @include bg-dark-red-hover(!important);      }
+  .romo-table-hover tbody tr.romo-red:hover           { @include bg-red-hover(!important);           }
+  .romo-table-hover tbody tr.romo-light-red:hover     { @include bg-light-red-hover(!important);     }
+  .romo-table-hover tbody tr.romo-pastel-red:hover    { @include bg-pastel-red-hover(!important);    }
+  .romo-table-hover tbody tr.romo-dark-orange:hover   { @include bg-dark-orange-hover(!important);   }
+  .romo-table-hover tbody tr.romo-orange:hover        { @include bg-orange-hover(!important);        }
+  .romo-table-hover tbody tr.romo-yellow:hover        { @include bg-yellow-hover(!important);        }
+  .romo-table-hover tbody tr.romo-pastel-yellow:hover { @include bg-pastel-yellow-hover(!important); }
+  .romo-table-hover tbody tr.romo-purple:hover        { @include bg-purple-hover(!important);        }
+  .romo-table-hover tbody tr.romo-light-purple:hover  { @include bg-light-purple-hover(!important);  }
+  .romo-table-hover tbody tr.romo-dark-pink:hover     { @include bg-dark-pink-hover(!important);     }
+  .romo-table-hover tbody tr.romo-hot-pink:hover      { @include bg-hot-pink-hover(!important);      }
+  .romo-table-hover tbody tr.romo-pink:hover          { @include bg-pink-hover(!important);          }
+  .romo-table-hover tbody tr.romo-dark-green:hover    { @include bg-dark-green-hover(!important);    }
+  .romo-table-hover tbody tr.romo-green:hover         { @include bg-green-hover(!important);         }
+  .romo-table-hover tbody tr.romo-light-green:hover   { @include bg-light-green-hover(!important);   }
+  .romo-table-hover tbody tr.romo-pastel-green:hover  { @include bg-pastel-green-hover(!important);  }
+  .romo-table-hover tbody tr.romo-navy:hover          { @include bg-navy-hover(!important);          }
+  .romo-table-hover tbody tr.romo-dark-blue:hover     { @include bg-dark-blue-hover(!important);     }
+  .romo-table-hover tbody tr.romo-blue:hover          { @include bg-blue-hover(!important);          }
+  .romo-table-hover tbody tr.romo-light-blue:hover    { @include bg-light-blue-hover(!important);    }
+  .romo-table-hover tbody tr.romo-pastel-blue:hover   { @include bg-pastel-blue-hover(!important);   }
+
+  /* emphasis colored borders */
+
+  .romo-table-border-base    { @include border-base;    }
+  .romo-table-border-alt     { @include border-alt;     }
+  .romo-table-border-muted   { @include border-muted;   }
+  .romo-table-border-warning { @include border-warning; }
+  .romo-table-border-danger  { @include border-danger;  }
+  .romo-table-border-info    { @include border-info;    }
+  .romo-table-border-success { @include border-success; }
+  .romo-table-border-inverse { @include border-inverse; }
+
+  .romo-table-border-base    th, .romo-table-border-base    td { @include border-base;    }
+  .romo-table-border-alt     th, .romo-table-border-alt     td { @include border-alt;     }
+  .romo-table-border-muted   th, .romo-table-border-muted   td { @include border-muted;   }
+  .romo-table-border-warning th, .romo-table-border-warning td { @include border-warning; }
+  .romo-table-border-danger  th, .romo-table-border-danger  td { @include border-danger;  }
+  .romo-table-border-info    th, .romo-table-border-info    td { @include border-info;    }
+  .romo-table-border-success th, .romo-table-border-success td { @include border-success; }
+  .romo-table-border-inverse th, .romo-table-border-inverse td { @include border-inverse; }
+
+  /* explicit colored borders */
+
+  .romo-table-border-dark-red      { @include border-dark-red;      }
+  .romo-table-border-red           { @include border-red;           }
+  .romo-table-border-light-red     { @include border-light-red;     }
+  .romo-table-border-pastel-red    { @include border-pastel-red;    }
+  .romo-table-border-dark-orange   { @include border-dark-orange;   }
+  .romo-table-border-orange        { @include border-orange;        }
+  .romo-table-border-yellow        { @include border-yellow;        }
+  .romo-table-border-pastel-yellow { @include border-pastel-yellow; }
+  .romo-table-border-purple        { @include border-purple;        }
+  .romo-table-border-light-purple  { @include border-light-purple;  }
+  .romo-table-border-dark-pink     { @include border-dark-pink;     }
+  .romo-table-border-hot-pink      { @include border-hot-pink;      }
+  .romo-table-border-pink          { @include border-pink;          }
+  .romo-table-border-dark-green    { @include border-dark-green;    }
+  .romo-table-border-green         { @include border-green;         }
+  .romo-table-border-light-green   { @include border-light-green;   }
+  .romo-table-border-pastel-green  { @include border-pastel-green;  }
+  .romo-table-border-navy          { @include border-navy;          }
+  .romo-table-border-dark-blue     { @include border-dark-blue;     }
+  .romo-table-border-blue          { @include border-blue;          }
+  .romo-table-border-light-blue    { @include border-light-blue;    }
+  .romo-table-border-pastel-blue   { @include border-pastel-blue;   }
+
+  .romo-table-border-dark-red      th, .romo-table-border-dark-red      td { @include border-dark-red;      }
+  .romo-table-border-red           th, .romo-table-border-red           td { @include border-red;           }
+  .romo-table-border-light-red     th, .romo-table-border-light-red     td { @include border-light-red;     }
+  .romo-table-border-pastel-red    th, .romo-table-border-pastel-red    td { @include border-pastel-red;    }
+  .romo-table-border-dark-orange   th, .romo-table-border-dark-orange   td { @include border-dark-orange;   }
+  .romo-table-border-orange        th, .romo-table-border-orange        td { @include border-orange;        }
+  .romo-table-border-yellow        th, .romo-table-border-yellow        td { @include border-yellow;        }
+  .romo-table-border-pastel-yellow th, .romo-table-border-pastel-yellow td { @include border-pastel-yellow; }
+  .romo-table-border-purple        th, .romo-table-border-purple        td { @include border-purple;        }
+  .romo-table-border-light-purple  th, .romo-table-border-light-purple  td { @include border-light-purple;  }
+  .romo-table-border-dark-pink     th, .romo-table-border-dark-pink     td { @include border-dark-pink;     }
+  .romo-table-border-hot-pink      th, .romo-table-border-hot-pink      td { @include border-hot-pink;      }
+  .romo-table-border-pink          th, .romo-table-border-pink          td { @include border-pink;          }
+  .romo-table-border-dark-green    th, .romo-table-border-dark-green    td { @include border-dark-green;    }
+  .romo-table-border-green         th, .romo-table-border-green         td { @include border-green;         }
+  .romo-table-border-light-green   th, .romo-table-border-light-green   td { @include border-light-green;   }
+  .romo-table-border-pastel-green  th, .romo-table-border-pastel-green  td { @include border-pastel-green;  }
+  .romo-table-border-navy          th, .romo-table-border-navy          td { @include border-navy;          }
+  .romo-table-border-dark-blue     th, .romo-table-border-dark-blue     td { @include border-dark-blue;     }
+  .romo-table-border-blue          th, .romo-table-border-blue          td { @include border-blue;          }
+  .romo-table-border-light-blue    th, .romo-table-border-light-blue    td { @include border-light-blue;    }
+  .romo-table-border-pastel-blue   th, .romo-table-border-pastel-blue   td { @include border-pastel-blue;   }
+
 }
-
-.romo-table th { @include font-weight(bold); }
-.romo-table thead th { @include align-bottom; }
-
-.romo-table-alt { @include bg-alt; }
-
-.romo-table-striped tbody > tr:nth-child(odd) { @include bg-striped; }
-.romo-table-striped.romo-table-striped-alt tbody > tr:nth-child(odd) { @include bg-base; }
-.romo-table-striped.romo-table-striped-alt { @include bg-striped; }
-
-.romo-table-hover tbody tr:hover,
-.romo-table-hover.romo-table-alt tbody tr:hover,
-.romo-table-hover.romo-table-striped tbody tr:hover,
-.romo-table-hover.romo-table-striped-alt tbody tr:hover { @include bg-hover; }
-
-.romo-table-border,
-.romo-table-border0,
-.romo-table-border1,
-.romo-table-border2,
-.romo-table-border-none { border-collapse: collapse; *border-collapse: collapse; }
-
-.romo-table-border,
-.romo-table-border1     { @include border1-top; @include border1-left; }
-.romo-table-border0     { @include border0-top; @include border0-left; }
-.romo-table-border2     { @include border2-top; @include border2-left; }
-.romo-table-border-none { @include border-style(none); }
-
-.romo-table-border      th, .romo-table-border      td,
-.romo-table-border1     th, .romo-table-border1     td { @include border1-bottom; @include border1-right; }
-.romo-table-border0     th, .romo-table-border0     td { @include border0-bottom; @include border0-right; }
-.romo-table-border2     th, .romo-table-border2     td { @include border2-bottom; @include border2-right; }
-.romo-table-border-none th, .romo-table-border-none td { @include border-style(none); }
-
-.romo-table-pad    th, .romo-table-pad    td,
-.romo-table-pad1   th, .romo-table-pad1   td { @include pad1;   }
-.romo-table-pad0   th, .romo-table-pad0   td { @include pad0;   }
-.romo-table-pad2   th, .romo-table-pad2   td { @include pad2;   }
-.romo-table-rm-pad th, .romo-table-rm-pad td { @include rm-pad; }
-
-.romo-table-pad-top    th, .romo-table-pad-top    td,
-.romo-table-pad1-top   th, .romo-table-pad1-top   td { @include pad1-top;   }
-.romo-table-pad0-top   th, .romo-table-pad0-top   td { @include pad0-top;   }
-.romo-table-pad2-top   th, .romo-table-pad2-top   td { @include pad2-top;   }
-.romo-table-rm-pad-top th, .romo-table-rm-pad-top td { @include rm-pad-top; }
-
-.romo-table-pad-right    th, .romo-table-pad-right    td,
-.romo-table-pad1-right   th, .romo-table-pad1-right   td { @include pad1-right;   }
-.romo-table-pad0-right   th, .romo-table-pad0-right   td { @include pad0-right;   }
-.romo-table-pad2-right   th, .romo-table-pad2-right   td { @include pad2-right;   }
-.romo-table-rm-pad-right th, .romo-table-rm-pad-right td { @include rm-pad-right; }
-
-.romo-table-pad-bottom    th, .romo-table-pad-bottom    td,
-.romo-table-pad1-bottom   th, .romo-table-pad1-bottom   td { @include pad1-bottom;   }
-.romo-table-pad0-bottom   th, .romo-table-pad0-bottom   td { @include pad0-bottom;   }
-.romo-table-pad2-bottom   th, .romo-table-pad2-bottom   td { @include pad2-bottom;   }
-.romo-table-rm-pad-bottom th, .romo-table-rm-pad-bottom td { @include rm-pad-bottom; }
-
-.romo-table-pad-left    th, .romo-table-pad-left    td,
-.romo-table-pad1-left   th, .romo-table-pad1-left   td { @include pad1-left;   }
-.romo-table-pad0-left   th, .romo-table-pad0-left   td { @include pad0-left;   }
-.romo-table-pad2-left   th, .romo-table-pad2-left   td { @include pad2-left;   }
-.romo-table-rm-pad-left th, .romo-table-rm-pad-left td { @include rm-pad-left; }
-
-/* emphasis colored rows */
-
-.romo-table tr.romo-base    { @include bg-base(!important);    }
-.romo-table tr.romo-alt     { @include bg-alt(!important);     }
-.romo-table tr.romo-muted   { @include bg-muted(!important);   }
-.romo-table tr.romo-warning { @include bg-warning(!important); }
-.romo-table tr.romo-danger  { @include bg-danger(!important);  }
-.romo-table tr.romo-info    { @include bg-info(!important);    }
-.romo-table tr.romo-success { @include bg-success(!important); }
-.romo-table tr.romo-inverse { @include bg-inverse(!important); }
-
-.romo-table-hover tbody tr.romo-base:hover    { @include bg-base-hover(!important);    }
-.romo-table-hover tbody tr.romo-alt:hover     { @include bg-alt-hover(!important);     }
-.romo-table-hover tbody tr.romo-muted:hover   { @include bg-muted-hover(!important);   }
-.romo-table-hover tbody tr.romo-warning:hover { @include bg-warning-hover(!important); }
-.romo-table-hover tbody tr.romo-danger:hover  { @include bg-danger-hover(!important);  }
-.romo-table-hover tbody tr.romo-info:hover    { @include bg-info-hover(!important);    }
-.romo-table-hover tbody tr.romo-success:hover { @include bg-success-hover(!important); }
-.romo-table-hover tbody tr.romo-inverse:hover { @include bg-inverse-hover(!important); }
-
-/* explicit colored rows */
-
-.romo-table tr.romo-dark-red      { @include bg-dark-red(!important);      }
-.romo-table tr.romo-red           { @include bg-red(!important);           }
-.romo-table tr.romo-light-red     { @include bg-light-red(!important);     }
-.romo-table tr.romo-pastel-red    { @include bg-pastel-red(!important);    }
-.romo-table tr.romo-dark-orange   { @include bg-dark-orange(!important);   }
-.romo-table tr.romo-orange        { @include bg-orange(!important);        }
-.romo-table tr.romo-yellow        { @include bg-yellow(!important);        }
-.romo-table tr.romo-pastel-yellow { @include bg-pastel-yellow(!important); }
-.romo-table tr.romo-purple        { @include bg-purple(!important);        }
-.romo-table tr.romo-light-purple  { @include bg-light-purple(!important);  }
-.romo-table tr.romo-dark-pink     { @include bg-dark-pink(!important);     }
-.romo-table tr.romo-hot-pink      { @include bg-hot-pink(!important);      }
-.romo-table tr.romo-pink          { @include bg-pink(!important);          }
-.romo-table tr.romo-dark-green    { @include bg-dark-green(!important);    }
-.romo-table tr.romo-green         { @include bg-green(!important);         }
-.romo-table tr.romo-light-green   { @include bg-light-green(!important);   }
-.romo-table tr.romo-pastel-green  { @include bg-pastel-green(!important);  }
-.romo-table tr.romo-navy          { @include bg-navy(!important);          }
-.romo-table tr.romo-dark-blue     { @include bg-dark-blue(!important);     }
-.romo-table tr.romo-blue          { @include bg-blue(!important);          }
-.romo-table tr.romo-light-blue    { @include bg-light-blue(!important);    }
-.romo-table tr.romo-pastel-blue   { @include bg-pastel-blue(!important);   }
-
-.romo-table-hover tbody tr.romo-dark-red:hover      { @include bg-dark-red-hover(!important);      }
-.romo-table-hover tbody tr.romo-red:hover           { @include bg-red-hover(!important);           }
-.romo-table-hover tbody tr.romo-light-red:hover     { @include bg-light-red-hover(!important);     }
-.romo-table-hover tbody tr.romo-pastel-red:hover    { @include bg-pastel-red-hover(!important);    }
-.romo-table-hover tbody tr.romo-dark-orange:hover   { @include bg-dark-orange-hover(!important);   }
-.romo-table-hover tbody tr.romo-orange:hover        { @include bg-orange-hover(!important);        }
-.romo-table-hover tbody tr.romo-yellow:hover        { @include bg-yellow-hover(!important);        }
-.romo-table-hover tbody tr.romo-pastel-yellow:hover { @include bg-pastel-yellow-hover(!important); }
-.romo-table-hover tbody tr.romo-purple:hover        { @include bg-purple-hover(!important);        }
-.romo-table-hover tbody tr.romo-light-purple:hover  { @include bg-light-purple-hover(!important);  }
-.romo-table-hover tbody tr.romo-dark-pink:hover     { @include bg-dark-pink-hover(!important);     }
-.romo-table-hover tbody tr.romo-hot-pink:hover      { @include bg-hot-pink-hover(!important);      }
-.romo-table-hover tbody tr.romo-pink:hover          { @include bg-pink-hover(!important);          }
-.romo-table-hover tbody tr.romo-dark-green:hover    { @include bg-dark-green-hover(!important);    }
-.romo-table-hover tbody tr.romo-green:hover         { @include bg-green-hover(!important);         }
-.romo-table-hover tbody tr.romo-light-green:hover   { @include bg-light-green-hover(!important);   }
-.romo-table-hover tbody tr.romo-pastel-green:hover  { @include bg-pastel-green-hover(!important);  }
-.romo-table-hover tbody tr.romo-navy:hover          { @include bg-navy-hover(!important);          }
-.romo-table-hover tbody tr.romo-dark-blue:hover     { @include bg-dark-blue-hover(!important);     }
-.romo-table-hover tbody tr.romo-blue:hover          { @include bg-blue-hover(!important);          }
-.romo-table-hover tbody tr.romo-light-blue:hover    { @include bg-light-blue-hover(!important);    }
-.romo-table-hover tbody tr.romo-pastel-blue:hover   { @include bg-pastel-blue-hover(!important);   }
-
-/* emphasis colored borders */
-
-.romo-table-border-base    { @include border-base;    }
-.romo-table-border-alt     { @include border-alt;     }
-.romo-table-border-muted   { @include border-muted;   }
-.romo-table-border-warning { @include border-warning; }
-.romo-table-border-danger  { @include border-danger;  }
-.romo-table-border-info    { @include border-info;    }
-.romo-table-border-success { @include border-success; }
-.romo-table-border-inverse { @include border-inverse; }
-
-.romo-table-border-base    th, .romo-table-border-base    td { @include border-base;    }
-.romo-table-border-alt     th, .romo-table-border-alt     td { @include border-alt;     }
-.romo-table-border-muted   th, .romo-table-border-muted   td { @include border-muted;   }
-.romo-table-border-warning th, .romo-table-border-warning td { @include border-warning; }
-.romo-table-border-danger  th, .romo-table-border-danger  td { @include border-danger;  }
-.romo-table-border-info    th, .romo-table-border-info    td { @include border-info;    }
-.romo-table-border-success th, .romo-table-border-success td { @include border-success; }
-.romo-table-border-inverse th, .romo-table-border-inverse td { @include border-inverse; }
-
-/* explicit colored borders */
-
-.romo-table-border-dark-red      { @include border-dark-red;      }
-.romo-table-border-red           { @include border-red;           }
-.romo-table-border-light-red     { @include border-light-red;     }
-.romo-table-border-pastel-red    { @include border-pastel-red;    }
-.romo-table-border-dark-orange   { @include border-dark-orange;   }
-.romo-table-border-orange        { @include border-orange;        }
-.romo-table-border-yellow        { @include border-yellow;        }
-.romo-table-border-pastel-yellow { @include border-pastel-yellow; }
-.romo-table-border-purple        { @include border-purple;        }
-.romo-table-border-light-purple  { @include border-light-purple;  }
-.romo-table-border-dark-pink     { @include border-dark-pink;     }
-.romo-table-border-hot-pink      { @include border-hot-pink;      }
-.romo-table-border-pink          { @include border-pink;          }
-.romo-table-border-dark-green    { @include border-dark-green;    }
-.romo-table-border-green         { @include border-green;         }
-.romo-table-border-light-green   { @include border-light-green;   }
-.romo-table-border-pastel-green  { @include border-pastel-green;  }
-.romo-table-border-navy          { @include border-navy;          }
-.romo-table-border-dark-blue     { @include border-dark-blue;     }
-.romo-table-border-blue          { @include border-blue;          }
-.romo-table-border-light-blue    { @include border-light-blue;    }
-.romo-table-border-pastel-blue   { @include border-pastel-blue;   }
-
-.romo-table-border-dark-red      th, .romo-table-border-dark-red      td { @include border-dark-red;      }
-.romo-table-border-red           th, .romo-table-border-red           td { @include border-red;           }
-.romo-table-border-light-red     th, .romo-table-border-light-red     td { @include border-light-red;     }
-.romo-table-border-pastel-red    th, .romo-table-border-pastel-red    td { @include border-pastel-red;    }
-.romo-table-border-dark-orange   th, .romo-table-border-dark-orange   td { @include border-dark-orange;   }
-.romo-table-border-orange        th, .romo-table-border-orange        td { @include border-orange;        }
-.romo-table-border-yellow        th, .romo-table-border-yellow        td { @include border-yellow;        }
-.romo-table-border-pastel-yellow th, .romo-table-border-pastel-yellow td { @include border-pastel-yellow; }
-.romo-table-border-purple        th, .romo-table-border-purple        td { @include border-purple;        }
-.romo-table-border-light-purple  th, .romo-table-border-light-purple  td { @include border-light-purple;  }
-.romo-table-border-dark-pink     th, .romo-table-border-dark-pink     td { @include border-dark-pink;     }
-.romo-table-border-hot-pink      th, .romo-table-border-hot-pink      td { @include border-hot-pink;      }
-.romo-table-border-pink          th, .romo-table-border-pink          td { @include border-pink;          }
-.romo-table-border-dark-green    th, .romo-table-border-dark-green    td { @include border-dark-green;    }
-.romo-table-border-green         th, .romo-table-border-green         td { @include border-green;         }
-.romo-table-border-light-green   th, .romo-table-border-light-green   td { @include border-light-green;   }
-.romo-table-border-pastel-green  th, .romo-table-border-pastel-green  td { @include border-pastel-green;  }
-.romo-table-border-navy          th, .romo-table-border-navy          td { @include border-navy;          }
-.romo-table-border-dark-blue     th, .romo-table-border-dark-blue     td { @include border-dark-blue;     }
-.romo-table-border-blue          th, .romo-table-border-blue          td { @include border-blue;          }
-.romo-table-border-light-blue    th, .romo-table-border-light-blue    td { @include border-light-blue;    }
-.romo-table-border-pastel-blue   th, .romo-table-border-pastel-blue   td { @include border-pastel-blue;   }

@@ -1,26 +1,30 @@
 @import 'css/romo/vars';
 @import 'css/romo/mixins';
 
-.romo-tooltip-popup {
-  z-index: $tooltipZIndex;
-}
-.romo-tooltip-popup * {
-  z-index: inherit;
-}
+.romo {
 
-.romo-dropdown-popup {
-  z-index: $dropdownZIndex;
-}
-.romo-dropdown-popup * {
-  z-index: inherit;
-}
+  .romo-tooltip-popup {
+    z-index: $tooltipZIndex;
+  }
+  .romo-tooltip-popup * {
+    z-index: inherit;
+  }
 
-// 1300 is reserved for app specific things like nav bars, etc
-// modals should appear on top of everything though
+  .romo-dropdown-popup {
+    z-index: $dropdownZIndex;
+  }
+  .romo-dropdown-popup * {
+    z-index: inherit;
+  }
 
-.romo-modal-popup {
-  z-index: $modalZIndex;
-}
-.romo-modal-popup * {
-  z-index: inherit;
+  // 1300 is reserved for app specific things like nav bars, etc
+  // modals should appear on top of everything though
+
+  .romo-modal-popup {
+    z-index: $modalZIndex;
+  }
+  .romo-modal-popup * {
+    z-index: inherit;
+  }
+
 }
