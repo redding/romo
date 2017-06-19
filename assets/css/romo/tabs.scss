@@ -1,71 +1,75 @@
 @import 'css/romo/vars';
 @import 'css/romo/mixins';
 
-/* tabs */
+.romo {
 
-.romo-tabs {
-  display: block;
-  @include list-unstyled;
-  @include clearfix;
+  /* tabs */
 
-  border-bottom: $tabDividerSize solid $tabBgColorActive;
-}
+  .romo-tabs {
+    display: block;
+    @include list-unstyled;
+    @include clearfix;
 
-.romo-tabs > li {
-  float: left;
-  @include rm-push;
-  @include rm-pad;
-}
-
-.romo-tabs-pull-left  > li { float: left; }
-.romo-tabs-pull-right > li { float: right; }
-
-.romo-tabs > li > a {
-  display: block;
-  cursor: pointer;
-
-  @include border1;
-  background-color: $tabBgColor;
-  border-color: $tabBgColor;
-  color: $tabColor;
-
-  &:hover,
-  &:focus {
-    outline: 0;
-    text-decoration: none;
-    background-color: $tabBgColorHover;
-    border-color: $tabBgColorHover;
+    border-bottom: $tabDividerSize solid $tabBgColorActive;
   }
-}
 
-.romo-tabs > li.active > a {
-  background-color: $tabBgColorActive;
-  border-color: $tabBgColorActive;
-  color: $tabColorActive;
-}
+  .romo-tabs > li {
+    float: left;
+    @include rm-push;
+    @include rm-pad;
+  }
 
-.romo-tabs > li.disabled a,
-.romo-tabs > li:disabled a {
-  color: $tabColorDisabled;
-  cursor: $notAllowedCursor;
+  .romo-tabs-pull-left  > li { float: left; }
+  .romo-tabs-pull-right > li { float: right; }
 
-  &:hover,
-  &:focus {
+  .romo-tabs > li > a {
+    display: block;
+    cursor: pointer;
+
+    @include border1;
     background-color: $tabBgColor;
-    border-color: $tabBgColorHover;
+    border-color: $tabBgColor;
+    color: $tabColor;
+
+    &:hover,
+    &:focus {
+      outline: 0;
+      text-decoration: none;
+      background-color: $tabBgColorHover;
+      border-color: $tabBgColorHover;
+    }
   }
+
+  .romo-tabs > li.active > a {
+    background-color: $tabBgColorActive;
+    border-color: $tabBgColorActive;
+    color: $tabColorActive;
+  }
+
+  .romo-tabs > li.disabled a,
+  .romo-tabs > li:disabled a {
+    color: $tabColorDisabled;
+    cursor: $notAllowedCursor;
+
+    &:hover,
+    &:focus {
+      background-color: $tabBgColor;
+      border-color: $tabBgColorHover;
+    }
+  }
+
+  .romo-tabs.romo-tabs-small > li > a,
+  .romo-tabs.romo-tabs0 > li > a { @include font-size0; @include font-weight0; @include line-height0; @include button-pad0; }
+  .romo-tabs > li > a,
+  .romo-tabs.romo-tabs1 > li > a { @include font-size1; @include font-weight1; @include line-height1; @include button-pad1; }
+  .romo-tabs.romo-tabs-large > li > a,
+  .romo-tabs.romo-tabs2 > li > a { @include font-size2; @include font-weight2; @include line-height2; @include button-pad2; }
+  .romo-tabs.romo-tabs3 > li > a { @include font-size3; @include font-weight3; @include line-height3; @include button-pad3; }
+
+  .romo-tabs.romo-tabs-stacked { @include rm-border; }
+  .romo-tabs.romo-tabs-stacked > li { float: none; }
+  .romo-tabs.romo-tabs-stacked > li > a { @include border1; border-color: $baseBorderColor; }
+  .romo-tabs.romo-tabs-stacked > li.active > a { border-color: $tabBgColorActive; }
+  .romo-tabs.romo-tabs-stacked > li:not(:last-child) > a { @include rm-border-bottom; }
+
 }
-
-.romo-tabs.romo-tabs-small > li > a,
-.romo-tabs.romo-tabs0 > li > a { @include font-size0; @include font-weight0; @include line-height0; @include button-pad0; }
-.romo-tabs > li > a,
-.romo-tabs.romo-tabs1 > li > a { @include font-size1; @include font-weight1; @include line-height1; @include button-pad1; }
-.romo-tabs.romo-tabs-large > li > a,
-.romo-tabs.romo-tabs2 > li > a { @include font-size2; @include font-weight2; @include line-height2; @include button-pad2; }
-.romo-tabs.romo-tabs3 > li > a { @include font-size3; @include font-weight3; @include line-height3; @include button-pad3; }
-
-.romo-tabs.romo-tabs-stacked { @include rm-border; }
-.romo-tabs.romo-tabs-stacked > li { float: none; }
-.romo-tabs.romo-tabs-stacked > li > a { @include border1; border-color: $baseBorderColor; }
-.romo-tabs.romo-tabs-stacked > li.active > a { border-color: $tabBgColorActive; }
-.romo-tabs.romo-tabs-stacked > li:not(:last-child) > a { @include rm-border-bottom; }

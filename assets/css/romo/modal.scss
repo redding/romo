@@ -1,32 +1,36 @@
 @import 'css/romo/vars';
 @import 'css/romo/mixins';
 
-.romo-modal,
-[data-romo-modal-close="true"] {
-  cursor: pointer;
-}
+.romo {
 
-.romo-modal-grab {
-  @include cursor-grab;
-}
+  .romo-modal,
+  [data-romo-modal-close="true"] {
+    cursor: pointer;
+  }
 
-.romo-modal-grabbing {
-  @include cursor-grabbing;
-}
+  .romo-modal-grab {
+    @include cursor-grab;
+  }
 
-.romo-modal-popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  float: left;
-  @include border0;
-  @include box-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+  .romo-modal-grabbing {
+    @include cursor-grabbing;
+  }
 
-  background-color: $baseBgColor;
-  border-color: $baseBorderColor;
-  border-color: rgba(0, 0, 0, 0.2);
-}
+  .romo-modal-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    float: left;
+    @include border0;
+    @include box-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
 
-.romo-modal-popup:not([class*="romo-modal-open"]) {
-  display: none;
+    background-color: $baseBgColor;
+    border-color: $baseBorderColor;
+    border-color: rgba(0, 0, 0, 0.2);
+  }
+
+  .romo-modal-popup:not([class*="romo-modal-open"]) {
+    display: none;
+  }
+
 }
