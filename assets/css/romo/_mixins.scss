@@ -377,6 +377,11 @@
   color: $inputColor;
 }
 
+@mixin input-placeholder {
+  color: $mutedText;
+  font-style: italic;
+}
+
 /* Buttons */
 /* ------- */
 
