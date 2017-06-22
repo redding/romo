@@ -8,7 +8,12 @@ var RomoAjax = function(element) {
   this.elem       = $(element);
   this.targetElem = $(this.elem.data('romo-ajax-target'));
 
-  this.invokeOn     = this.elem.data('romo-ajax-invoke-on')   || 'click';
+  this.defaultInvokeOn = 'click';
+  this.invokeOn        = this.elem.data('romo-ajax-invoke-on');
+  if (this.invokeOn === undefined && this.elem.data('romo-ajax-disable-default-invoke-on') !== true) {
+    this.invokeOn = this.defaultInvokeOn;
+  }
+
   this.callMethod   = this.elem.data('romo-ajax-call-method') || 'GET';
   this.urlAttr      = this.elem.data('romo-ajax-url-attr')    || 'href';
   this.callOnlyOnce = this.elem.data('romo-ajax-call-once') === true;
@@ -16,7 +21,9 @@ var RomoAjax = function(element) {
   this.invokeQueued  = false;
   this.invokeRunning = false;
 
-  this.elem.unbind(this.invokeOn);
+  if (this.invokeOn !== undefined) {
+    this.elem.unbind(this.invokeOn);
+  }
 
   this.doInit();
   this.doBindElem();
@@ -29,12 +36,16 @@ RomoAjax.prototype.doInit = function() {
 
 RomoAjax.prototype.doBindElem = function() {
   this.doUnbindElem();
-  this.elem.on(this.invokeOn, $.proxy(this.onInvoke, this));
+  if (this.invokeOn !== undefined) {
+    this.elem.on(this.invokeOn, $.proxy(this.onInvoke, this));
+  }
   this.elem.on('romoAjax:triggerInvoke', $.proxy(this.onInvoke, this));
 }
 
 RomoAjax.prototype.doUnbindElem = function() {
-  this.elem.off(this.invokeOn, $.proxy(this.onInvoke, this));
+  if (this.invokeOn !== undefined) {
+    this.elem.off(this.invokeOn, $.proxy(this.onInvoke, this));
+  }
   this.elem.off('romoAjax:triggerInvoke', $.proxy(this.onInvoke, this));
 }
 
