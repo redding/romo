@@ -98,10 +98,11 @@ body.romo {
   .romo-link:hover,
   .romo-link-hover:hover { color: $linkColorHover !important;}
 
-  .romo-cursor-default { cursor: default; }
-  .romo-pointer        { cursor: pointer; }
-  .romo-grab           { @include cursor-grab; }
-  .romo-grabbing       { @include cursor-grabbing; }
+  .romo-cursor-default     { cursor: default; }
+  .romo-cursor-not-allowed { cursor: $notAllowedCursor; }
+  .romo-pointer            { cursor: pointer; }
+  .romo-grab               { @include cursor-grab; }
+  .romo-grabbing           { @include cursor-grabbing; }
 
   .romo-user-select-none{ @include user-select(none); }
 
