@@ -228,6 +228,38 @@ body.romo {
   .romo-align-middle { @include align-middle(!important); }
   .romo-align-bottom { @include align-bottom(!important); }
 
+  .romo-flex-align-left   {
+    @include display-flex;
+    @include flex-direction(column);
+    @include flex-align-items(flex-start)
+  }
+  .romo-flex-align-center {
+    @include display-flex;
+    @include flex-direction(column);
+    @include flex-align-items(center)
+  }
+  .romo-flex-align-right  {
+    @include display-flex;
+    @include flex-direction(column);
+    @include flex-align-items(flex-end)
+  }
+
+  .romo-flex-align-top    {
+    @include display-flex;
+    @include flex-direction(column);
+    @include flex-justify-content(flex-start);
+  }
+  .romo-flex-align-middle {
+    @include display-flex;
+    @include flex-direction(column);
+    @include flex-justify-content(center);
+  }
+  .romo-flex-align-bottom {
+    @include display-flex;
+    @include flex-direction(column);
+    @include flex-justify-content(flex-end);
+  }
+
   /* Scaffolding */
   /* ----------- */
 
