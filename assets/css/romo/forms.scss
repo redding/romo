@@ -29,7 +29,7 @@
   .romo-form input,
   .romo-form select,
   .romo-form textarea,
-  input.romo-select-dropdown-option-filter {
+  input.romo-option-list-dropdown-filter {
     font-size: 100%;
     @include rm-push;
     @include align-middle;
@@ -46,7 +46,7 @@
   }
 
   .romo-form input,
-  input.romo-select-dropdown-option-filter {
+  input.romo-option-list-dropdown-filter {
     *overflow: visible;
     line-height: normal;
   }
@@ -69,16 +69,16 @@
   .romo-form input[readonly],
   .romo-form select[readonly],
   .romo-form textarea[readonly],
-  input.romo-select-dropdown-option-filter[disabled],
-  input.romo-select-dropdown-option-filter[readonly] { cursor: $notAllowedCursor; }
+  input.romo-option-list-dropdown-filter[disabled],
+  input.romo-option-list-dropdown-filter[readonly] { cursor: $notAllowedCursor; }
 
   .romo-form select {
     font-weight: normal;
     background-color: $inputBgColor;
     @include border1;
   }
-  .romo-form select optgroup { @include select-optgroup; }
-  .romo-form select option { @include select-option; }
+  .romo-form select optgroup { @include input-option-list-optgroup; }
+  .romo-form select option   { @include input-option-list-option; }
 
   .romo-form textarea,
   .romo-form input[type="text"],
@@ -95,7 +95,7 @@
   .romo-form input[type="search"],
   .romo-form input[type="tel"],
   .romo-form input[type="color"],
-  input.romo-select-dropdown-option-filter {
+  input.romo-option-list-dropdown-filter {
     font-weight: normal;
     background-color: $inputBgColor;
     @include border1;
@@ -119,7 +119,7 @@
   .romo-form input[type="search"]::placeholder,
   .romo-form input[type="tel"]::placeholder,
   .romo-form input[type="color"]::placeholder,
-  input.romo-select-dropdown-option-filter::placeholder {
+  input.romo-option-list-dropdown-filter::placeholder {
     @include input-placeholder;
   }
   .romo-form textarea::-webkit-input-placeholder,                     /* Chrome/Opera/Safari */
@@ -137,7 +137,7 @@
   .romo-form input[type="search"]::-webkit-input-placeholder,
   .romo-form input[type="tel"]::-webkit-input-placeholder,
   .romo-form input[type="color"]::-webkit-input-placeholder,
-  input.romo-select-dropdown-option-filter::-webkit-input-placeholder {
+  input.romo-option-list-dropdown-filter::-webkit-input-placeholder {
     @include input-placeholder;
   }
   .romo-form textarea::-moz-placeholder,                              /* Firefox 19+ */
@@ -155,7 +155,7 @@
   .romo-form input[type="search"]::-moz-placeholder,
   .romo-form input[type="tel"]::-moz-placeholder,
   .romo-form input[type="color"]::-moz-placeholder,
-  input.romo-select-dropdown-option-filter::-moz-placeholder {
+  input.romo-option-list-dropdown-filter::-moz-placeholder {
     @include input-placeholder;
   }
   .romo-form textarea:-moz-placeholder,                               /* Firefox 18- */
@@ -173,7 +173,7 @@
   .romo-form input[type="search"]:-moz-placeholder,
   .romo-form input[type="tel"]:-moz-placeholder,
   .romo-form input[type="color"]:-moz-placeholder,
-  input.romo-select-dropdown-option-filter:-moz-placeholder {
+  input.romo-option-list-dropdown-filter:-moz-placeholder {
     @include input-placeholder;
   }
   .romo-form textarea:-ms-input-placeholder,                          /* IE 10+ */
@@ -191,7 +191,7 @@
   .romo-form input[type="search"]:-ms-input-placeholder,
   .romo-form input[type="tel"]:-ms-input-placeholder,
   .romo-form input[type="color"]:-ms-input-placeholder,
-  input.romo-select-dropdown-option-filter:-ms-input-placeholder {
+  input.romo-option-list-dropdown-filter:-ms-input-placeholder {
     @include input-placeholder;
   }
 
@@ -211,7 +211,7 @@
   .romo-form input[type="search"]:focus,
   .romo-form input[type="tel"]:focus,
   .romo-form input[type="color"]:focus,
-  input.romo-select-dropdown-option-filter:focus {
+  input.romo-option-list-dropdown-filter:focus {
     @include input-focus;
   }
 
@@ -221,8 +221,8 @@
   .romo-form input[readonly],
   .romo-form select[readonly],
   .romo-form textarea[readonly],
-  input.romo-select-dropdown-option-filter[disabled],
-  input.romo-select-dropdown-option-filter[readonly] { background-color: $inputDisabledColor; }
+  input.romo-option-list-dropdown-filter[disabled],
+  input.romo-option-list-dropdown-filter[readonly] { background-color: $inputDisabledColor; }
 
   .romo-form input[type="radio"][disabled],
   .romo-form input[type="checkbox"][disabled],
@@ -244,13 +244,13 @@
   .romo-form input[type="search"],
   .romo-form input[type="tel"],
   .romo-form input[type="color"],
-  input.romo-select-dropdown-option-filter {
+  input.romo-option-list-dropdown-filter {
     height: $inputHeight;
     line-height: $baseLineHeight;
     @include align-middle;
   }
 
-  input.romo-select-dropdown-option-filter {
+  input.romo-option-list-dropdown-filter {
     height: $inputFilterHeight;
   }
 
@@ -269,15 +269,21 @@
   .romo-form input[type="search"],
   .romo-form input[type="tel"],
   .romo-form input[type="color"],
-  input.romo-select-dropdown-option-filter {
+  input.romo-option-list-dropdown-filter {
     display: inline-block;
     padding: 4px 6px;
     color: $inputColor;
   }
 
-  input.romo-select-dropdown-option-filter {
+  input.romo-option-list-dropdown-filter {
     display: block;
     width: 100%;
+  }
+
+  .romo-option-list-dropdown-filter-wrapper {
+    @include border1-bottom();
+    padding: 4px 0;
+    margin: 0 4px;
   }
 
   .romo-form textarea,
@@ -310,6 +316,53 @@
   .romo-form .romo-input-help {
     line-height: $inputHeight;
     @include align-middle;
+  }
+
+  /* input option list (used by selects vie option list dropdown) */
+
+  .romo-input-option-list {
+    cursor: pointer;
+    font-weight: normal;
+    padding: 4px 0;
+    @include user-select(none);
+
+    background-color: $inputBgColor;
+    color: $inputColor;
+  }
+
+  .romo-input-option-list UL {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .romo-input-option-list UL.romo-option-list-optgroup LI {
+    padding-left: $spacingSize1;
+  }
+
+  .romo-input-option-list LI {
+    @include input-option-list-option;
+  }
+
+  .romo-input-option-list LI[data-romo-option-list-item="optgroup"] {
+    @include input-option-list-optgroup;
+  }
+
+  .romo-input-option-list LI.romo-option-list-dropdown-highlight {
+    background-color: $inputHighlightBgColor;
+    color: $inputBgColor;
+  }
+
+  .romo-input-option-list LI.disabled {
+    cursor: $notAllowedCursor;
+  }
+
+  .romo-input-option-list LI.disabled,
+  .romo-input-option-list LI.disabled.romo-option-list-dropdown-highlight {
+    background-color: $inputBgColor;
+    color: $disabledColor;
   }
 
 }

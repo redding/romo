@@ -77,7 +77,7 @@ RomoSelect.prototype.doBindSelectDropdown = function() {
 }
 
 RomoSelect.prototype.doRefreshUI = function() {
-  var text = this.romoSelectDropdown.selectedListing().text() || '&nbsp;';
+  var text = this.romoSelectDropdown.selectedItemElem().text() || '&nbsp;';
   this.romoSelectDropdown.elem.find('.romo-select-text').html(text);
 }
 
