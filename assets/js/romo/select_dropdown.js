@@ -15,7 +15,6 @@ var RomoSelectDropdown = function(element, optionElemsParent) {
   this.doInit();
   this._bindElem();
 
-  // TODO: move to select
   if (this.elem.attr('id') !== undefined) {
     $('label[for="'+this.elem.attr('id')+'"]').on('click', $.proxy(function(e) {
       this.elem.focus();
@@ -35,6 +34,14 @@ RomoSelectDropdown.prototype.popupElem = function() {
 
 RomoSelectDropdown.prototype.selectedItemElem = function() {
   return this.romoOptionListDropdown.selectedItemElem();
+}
+
+RomoSelectDropdown.prototype.selectedItemValue = function() {
+  return this.romoOptionListDropdown.selectedItemValue();
+}
+
+RomoSelectDropdown.prototype.selectedItemText = function() {
+  return this.romoOptionListDropdown.selectedItemText();
 }
 
 RomoSelectDropdown.prototype.optItemElems = function() {
@@ -101,7 +108,7 @@ RomoSelectDropdown.prototype._bindElem = function() {
 
   this.romoOptionListDropdown = this.elem.romoOptionListDropdown()[0];
 
-  this.elem.on('romoOptionListDropdown:filterOptions', $.proxy(function(e, filterValue, romoOptionListDropdown) {
+  this.elem.on('romoOptionListDropdown:filterChange', $.proxy(function(e, filterValue, romoOptionListDropdown) {
     var wbFilter = new RomoWordBoundaryFilter(filterValue, this.optItemElems(), function(elem) {
       // The romo word boundary filter by default considers a space, "-" and "_" as word boundaries.
       // We want to also consider other non-word characters (such as ":", "/", ".", "?", "=", "&")
@@ -143,6 +150,7 @@ RomoSelectDropdown.prototype._buildOptionItem = function(optionElem) {
 
   item['type']        = 'option';
   item['value']       = (optionElem.attr('value') || '');
+  item['displayText'] = (optionElem.text().trim() || '');
   item['displayHtml'] = (optionElem.text().trim() || '&nbsp;');
 
   if (optionElem.prop('selected')) {

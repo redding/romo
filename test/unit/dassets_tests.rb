@@ -37,6 +37,7 @@ module Romo::Dassets
         'css/romo/modal.css',
         'css/romo/indicator_text_input.css',
         'css/romo/select.css',
+        'css/romo/picker.css',
         'css/romo/datepicker.css',
         'css/romo/tooltip.css',
         'css/romo/sortable.css',
@@ -54,18 +55,19 @@ module Romo::Dassets
         'js/romo/form.js',
         'js/romo/dropdown.js',
         'js/romo/dropdown_form.js',
+        'js/romo/indicator.js',
         'js/romo/indicator_text_input.js',
         'js/romo/currency_text_input.js',
         'js/romo/option_list_dropdown.js',
         'js/romo/select_dropdown.js',
         'js/romo/select.js',
+        'js/romo/picker.js',
         'js/romo/datepicker.js',
         'js/romo/inline.js',
         'js/romo/inline_form.js',
         'js/romo/modal.js',
         'js/romo/modal_form.js',
         'js/romo/tooltip.js',
-        'js/romo/indicator.js',
         'js/romo/sortable.js'
       ]
       assert_equal exp_js_sources, Dassets.config.combinations['js/romo.js']

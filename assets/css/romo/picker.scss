@@ -1,0 +1,47 @@
+@import 'css/romo/vars';
+@import 'css/romo/mixins';
+
+.romo {
+
+  .romo-picker-wrapper {
+    display: inline-block;
+    text-align: left;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    cursor: pointer;
+    @include user-select(none);
+    position: relative;
+  }
+
+  .romo-picker {
+    min-width: 50px;
+    font-weight: normal;
+    text-align: left;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+  .romo-picker:focus,
+  .romo-picker.romo-picker-focus { @include input-focus; }
+
+  .romo-picker:active,
+  .romo-picker.active {
+    background-image: none;
+    outline: 0;
+    @include box-shadow((inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)));
+  }
+
+  .romo-picker-text {
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .romo-picker-caret {
+    display: inline-block;
+    position: absolute;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+}

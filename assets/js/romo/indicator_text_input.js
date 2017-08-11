@@ -12,7 +12,7 @@ var RomoIndicatorTextInput = function(element) {
   this.defaultIndicatorPosition  = 'right';
 
   this.doInit();
-  this.doBindElem();
+  this._bindElem();
 
   this.elem.trigger('indicatorTextInput:ready', [this]);
 }
@@ -21,7 +21,32 @@ RomoIndicatorTextInput.prototype.doInit = function() {
   // override as needed
 }
 
-RomoIndicatorTextInput.prototype.doBindElem = function() {
+RomoIndicatorTextInput.prototype.doEnable = function() {
+  this.elem.prop('disabled', false);
+  this.elem.removeClass('disabled');
+  this.indicatorElem.removeClass('disabled');
+}
+
+RomoIndicatorTextInput.prototype.doDisable = function() {
+  this.elem.prop('disabled', true);
+  this.elem.addClass('disabled');
+  this.indicatorElem.addClass('disabled');
+}
+
+RomoIndicatorTextInput.prototype.doShow = function() {
+  this._show(this.elem);
+  this._show(this.indicatorElem);
+  this._placeIndicatorElem();
+}
+
+RomoIndicatorTextInput.prototype.doHide = function() {
+  this._hide(this.elem);
+  this._hide(this.indicatorElem);
+}
+
+/* private */
+
+RomoIndicatorTextInput.prototype._bindElem = function() {
   var elemWrapper = $('<div class="romo-indicator-text-input-wrapper"></div>');
   elemWrapper.css({'display': (this.elem.data('romo-indicator-text-input-elem-display') || 'inline-block')});
   if (this.elem.data('romo-indicator-text-input-btn-group') === true) {
@@ -44,12 +69,19 @@ RomoIndicatorTextInput.prototype.doBindElem = function() {
   var indicatorClass = this.elem.data('romo-indicator-text-input-indicator') || this.defaultIndicatorClass;
   if (indicatorClass !== undefined && indicatorClass !== 'none') {
     this.indicatorElem = $('<i class="romo-indicator-text-input-indicator '+indicatorClass+'"></i>');
+    this.indicatorElem.romoIndicator();
     this.elem.after(this.indicatorElem);
-    this.indicatorElem.on('click', $.proxy(this.onIndicatorClick, this));
-    this.doPlaceIndicatorElem();
+    this.indicatorElem.on('click', $.proxy(this._onIndicatorClick, this));
+    this._placeIndicatorElem();
 
     this.elem.on('indicatorTextInput:triggerPlaceIndicator', $.proxy(function(e) {
-      this.doPlaceIndicatorElem();
+      this._placeIndicatorElem();
+    }, this));
+    this.elem.on('indicatorTextInput:triggerIndicatorStart', $.proxy(function(e) {
+      this.indicatorElem.trigger('indicator:triggerStart');
+    }, this));
+    this.elem.on('indicatorTextInput:triggerIndicatorStop', $.proxy(function(e) {
+      this.indicatorElem.trigger('indicator:triggerStop');
     }, this));
   }
 
@@ -67,7 +99,7 @@ RomoIndicatorTextInput.prototype.doBindElem = function() {
   }, this));
 }
 
-RomoIndicatorTextInput.prototype.doPlaceIndicatorElem = function() {
+RomoIndicatorTextInput.prototype._placeIndicatorElem = function() {
   if (this.indicatorElem !== undefined) {
     this.indicatorElem.css({'line-height': this.elem.css('height')});
     if (this.elem.prop('disabled') === true) {
@@ -92,30 +124,7 @@ RomoIndicatorTextInput.prototype.doPlaceIndicatorElem = function() {
   }
 }
 
-RomoIndicatorTextInput.prototype.doEnable = function() {
-  this.elem.prop('disabled', false);
-  this.elem.removeClass('disabled');
-  this.indicatorElem.removeClass('disabled');
-}
-
-RomoIndicatorTextInput.prototype.doDisable = function() {
-  this.elem.prop('disabled', true);
-  this.elem.addClass('disabled');
-  this.indicatorElem.addClass('disabled');
-}
-
-RomoIndicatorTextInput.prototype.doShow = function() {
-  this._show(this.elem);
-  this._show(this.indicatorElem);
-  this.doPlaceIndicatorElem();
-}
-
-RomoIndicatorTextInput.prototype.doHide = function() {
-  this._hide(this.elem);
-  this._hide(this.indicatorElem);
-}
-
-RomoIndicatorTextInput.prototype.onIndicatorClick = function(e) {
+RomoIndicatorTextInput.prototype._onIndicatorClick = function(e) {
   if (e !== undefined) {
     e.preventDefault();
     e.stopPropagation();
