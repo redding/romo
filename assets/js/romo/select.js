@@ -12,7 +12,7 @@ var RomoSelect = function(element) {
   this.defaultCaretPosition  = 'right'
 
   this.doInit();
-  this.doBindSelectDropdown();
+  this._bindElem();
   this.doRefreshUI();
 
   if (this.elem.attr('id') !== undefined) {
@@ -22,10 +22,7 @@ var RomoSelect = function(element) {
   }
 
   $(window).on("pageshow", $.proxy(function(e) {
-    var selectedVal = this.elem.find('option[selected]').attr('value');
-    if (selectedVal === undefined) {
-      selectedVal = '';
-    }
+    var selectedVal = this.romoSelectDropdown.selectedItemValue();
     if (selectedVal !== this.elem[0].value) {
       this.doSetValue(selectedVal);
     }
@@ -42,7 +39,36 @@ RomoSelect.prototype.doInit = function() {
   // override as needed
 }
 
-RomoSelect.prototype.doBindSelectDropdown = function() {
+RomoSelect.prototype.doRefreshUI = function() {
+  var text = this.romoSelectDropdown.selectedItemText();
+  if (text === '') {
+    text = '&nbsp;'
+  }
+  this.romoSelectDropdown.elem.find('.romo-select-text').html(text);
+}
+
+RomoSelect.prototype.doSetValue = function(value) {
+  this.romoSelectDropdown.doSetNewValue(value);
+  this._setNewValue(value);
+}
+
+/* private */
+
+RomoSelect.prototype._bindElem = function() {
+  this._bindSelectDropdown();
+
+  this.elem.on('select:triggerToggle', $.proxy(function(e) {
+    this.romoSelectDropdown.elem.trigger('selectDropdown:triggerToggle', []);
+  }, this));
+  this.elem.on('select:triggerPopupOpen', $.proxy(function(e) {
+    this.romoSelectDropdown.elem.trigger('selectDropdown:triggerPopupOpen', []);
+  }, this));
+  this.elem.on('select:triggerPopupClose', $.proxy(function(e) {
+    this.romoSelectDropdown.elem.trigger('selectDropdown:triggerPopupClose', []);
+  }, this));
+}
+
+RomoSelect.prototype._bindSelectDropdown = function() {
   this.romoSelectDropdown = this._buildSelectDropdownElem().romoSelectDropdown(this.elem)[0];
 
   this.romoSelectDropdown.elem.on('selectDropdown:dropdown:toggle', $.proxy(function(e, dropdown, selectDropdown) {
@@ -64,38 +90,6 @@ RomoSelect.prototype.doBindSelectDropdown = function() {
     this.elem.trigger('change');
     this.elem.trigger('select:change', [newValue, prevValue, this]);
   }, this));
-
-  this.elem.on('select:triggerToggle', $.proxy(function(e) {
-    this.romoSelectDropdown.elem.trigger('selectDropdown:triggerToggle', []);
-  }, this));
-  this.elem.on('select:triggerPopupOpen', $.proxy(function(e) {
-    this.romoSelectDropdown.elem.trigger('selectDropdown:triggerPopupOpen', []);
-  }, this));
-  this.elem.on('select:triggerPopupClose', $.proxy(function(e) {
-    this.romoSelectDropdown.elem.trigger('selectDropdown:triggerPopupClose', []);
-  }, this));
-}
-
-RomoSelect.prototype.doRefreshUI = function() {
-  var text = this.romoSelectDropdown.selectedItemElem().text() || '&nbsp;';
-  this.romoSelectDropdown.elem.find('.romo-select-text').html(text);
-}
-
-RomoSelect.prototype.doSetValue = function(value) {
-  this.romoSelectDropdown.doSetNewValue(value);
-  this._setNewValue(value);
-}
-
-RomoSelect.prototype.onCaretClick = function(e) {
-  if (this.elem.prop('disabled') === false) {
-    this.romoSelectDropdown.elem.focus();
-    this.elem.trigger('select:triggerPopupOpen');
-  }
-}
-
-RomoSelect.prototype._setNewValue = function(newValue) {
-  this.elem[0].value = newValue;
-  this.doRefreshUI();
 }
 
 RomoSelect.prototype._buildSelectDropdownElem = function() {
@@ -160,7 +154,7 @@ RomoSelect.prototype._buildSelectDropdownElem = function() {
   if (caretClass !== undefined && caretClass !== 'none') {
     this.caretElem = $('<i class="romo-select-caret '+caretClass+'"></i>');
     this.caretElem.css('line-height', parseInt(Romo.getComputedStyle(romoSelectDropdownElem[0], "line-height"), 10)+'px');
-    this.caretElem.on('click', $.proxy(this.onCaretClick, this));
+    this.caretElem.on('click', $.proxy(this._onCaretClick, this));
     romoSelectDropdownElem.append(this.caretElem);
 
     var caretPaddingPx = this._getCaretPaddingPx();
@@ -178,6 +172,18 @@ RomoSelect.prototype._buildSelectDropdownElem = function() {
   }
 
   return romoSelectDropdownElem;
+}
+
+RomoSelect.prototype._onCaretClick = function(e) {
+  if (this.elem.prop('disabled') === false) {
+    this.romoSelectDropdown.elem.focus();
+    this.elem.trigger('select:triggerPopupOpen');
+  }
+}
+
+RomoSelect.prototype._setNewValue = function(newValue) {
+  this.elem[0].value = newValue;
+  this.doRefreshUI();
 }
 
 RomoSelect.prototype._getCaretPaddingPx = function() {
