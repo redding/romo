@@ -140,7 +140,10 @@ RomoOptionListDropdown.prototype._bindElem = function() {
   }, this));
 
   this.elem.on('romoOptionListDropdown:triggerFilterIndicatorStart', $.proxy(function(e) {
-    this.optionFilterElem.trigger('indicatorTextInput:triggerIndicatorStart', []);
+    this.optionFilterElem.trigger(
+      'indicatorTextInput:triggerIndicatorStart',
+      [Romo.getComputedStyle(this.optionFilterElem[0], "height")]
+    );
   }, this));
   this.elem.on('romoOptionListDropdown:triggerFilterIndicatorStop', $.proxy(function(e) {
     this.optionFilterElem.trigger('indicatorTextInput:triggerIndicatorStop', []);
