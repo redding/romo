@@ -31,11 +31,17 @@ RomoOptionListDropdown.prototype.selectedItemElem = function() {
 }
 
 RomoOptionListDropdown.prototype.selectedItemValue = function() {
-  return this.selectedItemElem().data('romo-option-list-dropdown-option-value');
+  // need to use `attr` so it will always read from the DOM
+  // using `data` works the first time but does some elem caching or something
+  // so it won't work subsequent times.
+  return this.elem.attr('data-romo-option-list-dropdown-selected-value');
 }
 
 RomoOptionListDropdown.prototype.selectedItemText = function() {
-  return this.selectedItemElem().data('romo-option-list-dropdown-option-display-text');
+  // need to use `attr` so it will always read from the DOM
+  // using `data` works the first time but does some elem caching or something
+  // so it won't work subsequent times.
+  return this.elem.attr('data-romo-option-list-dropdown-selected-text');
 }
 
 RomoOptionListDropdown.prototype.optItemElems = function() {
@@ -52,7 +58,20 @@ RomoOptionListDropdown.prototype.doInit = function() {
 
 RomoOptionListDropdown.prototype.doSetNewValue = function(newValue) {
   this.selectedItemElem().removeClass('selected');
-  this.romoDropdown.bodyElem.find('LI[data-romo-option-list-dropdown-option-value="'+newValue+'"]').addClass('selected');
+  this.romoDropdown.bodyElem.find(
+    'LI[data-romo-option-list-dropdown-option-value="'+newValue+'"]'
+  ).addClass('selected');
+  this.doSetSelectedValueAndText(
+    newValue,
+    this.selectedItemElem().data('romo-option-list-dropdown-option-display-text')
+  );
+}
+
+RomoOptionListDropdown.prototype.doSetSelectedValueAndText = function(newValue, newText) {
+  // need to use `attr` to persist selected values to the DOM for back button logic
+  // to work.  using `data` won't persist changes to DOM and breaks back button logic.
+  this.elem.attr('data-romo-option-list-dropdown-selected-value', newValue);
+  this.elem.attr('data-romo-option-list-dropdown-selected-text',  newText);
 
   this.prevValue = newValue;
 }

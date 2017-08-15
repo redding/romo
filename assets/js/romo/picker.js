@@ -26,7 +26,8 @@ var RomoPicker = function(element) {
   $(window).on("pageshow", $.proxy(function(e) {
     var selectedVal = this.romoOptionListDropdown.selectedItemValue();
     if (selectedVal !== this.elem[0].value) {
-      this.doSetValue(selectedVal);
+      var selectedText = this.romoOptionListDropdown.selectedItemText();
+      this.doSetSelectedValueAndText(selectedVal, selectedText);
     }
   }, this));
 
@@ -50,7 +51,22 @@ RomoPicker.prototype.doRefreshUI = function() {
 }
 
 RomoPicker.prototype.doSetValue = function(value) {
-  this.romoOptionListDropdown.doSetNewValue(value);
+  $.ajax({
+    type:    'GET',
+    url:     this.elem.data('romo-picker-url'),
+    data:    { 'value': value },
+    success: $.proxy(function(data, status, xhr) {
+      if (data[0] !== undefined) {
+        this.doSetSelectedValueAndText(data[0].value, data[0].displayText);
+      } else {
+        this.doSetSelectedValueAndText('', '');
+      }
+    }, this),
+  });
+}
+
+RomoPicker.prototype.doSetSelectedValueAndText = function(value, text) {
+  this.romoOptionListDropdown.doSetSelectedValueAndText(value, text);
   this._setNewValue(value);
 }
 
@@ -70,11 +86,12 @@ RomoPicker.prototype._bindElem = function() {
     this.romoOptionListDropdown.elem.trigger('romoOptionListDropdown:triggerPopupClose', []);
   }, this));
 
-  this.elem.on('romoOptionListDropdown:filterChange', $.proxy(function(e, filterValue, romoOptionListDropdown) {
-    this.romoOptionListDropdown.elem.trigger('romoAjax:triggerInvoke', [{ 'filter': filterValue }]);
-  }, this));
-
   this.romoOptionListDropdown.doSetListItems(this.defaultOptionItems);
+
+  var presetVal = this.elem[0].value;
+  if (presetVal !== '') {
+    this.doSetValue(presetVal);
+  }
 }
 
 RomoPicker.prototype._bindOptionListDropdown = function() {
@@ -90,6 +107,9 @@ RomoPicker.prototype._bindOptionListDropdown = function() {
     this.elem.trigger('romoPicker:dropdown:popupClose', [dropdown, this]);
   }, this));
 
+  this.romoOptionListDropdown.elem.on('romoOptionListDropdown:filterChange', $.proxy(function(e, filterValue, romoOptionListDropdown) {
+    this.elem.trigger('romoAjax:triggerInvoke', [{ 'filter': filterValue }]);
+  }, this));
   this.romoOptionListDropdown.elem.on('romoOptionListDropdown:itemSelected', $.proxy(function(e, newValue, prevValue, optionListDropdown) {
     this.romoOptionListDropdown.elem.focus();
     this.elem.trigger('romoPicker:itemSelected', [newValue, prevValue, this]);
@@ -186,23 +206,23 @@ RomoPicker.prototype._buildOptionListDropdownElem = function() {
 }
 
 RomoPicker.prototype._bindAjax = function() {
-  this.romoOptionListDropdown.elem.attr('data-romo-ajax-disable-default-invoke-on', true);
-  this.romoOptionListDropdown.elem.attr('data-romo-ajax-url-attr', 'data-romo-picker-url');
-  this.romoOptionListDropdown.elem.attr('data-romo-ajax-auto', false);
+  this.elem.attr('data-romo-ajax-disable-default-invoke-on', true);
+  this.elem.attr('data-romo-ajax-url-attr', 'data-romo-picker-url');
+  this.elem.attr('data-romo-ajax-auto', false);
 
-  this.romoOptionListDropdown.elem.on('romoAjax:callStart', $.proxy(function(e, data, romoAjax) {
+  this.elem.on('romoAjax:callStart', $.proxy(function(e, data, romoAjax) {
     this.romoOptionListDropdown.elem.trigger('romoOptionListDropdown:triggerFilterIndicatorStart', []);
   }, this));
-  this.romoOptionListDropdown.elem.on('romoAjax:callSuccess', $.proxy(function(e, data, romoAjax) {
+  this.elem.on('romoAjax:callSuccess', $.proxy(function(e, data, romoAjax) {
     this.romoOptionListDropdown.doSetListItems(this.defaultOptionItems.concat(data));
     this.romoOptionListDropdown.elem.trigger('romoOptionListDropdown:triggerFilterIndicatorStop', []);
   }, this));
-  this.romoOptionListDropdown.elem.on('romoAjax:callError', $.proxy(function(e, xhr, romoAjax) {
+  this.elem.on('romoAjax:callError', $.proxy(function(e, xhr, romoAjax) {
     this.romoOptionListDropdown.doSetListItems(this.defaultOptionItems);
     this.romoOptionListDropdown.elem.trigger('romoOptionListDropdown:triggerFilterIndicatorStop', []);
   }, this));
 
-  this.romoOptionListDropdown.elem.romoAjax();
+  this.elem.romoAjax();
 }
 
 RomoPicker.prototype._buildDefaultOptionItems = function(e) {
