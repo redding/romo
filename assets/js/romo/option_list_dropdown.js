@@ -83,18 +83,18 @@ selected or disabled.  Each 'optgroup' item object has a label and
 a list of items.
 
 Example:
-[ { 'type': 'option',   'displayText': 'A', 'value': 'a' },
-  { 'type': 'option',   'displayText': 'B', 'value': 'b', 'selected': true },
-  { 'type': 'option',   'displayText': 'C', 'value': 'c', 'disabled': true },
+[ { 'type': 'option', 'value': 'a', 'displayText': 'A', 'displayHtml': 'A' },
+  { 'type': 'option', 'value': 'b', 'displayText': 'B', 'displayHtml': 'B', 'selected': true },
+  { 'type': 'option', 'value': 'c', 'displayText': 'C', 'displayHtml': 'C', 'disabled': true },
   { 'type': 'optgroup', 'label': 'Numbers', 'items': [
-    { 'type': 'option',   'displayHtml': '<span>1</span>', 'value': '1' },
-    { 'type': 'option',   'displayHtml': '<span>2</span>', 'value': '2' },
-    { 'type': 'option',   'displayHtml': '<span>3</span>', 'value': '3' }
+    { 'type': 'option', 'value': '1', 'displayText': '1', 'displayHtml': '<span>1</span>' },
+    { 'type': 'option', 'value': '2', 'displayText': '2', 'displayHtml': '<span>2</span>' },
+    { 'type': 'option', 'value': '3', 'displayText': '3', 'displayHtml': '<span>3</span>' }
   ] },
   { 'type': 'optgroup', 'label': 'Symbols', 'items': [
-    { 'type': 'option',   'displayHtml': '<span>!</span>', 'value': 'exclamation' },
-    { 'type': 'option',   'displayHtml': '<span>@</span>', 'value': 'at', 'disabled': true },
-    { 'type': 'option',   'displayHtml': '<span>#</span>', 'value': 'pound' }
+    { 'type': 'option', 'value': 'exclamation', 'displayText': '!', 'displayHtml': '<span>!</span>' },
+    { 'type': 'option', 'value': 'at',          'displayText': '@', 'displayHtml': '<span>@</span>' },
+    { 'type': 'option', 'value': 'pound',       'displayText': '#', 'displayHtml': '<span>#</span>' }
   ] }
 ]
 */
