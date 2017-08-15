@@ -68,20 +68,28 @@ RomoIndicatorTextInput.prototype._bindElem = function() {
   this.indicatorElem = $();
   var indicatorClass = this.elem.data('romo-indicator-text-input-indicator') || this.defaultIndicatorClass;
   if (indicatorClass !== undefined && indicatorClass !== 'none') {
-    this.indicatorElem = $('<i class="romo-indicator-text-input-indicator '+indicatorClass+'"></i>');
-    this.indicatorElem.romoIndicator();
+    this.indicatorElem = $('<div class="romo-indicator-text-input-indicator"><div><i class="'+indicatorClass+'"></i></div></div>');
     this.elem.after(this.indicatorElem);
     this.indicatorElem.on('click', $.proxy(this._onIndicatorClick, this));
     this._placeIndicatorElem();
 
+    this.indicatorIconContainerElem = this.indicatorElem.find('div');
+    if (this.elem.data('romo-indicator-text-input-indicator-basis-size') !== undefined) {
+      this.indicatorIconContainerElem.attr(
+        'data-romo-indicator-basis-size',
+        this.elem.data('romo-indicator-text-input-indicator-basis-size')
+      )
+    }
+    this.indicatorIconContainerElem.romoIndicator();
+
     this.elem.on('indicatorTextInput:triggerPlaceIndicator', $.proxy(function(e) {
       this._placeIndicatorElem();
     }, this));
-    this.elem.on('indicatorTextInput:triggerIndicatorStart', $.proxy(function(e) {
-      this.indicatorElem.trigger('indicator:triggerStart');
+    this.elem.on('indicatorTextInput:triggerIndicatorStart', $.proxy(function(e, basisSize) {
+      this.indicatorIconContainerElem.trigger('indicator:triggerStart', [basisSize]);
     }, this));
     this.elem.on('indicatorTextInput:triggerIndicatorStop', $.proxy(function(e) {
-      this.indicatorElem.trigger('indicator:triggerStop');
+      this.indicatorIconContainerElem.trigger('indicator:triggerStop');
     }, this));
   }
 
