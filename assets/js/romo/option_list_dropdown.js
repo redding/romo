@@ -286,6 +286,11 @@ RomoOptionListDropdown.prototype._bindDropdownOptionFilter = function() {
   }, this));
   this.romoDropdown.elem.on('dropdown:popupClose', $.proxy(function(e, dropdown) {
     this.optionFilterElem.val('');
+    /*
+    don't call `_filterOptionElems()` here.  we need to keep the option markup as is
+    until the popup is opened again so selecting an option works.  selecting an option
+    depends on the selected item elem method which requires the markup to be in place
+    */
   }, this));
   this.romoDropdown.elem.on('dropdown:popupClosedByEsc', $.proxy(function(e, dropdown) {
     this.romoDropdown.elem.focus();
@@ -431,15 +436,15 @@ RomoOptionListDropdown.prototype._onElemKeyDown = function(e) {
       if (e.keyCode === 40 /* Down */  || e.keyCode === 38 /* Up */) {
         this.romoDropdown.doPopupOpen();
         return false;
-      } else if (this.optionFilter !== undefined &&
+      } else if (this.optionFilterElem !== undefined &&
                  Romo.nonInputTextKeyCodes().indexOf(e.keyCode) === -1 /* Input Text */)  {
         if (e.metaKey === false) {
           // don't prevent default on Cmd-* keys (preserve Cmd-R refresh, etc)
           e.preventDefault();
+          this.optionFilterElem.val(e.key);
+          this.romoDropdown.doPopupOpen();
         }
         e.stopPropagation();
-        this.optionFilterElem.val(e.key);
-        this.romoDropdown.doPopupOpen();
         return true;
       } else {
         return true;

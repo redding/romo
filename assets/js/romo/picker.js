@@ -54,7 +54,7 @@ RomoPicker.prototype.doSetValue = function(value) {
   $.ajax({
     type:    'GET',
     url:     this.elem.data('romo-picker-url'),
-    data:    { 'value': value },
+    data:    { 'values': value },
     success: $.proxy(function(data, status, xhr) {
       if (data[0] !== undefined) {
         this.doSetSelectedValueAndText(data[0].value, data[0].displayText);
@@ -108,7 +108,11 @@ RomoPicker.prototype._bindOptionListDropdown = function() {
   }, this));
 
   this.romoOptionListDropdown.elem.on('romoOptionListDropdown:filterChange', $.proxy(function(e, filterValue, romoOptionListDropdown) {
-    this.elem.trigger('romoAjax:triggerInvoke', [{ 'filter': filterValue }]);
+    if (filterValue !== '') {
+      this.elem.trigger('romoAjax:triggerInvoke', [{ 'filter': filterValue }]);
+    } else {
+      this._setListItems(this.defaultOptionItems);
+    }
   }, this));
   this.romoOptionListDropdown.elem.on('romoOptionListDropdown:itemSelected', $.proxy(function(e, newValue, prevValue, optionListDropdown) {
     this.romoOptionListDropdown.elem.focus();
@@ -214,15 +218,20 @@ RomoPicker.prototype._bindAjax = function() {
     this.romoOptionListDropdown.elem.trigger('romoOptionListDropdown:triggerFilterIndicatorStart', []);
   }, this));
   this.elem.on('romoAjax:callSuccess', $.proxy(function(e, data, romoAjax) {
-    this.romoOptionListDropdown.doSetListItems(this.defaultOptionItems.concat(data));
+    this._setListItems(data);
     this.romoOptionListDropdown.elem.trigger('romoOptionListDropdown:triggerFilterIndicatorStop', []);
   }, this));
   this.elem.on('romoAjax:callError', $.proxy(function(e, xhr, romoAjax) {
-    this.romoOptionListDropdown.doSetListItems(this.defaultOptionItems);
+    this._setListItems(this.defaultOptionItems);
     this.romoOptionListDropdown.elem.trigger('romoOptionListDropdown:triggerFilterIndicatorStop', []);
   }, this));
 
   this.elem.romoAjax();
+}
+
+RomoPicker.prototype._setListItems = function(items) {
+  this.romoOptionListDropdown.doSetListItems(items);
+  this.romoOptionListDropdown.elem.trigger('romoOptionListDropdown:triggerListOptionsUpdate', [this.romoOptionListDropdown.optItemElems().first()]);
 }
 
 RomoPicker.prototype._buildDefaultOptionItems = function(e) {
