@@ -342,11 +342,11 @@
     padding-left: $spacingSize1;
   }
 
-  .romo-input-option-list LI {
+  .romo-input-option-list LI[data-romo-option-list-dropdown-item="opt"] {
     @include input-option-list-option;
   }
 
-  .romo-input-option-list LI[data-romo-option-list-item="optgroup"] {
+  .romo-input-option-list LI[data-romo-option-list-dropdown-item="optgroup"] {
     @include input-option-list-optgroup;
   }
 

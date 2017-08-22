@@ -80,7 +80,8 @@ RomoOptionListDropdown.prototype.doSetSelectedValueAndText = function(newValue, 
 Options are specified as a list of items.  Each 'option' item object
 has either display text or html, a value, and can optionally be
 selected or disabled.  Each 'optgroup' item object has a label and
-a list of items.
+a list of items.  Option groups cannot contain other option groups in
+their items.
 
 Example:
 [ { 'type': 'option', 'value': 'a', 'displayText': 'A', 'displayHtml': 'A' },
@@ -210,7 +211,7 @@ RomoOptionListDropdown.prototype._buildListOptionElem = function(item) {
   return itemElem;
 }
 
-RomoOptionListDropdown.prototype._buildListOptGroupElemItem = function(item) {
+RomoOptionListDropdown.prototype._buildListOptGroupElem = function(item) {
   var itemElem = $('<li data-romo-option-list-dropdown-item="optgroup"></li>');
 
   itemElem.text(item.label);
@@ -334,7 +335,7 @@ RomoOptionListDropdown.prototype._updateOptionsListUI = function(highlightOption
 }
 
 RomoOptionListDropdown.prototype._selectHighlightedItem = function() {
-  var curr = this._getHighlightedItem();
+  var curr = this._getHighlightedItemElem();
   if (curr.length !== 0) {
     var prevValue = this.prevValue;
     var newValue  = curr.data('romo-option-list-dropdown-option-value');
@@ -481,49 +482,74 @@ RomoOptionListDropdown.prototype._scrollBottomToItem = function(item) {
 }
 
 RomoOptionListDropdown.prototype._nextListItem = function() {
-  var curr = this._getHighlightedItem();
+  var curr = this._getHighlightedItemElem();
   if (curr.length === 0) {
     return curr;
   }
-  var currList = curr.closest('UL');
-  var next     = Romo.selectNext(curr, this.itemSelector);
+  var next = Romo.selectNext(curr, this.itemSelector+', UL.romo-option-list-optgroup');
+  if (next.length === 0) {
+    // curr is either the last ungrouped opt elem in the overall
+    // list OR is the last opt elem in a grouped list.
 
-  while (next.length === 0) {
-    currList = Romo.selectNext(currList, 'UL');
-    if (currList.length !== 0) {
-      next = currList.find(this.itemSelector).first();
-    } else {
-      next = this.romoDropdown.bodyElem.find(this.itemSelector).first();
-    }
+    // if the hightlighted opt elem is in an opt group list, use
+    // its list as the reference elem.  otherwise keep using the
+    // hightlighted opt elem itself.
+    curr = curr.closest('UL.romo-option-list-optgroup') || curr;
+    next = Romo.selectNext(curr, this.itemSelector+', UL.romo-option-list-optgroup');
   }
+  if (next.length === 0) {
+    // curr is the last opt elem (grouped or not) in the overall
+    // list.  get the the first opt elem in the overall list
+    next = this.romoDropdown.bodyElem.find(this.itemSelector).first();
+  } else if (next.hasClass('romo-option-list-optgroup')) {
+    // curr (grouped or not) is before an opt group list. get
+    // the first opt elem in that list.
+    next = next.find(this.itemSelector).first();
+  }
+  // otherwise curr (grouped or not) is before an opt elem.
+  // use that opt elem.
+
   return next;
 }
 
 RomoOptionListDropdown.prototype._prevListItem = function() {
-  var curr = this._getHighlightedItem();
+  var curr = this._getHighlightedItemElem();
   if (curr.length === 0) {
     return curr;
   }
-  var currList = curr.closest('UL');
-  var prev     = Romo.selectPrev(curr, this.itemSelector);
 
-  while (prev.length === 0) {
-    currList = Romo.selectPrev(currList, 'UL');
-    if (currList.length !== 0) {
-      prev = currList.find(this.itemSelector).last();
-    } else {
-      prev = this.romoDropdown.bodyElem.find(this.itemSelector).last();
-    }
+  var prev = Romo.selectPrev(curr, this.itemSelector+', UL.romo-option-list-optgroup');
+  if (prev.length === 0) {
+    // curr is either the first ungrouped opt elem in the overall
+    // list OR is the first opt elem in a grouped list
+
+    // if the hightlighted opt elem is in an opt group list, use
+    // its list as the reference elem.  otherwise keep using the
+    // hightlighted opt elem itself.
+    curr = curr.closest('UL.romo-option-list-optgroup') || curr;
+    prev = Romo.selectPrev(curr, this.itemSelector+', UL.romo-option-list-optgroup');
   }
+  if (prev.length === 0) {
+    // curr is the first opt elem (grouped or not) in the overall
+    // list.  get the the last opt elem in the overall list
+    prev = this.romoDropdown.bodyElem.find(this.itemSelector).last();
+  } else if (prev.hasClass('romo-option-list-optgroup')) {
+    // curr (grouped or not) is after an opt group list.  get
+    // the last opt elem in that list.
+    prev = prev.find(this.itemSelector).last();
+  }
+  // otherwise curr (grouped or not) is after an opt elem.
+  // use that opt elem.
+
   return prev;
 }
 
 RomoOptionListDropdown.prototype._highlightItem = function(item) {
-  this._getHighlightedItem().removeClass('romo-option-list-dropdown-highlight');
+  this._getHighlightedItemElem().removeClass('romo-option-list-dropdown-highlight');
   item.addClass('romo-option-list-dropdown-highlight');
 }
 
-RomoOptionListDropdown.prototype._getHighlightedItem = function() {
+RomoOptionListDropdown.prototype._getHighlightedItemElem = function() {
   return this.romoDropdown.bodyElem.find('LI.romo-option-list-dropdown-highlight');
 }
 
