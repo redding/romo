@@ -11,7 +11,8 @@ var RomoPicker = function(element) {
   this.defaultCaretPaddingPx = 5;
   this.defaultCaretPosition  = 'right'
 
-  this.defaultOptionItems = this._buildDefaultOptionItems();
+  this.defaultOptionItems  = this._buildDefaultOptionItems();
+  this.filteredOptionItems = [];
 
   this.doInit();
   this._bindElem();
@@ -109,9 +110,13 @@ RomoPicker.prototype._bindOptionListDropdown = function() {
 
   this.romoOptionListDropdown.elem.on('romoOptionListDropdown:filterChange', $.proxy(function(e, filterValue, romoOptionListDropdown) {
     if (filterValue !== '') {
+      // immediately update the custom opt as the filter changes
+      // but keep the current filtered option items
+      this._setListItems(this.filteredOptionItems.concat(this._buildCustomOptionItems()));
+      // this will update with the new filtered items plus the custom on ajax callback
       this.elem.trigger('romoAjax:triggerInvoke', [{ 'filter': filterValue }]);
     } else {
-      this._setListItems(this.defaultOptionItems);
+      this._setListItems(this.defaultOptionItems.concat(this._buildCustomOptionItems()));
     }
   }, this));
   this.romoOptionListDropdown.elem.on('romoOptionListDropdown:itemSelected', $.proxy(function(e, newValue, prevValue, optionListDropdown) {
@@ -218,11 +223,12 @@ RomoPicker.prototype._bindAjax = function() {
     this.romoOptionListDropdown.elem.trigger('romoOptionListDropdown:triggerFilterIndicatorStart', []);
   }, this));
   this.elem.on('romoAjax:callSuccess', $.proxy(function(e, data, romoAjax) {
-    this._setListItems(data);
+    this.filteredOptionItems = data;
+    this._setListItems(this.filteredOptionItems.concat(this._buildCustomOptionItems()));
     this.romoOptionListDropdown.elem.trigger('romoOptionListDropdown:triggerFilterIndicatorStop', []);
   }, this));
   this.elem.on('romoAjax:callError', $.proxy(function(e, xhr, romoAjax) {
-    this._setListItems(this.defaultOptionItems);
+    this._setListItems(this.defaultOptionItems.concat(this._buildCustomOptionItems()));
     this.romoOptionListDropdown.elem.trigger('romoOptionListDropdown:triggerFilterIndicatorStop', []);
   }, this));
 
@@ -234,7 +240,7 @@ RomoPicker.prototype._setListItems = function(items) {
   this.romoOptionListDropdown.elem.trigger('romoOptionListDropdown:triggerListOptionsUpdate', [this.romoOptionListDropdown.optItemElems().first()]);
 }
 
-RomoPicker.prototype._buildDefaultOptionItems = function(e) {
+RomoPicker.prototype._buildDefaultOptionItems = function() {
   var items = []
 
   if (this.elem.data('romo-picker-empty-option') === true) {
@@ -247,6 +253,35 @@ RomoPicker.prototype._buildDefaultOptionItems = function(e) {
   }
 
   return items;
+}
+
+RomoPicker.prototype._buildCustomOptionItems = function() {
+  var items = [];
+
+  var value = this.romoOptionListDropdown.optionFilterValue();
+  if (value !== '' && this.elem.data('romo-picker-custom-option') === true) {
+    var prompt = this.elem.data('romo-picker-custom-option-prompt');
+    if (prompt !== undefined) {
+      items.push({
+        'type':  'optgroup',
+        'label': prompt,
+        'items': [this._buildCustomOptionItem(value)]
+      });
+    } else {
+      items.push(this._buildCustomOptionItem(value));
+    }
+  }
+
+  return items;
+}
+
+RomoPicker.prototype._buildCustomOptionItem = function(value) {
+  return {
+    'type':        'option',
+    'value':       value,
+    'displayText': value,
+    'displayHtml': value
+  };
 }
 
 RomoPicker.prototype._onCaretClick = function(e) {
