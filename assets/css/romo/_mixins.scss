@@ -363,6 +363,7 @@
 @mixin input-option-list-optgroup {
   font-size: $fontSize0;
   line-height: $lineHeight0;
+  padding: 0 $spacingSize0;
 
   background-color: $inputColor;
   color: $inputBgColor;
