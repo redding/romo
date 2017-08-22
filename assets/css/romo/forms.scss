@@ -348,6 +348,7 @@
 
   .romo-input-option-list LI[data-romo-option-list-dropdown-item="optgroup"] {
     @include input-option-list-optgroup;
+    padding: 0 $spacingSize0;
   }
 
   .romo-input-option-list LI.romo-option-list-dropdown-highlight {

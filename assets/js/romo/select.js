@@ -66,6 +66,12 @@ RomoSelect.prototype._bindElem = function() {
   this.elem.on('select:triggerPopupClose', $.proxy(function(e) {
     this.romoSelectDropdown.elem.trigger('selectDropdown:triggerPopupClose', []);
   }, this));
+
+
+  var presetVal = this.elem[0].value;
+  if (presetVal !== '') {
+    this.doSetValue(presetVal);
+  }
 }
 
 RomoSelect.prototype._bindSelectDropdown = function() {
