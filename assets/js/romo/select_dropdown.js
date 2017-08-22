@@ -44,6 +44,10 @@ RomoSelectDropdown.prototype.selectedItemText = function() {
   return this.romoOptionListDropdown.selectedItemText();
 }
 
+RomoSelectDropdown.prototype.optionFilterValue = function() {
+  return this.romoOptionListDropdown.optionFilterValue();
+}
+
 RomoSelectDropdown.prototype.optItemElems = function() {
   return this.romoOptionListDropdown.optItemElems();
 }

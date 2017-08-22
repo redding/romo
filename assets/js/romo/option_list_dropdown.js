@@ -5,8 +5,10 @@ $.fn.romoOptionListDropdown = function() {
 }
 
 var RomoOptionListDropdown = function(element) {
-  this.elem      = $(element);
-  this.prevValue = '';
+  this.elem = $(element);
+
+  this.prevValue       = '';
+  this.optionListItems = [];
 
   var selCustomization = this.elem.data('romo-option-list-dropdown-item-selector-customization') || '';
   this.itemSelector    = 'LI[data-romo-option-list-dropdown-item="opt"]:not(.disabled)'+selCustomization;
@@ -42,6 +44,10 @@ RomoOptionListDropdown.prototype.selectedItemText = function() {
   // using `data` works the first time but does some elem caching or something
   // so it won't work subsequent times.
   return this.elem.attr('data-romo-option-list-dropdown-selected-text');
+}
+
+RomoOptionListDropdown.prototype.optionFilterValue = function() {
+  return this.optionFilterElem.val();
 }
 
 RomoOptionListDropdown.prototype.optItemElems = function() {
@@ -101,6 +107,7 @@ Example:
 */
 
 RomoOptionListDropdown.prototype.doSetListItems = function(itemsList) {
+  this.optionListItems = itemsList;
   this.optionListContainer.html(this._buildListElem(itemsList));
 
   this._updateOptionsListUI();
