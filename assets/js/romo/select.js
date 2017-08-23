@@ -129,6 +129,9 @@ RomoSelect.prototype._buildSelectDropdownElem = function() {
   if (this.elem.data('romo-select-custom-option-prompt') !== undefined) {
     romoSelectDropdownElem.attr('data-romo-select-dropdown-custom-option-prompt', this.elem.data('romo-select-custom-option-prompt'));
   }
+  if (this.elem.data('romo-select-open-on-focus') !== undefined) {
+    romoSelectDropdownElem.attr('data-romo-select-dropdown-open-on-focus', this.elem.data('romo-select-open-on-focus'));
+  }
 
   var classList = this.elem.attr('class') !== undefined ? this.elem.attr('class').split(/\s+/) : [];
   $.each(classList, function(idx, classItem) {

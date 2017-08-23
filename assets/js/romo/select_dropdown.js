@@ -80,6 +80,9 @@ RomoSelectDropdown.prototype._bindElem = function() {
   if (this.elem.data('romo-select-dropdown-filter-indicator-width-px') !== undefined) {
     this.elem.attr('data-romo-option-list-dropdown-filter-indicator-width-px', this.elem.data('romo-select-dropdown-filter-indicator-width-px'));
   }
+  if (this.elem.data('romo-select-dropdown-open-on-focus') !== undefined) {
+    this.elem.attr('data-romo-option-list-dropdown-open-on-focus', this.elem.data('romo-select-dropdown-open-on-focus'));
+  }
 
   this.elem.on('romoOptionListDropdown:dropdown:toggle', $.proxy(function(e, dropdown) {
     this.elem.trigger('selectDropdown:dropdown:toggle', [dropdown, this]);
