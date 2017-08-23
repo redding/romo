@@ -7,10 +7,9 @@ $.fn.romoSelectDropdown = function(optionElemsParent) {
 var RomoSelectDropdown = function(element, optionElemsParent) {
   this.elem = $(element);
 
-  this.filterHiddenClass = 'romo-select-filter-hidden';
-
-  var optsParent   = (optionElemsParent || this.elem.find('.romo-select-dropdown-options-parent'));
-  this.optionElems = optsParent.children();
+  this.filterHiddenClass  = 'romo-select-filter-hidden';
+  this.optionElemSelector = ':not(.'+this.filterHiddenClass+')';
+  this.optionElemsParent  = (optionElemsParent || this.elem.find('.romo-select-dropdown-options-parent'));
 
   this.doInit();
   this._bindElem();
@@ -67,7 +66,6 @@ RomoSelectDropdown.prototype.doSetNewValue = function(newValue) {
 /* private */
 
 RomoSelectDropdown.prototype._bindElem = function() {
-  this.elem.attr('data-romo-option-list-dropdown-item-selector-customization', ':not(.'+this.filterHiddenClass+')');
   this.elem.attr('data-romo-option-list-focus-style-class', 'romo-select-focus');
 
   if (this.elem.data('romo-select-dropdown-no-filter') !== undefined) {
@@ -113,29 +111,36 @@ RomoSelectDropdown.prototype._bindElem = function() {
   this.romoOptionListDropdown = this.elem.romoOptionListDropdown()[0];
 
   this.elem.on('romoOptionListDropdown:filterChange', $.proxy(function(e, filterValue, romoOptionListDropdown) {
-    var wbFilter = new RomoWordBoundaryFilter(filterValue, this.optItemElems(), function(elem) {
-      // The romo word boundary filter by default considers a space, "-" and "_" as word boundaries.
-      // We want to also consider other non-word characters (such as ":", "/", ".", "?", "=", "&")
-      // as word boundaries as well.
+    var elems    = this.optionElemsParent.find('option');
+    var wbFilter = new RomoWordBoundaryFilter(filterValue, elems, function(elem) {
+      // The romo word boundary filter by default considers a space, "-" and "_"
+      // as word boundaries.  We want to also consider other non-word characters
+      // (such as ":", "/", ".", "?", "=", "&") as word boundaries as well.
       return elem[0].textContent.replace(/\W/g, ' ');
     });
 
-    wbFilter.matchingElems.show();
-    wbFilter.notMatchingElems.hide();
     wbFilter.matchingElems.removeClass(this.filterHiddenClass);
     wbFilter.notMatchingElems.addClass(this.filterHiddenClass);
+    this._setListItems();
 
     if (filterValue !== '') {
-      this.elem.trigger('romoOptionListDropdown:triggerListOptionsUpdate', [wbFilter.matchingElems.first()]);
+      this.romoOptionListDropdown.elem.trigger('romoOptionListDropdown:triggerListOptionsUpdate', [this.optItemElems().first()]);
     } else {
       this.elem.trigger('romoOptionListDropdown:triggerListOptionsUpdate', [this.selectedItemElem()]);
     }
   }, this));
 
-  this.romoOptionListDropdown.doSetListItems(this._buildOptionList(this.optionElems));
+  this._setListItems();
+  this.elem.trigger('romoOptionListDropdown:triggerListOptionsUpdate', [this.selectedItemElem()]);
 }
 
-RomoSelectDropdown.prototype._buildOptionList = function(optionElems) {
+RomoSelectDropdown.prototype._setListItems = function() {
+  var optElems = this.optionElemsParent.children(this.optionElemSelector);
+  var items    = this._buildOptionListItems(optElems);
+  this.romoOptionListDropdown.doSetListItems(items);
+}
+
+RomoSelectDropdown.prototype._buildOptionListItems = function(optionElems) {
   var list = [];
 
   $.each(optionElems, $.proxy(function(idx, optionNode) {
@@ -172,7 +177,7 @@ RomoSelectDropdown.prototype._buildOptGroupItem = function(optGroupElem) {
 
   item['type']  = 'optgroup';
   item['label'] = optGroupElem.attr('label');
-  item['items'] = this._buildOptionList(optGroupElem.children());
+  item['items'] = this._buildOptionListItems(optGroupElem.children(this.optionElemSelector));
 
   return item;
 }
