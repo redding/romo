@@ -147,7 +147,10 @@ RomoSelectDropdown.prototype._buildOptionListItems = function(optionElems) {
     if (optionNode.tagName === "OPTION") {
       list.push(this._buildOptionItem($(optionNode)));
     } else if (optionNode.tagName === "OPTGROUP") {
-      list.push(this._buildOptGroupItem($(optionNode)));
+      var optGroupItem = this._buildOptGroupItem($(optionNode));
+      if (optGroupItem.items.length !== 0) {
+        list.push(optGroupItem);
+      }
     }
   }, this));
 
