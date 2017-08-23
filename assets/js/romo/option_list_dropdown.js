@@ -504,6 +504,11 @@ RomoOptionListDropdown.prototype._nextListItem = function() {
     curr = curr.closest('UL.romo-option-list-optgroup') || curr;
     next = Romo.selectNext(curr, this.itemSelector+', UL.romo-option-list-optgroup');
   }
+  while (next.hasClass('romo-option-list-optgroup') && next.children().size() === 0) {
+    // keep trying until you find a opt group list with options or an option or nothing
+    curr = next;
+    next = Romo.selectNext(curr, this.itemSelector+', UL.romo-option-list-optgroup');
+  }
   if (next.length === 0) {
     // curr is the last opt elem (grouped or not) in the overall
     // list.  get the the first opt elem in the overall list
@@ -534,6 +539,11 @@ RomoOptionListDropdown.prototype._prevListItem = function() {
     // its list as the reference elem.  otherwise keep using the
     // hightlighted opt elem itself.
     curr = curr.closest('UL.romo-option-list-optgroup') || curr;
+    prev = Romo.selectPrev(curr, this.itemSelector+', UL.romo-option-list-optgroup');
+  }
+  while (prev.hasClass('romo-option-list-optgroup') && prev.children().size() === 0) {
+    // keep trying until you find a opt group list with options or an option or nothing
+    curr = prev;
     prev = Romo.selectPrev(curr, this.itemSelector+', UL.romo-option-list-optgroup');
   }
   if (prev.length === 0) {
