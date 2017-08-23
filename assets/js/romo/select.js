@@ -123,6 +123,12 @@ RomoSelect.prototype._buildSelectDropdownElem = function() {
   if (this.elem.data('romo-select-no-filter') !== undefined) {
     romoSelectDropdownElem.attr('data-romo-select-dropdown-no-filter', this.elem.data('romo-select-no-filter'));
   }
+  if (this.elem.data('romo-select-custom-option') !== undefined) {
+    romoSelectDropdownElem.attr('data-romo-select-dropdown-custom-option', this.elem.data('romo-select-custom-option'));
+  }
+  if (this.elem.data('romo-select-custom-option-prompt') !== undefined) {
+    romoSelectDropdownElem.attr('data-romo-select-dropdown-custom-option-prompt', this.elem.data('romo-select-custom-option-prompt'));
+  }
 
   var classList = this.elem.attr('class') !== undefined ? this.elem.attr('class').split(/\s+/) : [];
   $.each(classList, function(idx, classItem) {
