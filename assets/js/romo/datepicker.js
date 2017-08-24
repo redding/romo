@@ -178,7 +178,11 @@ RomoDatepicker.prototype.doSelectHighlightedItem = function() {
   this.romoDropdown.doPopupClose();
   this.doSetDate(newValue);
   this.elem.focus();
-  this.elem.trigger('datepicker:itemSelected', [newValue, this.prevValue, this]);
+  this.elem.trigger('datepicker:itemSelected', [newValue, this]);
+  if (newValue !== this.prevValue) {
+    this.elem.trigger('datepicker:newItemSelected', [newValue, this]);
+  }
+  // always publish the item selected events before publishing any change events
   this._triggerSetDateChangeEvent();
 }
 
