@@ -354,12 +354,15 @@ RomoOptionListDropdown.prototype._selectHighlightedItem = function() {
   if (curr.length !== 0) {
     var prevValue = this.prevValue;
     var newValue  = curr.data('romo-option-list-dropdown-option-value');
+    var newText   = curr.data('romo-option-list-dropdown-option-display-text');
 
     this.romoDropdown.doPopupClose();
-    this.elem.trigger('romoOptionListDropdown:itemSelected', [newValue, prevValue, this]);
 
+    this.elem.trigger('romoOptionListDropdown:itemSelected', [newValue, newText, this]);
     if (newValue !== prevValue) {
       this.doSetNewValue(newValue);
+      // always publish the item selected events before publishing any change events
+      this.elem.trigger('romoOptionListDropdown:newItemSelected', [newValue, newText, this]);
       this.elem.trigger('romoOptionListDropdown:change', [newValue, prevValue, this]);
     }
   }

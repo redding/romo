@@ -119,9 +119,12 @@ RomoPicker.prototype._bindOptionListDropdown = function() {
       this._setListItems(this.defaultOptionItems.concat(this._buildCustomOptionItems()));
     }
   }, this));
-  this.romoOptionListDropdown.elem.on('romoOptionListDropdown:itemSelected', $.proxy(function(e, newValue, prevValue, optionListDropdown) {
+  this.romoOptionListDropdown.elem.on('romoOptionListDropdown:itemSelected', $.proxy(function(e, itemValue, itemDisplayText, optionListDropdown) {
     this.romoOptionListDropdown.elem.focus();
-    this.elem.trigger('romoPicker:itemSelected', [newValue, prevValue, this]);
+    this.elem.trigger('romoPicker:itemSelected', [itemValue, itemDisplayText, this]);
+  }, this));
+  this.romoOptionListDropdown.elem.on('romoOptionListDropdown:newItemSelected', $.proxy(function(e, itemValue, itemDisplayText, optionListDropdown) {
+    this.elem.trigger('romoPicker:newItemSelected', [itemValue, itemDisplayText, this]);
   }, this));
   this.romoOptionListDropdown.elem.on('romoOptionListDropdown:change', $.proxy(function(e, newValue, prevValue, optionListDropdown) {
     this._setNewValue(newValue);
