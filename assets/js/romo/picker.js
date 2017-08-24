@@ -16,7 +16,6 @@ var RomoPicker = function(element) {
 
   this.doInit();
   this._bindElem();
-  this.doRefreshUI();
 
   if (this.elem.attr('id') !== undefined) {
     $('label[for="'+this.elem.attr('id')+'"]').on('click', $.proxy(function(e) {
@@ -25,11 +24,7 @@ var RomoPicker = function(element) {
   }
 
   $(window).on("pageshow", $.proxy(function(e) {
-    var selectedVal = this.romoOptionListDropdown.selectedItemValue();
-    if (selectedVal !== this.elem[0].value) {
-      var selectedText = this.romoOptionListDropdown.selectedItemText();
-      this.doSetSelectedValueAndText(selectedVal, selectedText);
-    }
+    this._refreshUI();
   }, this));
 
   this.elem.on('romoPicker:triggerSetValue', $.proxy(function(e, value) {
@@ -41,14 +36,6 @@ var RomoPicker = function(element) {
 
 RomoPicker.prototype.doInit = function() {
   // override as needed
-}
-
-RomoPicker.prototype.doRefreshUI = function() {
-  var text = this.romoOptionListDropdown.selectedItemText();
-  if (text === '') {
-    text = '&nbsp;'
-  }
-  this.romoOptionListDropdown.elem.find('.romo-picker-text').html(text);
 }
 
 RomoPicker.prototype.doSetValue = function(value) {
@@ -68,7 +55,8 @@ RomoPicker.prototype.doSetValue = function(value) {
 
 RomoPicker.prototype.doSetSelectedValueAndText = function(value, text) {
   this.romoOptionListDropdown.doSetSelectedValueAndText(value, text);
-  this._setNewValue(value);
+  this._setValueAndText(value, text);
+  this._refreshUI();
 }
 
 /* private */
@@ -124,10 +112,11 @@ RomoPicker.prototype._bindOptionListDropdown = function() {
     this.elem.trigger('romoPicker:itemSelected', [itemValue, itemDisplayText, this]);
   }, this));
   this.romoOptionListDropdown.elem.on('romoOptionListDropdown:newItemSelected', $.proxy(function(e, itemValue, itemDisplayText, optionListDropdown) {
+    this._setValueAndText(itemValue, itemDisplayText);
+    this._refreshUI();
     this.elem.trigger('romoPicker:newItemSelected', [itemValue, itemDisplayText, this]);
   }, this));
   this.romoOptionListDropdown.elem.on('romoOptionListDropdown:change', $.proxy(function(e, newValue, prevValue, optionListDropdown) {
-    this._setNewValue(newValue);
     this.elem.trigger('change');
     this.elem.trigger('romoPicker:change', [newValue, prevValue, this]);
   }, this));
@@ -297,9 +286,25 @@ RomoPicker.prototype._onCaretClick = function(e) {
   }
 }
 
-RomoPicker.prototype._setNewValue = function(newValue) {
-  this.elem[0].value = newValue;
-  this.doRefreshUI();
+RomoPicker.prototype._setValueAndText = function(value, text) {
+  this.elem[0].value = value;
+
+  // store the display text on the DOM to compliment the value being stored on the
+  // DOM via the elem above.  need to use `attr` to persist selected values to the
+  // DOM for back button logic to work.  using `data` won't persist changes to DOM
+  // and breaks how the component deals with back-button behavior.
+  this.elem.attr('data-romo-picker-display-text', text);
+}
+
+RomoPicker.prototype._refreshUI = function() {
+  // need to use `attr` so it will always read from the DOM
+  // using `data` works the first time but does some elem caching or something
+  // so it won't work subsequent times.
+  var text = this.elem.attr('data-romo-picker-display-text');
+  if (text === '') {
+    text = '&nbsp;'
+  }
+  this.romoOptionListDropdown.elem.find('.romo-picker-text').html(text);
 }
 
 RomoPicker.prototype._getCaretPaddingPx = function() {

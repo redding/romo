@@ -59,8 +59,8 @@ RomoSelectDropdown.prototype.doInit = function() {
   // override as needed
 }
 
-RomoSelectDropdown.prototype.doSetNewValue = function(newValue) {
-  this.romoOptionListDropdown.doSetNewValue(newValue);
+RomoSelectDropdown.prototype.doSetSelectedItem = function(newValue) {
+  this.romoOptionListDropdown.doSetSelectedItem(newValue);
 }
 
 /* private */
