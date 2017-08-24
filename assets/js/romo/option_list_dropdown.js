@@ -63,24 +63,24 @@ RomoOptionListDropdown.prototype.doInit = function() {
   // override as needed
 }
 
-RomoOptionListDropdown.prototype.doSetNewValue = function(newValue) {
+RomoOptionListDropdown.prototype.doSetSelectedItem = function(itemValue) {
   this.selectedItemElem().removeClass('selected');
   this.romoDropdown.bodyElem.find(
-    'LI[data-romo-option-list-dropdown-option-value="'+newValue+'"]'
+    'LI[data-romo-option-list-dropdown-option-value="'+itemValue+'"]'
   ).addClass('selected');
   this.doSetSelectedValueAndText(
-    newValue,
+    this.selectedItemElem().data('romo-option-list-dropdown-option-value'),
     this.selectedItemElem().data('romo-option-list-dropdown-option-display-text')
   );
 }
 
-RomoOptionListDropdown.prototype.doSetSelectedValueAndText = function(newValue, newText) {
+RomoOptionListDropdown.prototype.doSetSelectedValueAndText = function(value, text) {
   // need to use `attr` to persist selected values to the DOM for back button logic
   // to work.  using `data` won't persist changes to DOM and breaks back button logic.
-  this.elem.attr('data-romo-option-list-dropdown-selected-value', newValue);
-  this.elem.attr('data-romo-option-list-dropdown-selected-text',  newText);
+  this.elem.attr('data-romo-option-list-dropdown-selected-value', value);
+  this.elem.attr('data-romo-option-list-dropdown-selected-text',  text);
 
-  this.prevValue = newValue;
+  this.prevValue = value;
 }
 
 /*
@@ -360,7 +360,7 @@ RomoOptionListDropdown.prototype._selectHighlightedItem = function() {
 
     this.elem.trigger('romoOptionListDropdown:itemSelected', [newValue, newText, this]);
     if (newValue !== prevValue) {
-      this.doSetNewValue(newValue);
+      this.doSetSelectedItem(newValue);
       // always publish the item selected events before publishing any change events
       this.elem.trigger('romoOptionListDropdown:newItemSelected', [newValue, newText, this]);
       this.elem.trigger('romoOptionListDropdown:change', [newValue, prevValue, this]);

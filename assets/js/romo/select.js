@@ -48,7 +48,7 @@ RomoSelect.prototype.doRefreshUI = function() {
 }
 
 RomoSelect.prototype.doSetValue = function(value) {
-  this.romoSelectDropdown.doSetNewValue(value);
+  this.romoSelectDropdown.doSetSelectedItem(value);
   this._setNewValue(value);
 }
 
