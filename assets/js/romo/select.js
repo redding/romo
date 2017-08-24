@@ -13,7 +13,6 @@ var RomoSelect = function(element) {
 
   this.doInit();
   this._bindElem();
-  this.doRefreshUI();
 
   if (this.elem.attr('id') !== undefined) {
     $('label[for="'+this.elem.attr('id')+'"]').on('click', $.proxy(function(e) {
@@ -22,10 +21,7 @@ var RomoSelect = function(element) {
   }
 
   $(window).on("pageshow", $.proxy(function(e) {
-    var selectedVal = this.romoSelectDropdown.selectedItemValue();
-    if (selectedVal !== this.elem[0].value) {
-      this.doSetValue(selectedVal);
-    }
+    this._refreshUI();
   }, this));
 
   this.elem.on('select:triggerSetValue', $.proxy(function(e, value) {
@@ -39,17 +35,10 @@ RomoSelect.prototype.doInit = function() {
   // override as needed
 }
 
-RomoSelect.prototype.doRefreshUI = function() {
-  var text = this.romoSelectDropdown.selectedItemText();
-  if (text === '') {
-    text = '&nbsp;'
-  }
-  this.romoSelectDropdown.elem.find('.romo-select-text').html(text);
-}
-
 RomoSelect.prototype.doSetValue = function(value) {
   this.romoSelectDropdown.doSetSelectedItem(value);
-  this._setNewValue(value);
+  this._setValue(value);
+  this._refreshUI();
 }
 
 /* private */
@@ -92,10 +81,11 @@ RomoSelect.prototype._bindSelectDropdown = function() {
     this.elem.trigger('select:itemSelected', [itemValue, itemDisplayText, this]);
   }, this));
   this.romoSelectDropdown.elem.on('selectDropdown:newItemSelected', $.proxy(function(e, itemValue, itemDisplayText, selectDropdown) {
+    this._setValue(itemValue);
+    this._refreshUI();
     this.elem.trigger('select:newItemSelected', [itemValue, itemDisplayText, this]);
   }, this));
   this.romoSelectDropdown.elem.on('selectDropdown:change', $.proxy(function(e, newValue, prevValue, selectDropdown) {
-    this._setNewValue(newValue);
     this.elem.trigger('change');
     this.elem.trigger('select:change', [newValue, prevValue, this]);
   }, this));
@@ -199,9 +189,17 @@ RomoSelect.prototype._onCaretClick = function(e) {
   }
 }
 
-RomoSelect.prototype._setNewValue = function(newValue) {
+RomoSelect.prototype._setValue = function(newValue) {
   this.elem[0].value = newValue;
-  this.doRefreshUI();
+  this._refreshUI();
+}
+
+RomoSelect.prototype._refreshUI = function() {
+  var text = this.romoSelectDropdown.selectedItemText();
+  if (text === '') {
+    text = '&nbsp;'
+  }
+  this.romoSelectDropdown.elem.find('.romo-select-text').html(text);
 }
 
 RomoSelect.prototype._getCaretPaddingPx = function() {

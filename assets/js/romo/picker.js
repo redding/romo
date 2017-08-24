@@ -45,15 +45,15 @@ RomoPicker.prototype.doSetValue = function(value) {
     data:    { 'values': value },
     success: $.proxy(function(data, status, xhr) {
       if (data[0] !== undefined) {
-        this.doSetSelectedValueAndText(data[0].value, data[0].displayText);
+        this.doSetValueAndText(data[0].value, data[0].displayText);
       } else {
-        this.doSetSelectedValueAndText('', '');
+        this.doSetValueAndText('', '');
       }
     }, this),
   });
 }
 
-RomoPicker.prototype.doSetSelectedValueAndText = function(value, text) {
+RomoPicker.prototype.doSetValueAndText = function(value, text) {
   this.romoOptionListDropdown.doSetSelectedValueAndText(value, text);
   this._setValueAndText(value, text);
   this._refreshUI();
