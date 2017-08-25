@@ -17,6 +17,15 @@ var RomoPicker = function(element) {
   this.doInit();
   this._bindElem();
 
+  var presetVal = this.elem[0].value;
+  if (presetVal !== '') {
+    this.doSetValue(presetVal);
+  } else if (this.elem.data('romo-picker-empty-option') === true) {
+    this.doSetValueAndText('', this.elem.data('romo-picker-empty-option-display-text') || '');
+  } else {
+    this.doSetValueAndText('', '');
+  }
+
   if (this.elem.attr('id') !== undefined) {
     $('label[for="'+this.elem.attr('id')+'"]').on('click', $.proxy(function(e) {
       this.romoOptionListDropdown.elem.focus();
@@ -46,6 +55,8 @@ RomoPicker.prototype.doSetValue = function(value) {
     success: $.proxy(function(data, status, xhr) {
       if (data[0] !== undefined) {
         this.doSetValueAndText(data[0].value, data[0].displayText);
+      } else  if (this.elem.data('romo-picker-empty-option') === true) {
+        this.doSetValueAndText('', this.elem.data('romo-picker-empty-option-display-text') || '');
       } else {
         this.doSetValueAndText('', '');
       }
@@ -76,11 +87,6 @@ RomoPicker.prototype._bindElem = function() {
   }, this));
 
   this.romoOptionListDropdown.doSetListItems(this.defaultOptionItems);
-
-  var presetVal = this.elem[0].value;
-  if (presetVal !== '') {
-    this.doSetValue(presetVal);
-  }
 }
 
 RomoPicker.prototype._bindOptionListDropdown = function() {
@@ -242,7 +248,7 @@ RomoPicker.prototype._buildDefaultOptionItems = function() {
     items.push({
       'type':        'option',
       'value':       '',
-      'displayText': '',
+      'displayText': (this.elem.data('romo-picker-empty-option-display-text') || ''),
       'displayHtml': '&nbsp;'
     });
   }
