@@ -14,6 +14,8 @@ var RomoSelect = function(element) {
   this.doInit();
   this._bindElem();
 
+  this.doSetValue(this.elem[0].value);
+
   if (this.elem.attr('id') !== undefined) {
     $('label[for="'+this.elem.attr('id')+'"]').on('click', $.proxy(function(e) {
       this.romoSelectDropdown.elem.focus();
@@ -55,12 +57,6 @@ RomoSelect.prototype._bindElem = function() {
   this.elem.on('select:triggerPopupClose', $.proxy(function(e) {
     this.romoSelectDropdown.elem.trigger('selectDropdown:triggerPopupClose', []);
   }, this));
-
-
-  var presetVal = this.elem[0].value;
-  if (presetVal !== '') {
-    this.doSetValue(presetVal);
-  }
 }
 
 RomoSelect.prototype._bindSelectDropdown = function() {
