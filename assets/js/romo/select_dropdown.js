@@ -97,6 +97,19 @@ RomoSelectDropdown.prototype._bindElem = function() {
     this.elem.trigger('selectDropdown:itemSelected', [itemValue, itemDisplayText, this]);
   }, this));
   this.elem.on('romoOptionListDropdown:newItemSelected', $.proxy(function(e, itemValue, itemDisplayText, romoOptionListDropdown) {
+    var custOptElem = this.optionElemsParent.find('OPTION[data-romo-select-dropdown-custom-option="true"]');
+    if (this.optionElemsParent.find('OPTION[value="'+itemValue+'"]').length === 0){
+      // a custom value is being selected. add a custom option elem and update its value/text
+      if (custOptElem.length === 0) {
+        this.optionElemsParent.append('<option data-romo-select-dropdown-custom-option="true"></option>');
+        custOptElem = this.optionElemsParent.find('OPTION[data-romo-select-dropdown-custom-option="true"]');
+      }
+      custOptElem.attr('value', itemValue);
+      custOptElem.text(itemDisplayText);
+    } else if (custOptElem.length !== 0) {
+      // a non custom value is being selected. remove any existing custom option
+      custOptElem.remove();
+    }
     this.elem.trigger('selectDropdown:newItemSelected', [itemValue, itemDisplayText, this]);
   }, this));
   this.elem.on('romoOptionListDropdown:change', $.proxy(function(e, newValue, prevValue, romoOptionListDropdown) {
@@ -117,7 +130,7 @@ RomoSelectDropdown.prototype._bindElem = function() {
   this.romoOptionListDropdown = this.elem.romoOptionListDropdown()[0];
 
   this.elem.on('romoOptionListDropdown:filterChange', $.proxy(function(e, filterValue, romoOptionListDropdown) {
-    var elems    = this.optionElemsParent.find('option');
+    var elems    = this.optionElemsParent.find('OPTION');
     var wbFilter = new RomoWordBoundaryFilter(filterValue, elems, function(elem) {
       // The romo word boundary filter by default considers a space, "-" and "_"
       // as word boundaries.  We want to also consider other non-word characters
