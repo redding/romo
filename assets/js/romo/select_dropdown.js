@@ -136,8 +136,21 @@ RomoSelectDropdown.prototype._bindElem = function() {
     }
   }, this));
 
+  this._sanitizeOptions();
   this._setListItems();
   this.elem.trigger('romoOptionListDropdown:triggerListOptionsUpdate', [this.selectedItemElem()]);
+}
+
+RomoSelectDropdown.prototype._sanitizeOptions = function() {
+  // set any options without a value to value=""
+  // all options are required to have a value for things to work
+  // this and the select component assume value attrs for all options
+  $.each(this.optionElemsParent.find('OPTION'), $.proxy(function(idx, optionNode) {
+    var optElem = $(optionNode);
+    if (optElem.attr('value') === undefined) {
+      optElem.attr('value', '');
+    }
+  }, this));
 }
 
 RomoSelectDropdown.prototype._setListItems = function() {
