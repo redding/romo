@@ -182,24 +182,29 @@ RomoSelect.prototype._buildSelectDropdownElem = function() {
   return romoSelectDropdownElem;
 }
 
+RomoSelect.prototype._setValue = function(value) {
+  var prevOptElem = this.elem.find('OPTION[value="'+this.elem[0].value+'"]');
+  var newOptElem  = this.elem.find('OPTION[value="'+value+'"]');
+
+  prevOptElem.removeAttr('selected');
+  prevOptElem.prop('selected', false);
+  newOptElem.attr('selected', 'selected');
+  newOptElem.prop('selected', true);
+}
+
+RomoSelect.prototype._refreshUI = function() {
+  var text = this.elem.find('OPTION[selected="selected"]').text().trim();
+  if (text === '') {
+    text = '&nbsp;'
+  }
+  this.romoSelectDropdown.elem.find('.romo-select-text').html(text);
+}
+
 RomoSelect.prototype._onCaretClick = function(e) {
   if (this.elem.prop('disabled') === false) {
     this.romoSelectDropdown.elem.focus();
     this.elem.trigger('select:triggerPopupOpen');
   }
-}
-
-RomoSelect.prototype._setValue = function(newValue) {
-  this.elem[0].value = newValue;
-  this._refreshUI();
-}
-
-RomoSelect.prototype._refreshUI = function() {
-  var text = this.romoSelectDropdown.selectedItemText();
-  if (text === '') {
-    text = '&nbsp;'
-  }
-  this.romoSelectDropdown.elem.find('.romo-select-text').html(text);
 }
 
 RomoSelect.prototype._getCaretPaddingPx = function() {

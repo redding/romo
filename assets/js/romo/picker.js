@@ -279,13 +279,6 @@ RomoPicker.prototype._buildCustomOptionItem = function(value) {
   };
 }
 
-RomoPicker.prototype._onCaretClick = function(e) {
-  if (this.elem.prop('disabled') === false) {
-    this.romoOptionListDropdown.elem.focus();
-    this.elem.trigger('romoPicker:triggerPopupOpen');
-  }
-}
-
 RomoPicker.prototype._setValueAndText = function(value, text) {
   this.elem[0].value = value;
 
@@ -305,6 +298,13 @@ RomoPicker.prototype._refreshUI = function() {
     text = '&nbsp;'
   }
   this.romoOptionListDropdown.elem.find('.romo-picker-text').html(text);
+}
+
+RomoPicker.prototype._onCaretClick = function(e) {
+  if (this.elem.prop('disabled') === false) {
+    this.romoOptionListDropdown.elem.focus();
+    this.elem.trigger('romoPicker:triggerPopupOpen');
+  }
 }
 
 RomoPicker.prototype._getCaretPaddingPx = function() {
