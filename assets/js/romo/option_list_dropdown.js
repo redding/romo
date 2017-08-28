@@ -68,10 +68,12 @@ RomoOptionListDropdown.prototype.doSetSelectedItem = function(itemValue) {
   this.romoDropdown.bodyElem.find(
     'LI[data-romo-option-list-dropdown-option-value="'+itemValue+'"]'
   ).addClass('selected');
+  // TODO: if selectedItemElem
   this.doSetSelectedValueAndText(
     this.selectedItemElem().data('romo-option-list-dropdown-option-value'),
     this.selectedItemElem().data('romo-option-list-dropdown-option-display-text')
   );
+  // TODO: else set '', ''
 }
 
 RomoOptionListDropdown.prototype.doSetSelectedValueAndText = function(value, text) {

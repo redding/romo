@@ -56,6 +56,7 @@ module Romo::Dassets
         'js/romo/indicator.js',
         'js/romo/indicator_text_input.js',
         'js/romo/currency_text_input.js',
+        'js/romo/selected_options_list.js',
         'js/romo/option_list_dropdown.js',
         'js/romo/select_dropdown.js',
         'js/romo/select.js',
