@@ -81,15 +81,23 @@ RomoSelectedOptionsList.prototype.doRefreshUI = function() {
   var uiListElemHeight = parseInt(Romo.getComputedStyle(uiListElem[0], "height"), 10);
   var firstItemNode    = uiListElem.find('.romo-selected-options-list-item')[0];
   if (firstItemNode !== undefined) {
-    var itemHeight = parseInt(Romo.getComputedStyle(firstItemNode, "height"), 10);
-    var maxRows    = this.focusElem.data('romo-selected-options-list-max-rows');
-    var maxHeight  = itemHeight * (maxRows || 0);
+    var itemHeight       = parseInt(Romo.getComputedStyle(firstItemNode, "height"), 10);
+    var itemMarginBottom = parseInt(Romo.getComputedStyle(firstItemNode, "margin-bottom"), 10);
+    var itemBorderWidth  = 1;
+    var listTopPad       = parseInt(Romo.getComputedStyle(uiListElem[0], "padding-top"), 10);
+    var listBottomPad    = parseInt(Romo.getComputedStyle(uiListElem[0], "padding-bottom"), 10);
+
+    var maxRows   = this.focusElem.data('romo-selected-options-list-max-rows') || 0;
+    var maxHeight = listTopPad+(itemHeight*maxRows)+(itemMarginBottom*(maxRows-1))+(2*itemBorderWidth*maxRows)+listBottomPad+(itemHeight/2);
   }
   if (maxRows !== undefined && (uiListElemHeight > maxHeight)) {
     this.elem.css({
       'height':     String(maxHeight)+'px',
       'overflow-y': 'auto'
     });
+    var itemElems    = uiListElem.find('.romo-selected-options-list-item');
+    var lastItemNode = itemElems[itemElems.length-1];
+    this._scrollListTopToItem($(lastItemNode));
   } else {
     this.elem.css({
       'height':     String(uiListElemHeight)+'px',
@@ -136,5 +144,18 @@ RomoSelectedOptionsList.prototype._onItemClick = function(e) {
   if (itemElem[0] !== undefined) {
     var value = itemElem.data('romo-selected-options-list-value');
     this.elem.trigger('romoSelectedOptionsList:itemClick', [value, this]);
+  }
+}
+
+RomoSelectedOptionsList.prototype._scrollListTopToItem = function(itemElem) {
+  if (itemElem[0] !== undefined) {
+    var scroll = this.elem;
+    scroll.scrollTop(0);
+
+    var scrollOffsetTop = scroll.offset().top;
+    var selOffsetTop    = itemElem.offset().top;
+    var selOffset       = itemElem.height() / 2;
+
+    scroll.scrollTop(selOffsetTop - scrollOffsetTop - selOffset);
   }
 }
