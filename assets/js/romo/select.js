@@ -38,8 +38,30 @@ RomoSelect.prototype.doInit = function() {
 }
 
 RomoSelect.prototype.doSetValue = function(value) {
+  // TODO: support multi
+  // if value is an Array
+  //   assume list of values
+  //   if sel opt list
+  //     `doSetListItems(value-text-items)`  // build items from values/options
+  //     set select dropdown to ''
+  //     set value
+  //   else
+  //     set select dropdown to data[0].value, data[0].displayText
+  //     set data[0].value
+  //   end
+  // else
+  //   if sel opt list
+  //     `doSetListItems([{value, text}])`   // lookup text from options
+  //     set select dropdown to ''
+  //     set value
+  //   else
+  //     set select dropdown to value, text
+  //     set value
+  //   end
+  // end
   this.romoSelectDropdown.doSetSelectedItem(value);
   this._setValue(value);
+
   this._refreshUI();
 }
 
@@ -73,11 +95,20 @@ RomoSelect.prototype._bindSelectDropdown = function() {
   }, this));
 
   this.romoSelectDropdown.elem.on('selectDropdown:itemSelected', $.proxy(function(e, itemValue, itemDisplayText, selectDropdown) {
+    // TODO: if sel opt list, do nothing
     this.romoSelectDropdown.elem.focus();
     this.elem.trigger('select:itemSelected', [itemValue, itemDisplayText, this]);
   }, this));
   this.romoSelectDropdown.elem.on('selectDropdown:newItemSelected', $.proxy(function(e, itemValue, itemDisplayText, selectDropdown) {
+    // TODO: support multi
+    // if sel opt list
+    //   `doAddListItem({value, text})`
+    //   set append-values
+    // else
+    //   set value
+    // end
     this._setValue(itemValue);
+
     this._refreshUI();
     this.elem.trigger('select:newItemSelected', [itemValue, itemDisplayText, this]);
   }, this));
@@ -179,6 +210,9 @@ RomoSelect.prototype._buildSelectDropdownElem = function() {
 }
 
 RomoSelect.prototype._setValue = function(value) {
+  // TODO: support multi
+  // where given value is an array
+  // and wehre elme[0].value is an array
   var prevOptElem = this.elem.find('OPTION[value="'+this.elem[0].value+'"]');
   var newOptElem  = this.elem.find('OPTION[value="'+value+'"]');
 

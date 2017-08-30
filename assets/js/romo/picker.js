@@ -54,6 +54,7 @@ RomoPicker.prototype.doSetValue = function(value) {
     data:    { 'values': value },
     success: $.proxy(function(data, status, xhr) {
       if (data[0] !== undefined) {
+        // TODO: this.doSetValueAndText(data);
         this.doSetValueAndText(data[0].value, data[0].displayText);
       } else  if (this.elem.data('romo-picker-empty-option') === true) {
         this.doSetValueAndText('', this.elem.data('romo-picker-empty-option-display-text') || '');
@@ -65,8 +66,30 @@ RomoPicker.prototype.doSetValue = function(value) {
 }
 
 RomoPicker.prototype.doSetValueAndText = function(value, text) {
+  // TODO: support multi
+  // if value is an Array
+  //   assume list of items (value and displayText keys)
+  //   if sel opt list
+  //     `doSetListItems(value)`
+  //     set opt list dropdown to '', ''
+  //     set delim-sep-values, ''
+  //   else
+  //     set opt list dropdown to data[0].value, data[0].displayText
+  //     set data[0].value, data[0].displayText
+  //   end
+  // else
+  //   if sel opt list
+  //     `doSetListItems([{value, text}])`
+  //     set opt list dropdown to '', ''
+  //     set value, ''
+  //   else
+  //     set opt list dropdown to value, text
+  //     set value, text
+  //   end
+  // end
   this.romoOptionListDropdown.doSetSelectedValueAndText(value, text);
   this._setValueAndText(value, text);
+
   this._refreshUI();
 }
 
@@ -114,11 +137,20 @@ RomoPicker.prototype._bindOptionListDropdown = function() {
     }
   }, this));
   this.romoOptionListDropdown.elem.on('romoOptionListDropdown:itemSelected', $.proxy(function(e, itemValue, itemDisplayText, optionListDropdown) {
+    // TODO: if sel opt list, do nothing
     this.romoOptionListDropdown.elem.focus();
     this.elem.trigger('romoPicker:itemSelected', [itemValue, itemDisplayText, this]);
   }, this));
   this.romoOptionListDropdown.elem.on('romoOptionListDropdown:newItemSelected', $.proxy(function(e, itemValue, itemDisplayText, optionListDropdown) {
+    // TODO: support multi
+    // if sel opt list
+    //   `doAddListItem({value, text})`
+    //   set append-delim-sep-values, ''
+    // else
+    //   set value, text
+    // end
     this._setValueAndText(itemValue, itemDisplayText);
+
     this._refreshUI();
     this.elem.trigger('romoPicker:newItemSelected', [itemValue, itemDisplayText, this]);
   }, this));
@@ -304,6 +336,7 @@ RomoPicker.prototype._refreshUI = function() {
     text = '&nbsp;'
   }
   this.romoOptionListDropdown.elem.find('.romo-picker-text').html(text);
+  // TODO: if sel opt list, `doRefreshUI`
 }
 
 RomoPicker.prototype._onCaretClick = function(e) {
