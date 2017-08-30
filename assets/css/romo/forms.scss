@@ -369,17 +369,22 @@
   /* selected options list (used by multi selects/pickers) */
 
   .romo-selected-options-list {
-    cursor: pointer;
     font-weight: normal;
-    padding: 4px 0;
     @include user-select(none);
-
     background-color: $inputBgColor;
     color: $inputColor;
     @include border1;
 
     .romo-selected-options-list-items {
       min-height: 35px;
+    }
+    .romo-selected-options-list-items {
+      padding: 4px;
+    }
+    .romo-selected-options-list-item {
+      display: inline-block;
+      @include border1;
+      @include bg-alt;
     }
   }
 
