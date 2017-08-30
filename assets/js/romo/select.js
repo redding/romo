@@ -69,6 +69,7 @@ RomoSelect.prototype.doSetValue = function(value) {
 
 RomoSelect.prototype._bindElem = function() {
   this._bindSelectDropdown();
+  this._bindSelectedOptionsList();
 
   this.elem.on('select:triggerToggle', $.proxy(function(e) {
     this.romoSelectDropdown.elem.trigger('selectDropdown:triggerToggle', []);
@@ -79,6 +80,15 @@ RomoSelect.prototype._bindElem = function() {
   this.elem.on('select:triggerPopupClose', $.proxy(function(e) {
     this.romoSelectDropdown.elem.trigger('selectDropdown:triggerPopupClose', []);
   }, this));
+}
+
+RomoSelect.prototype._bindSelectedOptionsList = function() {
+  this.romoSelectedOptionsList = undefined;
+  if (this.elem.prop('multiple') === true) {
+    this.romoSelectedOptionsList = new RomoSelectedOptionsList(this.romoSelectDropdown.elem);
+    this.romoSelectDropdown.elem.before(this.romoSelectedOptionsList.elem);
+    this.romoSelectedOptionsList.doRefreshUI();
+  }
 }
 
 RomoSelect.prototype._bindSelectDropdown = function() {

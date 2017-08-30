@@ -318,7 +318,7 @@
     @include align-middle;
   }
 
-  /* input option list (used by selects vie option list dropdown) */
+  /* input option list (used by selects/pickers via option list dropdown) */
 
   .romo-input-option-list {
     cursor: pointer;
@@ -364,6 +364,23 @@
   .romo-input-option-list LI.disabled.romo-option-list-dropdown-highlight {
     background-color: $inputBgColor;
     color: $disabledColor;
+  }
+
+  /* selected options list (used by multi selects/pickers) */
+
+  .romo-selected-options-list {
+    cursor: pointer;
+    font-weight: normal;
+    padding: 4px 0;
+    @include user-select(none);
+
+    background-color: $inputBgColor;
+    color: $inputColor;
+    @include border1;
+
+    .romo-selected-options-list-items {
+      min-height: 35px;
+    }
   }
 
 }
