@@ -85,6 +85,12 @@ RomoSelect.prototype._bindElem = function() {
 RomoSelect.prototype._bindSelectedOptionsList = function() {
   this.romoSelectedOptionsList = undefined;
   if (this.elem.prop('multiple') === true) {
+    if (this.elem.data('romo-select-multiple-item-class') !== undefined) {
+      this.romoSelectDropdown.elem.attr('data-romo-selected-options-list-item-class', this.elem.data('romo-select-multiple-item-class'));
+    }
+    if (this.elem.data('romo-select-multiple-max-rows') !== undefined) {
+      this.romoSelectDropdown.elem.attr('data-romo-selected-options-list-max-rows', this.elem.data('romo-select-multiple-max-rows'));
+    }
     this.romoSelectedOptionsList = new RomoSelectedOptionsList(this.romoSelectDropdown.elem);
     this.elemWrapper.before(this.romoSelectedOptionsList.elem);
     this.romoSelectedOptionsList.doRefreshUI();
