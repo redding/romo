@@ -14,7 +14,7 @@ var RomoSelect = function(element) {
   this.doInit();
   this._bindElem();
 
-  this.doSetValue(this.elem[0].value);
+  this.doSetValue(this._elemValues());
 
   if (this.elem.attr('id') !== undefined) {
     $('label[for="'+this.elem.attr('id')+'"]').on('click', $.proxy(function(e) {
@@ -38,8 +38,24 @@ RomoSelect.prototype.doInit = function() {
 }
 
 RomoSelect.prototype.doSetValue = function(value) {
-  this.romoSelectDropdown.doSetSelectedItem(value);
-  this._setValue(value);
+  var values = undefined;
+  if (Array.isArray(value)) {
+    values = value;
+  } else {
+    values = [value];
+  }
+  this._setValues(values);
+  if (this.romoSelectedOptionsList !== undefined) {
+    var items = values.map($.proxy(function(value) {
+      return {
+        'value':       value,
+        'displayText': this.elem.find('OPTION[value="'+value+'"]').text().trim()
+      };
+    }, this));
+    this.romoSelectedOptionsList.doSetItems(items);
+  } else {
+    this.romoSelectDropdown.doSetSelectedItem(values[0]);
+  }
   this._refreshUI();
 }
 
@@ -47,6 +63,7 @@ RomoSelect.prototype.doSetValue = function(value) {
 
 RomoSelect.prototype._bindElem = function() {
   this._bindSelectDropdown();
+  this._bindSelectedOptionsList();
 
   this.elem.on('select:triggerToggle', $.proxy(function(e) {
     this.romoSelectDropdown.elem.trigger('selectDropdown:triggerToggle', []);
@@ -57,6 +74,33 @@ RomoSelect.prototype._bindElem = function() {
   this.elem.on('select:triggerPopupClose', $.proxy(function(e) {
     this.romoSelectDropdown.elem.trigger('selectDropdown:triggerPopupClose', []);
   }, this));
+}
+
+RomoSelect.prototype._bindSelectedOptionsList = function() {
+  this.romoSelectedOptionsList = undefined;
+  if (this.elem.prop('multiple') === true) {
+    if (this.elem.data('romo-select-multiple-item-class') !== undefined) {
+      this.romoSelectDropdown.elem.attr('data-romo-selected-options-list-item-class', this.elem.data('romo-select-multiple-item-class'));
+    }
+    if (this.elem.data('romo-select-multiple-max-rows') !== undefined) {
+      this.romoSelectDropdown.elem.attr('data-romo-selected-options-list-max-rows', this.elem.data('romo-select-multiple-max-rows'));
+    }
+
+    this.romoSelectedOptionsList = new RomoSelectedOptionsList(this.romoSelectDropdown.elem);
+    this.romoSelectedOptionsList.elem.on('romoSelectedOptionsList:itemClick', $.proxy(function(e, itemValue, romoSelectedOptionsList) {
+      var currentValues = this._elemValues();
+      var index         = currentValues.indexOf(itemValue);
+      if (index > -1) {
+        currentValues.splice(index, 1);
+        this._setValues(currentValues);
+      }
+      this.romoSelectedOptionsList.doRemoveItem(itemValue);
+      this._refreshUI();
+    }, this));
+
+    this.elemWrapper.before(this.romoSelectedOptionsList.elem);
+    this.romoSelectedOptionsList.doRefreshUI();
+  }
 }
 
 RomoSelect.prototype._bindSelectDropdown = function() {
@@ -77,7 +121,18 @@ RomoSelect.prototype._bindSelectDropdown = function() {
     this.elem.trigger('select:itemSelected', [itemValue, itemDisplayText, this]);
   }, this));
   this.romoSelectDropdown.elem.on('selectDropdown:newItemSelected', $.proxy(function(e, itemValue, itemDisplayText, selectDropdown) {
-    this._setValue(itemValue);
+    if (this.romoSelectedOptionsList !== undefined) {
+      var currentValues = this._elemValues();
+      if (!currentValues.includes(itemValue)) {
+        this._setValues(currentValues.concat([itemValue]));
+        this.romoSelectedOptionsList.doAddItem({
+          'value':       itemValue,
+          'displayText': itemDisplayText
+        });
+      }
+    } else {
+      this._setValues([itemValue]);
+    }
     this._refreshUI();
     this.elem.trigger('select:newItemSelected', [itemValue, itemDisplayText, this]);
   }, this));
@@ -178,18 +233,42 @@ RomoSelect.prototype._buildSelectDropdownElem = function() {
   return romoSelectDropdownElem;
 }
 
-RomoSelect.prototype._setValue = function(value) {
-  var prevOptElem = this.elem.find('OPTION[value="'+this.elem[0].value+'"]');
-  var newOptElem  = this.elem.find('OPTION[value="'+value+'"]');
+RomoSelect.prototype._setValues = function(newValues) {
+  var currentValues = this._elemValues();
 
-  prevOptElem.removeAttr('selected');
-  prevOptElem.prop('selected', false);
-  newOptElem.attr('selected', 'selected');
-  newOptElem.prop('selected', true);
+  var unsetValues = currentValues.filter(function(value) {
+    return newValues.indexOf(value) === -1;
+  });
+  var setValues = newValues.filter(function(value) {
+    return currentValues.indexOf(value) === -1;
+  });
+  var unsetElems = unsetValues.reduce($.proxy(function(elems, value) {
+    return elems.add(this.elem.find('OPTION[value="'+value+'"]'));
+  }, this), $());
+  var setElems = setValues.reduce($.proxy(function(elems, value) {
+    return elems.add(this.elem.find('OPTION[value="'+value+'"]'));
+  }, this), $());
+
+  unsetElems.removeAttr('selected');
+  unsetElems.prop('selected', false);
+  setElems.attr('selected', 'selected');
+  setElems.prop('selected', true);
+}
+
+RomoSelect.prototype._elemValues = function() {
+  return this.elem.find('OPTION[selected]').get().map(function(node) {
+    return $(node).attr('value');
+  });
 }
 
 RomoSelect.prototype._refreshUI = function() {
-  var text = this.elem.find('OPTION[selected="selected"]').text().trim();
+  var text = undefined;
+  if (this.romoSelectedOptionsList !== undefined) {
+    text = '';
+    this.romoSelectedOptionsList.doRefreshUI();
+  } else {
+    text = this.elem.find('OPTION[value="'+(this._elemValues[0] || '')+'"]').text().trim();
+  }
   if (text === '') {
     text = '&nbsp;'
   }
