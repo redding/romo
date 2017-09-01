@@ -73,15 +73,20 @@ RomoOptionListDropdown.prototype.doInit = function() {
 
 RomoOptionListDropdown.prototype.doSetSelectedItem = function(itemValue) {
   this.selectedItemElem().removeClass('selected');
-  this.romoDropdown.bodyElem.find(
-    'LI[data-romo-option-list-dropdown-option-value="'+itemValue+'"]'
-  ).addClass('selected');
-  // TODO: if selectedItemElem
-  this.doSetSelectedValueAndText(
-    this.selectedItemElem().data('romo-option-list-dropdown-option-value'),
-    this.selectedItemElem().data('romo-option-list-dropdown-option-display-text')
-  );
-  // TODO: else set '', ''
+  if (itemValue !== undefined) {
+    this.romoDropdown.bodyElem.find(
+      'LI[data-romo-option-list-dropdown-option-value="'+itemValue+'"]'
+    ).addClass('selected');
+  }
+  var selectedElem = this.selectedItemElem();
+  if (selectedElem[0] !== undefined) {
+    this.doSetSelectedValueAndText(
+      this.selectedItemElem().data('romo-option-list-dropdown-option-value'),
+      this.selectedItemElem().data('romo-option-list-dropdown-option-display-text')
+    );
+  } else {
+    this.doSetSelectedValueAndText('', '');
+  }
 }
 
 RomoOptionListDropdown.prototype.doSetSelectedValueAndText = function(value, text) {
