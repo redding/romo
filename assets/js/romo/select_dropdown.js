@@ -71,6 +71,10 @@ RomoSelectDropdown.prototype.doSetSelectedItem = function(newValue) {
   this.romoOptionListDropdown.doSetSelectedItem(newValue);
 }
 
+RomoSelectDropdown.prototype.doFocus = function(openOnFocus) {
+  this.romoOptionListDropdown.doFocus(openOnFocus);
+}
+
 /* private */
 
 RomoSelectDropdown.prototype._bindElem = function() {

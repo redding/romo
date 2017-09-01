@@ -93,6 +93,15 @@ RomoOptionListDropdown.prototype.doSetSelectedValueAndText = function(value, tex
   this.prevValue = value;
 }
 
+RomoOptionListDropdown.prototype.doFocus = function(openOnFocus) {
+  if (openOnFocus === true) {
+    this.openOnFocus = true;
+  } else if (openOnFocus === false) {
+    this.openOnFocus = false;
+  }
+  this.elem.focus();
+}
+
 /*
 Options are specified as a list of items.  Each 'option' item object
 has either display text or html, a value, and can optionally be
