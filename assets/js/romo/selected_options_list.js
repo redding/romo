@@ -116,7 +116,7 @@ RomoSelectedOptionsList.prototype._bindElem = function() {
       e.stopPropagation();
       e.preventDefault();
     }
-    this.focusElem.focus();
+    this.elem.trigger('romoSelectedOptionsList:listClick', [this]);
   }, this));
 
   this.doSetItems([]);
