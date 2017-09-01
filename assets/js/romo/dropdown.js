@@ -38,6 +38,14 @@ var RomoDropdown = function(element) {
   this.elem.trigger('dropdown:ready', [this]);
 }
 
+RomoDropdown.prototype.popupOpen = function() {
+  return this.popupElem.hasClass('romo-dropdown-open') === true;
+}
+
+RomoDropdown.prototype.popupClosed = function() {
+  return this.popupElem.hasClass('romo-dropdown-open') === false;
+}
+
 RomoDropdown.prototype.doInit = function() {
   // override as needed
 }
@@ -177,7 +185,7 @@ RomoDropdown.prototype.onToggleClick = function(e) {
 }
 
 RomoDropdown.prototype.doToggle = function() {
-  if (this.popupElem.hasClass('romo-dropdown-open')) {
+  if (this.popupOpen()) {
     setTimeout($.proxy(function() {
       this.doPopupClose();
     }, this), 100);
@@ -194,8 +202,7 @@ RomoDropdown.prototype.onPopupOpen = function(e) {
     e.preventDefault();
   }
 
-  if (this.elem.hasClass('disabled') === false &&
-      this.popupElem.hasClass('romo-dropdown-open') === false) {
+  if (this.elem.hasClass('disabled') === false && this.popupClosed()) {
     setTimeout($.proxy(function() {
       this.doPopupOpen();
     }, this), 100);
@@ -235,8 +242,7 @@ RomoDropdown.prototype.onPopupClose = function(e) {
     e.preventDefault();
   }
 
-  if (this.elem.hasClass('disabled') === false &&
-      this.popupElem.hasClass('romo-dropdown-open') === true) {
+  if (this.elem.hasClass('disabled') === false && this.popupOpen()) {
     setTimeout($.proxy(function() {
       this.doPopupClose();
     }, this), 100);
@@ -275,7 +281,7 @@ RomoDropdown.prototype.doUnBindElemKeyUp = function() {
 
 RomoDropdown.prototype.onElemKeyUp = function(e) {
   if (this.elem.hasClass('disabled') === false) {
-    if (this.popupElem.hasClass('romo-dropdown-open')) {
+    if (this.popupOpen()) {
       if(e.keyCode === 27 /* Esc */ ) {
         this.doPopupClose();
         this.elem.trigger('dropdown:popupClosedByEsc', [this]);
