@@ -44,8 +44,8 @@ RomoSelect.prototype.doSetValue = function(value) {
   } else {
     values = [value];
   }
-  values = values.filter($.proxy(function() {
-    return this.elem.find('OPTION[value="'+value+'"]')[0] !== undefined;
+  values = values.filter($.proxy(function(v) {
+    return this.elem.find('OPTION[value="'+v+'"]')[0] !== undefined;
   }, this));
 
   this._setValues(values);
