@@ -29,6 +29,14 @@ RomoOptionListDropdown.prototype.popupElem = function() {
   return this.romoDropdown.popupElem;
 }
 
+RomoOptionListDropdown.prototype.popupOpen = function() {
+  return this.romoDropdown.popupOpen();
+}
+
+RomoOptionListDropdown.prototype.popupClosed = function() {
+  return this.romoDropdown.popupClosed();
+}
+
 RomoOptionListDropdown.prototype.selectedItemElem = function() {
   return this.romoDropdown.bodyElem.find('LI.selected');
 }
@@ -453,7 +461,7 @@ RomoOptionListDropdown.prototype._onPopupOpenBodyKeyDown = function(e) {
 
 RomoOptionListDropdown.prototype._onElemKeyDown = function(e) {
   if (this.elem.hasClass('disabled') === false) {
-    if (this.romoDropdown.popupElem.hasClass('romo-dropdown-open') === false) {
+    if (this.romoDropdown.popupClosed()) {
       if (e.keyCode === 40 /* Down */  || e.keyCode === 38 /* Up */) {
         this.romoDropdown.doPopupOpen();
         return false;
