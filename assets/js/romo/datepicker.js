@@ -193,7 +193,7 @@ RomoDatepicker.prototype.onTriggerSetDate = function(e, value) {
 
 RomoDatepicker.prototype.onElemKeyDown = function(e) {
   if (this.elem.hasClass('disabled') === false) {
-    if (this.romoDropdown.popupElem.hasClass('romo-dropdown-open')) {
+    if (this.romoDropdown.popupOpen()) {
       return true;
     } else {
       if(e.keyCode === 40 /* Down */ ) {

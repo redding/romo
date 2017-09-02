@@ -31,6 +31,14 @@ RomoSelectDropdown.prototype.popupElem = function() {
   return this.romoOptionListDropdown.popupElem();
 }
 
+RomoSelectDropdown.prototype.popupOpen = function() {
+  return this.romoOptionListDropdown.popupOpen();
+}
+
+RomoSelectDropdown.prototype.popupClosed = function() {
+  return this.romoOptionListDropdown.popupClosed();
+}
+
 RomoSelectDropdown.prototype.selectedItemElem = function() {
   return this.romoOptionListDropdown.selectedItemElem();
 }
@@ -61,6 +69,10 @@ RomoSelectDropdown.prototype.doInit = function() {
 
 RomoSelectDropdown.prototype.doSetSelectedItem = function(newValue) {
   this.romoOptionListDropdown.doSetSelectedItem(newValue);
+}
+
+RomoSelectDropdown.prototype.doFocus = function(openOnFocus) {
+  this.romoOptionListDropdown.doFocus(openOnFocus);
 }
 
 /* private */
