@@ -468,7 +468,7 @@ Romo.prototype.off = function(elem, eventName, fn) {
 
 Romo.prototype.trigger = function(elem, customEventName, args) {
   var event = undefined;
-  if (window.CustomEvent) {
+  if (typeof window.CustomEvent === "function") {
     event = new CustomEvent(customEventName, { detail: args });
   } else {
     event = document.createEvent('CustomEvent');
