@@ -70,11 +70,14 @@ RomoPicker.prototype.doSetValueDatas = function(valueDatas) {
     this._setValuesAndDisplayText(values, '');
     this.romoSelectedOptionsList.doSetItems(datas);
   } else {
-    this._setValuesAndDisplayText(
-      values,
-      (displayTexts[0] || this.elem.data('romo-picker-empty-option-display-text') || '')
+    var displayText = displayTexts[0] ||
+                      this.elem.data('romo-picker-empty-option-display-text') ||
+                      '';
+    this._setValuesAndDisplayText(values, displayText);
+    this.romoOptionListDropdown.doSetSelectedValueAndText(
+      values[0],
+      displayText
     );
-    this.romoOptionListDropdown.doSetSelectedItem(values[0]);
   }
   this._refreshUI();
 }
