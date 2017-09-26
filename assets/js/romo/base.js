@@ -153,6 +153,30 @@ Romo.prototype.offset = function(elem) {
   };
 }
 
+Romo.prototype.scrollTop = function(elem) {
+  return ('scrollTop' in elem) ? elem.scrollTop : elem.pageYOffset;
+}
+
+Romo.prototype.scrollLeft = function(elem) {
+  return ('scrollLeft' in elem) ? elem.scrollLeft : elem.pageXOffset;
+}
+
+Romo.prototype.setScrollTop = function(elem, value) {
+  if ('scrollTop' in elem) {
+    elem.scrollTop = value;
+  } else {
+    elem.scrollTo(elem.scrollX, value);
+  }
+}
+
+Romo.prototype.setScrollLeft = function(elem, value) {
+  if ('scrollLeft' in elem) {
+    elem.scrollLeft = value;
+  } else {
+    elem.scrollTo(value, elem.scrollY);
+  }
+}
+
 // TODO: rework w/o jQuery
 Romo.prototype.getComputedStyle = function(node, styleName) {
   return window.getComputedStyle(node, null).getPropertyValue(styleName);
