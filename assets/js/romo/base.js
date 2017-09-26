@@ -440,41 +440,50 @@ Romo.prototype.ajax = function(settings) {
 // events
 
 Romo.prototype.on = function(elem, eventName, fn) {
-  var proxyFn = function(e) {
-    var result = fn.apply(elem, e.detail === undefined ? [e] : [e].concat(e.detail));
-    if (result === false) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    return result;
-  }
-  proxyFn._romofid = this._fn(fn)._romofid;
+  // var proxyFn = function(e) {
+  //   var result = fn.apply(elem, e.detail === undefined ? [e] : [e].concat(e.detail));
+  //   if (result === false) {
+  //     e.preventDefault();
+  //     e.stopPropagation();
+  //   }
+  //   return result;
+  // }
+  // proxyFn._romofid = this._fn(fn)._romofid;
 
-  var key = this._handlerKey(elem, eventName, proxyFn);
-  if (!this._handlers[key]) {
-    elem.addEventListener(eventName, proxyFn);
-    this._handlers[key] = proxyFn;
-  }
+  // var key = this._handlerKey(elem, eventName, proxyFn);
+  // if (!this._handlers[key]) {
+  //   elem.addEventListener(eventName, proxyFn);
+  //   this._handlers[key] = proxyFn;
+  // }
+
+  // Giant Hack to temporarily support jQuery and non-jQuery triggers
+  // see: https://bugs.jquery.com/ticket/11047
+  $(elem).on(eventName, fn);
 }
 
 Romo.prototype.off = function(elem, eventName, fn) {
-  var key     = this._handlerKey(elem, eventName, fn);
-  var proxyFn = this._handlers[key];
-  if (proxyFn) {
-    elem.removeEventListener(eventName, proxyFn);
-    this._handlers[key] = undefined;
-  }
+  // var key     = this._handlerKey(elem, eventName, fn);
+  // var proxyFn = this._handlers[key];
+  // if (proxyFn) {
+  //   elem.removeEventListener(eventName, proxyFn);
+  //   this._handlers[key] = undefined;
+  // }
+
+  // Giant Hack to temporarily support jQuery and non-jQuery triggers
+  // see: https://bugs.jquery.com/ticket/11047
+  $(elem).off(eventName, fn);
 }
 
 Romo.prototype.trigger = function(elem, customEventName, args) {
-  var event = undefined;
-  if (typeof window.CustomEvent === "function") {
-    event = new CustomEvent(customEventName, { detail: args });
-  } else {
-    event = document.createEvent('CustomEvent');
-    event.initCustomEvent(customEventName, false, false, args);
-  }
-  elem.dispatchEvent(event);
+  // var event = undefined;
+  // if (typeof window.CustomEvent === "function") {
+  //   event = new CustomEvent(customEventName, { detail: args });
+  // } else {
+  //   event = document.createEvent('CustomEvent');
+  //   event.initCustomEvent(customEventName, false, false, args);
+  // }
+  // elem.dispatchEvent(event);
+  $(elem).trigger(customEventName, args);
 }
 
 Romo.prototype.ready = function(eventHandlerFn) {
