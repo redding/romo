@@ -481,10 +481,12 @@ RomoOptionListDropdown.prototype._onElemKeyDown = function(e) {
         return false;
       } else if (this.optionFilterElem !== undefined &&
                  Romo.nonInputTextKeyCodes().indexOf(e.keyCode) === -1 /* Input Text */)  {
+        // don't prevent default on Cmd-* keys (preserve Cmd-R refresh, etc)
         if (e.metaKey === false) {
-          // don't prevent default on Cmd-* keys (preserve Cmd-R refresh, etc)
           e.preventDefault();
-          this.optionFilterElem.val(e.key);
+          if (e.keyCode !== 8) { /* Backspace */
+            this.optionFilterElem.val(e.key);
+          }
           this.romoDropdown.doPopupOpen();
         }
         e.stopPropagation();
