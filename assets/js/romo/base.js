@@ -433,8 +433,19 @@ Romo.prototype.decodeParamMap = [
 // AJAX
 
 Romo.prototype.ajax = function(settings) {
+  var httpMethod = (settings.type || 'GET').toUpperCase();
+  var xhrUrl     = settings.url || window.location.toString();
+  var xhrData    = settings.data ? settings.data : null
+  if (xhrData && httpMethod === 'GET') {
+    var xhrQuery = Romo.param(xhrData);
+    if (xhrQuery !== '') {
+      xhrUrl = (xhrUrl + '&' + xhrQuery).replace(/[&?]{1,2}/, '?');
+    }
+    xhrData = null;
+  }
+
   var xhr = new XMLHttpRequest();
-  xhr.open(settings.type || 'GET', settings.url, true, settings.username, settings.password);
+  xhr.open(httpMethod, xhrUrl, true, settings.username, settings.password);
   if (settings.responseType === 'arraybuffer' || settings.responseType === 'blob') {
     xhr.responseType = settings.responseType;
   }
@@ -458,7 +469,7 @@ Romo.prototype.ajax = function(settings) {
       }
     }
   };
-  xhr.send(settings.data ? settings.data : null);
+  xhr.send(xhrData);
 },
 
 // events
