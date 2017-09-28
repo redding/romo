@@ -105,6 +105,14 @@ Romo.prototype.setAttr = function(elem, attrName, attrValue) {
   return attrValue;
 }
 
+Romo.prototype.data = function(elem, dataName) {
+  return this._deserializeValue(this.attr(elem, "data-"+dataName));
+}
+
+Romo.prototype.setData = function(elem, dataName, dataValue) {
+  return this.setAttr(elem, "data-"+dataName, String(dataValue));
+}
+
 Romo.prototype.style = function(elem, styleName) {
   return elem.style[styleName];
 }
@@ -610,6 +618,20 @@ Romo.prototype._handlers = {};
 
 Romo.prototype._handlerKey = function(elem, eventName, fn) {
   return 'eid--'+this._el(elem)._romoeid+'--'+eventName+'--fid--'+this._fn(fn)._romofid;
+}
+
+Romo.prototype._deserializeValue = function(value) {
+  try {
+    if (value === "true")      { return true;       } // "true"       => true
+    if (value === "false")     { return false;      } // "false"      => false
+    if (value === "undefined") { return undefined;  } // "undefined"  => undefined
+    if (value === "null")      { return null;       } // "null"       => null
+    if (+value+"" === value)   { return +value;     } // "42.5"       => 42.5
+    if (/^[\[\{]/.test(value)) { JSON.parse(value); } // JSON         => parse if valid
+    return value;                                     // String       => self
+  } catch(e) {
+    return value
+  }
 }
 
 // TODO: rework w/o jQuery
