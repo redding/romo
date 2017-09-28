@@ -90,7 +90,7 @@ RomoSelectedOptionsList.prototype.doRefreshUI = function() {
     var maxRows   = this.focusElem.data('romo-selected-options-list-max-rows') || 0;
     var maxHeight = listTopPad+(itemHeight*maxRows)+(itemMarginBottom*(maxRows-1))+(2*itemBorderWidth*maxRows)+listBottomPad+(itemHeight/2);
   }
-  if (maxRows !== undefined && (uiListElemHeight > maxHeight)) {
+  if (maxRows !== 0 && (uiListElemHeight > maxHeight)) {
     this.elem.css({
       'height':     String(maxHeight)+'px',
       'overflow-y': 'auto'
