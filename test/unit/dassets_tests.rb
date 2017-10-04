@@ -8,6 +8,12 @@ module Romo::Dassets
 
   class UnitTests < Assert::Context
     desc "Romo::Dassets"
+    setup do
+      Romo::Dassets.reset!
+    end
+    teardown do
+      Romo::Dassets.reset!
+    end
     subject{ Romo::Dassets }
 
     should have_imeths :configure!, :reset!
