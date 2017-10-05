@@ -41,19 +41,29 @@ RomoAjax.prototype.doBindElem = function() {
   if (this.invokeOn !== undefined) {
     this.elem.on(this.invokeOn, $.proxy(this.onInvoke, this));
   }
-  this.elem.on('romoAjax:triggerInvoke', $.proxy(this.onInvoke, this));
+  this.elem.on('romoAjax:triggerInvoke', $.proxy(this.onTriggerInvoke, this));
 }
 
 RomoAjax.prototype.doUnbindElem = function() {
   if (this.invokeOn !== undefined) {
     this.elem.off(this.invokeOn, $.proxy(this.onInvoke, this));
   }
-  this.elem.off('romoAjax:triggerInvoke', $.proxy(this.onInvoke, this));
+  this.elem.off('romoAjax:triggerInvoke', $.proxy(this.onTriggerInvoke, this));
 }
 
-RomoAjax.prototype.onInvoke = function(e, data) {
+RomoAjax.prototype.onInvoke = function(e) {
   if (e !== undefined) {
     e.preventDefault();
+  }
+
+  if (this.elem.hasClass('disabled') === false) {
+    this.doInvoke();
+  }
+}
+
+RomoAjax.prototype.onTriggerInvoke = function(e, data) {
+  if (e !== undefined) {
+    e.stopPropagation();
   }
 
   if (this.elem.hasClass('disabled') === false) {
