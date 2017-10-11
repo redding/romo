@@ -285,7 +285,7 @@ RomoPicker.prototype._bindAjax = function() {
     return false;
   }, this));
 
-  this.elem.romoAjax();
+  this.romoAjax = new RomoAjax(this.elem);
 }
 
 RomoPicker.prototype._setListItems = function(items) {

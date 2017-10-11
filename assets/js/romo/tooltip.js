@@ -105,7 +105,7 @@ RomoTooltip.prototype.doResetBody = function() {
 }
 
 RomoTooltip.prototype.doBindAjax = function() {
-  this.romoAjax = this.elem.romoAjax()[0];
+  this.romoAjax = new RomoAjax(this.elem);
   this.romoAjax.doUnbindElem(); // disable auto invoke on click
 
   this.elem.on('romoAjax:callStart', $.proxy(function(e, romoAjax) {
