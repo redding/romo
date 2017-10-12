@@ -1,9 +1,3 @@
-$.fn.romoAjax = function() {
-  return $.map(this, function(element) {
-    return new RomoAjax(element);
-  });
-}
-
 var RomoAjax = function(element) {
   this.elem       = $(element);
   this.targetElem = $(this.elem.data('romo-ajax-target'));
@@ -138,6 +132,6 @@ RomoAjax.prototype._trigger = function(event_name, event_data) {
   }
 }
 
-Romo.onInitUI(function(e) {
-  Romo.initUIElems(e, '[data-romo-ajax-auto="true"]').romoAjax();
+Romo.onInitUI(function(elem) {
+  Romo.initUIElems(elem, '[data-romo-ajax-auto="true"]').forEach(function(elem) { new RomoAjax(elem); });
 });

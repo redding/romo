@@ -1,9 +1,3 @@
-$.fn.romoPicker = function() {
-  return $.map(this, function(element) {
-    return new RomoPicker(element);
-  });
-}
-
 var RomoPicker = function(element) {
   this.elem = $(element);
 
@@ -403,6 +397,6 @@ RomoPicker.prototype._getCaretPosition = function() {
   );
 }
 
-Romo.onInitUI(function(e) {
-  Romo.initUIElems(e, '[data-romo-picker-auto="true"]').romoPicker();
+Romo.onInitUI(function(elem) {
+  Romo.initUIElems(elem, '[data-romo-picker-auto="true"]').forEach(function(elem) { new RomoPicker(elem); });
 });
