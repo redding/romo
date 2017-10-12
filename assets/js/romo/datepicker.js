@@ -1,9 +1,3 @@
-$.fn.romoDatepicker = function() {
-  return $.map(this, function(element) {
-    return new RomoDatepicker(element);
-  });
-}
-
 var RomoDatepicker = function(element) {
   this.elem = $(element);
 
@@ -400,6 +394,6 @@ RomoDatepicker.prototype._highlightItem = function(item) {
   item.addClass('romo-datepicker-highlight');
 }
 
-Romo.onInitUI(function(e) {
-  Romo.initUIElems(e, '[data-romo-datepicker-auto="true"]').romoDatepicker();
+Romo.onInitUI(function(elem) {
+  Romo.initUIElems(elem, '[data-romo-datepicker-auto="true"]').forEach(function(elem) { new RomoDatepicker(elem); });
 });

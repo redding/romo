@@ -1,9 +1,3 @@
-$.fn.romoTooltip = function() {
-  return $.map(this, function(element) {
-    return new RomoTooltip(element);
-  });
-}
-
 var RomoTooltip = function(element) {
   this.elem = $(element);
   this.doInitPopup();
@@ -352,6 +346,6 @@ RomoTooltip.prototype._setBodyHtml = function(content) {
   this.bodyElem.html(content || '');
 }
 
-Romo.onInitUI(function(e) {
-  Romo.initUIElems(e, '[data-romo-tooltip-auto="true"]').romoTooltip();
+Romo.onInitUI(function(elem) {
+  Romo.initUIElems(elem, '[data-romo-tooltip-auto="true"]').forEach(function(elem) { new RomoTooltip(elem); });
 });

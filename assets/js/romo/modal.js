@@ -1,9 +1,3 @@
-$.fn.romoModal = function() {
-  return $.map(this, function(element) {
-    return new RomoModal(element);
-  });
-}
-
 var RomoModal = function(element) {
   this.elem = $(element);
   this.doInitPopup();
@@ -380,6 +374,6 @@ RomoModal.prototype.doPlacePopupElem = function() {
   }
 }
 
-Romo.onInitUI(function(e) {
-  Romo.initUIElems(e, '[data-romo-modal-auto="true"]').romoModal();
+Romo.onInitUI(function(elem) {
+  Romo.initUIElems(elem, '[data-romo-modal-auto="true"]').forEach(function(elem) { new RomoModal(elem); });
 });

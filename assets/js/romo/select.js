@@ -1,9 +1,3 @@
-$.fn.romoSelect = function() {
-  return $.map(this, function(element) {
-    return new RomoSelect(element);
-  });
-}
-
 var RomoSelect = function(element) {
   this.elem = $(element);
 
@@ -316,6 +310,6 @@ RomoSelect.prototype._getCaretPosition = function() {
   );
 }
 
-Romo.onInitUI(function(e) {
-  Romo.initUIElems(e, '[data-romo-select-auto="true"]').romoSelect();
+Romo.onInitUI(function(elem) {
+  Romo.initUIElems(elem, '[data-romo-select-auto="true"]').forEach(function(elem) { new RomoSelect(elem); });
 });

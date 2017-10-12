@@ -1,16 +1,11 @@
 var Romo = function() {
-  this._eventCallbacks = [];
+  this._initUICallbacks = [];
 }
 
-// TODO: rework w/o jQuery
 Romo.prototype.doInit = function() {
   this.parentChildElems = new RomoParentChildElems();
 
-  $.each(this._eventCallbacks, function(idx, eventCallback) {
-    $('body').on(eventCallback.eventName, eventCallback.callback);
-  });
-
-  this.triggerInitUI($('body'));
+  this.triggerInitUI(Romo.f('body')[0]);
 }
 
 // element finders
@@ -283,6 +278,14 @@ Romo.prototype.replaceHtml = function(elem, htmlString) {
   return this.replace(elem, this.elems(htmlString)[0]);
 }
 
+Romo.prototype.initReplace = function(elem, replacementElem) {
+  return this.triggerInitUI(this.replace(elem, replacementElem));
+}
+
+Romo.prototype.initReplaceHtml = function(elem, htmlString) {
+  return this.triggerInitUI(this.replaceHtml(elem, htmlString));
+}
+
 Romo.prototype.update = function(elem, childElems) {
   elem.innerHTML = '';
   return childElems.map(function(childElem) {
@@ -292,6 +295,14 @@ Romo.prototype.update = function(elem, childElems) {
 
 Romo.prototype.updateHtml = function(elem, htmlString) {
   return this.update(elem, this.elems(htmlString));
+}
+
+Romo.prototype.initUpdate = function(elem, childElems) {
+  return this.triggerInitUI(this.update(elem, childElems));
+}
+
+Romo.prototype.initUpdateHtml = function(elem, htmlString) {
+  return this.triggerInitUI(this.updateHtml(elem, htmlString));
 }
 
 Romo.prototype.prepend = function(elem, childElems) {
@@ -306,6 +317,14 @@ Romo.prototype.prependHtml = function(elem, htmlString) {
   return this.prepend(elem, this.elems(htmlString));
 }
 
+Romo.prototype.initPrepend = function(elem, childElems) {
+  return this.triggerInitUI(this.prepend(elem, childElems));
+}
+
+Romo.prototype.initPrependHtml = function(elem, htmlString) {
+  return this.triggerInitUI(this.prependHtml(elem, htmlString));
+}
+
 Romo.prototype.append = function(elem, childElems) {
   return childElems.map(function(childElem) {
     return elem.appendChild(childElem);
@@ -314,6 +333,14 @@ Romo.prototype.append = function(elem, childElems) {
 
 Romo.prototype.appendHtml = function(elem, htmlString) {
   return this.append(elem, this.elems(htmlString));
+}
+
+Romo.prototype.initAppend = function(elem, childElems) {
+  return this.triggerInitUI(this.append(elem, childElems));
+}
+
+Romo.prototype.initAppendHtml = function(elem, htmlString) {
+  return this.triggerInitUI(this.appendHtml(elem, htmlString));
 }
 
 Romo.prototype.before = function(elem, siblingElems) {
@@ -329,6 +356,14 @@ Romo.prototype.beforeHtml = function(elem, htmlString) {
   return this.before(elem, this.elems(htmlString));
 }
 
+Romo.prototype.initBefore = function(elem, siblingElems) {
+  return this.triggerInitUI(this.before(elem, siblingElems));
+}
+
+Romo.prototype.initBeforeHtml = function(elem, htmlString) {
+  return this.triggerInitUI(this.beforeHtml(elem, htmlString));
+}
+
 Romo.prototype.after = function(elem, siblingElems) {
   var refElem    = this.next(elem);
   var parentElem = elem.parentNode;
@@ -341,70 +376,44 @@ Romo.prototype.afterHtml = function(elem, htmlString) {
   return this.after(elem, this.elems(htmlString));
 }
 
-// init UI (TODO: rework w/o jQuery)
-
-Romo.prototype.onInitUI = function(callback) {
-  this._addEventCallback('romo:initUI', callback);
+Romo.prototype.initAfter = function(elem, siblingElems) {
+  return this.triggerInitUI(this.after(elem, siblingElems));
 }
 
-Romo.prototype.triggerInitUI = function(elems) {
-  elems.trigger('romo:initUI');
+Romo.prototype.initAfterHtml = function(elem, htmlString) {
+  return this.triggerInitUI(this.afterHtml(elem, htmlString));
 }
 
-Romo.prototype.initUIElems = function(e, selector) {
-  var elems = $(e.target).find(selector).get();
-  if ($(e.target).is(selector)) {
-    elems.push(e.target)
+// init UI
+
+Romo.prototype.onInitUI = function(fn) {
+  this._initUICallbacks.push(fn);
+}
+
+Romo.prototype.triggerInitUI = function(onElems) {
+  var elems = undefined;
+  if (Array.isArray(onElems)) {
+    elems = onElems;
+  } else {
+    elems = [onElems];
   }
-  return $(elems);
+  elems.forEach(Romo.proxy(function(elem) {
+    this._initUICallbacks.forEach(function(fn) {
+      setTimeout(function() {
+        fn(elem);
+      }, 1);
+    });
+  }, this));
+
+  return onElems;
 }
 
-Romo.prototype.initHtml = function(elems, data) {
-  elems.each($.proxy(function(index, elem) {
-    var htmlElems = $(data)
-    $(elem).html(htmlElems);
-    this.triggerInitUI(htmlElems);
-  }, this));
-}
-
-Romo.prototype.initReplace = function(elems, data) {
-  elems.each($.proxy(function(index, elem) {
-    var replacementElem = $(data);
-    $(elem).replaceWith(replacementElem);
-    this.triggerInitUI(replacementElem);
-  }, this));
-}
-
-Romo.prototype.initPrepend = function(elems, data) {
-  elems.each($.proxy(function(index, elem) {
-    var prependedElem = $(data);
-    $(elem).prepend(prependedElem);
-    this.triggerInitUI(prependedElem);
-  }, this));
-}
-
-Romo.prototype.initAppend = function(elems, data) {
-  elems.each($.proxy(function(index, elem) {
-    var appendedElem = $(data);
-    $(elem).append(appendedElem);
-    this.triggerInitUI(appendedElem);
-  }, this));
-}
-
-Romo.prototype.initBefore = function(elems, data) {
-  elems.each($.proxy(function(index, elem) {
-    var insertedElem = $(data);
-    $(elem).before(insertedElem);
-    this.triggerInitUI(insertedElem);
-  }, this));
-}
-
-Romo.prototype.initAfter = function(elems, data) {
-  elems.each($.proxy(function(index, elem) {
-    var insertedElem = $(data);
-    $(elem).after(insertedElem);
-    this.triggerInitUI(insertedElem);
-  }, this));
+Romo.prototype.initUIElems = function(elem, selector) {
+  var elems = Romo.find(elem, selector);
+  if (Romo.is(elem, selector)) {
+    elems.unshift(elem);
+  }
+  return elems;
 }
 
 // page handling
@@ -770,7 +779,6 @@ RomoParentChildElems.prototype._pop = function(id) {
 
 window.Romo = new Romo();
 
-// TODO: rework w/o jQuery
-$(function() {
+Romo.ready(function() {
   Romo.doInit();
-})
+});

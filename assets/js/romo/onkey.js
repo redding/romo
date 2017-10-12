@@ -1,9 +1,3 @@
-$.fn.romoOnkey = function() {
-  return $.map(this, function(element) {
-    return new RomoOnkey(element);
-  });
-}
-
 var RomoOnkey = function(element) {
   this.elem = $(element);
   this.defaultTriggerOn = 'keydown';
@@ -30,6 +24,6 @@ RomoOnkey.prototype.doTrigger = function(triggerEvent) {
   this.elem.trigger('onkey:trigger', [triggerEvent, this]);
 }
 
-Romo.onInitUI(function(e) {
-  Romo.initUIElems(e, '[data-romo-onkey-auto="true"]').romoOnkey();
+Romo.onInitUI(function(elem) {
+  Romo.initUIElems(elem, '[data-romo-onkey-auto="true"]').forEach(function(elem) { new RomoOnkey(elem); });
 });

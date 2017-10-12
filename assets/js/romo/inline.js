@@ -1,9 +1,3 @@
-$.fn.romoInline = function() {
-  return $.map(this, function(element) {
-    return new RomoInline(element);
-  });
-}
-
 var RomoInline = function(element) {
   this.elem        = $(element);
   this.toggleElem  = $(this.elem.data('romo-inline-toggle'));
@@ -83,7 +77,7 @@ RomoInline.prototype.doShow = function() {
   this.elem.trigger('inline:show', [this]);
 }
 
-Romo.onInitUI(function(e) {
-  Romo.initUIElems(e, '[data-romo-inline-auto="true"]').romoInline();
+Romo.onInitUI(function(elem) {
+  Romo.initUIElems(elem, '[data-romo-inline-auto="true"]').forEach(function(elem) { new RomoInline(elem); });
 });
 
