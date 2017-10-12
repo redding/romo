@@ -1,9 +1,3 @@
-$.fn.romoModalForm = function() {
-  return $.map(this, function(element) {
-    return new RomoModalForm(element);
-  });
-}
-
 var RomoModalForm = function(element) {
   this.elem = $(element);
 
@@ -106,7 +100,7 @@ RomoModalForm.prototype.doBindForm = function() {
   this.form = formElem.romoForm(submitElement, indicatorElements)[0];
 }
 
-Romo.onInitUI(function(e) {
-  Romo.initUIElems(e, '[data-romo-modalForm-auto="true"]').romoModalForm();
+Romo.onInitUI(function(elem) {
+  Romo.initUIElems(elem, '[data-romo-modalForm-auto="true"]').forEach(function(elem) { new RomoModalForm(elem); });
 });
 

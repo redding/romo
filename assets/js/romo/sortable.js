@@ -1,9 +1,3 @@
-$.fn.romoSortable = function() {
-  return $.map(this, function(element) {
-    return new RomoSortable(element);
-  });
-}
-
 var RomoSortable = function(element) {
   this.elem = $(element);
 
@@ -233,6 +227,6 @@ RomoSortable.prototype._resetGrabClasses = function() {
   }, this));
 }
 
-Romo.onInitUI(function(e) {
-  $(e.target).find('[data-romo-sortable-auto="true"]').romoSortable();
+Romo.onInitUI(function(elem) {
+  Romo.initUIElems(elem, '[data-romo-sortable-auto="true"]').forEach(function(elem) { new RomoSortable(elem); });
 });
