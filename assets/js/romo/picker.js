@@ -118,7 +118,7 @@ RomoPicker.prototype._bindSelectedOptionsList = function() {
       this._refreshUI();
     }, this));
     this.romoSelectedOptionsList.elem.on('romoSelectedOptionsList:listClick', $.proxy(function(e, romoSelectedOptionsList) {
-      this.romoOptionListDropdown.elem.trigger('dropdown:triggerPopupClose', []);
+      this.romoOptionListDropdown.elem.trigger('romoDropdown:triggerPopupClose', []);
       this.romoOptionListDropdown.doFocus(false);
     }, this));
 
@@ -130,14 +130,14 @@ RomoPicker.prototype._bindSelectedOptionsList = function() {
 RomoPicker.prototype._bindOptionListDropdown = function() {
   this.romoOptionListDropdown = this._buildOptionListDropdownElem().romoOptionListDropdown(this.elem)[0];
 
-  this.romoOptionListDropdown.elem.on('romoOptionListDropdown:dropdown:toggle', $.proxy(function(e, dropdown, optionListDropdown) {
-    this.elem.trigger('romoPicker:dropdown:toggle', [dropdown, this]);
+  this.romoOptionListDropdown.elem.on('romoOptionListDropdown:romoDropdown:toggle', $.proxy(function(e, romoDropdown, optionListDropdown) {
+    this.elem.trigger('romoPicker:romoDropdown:toggle', [romoDropdown, this]);
   }, this));
-  this.romoOptionListDropdown.elem.on('romoOptionListDropdown:dropdown:popupOpen', $.proxy(function(e, dropdown, optionListDropdown) {
-    this.elem.trigger('romoPicker:dropdown:popupOpen', [dropdown, this]);
+  this.romoOptionListDropdown.elem.on('romoOptionListDropdown:romoDropdown:popupOpen', $.proxy(function(e, romoDropdown, optionListDropdown) {
+    this.elem.trigger('romoPicker:romoDropdown:popupOpen', [romoDropdown, this]);
   }, this));
-  this.romoOptionListDropdown.elem.on('romoOptionListDropdown:dropdown:popupClose', $.proxy(function(e, dropdown, optionListDropdown) {
-    this.elem.trigger('romoPicker:dropdown:popupClose', [dropdown, this]);
+  this.romoOptionListDropdown.elem.on('romoOptionListDropdown:romoDropdown:popupClose', $.proxy(function(e, romoDropdown, optionListDropdown) {
+    this.elem.trigger('romoPicker:romoDropdown:popupClose', [romoDropdown, this]);
   }, this));
 
   this.romoOptionListDropdown.elem.on('romoOptionListDropdown:filterChange', $.proxy(function(e, filterValue, romoOptionListDropdown) {

@@ -95,39 +95,39 @@ RomoDatepicker.prototype.doBindDropdown = function() {
   if (this.elem.width() < 175) {
     this.elem.attr('data-romo-dropdown-width', '175px');
   }
-  this.romoDropdown = this.elem.romoDropdown()[0];
+  this.romoDropdown = new RomoDropdown(this.elem);
 
   this.romoDropdown.doSetPopupZIndex(this.elem);
   this.romoDropdown.bodyElem.addClass('romo-datepicker-calendar');
-  this.romoDropdown.elem.on('dropdown:popupOpen', $.proxy(this.onPopupOpen, this));
-  this.romoDropdown.elem.on('dropdown:popupClose', $.proxy(this.onPopupClose, this));
+  this.romoDropdown.elem.on('romoDropdown:popupOpen', $.proxy(this.onPopupOpen, this));
+  this.romoDropdown.elem.on('romoDropdown:popupClose', $.proxy(this.onPopupClose, this));
   this.romoDropdown.elem.on('blur', $.proxy(function(e) {
     this.blurTimeoutId = setTimeout($.proxy(function() {
       if (this.popupMouseDown !== true) {
-        this.romoDropdown.elem.trigger('dropdown:triggerPopupClose', []);
+        this.romoDropdown.elem.trigger('romoDropdown:triggerPopupClose', []);
       }
     }, this), 10);
   }, this));
   this.romoDropdown.elem.on('keydown', $.proxy(this.onElemKeyDown, this));
 
-  this.romoDropdown.elem.on('dropdown:toggle', $.proxy(function(e, dropdown) {
-    this.elem.trigger('datepicker:dropdown:toggle', [dropdown, this]);
+  this.romoDropdown.elem.on('romoDropdown:toggle', $.proxy(function(e, romoDropdown) {
+    this.elem.trigger('datepicker:romoDropdown:toggle', [romoDropdown, this]);
   }, this));
-  this.romoDropdown.elem.on('dropdown:popupOpen', $.proxy(function(e, dropdown) {
-    this.elem.trigger('datepicker:dropdown:popupOpen', [dropdown, this]);
+  this.romoDropdown.elem.on('romoDropdown:popupOpen', $.proxy(function(e, romoDropdown) {
+    this.elem.trigger('datepicker:romoDropdown:popupOpen', [romoDropdown, this]);
   }, this));
-  this.romoDropdown.elem.on('dropdown:popupClose', $.proxy(function(e, dropdown) {
-    this.elem.trigger('datepicker:dropdown:popupClose', [dropdown, this]);
+  this.romoDropdown.elem.on('romoDropdown:popupClose', $.proxy(function(e, romoDropdown) {
+    this.elem.trigger('datepicker:romoDropdown:popupClose', [romoDropdown, this]);
   }, this));
 
   this.elem.on('datepicker:triggerToggle', $.proxy(function(e) {
-    this.romoDropdown.elem.trigger('dropdown:triggerToggle', []);
+    this.romoDropdown.elem.trigger('romoDropdown:triggerToggle', []);
   }, this));
   this.elem.on('datepicker:triggerPopupOpen', $.proxy(function(e) {
-    this.romoDropdown.elem.trigger('dropdown:triggerPopupOpen', []);
+    this.romoDropdown.elem.trigger('romoDropdown:triggerPopupOpen', []);
   }, this));
   this.elem.on('datepicker:triggerPopupClose', $.proxy(function(e) {
-    this.romoDropdown.elem.trigger('dropdown:triggerPopupClose', []);
+    this.romoDropdown.elem.trigger('romoDropdown:triggerPopupClose', []);
   }, this));
 }
 
