@@ -216,7 +216,6 @@ Romo.prototype.getComputedStyle = function(elem, styleName) {
   return window.getComputedStyle(elem, null).getPropertyValue(styleName);
 }
 
-// TODO: rework w/o jQuery
 Romo.prototype.parseZIndex = function(elem) {
   // for the case where z-index is set directly on the elem
   var val = this.parseElemZIndex(elem);
@@ -225,20 +224,19 @@ Romo.prototype.parseZIndex = function(elem) {
   }
 
   // for the case where z-index is inherited from a parent elem
-  var parentIndexes = this.toArray(elem.parents()).reduce($.proxy(function(prev, curr) {
-    var pval = this.parseElemZIndex($(curr));
+  var parentIndexes = Romo.parents(elem).forEach(Romo.proxy(function(parentElem) {
+    var pval = this.parseElemZIndex(currElem);
     if (pval !== 0) {
-      prev.push(pval);
+      return pval;
     }
-    return prev;
-  }, this), []);
-  parentIndexes.push(0); // in case z-index is 'auto' all the way up
-  return parentIndexes[0];
+  }, this));
+
+  // z-index is 'auto' all the way up
+  return 0;
 }
 
-// TODO: rework w/o jQuery
 Romo.prototype.parseElemZIndex = function(elem) {
-  var val = parseInt(this.getComputedStyle(elem[0], "z-index"));
+  var val = parseInt(this.getComputedStyle(elem, "z-index"));
   if (!isNaN(val)) {
     return val;
   }
