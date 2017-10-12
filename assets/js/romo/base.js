@@ -62,12 +62,8 @@ Romo.prototype.closest = function(fromElem, selector) {
   if (fromElem.closest) {
     return fromElem.closest(selector);
   } else {
-    var matchesSelector = fromElem.matches ||
-                          fromElem.webkitMatchesSelector ||
-                          fromElem.mozMatchesSelector ||
-                          fromElem.msMatchesSelector;
     while (fromElem) {
-      if (matchesSelector.call(fromElem, selector)) {
+      if (Romo.is(fromElem, selector)) {
         return fromElem;
       } else {
         fromElem = fromElem.parentElement;
@@ -216,9 +212,8 @@ Romo.prototype.setScrollLeft = function(elem, value) {
   }
 }
 
-// TODO: rework w/o jQuery
-Romo.prototype.getComputedStyle = function(node, styleName) {
-  return window.getComputedStyle(node, null).getPropertyValue(styleName);
+Romo.prototype.getComputedStyle = function(elem, styleName) {
+  return window.getComputedStyle(elem, null).getPropertyValue(styleName);
 }
 
 // TODO: rework w/o jQuery
@@ -618,12 +613,6 @@ Romo.prototype.proxy = function(fn, context) {
   proxyFn._romofid = this._fn(fn)._romofid;
 
   return proxyFn;
-}
-
-// TODO: rework w/o jQuery
-Romo.prototype.toArray = function(elems) {
-  // converts a collection of elements `$()` to an array of nodes
-  return $.map(elems, function(node){ return node; })
 }
 
 Romo.prototype.nonInputTextKeyCodes = function() {
