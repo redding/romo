@@ -83,40 +83,40 @@ Romo.prototype.siblings = function(elem) {
   });
 }
 
-Romo.prototype.prev = function(fromElem) {
-  return fromElem.previousElementSibling;
-}
-
-Romo.prototype.next = function(fromElem) {
-  return fromElem.nextElementSibling;
-}
-
-// TODO: rework w/o jQuery
-Romo.prototype.selectNext = function(elem, selector) {
-  // like `$().next()`, but takes a selector; returns first next elem that
-  // matches the given selector or an empty collection if non matches
-  var el = elem.next();
-  while(el.length) {
-    if (selector === undefined || el.is(selector)) {
-      return el;
-    }
-    el = el.next();
+Romo.prototype.prev = function(fromElem, selector) {
+  var elem = fromElem.previousElementSibling;
+  if (elem === null) {
+    elem = undefined;
   }
-  return el;
+
+  while(elem) {
+    if (!selector || Romo.is(elem, selector)) {
+      return elem;
+    }
+    elem = elem.previousElementSibling;
+    if (elem === null) {
+      elem = undefined;
+    }
+  }
+  return elem;
 }
 
-// TODO: rework w/o jQuery
-Romo.prototype.selectPrev = function(elem, selector) {
-  // like `$().prev()`, but takes a selector; returns first prev elem that
-  // matches the given selector or an empty collection if non matches
-  var el = elem.prev();
-  while(el.length) {
-    if (selector === undefined || el.is(selector)) {
-      return el;
-    }
-    el = el.prev();
+Romo.prototype.next = function(fromElem, selector) {
+  var elem = fromElem.nextElementSibling;
+  if (elem === null) {
+    elem = undefined;
   }
-  return el;
+
+  while(elem) {
+    if (!selector || Romo.is(elem, selector)) {
+      return elem;
+    }
+    elem = elem.nextElementSibling;
+    if (elem === null) {
+      elem = undefined;
+    }
+  }
+  return elem;
 }
 
 // attributes, styles, classes
