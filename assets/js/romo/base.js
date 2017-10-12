@@ -23,6 +23,17 @@ Romo.prototype.find = function(parentElem, selector) {
   return this.array(parentElem.querySelectorAll(selector));
 }
 
+Romo.prototype.is = function(elem, selector) {
+  return (
+    elem.matches               ||
+    elem.matchesSelector       ||
+    elem.msMatchesSelector     ||
+    elem.mozMatchesSelector    ||
+    elem.webkitMatchesSelector ||
+    elem.oMatchesSelector
+  ).call(elem, selector);
+};
+
 Romo.prototype.children = function(parentElem) {
   return this.array(parentElem.children);
 }
