@@ -42,18 +42,25 @@ Romo.prototype.parent = function(childElem) {
   return childElem.parentNode;
 }
 
-Romo.prototype.siblings = function(elem) {
-  return Array.prototype.filter.call(elem.parentNode.children, function(childElem) {
-    return childElem !== elem;
-  });
-}
-
-Romo.prototype.prev = function(fromElem) {
-  return fromElem.previousElementSibling;
-}
-
-Romo.prototype.next = function(fromElem) {
-  return fromElem.nextElementSibling;
+Romo.prototype.parents = function(childElem, selector) {
+  var parentElem = this.parent(childElem);
+  if (parentElem) {
+    if (!selector || Romo.is(parentElem, selector)) {
+      if (Romo.is(parentElem, 'body')) {
+        return [parentElem];
+      } else {
+        return [parentElem].concat(this.parents(parentElem, selector));
+      }
+    } else {
+      if (Romo.is(parentElem, 'body')) {
+        return [];
+      } else {
+        return this.parents(parentElem, selector);
+      }
+    }
+  } else {
+    return [];
+  }
 }
 
 Romo.prototype.closest = function(fromElem, selector) {
@@ -73,6 +80,20 @@ Romo.prototype.closest = function(fromElem, selector) {
     }
     return undefined;
   }
+}
+
+Romo.prototype.siblings = function(elem) {
+  return Array.prototype.filter.call(elem.parentNode.children, function(childElem) {
+    return childElem !== elem;
+  });
+}
+
+Romo.prototype.prev = function(fromElem) {
+  return fromElem.previousElementSibling;
+}
+
+Romo.prototype.next = function(fromElem) {
+  return fromElem.nextElementSibling;
 }
 
 // TODO: rework w/o jQuery
