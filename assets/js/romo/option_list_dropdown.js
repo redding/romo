@@ -1,9 +1,3 @@
-$.fn.romoOptionListDropdown = function() {
-  return $.map(this, function(element) {
-    return new RomoOptionListDropdown(element);
-  });
-}
-
 var RomoOptionListDropdown = function(element) {
   this.elem = $(element);
 
@@ -607,6 +601,6 @@ RomoOptionListDropdown.prototype._getHighlightedItemElem = function() {
   return this.romoDropdown.bodyElem.find('LI.romo-option-list-dropdown-highlight');
 }
 
-Romo.onInitUI(function(e) {
-  Romo.initUIElems(e, '[data-romo-option-list-dropdown-auto="true"]').romoOptionListDropdown();
+Romo.onInitUI(function(elem) {
+  Romo.initUIElems(elem, '[data-romo-option-list-dropdown-auto="true"]').forEach(function(elem) { new RomoOptionListDropdown(elem); });
 });

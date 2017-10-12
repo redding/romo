@@ -1,9 +1,3 @@
-$.fn.romoDropdown = function() {
-  return $.map(this, function(element) {
-    return new RomoDropdown(element);
-  });
-}
-
 var RomoDropdown = function(element) {
   this.elem = $(element);
   this.doInitPopup();
@@ -438,6 +432,6 @@ RomoDropdown.prototype._roundPosOffsetVal = function(value) {
   return Math.round(value*100) / 100;
 }
 
-Romo.onInitUI(function(e) {
-  Romo.initUIElems(e, '[data-romo-dropdown-auto="true"]').romoDropdown();
+Romo.onInitUI(function(elem) {
+  Romo.initUIElems(elem, '[data-romo-dropdown-auto="true"]').forEach(function(elem) { new RomoDropdown(elem); });
 });

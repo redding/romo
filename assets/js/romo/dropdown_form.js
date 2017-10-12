@@ -1,9 +1,3 @@
-$.fn.romoDropdownForm = function() {
-  return $.map(this, function(element) {
-    return new RomoDropdownForm(element);
-  });
-}
-
 var RomoDropdownForm = function(element) {
   this.elem = $(element);
 
@@ -97,7 +91,7 @@ RomoDropdownForm.prototype.doBindForm = function() {
   this.form = formElem.romoForm(submitElement, indicatorElements)[0];
 }
 
-Romo.onInitUI(function(e) {
-  Romo.initUIElems(e, '[data-romo-dropdownForm-auto="true"]').romoDropdownForm();
+Romo.onInitUI(function(elem) {
+  Romo.initUIElems(elem, '[data-romo-dropdownForm-auto="true"]').forEach(function(elem) { new RomoDropdownForm(elem); });
 });
 

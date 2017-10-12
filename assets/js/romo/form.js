@@ -1,9 +1,3 @@
-$.fn.romoForm = function(givenSubmitElement, givenIndicatorElements) {
-  return $.map(this, function(element) {
-    return new RomoForm(element, givenSubmitElement, givenIndicatorElements);
-  });
-}
-
 var RomoForm = function(element, givenSubmitElement, givenIndicatorElements) {
   this.elem = $(element);
   this.defaultSubmitElem = this.elem.find('button[type="submit"], input[type="submit"], [data-romo-form-submit]');
@@ -225,7 +219,7 @@ RomoForm.prototype._getXhrDataType = function() {
   }
 }
 
-Romo.onInitUI(function(e) {
-  Romo.initUIElems(e, '[data-romo-form-auto="true"]').romoForm();
+Romo.onInitUI(function(elem) {
+  Romo.initUIElems(elem, '[data-romo-form-auto="true"]').forEach(function(elem) { new RomoForm(elem); });
 });
 

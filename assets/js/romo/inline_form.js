@@ -1,9 +1,3 @@
-$.fn.romoInlineForm = function() {
-  return $.map(this, function(element) {
-    return new RomoInlineForm(element);
-  });
-}
-
 var RomoInlineForm = function(element) {
   this.elem = $(element);
 
@@ -93,7 +87,7 @@ RomoInlineForm.prototype.doBindForm = function() {
   this.form = formElem.romoForm(submitElement, indicatorElements)[0];
 }
 
-Romo.onInitUI(function(e) {
-  Romo.initUIElems(e, '[data-romo-inlineForm-auto="true"]').romoInlineForm();
+Romo.onInitUI(function(elem) {
+  Romo.initUIElems(elem, '[data-romo-inlineForm-auto="true"]').forEach(function(elem) { new RomoInlineForm(elem); });
 });
 

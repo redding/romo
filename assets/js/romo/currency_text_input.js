@@ -1,9 +1,3 @@
-$.fn.romoCurrencyTextInput = function() {
-  return $.map(this, function(element) {
-    return new RomoCurrencyTextInput(element);
-  });
-}
-
 var RomoCurrencyTextInput = function(element) {
   this.elem            = $(element);
   this.hiddenInputElem = undefined;
@@ -163,6 +157,6 @@ RomoCurrencyTextInput.prototype._getNewInputName = function() {
   );
 }
 
-Romo.onInitUI(function(e) {
-  Romo.initUIElems(e, '[data-romo-currency-text-input-auto="true"]').romoCurrencyTextInput();
+Romo.onInitUI(function(elem) {
+  Romo.initUIElems(elem, '[data-romo-currency-text-input-auto="true"]').forEach(function(elem) { new RomoCurrencyTextInput(elem); });
 });

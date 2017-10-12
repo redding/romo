@@ -1,9 +1,3 @@
-$.fn.romoIndicatorTextInput = function() {
-  return $.map(this, function(element) {
-    return new RomoIndicatorTextInput(element);
-  });
-}
-
 var RomoIndicatorTextInput = function(element) {
   this.elem = $(element);
 
@@ -60,7 +54,7 @@ RomoIndicatorTextInput.prototype._bindElem = function() {
   // parent-child elems so it will be removed when the elem (input) is removed.
   // delay adding it b/c the `append` statement above is not a "move", it is
   // a "remove" and "add" so if added immediately the "remove" part will
-  // incorrectly remove the wrapper.  Any value will do - I chose 1 arbitrarily.
+  // incorrectly remove the wrapper.
   setTimeout($.proxy(function() {
     Romo.parentChildElems.add(this.elem, [elemWrapper]);
   }, this), 1);
@@ -174,6 +168,6 @@ RomoIndicatorTextInput.prototype._getIndicatorPosition = function() {
   );
 }
 
-Romo.onInitUI(function(e) {
-  Romo.initUIElems(e, '[data-romo-indicator-text-input-auto="true"]').romoIndicatorTextInput();
+Romo.onInitUI(function(elem) {
+  Romo.initUIElems(elem, '[data-romo-indicator-text-input-auto="true"]').forEach(function(elem) { new RomoIndicatorTextInput(elem); });
 });
