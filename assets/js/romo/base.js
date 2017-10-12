@@ -127,14 +127,18 @@ Romo.prototype.selectPrev = function(elem, selector) {
 // attributes, styles, classes
 
 Romo.prototype.attr = function(elem, attrName) {
-  return elem.getAttribute ? elem.getAttribute(attrName) : undefined;
+  var a = elem.getAttribute(attrName);
+  if (a === null) {
+    return undefined;
+  } else {
+    return a;
+  }
 }
 
 Romo.prototype.setAttr = function(elem, attrName, attrValue) {
-  if (elem.setAttribute) {
-    elem.setAttribute(attrName, attrValue);
-  }
-  return attrValue;
+  var v = String(attrValue);
+  elem.setAttribute(attrName, v);
+  return v;
 }
 
 Romo.prototype.data = function(elem, dataName) {
@@ -142,7 +146,7 @@ Romo.prototype.data = function(elem, dataName) {
 }
 
 Romo.prototype.setData = function(elem, dataName, dataValue) {
-  return this.setAttr(elem, "data-"+dataName, String(dataValue));
+  return this.setAttr(elem, "data-"+dataName, dataValue);
 }
 
 Romo.prototype.style = function(elem, styleName) {
@@ -683,6 +687,7 @@ Romo.prototype._deserializeValue = function(value) {
     if (value === "false")     { return false;      } // "false"      => false
     if (value === "undefined") { return undefined;  } // "undefined"  => undefined
     if (value === "null")      { return null;       } // "null"       => null
+    if (value === null)        { return undefined;  } // null         => undefined
     if (+value+"" === value)   { return +value;     } // "42.5"       => 42.5
     if (/^[\[\{]/.test(value)) { JSON.parse(value); } // JSON         => parse if valid
     return value;                                     // String       => self
