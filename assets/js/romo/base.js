@@ -421,20 +421,43 @@ Romo.prototype.redirectPage = function(redirectUrl) {
   window.location = redirectUrl;
 }
 
-// param serialization (TODO: rework w/o jQuery)
+// param serialization
+
+// Romo.param({ a: 2, b: 'three', c: 4 });                         #=> "a=2&b=three&c=4"
+// Romo.param({ a: [ 2, 3, 4 ] });                                 #=> "a[]=2&a[]=3&a[]=4"
+// Romo.param({ a: 2, b: '', c: 4 });                              #=> "a=2&b=&c=4"
+// Romo.param({ a: 2, b: '', c: 4 }, { removeEmpty: true });       #=> "a=2&c=4"
+// Romo.param({ a: [ 2, 3, 4 ], b: [''] });                        #=> "a[]=2&a[]=3&a[]=4&b[]="
+// Romo.param({ a: [ 2, 3, 4 ], b: [''] }, { removeEmpty: true }); #=> "a[]=2&a[]=3&a[]=4"
+// Romo.param({ a: '123-ABC' });                                   #=> "a=123%2DABC"
+// Romo.param({ a: '123-ABC' }, { decodeValues: true });           #=> "a=123-ABC"
 
 Romo.prototype.param = function(data, opts) {
-  var paramData = $.extend({}, data);
+  var keyValues = [];
 
-  if (opts && opts.removeEmpty) {
-    $.each(paramData, function(key, value) {
-      if (value === '') {
-        delete paramData[key];
-      }
-    })
+  var processKeyValue = function(keyValues, key, value, opts) {
+    var v = String(value);
+    if (!opts || !opts.removeEmpty || v !== '') {
+      keyValues.push([key, v]);
+    }
   }
 
-  var paramString = $.param(paramData);
+  for (var key in data) {
+    var value = data[key];
+    if (Array.isArray(value)) {
+      if (!opts || !opts.removeEmpty || value.length !== 0) {
+        value.forEach(function(listValue) {
+          processKeyValue(keyValues, key+'[]', listValue, opts);
+        })
+      }
+    } else {
+      processKeyValue(keyValues, key, value, opts);
+    }
+  }
+
+  var paramString = keyValues.map(function(keyValue){
+    return keyValue.join('=');
+  }).join('&');
 
   if (opts && opts.decodeValues) {
     paramString = this.decodeParam(paramString);
