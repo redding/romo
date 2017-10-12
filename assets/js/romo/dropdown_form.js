@@ -1,7 +1,7 @@
 var RomoDropdownForm = function(element) {
   this.elem = $(element);
 
-  this.dropdown = this.elem.romoDropdown()[0];
+  this.romoDropdown = new RomoDropdown(this.elem);
   this.doBindDropdown();
 
   this.form = undefined;
@@ -11,7 +11,7 @@ var RomoDropdownForm = function(element) {
     }
   }, this));
   this.doBindForm();
-  this.elem.on('dropdown:loadBodySuccess', $.proxy(function(e, data, dropdown) {
+  this.elem.on('romoDropdown:loadBodySuccess', $.proxy(function(e, data, romoDropdown) {
     this.doBindForm();
     this.elem.trigger('dropdownForm:formReady', [this.form, this]);
   }, this));
@@ -29,34 +29,34 @@ if (this.elem.data('romo-dropdown-clear-content') === undefined) {
     this.elem.attr('data-romo-dropdown-clear-content', 'true');
   }
 
-  this.elem.on('dropdown:ready', $.proxy(function(e, dropdown) {
-    this.elem.trigger('dropdownForm:dropdown:ready', [dropdown, this]);
+  this.elem.on('romoDropdown:ready', $.proxy(function(e, romoDropdown) {
+    this.elem.trigger('dropdownForm:romoDropdown:ready', [romoDropdown, this]);
   }, this));
-  this.elem.on('dropdown:toggle', $.proxy(function(e, dropdown) {
-    this.elem.trigger('dropdownForm:dropdown:toggle', [dropdown, this]);
+  this.elem.on('romoDropdown:toggle', $.proxy(function(e, romoDropdown) {
+    this.elem.trigger('dropdownForm:romoDropdown:toggle', [romoDropdown, this]);
   }, this));
-  this.elem.on('dropdown:popupOpen', $.proxy(function(e, dropdown) {
-    this.elem.trigger('dropdownForm:dropdown:popupOpen', [dropdown, this]);
+  this.elem.on('romoDropdown:popupOpen', $.proxy(function(e, romoDropdown) {
+    this.elem.trigger('dropdownForm:romoDropdown:popupOpen', [romoDropdown, this]);
   }, this));
-  this.elem.on('dropdown:popupClose', $.proxy(function(e, dropdown) {
-    this.elem.trigger('dropdownForm:dropdown:popupClose', [dropdown, this]);
+  this.elem.on('romoDropdown:popupClose', $.proxy(function(e, romoDropdown) {
+    this.elem.trigger('dropdownForm:romoDropdown:popupClose', [romoDropdown, this]);
   }, this));
-  this.elem.on('dropdown:loadBodyStart', $.proxy(function(e, dropdown) {
-    this.elem.trigger('dropdownForm:dropdown:loadBodyStart', [dropdown, this]);
+  this.elem.on('romoDropdown:loadBodyStart', $.proxy(function(e, romoDropdown) {
+    this.elem.trigger('dropdownForm:romoDropdown:loadBodyStart', [romoDropdown, this]);
   }, this));
-  this.elem.on('dropdown:loadBodySuccess', $.proxy(function(e, data, dropdown) {
-    this.elem.trigger('dropdownForm:dropdown:loadBodySuccess', [data, dropdown, this]);
+  this.elem.on('romoDropdown:loadBodySuccess', $.proxy(function(e, data, romoDropdown) {
+    this.elem.trigger('dropdownForm:romoDropdown:loadBodySuccess', [data, romoDropdown, this]);
   }, this));
-  this.elem.on('dropdown:loadBodyError', $.proxy(function(e, xhr, dropdown) {
-    this.elem.trigger('dropdownForm:dropdown:loadBodyError', [xhr, dropdown, this]);
+  this.elem.on('romoDropdown:loadBodyError', $.proxy(function(e, xhr, romoDropdown) {
+    this.elem.trigger('dropdownForm:romoDropdown:loadBodyError', [xhr, romoDropdown, this]);
   }, this));
-  this.elem.on('dropdown:dismiss', $.proxy(function(e, dropdown) {
-    this.elem.trigger('dropdownForm:dropdown:dismiss', [dropdown, this]);
+  this.elem.on('romoDropdown:dismiss', $.proxy(function(e, romoDropdown) {
+    this.elem.trigger('dropdownForm:romoDropdown:dismiss', [romoDropdown, this]);
   }, this));
 }
 
 RomoDropdownForm.prototype.doBindForm = function() {
-  var formElem = this.dropdown.popupElem.find('[data-romo-form-auto="dropdownForm"]');
+  var formElem = this.romoDropdown.popupElem.find('[data-romo-form-auto="dropdownForm"]');
 
   formElem.on('form:clearMsgs', $.proxy(function(e, form) {
     this.elem.trigger('dropdownForm:form:clearMsgs', [form, this]);
@@ -86,8 +86,8 @@ RomoDropdownForm.prototype.doBindForm = function() {
     this.elem.trigger('dropdownForm:form:browserSubmit', [form, this]);
   }, this));
 
-  var submitElement = this.dropdown.popupElem.find('[data-romo-form-submit]')[0];
-  var indicatorElements = this.dropdown.popupElem.find('[data-romo-indicator-auto="true"]');
+  var submitElement = this.romoDropdown.popupElem.find('[data-romo-form-submit]')[0];
+  var indicatorElements = this.romoDropdown.popupElem.find('[data-romo-indicator-auto="true"]');
   this.form = formElem.romoForm(submitElement, indicatorElements)[0];
 }
 
