@@ -701,49 +701,50 @@ Romo.prototype._addEventCallback = function(name, callback) {
   this._eventCallbacks.push({ eventName: name, callback:  callback });
 }
 
-// RomoParentChildElems (TODO: rework w/o jQuery)
+// RomoParentChildElems
 
 var RomoParentChildElems = function() {
   this.attrName = 'romo-parent-elem-id';
   this.elemId   = 0;
   this.elems    = {};
 
-  var parentRemovedObserver = new MutationObserver($.proxy(function(mutationRecords) {
-    mutationRecords.forEach($.proxy(function(mutationRecord) {
+  var parentRemovedObserver = new MutationObserver(Romo.proxy(function(mutationRecords) {
+    mutationRecords.forEach(Romo.proxy(function(mutationRecord) {
       if (mutationRecord.type === 'childList' && mutationRecord.removedNodes.length > 0) {
-        $.each($(mutationRecord.removedNodes), $.proxy(function(idx, node) {
-          this.remove($(node));
+        mutationRecord.removedNodes.forEach(Romo.proxy(function(removedNodeElem) {
+          this.remove(removedNodeElem);
         }, this));
       }
     }, this));
   }, this));
 
-  parentRemovedObserver.observe($('body')[0], {
+  parentRemovedObserver.observe(Romo.f('body')[0], {
     childList: true,
     subtree:   true
   });
 }
 
 RomoParentChildElems.prototype.add = function(parentElem, childElems) {
-  parentElem.attr('data-'+this.attrName, this._push(childElems, parentElem.data(this.attrName)));
+  Romo.setData(parentElem, this.attrName, this._push(childElems, Romo.data(parentElem, this.attrName)));
 }
 
 RomoParentChildElems.prototype.remove = function(nodeElem) {
-  if (nodeElem.data('romo-parent-removed-observer-disabled') !== true) {
-    if (nodeElem.data(this.attrName) !== undefined) {
-      this._removeChildElems(nodeElem);  // node is a parent elem itself
+  if (Romo.data(nodeElem, 'romo-parent-removed-observer-disabled') !== true) {
+    if (Romo.data(nodeElem, this.attrName) !== undefined) {
+      // node is a parent elem itself
+      this._removeChildElems(nodeElem);
     }
-    $.each(nodeElem.find('[data-'+this.attrName+']'), $.proxy(function(idx, parent) {
-      this._removeChildElems($(parent));
+    Romo.find(nodeElem, '[data-'+this.attrName+']').forEach(Romo.proxy(function(childParentElem) {
+      this._removeChildElems(childParentElem);
     }, this));
   }
 }
 
-// private RomoParentChildElems
+// private
 
 RomoParentChildElems.prototype._removeChildElems = function(parentElem) {
-  $.each(this._pop(parentElem.data(this.attrName)), function(idx, elem) {
-    $(elem).remove();
+  this._pop(Romo.data(parentElem, this.attrName)).forEach(function(childElem) {
+    Romo.remove(childElem);
   });
 };
 
@@ -754,7 +755,8 @@ RomoParentChildElems.prototype._push = function(items, id) {
   if (this.elems[id] === undefined) {
     this.elems[id] = []
   }
-  items.forEach($.proxy(function(item){ this.elems[id].push(item) }, this));
+  this.elems[id] = this.elems[id].concat(items);
+
   return id;
 };
 
