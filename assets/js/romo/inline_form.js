@@ -1,7 +1,7 @@
 var RomoInlineForm = function(element) {
   this.elem = $(element);
 
-  this.inline = this.elem.romoInline()[0];
+  this.romoInline = new RomoInline(this.elem);
   this.doBindInline();
 
   this.form = undefined;
@@ -10,14 +10,14 @@ var RomoInlineForm = function(element) {
       this.form.elem.trigger('form:triggerSubmit', []);
     }
   }, this));
-  this.elem.on('inlineForm:inline:triggerInvoke', $.proxy(function(e) {
-    this.inline.elem.trigger('inline:triggerInvoke', []);
+  this.elem.on('inlineForm:romoInline:triggerInvoke', $.proxy(function(e) {
+    this.romoInline.elem.trigger('romoInline:triggerInvoke', []);
   }, this));
-  this.elem.on('inlineForm:inline:triggerDismiss', $.proxy(function(e) {
-    this.inline.elem.trigger('inline:triggerDismiss', []);
+  this.elem.on('inlineForm:romoInline:triggerDismiss', $.proxy(function(e) {
+    this.romoInline.elem.trigger('romoInline:triggerDismiss', []);
   }, this));
   this.doBindForm();
-  this.elem.on('inline:loadSuccess', $.proxy(function(e, data, inline) {
+  this.elem.on('romoInline:loadSuccess', $.proxy(function(e, data, romoInline) {
     this.doBindForm();
     this.elem.trigger('inlineForm:formReady', [this.form, this]);
   }, this));
@@ -31,26 +31,26 @@ RomoInlineForm.prototype.doInit = function() {
 }
 
 RomoInlineForm.prototype.doBindInline = function() {
-  this.elem.on('inline:ready', $.proxy(function(e, inline) {
-    this.elem.trigger('inlineForm:inline:ready', [inline, this]);
+  this.elem.on('romoInline:ready', $.proxy(function(e, romoInline) {
+    this.elem.trigger('inlineForm:romoInline:ready', [romoInline, this]);
   }, this));
-  this.elem.on('inline:loadStart', $.proxy(function(e, inline) {
-    this.elem.trigger('inlineForm:inline:loadStart', [inline, this]);
+  this.elem.on('romoInline:loadStart', $.proxy(function(e, romoInline) {
+    this.elem.trigger('inlineForm:romoInline:loadStart', [romoInline, this]);
   }, this));
-  this.elem.on('inline:loadSuccess', $.proxy(function(e, data, inline) {
-    this.elem.trigger('inlineForm:inline:loadSuccess', [data, inline, this]);
+  this.elem.on('romoInline:loadSuccess', $.proxy(function(e, data, romoInline) {
+    this.elem.trigger('inlineForm:romoInline:loadSuccess', [data, romoInline, this]);
   }, this));
-  this.elem.on('inline:loadError', $.proxy(function(e, xhr, inline) {
-    this.elem.trigger('inlineForm:inline:loadError', [xhr, inline, this]);
+  this.elem.on('romoInline:loadError', $.proxy(function(e, xhr, romoInline) {
+    this.elem.trigger('inlineForm:romoInline:loadError', [xhr, romoInline, this]);
   }, this));
-  this.elem.on('inline:show', $.proxy(function(e, inline) {
-    this.elem.trigger('inlineForm:inline:show', [inline, this]);
+  this.elem.on('romoInline:show', $.proxy(function(e, romoInline) {
+    this.elem.trigger('inlineForm:romoInline:show', [romoInline, this]);
   }, this));
-  this.elem.on('inline:dismiss', $.proxy(function(e, inline) {
-    this.elem.trigger('inlineForm:inline:dismiss', [inline, this]);
+  this.elem.on('romoInline:dismiss', $.proxy(function(e, romoInline) {
+    this.elem.trigger('inlineForm:romoInline:dismiss', [romoInline, this]);
   }, this));
-  this.elem.on('inline:confirmDismiss', $.proxy(function(e, inline) {
-    this.elem.trigger('inlineForm:inline:confirmDismiss', [inline, this]);
+  this.elem.on('romoInline:confirmDismiss', $.proxy(function(e, romoInline) {
+    this.elem.trigger('inlineForm:romoInline:confirmDismiss', [romoInline, this]);
   }, this));
 }
 
