@@ -674,9 +674,13 @@ Romo.prototype._eid = 1;
 Romo.prototype._fid = 1;
 
 Romo.prototype._el = function(elem) {
-  elem._romoeid || (
-    elem._romoeid = (this.attr(elem, 'data-romo-eid') || this.setAttr(elem, 'data-romo-eid', this._eid++))
-  );
+  if (!elem._romoeid) {
+    if (elem !== window && elem !== document) {
+      elem._romoeid = (this.attr(elem, 'data-romo-eid') || this.setAttr(elem, 'data-romo-eid', this._eid++));
+    } else {
+      elem._romoeid = elem === window ? 'window' : 'document';
+    }
+  }
   return elem;
 }
 
