@@ -198,8 +198,8 @@ RomoTooltip.prototype.doPopupOpen = function() {
   this.doPlacePopupElem();
 
   if (this.elem.parents('.romo-modal-popup').size() !== 0) {
-    $('body').on('modal:mousemove',  $.proxy(this.onModalPopupChange, this));
-    $('body').on('modal:popupclose', $.proxy(this.onModalPopupChange, this));
+    $('body').on('romoModal:mousemove',  $.proxy(this.onModalPopupChange, this));
+    $('body').on('romoModal:popupclose', $.proxy(this.onModalPopupChange, this));
   }
   $(window).on('resize', $.proxy(this.onResizeWindow, this));
 
@@ -220,8 +220,8 @@ RomoTooltip.prototype.doPopupClose = function() {
   this.popupElem.removeClass('romo-tooltip-open');
 
   if (this.elem.parents('.romo-modal-popup').size() !== 0) {
-    $('body').off('modal:mousemove',  $.proxy(this.onModalPopupChange, this));
-    $('body').off('modal:popupclose', $.proxy(this.onModalPopupChange, this));
+    $('body').off('romoModal:mousemove',  $.proxy(this.onModalPopupChange, this));
+    $('body').off('romoModal:popupclose', $.proxy(this.onModalPopupChange, this));
   }
   $(window).off('resize', $.proxy(this.onResizeWindow, this));
 
