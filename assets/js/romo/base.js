@@ -710,7 +710,6 @@ Romo.prototype._deserializeValue = function(value) {
   }
 }
 
-// TODO: rework w/o jQuery
 Romo.prototype._addEventCallback = function(name, callback) {
   this._eventCallbacks.push({ eventName: name, callback:  callback });
 }
