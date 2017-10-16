@@ -338,17 +338,10 @@ RomoOptionListDropdown.prototype._bindDropdownOptionFilter = function() {
     this.optionFilterElem.focus();
   }, this));
 
-  this.onkeySearchTimeout = undefined;
-  this.onkeySearchDelay   = 100; // 0.1 secs, want it to be really responsive
-
+  // 0.1 secs, want it to be really responsive
+  this.optionFilterElem.attr('data-onkey-delay-ms', 100);
   this.optionFilterElem.on('romoOnkey:trigger', $.proxy(function(e, triggerEvent, romoOnkey) {
-    // TODO: incorp this timeout logic into the onkey component so don't have to repeat it
-    clearTimeout(this.onkeySearchTimeout);
-    this.onkeySearchTimeout = setTimeout($.proxy(function() {
-      if (Romo.nonInputTextKeyCodes().indexOf(triggerEvent.keyCode) === -1 /* Input Text */) {
-        this._filterOptionElems();
-      }
-    }, this), this.onkeySearchDelay);
+    this._filterOptionElems();
   }, this));
 }
 
