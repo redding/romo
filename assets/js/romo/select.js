@@ -96,7 +96,7 @@ RomoSelect.prototype._bindSelectedOptionsList = function() {
       this._refreshUI();
     }, this));
     this.romoSelectedOptionsList.elem.on('romoSelectedOptionsList:listClick', $.proxy(function(e, romoSelectedOptionsList) {
-      this.romoSelectDropdown.elem.trigger('dropdown:triggerPopupClose', []);
+      this.romoSelectDropdown.elem.trigger('romoDropdown:triggerPopupClose', []);
       this.romoSelectDropdown.doFocus(false);
     }, this));
 
@@ -108,14 +108,14 @@ RomoSelect.prototype._bindSelectedOptionsList = function() {
 RomoSelect.prototype._bindSelectDropdown = function() {
   this.romoSelectDropdown = this._buildSelectDropdownElem().romoSelectDropdown(this.elem)[0];
 
-  this.romoSelectDropdown.elem.on('selectDropdown:dropdown:toggle', $.proxy(function(e, dropdown, selectDropdown) {
-    this.elem.trigger('select:dropdown:toggle', [dropdown, this]);
+  this.romoSelectDropdown.elem.on('selectDropdown:romoDropdown:toggle', $.proxy(function(e, romoDropdown, selectDropdown) {
+    this.elem.trigger('select:romoDropdown:toggle', [romoDropdown, this]);
   }, this));
-  this.romoSelectDropdown.elem.on('selectDropdown:dropdown:popupOpen', $.proxy(function(e, dropdown, selectDropdown) {
-    this.elem.trigger('select:dropdown:popupOpen', [dropdown, this]);
+  this.romoSelectDropdown.elem.on('selectDropdown:romoDropdown:popupOpen', $.proxy(function(e, romoDropdown, selectDropdown) {
+    this.elem.trigger('select:romoDropdown:popupOpen', [romoDropdown, this]);
   }, this));
-  this.romoSelectDropdown.elem.on('selectDropdown:dropdown:popupClose', $.proxy(function(e, dropdown, selectDropdown) {
-    this.elem.trigger('select:dropdown:popupClose', [dropdown, this]);
+  this.romoSelectDropdown.elem.on('selectDropdown:romoDropdown:popupClose', $.proxy(function(e, romoDropdown, selectDropdown) {
+    this.elem.trigger('select:romoDropdown:popupClose', [romoDropdown, this]);
   }, this));
 
   this.romoSelectDropdown.elem.on('selectDropdown:itemSelected', $.proxy(function(e, itemValue, itemDisplayText, selectDropdown) {

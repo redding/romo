@@ -90,14 +90,14 @@ RomoSelectDropdown.prototype._bindElem = function() {
     this.elem.attr('data-romo-option-list-dropdown-open-on-focus', this.elem.data('romo-select-dropdown-open-on-focus'));
   }
 
-  this.elem.on('romoOptionListDropdown:dropdown:toggle', $.proxy(function(e, dropdown) {
-    this.elem.trigger('selectDropdown:dropdown:toggle', [dropdown, this]);
+  this.elem.on('romoOptionListDropdown:romoDropdown:toggle', $.proxy(function(e, romoDropdown) {
+    this.elem.trigger('selectDropdown:romoDropdown:toggle', [romoDropdown, this]);
   }, this));
-  this.elem.on('romoOptionListDropdown:dropdown:popupOpen', $.proxy(function(e, dropdown) {
-    this.elem.trigger('selectDropdown:dropdown:popupOpen', [dropdown, this]);
+  this.elem.on('romoOptionListDropdown:romoDropdown:popupOpen', $.proxy(function(e, romoDropdown) {
+    this.elem.trigger('selectDropdown:romoDropdown:popupOpen', [romoDropdown, this]);
   }, this));
-  this.elem.on('romoOptionListDropdown:dropdown:popupClose', $.proxy(function(e, dropdown) {
-    this.elem.trigger('selectDropdown:dropdown:popupClose', [dropdown, this]);
+  this.elem.on('romoOptionListDropdown:romoDropdown:popupClose', $.proxy(function(e, romoDropdown) {
+    this.elem.trigger('selectDropdown:romoDropdown:popupClose', [romoDropdown, this]);
   }, this));
   this.elem.on('romoOptionListDropdown:itemSelected', $.proxy(function(e, itemValue, itemDisplayText, romoOptionListDropdown) {
     this.elem.trigger('selectDropdown:itemSelected', [itemValue, itemDisplayText, this]);
