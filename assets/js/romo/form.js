@@ -28,8 +28,8 @@ var RomoForm = function(formElem, givenSubmitElems, givenSpinnerElems) {
     this.decodeParams = true;
   }
 
-  this._bindFormElem();
   this.doInit();
+  this._bindFormElem();
 
   Romo.trigger(this.elem, 'romoForm:clearMsgs', [this]);
   Romo.trigger(this.elem, 'romoForm:ready',     [this]);
