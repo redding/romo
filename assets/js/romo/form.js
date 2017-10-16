@@ -61,14 +61,7 @@ RomoForm.prototype._bindFormElem = function() {
 
   this.onkeySubmitElems.forEach(Romo.proxy(function(onkeySubmitElem) {
     Romo.on(onkeySubmitElem, 'romoOnkey:trigger', Romo.proxy(function(e, triggerEvent, romoOnkey) {
-      // TODO: move this delay logic into onkey component
-      clearTimeout(this.onkeySubmitTimeout);
-      this.onkeySubmitTimeout = setTimeout(
-        Romo.proxy(function() {
-          Romo.trigger(this.elem, 'romoForm:triggerSubmit');
-        }, this),
-        Romo.data(romoOnkey.elem, 'romo-form-onkey-submit-delay') || this.onkeyDefaultSubmitDelay
-      );
+      Romo.trigger(this.elem, 'romoForm:triggerSubmit');
     }, this));
   }, this));
 
