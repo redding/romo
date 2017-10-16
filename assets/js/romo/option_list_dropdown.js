@@ -139,17 +139,17 @@ RomoOptionListDropdown.prototype.doSetListItems = function(itemsList) {
 
 RomoOptionListDropdown.prototype._bindElem = function() {
   this.elem.on('keydown',             $.proxy(this._onElemKeyDown, this));
-  this.elem.on('dropdown:popupOpen',  $.proxy(this._onPopupOpen,   this));
-  this.elem.on('dropdown:popupClose', $.proxy(this._onPopupClose,  this));
+  this.elem.on('romoDropdown:popupOpen',  $.proxy(this._onPopupOpen,   this));
+  this.elem.on('romoDropdown:popupClose', $.proxy(this._onPopupClose,  this));
 
-  this.elem.on('dropdown:toggle', $.proxy(function(e, dropdown) {
-    this.elem.trigger('romoOptionListDropdown:dropdown:toggle', [dropdown, this]);
+  this.elem.on('romoDropdown:toggle', $.proxy(function(e, romoDropdown) {
+    this.elem.trigger('romoOptionListDropdown:romoDropdown:toggle', [romoDropdown, this]);
   }, this));
-  this.elem.on('dropdown:popupOpen', $.proxy(function(e, dropdown) {
-    this.elem.trigger('romoOptionListDropdown:dropdown:popupOpen', [dropdown, this]);
+  this.elem.on('romoDropdown:popupOpen', $.proxy(function(e, romoDropdown) {
+    this.elem.trigger('romoOptionListDropdown:romoDropdown:popupOpen', [romoDropdown, this]);
   }, this));
-  this.elem.on('dropdown:popupClose', $.proxy(function(e, dropdown) {
-    this.elem.trigger('romoOptionListDropdown:dropdown:popupClose', [dropdown, this]);
+  this.elem.on('romoDropdown:popupClose', $.proxy(function(e, romoDropdown) {
+    this.elem.trigger('romoOptionListDropdown:romoDropdown:popupClose', [romoDropdown, this]);
   }, this));
 
   this.elem.on('romoOptionListDropdown:triggerListOptionsUpdate', $.proxy(function(e, highlightOptionElem) {
@@ -157,13 +157,13 @@ RomoOptionListDropdown.prototype._bindElem = function() {
   }, this));
 
   this.elem.on('romoOptionListDropdown:triggerToggle', $.proxy(function(e) {
-    this.elem.trigger('dropdown:triggerToggle', []);
+    this.elem.trigger('romoDropdown:triggerToggle', []);
   }, this));
   this.elem.on('romoOptionListDropdown:triggerPopupOpen', $.proxy(function(e) {
-    this.elem.trigger('dropdown:triggerPopupOpen', []);
+    this.elem.trigger('romoDropdown:triggerPopupOpen', []);
   }, this));
   this.elem.on('romoOptionListDropdown:triggerPopupClose', $.proxy(function(e) {
-    this.elem.trigger('dropdown:triggerPopupClose', []);
+    this.elem.trigger('romoDropdown:triggerPopupClose', []);
   }, this));
 
   this.elem.on('romoOptionListDropdown:triggerFilterIndicatorStart', $.proxy(function(e) {
@@ -176,7 +176,7 @@ RomoOptionListDropdown.prototype._bindElem = function() {
     this.optionFilterElem.trigger('indicatorTextInput:triggerIndicatorStop', []);
   }, this));
 
-  this.romoDropdown = this.elem.romoDropdown()[0];
+  this.romoDropdown = new RomoDropdown(this.elem);
   this.romoDropdown.doSetPopupZIndex(this.elem);
 
   this.romoDropdown.popupElem.on('keydown',   $.proxy(this._onElemKeyDown,    this));
@@ -280,7 +280,7 @@ RomoOptionListDropdown.prototype._bindDropdownOptionFilter = function() {
     this.romoDropdown.elem.removeClass(this.focusStyleClass);
 
     if (this.openOnFocus === true) {
-      this.romoDropdown.elem.trigger('dropdown:triggerPopupOpen', []);
+      this.romoDropdown.elem.trigger('romoDropdown:triggerPopupOpen', []);
     } else {
       this.openOnFocus = this.elem.data('romo-option-list-dropdown-open-on-focus');
     }
@@ -294,7 +294,7 @@ RomoOptionListDropdown.prototype._bindDropdownOptionFilter = function() {
     this.romoDropdown.elem.removeClass(this.focusStyleClass);
     this.blurTimeoutId = setTimeout($.proxy(function() {
       if (this.popupMouseDown !== true && this.optionFilterFocused !== true) {
-        this.romoDropdown.elem.trigger('dropdown:triggerPopupClose', []);
+        this.romoDropdown.elem.trigger('romoDropdown:triggerPopupClose', []);
       }
     }, this), 10);
   }, this));
@@ -312,13 +312,13 @@ RomoOptionListDropdown.prototype._bindDropdownOptionFilter = function() {
     this.romoDropdown.elem.removeClass(this.focusStyleClass);
   }, this));
 
-  this.romoDropdown.elem.on('dropdown:popupOpen', $.proxy(function(e, dropdown) {
+  this.romoDropdown.elem.on('romoDropdown:popupOpen', $.proxy(function(e, romoDropdown) {
     this.optionFilterElem.trigger('indicatorTextInput:triggerPlaceIndicator');
     this.optionFilterElem.focus();
     this._filterOptionElems();
     this.openOnFocus = false;
   }, this));
-  this.romoDropdown.elem.on('dropdown:popupClose', $.proxy(function(e, dropdown) {
+  this.romoDropdown.elem.on('romoDropdown:popupClose', $.proxy(function(e, romoDropdown) {
     this.optionFilterElem.val('');
     /*
     don't call `_filterOptionElems()` here.  we need to keep the option markup as is
@@ -326,7 +326,7 @@ RomoOptionListDropdown.prototype._bindDropdownOptionFilter = function() {
     depends on the selected item elem method which requires the markup to be in place
     */
   }, this));
-  this.romoDropdown.elem.on('dropdown:popupClosedByEsc', $.proxy(function(e, dropdown) {
+  this.romoDropdown.elem.on('romoDropdown:popupClosedByEsc', $.proxy(function(e, romoDropdown) {
     this.romoDropdown.elem.focus();
   }, this));
   this.optionFilterElem.on('click', $.proxy(function(e) {
