@@ -1,7 +1,7 @@
 var RomoDropdown = function(element) {
   this.elem = $(element);
   this.doInitPopup();
-  this.romoAjax = this.elem.romoAjax()[0];
+  this.romoAjax = new RomoAjax(this.elem);
   this.romoAjax.doUnbindElem(); // disable auto invoke on click
 
   if (this.elem.data('romo-dropdown-disable-click-invoke') !== true) {

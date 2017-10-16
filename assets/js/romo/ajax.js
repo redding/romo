@@ -1,25 +1,22 @@
 var RomoAjax = function(element) {
-  this.elem       = $(element);
-  this.targetElem = $(this.elem.data('romo-ajax-target'));
+  this.elem       = element;
+  this.targetElem = Romo.f(Romo.data(this.elem, 'romo-ajax-target'))[0];
 
   this.defaultInvokeOn = 'click';
-  this.invokeOn        = this.elem.data('romo-ajax-invoke-on');
-  if (this.invokeOn === undefined && this.elem.data('romo-ajax-disable-default-invoke-on') !== true) {
+  this.invokeOn        = Romo.data(this.elem, 'romo-ajax-invoke-on');
+
+  if (this.invokeOn === undefined && Romo.data(this.elem, 'romo-ajax-disable-default-invoke-on') !== true) {
     this.invokeOn = this.defaultInvokeOn;
   }
 
-  this.callMethod   = this.elem.data('romo-ajax-call-method') || 'GET';
-  this.urlAttr      = this.elem.data('romo-ajax-url-attr')    || 'href';
-  this.callOnlyOnce = this.elem.data('romo-ajax-call-once') === true;
+  this.callMethod   = Romo.data(this.elem, 'romo-ajax-call-method') || 'GET';
+  this.urlAttr      = Romo.data(this.elem, 'romo-ajax-url-attr')    || 'href';
+  this.callOnlyOnce = Romo.data(this.elem, 'romo-ajax-call-once') === true;
 
   this.invokeQueued  = false;
   this.invokeRunning = false;
 
   this.queuedInvokeData = undefined;
-
-  if (this.invokeOn !== undefined) {
-    this.elem.unbind(this.invokeOn);
-  }
 
   this.doInit();
   this.doBindElem();
@@ -33,16 +30,16 @@ RomoAjax.prototype.doInit = function() {
 RomoAjax.prototype.doBindElem = function() {
   this.doUnbindElem();
   if (this.invokeOn !== undefined) {
-    this.elem.on(this.invokeOn, $.proxy(this.onInvoke, this));
+    Romo.on(this.elem, this.invokeOn, Romo.proxy(this.onInvoke, this));
   }
-  this.elem.on('romoAjax:triggerInvoke', $.proxy(this.onTriggerInvoke, this));
+  Romo.on(this.elem, 'romoAjax:triggerInvoke', Romo.proxy(this.onTriggerInvoke, this));
 }
 
 RomoAjax.prototype.doUnbindElem = function() {
   if (this.invokeOn !== undefined) {
-    this.elem.off(this.invokeOn, $.proxy(this.onInvoke, this));
+    Romo.off(this.elem, this.invokeOn, Romo.proxy(this.onInvoke, this));
   }
-  this.elem.off('romoAjax:triggerInvoke', $.proxy(this.onTriggerInvoke, this));
+  Romo.off(this.elem, 'romoAjax:triggerInvoke', Romo.proxy(this.onTriggerInvoke, this));
 }
 
 RomoAjax.prototype.onInvoke = function(e) {
@@ -50,7 +47,7 @@ RomoAjax.prototype.onInvoke = function(e) {
     e.preventDefault();
   }
 
-  if (this.elem.hasClass('disabled') === false) {
+  if (Romo.hasClass(this.elem, 'disabled') === false) {
     this.doInvoke();
   }
 }
@@ -60,7 +57,7 @@ RomoAjax.prototype.onTriggerInvoke = function(e, data) {
     e.stopPropagation();
   }
 
-  if (this.elem.hasClass('disabled') === false) {
+  if (Romo.hasClass(this.elem, 'disabled') === false) {
     this.doInvoke(data);
   }
 }
@@ -76,12 +73,12 @@ RomoAjax.prototype.doInvoke = function(data) {
 RomoAjax.prototype.doCall = function(callUrl, data) {
   this._trigger('romoAjax:callStart', [this]);
 
-  $.ajax({
+  Romo.ajax({
     type:    this.callMethod,
     url:     callUrl,
     data:    (data || {}),
-    success: $.proxy(this.onCallSuccess, this),
-    error:   $.proxy(this.onCallError,   this)
+    success: Romo.proxy(this.onCallSuccess, this),
+    error:   Romo.proxy(this.onCallError,   this)
   });
 }
 
@@ -113,9 +110,9 @@ RomoAjax.prototype._doInvoke = function() {
   var data = this.queuedInvokeData;
   this.queuedInvokeData = undefined;
 
-  var callUrl = this.elem.attr(this.urlAttr);
+  var callUrl = Romo.attr(this.elem, this.urlAttr);
   if (this.callOnlyOnce === true) {
-    this.elem.removeAttr(this.urlAttr);
+    Romo.removeAttr(this.elem, this.urlAttr);
   }
   if (callUrl !== undefined) {
     this.doCall(callUrl, data);
@@ -126,9 +123,9 @@ RomoAjax.prototype._doInvoke = function() {
 
 RomoAjax.prototype._trigger = function(event_name, event_data) {
   if (this.targetElem[0] !== undefined) {
-    this.targetElem.trigger(event_name, event_data);
+    Romo.trigger(this.targetElem, event_name, event_data);
   } else {
-    this.elem.trigger(event_name, event_data);
+    Romo.trigger(this.elem, event_name, event_data);
   }
 }
 
