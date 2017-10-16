@@ -341,7 +341,7 @@ RomoOptionListDropdown.prototype._bindDropdownOptionFilter = function() {
   this.onkeySearchTimeout = undefined;
   this.onkeySearchDelay   = 100; // 0.1 secs, want it to be really responsive
 
-  this.optionFilterElem.on('onkey:trigger', $.proxy(function(e, triggerEvent, onkey) {
+  this.optionFilterElem.on('romoOnkey:trigger', $.proxy(function(e, triggerEvent, romoOnkey) {
     // TODO: incorp this timeout logic into the onkey component so don't have to repeat it
     clearTimeout(this.onkeySearchTimeout);
     this.onkeySearchTimeout = setTimeout($.proxy(function() {

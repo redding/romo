@@ -1,13 +1,13 @@
 var RomoOnkey = function(element) {
-  this.elem = $(element);
+  this.elem = element;
   this.defaultTriggerOn = 'keydown';
 
   this.doInit();
 
-  this.triggerOn = this.elem.data('romo-onkey-on') || this.defaultTriggerOn;
-  this.elem.on(this.triggerOn, $.proxy(this.onTrigger, this));
+  this.triggerOn = Romo.data(this.elem, 'romo-onkey-on') || this.defaultTriggerOn;
+  Romo.on(this.elem, this.triggerOn, Romo.proxy(this.onTrigger, this));
 
-  this.elem.trigger('onkey:ready', [this]);
+  this.elem.trigger('romoOnkey:ready', [this]);
 }
 
 RomoOnkey.prototype.doInit = function() {
@@ -15,13 +15,13 @@ RomoOnkey.prototype.doInit = function() {
 }
 
 RomoOnkey.prototype.onTrigger = function(e) {
-  if (this.elem.hasClass('disabled') === false) {
+  if (Romo.hasClass(this.elem, 'disabled') === false) {
     this.doTrigger(e);
   }
 }
 
 RomoOnkey.prototype.doTrigger = function(triggerEvent) {
-  this.elem.trigger('onkey:trigger', [triggerEvent, this]);
+  Romo.trigger(this.elem, 'romoOnkey:trigger', [triggerEvent, this]);
 }
 
 Romo.onInitUI(function(elem) {
