@@ -1,18 +1,18 @@
-var RomoOptionListDropdown = function(element) {
-  this.elem = $(element);
+var RomoOptionListDropdown = function(elem) {
+  this.elem = elem;
 
   this.prevValue       = '';
   this.optionListItems = [];
 
-  var selCustomization = this.elem.data('romo-option-list-dropdown-item-selector-customization') || '';
+  var selCustomization = Romo.data(this.elem, 'romo-option-list-dropdown-item-selector-customization') || '';
   this.itemSelector    = 'LI[data-romo-option-list-dropdown-item="opt"]:not(.disabled)'+selCustomization;
-  this.focusStyleClass = this.elem.data('romo-option-list-focus-style-class');
-  this.openOnFocus     = this.elem.data('romo-option-list-dropdown-open-on-focus');
+  this.focusStyleClass = Romo.data(this.elem, 'romo-option-list-focus-style-class');
+  this.openOnFocus     = Romo.data(this.elem, 'romo-option-list-dropdown-open-on-focus');
 
   this.doInit();
   this._bindElem();
 
-  this.elem.trigger('romoOptionListDropdown:ready', [this]);
+  Romo.trigger(this.elem, 'romoOptionListDropdown:ready', [this]);
 }
 
 RomoOptionListDropdown.prototype.bodyElem = function() {
@@ -32,33 +32,33 @@ RomoOptionListDropdown.prototype.popupClosed = function() {
 }
 
 RomoOptionListDropdown.prototype.selectedItemElem = function() {
-  return this.romoDropdown.bodyElem.find('LI.selected');
+  return Romo.find(this.romoDropdown.bodyElem, 'LI.selected')[0];
 }
 
 RomoOptionListDropdown.prototype.selectedItemValue = function() {
   // need to use `attr` so it will always read from the DOM
   // using `data` works the first time but does some elem caching or something
   // so it won't work subsequent times.
-  return this.elem.attr('data-romo-option-list-dropdown-selected-value');
+  return Romo.data(this.elem, 'romo-option-list-dropdown-selected-value');
 }
 
 RomoOptionListDropdown.prototype.selectedItemText = function() {
   // need to use `attr` so it will always read from the DOM
   // using `data` works the first time but does some elem caching or something
   // so it won't work subsequent times.
-  return this.elem.attr('data-romo-option-list-dropdown-selected-text');
+  return Romo.data(this.elem, 'romo-option-list-dropdown-selected-text');
 }
 
 RomoOptionListDropdown.prototype.optionFilterValue = function() {
-  return this.optionFilterElem.val();
+  return this.optionFilterElem.value;
 }
 
 RomoOptionListDropdown.prototype.optItemElems = function() {
-  return this.romoDropdown.bodyElem.find('LI[data-romo-option-list-dropdown-item="opt"]');
+  return Romo.find(this.romoDropdown.bodyElem, 'LI[data-romo-option-list-dropdown-item="opt"]');
 }
 
 RomoOptionListDropdown.prototype.optgroupItemElems = function() {
-  return this.romoDropdown.bodyElem.find('LI[data-romo-option-list-dropdown-item="optgroup"]');
+  return Romo.find(this.romoDropdown.bodyElem, 'LI[data-romo-option-list-dropdown-item="optgroup"]');
 }
 
 RomoOptionListDropdown.prototype.doInit = function() {
@@ -66,17 +66,22 @@ RomoOptionListDropdown.prototype.doInit = function() {
 }
 
 RomoOptionListDropdown.prototype.doSetSelectedItem = function(itemValue) {
-  this.selectedItemElem().removeClass('selected');
+  var oldSelectedElem = this.selectedItemElem();
+  if (oldSelectedElem !== undefined) {
+    Romo.removeClass(oldSelectedElem, 'selected');
+  }
   if (itemValue !== undefined) {
-    this.romoDropdown.bodyElem.find(
+    var itemElem = Romo.find(
+      this.romoDropdown.bodyElem,
       'LI[data-romo-option-list-dropdown-option-value="'+itemValue+'"]'
-    ).addClass('selected');
+    )[0];
+    Romo.addClass(itemElem, 'selected');
   }
   var selectedElem = this.selectedItemElem();
-  if (selectedElem[0] !== undefined) {
+  if (selectedElem !== undefined) {
     this.doSetSelectedValueAndText(
-      this.selectedItemElem().data('romo-option-list-dropdown-option-value'),
-      this.selectedItemElem().data('romo-option-list-dropdown-option-display-text')
+      Romo.data(selectedElem, 'romo-option-list-dropdown-option-value'),
+      Romo.data(selectedElem, 'romo-option-list-dropdown-option-display-text')
     );
   } else {
     this.doSetSelectedValueAndText('', '');
@@ -84,10 +89,8 @@ RomoOptionListDropdown.prototype.doSetSelectedItem = function(itemValue) {
 }
 
 RomoOptionListDropdown.prototype.doSetSelectedValueAndText = function(value, text) {
-  // need to use `attr` to persist selected values to the DOM for back button logic
-  // to work.  using `data` won't persist changes to DOM and breaks back button logic.
-  this.elem.attr('data-romo-option-list-dropdown-selected-value', value);
-  this.elem.attr('data-romo-option-list-dropdown-selected-text',  text);
+  Romo.setData(this.elem, 'romo-option-list-dropdown-selected-value', value);
+  Romo.setData(this.elem, 'romo-option-list-dropdown-selected-text',  text);
 
   this.prevValue = value;
 }
@@ -127,89 +130,93 @@ Example:
 
 RomoOptionListDropdown.prototype.doSetListItems = function(itemsList) {
   this.optionListItems = itemsList;
-  this.optionListContainer.html(this._buildListElem(itemsList));
+  Romo.update(this.optionListContainerElem, this._buildListElem(itemsList));
 
   this._updateOptionsListUI();
 
-  this.optionListContainer.find(this.itemSelector).on('mouseenter', $.proxy(this._onItemEnter, this));
-  this.optionListContainer.find(this.itemSelector).on('click',      $.proxy(this._onItemClick, this));
+  var itemElems = Romo.find(this.optionListContainerElem, this.itemSelector);
+  itemElems.forEach(Romo.proxy(function(itemElem) {
+    Romo.on(itemElem, 'mouseenter', Romo.proxy(this._onItemEnter, this));
+    Romo.on(itemElem, 'click',      Romo.proxy(this._onItemClick, this));
+  }, this));
 }
 
 /* private */
 
 RomoOptionListDropdown.prototype._bindElem = function() {
-  this.elem.on('keydown',             $.proxy(this._onElemKeyDown, this));
-  this.elem.on('romoDropdown:popupOpen',  $.proxy(this._onPopupOpen,   this));
-  this.elem.on('romoDropdown:popupClose', $.proxy(this._onPopupClose,  this));
+  Romo.on(this.elem, 'keydown',                 Romo.proxy(this._onElemKeyDown, this));
+  Romo.on(this.elem, 'romoDropdown:popupOpen',  Romo.proxy(this._onPopupOpen,   this));
+  Romo.on(this.elem, 'romoDropdown:popupClose', Romo.proxy(this._onPopupClose,  this));
 
-  this.elem.on('romoDropdown:toggle', $.proxy(function(e, romoDropdown) {
-    this.elem.trigger('romoOptionListDropdown:romoDropdown:toggle', [romoDropdown, this]);
+  Romo.on(this.elem, 'romoDropdown:toggle', Romo.proxy(function(e, romoDropdown) {
+    Romo.trigger(this.elem, 'romoOptionListDropdown:romoDropdown:toggle', [romoDropdown, this]);
   }, this));
-  this.elem.on('romoDropdown:popupOpen', $.proxy(function(e, romoDropdown) {
-    this.elem.trigger('romoOptionListDropdown:romoDropdown:popupOpen', [romoDropdown, this]);
+  Romo.on(this.elem, 'romoDropdown:popupOpen', Romo.proxy(function(e, romoDropdown) {
+    Romo.trigger(this.elem, 'romoOptionListDropdown:romoDropdown:popupOpen', [romoDropdown, this]);
   }, this));
-  this.elem.on('romoDropdown:popupClose', $.proxy(function(e, romoDropdown) {
-    this.elem.trigger('romoOptionListDropdown:romoDropdown:popupClose', [romoDropdown, this]);
+  Romo.on(this.elem, 'romoDropdown:popupClose', Romo.proxy(function(e, romoDropdown) {
+    Romo.trigger(this.elem, 'romoOptionListDropdown:romoDropdown:popupClose', [romoDropdown, this]);
   }, this));
 
-  this.elem.on('romoOptionListDropdown:triggerListOptionsUpdate', $.proxy(function(e, highlightOptionElem) {
+  Romo.on(this.elem, 'romoOptionListDropdown:triggerListOptionsUpdate', Romo.proxy(function(e, highlightOptionElem) {
    this._updateOptionsListUI(highlightOptionElem);
   }, this));
 
-  this.elem.on('romoOptionListDropdown:triggerToggle', $.proxy(function(e) {
-    this.elem.trigger('romoDropdown:triggerToggle', []);
+  Romo.on(this.elem, 'romoOptionListDropdown:triggerToggle', Romo.proxy(function(e) {
+    Romo.trigger(this.elem, 'romoDropdown:triggerToggle', []);
   }, this));
-  this.elem.on('romoOptionListDropdown:triggerPopupOpen', $.proxy(function(e) {
-    this.elem.trigger('romoDropdown:triggerPopupOpen', []);
+  Romo.on(this.elem, 'romoOptionListDropdown:triggerPopupOpen', Romo.proxy(function(e) {
+    Romo.trigger(this.elem, 'romoDropdown:triggerPopupOpen', []);
   }, this));
-  this.elem.on('romoOptionListDropdown:triggerPopupClose', $.proxy(function(e) {
-    this.elem.trigger('romoDropdown:triggerPopupClose', []);
+  Romo.on(this.elem, 'romoOptionListDropdown:triggerPopupClose', Romo.proxy(function(e) {
+    Romo.trigger(this.elem, 'romoDropdown:triggerPopupClose', []);
   }, this));
 
-  this.elem.on('romoOptionListDropdown:triggerFilterIndicatorStart', $.proxy(function(e) {
-    this.optionFilterElem.trigger(
+  Romo.on(this.elem, 'romoOptionListDropdown:triggerFilterIndicatorStart', Romo.proxy(function(e) {
+    Romo.trigger(
+      this.optionFilterElem,
       'indicatorTextInput:triggerIndicatorStart',
-      [Romo.getComputedStyle(this.optionFilterElem[0], "height")]
+      [Romo.css(this.optionFilterElem, "height")]
     );
   }, this));
-  this.elem.on('romoOptionListDropdown:triggerFilterIndicatorStop', $.proxy(function(e) {
-    this.optionFilterElem.trigger('indicatorTextInput:triggerIndicatorStop', []);
+  Romo.on(this.elem, 'romoOptionListDropdown:triggerFilterIndicatorStop', Romo.proxy(function(e) {
+    Romo.trigger(this.optionFilterElem, 'indicatorTextInput:triggerIndicatorStop', []);
   }, this));
 
   this.romoDropdown = new RomoDropdown(this.elem);
   this.romoDropdown.doSetPopupZIndex(this.elem);
 
-  this.romoDropdown.popupElem.on('keydown',   $.proxy(this._onElemKeyDown,    this));
-  this.romoDropdown.popupElem.on('mousedown', $.proxy(this._onPopupMouseDown, this));
-  this.romoDropdown.popupElem.on('mouseup',   $.proxy(this._onPopupMouseUp,   this));
+  Romo.on(this.romoDropdown.popupElem, 'keydown',   Romo.proxy(this._onElemKeyDown,    this));
+  Romo.on(this.romoDropdown.popupElem, 'mousedown', Romo.proxy(this._onPopupMouseDown, this));
+  Romo.on(this.romoDropdown.popupElem, 'mouseup',   Romo.proxy(this._onPopupMouseUp,   this));
 
-  this.romoDropdown.bodyElem.addClass('romo-input-option-list');
-  this.romoDropdown.bodyElem.html('');
+  Romo.addClass(this.romoDropdown.bodyElem, 'romo-input-option-list');
+  Romo.updateHtml(this.romoDropdown.bodyElem, '');
 
-  if (this.elem.data('romo-option-list-dropdown-no-filter') !== true) {
+  if (Romo.data(this.elem, 'romo-option-list-dropdown-no-filter') !== true) {
     this.optionFilterElem = this._buildOptionFilter();
-    var optionFilterWrapperElem = $('<div class="romo-option-list-dropdown-filter-wrapper"></div>');
+    var optionFilterWrapperElem = Romo.elems('<div class="romo-option-list-dropdown-filter-wrapper"></div>')[0];
     optionFilterWrapperElem.append(this.optionFilterElem);
-    this.romoDropdown.popupElem.prepend(optionFilterWrapperElem);
+    Romo.prepend(this.romoDropdown.popupElem, optionFilterWrapperElem);
     this._bindDropdownOptionFilter();
   }
 
-  this.romoDropdown.bodyElem.append($('<div class="romo-option-list-dropdown-container"></div>'));
-  this.optionListContainer = this.romoDropdown.bodyElem.find('.romo-option-list-dropdown-container');
+  this.romoDropdown.bodyElem.append(Romo.elems('<div class="romo-option-list-dropdown-container"></div>')[0]);
+  this.optionListContainerElem = Romo.find(this.romoDropdown.bodyElem, '.romo-option-list-dropdown-container')[0];
 
   this.doSetListItems([]);
 }
 
 RomoOptionListDropdown.prototype._buildListElem = function(itemsList, listClass) {
-  var listElem = $('<ul></ul>');
+  var listElem = Romo.elems('<ul></ul>')[0];
 
-  listElem.addClass(listClass);
-  $.each(itemsList, $.proxy(function(idx, item) {
+  Romo.addClass(listElem, listClass);
+  itemsList.forEach(Romo.proxy(function(item) {
     if (item.type === 'option') {
-      listElem.append(this._buildListOptionElem(item));
+      Romo.append(listElem, this._buildListOptionElem(item));
     } else if (item.type === 'optgroup') {
-      listElem.append(this._buildListOptGroupElem(item));
-      listElem.append(this._buildListElem(item.items, 'romo-option-list-optgroup'));
+      Romo.append(listElem, this._buildListOptGroupElem(item));
+      Romo.append(listElem, this._buildListElem(item.items, 'romo-option-list-optgroup'));
     }
   }, this));
 
@@ -217,136 +224,136 @@ RomoOptionListDropdown.prototype._buildListElem = function(itemsList, listClass)
 }
 
 RomoOptionListDropdown.prototype._buildListOptionElem = function(item) {
-  var itemElem    = $('<li data-romo-option-list-dropdown-item="opt"></li>');
+  var itemElem    = Romo.elems('<li data-romo-option-list-dropdown-item="opt"></li>')[0];
   var value       = item.value       || '';
   var displayText = item.displayText || '';
   var displayHtml = item.displayHtml || item.displayText || '&nbsp;'
 
-  itemElem.attr('data-romo-option-list-dropdown-option-value',        value);
-  itemElem.attr('data-romo-option-list-dropdown-option-display-text', displayText);
-  itemElem.html(displayHtml);
+  Romo.setData(itemElem, 'romo-option-list-dropdown-option-value',        value);
+  Romo.setData(itemElem, 'romo-option-list-dropdown-option-display-text', displayText);
+  Romo.updateHtml(itemElem, displayHtml);
 
   if (item.selected === true) {
-    itemElem.addClass('selected');
+    Romo.addClass(itemElem, 'selected');
     this.prevValue = value; // the last option marked selected is used
   }
   if (item.disabled === true) {
-    itemElem.addClass('disabled');
+    Romo.addClass(itemElem, 'disabled');
   }
 
   return itemElem;
 }
 
 RomoOptionListDropdown.prototype._buildListOptGroupElem = function(item) {
-  var itemElem = $('<li data-romo-option-list-dropdown-item="optgroup"></li>');
+  var itemElem = Romo.elems('<li data-romo-option-list-dropdown-item="optgroup"></li>')[0];
 
-  itemElem.text(item.label);
+  itemElem.innerText = item.label;
 
   return itemElem;
 }
 
 RomoOptionListDropdown.prototype._buildOptionFilter = function() {
-  var filter = $('<input type="text" size="1" class="romo-option-list-dropdown-filter"></input>');
+  var filterElem = Romo.elems('<input type="text" size="1" class="romo-option-list-dropdown-filter"></input>')[0];
 
-  if (this.elem.data('romo-option-list-dropdown-filter-placeholder') !== undefined) {
-    filter.attr('placeholder', this.elem.data('romo-option-list-dropdown-filter-placeholder'));
+  if (Romo.data(this.elem, 'romo-option-list-dropdown-filter-placeholder') !== undefined) {
+    filterElem.setAttr('placeholder', Romo.data(this.elem, 'romo-option-list-dropdown-filter-placeholder'));
   }
-  filter.attr('data-romo-indicator-text-input-elem-display',       "block");
-  filter.attr('data-romo-indicator-text-input-indicator-position', "right");
-  if (this.elem.data('romo-option-list-dropdown-filter-indicator') !== undefined) {
-    filter.attr('data-romo-indicator-text-input-indicator', this.elem.data('romo-option-list-dropdown-filter-indicator'));
+  Romo.setData(filterElem, 'romo-indicator-text-input-elem-display',       "block");
+  Romo.setData(filterElem, 'romo-indicator-text-input-indicator-position', "right");
+  if (Romo.data(this.elem, 'romo-option-list-dropdown-filter-indicator') !== undefined) {
+    Romo.setData(filterElem, 'romo-indicator-text-input-indicator', Romo.data(this.elem, 'romo-option-list-dropdown-filter-indicator'));
   }
-  if (this.elem.data('romo-option-list-dropdown-filter-indicator-width-px') !== undefined) {
-    filter.attr('data-romo-indicator-text-input-indicator-width-px', this.elem.data('romo-option-list-dropdown-filter-indicator-width-px'));
+  if (Romo.data(this.elem, 'romo-option-list-dropdown-filter-indicator-width-px') !== undefined) {
+    Romo.setData(filterElem, 'romo-indicator-text-input-indicator-width-px', Romo.data(this.elem, 'romo-option-list-dropdown-filter-indicator-width-px'));
   }
-  filter.attr('data-romo-form-disable-enter-submit', "true");
-  filter.attr('data-romo-onkey-on', "keydown");
+  Romo.setData(filterElem, 'data-romo-form-disable-enter-submit', "true");
+  Romo.setData(filterElem, 'data-romo-onkey-on',                  "keydown");
 
-  filter.attr('autocomplete', 'off');
+  Romo.setAttr(filterElem, 'autocomplete', 'off');
 
-  return filter;
+  return filterElem;
 }
 
 RomoOptionListDropdown.prototype._bindDropdownOptionFilter = function() {
-  this.optionFilterElem.romoIndicatorTextInput();
-  this.optionFilterElem.romoOnkey();
+  $(this.optionFilterElem).romoIndicatorTextInput();
+  new RomoOnkey(this.optionFilterElem);
 
-  this.romoDropdown.elem.on('focus', $.proxy(function(e) {
+  Romo.on(this.romoDropdown.elem, 'focus', Romo.proxy(function(e) {
     if (this.blurTimeoutId !== undefined) {
       clearTimeout(this.blurTimeoutId);
     }
     // remove any manual elem focus when elem is actually focused
     this.optionFilterFocused = false;
-    this.romoDropdown.elem.removeClass(this.focusStyleClass);
+    Romo.removeClass(this.romoDropdown.elem, this.focusStyleClass);
 
     if (this.openOnFocus === true) {
-      this.romoDropdown.elem.trigger('romoDropdown:triggerPopupOpen', []);
+      Romo.trigger(this.romoDropdown.elem, 'romoDropdown:triggerPopupOpen', []);
     } else {
-      this.openOnFocus = this.elem.data('romo-option-list-dropdown-open-on-focus');
+      this.openOnFocus = Romo.data(this.elem, 'romo-option-list-dropdown-open-on-focus');
     }
   }, this));
-  this.romoDropdown.elem.on('blur', $.proxy(function(e) {
+  Romo.on(this.romoDropdown.elem, 'blur', Romo.proxy(function(e) {
     if (this.blurTimeoutId !== undefined) {
       clearTimeout(this.blurTimeoutId);
     }
     // close the dropdown when elem is blurred
     // remove any manual focus as well
-    this.romoDropdown.elem.removeClass(this.focusStyleClass);
-    this.blurTimeoutId = setTimeout($.proxy(function() {
+    Romo.removeClass(this.romoDropdown.elem, this.focusStyleClass);
+    this.blurTimeoutId = setTimeout(Romo.proxy(function() {
       if (this.popupMouseDown !== true && this.optionFilterFocused !== true) {
-        this.romoDropdown.elem.trigger('romoDropdown:triggerPopupClose', []);
+        Romo.trigger(this.romoDropdown.elem, 'romoDropdown:triggerPopupClose', []);
       }
     }, this), 10);
   }, this));
-  this.optionFilterElem.on('focus', $.proxy(function(e) {
+  Romo.on(this.optionFilterElem, 'focus', Romo.proxy(function(e) {
     if (this.blurTimeoutId !== undefined) {
       clearTimeout(this.blurTimeoutId);
     }
     // manually make the elem focused when its filter is focused
     this.optionFilterFocused = true;
-    this.romoDropdown.elem.addClass(this.focusStyleClass);
+    Romo.addClass(this.romoDropdown.elem, this.focusStyleClass);
   }, this));
-  this.optionFilterElem.on('blur', $.proxy(function(e) {
+  Romo.on(this.optionFilterElem, 'blur', Romo.proxy(function(e) {
     // remove any manual elem focus when its filter is blurred
     this.optionFilterFocused = false;
-    this.romoDropdown.elem.removeClass(this.focusStyleClass);
+    Romo.removeClass(this.romoDropdown.elem, this.focusStyleClass);
   }, this));
 
-  this.romoDropdown.elem.on('romoDropdown:popupOpen', $.proxy(function(e, romoDropdown) {
-    this.optionFilterElem.trigger('indicatorTextInput:triggerPlaceIndicator');
+  Romo.on(this.romoDropdown.elem, 'romoDropdown:popupOpen', Romo.proxy(function(e, romoDropdown) {
+    Romo.trigger(this.optionFilterElem, 'indicatorTextInput:triggerPlaceIndicator');
     this.optionFilterElem.focus();
     this._filterOptionElems();
     this.openOnFocus = false;
   }, this));
-  this.romoDropdown.elem.on('romoDropdown:popupClose', $.proxy(function(e, romoDropdown) {
-    this.optionFilterElem.val('');
+  Romo.on(this.romoDropdown.elem, 'romoDropdown:popupClose', Romo.proxy(function(e, romoDropdown) {
+    this.optionFilterElem.value = '';
     /*
     don't call `_filterOptionElems()` here.  we need to keep the option markup as is
     until the popup is opened again so selecting an option works.  selecting an option
     depends on the selected item elem method which requires the markup to be in place
     */
   }, this));
-  this.romoDropdown.elem.on('romoDropdown:popupClosedByEsc', $.proxy(function(e, romoDropdown) {
+  Romo.on(this.romoDropdown.elem, 'romoDropdown:popupClosedByEsc', Romo.proxy(function(e, romoDropdown) {
     this.romoDropdown.elem.focus();
   }, this));
-  this.optionFilterElem.on('click', $.proxy(function(e) {
+  Romo.on(this.optionFilterElem, 'click', Romo.proxy(function(e) {
     if (e !== undefined) {
       e.stopPropagation();
     }
   }, this));
-  this.romoDropdown.popupElem.on('click', $.proxy(function(e) {
+  Romo.on(this.romoDropdown.popupElem, 'click', Romo.proxy(function(e) {
     this.optionFilterElem.focus();
   }, this));
 
   // 0.1 secs, want it to be really responsive
-  this.optionFilterElem.attr('data-onkey-delay-ms', 100);
-  this.optionFilterElem.on('romoOnkey:trigger', $.proxy(function(e, triggerEvent, romoOnkey) {
+  Romo.setData(this.optionFilterElem, 'data-onkey-delay-ms', 100);
+  Romo.on(this.optionFilterElem, 'romoOnkey:trigger', Romo.proxy(function(e, triggerEvent, romoOnkey) {
     this._filterOptionElems();
   }, this));
 }
 
 RomoOptionListDropdown.prototype._filterOptionElems = function() {
-  this.elem.trigger('romoOptionListDropdown:filterChange', [this.optionFilterElem.val(), this]);
+  Romo.trigger(this.elem, 'romoOptionListDropdown:filterChange', [this.optionFilterElem.value, this]);
 }
 
 RomoOptionListDropdown.prototype._updateOptionsListUI = function(highlightOptionElem) {
@@ -361,35 +368,35 @@ RomoOptionListDropdown.prototype._updateOptionsListUI = function(highlightOption
 }
 
 RomoOptionListDropdown.prototype._selectHighlightedItem = function() {
-  var curr = this._getHighlightedItemElem();
-  if (curr.length !== 0) {
+  var currElem = this._getHighlightedItemElem();
+  if (currElem !== undefined) {
     var prevValue = this.prevValue;
-    var newValue  = curr.data('romo-option-list-dropdown-option-value');
-    var newText   = curr.data('romo-option-list-dropdown-option-display-text');
+    var newValue  = Romo.data(currElem, 'romo-option-list-dropdown-option-value');
+    var newText   = Romo.data(currElem, 'romo-option-list-dropdown-option-display-text');
 
     this.romoDropdown.doPopupClose();
 
-    this.elem.trigger('romoOptionListDropdown:itemSelected', [newValue, newText, this]);
+    Romo.trigger(this.elem, 'romoOptionListDropdown:itemSelected', [newValue, newText, this]);
     if (newValue !== prevValue) {
       this.doSetSelectedItem(newValue);
       // always publish the item selected events before publishing any change events
-      this.elem.trigger('romoOptionListDropdown:newItemSelected', [newValue, newText, this]);
-      this.elem.trigger('romoOptionListDropdown:change', [newValue, prevValue, this]);
+      Romo.trigger(this.elem, 'romoOptionListDropdown:newItemSelected', [newValue, newText, this]);
+      Romo.trigger(this.elem, 'romoOptionListDropdown:change', [newValue, prevValue, this]);
     }
   }
 }
 
 RomoOptionListDropdown.prototype._onPopupOpen = function(e) {
-  if (this.elem.hasClass('disabled') === false) {
+  if (Romo.hasClass(this.elem, 'disabled') === false) {
     this._highlightItem(this.selectedItemElem());
     this._scrollTopToItem(this.selectedItemElem());
   }
-  $('body').on('keydown', $.proxy(this._onPopupOpenBodyKeyDown, this));
+  Romo.on(Romo.f('body')[0], 'keydown', Romo.proxy(this._onPopupOpenBodyKeyDown, this));
 }
 
 RomoOptionListDropdown.prototype._onPopupClose = function(e) {
-  this._highlightItem($());
-  $('body').off('keydown', $.proxy(this._onPopupOpenBodyKeyDown, this));
+  this._highlightItem(undefined);
+  Romo.off(Romo.f('body')[0], 'keydown', Romo.proxy(this._onPopupOpenBodyKeyDown, this));
 }
 
 RomoOptionListDropdown.prototype._onItemEnter = function(e) {
@@ -397,7 +404,7 @@ RomoOptionListDropdown.prototype._onItemEnter = function(e) {
     e.preventDefault();
     e.stopPropagation();
   }
-  this._highlightItem($(e.target));
+  this._highlightItem(e.target);
 }
 
 RomoOptionListDropdown.prototype._onItemClick = function(e) {
@@ -425,27 +432,34 @@ RomoOptionListDropdown.prototype._onPopupOpenBodyKeyDown = function(e) {
     e.stopPropagation();
   }
 
-  var scroll = this.romoDropdown.bodyElem;
+  var scrollElem   = this.romoDropdown.bodyElem;
+  var scrollOffset = Romo.offset(scrollElem);
+  var scrollHeight = parseInt(Romo.css(scrollElem, 'height'));
 
   if (e.keyCode === 38 /* Up */) {
-    var prev = this._prevListItem();
+    var prevElem   = this._prevListItem();
+    var prevOffset = Romo.offset(prevElem);
 
-    this._highlightItem(prev);
-    if (scroll.offset().top > prev.offset().top) {
-      this._scrollTopToItem(prev);
-    } else if ((scroll.offset().top + scroll.height()) < prev.offset().top) {
-      this._scrollTopToItem(prev);
+    this._highlightItem(prevElem);
+
+    if (scrollOffset.top > prevOffset.top) {
+      this._scrollTopToItem(prevElem);
+    } else if ((scrollOffset.top + scrollHeight) < prevOffset.top) {
+      this._scrollTopToItem(prevElem);
     }
 
     return false;
   } else if(e.keyCode === 40 /* Down */) {
-    var next = this._nextListItem();
+    var nextElem   = this._nextListItem();
+    var nextOffset = Romo.offset(nextElem);
+    var nextHeight = parseInt(Romo.css(nextElem, 'height'));
 
-    this._highlightItem(next);
-    if ((scroll.offset().top + scroll.height()) < next.offset().top + next.height()) {
-      this._scrollBottomToItem(next);
-    } else if (scroll.offset().top > next.offset().top) {
-      this._scrollTopToItem(next);
+    this._highlightItem(nextElem);
+
+    if ((scrollOffset.top + scrollHeight) < (nextOffset.top + nextHeight)) {
+      this._scrollBottomToItem(nextElem);
+    } else if (scrollOffset.top > nextOffset.top) {
+      this._scrollTopToItem(nextElem);
     }
 
     return false;
@@ -461,7 +475,7 @@ RomoOptionListDropdown.prototype._onPopupOpenBodyKeyDown = function(e) {
 }
 
 RomoOptionListDropdown.prototype._onElemKeyDown = function(e) {
-  if (this.elem.hasClass('disabled') === false) {
+  if (Romo.hasClass(this.elem, 'disabled') === false) {
     if (this.romoDropdown.popupClosed()) {
       if (e.keyCode === 40 /* Down */  || e.keyCode === 38 /* Up */) {
         this.romoDropdown.doPopupOpen();
@@ -472,7 +486,7 @@ RomoOptionListDropdown.prototype._onElemKeyDown = function(e) {
         if (e.metaKey === false) {
           e.preventDefault();
           if (e.keyCode !== 8) { /* Backspace */
-            this.optionFilterElem.val(e.key);
+            this.optionFilterElem.value = e.key;
           }
           this.romoDropdown.doPopupOpen();
         }
@@ -486,112 +500,118 @@ RomoOptionListDropdown.prototype._onElemKeyDown = function(e) {
   return true;
 }
 
-RomoOptionListDropdown.prototype._scrollTopToItem = function(item) {
-  if (item.size() > 0) {
-    var scroll = this.romoDropdown.bodyElem;
-    scroll.scrollTop(0);
+RomoOptionListDropdown.prototype._scrollTopToItem = function(itemElem) {
+  if (itemElem !== undefined) {
+    var scrollElem = this.romoDropdown.bodyElem;
+    scrollElem.scrollTop = 0;
 
-    var scrollOffsetTop = scroll.offset().top;
-    var selOffsetTop = item.offset().top;
-    var selOffset = item.height() / 2;
+    var scrollOffsetTop = Romo.offset(scrollElem).top;
+    var selOffsetTop    = Romo.offset(itemElem).top;
+    var selOffset       = parseInt(Romo.css(itemElem, 'height')) / 2;
 
-    scroll.scrollTop(selOffsetTop - scrollOffsetTop - selOffset);
+    scrollElem.scrollTop = selOffsetTop - scrollOffsetTop - selOffset;
   }
 }
 
-RomoOptionListDropdown.prototype._scrollBottomToItem = function(item) {
-  if (item.size() > 0) {
-    var scroll = this.romoDropdown.bodyElem;
-    scroll.scrollTop(0);
+RomoOptionListDropdown.prototype._scrollBottomToItem = function(itemElem) {
+  if (itemElem !== undefined) {
+    var scrollElem = this.romoDropdown.bodyElem;
+    scrollElem.scrollTop = 0;
 
-    var scrollOffsetTop = scroll.offset().top;
-    var selOffsetTop = item.offset().top;
-    var selOffset = scroll[0].offsetHeight - item.height();
+    var scrollOffsetTop = Romo.offset(scrollElem).top;
+    var selOffsetTop    = Romo.offset(itemElem).top;
+    var selOffset       = scrollElem.offsetHeight - parseInt(Romo.css(itemElem, 'height'));
 
-    scroll.scrollTop(selOffsetTop - scrollOffsetTop - selOffset);
+    scrollElem.scrollTop = selOffsetTop - scrollOffsetTop - selOffset;
   }
 }
 
 RomoOptionListDropdown.prototype._nextListItem = function() {
-  var curr = this._getHighlightedItemElem();
-  if (curr.length === 0) {
-    return curr;
+  var currElem = this._getHighlightedItemElem();
+  if (currElem === undefined) {
+    return currElem;
   }
-  var next = Romo.selectNext(curr, this.itemSelector+', UL.romo-option-list-optgroup');
-  if (next.length === 0) {
-    // curr is either the last ungrouped opt elem in the overall
+
+  var nextElem = Romo.next(currElem, this.itemSelector+', UL.romo-option-list-optgroup');
+  if (nextElem == undefined) {
+    // currElem is either the last ungrouped opt elem in the overall
     // list OR is the last opt elem in a grouped list.
 
     // if the hightlighted opt elem is in an opt group list, use
     // its list as the reference elem.  otherwise keep using the
     // hightlighted opt elem itself.
-    curr = curr.closest('UL.romo-option-list-optgroup') || curr;
-    next = Romo.selectNext(curr, this.itemSelector+', UL.romo-option-list-optgroup');
+    currElem = Romo.closest(currElem, 'UL.romo-option-list-optgroup') || currElem;
+    nextElem = Romo.next(currElem, this.itemSelector+', UL.romo-option-list-optgroup');
   }
-  while (next.hasClass('romo-option-list-optgroup') && next.children().size() === 0) {
+  while (Romo.hasClass(nextElem, 'romo-option-list-optgroup') && Romo.children(nextElem).length === 0) {
     // keep trying until you find a opt group list with options or an option or nothing
-    curr = next;
-    next = Romo.selectNext(curr, this.itemSelector+', UL.romo-option-list-optgroup');
+    currElem = nextElem;
+    nextElem = Romo.next(currElem, this.itemSelector+', UL.romo-option-list-optgroup');
   }
-  if (next.length === 0) {
-    // curr is the last opt elem (grouped or not) in the overall
+  if (nextElem === undefined) {
+    // currElem is the last opt elem (grouped or not) in the overall
     // list.  get the the first opt elem in the overall list
-    next = this.romoDropdown.bodyElem.find(this.itemSelector).first();
-  } else if (next.hasClass('romo-option-list-optgroup')) {
-    // curr (grouped or not) is before an opt group list. get
+    nextElem = Romo.find(this.romoDropdown.bodyElem, this.itemSelector)[0];
+  } else if (Romo.hasClass(nextElem, 'romo-option-list-optgroup')) {
+    // currElem (grouped or not) is before an opt group list. get
     // the first opt elem in that list.
-    next = next.find(this.itemSelector).first();
+    nextElem = Romo.find(nextElem, this.itemSelector)[0];
   }
-  // otherwise curr (grouped or not) is before an opt elem.
+  // otherwise currElem (grouped or not) is before an opt elem.
   // use that opt elem.
 
-  return next;
+  return nextElem;
 }
 
 RomoOptionListDropdown.prototype._prevListItem = function() {
-  var curr = this._getHighlightedItemElem();
-  if (curr.length === 0) {
-    return curr;
+  var currElem = this._getHighlightedItemElem();
+  if (currElem === undefined) {
+    return currElem;
   }
 
-  var prev = Romo.selectPrev(curr, this.itemSelector+', UL.romo-option-list-optgroup');
-  if (prev.length === 0) {
-    // curr is either the first ungrouped opt elem in the overall
+  var prevElem = Romo.prev(currElem, this.itemSelector+', UL.romo-option-list-optgroup');
+  if (prevElem === undefined) {
+    // currElem is either the first ungrouped opt elem in the overall
     // list OR is the first opt elem in a grouped list
 
     // if the hightlighted opt elem is in an opt group list, use
     // its list as the reference elem.  otherwise keep using the
     // hightlighted opt elem itself.
-    curr = curr.closest('UL.romo-option-list-optgroup') || curr;
-    prev = Romo.selectPrev(curr, this.itemSelector+', UL.romo-option-list-optgroup');
+    currElem = Romo.closest(currElem, 'UL.romo-option-list-optgroup') || currElem;
+    prevElem = Romo.prev(currElem, this.itemSelector+', UL.romo-option-list-optgroup');
   }
-  while (prev.hasClass('romo-option-list-optgroup') && prev.children().size() === 0) {
+  while (Romo.hasClass(prevElem, 'romo-option-list-optgroup') && Romo.children(prevElem).length === 0) {
     // keep trying until you find a opt group list with options or an option or nothing
-    curr = prev;
-    prev = Romo.selectPrev(curr, this.itemSelector+', UL.romo-option-list-optgroup');
+    currElem = prevElem;
+    prevElem = Romo.prev(currElem, this.itemSelector+', UL.romo-option-list-optgroup');
   }
-  if (prev.length === 0) {
-    // curr is the first opt elem (grouped or not) in the overall
+  if (prevElem === undefined) {
+    // currElem is the first opt elem (grouped or not) in the overall
     // list.  get the the last opt elem in the overall list
-    prev = this.romoDropdown.bodyElem.find(this.itemSelector).last();
-  } else if (prev.hasClass('romo-option-list-optgroup')) {
-    // curr (grouped or not) is after an opt group list.  get
+    var itemElems = Romo.find(this.romoDropdown.bodyElem, this.itemSelector);
+    prevElem = itemElems[itemElems.length - 1];
+  } else if (Romo.hasClass(prevElem, 'romo-option-list-optgroup')) {
+    // currElem (grouped or not) is after an opt group list.  get
     // the last opt elem in that list.
-    prev = prev.find(this.itemSelector).last();
+    var childItemElems = Romo.find(prevElem, this.itemSelector);
+    prevElem = childItemElems[childItemElems.length - 1];
   }
-  // otherwise curr (grouped or not) is after an opt elem.
+  // otherwise currElem (grouped or not) is after an opt elem.
   // use that opt elem.
 
-  return prev;
+  return prevElem;
 }
 
-RomoOptionListDropdown.prototype._highlightItem = function(item) {
-  this._getHighlightedItemElem().removeClass('romo-option-list-dropdown-highlight');
-  item.addClass('romo-option-list-dropdown-highlight');
+RomoOptionListDropdown.prototype._highlightItem = function(itemElem) {
+  var highlightedItemElem = this._getHighlightedItemElem()
+  if (highlightedItemElem !== undefined) {
+    Romo.removeClass(highlightedItemElem, 'romo-option-list-dropdown-highlight');
+  }
+  Romo.addClass(itemElem, 'romo-option-list-dropdown-highlight');
 }
 
 RomoOptionListDropdown.prototype._getHighlightedItemElem = function() {
-  return this.romoDropdown.bodyElem.find('LI.romo-option-list-dropdown-highlight');
+  return Romo.find(this.romoDropdown.bodyElem, 'LI.romo-option-list-dropdown-highlight')[0];
 }
 
 Romo.onInitUI(function(elem) {
