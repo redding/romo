@@ -48,12 +48,12 @@ RomoDropdown.prototype.doInitPopup = function() {
   var popupParentElem = Romo.closest(this.elem, Romo.data(this.elem, 'romo-dropdown-append-to-closest') || 'body');
   Romo.append(popupParentElem, this.popupElem);
 
-  this.popupElem.on('modal:popupOpen', Romo.proxy(function(e) {
+  Romo.on(this.popupElem, 'romoModal:popupOpen', Romo.proxy(function(e) {
     this.doUnBindWindowBodyClick();
     this.doUnBindWindowBodyKeyUp();
     this.doUnBindElemKeyUp();
   }, this));
-  this.popupElem.on('modal:popupClose', Romo.proxy(function(e) {
+  Romo.on(this.popupElem, 'romoModal:popupClose', Romo.proxy(function(e) {
     this.doBindWindowBodyClick();
     this.doBindWindowBodyKeyUp();
     this.doBindElemKeyUp();
@@ -137,7 +137,7 @@ RomoDropdown.prototype.doResetBody = function() {
 }
 
 RomoDropdown.prototype.doLoadBodyStart = function() {
-  this.bodyElem.innerHTML = '';
+  Romo.updateHtml(this.bodyElem, '');
   this.doInitBody();
   this.doPlacePopupElem();
   Romo.trigger(this.elem, 'romoDropdown:loadBodyStart', [this]);
@@ -247,7 +247,7 @@ RomoDropdown.prototype.doPopupClose = function() {
 
   // clear the content elem markup if configured to
   if (Romo.data(this.elem, 'romo-dropdown-clear-content') === true) {
-    this.contentElem.innerHTML = '';
+    Romo.updateHtml(this.contentElem, '');
   }
 
   Romo.trigger(this.elem, 'romoDropdown:popupClose', [this]);
@@ -283,13 +283,13 @@ RomoDropdown.prototype.onElemKeyUp = function(e) {
 RomoDropdown.prototype.doBindWindowBodyClick = function() {
   var bodyElem = Romo.f('body')[0];
   Romo.on(bodyElem, 'click', Romo.proxy(this.onWindowBodyClick, this));
-  Romo.on(bodyElem, 'modal:mousemove', Romo.proxy(this.onWindowBodyClick, this));
+  Romo.on(bodyElem, 'romoModal:mousemove', Romo.proxy(this.onWindowBodyClick, this));
 }
 
 RomoDropdown.prototype.doUnBindWindowBodyClick = function() {
   var bodyElem = Romo.f('body')[0];
   Romo.off(bodyElem, 'click', Romo.proxy(this.onWindowBodyClick, this));
-  Romo.off(bodyElem, 'modal:mousemove', Romo.proxy(this.onWindowBodyClick, this));
+  Romo.off(bodyElem, 'romoModal:mousemove', Romo.proxy(this.onWindowBodyClick, this));
 }
 
 RomoDropdown.prototype.onWindowBodyClick = function(e) {
