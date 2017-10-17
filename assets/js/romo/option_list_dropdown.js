@@ -36,16 +36,10 @@ RomoOptionListDropdown.prototype.selectedItemElem = function() {
 }
 
 RomoOptionListDropdown.prototype.selectedItemValue = function() {
-  // need to use `attr` so it will always read from the DOM
-  // using `data` works the first time but does some elem caching or something
-  // so it won't work subsequent times.
   return Romo.data(this.elem, 'romo-option-list-dropdown-selected-value');
 }
 
 RomoOptionListDropdown.prototype.selectedItemText = function() {
-  // need to use `attr` so it will always read from the DOM
-  // using `data` works the first time but does some elem caching or something
-  // so it won't work subsequent times.
   return Romo.data(this.elem, 'romo-option-list-dropdown-selected-text');
 }
 
@@ -246,7 +240,6 @@ RomoOptionListDropdown.prototype._buildListOptionElem = function(item) {
 
 RomoOptionListDropdown.prototype._buildListOptGroupElem = function(item) {
   var itemElem = Romo.elems('<li data-romo-option-list-dropdown-item="optgroup"></li>')[0];
-
   itemElem.innerText = item.label;
 
   return itemElem;
@@ -337,9 +330,7 @@ RomoOptionListDropdown.prototype._bindDropdownOptionFilter = function() {
     this.romoDropdown.elem.focus();
   }, this));
   Romo.on(this.optionFilterElem, 'click', Romo.proxy(function(e) {
-    if (e !== undefined) {
-      e.stopPropagation();
-    }
+    e.stopPropagation();
   }, this));
   Romo.on(this.romoDropdown.popupElem, 'click', Romo.proxy(function(e) {
     this.optionFilterElem.focus();
@@ -379,8 +370,8 @@ RomoOptionListDropdown.prototype._selectHighlightedItem = function() {
     Romo.trigger(this.elem, 'romoOptionListDropdown:itemSelected', [newValue, newText, this]);
     if (newValue !== prevValue) {
       this.doSetSelectedItem(newValue);
-      // always publish the item selected events before publishing any change events
       Romo.trigger(this.elem, 'romoOptionListDropdown:newItemSelected', [newValue, newText, this]);
+      // always publish the item selected events before publishing any change events
       Romo.trigger(this.elem, 'romoOptionListDropdown:change', [newValue, prevValue, this]);
     }
   }
@@ -400,11 +391,8 @@ RomoOptionListDropdown.prototype._onPopupClose = function(e) {
 }
 
 RomoOptionListDropdown.prototype._onItemEnter = function(e) {
-  if (e !== undefined) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
   this._highlightItem(e.target);
+  return false;
 }
 
 RomoOptionListDropdown.prototype._onItemClick = function(e) {
@@ -412,11 +400,8 @@ RomoOptionListDropdown.prototype._onItemClick = function(e) {
     clearTimeout(this.blurTimeoutId);
     this.blurTimeoutId = undefined;
   }
-  if (e !== undefined) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
   this._selectHighlightedItem();
+  return false;
 }
 
 RomoOptionListDropdown.prototype._onPopupMouseDown = function(e) {
@@ -428,9 +413,7 @@ RomoOptionListDropdown.prototype._onPopupMouseUp = function(e) {
 }
 
 RomoOptionListDropdown.prototype._onPopupOpenBodyKeyDown = function(e) {
-  if (e !== undefined) {
-    e.stopPropagation();
-  }
+  e.stopPropagation();
 
   var scrollElem   = this.romoDropdown.bodyElem;
   var scrollOffset = Romo.offset(scrollElem);
