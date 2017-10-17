@@ -118,6 +118,11 @@ RomoTooltip.prototype.doSetContent = function(value) {
   this.doPlacePopupElem();
 }
 
+RomoTooltip.prototype.doSetPopupZIndex = function(relativeElem) {
+  var relativeZIndex = Romo.parseZIndex(relativeElem);
+  Romo.setStyle(this.popupElem, 'z-index', relativeZIndex + 1100); // see z-index.css
+}
+
 // private
 
 RomoDropdown.prototype._bindElem = function() {
@@ -167,7 +172,7 @@ RomoDropdown.prototype._bindPopup = function() {
   this.popupAlignment = Romo.data(this.elem, 'romo-tooltip-alignment') || 'center';
   Romo.setData(this.popupElem, 'romo-tooltip-alignment', this.popupAlignment);
 
-  this._setPopupZIndex(this.elem);
+  this.doSetPopupZIndex(this.elem);
 
   // don't propagate click events on the popup elem.  this prevents the popup
   // from closing when clicked (see body click event bind on popup open)
@@ -295,11 +300,6 @@ RomoTooltip.prototype._onSetContent = function(e, value) {
 
 RomoTooltip.prototype._onResizeWindow = function(e) {
   this.doPlacePopupElem();
-}
-
-RomoTooltip.prototype._setPopupZIndex = function(relativeElem) {
-  var relativeZIndex = Romo.parseZIndex(relativeElem);
-  Romo.setStyle(this.popupElem, 'z-index', relativeZIndex + 1100); // see z-index.css
 }
 
 RomoTooltip.prototype._getPopupMaxAvailableHeight = function(position) {
