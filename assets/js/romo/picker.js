@@ -128,7 +128,9 @@ RomoPicker.prototype._bindSelectedOptionsList = function() {
 }
 
 RomoPicker.prototype._bindOptionListDropdown = function() {
-  this.romoOptionListDropdown = this._buildOptionListDropdownElem().romoOptionListDropdown(this.elem)[0];
+  this.romoOptionListDropdown = new RomoOptionListDropdown(
+    this._buildOptionListDropdownElem()
+  );
 
   this.romoOptionListDropdown.elem.on('romoOptionListDropdown:romoDropdown:toggle', $.proxy(function(e, romoDropdown, optionListDropdown) {
     this.elem.trigger('romoPicker:romoDropdown:toggle', [romoDropdown, this]);

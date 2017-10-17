@@ -133,7 +133,7 @@ RomoSelectDropdown.prototype._bindElem = function() {
     this.elem.trigger('romoOptionListDropdown:triggerPopupClose', []);
   }, this));
 
-  this.romoOptionListDropdown = this.elem.romoOptionListDropdown()[0];
+  this.romoOptionListDropdown = new RomoOptionListDropdown(this.elem);
 
   this.elem.on('romoOptionListDropdown:filterChange', $.proxy(function(e, filterValue, romoOptionListDropdown) {
     var elems    = this.optionElemsParent.find('OPTION');
