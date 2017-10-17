@@ -1,20 +1,21 @@
-var RomoSelectDropdown = function(element, optionElemsParent) {
-  this.elem = $(element);
+var RomoSelectDropdown = function(elem, optionElemsParentElem) {
+  this.elem = elem;
 
-  this.filterHiddenClass  = 'romo-select-filter-hidden';
-  this.optionElemSelector = ':not(.'+this.filterHiddenClass+')';
-  this.optionElemsParent  = (optionElemsParent || this.elem.find('.romo-select-dropdown-options-parent'));
+  this.filterHiddenClass     = 'romo-select-filter-hidden';
+  this.optionElemSelector    = ':not(.'+this.filterHiddenClass+')';
+  this.optionElemsParentElem = (optionElemsParentElem || Romo.find(this.elem, '.romo-select-dropdown-options-parent'));
 
   this.doInit();
   this._bindElem();
 
-  if (this.elem.attr('id') !== undefined) {
-    $('label[for="'+this.elem.attr('id')+'"]').on('click', $.proxy(function(e) {
+  if (Romo.attr(this.elem, 'id') !== undefined) {
+    var labelElem = Romo.f('label[for="'+Romo.attr(this.elem, 'id')+'"]')[0];
+    Romo.on(labelElem, 'click', Romo.proxy(function(e) {
       this.elem.focus();
     }, this));
   }
 
-  this.elem.trigger('selectDropdown:ready', [this]);
+  Romo.trigger(this.elem, 'romoSelectDropdown:ready', [this]);
 }
 
 RomoSelectDropdown.prototype.bodyElem = function() {
@@ -72,108 +73,111 @@ RomoSelectDropdown.prototype.doFocus = function(openOnFocus) {
 /* private */
 
 RomoSelectDropdown.prototype._bindElem = function() {
-  this.elem.attr('data-romo-option-list-focus-style-class', 'romo-select-focus');
+  Romo.setData(this.elem, 'romo-option-list-focus-style-class', 'romo-select-focus');
 
-  if (this.elem.data('romo-select-dropdown-no-filter') !== undefined) {
-    this.elem.attr('data-romo-option-list-dropdown-no-filter', this.elem.data('romo-select-dropdown-no-filter'));
+  if (Romo.data(this.elem, 'romo-select-dropdown-no-filter') !== undefined) {
+    Romo.setData(this.elem, 'romo-option-list-dropdown-no-filter', Romo.data(this.elem, 'romo-select-dropdown-no-filter'));
   }
-  if (this.elem.data('romo-select-dropdown-filter-placeholder') !== undefined) {
-    this.elem.attr('data-romo-option-list-dropdown-filter-placeholder', this.elem.data('romo-select-dropdown-filter-placeholder'));
+  if (Romo.data(this.elem, 'romo-select-dropdown-filter-placeholder') !== undefined) {
+    Romo.setData(this.elem, 'romo-option-list-dropdown-filter-placeholder', Romo.data(this.elem, 'romo-select-dropdown-filter-placeholder'));
   }
-  if (this.elem.data('romo-select-dropdown-filter-indicator') !== undefined) {
-    this.elem.attr('data-romo-option-list-dropdown-filter-indicator', this.elem.data('romo-select-dropdown-filter-indicator'));
+  if (Romo.data(this.elem, 'romo-select-dropdown-filter-indicator') !== undefined) {
+    Romo.setData(this.elem, 'romo-option-list-dropdown-filter-indicator', Romo.data(this.elem, 'romo-select-dropdown-filter-indicator'));
   }
-  if (this.elem.data('romo-select-dropdown-filter-indicator-width-px') !== undefined) {
-    this.elem.attr('data-romo-option-list-dropdown-filter-indicator-width-px', this.elem.data('romo-select-dropdown-filter-indicator-width-px'));
+  if (Romo.data(this.elem, 'romo-select-dropdown-filter-indicator-width-px') !== undefined) {
+    Romo.setData(this.elem, 'romo-option-list-dropdown-filter-indicator-width-px', Romo.data(this.elem, 'romo-select-dropdown-filter-indicator-width-px'));
   }
-  if (this.elem.data('romo-select-dropdown-open-on-focus') !== undefined) {
-    this.elem.attr('data-romo-option-list-dropdown-open-on-focus', this.elem.data('romo-select-dropdown-open-on-focus'));
+  if (Romo.data(this.elem, 'romo-select-dropdown-open-on-focus') !== undefined) {
+    Romo.setData(this.elem, 'romo-option-list-dropdown-open-on-focus', Romo.data(this.elem, 'romo-select-dropdown-open-on-focus'));
   }
 
-  this.elem.on('romoOptionListDropdown:romoDropdown:toggle', $.proxy(function(e, romoDropdown) {
-    this.elem.trigger('selectDropdown:romoDropdown:toggle', [romoDropdown, this]);
+  Romo.on(this.elem, 'romoOptionListDropdown:romoDropdown:toggle', Romo.proxy(function(e, romoDropdown) {
+    Romo.trigger(this.elem, 'romoSelectDropdown:romoDropdown:toggle', [romoDropdown, this]);
   }, this));
-  this.elem.on('romoOptionListDropdown:romoDropdown:popupOpen', $.proxy(function(e, romoDropdown) {
-    this.elem.trigger('selectDropdown:romoDropdown:popupOpen', [romoDropdown, this]);
+  Romo.on(this.elem, 'romoOptionListDropdown:romoDropdown:popupOpen', Romo.proxy(function(e, romoDropdown) {
+    Romo.trigger(this.elem, 'romoSelectDropdown:romoDropdown:popupOpen', [romoDropdown, this]);
   }, this));
-  this.elem.on('romoOptionListDropdown:romoDropdown:popupClose', $.proxy(function(e, romoDropdown) {
-    this.elem.trigger('selectDropdown:romoDropdown:popupClose', [romoDropdown, this]);
+  Romo.on(this.elem, 'romoOptionListDropdown:romoDropdown:popupClose', Romo.proxy(function(e, romoDropdown) {
+    Romo.trigger(this.elem, 'romoSelectDropdown:romoDropdown:popupClose', [romoDropdown, this]);
   }, this));
-  this.elem.on('romoOptionListDropdown:itemSelected', $.proxy(function(e, itemValue, itemDisplayText, romoOptionListDropdown) {
-    this.elem.trigger('selectDropdown:itemSelected', [itemValue, itemDisplayText, this]);
+  Romo.on(this.elem, 'romoOptionListDropdown:itemSelected', Romo.proxy(function(e, itemValue, itemDisplayText, romoOptionListDropdown) {
+    Romo.trigger(this.elem, 'romoSelectDropdown:itemSelected', [itemValue, itemDisplayText, this]);
   }, this));
-  this.elem.on('romoOptionListDropdown:newItemSelected', $.proxy(function(e, itemValue, itemDisplayText, romoOptionListDropdown) {
-    var custOptElem = this.optionElemsParent.find('OPTION[data-romo-select-dropdown-custom-option="true"]');
-    if (this.optionElemsParent.find('OPTION[value="'+itemValue+'"]').length === 0){
+  Romo.on(this.elem, 'romoOptionListDropdown:newItemSelected', Romo.proxy(function(e, itemValue, itemDisplayText, romoOptionListDropdown) {
+    var custOptElem = Romo.find(this.optionElemsParentElem, 'OPTION[data-romo-select-dropdown-custom-option="true"]')[0];
+    if (Romo.find(this.optionElemsParentElem, 'OPTION[value="'+itemValue+'"]').length === 0){
       // a custom value is being selected. add a custom option elem and update its value/text
-      if (custOptElem.length === 0) {
-        this.optionElemsParent.append('<option data-romo-select-dropdown-custom-option="true"></option>');
-        custOptElem = this.optionElemsParent.find('OPTION[data-romo-select-dropdown-custom-option="true"]');
+      if (custOptElem === undefined) {
+        Romo.appendHtml(this.optionElemsParentElem, '<option data-romo-select-dropdown-custom-option="true"></option>');
+        custOptElem = Romo.find(this.optionElemsParentElem, 'OPTION[data-romo-select-dropdown-custom-option="true"]')[0];
       }
-      custOptElem.attr('value', itemValue);
-      custOptElem.text(itemDisplayText);
-    } else if (custOptElem.length !== 0) {
+      Romo.setAttr(custOptElem, 'value', itemValue);
+      custOptElem.innerText = itemDisplayText;
+    } else if (custOptElem !== undefined) {
       // a non custom value is being selected. remove any existing custom option
-      custOptElem.remove();
+      Romo.remove(custOptElem);
     }
-    this.elem.trigger('selectDropdown:newItemSelected', [itemValue, itemDisplayText, this]);
+    Romo.trigger(this.elem, 'romoSelectDropdown:newItemSelected', [itemValue, itemDisplayText, this]);
   }, this));
-  this.elem.on('romoOptionListDropdown:change', $.proxy(function(e, newValue, prevValue, romoOptionListDropdown) {
-    this.elem.trigger('selectDropdown:change', [newValue, prevValue, this]);
+  Romo.on(this.elem, 'romoOptionListDropdown:change', Romo.proxy(function(e, newValue, prevValue, romoOptionListDropdown) {
+    Romo.trigger(this.elem, 'romoSelectDropdown:change', [newValue, prevValue, this]);
   }, this));
 
 
-  this.elem.on('selectDropdown:triggerToggle', $.proxy(function(e) {
-    this.elem.trigger('romoOptionListDropdown:triggerToggle', []);
+  Romo.on(this.elem, 'romoSelectDropdown:triggerToggle', Romo.proxy(function(e) {
+    Romo.trigger(this.elem, 'romoOptionListDropdown:triggerToggle', []);
   }, this));
-  this.elem.on('selectDropdown:triggerPopupOpen', $.proxy(function(e) {
-    this.elem.trigger('romoOptionListDropdown:triggerPopupOpen', []);
+  Romo.on(this.elem, 'romoSelectDropdown:triggerPopupOpen', Romo.proxy(function(e) {
+    Romo.trigger(this.elem, 'romoOptionListDropdown:triggerPopupOpen', []);
   }, this));
-  this.elem.on('selectDropdown:triggerPopupClose', $.proxy(function(e) {
-    this.elem.trigger('romoOptionListDropdown:triggerPopupClose', []);
+  Romo.on(this.elem, 'romoSelectDropdown:triggerPopupClose', Romo.proxy(function(e) {
+    Romo.trigger(this.elem, 'romoOptionListDropdown:triggerPopupClose', []);
   }, this));
 
   this.romoOptionListDropdown = new RomoOptionListDropdown(this.elem);
 
-  this.elem.on('romoOptionListDropdown:filterChange', $.proxy(function(e, filterValue, romoOptionListDropdown) {
-    var elems    = this.optionElemsParent.find('OPTION');
+  Romo.on(this.elem, 'romoOptionListDropdown:filterChange', Romo.proxy(function(e, filterValue, romoOptionListDropdown) {
+    var elems    = Romo.find(this.optionElemsParentElem, 'OPTION');
     var wbFilter = new RomoWordBoundaryFilter(filterValue, elems, function(elem) {
       // The romo word boundary filter by default considers a space, "-" and "_"
       // as word boundaries.  We want to also consider other non-word characters
       // (such as ":", "/", ".", "?", "=", "&") as word boundaries as well.
-      return elem[0].textContent.replace(/\W/g, ' ');
+      return elem.textContent.replace(/\W/g, ' ');
     });
 
-    wbFilter.matchingElems.removeClass(this.filterHiddenClass);
-    wbFilter.notMatchingElems.addClass(this.filterHiddenClass);
+    wbFilter.matchingElems.forEach(Romo.proxy(function(matchingElem) {
+      Romo.removeClass(matchingElem, this.filterHiddenClass);
+    }, this));
+    wbFilter.notMatchingElems.forEach(Romo.proxy(function(notMatchingElem) {
+      Romo.addClass(notMatchingElem, this.filterHiddenClass);
+    }, this));
     this._setListItems();
 
     if (filterValue !== '') {
-      this.romoOptionListDropdown.elem.trigger('romoOptionListDropdown:triggerListOptionsUpdate', [this.optItemElems().first()]);
+      Romo.trigger(this.romoOptionListDropdown.elem, 'romoOptionListDropdown:triggerListOptionsUpdate', [this.optItemElems()[0]]);
     } else {
-      this.elem.trigger('romoOptionListDropdown:triggerListOptionsUpdate', [this.selectedItemElem()]);
+      Romo.trigger(this.elem, 'romoOptionListDropdown:triggerListOptionsUpdate', [this.selectedItemElem()]);
     }
   }, this));
 
   this._sanitizeOptions();
   this._setListItems();
-  this.elem.trigger('romoOptionListDropdown:triggerListOptionsUpdate', [this.selectedItemElem()]);
+  Romo.trigger(this.elem, 'romoOptionListDropdown:triggerListOptionsUpdate', [this.selectedItemElem()]);
 }
 
 RomoSelectDropdown.prototype._sanitizeOptions = function() {
   // set any options without a value to value=""
   // all options are required to have a value for things to work
   // this and the select component assume value attrs for all options
-  $.each(this.optionElemsParent.find('OPTION'), $.proxy(function(idx, optionNode) {
-    var optElem = $(optionNode);
-    if (optElem.attr('value') === undefined) {
-      optElem.attr('value', '');
+  Romo.find(this.optionElemsParentElem, 'OPTION').forEach(Romo.proxy(function(optElem) {
+    if (Romo.attr(optElem, 'value') === undefined) {
+      Romo.setAttr(optElem, 'value', '');
     }
   }, this));
 }
 
 RomoSelectDropdown.prototype._setListItems = function() {
-  var optElems = this.optionElemsParent.children(this.optionElemSelector);
+  var optElems = Romo.children(this.optionElemsParentElem, this.optionElemSelector);
   var items    = this._buildOptionListItems(optElems).concat(this._buildCustomOptionItems());
   this.romoOptionListDropdown.doSetListItems(items);
 }
@@ -181,11 +185,11 @@ RomoSelectDropdown.prototype._setListItems = function() {
 RomoSelectDropdown.prototype._buildOptionListItems = function(optionElems) {
   var list = [];
 
-  $.each(optionElems, $.proxy(function(idx, optionNode) {
-    if (optionNode.tagName === "OPTION") {
-      list.push(this._buildOptionItem($(optionNode)));
-    } else if (optionNode.tagName === "OPTGROUP") {
-      var optGroupItem = this._buildOptGroupItem($(optionNode));
+  optionElems.forEach(Romo.proxy(function(optElem) {
+    if (optElem.tagName === "OPTION") {
+      list.push(this._buildOptionItem(optElem));
+    } else if (optElem.tagName === "OPTGROUP") {
+      var optGroupItem = this._buildOptGroupItem(optElem);
       if (optGroupItem.items.length !== 0) {
         list.push(optGroupItem);
       }
@@ -199,14 +203,14 @@ RomoSelectDropdown.prototype._buildOptionItem = function(optionElem) {
   var item = {}
 
   item['type']        = 'option';
-  item['value']       = (optionElem.attr('value') || '');
-  item['displayText'] = (optionElem.text().trim() || '');
-  item['displayHtml'] = (optionElem.text().trim() || '&nbsp;');
+  item['value']       = (Romo.attr(optionElem, 'value') || '');
+  item['displayText'] = (optionElem.innerText.trim() || '');
+  item['displayHtml'] = (optionElem.innerText.trim() || '&nbsp;');
 
-  if (optionElem.prop('selected')) {
+  if (optionElem.selected) {
     item['selected'] = true;
   }
-  if (optionElem.attr('disabled') !== undefined) {
+  if (Romo.attr(optionElem, 'disabled') !== undefined) {
     item['disabled'] = true;
   }
 
@@ -217,8 +221,8 @@ RomoSelectDropdown.prototype._buildOptGroupItem = function(optGroupElem) {
   var item = {};
 
   item['type']  = 'optgroup';
-  item['label'] = optGroupElem.attr('label');
-  item['items'] = this._buildOptionListItems(optGroupElem.children(this.optionElemSelector));
+  item['label'] = Romo.attr(optGroupElem, 'label');
+  item['items'] = this._buildOptionListItems(Romo.children(optGroupElem, this.optionElemSelector));
 
   return item;
 }
@@ -227,8 +231,8 @@ RomoSelectDropdown.prototype._buildCustomOptionItems = function() {
   var items = [];
 
   var value = this.romoOptionListDropdown.optionFilterValue();
-  if (value !== '' && this.elem.data('romo-select-dropdown-custom-option') === true) {
-    var prompt = this.elem.data('romo-select-dropdown-custom-option-prompt');
+  if (value !== '' && Romo.data(this.elem, 'romo-select-dropdown-custom-option') === true) {
+    var prompt = Romo.data(this.elem, 'romo-select-dropdown-custom-option-prompt');
     if (prompt !== undefined) {
       items.push({
         'type':  'optgroup',
