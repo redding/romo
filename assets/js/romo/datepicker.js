@@ -41,7 +41,7 @@ RomoDatepicker.prototype.doBindElem = function() {
     this.elem.attr('data-romo-indicator-text-input-elem-display', this.elem.data('romo-datepicker-elem-display'));
   }
 
-  this.elem.romoIndicatorTextInput();
+  this.romoIndicatorTextInput = new RomoIndicatorTextInput(this.elem);
 
   this.prevValue = this.elem.val();
   this.elem.on('change', $.proxy(function(e) {
@@ -50,22 +50,22 @@ RomoDatepicker.prototype.doBindElem = function() {
     this.prevValue = newValue;
   }, this));
 
-  this.elem.on('indicatorTextInput:indicatorClick', $.proxy(function(e) {
+  this.elem.on('romoIndicatorTextInput:indicatorClick', $.proxy(function(e) {
     this._clearBlurTimeout();
     this.elem.trigger('datepicker:triggerPopupOpen');
   }, this));
 
   this.elem.on('datepicker:triggerEnable', $.proxy(function(e) {
-    this.elem.trigger('indicatorTextInput:triggerEnable', []);
+    this.elem.trigger('romoIndicatorTextInput:triggerEnable', []);
   }, this));
   this.elem.on('datepicker:triggerDisable', $.proxy(function(e) {
-    this.elem.trigger('indicatorTextInput:triggerDisable', []);
+    this.elem.trigger('romoIndicatorTextInput:triggerDisable', []);
   }, this));
   this.elem.on('datepicker:triggerShow', $.proxy(function(e) {
-    this.elem.trigger('indicatorTextInput:triggerShow', []);
+    this.elem.trigger('romoIndicatorTextInput:triggerShow', []);
   }, this));
   this.elem.on('datepicker:triggerHide', $.proxy(function(e) {
-    this.elem.trigger('indicatorTextInput:triggerHide', []);
+    this.elem.trigger('romoIndicatorTextInput:triggerHide', []);
   }, this));
 
   this.elem.on('datepicker:triggerSetFormat', $.proxy(function(e) {

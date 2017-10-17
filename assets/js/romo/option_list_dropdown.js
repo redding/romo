@@ -175,12 +175,12 @@ RomoOptionListDropdown.prototype._bindElem = function() {
   Romo.on(this.elem, 'romoOptionListDropdown:triggerFilterIndicatorStart', Romo.proxy(function(e) {
     Romo.trigger(
       this.optionFilterElem,
-      'indicatorTextInput:triggerIndicatorStart',
+      'romoIndicatorTextInput:triggerIndicatorStart',
       [Romo.css(this.optionFilterElem, "height")]
     );
   }, this));
   Romo.on(this.elem, 'romoOptionListDropdown:triggerFilterIndicatorStop', Romo.proxy(function(e) {
-    Romo.trigger(this.optionFilterElem, 'indicatorTextInput:triggerIndicatorStop', []);
+    Romo.trigger(this.optionFilterElem, 'romoIndicatorTextInput:triggerIndicatorStop', []);
   }, this));
 
   this.romoDropdown = new RomoDropdown(this.elem);
@@ -275,7 +275,7 @@ RomoOptionListDropdown.prototype._buildOptionFilter = function() {
 }
 
 RomoOptionListDropdown.prototype._bindDropdownOptionFilter = function() {
-  $(this.optionFilterElem).romoIndicatorTextInput();
+  this.romoIndicatorTextInput = new RomoIndicatorTextInput(this.optionFilterElem);
   new RomoOnkey(this.optionFilterElem);
 
   Romo.on(this.romoDropdown.elem, 'focus', Romo.proxy(function(e) {
@@ -320,7 +320,7 @@ RomoOptionListDropdown.prototype._bindDropdownOptionFilter = function() {
   }, this));
 
   Romo.on(this.romoDropdown.elem, 'romoDropdown:popupOpen', Romo.proxy(function(e, romoDropdown) {
-    Romo.trigger(this.optionFilterElem, 'indicatorTextInput:triggerPlaceIndicator');
+    Romo.trigger(this.optionFilterElem, 'romoIndicatorTextInput:triggerPlaceIndicator');
     this.optionFilterElem.focus();
     this._filterOptionElems();
     this.openOnFocus = false;
