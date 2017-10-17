@@ -87,27 +87,27 @@ RomoCurrencyTextInput.prototype.doBindIndicatorTextInput = function() {
     );
   }
 
-  this.elem.on('indicatorTextInput:indicatorClick', $.proxy(function(e) {
+  this.elem.on('romoIndicatorTextInput:indicatorClick', $.proxy(function(e) {
     this.elem.trigger('romoCurrencyTextInput:indicatorClick', []);
   }, this));
 
   this.elem.on('romoCurrencyTextInput:triggerPlaceIndicator', $.proxy(function(e) {
-    this.elem.trigger('indicatorTextInput:triggerPlaceIndicator', []);
+    this.elem.trigger('romoIndicatorTextInput:triggerPlaceIndicator', []);
   }, this));
   this.elem.on('romoCurrencyTextInput:triggerEnable', $.proxy(function(e) {
-    this.elem.trigger('indicatorTextInput:triggerEnable', []);
+    this.elem.trigger('romoIndicatorTextInput:triggerEnable', []);
   }, this));
   this.elem.on('romoCurrencyTextInput:triggerDisable', $.proxy(function(e) {
-    this.elem.trigger('indicatorTextInput:triggerDisable', []);
+    this.elem.trigger('romoIndicatorTextInput:triggerDisable', []);
   }, this));
   this.elem.on('romoCurrencyTextInput:triggerShow', $.proxy(function(e) {
-    this.elem.trigger('indicatorTextInput:triggerShow', []);
+    this.elem.trigger('romoIndicatorTextInput:triggerShow', []);
   }, this));
   this.elem.on('romoCurrencyTextInput:triggerHide', $.proxy(function(e) {
-    this.elem.trigger('indicatorTextInput:triggerHide', []);
+    this.elem.trigger('romoIndicatorTextInput:triggerHide', []);
   }, this));
 
-  this.elem.romoIndicatorTextInput();
+  this.romoIndicatorTextInput = new RomoIndicatorTextInput(this.elem);
 }
 
 // private
