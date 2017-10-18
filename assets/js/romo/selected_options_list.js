@@ -103,17 +103,14 @@ RomoSelectedOptionsList.prototype.doRefreshUI = function() {
   }
 }
 
-/* private */
+// private
 
 RomoSelectedOptionsList.prototype._bindElem = function() {
   this.elem = Romo.elems('<div class="romo-selected-options-list"><div class="romo-selected-options-list-items"></div></div>')[0];
 
   Romo.on(this.elem, 'click', Romo.proxy(function(e) {
-    if (e !== undefined) {
-      e.stopPropagation();
-      e.preventDefault();
-    }
     Romo.trigger(this.elem, 'romoSelectedOptionsList:listClick', [this]);
+    return false;
   }, this));
 
   this.doSetItems([]);
