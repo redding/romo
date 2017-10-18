@@ -144,6 +144,11 @@ RomoDropdown.prototype.doPlacePopupElem = function() {
   Romo.setStyle(this.popupElem, 'left', this._roundPosOffsetVal(offset.left));
 }
 
+RomoDropdown.prototype.doSetPopupZIndex = function(relativeElem) {
+  var relativeZIndex = Romo.parseZIndex(relativeElem);
+  Romo.setStyle(this.popupElem, 'z-index', relativeZIndex + 1200); // see z-index.css
+}
+
 // private
 
 RomoDropdown.prototype._bindElem = function() {
@@ -189,7 +194,7 @@ RomoDropdown.prototype._bindPopup = function() {
   Romo.setData(this.popupElem, 'romo-dropdown-position',  this.popupPosition);
   Romo.setData(this.popupElem, 'romo-dropdown-alignment', this.popupAlignment);
 
-  this._setPopupZIndex(this.elem);
+  this.doSetPopupZIndex(this.elem);
 
   // don't propagate click events on the popup elem.  this prevents the popup
   // from closing when clicked (see body click event bind on popup open)
@@ -393,11 +398,6 @@ RomoDropdown.prototype._onWindowBodyKeyUp = function(e) {
 RomoDropdown.prototype._onResizeWindow = function(e) {
   this.doPlacePopupElem();
   return true;
-}
-
-RomoDropdown.prototype._setPopupZIndex = function(relativeElem) {
-  var relativeZIndex = Romo.parseZIndex(relativeElem);
-  Romo.setStyle(this.popupElem, 'z-index', relativeZIndex + 1200); // see z-index.css
 }
 
 RomoDropdown.prototype._parsePositionData = function(posString) {
