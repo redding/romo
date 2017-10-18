@@ -10,7 +10,7 @@ var RomoOnkey = function(elem) {
   this.triggerOn = Romo.data(this.elem, 'romo-onkey-on') || this.defaultTriggerOn;
   Romo.on(this.elem, this.triggerOn, Romo.proxy(this._onTrigger, this));
 
-  this.elem.trigger('romoOnkey:ready', [this]);
+  Romo.trigger(this.elem, 'romoOnkey:ready', [this]);
 }
 
 RomoOnkey.prototype.doInit = function() {
