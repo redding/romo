@@ -32,13 +32,7 @@ RomoSelect.prototype.doInit = function() {
 }
 
 RomoSelect.prototype.doSetValue = function(value) {
-  var values = undefined;
-  if (Array.isArray(value)) {
-    values = value;
-  } else {
-    values = [value];
-  }
-  values = values.filter($.proxy(function(v) {
+  var values = Romo.array(value).filter($.proxy(function(v) {
     return this.elem.find('OPTION[value="'+v+'"]')[0] !== undefined;
   }, this));
 

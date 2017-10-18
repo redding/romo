@@ -36,12 +36,7 @@ RomoPicker.prototype.doInit = function() {
 }
 
 RomoPicker.prototype.doSetValue = function(values) {
-  var value = undefined;
-  if (Array.isArray(values)) {
-    value = values.join(this._elemValuesDelim());
-  } else {
-    value = values;
-  }
+  var value = Romo.array(values).join(this._elemValuesDelim());
   $.ajax({
     type:    'GET',
     url:     this.elem.data('romo-picker-url'),
@@ -51,12 +46,7 @@ RomoPicker.prototype.doSetValue = function(values) {
 }
 
 RomoPicker.prototype.doSetValueDatas = function(valueDatas) {
-  var datas = undefined;
-  if (Array.isArray(valueDatas)) {
-    datas = valueDatas;
-  } else {
-    datas = [valueDatas];
-  }
+  var datas        = Romo.array(valueDatas);
   var values       = datas.map(function(data) { return data.value; });
   var displayTexts = datas.map(function(data) { return data.displayText; });
 
