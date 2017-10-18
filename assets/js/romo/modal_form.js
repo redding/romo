@@ -96,8 +96,8 @@ RomoModalForm.prototype.doBindForm = function() {
   }, this));
 
   var submitElement = this.romoModal.popupElem.find('[data-romo-form-submit]')[0];
-  var indicatorElements = this.romoModal.popupElem.find('[data-romo-indicator-auto="true"]');
-  this.form = formElem.romoForm(submitElement, indicatorElements)[0];
+  var spinnerElements = this.romoModal.popupElem.find('[data-romo-spinner-auto="true"]');
+  this.form = formElem.romoForm(submitElement, spinnerElements)[0];
 }
 
 Romo.onInitUI(function(elem) {
