@@ -272,18 +272,18 @@ RomoPicker.prototype._bindAjax = function() {
   this.elem.attr('data-romo-ajax-auto', false);
 
   this.elem.on('romoAjax:callStart', $.proxy(function(e, data, romoAjax) {
-    this.romoOptionListDropdown.elem.trigger('romoOptionListDropdown:triggerFilterIndicatorStart', []);
+    this.romoOptionListDropdown.elem.trigger('romoOptionListDropdown:triggerFilterSpinnerStart', []);
     return false;
   }, this));
   this.elem.on('romoAjax:callSuccess', $.proxy(function(e, data, romoAjax) {
     this.filteredOptionItems = data;
     this._setListItems(this.filteredOptionItems.concat(this._buildCustomOptionItems()));
-    this.romoOptionListDropdown.elem.trigger('romoOptionListDropdown:triggerFilterIndicatorStop', []);
+    this.romoOptionListDropdown.elem.trigger('romoOptionListDropdown:triggerFilterSpinnerStop', []);
     return false;
   }, this));
   this.elem.on('romoAjax:callError', $.proxy(function(e, xhr, romoAjax) {
     this._setListItems(this.defaultOptionItems.concat(this._buildCustomOptionItems()));
-    this.romoOptionListDropdown.elem.trigger('romoOptionListDropdown:triggerFilterIndicatorStop', []);
+    this.romoOptionListDropdown.elem.trigger('romoOptionListDropdown:triggerFilterSpinnerStop', []);
     return false;
   }, this));
 
