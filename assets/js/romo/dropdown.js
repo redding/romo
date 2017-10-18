@@ -264,14 +264,14 @@ RomoDropdown.prototype._bindBody = function() {
 }
 
 RomoDropdown.prototype._resetBody = function() {
-  Romo.setStyle(this.contentElem, 'min-width',  '');
-  Romo.setStyle(this.contentElem, 'max-width',  '');
-  Romo.setStyle(this.contentElem, 'width',      '');
-  Romo.setStyle(this.contentElem, 'min-height', '');
-  Romo.setStyle(this.contentElem, 'max-height', '');
-  Romo.setStyle(this.contentElem, 'height',     '');
-  Romo.setStyle(this.contentElem, 'overflow-x', '');
-  Romo.setStyle(this.contentElem, 'overflow-y', '');
+  Romo.rmStyle(this.contentElem, 'min-width');
+  Romo.rmStyle(this.contentElem, 'max-width');
+  Romo.rmStyle(this.contentElem, 'width');
+  Romo.rmStyle(this.contentElem, 'min-height');
+  Romo.rmStyle(this.contentElem, 'max-height');
+  Romo.rmStyle(this.contentElem, 'height');
+  Romo.rmStyle(this.contentElem, 'overflow-x');
+  Romo.rmStyle(this.contentElem, 'overflow-y');
 }
 
 RomoDropdown.prototype._loadBodyStart = function() {
