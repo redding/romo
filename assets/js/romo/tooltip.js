@@ -66,7 +66,7 @@ RomoTooltip.prototype.doPlacePopupElem = function() {
   var configPosition = this.popupPosition;
 
   if (configHeight === 'detect' && (configPosition === 'top' || configPosition === 'bottom')) {
-    var popupHeight = parseInt(Romo.css(this.popupElem, 'height'));
+    var popupHeight = parseInt(Romo.css(this.popupElem, 'height'), 10);
     var topAvailHeight = this._getPopupMaxAvailableHeight('top');
     var bottomAvailHeight = this._getPopupMaxAvailableHeight('bottom');
 

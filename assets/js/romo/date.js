@@ -161,7 +161,7 @@ RomoDate.Parser.prototype.date = function() {
   if (dateValues.length === 0) {
     return undefined;
   }
-  var year = parseInt(dateValues[0]);
+  var year = parseInt(dateValues[0], 10);
   if (year < 0) {
     return undefined;
   }
@@ -176,12 +176,12 @@ RomoDate.Parser.prototype.date = function() {
     }
   }
 
-  var month = parseInt(dateValues[1]) - 1;
+  var month = parseInt(dateValues[1], 10) - 1;
   if (month < 0 || month > 11) {
     return undefined;
   }
 
-  var day = parseInt(dateValues[2]);
+  var day = parseInt(dateValues[2], 10);
   var date = RomoDate.for(year, month, day);
   if (date.getMonth() !== month) {
     return undefined;
