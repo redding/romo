@@ -226,12 +226,12 @@ RomoTooltip.prototype._bindBody = function() {
 }
 
 RomoTooltip.prototype._resetBody = function() {
-  Romo.setStyle(this.bodyElem, 'min-width',  '');
-  Romo.setStyle(this.bodyElem, 'max-width',  '');
-  Romo.setStyle(this.bodyElem, 'width',      '');
-  Romo.setStyle(this.bodyElem, 'min-height', '');
-  Romo.setStyle(this.bodyElem, 'max-height', '');
-  Romo.setStyle(this.bodyElem, 'height',     '');
+  Romo.rmStyle(this.bodyElem, 'min-width');
+  Romo.rmStyle(this.bodyElem, 'max-width');
+  Romo.rmStyle(this.bodyElem, 'width');
+  Romo.rmStyle(this.bodyElem, 'min-height');
+  Romo.rmStyle(this.bodyElem, 'max-height');
+  Romo.rmStyle(this.bodyElem, 'height');
 }
 
 RomoTooltip.prototype._loadBodyStart = function() {

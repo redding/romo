@@ -98,8 +98,8 @@ RomoSelectedOptionsList.prototype.doRefreshUI = function() {
     var lastItemElem = itemElems[itemElems.length-1];
     this._scrollListTopToItem(lastItemElem);
   } else {
-    Romo.setStyle(this.elem, 'height',     String(uiListElemHeight)+'px');
-    Romo.setStyle(this.elem, 'overflow-y', '');
+    Romo.setStyle(this.elem, 'height', String(uiListElemHeight)+'px');
+    Romo.rmStyle(this.elem, 'overflow-y');
   }
 }
 
