@@ -166,15 +166,15 @@ RomoOptionListDropdown.prototype._bindElem = function() {
     Romo.trigger(this.elem, 'romoDropdown:triggerPopupClose', []);
   }, this));
 
-  Romo.on(this.elem, 'romoOptionListDropdown:triggerFilterIndicatorStart', Romo.proxy(function(e) {
+  Romo.on(this.elem, 'romoOptionListDropdown:triggerFilterSpinnerStart', Romo.proxy(function(e) {
     Romo.trigger(
       this.optionFilterElem,
-      'romoIndicatorTextInput:triggerIndicatorStart',
+      'romoIndicatorTextInput:triggerSpinnerStart',
       [Romo.css(this.optionFilterElem, "height")]
     );
   }, this));
-  Romo.on(this.elem, 'romoOptionListDropdown:triggerFilterIndicatorStop', Romo.proxy(function(e) {
-    Romo.trigger(this.optionFilterElem, 'romoIndicatorTextInput:triggerIndicatorStop', []);
+  Romo.on(this.elem, 'romoOptionListDropdown:triggerFilterSpinnerStop', Romo.proxy(function(e) {
+    Romo.trigger(this.optionFilterElem, 'romoIndicatorTextInput:triggerSpinnerStop', []);
   }, this));
 
   this.romoDropdown = new RomoDropdown(this.elem);
