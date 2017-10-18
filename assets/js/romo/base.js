@@ -396,13 +396,7 @@ Romo.prototype.onInitUI = function(fn) {
 }
 
 Romo.prototype.triggerInitUI = function(onElems) {
-  var elems = undefined;
-  if (Array.isArray(onElems)) {
-    elems = onElems;
-  } else {
-    elems = [onElems];
-  }
-  elems.forEach(Romo.proxy(function(elem) {
+  Romo.array(onElems).forEach(Romo.proxy(function(elem) {
     this._initUICallbacks.forEach(function(fn) {
       setTimeout(function() {
         fn(elem);
@@ -603,8 +597,44 @@ Romo.prototype.ready = function(eventHandlerFn) {
 
 // utils
 
-Romo.prototype.array = function(collection) {
-  return Array.prototype.slice.call(collection);
+Romo.prototype.array = function(value) {
+  // short circuit `Romo.f`, `Romo.find`, and `Romo.elems` calls (and others
+  // that return NodeList or HTMLCollection objects), this ensures these calls
+  // remain fast and don't run through all of the logic to detect if an object
+  // is like an array
+  var valString = Object.prototype.toString.call(value);
+  if(valString === '[object NodeList]' || valString === '[object HTMLCollection]') {
+    return Array.prototype.slice.call(value)
+  }
+
+  var object = Object(value)
+  var length = undefined;
+  if (!!object && 'length' in object) {
+    length = object.length;
+  }
+
+  // some browsers return 'function' for HTML elements
+  var isFunction = (
+    typeof(object)          === 'function' &&
+    typeof(object.nodeType) !== 'number'
+  );
+  var likeArray = (
+    typeof(object) !== 'string' &&
+    !isFunction                 &&
+    object !== window           &&
+    ( Array.isArray(object) ||
+      length === 0          ||
+      ( typeof(length) === 'number' &&
+        length > 0                  &&
+        (length - 1) in object
+      )
+    )
+  );
+  if(likeArray) {
+    return Array.prototype.slice.call(value);
+  } else {
+    return [value];
+  }
 }
 
 Romo.prototype.assign = function(target) {
