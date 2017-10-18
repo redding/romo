@@ -1,5 +1,5 @@
-var RomoIndicatorTextInput = function(element) {
-  this.elem = element;
+var RomoIndicatorTextInput = function(elem) {
+  this.elem = elem;
 
   this.defaultIndicatorClass     = undefined;
   this.defaultIndicatorPaddingPx = 5;
@@ -38,7 +38,7 @@ RomoIndicatorTextInput.prototype.doHide = function() {
   this._hide(this.indicatorElem);
 }
 
-/* private */
+// private
 
 RomoIndicatorTextInput.prototype._bindElem = function() {
   var elemWrapper = Romo.elems('<div class="romo-indicator-text-input-wrapper"></div>')[0];
@@ -128,14 +128,11 @@ RomoIndicatorTextInput.prototype._placeIndicatorElem = function() {
 }
 
 RomoIndicatorTextInput.prototype._onIndicatorClick = function(e) {
-  if (e !== undefined) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
   if (this.elem.disabled === false) {
     this.elem.focus();
     Romo.trigger(this.elem, 'romoIndicatorTextInput:indicatorClick');
   }
+  return false;
 }
 
 // private
