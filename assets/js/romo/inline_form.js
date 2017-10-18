@@ -13,7 +13,7 @@ RomoInlineForm.prototype.doInit = function() {
 
 // private
 
-RomoDropdownForm.prototype._bindElem = function() {
+RomoInlineForm.prototype._bindElem = function() {
   Romo.on(this.elem, 'romoInlineForm:romoForm:triggerSubmit', Romo.proxy(function(e) {
     if (this.romoForm !== undefined) {
       Romo.trigger(this.romoForm.elem, 'romoForm:triggerSubmit', []);

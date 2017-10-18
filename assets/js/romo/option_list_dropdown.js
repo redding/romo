@@ -417,7 +417,7 @@ RomoOptionListDropdown.prototype._onPopupOpenBodyKeyDown = function(e) {
 
   var scrollElem   = this.romoDropdown.bodyElem;
   var scrollOffset = Romo.offset(scrollElem);
-  var scrollHeight = parseInt(Romo.css(scrollElem, 'height'));
+  var scrollHeight = parseInt(Romo.css(scrollElem, 'height'), 10);
 
   if (e.keyCode === 38 /* Up */) {
     var prevElem   = this._prevListItem();
@@ -435,7 +435,7 @@ RomoOptionListDropdown.prototype._onPopupOpenBodyKeyDown = function(e) {
   } else if(e.keyCode === 40 /* Down */) {
     var nextElem   = this._nextListItem();
     var nextOffset = Romo.offset(nextElem);
-    var nextHeight = parseInt(Romo.css(nextElem, 'height'));
+    var nextHeight = parseInt(Romo.css(nextElem, 'height'), 10);
 
     this._highlightItem(nextElem);
 
@@ -490,7 +490,7 @@ RomoOptionListDropdown.prototype._scrollTopToItem = function(itemElem) {
 
     var scrollOffsetTop = Romo.offset(scrollElem).top;
     var selOffsetTop    = Romo.offset(itemElem).top;
-    var selOffset       = parseInt(Romo.css(itemElem, 'height')) / 2;
+    var selOffset       = parseInt(Romo.css(itemElem, 'height'), 10) / 2;
 
     scrollElem.scrollTop = selOffsetTop - scrollOffsetTop - selOffset;
   }
@@ -503,7 +503,7 @@ RomoOptionListDropdown.prototype._scrollBottomToItem = function(itemElem) {
 
     var scrollOffsetTop = Romo.offset(scrollElem).top;
     var selOffsetTop    = Romo.offset(itemElem).top;
-    var selOffset       = scrollElem.offsetHeight - parseInt(Romo.css(itemElem, 'height'));
+    var selOffset       = scrollElem.offsetHeight - parseInt(Romo.css(itemElem, 'height'), 10);
 
     scrollElem.scrollTop = selOffsetTop - scrollOffsetTop - selOffset;
   }
