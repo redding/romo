@@ -224,10 +224,6 @@ Romo.prototype.setScrollLeft = function(elem, value) {
   }
 }
 
-Romo.prototype.getComputedStyle = function(elem, styleName) {
-  return window.getComputedStyle(elem, null).getPropertyValue(styleName);
-}
-
 Romo.prototype.parseZIndex = function(elem) {
   // for the case where z-index is set directly on the elem
   var val = this.parseElemZIndex(elem);
@@ -248,7 +244,7 @@ Romo.prototype.parseZIndex = function(elem) {
 }
 
 Romo.prototype.parseElemZIndex = function(elem) {
-  var val = parseInt(this.getComputedStyle(elem, "z-index"));
+  var val = parseInt(this.css(elem, "z-index"));
   if (!isNaN(val)) {
     return val;
   }
