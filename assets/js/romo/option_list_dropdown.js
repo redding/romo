@@ -249,7 +249,7 @@ RomoOptionListDropdown.prototype._buildOptionFilter = function() {
   var filterElem = Romo.elems('<input type="text" size="1" class="romo-option-list-dropdown-filter"></input>')[0];
 
   if (Romo.data(this.elem, 'romo-option-list-dropdown-filter-placeholder') !== undefined) {
-    filterElem.setAttr('placeholder', Romo.data(this.elem, 'romo-option-list-dropdown-filter-placeholder'));
+    Romo.setAttr(filterElem, 'placeholder', Romo.data(this.elem, 'romo-option-list-dropdown-filter-placeholder'));
   }
   Romo.setData(filterElem, 'romo-indicator-text-input-elem-display',       "block");
   Romo.setData(filterElem, 'romo-indicator-text-input-indicator-position', "right");

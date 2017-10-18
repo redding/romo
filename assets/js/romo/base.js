@@ -132,12 +132,20 @@ Romo.prototype.setAttr = function(elem, attrName, attrValue) {
   return v;
 }
 
+Romo.prototype.rmAttr = function(elem, attrName) {
+  elem.removeAttribute(attrName);
+}
+
 Romo.prototype.data = function(elem, dataName) {
   return this._deserializeValue(this.attr(elem, "data-"+dataName));
 }
 
 Romo.prototype.setData = function(elem, dataName, dataValue) {
   return this.setAttr(elem, "data-"+dataName, dataValue);
+}
+
+Romo.prototype.rmData = function(elem, dataName) {
+  this.rmAttr(elem, "data-"+dataName);
 }
 
 Romo.prototype.style = function(elem, styleName) {
@@ -147,6 +155,10 @@ Romo.prototype.style = function(elem, styleName) {
 Romo.prototype.setStyle = function(elem, styleName, styleValue) {
   elem.style[styleName] = styleValue;
   return styleValue;
+}
+
+Romo.prototype.rmStyle = function(elem, styleName) {
+  elem.style[styleName] = '';
 }
 
 Romo.prototype.css = function(elem, styleName) {
