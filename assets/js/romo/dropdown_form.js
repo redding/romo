@@ -1,23 +1,23 @@
-var RomoDropdownForm = function(element) {
-  this.elem = $(element);
+var RomoDropdownForm = function(elem) {
+  this.elem = elem;
 
   this.romoDropdown = new RomoDropdown(this.elem);
   this.doBindDropdown();
 
-  this.form = undefined;
-  this.elem.on('dropdownForm:form:triggerSubmit', $.proxy(function(e) {
-    if (this.form != undefined) {
-      this.form.elem.trigger('form:triggerSubmit', []);
+  this.romoForm = undefined;
+  Romo.on(this.elem, 'romoDropdownForm:romoForm:triggerSubmit', Romo.proxy(function(e) {
+    if (this.romoForm != undefined) {
+      Romo.trigger(this.romoForm.elem, 'romoForm:triggerSubmit', []);
     }
   }, this));
   this.doBindForm();
-  this.elem.on('romoDropdown:loadBodySuccess', $.proxy(function(e, data, romoDropdown) {
+  Romo.on(this.elem, 'romoDropdown:loadBodySuccess', Romo.proxy(function(e, data, romoDropdown) {
     this.doBindForm();
-    this.elem.trigger('dropdownForm:formReady', [this.form, this]);
+    Romo.trigger(this.elem, 'romoDropdownForm:formReady', [this.romoForm, this]);
   }, this));
 
   this.doInit();
-  this.elem.trigger('dropdownForm:ready', [this]);
+  Romo.trigger(this.elem, 'romoDropdownForm:ready', [this]);
 }
 
 RomoDropdownForm.prototype.doInit = function() {
@@ -25,70 +25,70 @@ RomoDropdownForm.prototype.doInit = function() {
 }
 
 RomoDropdownForm.prototype.doBindDropdown = function() {
-if (this.elem.data('romo-dropdown-clear-content') === undefined) {
-    this.elem.attr('data-romo-dropdown-clear-content', 'true');
+if (Romo.data(this.elem, 'romo-dropdown-clear-content') === undefined) {
+    Romo.setData(this.elem, 'romo-dropdown-clear-content', 'true');
   }
 
-  this.elem.on('romoDropdown:ready', $.proxy(function(e, romoDropdown) {
-    this.elem.trigger('dropdownForm:romoDropdown:ready', [romoDropdown, this]);
+  Romo.on(this.elem, 'romoDropdown:ready', Romo.proxy(function(e, romoDropdown) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoDropdown:ready', [romoDropdown, this]);
   }, this));
-  this.elem.on('romoDropdown:toggle', $.proxy(function(e, romoDropdown) {
-    this.elem.trigger('dropdownForm:romoDropdown:toggle', [romoDropdown, this]);
+  Romo.on(this.elem, 'romoDropdown:toggle', Romo.proxy(function(e, romoDropdown) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoDropdown:toggle', [romoDropdown, this]);
   }, this));
-  this.elem.on('romoDropdown:popupOpen', $.proxy(function(e, romoDropdown) {
-    this.elem.trigger('dropdownForm:romoDropdown:popupOpen', [romoDropdown, this]);
+  Romo.on(this.elem, 'romoDropdown:popupOpen', Romo.proxy(function(e, romoDropdown) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoDropdown:popupOpen', [romoDropdown, this]);
   }, this));
-  this.elem.on('romoDropdown:popupClose', $.proxy(function(e, romoDropdown) {
-    this.elem.trigger('dropdownForm:romoDropdown:popupClose', [romoDropdown, this]);
+  Romo.on(this.elem, 'romoDropdown:popupClose', Romo.proxy(function(e, romoDropdown) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoDropdown:popupClose', [romoDropdown, this]);
   }, this));
-  this.elem.on('romoDropdown:loadBodyStart', $.proxy(function(e, romoDropdown) {
-    this.elem.trigger('dropdownForm:romoDropdown:loadBodyStart', [romoDropdown, this]);
+  Romo.on(this.elem, 'romoDropdown:loadBodyStart', Romo.proxy(function(e, romoDropdown) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoDropdown:loadBodyStart', [romoDropdown, this]);
   }, this));
-  this.elem.on('romoDropdown:loadBodySuccess', $.proxy(function(e, data, romoDropdown) {
-    this.elem.trigger('dropdownForm:romoDropdown:loadBodySuccess', [data, romoDropdown, this]);
+  Romo.on(this.elem, 'romoDropdown:loadBodySuccess', Romo.proxy(function(e, data, romoDropdown) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoDropdown:loadBodySuccess', [data, romoDropdown, this]);
   }, this));
-  this.elem.on('romoDropdown:loadBodyError', $.proxy(function(e, xhr, romoDropdown) {
-    this.elem.trigger('dropdownForm:romoDropdown:loadBodyError', [xhr, romoDropdown, this]);
+  Romo.on(this.elem, 'romoDropdown:loadBodyError', Romo.proxy(function(e, xhr, romoDropdown) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoDropdown:loadBodyError', [xhr, romoDropdown, this]);
   }, this));
-  this.elem.on('romoDropdown:dismiss', $.proxy(function(e, romoDropdown) {
-    this.elem.trigger('dropdownForm:romoDropdown:dismiss', [romoDropdown, this]);
+  Romo.on(this.elem, 'romoDropdown:dismiss', Romo.proxy(function(e, romoDropdown) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoDropdown:dismiss', [romoDropdown, this]);
   }, this));
 }
 
 RomoDropdownForm.prototype.doBindForm = function() {
-  var formElem = this.romoDropdown.popupElem.find('[data-romo-form-auto="dropdownForm"]');
+  var formElem = Romo.find(this.romoDropdown.popupElem, '[data-romo-form-auto="dropdownForm"]')[0];
 
-  formElem.on('form:clearMsgs', $.proxy(function(e, form) {
-    this.elem.trigger('dropdownForm:form:clearMsgs', [form, this]);
+  Romo.on(formElem, 'romoForm:clearMsgs', Romo.proxy(function(e, romoForm) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoForm:clearMsgs', [romoForm, this]);
   }, this));
-  formElem.on('form:ready', $.proxy(function(e, form) {
-    this.elem.trigger('dropdownForm:form:ready', [form, this]);
+  Romo.on(formElem, 'romoForm:ready', Romo.proxy(function(e, romoForm) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoForm:ready', [romoForm, this]);
   }, this));
-  formElem.on('form:confirmSubmit', $.proxy(function(e, form) {
-    this.elem.trigger('dropdownForm:form:confirmSubmit', [form, this]);
+  Romo.on(formElem, 'romoForm:confirmSubmit', Romo.proxy(function(e, romoForm) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoForm:confirmSubmit', [romoForm, this]);
   }, this));
-  formElem.on('form:beforeSubmit', $.proxy(function(e, form) {
-    this.elem.trigger('dropdownForm:form:beforeSubmit', [form, this]);
+  Romo.on(formElem, 'romoForm:beforeSubmit', Romo.proxy(function(e, romoForm) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoForm:beforeSubmit', [romoForm, this]);
   }, this));
-  formElem.on('form:submitSuccess', $.proxy(function(e, data, form) {
-    this.elem.trigger('dropdownForm:form:submitSuccess', [data, form, this]);
+  Romo.on(formElem, 'romoForm:submitSuccess', Romo.proxy(function(e, data, romoForm) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoForm:submitSuccess', [data, romoForm, this]);
   }, this));
-  formElem.on('form:submitInvalidMsgs', $.proxy(function(e, msgs, xhr, form) {
-    this.elem.trigger('dropdownForm:form:submitInvalidMsgs', [msgs, xhr, form, this]);
+  Romo.on(formElem, 'romoForm:submitInvalidMsgs', Romo.proxy(function(e, msgs, xhr, romoForm) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoForm:submitInvalidMsgs', [msgs, xhr, romoForm, this]);
   }, this));
-  formElem.on('form:submitXhrError', $.proxy(function(e, xhr, form) {
-    this.elem.trigger('dropdownForm:form:submitXhrError', [xhr, form, this]);
+  Romo.on(formElem, 'romoForm:submitXhrError', Romo.proxy(function(e, xhr, romoForm) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoForm:submitXhrError', [xhr, romoForm, this]);
   }, this));
-  formElem.on('form:submitError', $.proxy(function(e, xhr, form) {
-    this.elem.trigger('dropdownForm:form:submitError', [xhr, form, this]);
+  Romo.on(formElem, 'romoForm:submitError', Romo.proxy(function(e, xhr, romoForm) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoForm:submitError', [xhr, romoForm, this]);
   }, this));
-  formElem.on('form:browserSubmit', $.proxy(function(e, form) {
-    this.elem.trigger('dropdownForm:form:browserSubmit', [form, this]);
+  Romo.on(formElem, 'romoForm:browserSubmit', Romo.proxy(function(e, romoForm) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoForm:browserSubmit', [romoForm, this]);
   }, this));
 
-  var submitElement = this.romoDropdown.popupElem.find('[data-romo-form-submit]')[0];
-  var spinnerElements = this.romoDropdown.popupElem.find('[data-romo-spinner-auto="true"]');
-  this.form = formElem.romoForm(submitElement, spinnerElements)[0];
+  var submitElem   = Romo.find(this.romoDropdown.popupElem, '[data-romo-form-submit]')[0];
+  var spinnerElems = Romo.find(this.romoDropdown.popupElem, '[data-romo-spinner-auto="true"]');
+  this.romoForm = new RomoForm(formElem, submitElem, spinnerElems);
 }
 
 Romo.onInitUI(function(elem) {
