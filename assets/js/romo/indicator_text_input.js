@@ -68,23 +68,23 @@ RomoIndicatorTextInput.prototype._bindElem = function() {
     this._placeIndicatorElem();
 
     this.indicatorIconContainerElem = Romo.find(this.indicatorElem, 'div')[0];
-    if (Romo.data(this.elem, 'romo-indicator-text-input-indicator-basis-size') !== undefined) {
+    if (Romo.data(this.elem, 'romo-indicator-text-input-spinner-basis-size') !== undefined) {
       Romo.setData(
         this.indicatorIconContainerElem,
-        'romo-indicator-basis-size',
-        Romo.data(this.elem, 'romo-indicator-text-input-indicator-basis-size')
+        'romo-spinner-basis-size',
+        Romo.data(this.elem, 'romo-indicator-text-input-spinner-basis-size')
       )
     }
-    $(this.indicatorIconContainerElem).romoIndicator();
+    new RomoSpinner(this.indicatorIconContainerElem);
 
     Romo.on(this.elem, 'romoIndicatorTextInput:triggerPlaceIndicator', Romo.proxy(function(e) {
       this._placeIndicatorElem();
     }, this));
-    Romo.on(this.elem, 'romoIndicatorTextInput:triggerIndicatorStart', Romo.proxy(function(e, basisSize) {
-      Romo.trigger(this.indicatorIconContainerElem, 'indicator:triggerStart', [basisSize]);
+    Romo.on(this.elem, 'romoIndicatorTextInput:triggerSpinnerStart', Romo.proxy(function(e, basisSize) {
+      Romo.trigger(this.indicatorIconContainerElem, 'romoSpinner:triggerStart', [basisSize]);
     }, this));
-    Romo.on(this.elem, 'romoIndicatorTextInput:triggerIndicatorStop', Romo.proxy(function(e) {
-      Romo.trigger(this.indicatorIconContainerElem, 'indicator:triggerStop');
+    Romo.on(this.elem, 'romoIndicatorTextInput:triggerSpinnerStop', Romo.proxy(function(e) {
+      Romo.trigger(this.indicatorIconContainerElem, 'romoSpinner:triggerStop');
     }, this));
   }
 

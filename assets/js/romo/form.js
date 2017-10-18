@@ -7,7 +7,7 @@ var RomoForm = function(formElem, givenSubmitElems, givenSpinnerElems) {
   );
   this.submitElems = (givenSubmitElems || []).concat(defaultSubmitElems || []);
 
-  var defaultSpinnerElems = Romo.find(this.elem, '[data-romo-indicator-auto="true"]');
+  var defaultSpinnerElems = Romo.find(this.elem, '[data-romo-spinner-auto="true"]');
   this.spinnerElems = (givenSpinnerElems || []).concat(defaultSpinnerElems || []);
 
   this.changeSubmitElems = Romo.find(this.elem, '[data-romo-form-change-submit="true"]');
@@ -122,7 +122,7 @@ RomoForm.prototype._doSubmit = function() {
   this.submitRunning = true;
 
   this.spinnerElems.forEach(function(spinnerElem) {
-    Romo.trigger(spinnerElem, 'indicator:triggerStart');
+    Romo.trigger(spinnerElem, 'romoSpinner:triggerStart');
   });
   Romo.trigger(this.elem, 'romoForm:beforeSubmit', [this]);
 
@@ -203,7 +203,7 @@ RomoForm.prototype._onSubmitError = function(statusText, status, xhr) {
   }
   Romo.trigger(this.elem, 'romoForm:submitError', [xhr, this]);
   this.spinnerElems.forEach(function(spinnerElem) {
-    Romo.trigger(spinnerElem, 'indicator:triggerStop');
+    Romo.trigger(spinnerElem, 'romoSpinner:triggerStop');
   });
 
   this._completeSubmit();
