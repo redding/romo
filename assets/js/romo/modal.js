@@ -7,11 +7,11 @@ var RomoModal = function(elem) {
   Romo.trigger(this.elem, 'romoModal:ready', [this]);
 }
 
-RomoDropdown.prototype.popupOpen = function() {
+RomoModal.prototype.popupOpen = function() {
   return Romo.hasClass(this.popupElem, 'romo-modal-open') === true;
 }
 
-RomoDropdown.prototype.popupClosed = function() {
+RomoModal.prototype.popupClosed = function() {
   return Romo.hasClass(this.popupElem, 'romo-modal-open') === false;
 }
 
@@ -114,7 +114,7 @@ RomoModal.prototype.doPlacePopupElem = function() {
 
 // private
 
-RomoDropdown.prototype._bindElem = function() {
+RomoModal.prototype._bindElem = function() {
   this._bindPopup();
   this._bindAjax();
   this._bindBody();
@@ -128,7 +128,7 @@ RomoDropdown.prototype._bindElem = function() {
   Romo.on(this.elem, 'romoModal:triggerPopupClose', Romo.proxy(this._onPopupClose, this));
 }
 
-RomoDropdown.prototype._bindPopup = function() {
+RomoModal.prototype._bindPopup = function() {
   this.popupElem = Romo.elems('<div class="romo-modal-popup"><div class="romo-modal-body"></div></div>')[0];
   var popupParentElem = Romo.closest(this.elem, Romo.data(this.elem, 'romo-dropdown-append-to-closest') || 'body');
   Romo.append(popupParentElem, this.popupElem)
@@ -152,7 +152,7 @@ RomoDropdown.prototype._bindPopup = function() {
   }, this), 1);
 }
 
-RomoDropdown.prototype._bindAjax = function() {
+RomoModal.prototype._bindAjax = function() {
   this.romoAjax = new RomoAjax(this.elem);
   this.romoAjax.doUnbindElem(); // disable auto invoke on click
 

@@ -7,11 +7,11 @@ var RomoTooltip = function(elem) {
   Romo.trigger(this.elem, 'romoTooltip:ready', [this]);
 }
 
-RomoDropdown.prototype.popupOpen = function() {
+RomoTooltip.prototype.popupOpen = function() {
   return Romo.hasClass(this.popupElem, 'romo-tooltip-open') === true;
 }
 
-RomoDropdown.prototype.popupClosed = function() {
+RomoTooltip.prototype.popupClosed = function() {
   return Romo.hasClass(this.popupElem, 'romo-tooltip-open') === false;
 }
 
@@ -125,7 +125,7 @@ RomoTooltip.prototype.doSetPopupZIndex = function(relativeElem) {
 
 // private
 
-RomoDropdown.prototype._bindElem = function() {
+RomoTooltip.prototype._bindElem = function() {
   this._bindPopup();
   if (Romo.data(this.elem, 'romo-tooltip-content') === undefined) {
     this._bindAjax();
@@ -156,7 +156,7 @@ RomoDropdown.prototype._bindElem = function() {
   Romo.on(window, 'resize', Romo.proxy(this._onResizeWindow, this))
 }
 
-RomoDropdown.prototype._bindPopup = function() {
+RomoTooltip.prototype._bindPopup = function() {
   this.popupElem = Romo.elems('<div class="romo-tooltip-popup"><div class="romo-tooltip-arrow"></div><div class="romo-tooltip-body"></div></div>')[0];
   var popupParentElem = Romo.closest(this.elem, Romo.data(this.elem, 'romo-tooltip-append-to-closest') || 'body');
   Romo.append(popupParentElem, this.popupElem);

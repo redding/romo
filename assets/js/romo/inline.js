@@ -26,7 +26,7 @@ RomoInline.prototype.doDismiss = function() {
 
 // private
 
-RomoDropdown.prototype._bindElem = function() {
+RomoInline.prototype._bindElem = function() {
   this._bindDismiss();
 
   this.toggleElem = Romo.f(Romo.data(this.elem, 'romo-inline-toggle'))[0];
