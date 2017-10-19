@@ -8,23 +8,6 @@ var RomoSelect = function(elem) {
   this.doInit();
   this._bindElem();
 
-  this.doSetValue(this._elemValues());
-
-  if (Romo.attr(this.elem, 'id') !== undefined) {
-    var labelElem = Romo.f('label[for="'+Romo.attr(this.elem, 'id')+'"]')[0]
-    labelElem.on('click', Romo.proxy(function(e) {
-      this.romoSelectDropdown.doFocus();
-    }, this));
-  }
-
-  Romo.on(window, "pageshow", Romo.proxy(function(e) {
-    this._refreshUI();
-  }, this));
-
-  Romo.on(this.elem, 'romoSelect:triggerSetValue', Romo.proxy(function(e, value) {
-    this.doSetValue(value)
-  }, this));
-
   Romo.trigger(this.elem, 'romoSelect:ready', [this]);
 }
 
@@ -52,7 +35,7 @@ RomoSelect.prototype.doSetValue = function(value) {
   this._refreshUI();
 }
 
-/* private */
+// private
 
 RomoSelect.prototype._bindElem = function() {
   this._bindSelectDropdown();
@@ -66,6 +49,23 @@ RomoSelect.prototype._bindElem = function() {
   }, this));
   Romo.on(this.elem, 'romoSelect:triggerPopupClose', Romo.proxy(function(e) {
     Romo.trigger(this.romoSelectDropdown.elem, 'romoSelectDropdown:triggerPopupClose', []);
+  }, this));
+
+  this.doSetValue(this._elemValues());
+
+  if (Romo.attr(this.elem, 'id') !== undefined) {
+    var labelElem = Romo.f('label[for="'+Romo.attr(this.elem, 'id')+'"]')[0]
+    labelElem.on('click', Romo.proxy(function(e) {
+      this.romoSelectDropdown.doFocus();
+    }, this));
+  }
+
+  Romo.on(window, "pageshow", Romo.proxy(function(e) {
+    this._refreshUI();
+  }, this));
+
+  Romo.on(this.elem, 'romoSelect:triggerSetValue', Romo.proxy(function(e, value) {
+    this.doSetValue(value)
   }, this));
 }
 

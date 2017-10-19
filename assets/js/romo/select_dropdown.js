@@ -8,13 +8,6 @@ var RomoSelectDropdown = function(elem, optionElemsParentElem) {
   this.doInit();
   this._bindElem();
 
-  if (Romo.attr(this.elem, 'id') !== undefined) {
-    var labelElem = Romo.f('label[for="'+Romo.attr(this.elem, 'id')+'"]')[0];
-    Romo.on(labelElem, 'click', Romo.proxy(function(e) {
-      this.elem.focus();
-    }, this));
-  }
-
   Romo.trigger(this.elem, 'romoSelectDropdown:ready', [this]);
 }
 
@@ -70,7 +63,7 @@ RomoSelectDropdown.prototype.doFocus = function(openOnFocus) {
   this.romoOptionListDropdown.doFocus(openOnFocus);
 }
 
-/* private */
+// private
 
 RomoSelectDropdown.prototype._bindElem = function() {
   Romo.setData(this.elem, 'romo-option-list-focus-style-class', 'romo-select-focus');
@@ -163,6 +156,13 @@ RomoSelectDropdown.prototype._bindElem = function() {
   this._sanitizeOptions();
   this._setListItems();
   Romo.trigger(this.elem, 'romoOptionListDropdown:triggerListOptionsUpdate', [this.selectedItemElem()]);
+
+  if (Romo.attr(this.elem, 'id') !== undefined) {
+    var labelElem = Romo.f('label[for="'+Romo.attr(this.elem, 'id')+'"]')[0];
+    Romo.on(labelElem, 'click', Romo.proxy(function(e) {
+      this.elem.focus();
+    }, this));
+  }
 }
 
 RomoSelectDropdown.prototype._sanitizeOptions = function() {
