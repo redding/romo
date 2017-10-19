@@ -155,7 +155,7 @@ RomoIndicatorTextInput.prototype._getIndicatorPaddingPx = function() {
 RomoIndicatorTextInput.prototype._getIndicatorWidthPx = function() {
   return (
     Romo.data(this.elem, 'romo-indicator-text-input-indicator-width-px') ||
-    parseInt(Romo.getComputedStyle(this.indicatorElem, "width"), 10)
+    parseInt(Romo.css(this.indicatorElem, "width"), 10)
   );
 }
 
