@@ -289,7 +289,7 @@ Romo.prototype.initReplaceHtml = function(elem, htmlString) {
 
 Romo.prototype.update = function(elem, childElems) {
   elem.innerHTML = '';
-  return childElems.map(function(childElem) {
+  return Romo.array(childElems).map(function(childElem) {
     return elem.appendChild(childElem);
   });
 }
@@ -312,7 +312,7 @@ Romo.prototype.initUpdateHtml = function(elem, htmlString) {
 
 Romo.prototype.prepend = function(elem, childElems) {
   var refElem = elem.firstChild;
-  return childElems.reverse().map(function(childElem) {
+  return Romo.array(childElems).reverse().map(function(childElem) {
     refElem = elem.insertBefore(childElem, refElem);
     return refElem;
   }).reverse();
@@ -331,7 +331,7 @@ Romo.prototype.initPrependHtml = function(elem, htmlString) {
 }
 
 Romo.prototype.append = function(elem, childElems) {
-  return childElems.map(function(childElem) {
+  return Romo.array(childElems).map(function(childElem) {
     return elem.appendChild(childElem);
   });
 }
@@ -351,7 +351,7 @@ Romo.prototype.initAppendHtml = function(elem, htmlString) {
 Romo.prototype.before = function(elem, siblingElems) {
   var refElem    = elem;
   var parentElem = elem.parentNode;
-  return siblingElems.reverse().map(function(siblingElem) {
+  return Romo.array(siblingElems).reverse().map(function(siblingElem) {
     refElem = parentElem.insertBefore(siblingElem, refElem);
     return refElem;
   }).reverse();
@@ -372,7 +372,7 @@ Romo.prototype.initBeforeHtml = function(elem, htmlString) {
 Romo.prototype.after = function(elem, siblingElems) {
   var refElem    = this.next(elem);
   var parentElem = elem.parentNode;
-  return siblingElems.map(function(siblingElem) {
+  return Romo.array(siblingElems).map(function(siblingElem) {
     return parentElem.insertBefore(siblingElem, refElem);
   });
 }
@@ -630,7 +630,11 @@ Romo.prototype.array = function(value) {
   // remain fast and don't run through all of the logic to detect if an object
   // is like an array
   var valString = Object.prototype.toString.call(value);
-  if(valString === '[object NodeList]' || valString === '[object HTMLCollection]') {
+  if (
+    valString === '[object NodeList]'       ||
+    valString === '[object HTMLCollection]' ||
+    Array.isArray(value)
+  ) {
     return Array.prototype.slice.call(value)
   }
 
