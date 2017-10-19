@@ -359,7 +359,9 @@ RomoPicker.prototype._refreshUI = function() {
   if (text === '') {
     text = '&nbsp;'
   }
-  Romo.find(this.romoOptionListDropdown.elem, '.romo-picker-text').innerText = text;
+
+  var textElem = Romo.find(this.romoOptionListDropdown.elem, '.romo-picker-text')[0];
+  Romo.updateText(textElem, text);
 }
 
 RomoPicker.prototype._onCaretClick = function(e) {
