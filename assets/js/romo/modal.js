@@ -182,11 +182,15 @@ RomoModal.prototype._bindBody = function() {
   }
 
   this.closeElem = Romo.find(this.popupElem, '[data-romo-modal-close="true"]')[0];
-  Romo.on(this.closeElem, 'click', Romo.proxy(this._onPopupClose, this));
+  if (this.closeElem !== undefined) {
+    Romo.on(this.closeElem, 'click', Romo.proxy(this._onPopupClose, this));
+  }
 
   this.dragElem = Romo.find(this.popupElem, '[data-romo-modal-drag="true"]')[0];
-  Romo.addClass(this.dragElem, 'romo-modal-grab');
-  Romo.on(this.dragElem, 'mousedown', Romo.proxy(this._onMouseDown, this));
+  if (this.dragElem !== undefined) {
+    Romo.addClass(this.dragElem, 'romo-modal-grab');
+    Romo.on(this.dragElem, 'mousedown', Romo.proxy(this._onMouseDown, this));
+  }
 
   var css = {
     'min-width':  Romo.data(this.elem, 'romo-modal-min-width'),
@@ -211,15 +215,19 @@ RomoModal.prototype._bindBody = function() {
 }
 
 RomoModal.prototype._resetBody = function() {
-  Romo.rmStyle(this.contentElem, 'min-width');
-  Romo.rmStyle(this.contentElem, 'max-width');
-  Romo.rmStyle(this.contentElem, 'width');
-  Romo.rmStyle(this.contentElem, 'min-height');
-  Romo.rmStyle(this.contentElem, 'max-height');
-  Romo.rmStyle(this.contentElem, 'height');
-  Romo.rmStyle(this.contentElem, 'overflow');
+  if (this.contentElem !== undefined) {
+    Romo.rmStyle(this.contentElem, 'min-width');
+    Romo.rmStyle(this.contentElem, 'max-width');
+    Romo.rmStyle(this.contentElem, 'width');
+    Romo.rmStyle(this.contentElem, 'min-height');
+    Romo.rmStyle(this.contentElem, 'max-height');
+    Romo.rmStyle(this.contentElem, 'height');
+    Romo.rmStyle(this.contentElem, 'overflow');
+  }
 
-  Romo.off(this.closeElem, 'click', Romo.proxy(this.onPopupClose, this));
+  if (this.closeElem !== undefined) {
+    Romo.off(this.closeElem, 'click', Romo.proxy(this.onPopupClose, this));
+  }
 }
 
 RomoModal.prototype._loadBodyStart = function() {
