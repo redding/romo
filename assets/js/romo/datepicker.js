@@ -274,7 +274,7 @@ RomoDatepicker.prototype._clearBlurTimeout = function() {
 
 RomoDatepicker.prototype._refreshCalendar = function(date) {
   var titleElem = Romo.find(this.calTable, '.romo-datepicker-title')[0];
-  titleElem.innerText = this._buildCalendarTitle(date);
+  Romo.updateText(titleElem, this._buildCalendarTitle(date));
 
   var tableBodyElem = Romo.find(this.calTable, 'tbody')[0];
   Romo.updateHtml(tableBodyElem, '');
@@ -302,7 +302,7 @@ RomoDatepicker.prototype._buildCalendarHeader = function() {
   if (prevClass) {
     Romo.appendHtml(thPrevElem, '<i class="'+prevClass+'"></i>');
   } else {
-    thPrevElem.innerText = '<<';
+    Romo.updateText(thPrevElem, '<<');
   }
   Romo.append(titleRowElem, thPrevElem);
 
@@ -312,7 +312,7 @@ RomoDatepicker.prototype._buildCalendarHeader = function() {
   if (nextClass) {
     Romo.appendHtml(thNextElem, '<i class="'+nextClass+'"></i>');
   } else {
-    thNextElem.innerText = '>>';
+    Romo.updateText(thNextElem, '>>');
   }
   Romo.append(titleRowElem, thNextElem);
   Romo.append(headerElem, titleRowElem);

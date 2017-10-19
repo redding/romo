@@ -240,7 +240,7 @@ RomoOptionListDropdown.prototype._buildListOptionElem = function(item) {
 
 RomoOptionListDropdown.prototype._buildListOptGroupElem = function(item) {
   var itemElem = Romo.elems('<li data-romo-option-list-dropdown-item="optgroup"></li>')[0];
-  itemElem.innerText = item.label;
+  Romo.updateText(itemElem, item.label);
 
   return itemElem;
 }
