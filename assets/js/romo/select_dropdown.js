@@ -105,7 +105,7 @@ RomoSelectDropdown.prototype._bindElem = function() {
         custOptElem = Romo.find(this.optionElemsParentElem, 'OPTION[data-romo-select-dropdown-custom-option="true"]')[0];
       }
       Romo.setAttr(custOptElem, 'value', itemValue);
-      custOptElem.innerText = itemDisplayText;
+      Romo.updateText(custOptElem,  itemDisplayText);
     } else if (custOptElem !== undefined) {
       // a non custom value is being selected. remove any existing custom option
       Romo.remove(custOptElem);
