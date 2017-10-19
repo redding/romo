@@ -1,22 +1,9 @@
 var RomoModalForm = function(elem) {
   this.elem = elem;
 
-  this.romoModal = new RomoModal(this.elem);
-  this.doBindModal();
-
-  this.romoForm = undefined;
-  Romo.on(this.elem, 'romoModalForm:romoForm:triggerSubmit', Romo.proxy(function(e) {
-    if (this.romoForm != undefined) {
-      Romo.trigger(this.romoForm.elem, 'romoForm:triggerSubmit', []);
-    }
-  }, this));
-  this.doBindForm();
-  Romo.on(this.elem, 'romoModal:loadBodySuccess', Romo.proxy(function(e, data, romoModal) {
-    this.doBindForm();
-    Romo.trigger(this.elem, 'romoModalForm:formReady', [this.romoForm, this]);
-  }, this));
-
   this.doInit();
+  this._bindElem();
+
   Romo.trigger(this.elem, 'romoModalForm:ready', [this]);
 }
 
@@ -24,7 +11,26 @@ RomoModalForm.prototype.doInit = function() {
   // override as needed
 }
 
-RomoModalForm.prototype.doBindModal = function() {
+// private
+
+RomoDropdownForm.prototype._bindElem = function() {
+  Romo.on(this.elem, 'romoModalForm:romoForm:triggerSubmit', Romo.proxy(function(e) {
+    if (this.romoForm !== undefined) {
+      Romo.trigger(this.romoForm.elem, 'romoForm:triggerSubmit', []);
+    }
+  }, this));
+  Romo.on(this.elem, 'romoModal:loadBodySuccess', Romo.proxy(function(e, data, romoModal) {
+    this._bindForm();
+    Romo.trigger(this.elem, 'romoModalForm:formReady', [this.romoForm, this]);
+  }, this));
+
+  this._bindModal();
+  this._bindForm();
+}
+
+RomoModalForm.prototype._bindModal = function() {
+  this.romoModal = new RomoModal(this.elem);
+
   if (Romo.data(this.elem, 'romo-modal-clear-content') === undefined) {
     Romo.setData(this.elem, 'romo-modal-clear-content', 'true');
   }
@@ -65,39 +71,43 @@ RomoModalForm.prototype.doBindModal = function() {
 }
 
 RomoModalForm.prototype.doBindForm = function() {
+  this.romoForm = undefined;
   var formElem = Romo.find(this.romoModal.popupElem, '[data-romo-form-auto="modalForm"]')[0];
 
-  Romo.on(formElem, 'romoForm:clearMsgs', Romo.proxy(function(e, romoForm) {
-    Romo.trigger(this.elem, 'romoModalForm:romoForm:clearMsgs', [romoForm, this]);
-  }, this));
-  Romo.on(formElem, 'romoForm:ready', Romo.proxy(function(e, romoForm) {
-    Romo.trigger(this.elem, 'romoModalForm:romoForm:ready', [romoForm, this]);
-  }, this));
-  Romo.on(formElem, 'romoForm:confirmSubmit', Romo.proxy(function(e, romoForm) {
-    Romo.trigger(this.elem, 'romoModalForm:romoForm:confirmSubmit', [romoForm, this]);
-  }, this));
-  Romo.on(formElem, 'romoForm:beforeSubmit', Romo.proxy(function(e, romoForm) {
-    Romo.trigger(this.elem, 'romoModalForm:romoForm:beforeSubmit', [romoForm, this]);
-  }, this));
-  Romo.on(formElem, 'romoForm:submitSuccess', Romo.proxy(function(e, data, romoForm) {
-    Romo.trigger(this.elem, 'romoModalForm:romoForm:submitSuccess', [data, romoForm, this]);
-  }, this));
-  Romo.on(formElem, 'romoForm:submitInvalidMsgs', Romo.proxy(function(e, msgs, xhr, romoForm) {
-    Romo.trigger(this.elem, 'romoModalForm:romoForm:submitInvalidMsgs', [msgs, xhr, romoForm, this]);
-  }, this));
-  Romo.on(formElem, 'romoForm:submitXhrError', Romo.proxy(function(e, xhr, romoForm) {
-    Romo.trigger(this.elem, 'romoModalForm:romoForm:submitXhrError', [xhr, romoForm, this]);
-  }, this));
-  Romo.on(formElem, 'romoForm:submitError', Romo.proxy(function(e, xhr, romoForm) {
-    Romo.trigger(this.elem, 'romoModalForm:romoForm:submitError', [xhr, romoForm, this]);
-  }, this));
-  Romo.on(formElem, 'romoForm:browserSubmit', Romo.proxy(function(e, romoForm) {
-    Romo.trigger(this.elem, 'romoModalForm:romoForm:browserSubmit', [romoForm, this]);
-  }, this));
+  if (formElem !== undefined) {
+    Romo.on(formElem, 'romoForm:clearMsgs', Romo.proxy(function(e, romoForm) {
+      Romo.trigger(this.elem, 'romoModalForm:romoForm:clearMsgs', [romoForm, this]);
+    }, this));
+    Romo.on(formElem, 'romoForm:ready', Romo.proxy(function(e, romoForm) {
+      Romo.trigger(this.elem, 'romoModalForm:romoForm:ready', [romoForm, this]);
+    }, this));
+    Romo.on(formElem, 'romoForm:confirmSubmit', Romo.proxy(function(e, romoForm) {
+      Romo.trigger(this.elem, 'romoModalForm:romoForm:confirmSubmit', [romoForm, this]);
+    }, this));
+    Romo.on(formElem, 'romoForm:beforeSubmit', Romo.proxy(function(e, romoForm) {
+      Romo.trigger(this.elem, 'romoModalForm:romoForm:beforeSubmit', [romoForm, this]);
+    }, this));
+    Romo.on(formElem, 'romoForm:submitSuccess', Romo.proxy(function(e, data, romoForm) {
+      Romo.trigger(this.elem, 'romoModalForm:romoForm:submitSuccess', [data, romoForm, this]);
+    }, this));
+    Romo.on(formElem, 'romoForm:submitInvalidMsgs', Romo.proxy(function(e, msgs, xhr, romoForm) {
+      Romo.trigger(this.elem, 'romoModalForm:romoForm:submitInvalidMsgs', [msgs, xhr, romoForm, this]);
+    }, this));
+    Romo.on(formElem, 'romoForm:submitXhrError', Romo.proxy(function(e, xhr, romoForm) {
+      Romo.trigger(this.elem, 'romoModalForm:romoForm:submitXhrError', [xhr, romoForm, this]);
+    }, this));
+    Romo.on(formElem, 'romoForm:submitError', Romo.proxy(function(e, xhr, romoForm) {
+      Romo.trigger(this.elem, 'romoModalForm:romoForm:submitError', [xhr, romoForm, this]);
+    }, this));
+    Romo.on(formElem, 'romoForm:browserSubmit', Romo.proxy(function(e, romoForm) {
+      Romo.trigger(this.elem, 'romoModalForm:romoForm:browserSubmit', [romoForm, this]);
+    }, this));
 
-  var submitElem   = Romo.find(this.romoModal.popupElem, '[data-romo-form-submit]')[0];
-  var spinnerElems = Romo.find(this.romoModal.popupElem, '[data-romo-spinner-auto="true"]');
-  this.romoForm = new RomoForm(formElem, submitElem, spinnerElems);
+    var submitElem   = Romo.find(this.romoModal.popupElem, '[data-romo-form-submit]')[0];
+    var spinnerElems = Romo.find(this.romoModal.popupElem, '[data-romo-spinner-auto="true"]');
+
+    this.romoForm = new RomoForm(formElem, submitElem, spinnerElems);
+  }
 }
 
 Romo.onInitUI(function(elem) {
