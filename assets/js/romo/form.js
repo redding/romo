@@ -1,5 +1,5 @@
-var RomoForm = function(formElem, givenSubmitElems, givenSpinnerElems) {
-  this.elem = formElem;
+var RomoForm = function(elem, givenSubmitElems, givenSpinnerElems) {
+  this.elem = elem;
 
   var defaultSubmitElems = Romo.find(
     this.elem,
@@ -29,7 +29,7 @@ var RomoForm = function(formElem, givenSubmitElems, givenSpinnerElems) {
   }
 
   this.doInit();
-  this._bindFormElem();
+  this._bindElem();
 
   Romo.trigger(this.elem, 'romoForm:clearMsgs', [this]);
   Romo.trigger(this.elem, 'romoForm:ready',     [this]);
@@ -42,13 +42,13 @@ RomoForm.prototype.doInit = function() {
 RomoForm.prototype.doSubmit = function() {
   this.submitQueued = true;
   if (this.submitRunning === false) {
-    this._doSubmit();
+    this._submit();
   }
 }
 
 // private
 
-RomoForm.prototype._bindFormElem = function() {
+RomoForm.prototype._bindElem = function() {
   this.submitElems.forEach(Romo.proxy(function(submitElem) {
     Romo.on(submitElem, 'click', Romo.proxy(this._onSubmitClick, this));
   }, this));
@@ -82,7 +82,7 @@ RomoForm.prototype._onSubmitClick = function(e) {
   if (!Romo.hasClass(submitElem, 'disabled')) {
     if (Romo.data(submitElem, 'romo-form-submit') === 'confirm') {
       Romo.trigger(this.elem, 'romoForm:confirmSubmit', [this]);
-    } else
+    } else {
       this.doSubmit();
     }
   }
@@ -117,7 +117,7 @@ RomoForm.prototype._onFormKeyPress = function(e) {
   }
 }
 
-RomoForm.prototype._doSubmit = function() {
+RomoForm.prototype._submit = function() {
   this.submitQueued  = false;
   this.submitRunning = true;
 
@@ -127,20 +127,20 @@ RomoForm.prototype._doSubmit = function() {
   Romo.trigger(this.elem, 'romoForm:beforeSubmit', [this]);
 
   if(Romo.data(this.elem, 'romo-form-browser-submit') === true) {
-    this._doBrowserSubmit();
+    this._browserSubmit();
   } else if (Romo.attr(this.elem, 'method').toUpperCase() === 'GET') {
-    this._doNonBrowserGetSubmit();
+    this._nonBrowserGetSubmit();
   } else {
-    this._doNonBrowserNonGetSubmit();
+    this._nonBrowserNonGetSubmit();
   }
 }
 
-RomoForm.prototype._doBrowserSubmit = function() {
+RomoForm.prototype._browserSubmit = function() {
   this.elem.submit();
   Romo.trigger(this.elem, 'romoForm:browserSubmit', [this]);
 }
 
-RomoForm.prototype._doNonBrowserGetSubmit = function() {
+RomoForm.prototype._nonBrowserGetSubmit = function() {
   var formData = this._getFormData(this._getFormValues({ includeFiles: false }));
 
   if (Romo.data(this.elem, 'romo-form-redirect-page') === true) {
@@ -154,17 +154,17 @@ RomoForm.prototype._doNonBrowserGetSubmit = function() {
       Romo.redirectPage(Romo.attr(this.elem, 'action'));
     }
   } else {
-    this._doAjaxSubmit(formData);
+    this._ajaxSubmit(formData);
   }
 }
 
-RomoForm.prototype._doNonBrowserNonGetSubmit = function() {
+RomoForm.prototype._nonBrowserNonGetSubmit = function() {
   var formData = this._getFormData(this._getFormValues({ includeFiles: true }));
 
-  this._doAjaxSubmit(formData);
+  this._ajaxSubmit(formData);
 }
 
-RomoForm.prototype._doAjaxSubmit = function(formData) {
+RomoForm.prototype._ajaxSubmit = function(formData) {
   Romo.ajax({
     url:     Romo.attr(this.elem, 'action'),
     type:    Romo.attr(this.elem, 'method'),
@@ -178,7 +178,7 @@ RomoForm.prototype._doAjaxSubmit = function(formData) {
 RomoForm.prototype._onSubmitSuccess = function(response, status, xhr) {
   Romo.trigger(this.elem, 'romoForm:clearMsgs');
 
-  var dataType = this._getXhrDataType(),
+  var dataType = this._getXhrDataType();
   Romo.trigger(
     this.elem,
     'romoForm:submitSuccess',
@@ -192,7 +192,7 @@ RomoForm.prototype._onSubmitError = function(statusText, status, xhr) {
   Romo.trigger(this.elem, 'romoForm:clearMsgs');
 
   if(status === 422) {
-    var dataType = this._getXhrDataType(),
+    var dataType = this._getXhrDataType();
     Romo.trigger(
       this.elem,
       'romoForm:submitInvalidMsgs',
@@ -212,7 +212,7 @@ RomoForm.prototype._onSubmitError = function(statusText, status, xhr) {
 RomoForm.prototype._completeSubmit = function() {
   Romo.trigger(this.elem, 'romoForm:submitComplete', [this]);
   if (this.submitQueued === true) {
-    this._doSubmit();
+    this._submit();
   } else {
     this.submitRunning = false;
   }
