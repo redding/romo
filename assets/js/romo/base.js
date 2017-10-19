@@ -244,7 +244,7 @@ Romo.prototype.parseZIndex = function(elem) {
 }
 
 Romo.prototype.parseElemZIndex = function(elem) {
-  var val = parseInt(this.css(elem, "z-index"));
+  var val = parseInt(this.css(elem, "z-index"), 10);
   if (!isNaN(val)) {
     return val;
   }
@@ -741,7 +741,7 @@ Romo.prototype._fid = 1;
 Romo.prototype._el = function(elem) {
   if (!elem._romoeid) {
     if (elem !== window && elem !== document) {
-      elem._romoeid = (this.attr(elem, 'data-romo-eid') || this.setAttr(elem, 'data-romo-eid', this._eid++));
+      elem._romoeid = (this.data(elem, 'romo-eid') || this.setData(elem, 'romo-eid', this._eid++));
     } else {
       elem._romoeid = elem === window ? 'window' : 'document';
     }

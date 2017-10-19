@@ -81,16 +81,16 @@ RomoDatepicker.prototype._bindElem = function() {
     Romo.trigger(this.elem, 'romoDatepicker:triggerPopupOpen');
   }, this));
 
-  Romo.on(this.elem, 'datepicker:triggerEnable', $.proxy(function(e) {
+  Romo.on(this.elem, 'datepicker:triggerEnable', Romo.proxy(function(e) {
     Romo.trigger(this.elem, 'romoIndicatorTextInput:triggerEnable', []);
   }, this));
-  Romo.on(this.elem, 'datepicker:triggerDisable', $.proxy(function(e) {
+  Romo.on(this.elem, 'datepicker:triggerDisable', Romo.proxy(function(e) {
     Romo.trigger(this.elem, 'romoIndicatorTextInput:triggerDisable', []);
   }, this));
-  Romo.on(this.elem, 'datepicker:triggerShow', $.proxy(function(e) {
+  Romo.on(this.elem, 'datepicker:triggerShow', Romo.proxy(function(e) {
     Romo.trigger(this.elem, 'romoIndicatorTextInput:triggerShow', []);
   }, this));
-  Romo.on(this.elem, 'datepicker:triggerHide', $.proxy(function(e) {
+  Romo.on(this.elem, 'datepicker:triggerHide', Romo.proxy(function(e) {
     Romo.trigger(this.elem, 'romoIndicatorTextInput:triggerHide', []);
   }, this));
 
@@ -106,7 +106,7 @@ RomoDatepicker.prototype._bindDropdown = function() {
   if (Romo.data(this.elem, 'romo-dropdown-width') === undefined) {
     Romo.setData(this.elem, 'romo-dropdown-width', 'elem');
   }
-  if (parseInt(Romo.css(this.elem, 'width')) < 175) {
+  if (parseInt(Romo.css(this.elem, 'width'), 10) < 175) {
     Romo.setData(this.elem, 'romo-dropdown-width', '175px');
   }
   this.romoDropdown = new RomoDropdown(this.elem);
@@ -215,7 +215,7 @@ RomoDatepicker.prototype._onPopupOpen = function(e) {
 }
 
 RomoDatepicker.prototype._onPopupClose = function(e) {
-  this._highlightItem($());
+  this._highlightItem(undefined);
 }
 
 RomoDatepicker.prototype._onItemEnter = function(e) {
@@ -396,7 +396,9 @@ RomoDatepicker.prototype._highlightItem = function(itemElem) {
   if(highlightElem) {
     highlightElem.removeClass('romo-datepicker-highlight');
   }
-  Romo.addClass(itemElem, 'romo-datepicker-highlight');
+  if(itemElem) {
+    Romo.addClass(itemElem, 'romo-datepicker-highlight');
+  }
 }
 
 Romo.onInitUI(function(elem) {

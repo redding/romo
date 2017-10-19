@@ -197,7 +197,7 @@ RomoModal.prototype._bindBody = function() {
   }
 
   if (Romo.data(this.elem, 'romo-modal-max-height') === undefined) {
-    Romo.setAttr(this.elem, 'data-romo-modal-max-height', 'detect');
+    Romo.setData(this.elem, 'romo-modal-max-height', 'detect');
   }
   if (Romo.data(this.elem, 'romo-modal-max-height') !== 'detect') {
     css['max-height'] = Romo.data(this.elem, 'romo-modal-max-height');
@@ -270,8 +270,8 @@ RomoModal.prototype._dragStart = function(e) {
   Romo.addClass(this.dragElem, 'romo-modal-grabbing');
   Romo.removeClass(this.dragElem, 'romo-modal-grab');
 
-  Romo.setStyle(this.popupElem, 'width',  Romo.css(this.popupElem, 'width');
-  Romo.setStyle(this.popupElem, 'height', Romo.css(this.popupElem, 'height');
+  Romo.setStyle(this.popupElem, 'width',  Romo.css(this.popupElem, 'width'));
+  Romo.setStyle(this.popupElem, 'height', Romo.css(this.popupElem, 'height'));
 
   this._dragDiffX = e.clientX - this.popupElem.offsetLeft;
   this._dragDiffY = e.clientY - this.popupElem.offsetTop;

@@ -96,7 +96,7 @@ RomoDropdown.prototype.doPlacePopupElem = function() {
   var configPosition = this.popupPosition;
 
   if (configHeight === 'detect') {
-    var popupHeight       = parseInt(Romo.css(this.popupElem, 'height'));
+    var popupHeight       = parseInt(Romo.css(this.popupElem, 'height'), 10);
     var topAvailHeight    = this._getPopupMaxAvailableHeight('top');
     var bottomAvailHeight = this._getPopupMaxAvailableHeight('bottom');
 
@@ -315,7 +315,7 @@ RomoDropdown.prototype._onPopupClose = function(e) {
   if (Romo.hasClass(this.elem, 'disabled') === false && this.popupOpen()) {
     setTimeout(Romo.proxy(function() {
       this.doPopupClose();
-    }, this), 1;
+    }, this), 1);
   }
 }
 
