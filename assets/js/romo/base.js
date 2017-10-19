@@ -298,6 +298,10 @@ Romo.prototype.updateHtml = function(elem, htmlString) {
   return this.update(elem, this.elems(htmlString));
 }
 
+Romo.prototype.updateText = function(elem, textString) {
+  elem.innerText = textString;
+}
+
 Romo.prototype.initUpdate = function(elem, childElems) {
   return this.triggerInitUI(this.update(elem, childElems));
 }
