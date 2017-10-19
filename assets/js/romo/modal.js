@@ -133,7 +133,9 @@ RomoModal.prototype._bindPopup = function() {
   var popupParentElem = Romo.closest(this.elem, Romo.data(this.elem, 'romo-dropdown-append-to-closest') || 'body');
   Romo.append(popupParentElem, this.popupElem)
 
-  this.bodyElem = Romo.find(this.popupElem, '> .romo-modal-body')[0];
+  this.bodyElem = Romo.children(this.popupElem).find(Romo.proxy(function(childElem){
+    return Romo.is(childElem, '.romo-modal-body');
+  }, this));
   if (Romo.data(this.elem, 'romo-modal-style-class') !== undefined) {
     Romo.addClass(this.bodyElem, Romo.data(this.elem, 'romo-modal-style-class'));
   }

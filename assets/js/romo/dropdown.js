@@ -181,7 +181,9 @@ RomoDropdown.prototype._bindPopup = function() {
     this._bindElemKeyUp();
   }, this));
 
-  this.bodyElem = Romo.find(this.popupElem, '> .romo-dropdown-body')[0];
+  this.bodyElem = Romo.children(this.popupElem).find(Romo.proxy(function(childElem){
+    return Romo.is(childElem, '.romo-dropdown-body');
+  }, this));
   if (Romo.data(this.elem, 'romo-dropdown-style-class') !== undefined) {
     Romo.addClass(this.bodyElem, Romo.data(this.elem, 'romo-dropdown-style-class'));
   }
