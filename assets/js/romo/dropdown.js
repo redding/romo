@@ -242,7 +242,9 @@ RomoDropdown.prototype._bindBody = function() {
   }
 
   this.closeElem = Romo.find(this.popupElem, '[data-romo-dropdown-close="true"]')[0];
-  Romo.on(this.closeElem, 'click', Romo.proxy(this.onPopupClose, this));
+  if (this.closeElem !== undefined) {
+    Romo.on(this.closeElem, 'click', Romo.proxy(this.onPopupClose, this));
+  }
 
   Romo.setStyle(this.contentElem, 'min-height', Romo.data(this.elem, 'romo-dropdown-min-height'));
   Romo.setStyle(this.contentElem, 'height',     Romo.data(this.elem, 'romo-dropdown-height'));
@@ -266,14 +268,16 @@ RomoDropdown.prototype._bindBody = function() {
 }
 
 RomoDropdown.prototype._resetBody = function() {
-  Romo.rmStyle(this.contentElem, 'min-width');
-  Romo.rmStyle(this.contentElem, 'max-width');
-  Romo.rmStyle(this.contentElem, 'width');
-  Romo.rmStyle(this.contentElem, 'min-height');
-  Romo.rmStyle(this.contentElem, 'max-height');
-  Romo.rmStyle(this.contentElem, 'height');
-  Romo.rmStyle(this.contentElem, 'overflow-x');
-  Romo.rmStyle(this.contentElem, 'overflow-y');
+  if (this.contentElem !== undefined) {
+    Romo.rmStyle(this.contentElem, 'min-width');
+    Romo.rmStyle(this.contentElem, 'max-width');
+    Romo.rmStyle(this.contentElem, 'width');
+    Romo.rmStyle(this.contentElem, 'min-height');
+    Romo.rmStyle(this.contentElem, 'max-height');
+    Romo.rmStyle(this.contentElem, 'height');
+    Romo.rmStyle(this.contentElem, 'overflow-x');
+    Romo.rmStyle(this.contentElem, 'overflow-y');
+  }
 }
 
 RomoDropdown.prototype._loadBodyStart = function() {
