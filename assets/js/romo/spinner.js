@@ -44,9 +44,9 @@ RomoSpinner.prototype.doStart = function(customBasisSize) {
   this.elemHtml  = this.elem.innerHTML;
   this.elemStyle = Romo.attr(this.elem, 'style');
 
-  Romo.setStyle('position', 'relative');
-  Romo.setStyle('width',    Romo.css(this.elem, 'width'));
-  Romo.setStyle('height',   Romo.css(this.elem, 'height'));
+  Romo.setStyle(this.elem, 'position', 'relative');
+  Romo.setStyle(this.elem, 'width',    Romo.css(this.elem, 'width'));
+  Romo.setStyle(this.elem, 'height',   Romo.css(this.elem, 'height'));
 
   Romo.updateHtml(this.elem, '');
   this.spinner.spin(this.elem);
@@ -62,9 +62,9 @@ RomoSpinner.prototype.doStop = function() {
   if (this.elemHtml !== undefined) {
     Romo.updateHtml(this.elem, this.elemHtml);
   }
-  Romo.rmStyle('position');
-  Romo.rmStyle('width');
-  Romo.rmStyle('height');
+  Romo.rmStyle(this.elem, 'position');
+  Romo.rmStyle(this.elem, 'width');
+  Romo.rmStyle(this.elem, 'height');
 
   if (this.elemStyle !== undefined) {
     Romo.setAttr(this.elem, 'style', this.elemStyle);
