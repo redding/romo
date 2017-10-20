@@ -3,7 +3,7 @@ var RomoSelectDropdown = function(elem, optionElemsParentElem) {
 
   this.filterHiddenClass     = 'romo-select-filter-hidden';
   this.optionElemSelector    = ':not(.'+this.filterHiddenClass+')';
-  this.optionElemsParentElem = (optionElemsParentElem || Romo.find(this.elem, '.romo-select-dropdown-options-parent'));
+  this.optionElemsParentElem = (optionElemsParentElem || Romo.find(this.elem, '.romo-select-dropdown-options-parent')[0]);
 
   this.doInit();
   this._bindElem();

@@ -388,7 +388,7 @@ RomoDropdown.prototype._bindWindowBodyKeyUp = function() {
   Romo.on(bodyElem, 'keyup', Romo.proxy(this._onWindowBodyKeyUp, this));
 }
 
-RomoDropdown.prototype._nBindWindowBodyKeyUp = function() {
+RomoDropdown.prototype._unBindWindowBodyKeyUp = function() {
   var bodyElem = Romo.f('body')[0];
   Romo.off(bodyElem, 'keyup', Romo.proxy(this._onWindowBodyKeyUp, this));
 }

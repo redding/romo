@@ -31,7 +31,7 @@ RomoOnkey.prototype._doTrigger = function(triggerEvent) {
     Romo.proxy(function() {
       Romo.trigger(this.elem, 'romoOnkey:trigger', [triggerEvent, this]);
     }, this),
-    Romo.data(romoOnkey.elem, 'romo-onkey-delay-ms') || this.defaultDelayMs
+    Romo.data(this.elem, 'romo-onkey-delay-ms') || this.defaultDelayMs
   );
 }
 

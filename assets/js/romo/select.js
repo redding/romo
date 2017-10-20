@@ -55,7 +55,7 @@ RomoSelect.prototype._bindElem = function() {
 
   if (Romo.attr(this.elem, 'id') !== undefined) {
     var labelElem = Romo.f('label[for="'+Romo.attr(this.elem, 'id')+'"]')[0]
-    labelElem.on('click', Romo.proxy(function(e) {
+    Romo.on(labelElem, 'click', Romo.proxy(function(e) {
       this.romoSelectDropdown.doFocus();
     }, this));
   }
@@ -101,7 +101,7 @@ RomoSelect.prototype._bindSelectedOptionsList = function() {
 }
 
 RomoSelect.prototype._bindSelectDropdown = function() {
-  this.romoSelectDropdown = new RomoSelectDropdown(this._buildSelectDropdownElem());
+  this.romoSelectDropdown = new RomoSelectDropdown(this._buildSelectDropdownElem(), this.elem);
 
   Romo.on(this.romoSelectDropdown.elem, 'romoSelectDropdown:romoDropdown:toggle', Romo.proxy(function(e, romoDropdown, romoSelectDropdown) {
     Romo.trigger(this.elem, 'romoSelect:romoDropdown:toggle', [romoDropdown, this]);
@@ -242,7 +242,7 @@ RomoSelect.prototype._setValues = function(newValues) {
   var unsetElems = unsetValues.map(Romo.proxy(function(value) {
     return Romo.find(this.elem, 'OPTION[value="'+value+'"]')[0];
   }, this));
-  var setElems = setValues.reduce(Romo.proxy(function(value) {
+  var setElems = setValues.map(Romo.proxy(function(value) {
     return Romo.find(this.elem, 'OPTION[value="'+value+'"]')[0];
   }, this));
 
