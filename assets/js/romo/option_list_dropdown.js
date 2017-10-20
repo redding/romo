@@ -590,7 +590,9 @@ RomoOptionListDropdown.prototype._highlightItem = function(itemElem) {
   if (highlightedItemElem !== undefined) {
     Romo.removeClass(highlightedItemElem, 'romo-option-list-dropdown-highlight');
   }
-  Romo.addClass(itemElem, 'romo-option-list-dropdown-highlight');
+  if (itemElem) {
+    Romo.addClass(itemElem, 'romo-option-list-dropdown-highlight');
+  }
 }
 
 RomoOptionListDropdown.prototype._getHighlightedItemElem = function() {
