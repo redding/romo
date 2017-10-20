@@ -815,6 +815,8 @@ RomoParentChildElems.prototype.add = function(parentElem, childElems) {
 }
 
 RomoParentChildElems.prototype.remove = function(nodeElem) {
+  if (nodeElem.nodeType !== Node.ELEMENT_NODE){ return false; }
+
   if (Romo.data(nodeElem, 'romo-parent-removed-observer-disabled') !== true) {
     if (Romo.data(nodeElem, this.attrName) !== undefined) {
       // node is a parent elem itself
