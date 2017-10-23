@@ -86,10 +86,16 @@ RomoDropdown.prototype.doPlacePopupElem = function() {
     Romo.setStyle(this.popupElem, 'position', 'fixed');
   }
 
-  var pos    = Romo.assign({}, this.elem.getBoundingClientRect(), Romo.offset(this.elem));
-  var w      = this.popupElem.offsetWidth;
-  var h      = this.popupElem.offsetHeight;
-  var offset = {};
+  var elemRect   = this.elem.getBoundingClientRect();
+  var elemHeight = elemRect.height;
+  var elemWidth  = elemRect.width;
+
+  var elemOffset = Romo.offset(this.elem);
+  var elemTop    = elemOffset.top;
+  var elemLeft   = elemOffset.left
+
+  var popupOffsetWidth  = this.popupElem.offsetWidth;
+  var popupOffsetHeight = this.popupElem.offsetHeight;
 
   var configHeight = Romo.data(this.elem, 'romo-dropdown-height') ||
                      Romo.data(this.elem, 'romo-dropdown-max-height');
@@ -105,43 +111,46 @@ RomoDropdown.prototype.doPlacePopupElem = function() {
       configHeight = this._getPopupMaxAvailableHeight(configPosition);
     } else if (topAvailHeight > bottomAvailHeight) {
       configPosition = 'top';
-      configHeight = topAvailHeight;
+      configHeight   = topAvailHeight;
     } else {
       configPosition = 'bottom';
-      configHeight = bottomAvailHeight;
+      configHeight   = bottomAvailHeight;
     }
 
     // remove any height difference between the popup and content elems
     // assumes popup height always greater than or equal to content height
-    configHeight = configHeight - (h - this.contentElem.offsetHeight);
+    configHeight = configHeight - (popupOffsetHeight - this.contentElem.offsetHeight);
     Romo.setStyle(this.contentElem, 'max-height', configHeight.toString() + 'px');
   }
 
-  if(h > configHeight) {
-    h = configHeight;
+  if(popupOffsetHeight > configHeight) {
+    popupOffsetHeight = configHeight;
   }
 
+  var offsetTop = undefined;
   switch (configPosition) {
     case 'top':
       var pad = 2;
-      Romo.assign(offset, { top: pos.top - h - pad });
+      offsetTop = elemTop - popupOffsetHeight - pad;
       break;
     case 'bottom':
       var pad = 2;
-      Romo.assign(offset, { top: pos.top + pos.height + pad });
-      break;
-  }
-  switch (this.popupAlignment) {
-    case 'left':
-      Romo.assign(offset, { left: pos.left });
-      break;
-    case 'right':
-      Romo.assign(offset, { left: pos.left + pos.width - w });
+      offsetTop = elemTop + elemHeight + pad;
       break;
   }
 
-  Romo.setStyle(this.popupElem, 'top',  this._roundPosOffsetVal(offset.top));
-  Romo.setStyle(this.popupElem, 'left', this._roundPosOffsetVal(offset.left));
+  var offsetLeft = undefined;
+  switch (this.popupAlignment) {
+    case 'left':
+      offsetLeft = elemLeft;
+      break;
+    case 'right':
+      offsetLeft = elemLeft + elemWidth - popupOffsetWidth;
+      break;
+  }
+
+  Romo.setStyle(this.popupElem, 'top',  this._roundPosOffsetVal(offsetTop)+'px');
+  Romo.setStyle(this.popupElem, 'left', this._roundPosOffsetVal(offsetLeft)+'px');
 }
 
 RomoDropdown.prototype.doSetPopupZIndex = function(relativeElem) {
