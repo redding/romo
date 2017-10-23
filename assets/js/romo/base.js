@@ -683,14 +683,14 @@ Romo.prototype._handlerKey = function(elem, eventName, fn) {
 
 Romo.prototype._deserializeValue = function(value) {
   try {
-    if (value === "true")      { return true;       } // "true"       => true
-    if (value === "false")     { return false;      } // "false"      => false
-    if (value === "undefined") { return undefined;  } // "undefined"  => undefined
-    if (value === "null")      { return null;       } // "null"       => null
-    if (value === null)        { return undefined;  } // null         => undefined
-    if (+value+"" === value)   { return +value;     } // "42.5"       => 42.5
-    if (/^[\[\{]/.test(value)) { JSON.parse(value); } // JSON         => parse if valid
-    return value;                                     // String       => self
+    if (value === "true")      { return true;              } // "true"       => true
+    if (value === "false")     { return false;             } // "false"      => false
+    if (value === "undefined") { return undefined;         } // "undefined"  => undefined
+    if (value === "null")      { return null;              } // "null"       => null
+    if (value === null)        { return undefined;         } // null         => undefined
+    if (+value+"" === value)   { return +value;            } // "42.5"       => 42.5
+    if (/^[\[\{]/.test(value)) { return JSON.parse(value); } // JSON         => parse if valid
+    return value;                                            // String       => self
   } catch(e) {
     return value
   }
