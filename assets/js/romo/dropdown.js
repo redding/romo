@@ -49,11 +49,11 @@ RomoDropdown.prototype.doPopupOpen = function() {
   // event, then the toggle click will propagate which will call
   // this event and immediately close the popup.
   setTimeout(Romo.proxy(function() {
-    this._bindWindowBodyClick();
+    this.doBindWindowBodyClick();
   }, this), 1);
 
   // bind "esc" keystroke to toggle close
-  this._bindWindowBodyKeyUp();
+  this.doBindWindowBodyKeyUp();
 
   // bind window resizes reposition dropdown
   Romo.on(window, 'resize', Romo.proxy(this._onResizeWindow, this));
@@ -65,10 +65,10 @@ RomoDropdown.prototype.doPopupClose = function() {
   Romo.removeClass(this.popupElem, 'romo-dropdown-open');
 
   // unbind any event to close the popup when clicking away from it
-  this._unBindWindowBodyClick();
+  this.doUnBindWindowBodyClick();
 
   // unbind "esc" keystroke to toggle close
-  this._unBindWindowBodyKeyUp();
+  this.doUnBindWindowBodyKeyUp();
 
   // unbind window resizes reposition dropdown
   Romo.off(window, 'resize', Romo.proxy(this._onResizeWindow, this));
@@ -158,13 +158,45 @@ RomoDropdown.prototype.doSetPopupZIndex = function(relativeElem) {
   Romo.setStyle(this.popupElem, 'z-index', relativeZIndex + 1200); // see z-index.css
 }
 
+RomoDropdown.prototype.doBindElemKeyUp = function() {
+  Romo.on(this.elem,      'keyup', Romo.proxy(this._onElemKeyUp, this));
+  Romo.on(this.popupElem, 'keyup', Romo.proxy(this._onElemKeyUp, this));
+}
+
+RomoDropdown.prototype.doUnBindElemKeyUp = function() {
+  Romo.off(this.elem,      'keyup', Romo.proxy(this._onElemKeyUp, this));
+  Romo.off(this.popupElem, 'keyup', Romo.proxy(this._onElemKeyUp, this));
+}
+
+RomoDropdown.prototype.doBindWindowBodyClick = function() {
+  var bodyElem = Romo.f('body')[0];
+  Romo.on(bodyElem, 'click',               Romo.proxy(this._onWindowBodyClick, this));
+  Romo.on(bodyElem, 'romoModal:mousemove', Romo.proxy(this._onWindowBodyClick, this));
+}
+
+RomoDropdown.prototype.doUnBindWindowBodyClick = function() {
+  var bodyElem = Romo.f('body')[0];
+  Romo.off(bodyElem, 'click',               Romo.proxy(this._onWindowBodyClick, this));
+  Romo.off(bodyElem, 'romoModal:mousemove', Romo.proxy(this._onWindowBodyClick, this));
+}
+
+RomoDropdown.prototype.doBindWindowBodyKeyUp = function() {
+  var bodyElem = Romo.f('body')[0];
+  Romo.on(bodyElem, 'keyup', Romo.proxy(this._onWindowBodyKeyUp, this));
+}
+
+RomoDropdown.prototype.doUnBindWindowBodyKeyUp = function() {
+  var bodyElem = Romo.f('body')[0];
+  Romo.off(bodyElem, 'keyup', Romo.proxy(this._onWindowBodyKeyUp, this));
+}
+
 // private
 
 RomoDropdown.prototype._bindElem = function() {
   this._bindPopup();
   this._bindAjax();
   this._bindBody();
-  this._bindElemKeyUp();
+  this.doBindElemKeyUp();
 
   if (Romo.data(this.elem, 'romo-dropdown-disable-click-invoke') !== true) {
     Romo.on(this.elem, 'click', Romo.proxy(this._onToggle, this));
@@ -180,14 +212,14 @@ RomoDropdown.prototype._bindPopup = function() {
   Romo.append(popupParentElem, this.popupElem);
 
   Romo.on(this.popupElem, 'romoModal:popupOpen', Romo.proxy(function(e) {
-    this._unBindWindowBodyClick();
-    this._unBindWindowBodyKeyUp();
-    this._unBindElemKeyUp();
+    this.doUnBindWindowBodyClick();
+    this.doUnBindWindowBodyKeyUp();
+    this.doUnBindElemKeyUp();
   }, this));
   Romo.on(this.popupElem, 'romoModal:popupClose', Romo.proxy(function(e) {
-    this._bindWindowBodyClick();
-    this._bindWindowBodyKeyUp();
-    this._bindElemKeyUp();
+    this.doBindWindowBodyClick();
+    this.doBindWindowBodyKeyUp();
+    this.doBindElemKeyUp();
   }, this));
 
   this.bodyElem = Romo.children(this.popupElem).find(Romo.proxy(function(childElem){
@@ -334,16 +366,6 @@ RomoDropdown.prototype._onPopupClose = function(e) {
   }
 }
 
-RomoDropdown.prototype._bindElemKeyUp = function() {
-  Romo.on(this.elem,      'keyup', Romo.proxy(this._onElemKeyUp, this));
-  Romo.on(this.popupElem, 'keyup', Romo.proxy(this._onElemKeyUp, this));
-}
-
-RomoDropdown.prototype._unBindElemKeyUp = function() {
-  Romo.off(this.elem,      'keyup', Romo.proxy(this._onElemKeyUp, this));
-  Romo.off(this.popupElem, 'keyup', Romo.proxy(this._onElemKeyUp, this));
-}
-
 RomoDropdown.prototype._onElemKeyUp = function(e) {
   if (Romo.hasClass(this.elem, 'disabled') === false) {
     if (this.popupOpen()) {
@@ -359,18 +381,6 @@ RomoDropdown.prototype._onElemKeyUp = function(e) {
     }
   }
   return true;
-}
-
-RomoDropdown.prototype._bindWindowBodyClick = function() {
-  var bodyElem = Romo.f('body')[0];
-  Romo.on(bodyElem, 'click',               Romo.proxy(this._onWindowBodyClick, this));
-  Romo.on(bodyElem, 'romoModal:mousemove', Romo.proxy(this._onWindowBodyClick, this));
-}
-
-RomoDropdown.prototype._unBindWindowBodyClick = function() {
-  var bodyElem = Romo.f('body')[0];
-  Romo.off(bodyElem, 'click',               Romo.proxy(this._onWindowBodyClick, this));
-  Romo.off(bodyElem, 'romoModal:mousemove', Romo.proxy(this._onWindowBodyClick, this));
 }
 
 RomoDropdown.prototype._onWindowBodyClick = function(e) {
@@ -390,16 +400,6 @@ RomoDropdown.prototype._onWindowBodyClick = function(e) {
     }
   }
   return true;
-}
-
-RomoDropdown.prototype._bindWindowBodyKeyUp = function() {
-  var bodyElem = Romo.f('body')[0];
-  Romo.on(bodyElem, 'keyup', Romo.proxy(this._onWindowBodyKeyUp, this));
-}
-
-RomoDropdown.prototype._unBindWindowBodyKeyUp = function() {
-  var bodyElem = Romo.f('body')[0];
-  Romo.off(bodyElem, 'keyup', Romo.proxy(this._onWindowBodyKeyUp, this));
 }
 
 RomoDropdown.prototype._onWindowBodyKeyUp = function(e) {

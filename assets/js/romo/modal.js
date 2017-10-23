@@ -49,11 +49,11 @@ RomoModal.prototype.doPopupOpen = function() {
   // event, then the toggle click will propagate which will call
   // this event and immediately close the popup.
   setTimeout(Romo.proxy(function() {
-    this._bindWindowBodyClick();
+    this.doBindWindowBodyClick();
   }, this), 1);
 
   // bind "esc" keystroke to toggle close
-  this._bindWindowBodyKeyUp();
+  this.doBindWindowBodyKeyUp();
 
   // bind window resizes reposition modal
   Romo.on(window, 'resize', Romo.proxy(this._onResizeWindow, this));
@@ -66,10 +66,10 @@ RomoModal.prototype.doPopupClose = function() {
   Romo.removeClass(this.popupElem, 'romo-modal-open');
 
   // unbind any event to close the popup when clicking away from it
-  this._unBindWindowBodyClick();
+  this.doUnBindWindowBodyClick();
 
   // unbind "esc" keystroke to toggle close
-  this._unBindWindowBodyKeyUp();
+  this.doUnBindWindowBodyKeyUp();
 
   // unbind window resizes reposition modal
   Romo.off(window, 'resize', Romo.proxy(this._onResizeWindow, this));
@@ -112,13 +112,39 @@ RomoModal.prototype.doPlacePopupElem = function() {
   }
 }
 
+RomoModal.prototype.doBindElemKeyUp = function() {
+  Romo.on(this.elem,      'keyup', Romo.proxy(this._onElemKeyUp, this));
+  Romo.on(this.popupElem, 'keyup', Romo.proxy(this._onElemKeyUp, this));
+}
+
+RomoModal.prototype.doUnBindElemKeyUp = function() {
+  Romo.off(this.elem,      'keyup', Romo.proxy(this._onElemKeyUp, this));
+  Romo.off(this.popupElem, 'keyup', Romo.proxy(this._onElemKeyUp, this));
+}
+
+RomoModal.prototype.doBindWindowBodyClick = function() {
+  Romo.on(Romo.f('body')[0], 'click', Romo.proxy(this._onWindowBodyClick, this));
+}
+
+RomoModal.prototype.doUnBindWindowBodyClick = function() {
+  Romo.off(Romo.f('body')[0], 'click', Romo.proxy(this._onWindowBodyClick, this));
+}
+
+RomoModal.prototype.doBindWindowBodyKeyUp = function() {
+  Romo.on(Romo.f('body')[0], 'keyup', Romo.proxy(this._onWindowBodyKeyUp, this));
+}
+
+RomoModal.prototype.doUnBindWindowBodyKeyUp = function() {
+  Romo.off(Romo.f('body')[0], 'keyup', Romo.proxy(this._onWindowBodyKeyUp, this));
+}
+
 // private
 
 RomoModal.prototype._bindElem = function() {
   this._bindPopup();
   this._bindAjax();
   this._bindBody();
-  this._bindElemKeyUp();
+  this.doBindElemKeyUp();
 
   if (Romo.data(this.elem, 'romo-modal-disable-click-invoke') !== true) {
     Romo.on(this.elem, 'click', Romo.proxy(this._onToggle, this));
@@ -326,16 +352,6 @@ RomoModal.prototype._dragStop = function(e) {
   Romo.trigger(this.elem, "romoModal:dragStop", [this]);
 }
 
-RomoModal.prototype._bindElemKeyUp = function() {
-  Romo.on(this.elem,      'keyup', Romo.proxy(this._onElemKeyUp, this));
-  Romo.on(this.popupElem, 'keyup', Romo.proxy(this._onElemKeyUp, this));
-}
-
-RomoModal.prototype._unBindElemKeyUp = function() {
-  Romo.off(this.elem,      'keyup', Romo.proxy(this._onElemKeyUp, this));
-  Romo.off(this.popupElem, 'keyup', Romo.proxy(this._onElemKeyUp, this));
-}
-
 RomoModal.prototype._onElemKeyUp = function(e) {
   if (Romo.hasClass(this.elem, 'disabled') === false) {
     if (this.popupOpen()) {
@@ -352,28 +368,12 @@ RomoModal.prototype._onElemKeyUp = function(e) {
   return true;
 }
 
-RomoModal.prototype._bindWindowBodyClick = function() {
-  Romo.on(Romo.f('body')[0], 'click', Romo.proxy(this._onWindowBodyClick, this));
-}
-
-RomoModal.prototype._unBindWindowBodyClick = function() {
-  Romo.off(Romo.f('body')[0], 'click', Romo.proxy(this._onWindowBodyClick, this));
-}
-
 RomoModal.prototype._onWindowBodyClick = function(e) {
   // if not clicked on the popup elem
   if (e !== undefined && Romo.parents(e.target, '.romo-modal-popup').length === 0) {
     this.doPopupClose();
   }
   return true;
-}
-
-RomoModal.prototype._bindWindowBodyKeyUp = function() {
-  Romo.on(Romo.f('body')[0], 'keyup', Romo.proxy(this._onWindowBodyKeyUp, this));
-}
-
-RomoModal.prototype._uBindWindowBodyKeyUp = function() {
-  Romo.off(Romo.f('body')[0], 'keyup', Romo.proxy(this._onWindowBodyKeyUp, this));
 }
 
 RomoModal.prototype._onWindowBodyKeyUp = function(e) {
