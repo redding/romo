@@ -283,7 +283,11 @@ Romo.prototype.replace = function(elem, replacementElem) {
 }
 
 Romo.prototype.replaceHtml = function(elem, htmlString) {
-  return this.replace(elem, this.elems(htmlString)[0]);
+  var replacementElem = Romo.elems(htmlString)[0];
+  if (replacementElem === undefined && (typeof(htmlString) !== 'string' || htmlString.trim() !== '')) {
+    throw new Error("Invalid HTML string, doesn't contain an HTML element.");
+  }
+  return this.replace(elem, replacementElem);
 }
 
 Romo.prototype.initReplace = function(elem, replacementElem) {
@@ -302,7 +306,11 @@ Romo.prototype.update = function(elem, childElems) {
 }
 
 Romo.prototype.updateHtml = function(elem, htmlString) {
-  return this.update(elem, this.elems(htmlString));
+  var childElems = Romo.elems(htmlString);
+  if (childElems.length === 0 && (typeof(htmlString) !== 'string' || htmlString.trim() !== '')) {
+    throw new Error("Invalid HTML string, doesn't contain any HTML elements.");
+  }
+  return this.update(elem, childElems);
 }
 
 Romo.prototype.updateText = function(elem, textString) {
@@ -326,7 +334,11 @@ Romo.prototype.prepend = function(elem, childElems) {
 }
 
 Romo.prototype.prependHtml = function(elem, htmlString) {
-  return this.prepend(elem, this.elems(htmlString));
+  var childElems = Romo.elems(htmlString);
+  if (childElems.length === 0 && (typeof(htmlString) !== 'string' || htmlString.trim() !== '')) {
+    throw new Error("Invalid HTML string, doesn't contain any HTML elements.");
+  }
+  return this.prepend(elem, childElems);
 }
 
 Romo.prototype.initPrepend = function(elem, childElems) {
@@ -344,7 +356,11 @@ Romo.prototype.append = function(elem, childElems) {
 }
 
 Romo.prototype.appendHtml = function(elem, htmlString) {
-  return this.append(elem, this.elems(htmlString));
+  var childElems = Romo.elems(htmlString);
+  if (childElems.length === 0 && (typeof(htmlString) !== 'string' || htmlString.trim() !== '')) {
+    throw new Error("Invalid HTML string, doesn't contain any HTML elements.");
+  }
+  return this.append(elem, childElems);
 }
 
 Romo.prototype.initAppend = function(elem, childElems) {
@@ -365,7 +381,11 @@ Romo.prototype.before = function(elem, siblingElems) {
 }
 
 Romo.prototype.beforeHtml = function(elem, htmlString) {
-  return this.before(elem, this.elems(htmlString));
+  var siblingElems = Romo.elems(htmlString);
+  if (siblingElems.length === 0 && (typeof(htmlString) !== 'string' || htmlString.trim() !== '')) {
+    throw new Error("Invalid HTML string, doesn't contain any HTML elements.");
+  }
+  return this.before(elem, siblingElems);
 }
 
 Romo.prototype.initBefore = function(elem, siblingElems) {
@@ -385,7 +405,11 @@ Romo.prototype.after = function(elem, siblingElems) {
 }
 
 Romo.prototype.afterHtml = function(elem, htmlString) {
-  return this.after(elem, this.elems(htmlString));
+  var siblingElems = Romo.elems(htmlString);
+  if (siblingElems.length === 0 && (typeof(htmlString) !== 'string' || htmlString.trim() !== '')) {
+    throw new Error("Invalid HTML string, doesn't contain any HTML elements.");
+  }
+  return this.after(elem, siblingElems);
 }
 
 Romo.prototype.initAfter = function(elem, siblingElems) {
