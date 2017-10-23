@@ -273,14 +273,16 @@ RomoSelect.prototype._refreshUI = function() {
     text = '';
     this.romoSelectedOptionsList.doRefreshUI();
   } else {
-    text = Romo.find(this.elem, 'OPTION[value="'+this._elemValues()[0]+'"]').innerText.trim();
-  }
-  if (text === '') {
-    text = '&nbsp;'
+    var optionElem = Romo.find(this.elem, 'OPTION[value="'+this._elemValues()[0]+'"]')[0];
+    text = optionElem.innerText.trim();
   }
 
   var textElem = Romo.find(this.romoSelectDropdown.elem, '.romo-select-text')[0];
-  Romo.updateText(textElem, text);
+  if (text === '') {
+    Romo.updateHtml(textElem, '&nbsp;');
+  } else {
+    Romo.updateText(textElem, text);
+  }
 }
 
 RomoSelect.prototype._onCaretClick = function(e) {
