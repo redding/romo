@@ -279,7 +279,7 @@ RomoSelect.prototype._refreshUI = function() {
 
   var textElem = Romo.find(this.romoSelectDropdown.elem, '.romo-select-text')[0];
   if (text === '') {
-    Romo.updateHtml(textElem, '&nbsp;');
+    Romo.updateHtml(textElem, '<span>&nbsp;</span>');
   } else {
     Romo.updateText(textElem, text);
   }

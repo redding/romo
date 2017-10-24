@@ -294,7 +294,7 @@ RomoPicker.prototype._buildDefaultOptionItems = function() {
       'type':        'option',
       'value':       '',
       'displayText': (Romo.data(this.elem, 'romo-picker-empty-option-display-text') || ''),
-      'displayHtml': '&nbsp;'
+      'displayHtml': '<span>&nbsp;</span>'
     });
   }
 
@@ -356,12 +356,13 @@ RomoPicker.prototype._refreshUI = function() {
   if (this.romoSelectedOptionsList !== undefined) {
     this.romoSelectedOptionsList.doRefreshUI();
   }
-  if (text === '') {
-    text = '&nbsp;'
-  }
 
   var textElem = Romo.find(this.romoOptionListDropdown.elem, '.romo-picker-text')[0];
-  Romo.updateText(textElem, text);
+  if (text === '') {
+    Romo.updateHtml(textElem, '<span>&nbsp;</span>');
+  } else {
+    Romo.updateText(textElem, text);
+  }
 }
 
 RomoPicker.prototype._onCaretClick = function(e) {

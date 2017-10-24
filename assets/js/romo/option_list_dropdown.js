@@ -221,7 +221,7 @@ RomoOptionListDropdown.prototype._buildListOptionElem = function(item) {
   var itemElem    = Romo.elems('<li data-romo-option-list-dropdown-item="opt"></li>')[0];
   var value       = item.value       || '';
   var displayText = item.displayText || '';
-  var displayHtml = item.displayHtml || item.displayText || '&nbsp;'
+  var displayHtml = item.displayHtml || item.displayText || '<span>&nbsp;</span>'
 
   Romo.setData(itemElem, 'romo-option-list-dropdown-option-value',        value);
   Romo.setData(itemElem, 'romo-option-list-dropdown-option-display-text', displayText);
