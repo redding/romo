@@ -29,8 +29,15 @@ Romo.prototype.is = function(elem, selector) {
   ).call(elem, selector);
 };
 
-Romo.prototype.children = function(parentElem) {
-  return this.array(parentElem.children);
+Romo.prototype.children = function(parentElem, selector) {
+  var childElems = this.array(parentElem.children);
+  if (selector) {
+    return childElems.filter(function(childElem) {
+      return Romo.is(childElem, selector);
+    });
+  } else {
+    return childElems;
+  }
 }
 
 Romo.prototype.parent = function(childElem) {
@@ -73,8 +80,8 @@ Romo.prototype.closest = function(fromElem, selector) {
   }
 }
 
-Romo.prototype.siblings = function(elem) {
-  return Array.prototype.filter.call(elem.parentNode.children, function(childElem) {
+Romo.prototype.siblings = function(elem, selector) {
+  return Romo.children(Romo.parent(elem), selector).filter(function(childElem) {
     return childElem !== elem;
   });
 }
