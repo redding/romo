@@ -4,8 +4,12 @@ var RomoSortable = function(elem) {
   this.draggableSelector = '[data-romo-sortable-item="true"]';
   this.handleSelector    = '[data-romo-sortable-handle="true"]';
 
-  this.draggedElem     = this.draggedIndex  = this.draggableSelected = null;
-  this.draggedOverElem = this.dragDirection = this.lastY             = null;
+  this.draggedElem       = undefined;
+  this.draggedIndex      = undefined;
+  this.draggableSelected = undefined;
+  this.draggedOverElem   = undefined;
+  this.dragDirection     = undefined;
+  this.lastY             = undefined;
 
   this.doInit();
   this._bindElem();
@@ -17,15 +21,23 @@ RomoSortable.prototype.doInit = function() {
   // override as needed
 }
 
+RomoSortable.prototype.draggingClass = function() {
+  return Romo.data(this.elem, 'romo-sortable-dragging-class');
+}
+
+RomoSortable.prototype.dragOverClass = function() {
+  return Romo.data(this.elem, 'romo-sortable-dragover-class');
+}
+
+RomoSortable.prototype.placeholderClass = function() {
+  return Romo.data(this.elem, 'romo-sortable-placeholder-class');
+}
+
 // private
 
 RomoSortable.prototype._bindElem = function() {
-  this.draggingClass    = Romo.data(this.elem, 'romo-sortable-dragging-class') || '';
-  this.dragOverClass    = Romo.data(this.elem, 'romo-sortable-dragover-class') || '';
-  this.placeholderClass = Romo.data(this.elem, 'romo-sortable-placeholder-class') || '';
-
   this.draggableElems = [];
-  this.doBindDraggableElems(Romo.find(this.elem, this.draggableSelector));
+  this._bindDraggableElems(Romo.find(this.elem, this.draggableSelector));
 
   Romo.on(this.elem, 'romoSortable:bindDraggableElems', Romo.proxy(this._onBindDraggableElems, this));
 
@@ -48,10 +60,12 @@ RomoSortable.prototype._bindPlaceholder = function() {
     tag = /^ul|ol$/i.test(this.elem.tagName) ? 'li' : 'div';
   }
   this.placeholderElem = Romo.elems('<' + tag + '/>')[0];
-  Romo.addClass(this.placeholderElem, this.placeholderClass);
+  if (this.placeholderClass() !== undefined) {
+    Romo.addClass(this.placeholderElem, this.placeholderClass());
+  }
 
-  Romo.on(this.placeholderElem, 'dragover', Romo.proxy(this.onDragOver, this));
-  Romo.on(this.placeholderElem, 'drop',     Romo.proxy(this.onDragDrop, this));
+  Romo.on(this.placeholderElem, 'dragover', Romo.proxy(this._onDragOver, this));
+  Romo.on(this.placeholderElem, 'drop',     Romo.proxy(this._onDragDrop, this));
 }
 
 RomoSortable.prototype._bindDraggableElems = function(draggableElems) {
@@ -90,7 +104,9 @@ RomoSortable.prototype._onDragStart = function(e) {
   } catch(e) {}
 
   this.draggedElem = e.target;
-  Romo.addClass(this.draggedElem, this.draggingClass);
+  if (this.draggingClass() !== undefined) {
+    Romo.addClass(this.draggedElem, this.draggingClass());
+  }
 
   // we need to disable Romo's parentRemovedObserver mutation
   // observer which would remove any child elems (ie modal,
@@ -127,17 +143,21 @@ RomoSortable.prototype._onDragEnter = function(e) {
   var clientY          = e.clientY;
   if (!overSortableElem) {
     // if we are in the same elem and moving the same direction, exit out
-    var overSameElem  = this.draggedOverElem &&
+    var overSameElem  = this.draggedOverElem !== undefined &&
                         this.draggedOverElem === e.currentTarget;
     var sameDirection = (this.dragDirection === 'down' && clientY > this.lastY) ||
                         (this.dragDirection === 'up'   && clientY < this.lastY);
     if(overSameElem && sameDirection){ return; }
 
     // remove dragged over classes from previous elem
-    if(this.draggedOverElem){ Romo.removeClass(this.draggedOverElem, this.dragOverClass); }
+    if(this.draggedOverElem !== undefined && this.dragOverClass() !== undefined) {
+      Romo.removeClass(this.draggedOverElem, this.dragOverClass());
+    }
     this.draggedOverElem = e.currentTarget;
     this.lastY           = clientY;
-    Romo.addClass(this.draggedOverElem, this.dragOverClass);
+    if (this.dragOverClass() !== undefined) {
+      Romo.addClass(this.draggedOverElem, this.dragOverClass());
+    }
 
     // insert the placeholder according to the dragging direction
     var elems = Romo.children(Romo.parent(this.placeholderElem));
@@ -169,29 +189,37 @@ RomoSortable.prototype._onDragEnd = function(e) {
   e.stopPropagation();
   e.preventDefault();
 
-  if(!this.draggedElem){ return; }
+  if(this.draggedElem === undefined){ return; }
 
-  this.draggableElems.forEach(Romo.proxy(function(draggableElem) {
-    Romo.removeClass(draggableElem, this.dragOverClass);
-  }, this));
-  Romo.removeClass(this.draggedElem, this.draggingClass);
+  if (this.dragOverClass() !== undefined) {
+    this.draggableElems.forEach(Romo.proxy(function(draggableElem) {
+      Romo.removeClass(draggableElem, this.dragOverClass());
+    }, this));
+  }
+  if (this.draggingClass() !== undefined) {
+    Romo.removeClass(this.draggedElem, this.draggingClass());
+  }
   Romo.show(this.draggedElem);
   Romo.hide(this.placeholderElem);
   this._resetGrabClasses();
 
   Romo.trigger(this.elem, 'romoSortable:dragStop', [this.draggedElem, this]);
 
-  this.draggedElem     = this.draggedIndex  = this.draggableSelected = null;
-  this.draggedOverElem = this.dragDirection = this.lastY             = null;
+  this.draggedElem       = undefined;
+  this.draggedIndex      = undefined;
+  this.draggableSelected = undefined;
+  this.draggedOverElem   = undefined;
+  this.dragDirection     = undefined;
+  this.lastY             = undefined;
 }
 
 RomoSortable.prototype._onDragDrop = function(e) {
   e.stopPropagation();
   e.preventDefault();
 
-  if(!this.draggedElem){ return; }
+  if(this.draggedElem === undefined){ return; }
 
-  Romo.before(this.draggedElem, this.placeholderElem);
+  Romo.before(this.placeholderElem, this.draggedElem);
   Romo.show(this.draggedElem);
 
   // manually enable Romo's parentRemovedObserver mutation
