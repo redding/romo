@@ -429,8 +429,9 @@ RomoDropdown.prototype._getPopupMaxAvailableHeight = function(position) {
       maxHeight = elemTop - this._getPopupMaxHeightDetectPad(position);
       break;
     case 'bottom':
-      var elemBottom = this.elem.getBoundingClientRect().bottom;
-      maxHeight = window.innerHeight - elemBottom - this._getPopupMaxHeightDetectPad(position);
+      var viewportHeight = document.documentElement.clientHeight;
+      var elemBottom     = this.elem.getBoundingClientRect().bottom;
+      maxHeight = viewportHeight - elemBottom - this._getPopupMaxHeightDetectPad(position);
       break;
   }
 
