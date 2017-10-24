@@ -90,10 +90,10 @@ RomoInlineForm.prototype._bindForm = function() {
       Romo.trigger(this.elem, 'romoInlineForm:romoForm:submitError', [xhr, romoForm, this]);
     }, this));
 
-    var submitElem   = Romo.find(this.elem, '[data-romo-form-submit]')[0];
+    var submitElems  = Romo.find(this.elem, '[data-romo-form-submit]');
     var spinnerElems = Romo.find(this.elem, '[data-romo-spinner-auto="true"]');
 
-    this.romoForm = new RomoForm(formElem, submitElem, spinnerElems);
+    this.romoForm = new RomoForm(formElem, submitElems, spinnerElems);
   }
 }
 

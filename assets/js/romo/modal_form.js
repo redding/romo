@@ -103,10 +103,10 @@ RomoModalForm.prototype.doBindForm = function() {
       Romo.trigger(this.elem, 'romoModalForm:romoForm:browserSubmit', [romoForm, this]);
     }, this));
 
-    var submitElem   = Romo.find(this.romoModal.popupElem, '[data-romo-form-submit]')[0];
+    var submitElems  = Romo.find(this.romoModal.popupElem, '[data-romo-form-submit]');
     var spinnerElems = Romo.find(this.romoModal.popupElem, '[data-romo-spinner-auto="true"]');
 
-    this.romoForm = new RomoForm(formElem, submitElem, spinnerElems);
+    this.romoForm = new RomoForm(formElem, submitElems, spinnerElems);
   }
 }
 
