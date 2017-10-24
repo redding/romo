@@ -117,7 +117,7 @@ RomoIndicatorTextInput.prototype._placeIndicatorElem = function() {
     var indicatorPosition  = this._getIndicatorPosition();
 
     // add a pixel to account for the default input border
-    Romo.setStyle(this.indicatorElem, indicatorPosition, indicatorPaddingPx+1);
+    Romo.setStyle(this.indicatorElem, indicatorPosition, indicatorPaddingPx+1+'px');
 
     // left-side padding
     // + indicator width

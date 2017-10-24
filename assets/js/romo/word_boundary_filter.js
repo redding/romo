@@ -35,7 +35,7 @@ var RomoWordBoundaryFilter = function(filterString, setElems, getElemTextContent
     if (match === true) {
       this.matchingElems.push(elem);
     } else {
-      this.notMatchingElems.push(elems);
+      this.notMatchingElems.push(elem);
     }
   }, this));
 }
