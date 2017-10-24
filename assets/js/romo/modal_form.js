@@ -70,7 +70,7 @@ RomoModalForm.prototype._bindModal = function() {
   }, this));
 }
 
-RomoModalForm.prototype.doBindForm = function() {
+RomoModalForm.prototype._bindForm = function() {
   this.romoForm = undefined;
   var formElem = Romo.find(this.romoModal.popupElem, '[data-romo-form-auto="modalForm"]')[0];
 
