@@ -284,7 +284,7 @@ RomoDropdown.prototype._bindBody = function() {
 
   this.closeElem = Romo.find(this.popupElem, '[data-romo-dropdown-close="true"]')[0];
   if (this.closeElem !== undefined) {
-    Romo.on(this.closeElem, 'click', Romo.proxy(this.onPopupClose, this));
+    Romo.on(this.closeElem, 'click', Romo.proxy(this._onPopupClose, this));
   }
 
   Romo.setStyle(this.contentElem, 'min-height', Romo.data(this.elem, 'romo-dropdown-min-height'));
