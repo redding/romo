@@ -83,14 +83,16 @@ RomoModal.prototype.doPopupClose = function() {
 }
 
 RomoModal.prototype.doPlacePopupElem = function() {
-  var w          = this.popupElem.offsetWidth;
-  var h          = this.popupElem.offsetHeight;
-  var min        = 75;
-  var centerTop  = window.innerHeight / 2 - h / 2;
-  var centerLeft = window.innerWidth  / 2 - w / 2;
-  var css        = {};
+  var w              = this.popupElem.offsetWidth;
+  var h              = this.popupElem.offsetHeight;
+  var min            = 75;
+  var viewportHeight = document.documentElement.clientHeight;
+  var viewportWidth  = document.documentElement.clientWidth;
+  var centerTop      = viewportHeight / 2 - h / 2;
+  var centerLeft     = viewportWidth  / 2 - w / 2;
+  var css            = {};
 
-  css.top = window.innerHeight * 0.15;
+  css.top = viewportHeight * 0.15;
   if (centerTop < css.top) { css.top = centerTop; }
   if (css.top < min) { css.top = min; }
 
@@ -107,7 +109,7 @@ RomoModal.prototype.doPlacePopupElem = function() {
     var bodyBottom    = this.bodyElem.getBoundingClientRect().bottom;
     var padBottom     = bodyBottom - contentBottom;
 
-    var maxHeight = window.innerHeight - contentTop - padBottom - pad;
+    var maxHeight = viewportHeight - contentTop - padBottom - pad;
     Romo.setStyle(this.contentElem, 'max-height', maxHeight.toString() + 'px');
   }
 }
