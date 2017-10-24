@@ -205,7 +205,7 @@ RomoSelectDropdown.prototype._buildOptionItem = function(optionElem) {
   item['type']        = 'option';
   item['value']       = (Romo.attr(optionElem, 'value') || '');
   item['displayText'] = (optionElem.innerText.trim() || '');
-  item['displayHtml'] = (optionElem.innerText.trim() || '&nbsp;');
+  item['displayHtml'] = (optionElem.innerText.trim() || '<span>&nbsp;</span>');
 
   if (optionElem.selected) {
     item['selected'] = true;
