@@ -225,7 +225,13 @@ RomoOptionListDropdown.prototype._buildListOptionElem = function(item) {
 
   Romo.setData(itemElem, 'romo-option-list-dropdown-option-value',        value);
   Romo.setData(itemElem, 'romo-option-list-dropdown-option-display-text', displayText);
-  Romo.updateHtml(itemElem, displayHtml);
+
+  var displayElems = Romo.elems(displayHtml);
+  if (displayElems.length !== 0) {
+    Romo.update(itemElem, displayElems);
+  } else {
+    Romo.updateText(itemElem, displayHtml);
+  }
 
   if (item.selected === true) {
     Romo.addClass(itemElem, 'selected');
