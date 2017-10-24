@@ -173,17 +173,24 @@ RomoPicker.prototype._bindOptionListDropdown = function() {
 RomoPicker.prototype._buildOptionListDropdownElem = function() {
   var romoOptionListDropdownElem = Romo.elems('<div class="romo-picker romo-btn" tabindex="0"><span class="romo-picker-text"></span></div>')[0];
 
+  Romo.setData(romoOptionListDropdownElem, 'romo-dropdown-overflow-x',           'hidden');
+  Romo.setData(romoOptionListDropdownElem, 'romo-dropdown-width',                'elem');
   Romo.setData(romoOptionListDropdownElem, 'romo-option-list-focus-style-class', 'romo-picker-focus');
 
-  Romo.setData(romoOptionListDropdownElem, 'romo-dropdown-position',    Romo.data(this.elem, 'romo-picker-dropdown-position'));
-  Romo.setData(romoOptionListDropdownElem, 'romo-dropdown-style-class', Romo.data(this.elem, 'romo-picker-dropdown-style-class'));
-  Romo.setData(romoOptionListDropdownElem, 'romo-dropdown-min-height',  Romo.data(this.elem, 'romo-picker-dropdown-min-height'));
-  Romo.setData(romoOptionListDropdownElem, 'romo-dropdown-max-height',  Romo.data(this.elem, 'romo-picker-dropdown-max-height'));
-  Romo.setData(romoOptionListDropdownElem, 'romo-dropdown-height',      Romo.data(this.elem, 'romo-picker-dropdown-height'));
-  Romo.setData(romoOptionListDropdownElem, 'romo-dropdown-overflow-x',  'hidden');
-  Romo.setData(romoOptionListDropdownElem, 'romo-dropdown-width',       'elem');
-  if (Romo.data(romoOptionListDropdownElem, 'romo-dropdown-max-height') === undefined) {
-    Romo.setData(romoOptionListDropdownElem, 'romo-dropdown-max-height', 'detect');
+  if (Romo.data(this.elem, 'romo-picker-dropdown-position') !== undefined) {
+    Romo.setData(romoOptionListDropdownElem, 'romo-dropdown-position', Romo.data(this.elem, 'romo-picker-dropdown-position'));
+  }
+  if (Romo.data(this.elem, 'romo-picker-dropdown-style-class') !== undefined) {
+    Romo.setData(romoOptionListDropdownElem, 'romo-dropdown-style-class', Romo.data(this.elem, 'romo-picker-dropdown-style-class'));
+  }
+  if (Romo.data(this.elem, 'romo-picker-dropdown-min-height') !== undefined) {
+    Romo.setData(romoOptionListDropdownElem, 'romo-dropdown-min-height', Romo.data(this.elem, 'romo-picker-dropdown-min-height'));
+  }
+  if (Romo.data(this.elem, 'romo-picker-dropdown-max-height') !== undefined) {
+    Romo.setData(romoOptionListDropdownElem, 'romo-dropdown-max-height', Romo.data(this.elem, 'romo-picker-dropdown-max-height'));
+  }
+  if (Romo.data(this.elem, 'romo-picker-dropdown-height') !== undefined) {
+    Romo.setData(romoOptionListDropdownElem, 'romo-dropdown-height', Romo.data(this.elem, 'romo-picker-dropdown-height'));
   }
   if (Romo.data(this.elem, 'romo-picker-filter-placeholder') !== undefined) {
     Romo.setData(romoOptionListDropdownElem, 'romo-option-list-dropdown-filter-placeholder', Romo.data(this.elem, 'romo-picker-filter-placeholder'));
@@ -199,6 +206,10 @@ RomoPicker.prototype._buildOptionListDropdownElem = function() {
   }
   if (Romo.data(this.elem, 'romo-picker-open-on-focus') !== undefined) {
     Romo.setData(romoOptionListDropdownElem, 'romo-option-list-dropdown-open-on-focus', Romo.data(this.elem, 'romo-picker-open-on-focus'));
+  }
+
+  if (Romo.data(romoOptionListDropdownElem, 'romo-dropdown-max-height') === undefined) {
+    Romo.setData(romoOptionListDropdownElem, 'romo-dropdown-max-height', 'detect');
   }
 
   var classList = Romo.attr(this.elem, 'class') !== undefined ? Romo.attr(this.elem, 'class').split(/\s+/) : [];
