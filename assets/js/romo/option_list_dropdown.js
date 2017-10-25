@@ -204,7 +204,9 @@ RomoOptionListDropdown.prototype._bindElem = function() {
 RomoOptionListDropdown.prototype._buildListElem = function(itemsList, listClass) {
   var listElem = Romo.elems('<ul></ul>')[0];
 
-  Romo.addClass(listElem, listClass);
+  if (listClass !== undefined) {
+    Romo.addClass(listElem, listClass);
+  }
   itemsList.forEach(Romo.proxy(function(item) {
     if (item.type === 'option') {
       Romo.append(listElem, this._buildListOptionElem(item));
@@ -345,7 +347,9 @@ RomoOptionListDropdown.prototype._bindDropdownOptionFilter = function() {
   // 0.1 secs, want it to be really responsive
   Romo.setData(this.optionFilterElem, 'data-onkey-delay-ms', 100);
   Romo.on(this.optionFilterElem, 'romoOnkey:trigger', Romo.proxy(function(e, triggerEvent, romoOnkey) {
-    this._filterOptionElems();
+    if (Romo.nonInputTextKeyCodes().indexOf(triggerEvent.keyCode) === -1 /* Input Text */) {
+      this._filterOptionElems();
+    }
   }, this));
 }
 
@@ -426,7 +430,9 @@ RomoOptionListDropdown.prototype._onPopupOpenBodyKeyDown = function(e) {
   var scrollHeight = parseInt(Romo.css(scrollElem, 'height'), 10);
 
   if (e.keyCode === 38 /* Up */) {
-    var prevElem   = this._prevListItem();
+    var prevElem = this._prevListItem();
+    if(prevElem === undefined){ return false; }
+
     var prevOffset = Romo.offset(prevElem);
 
     this._highlightItem(prevElem);
@@ -439,7 +445,9 @@ RomoOptionListDropdown.prototype._onPopupOpenBodyKeyDown = function(e) {
 
     return false;
   } else if(e.keyCode === 40 /* Down */) {
-    var nextElem   = this._nextListItem();
+    var nextElem = this._nextListItem();
+    if(nextElem === undefined){ return false; }
+
     var nextOffset = Romo.offset(nextElem);
     var nextHeight = parseInt(Romo.css(nextElem, 'height'), 10);
 
@@ -518,7 +526,7 @@ RomoOptionListDropdown.prototype._scrollBottomToItem = function(itemElem) {
 RomoOptionListDropdown.prototype._nextListItem = function() {
   var currElem = this._getHighlightedItemElem();
   if (currElem === undefined) {
-    return currElem;
+    return Romo.find(this.optionListContainerElem, this.itemSelector)[0];
   }
 
   var nextElem = Romo.next(currElem, this.itemSelector+', UL.romo-option-list-optgroup');
@@ -532,7 +540,11 @@ RomoOptionListDropdown.prototype._nextListItem = function() {
     currElem = Romo.closest(currElem, 'UL.romo-option-list-optgroup') || currElem;
     nextElem = Romo.next(currElem, this.itemSelector+', UL.romo-option-list-optgroup');
   }
-  while (Romo.hasClass(nextElem, 'romo-option-list-optgroup') && Romo.children(nextElem).length === 0) {
+  while (
+    nextElem !== undefined                               &&
+    Romo.hasClass(nextElem, 'romo-option-list-optgroup') &&
+    Romo.children(nextElem).length === 0
+  ) {
     // keep trying until you find a opt group list with options or an option or nothing
     currElem = nextElem;
     nextElem = Romo.next(currElem, this.itemSelector+', UL.romo-option-list-optgroup');
@@ -555,7 +567,8 @@ RomoOptionListDropdown.prototype._nextListItem = function() {
 RomoOptionListDropdown.prototype._prevListItem = function() {
   var currElem = this._getHighlightedItemElem();
   if (currElem === undefined) {
-    return currElem;
+    var itemElems = Romo.find(this.optionListContainerElem, this.itemSelector);
+    return itemElems[itemElems.length - 1];
   }
 
   var prevElem = Romo.prev(currElem, this.itemSelector+', UL.romo-option-list-optgroup');
@@ -569,7 +582,11 @@ RomoOptionListDropdown.prototype._prevListItem = function() {
     currElem = Romo.closest(currElem, 'UL.romo-option-list-optgroup') || currElem;
     prevElem = Romo.prev(currElem, this.itemSelector+', UL.romo-option-list-optgroup');
   }
-  while (Romo.hasClass(prevElem, 'romo-option-list-optgroup') && Romo.children(prevElem).length === 0) {
+  while (
+    prevElem !== undefined                               &&
+    Romo.hasClass(prevElem, 'romo-option-list-optgroup') &&
+    Romo.children(prevElem).length === 0
+  ) {
     // keep trying until you find a opt group list with options or an option or nothing
     currElem = prevElem;
     prevElem = Romo.prev(currElem, this.itemSelector+', UL.romo-option-list-optgroup');
