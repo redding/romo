@@ -25,7 +25,9 @@ RomoPicker.prototype.doSetValue = function(values) {
     type:    'GET',
     url:     Romo.data(this.elem, 'romo-picker-url'),
     data:    { 'values': value },
-    success: Romo.proxy(function(data, status, xhr) { this.doSetValueDatas(data); }, this),
+    success: Romo.proxy(function(data, status, xhr) {
+      this.doSetValueDatas(JSON.parse(data));
+    }, this),
   });
 }
 
@@ -73,7 +75,7 @@ RomoPicker.prototype._bindElem = function() {
 
   if (Romo.attr(this.elem, 'id') !== undefined) {
     var labelElem = Romo.f('label[for="'+Romo.attr(this.elem, 'id')+'"]')[0];
-    labelElem.on('click', Romo.proxy(function(e) {
+    Romo.on(labelElem, 'click', Romo.proxy(function(e) {
       this.romoOptionListDropdown.doFocus();
     }, this));
   }
@@ -278,7 +280,7 @@ RomoPicker.prototype._bindAjax = function() {
     return false;
   }, this));
   Romo.on(this.elem, 'romoAjax:callSuccess', Romo.proxy(function(e, data, romoAjax) {
-    this.filteredOptionItems = data;
+    this.filteredOptionItems = JSON.parse(data);
     this._setListItems(this.filteredOptionItems.concat(this._buildCustomOptionItems()));
     Romo.trigger(this.romoOptionListDropdown.elem, 'romoOptionListDropdown:triggerFilterSpinnerStop', []);
     return false;
@@ -343,12 +345,7 @@ RomoPicker.prototype._buildCustomOptionItem = function(value) {
 
 RomoPicker.prototype._setValuesAndDisplayText = function(newValues, displayText) {
   this.elem.value = newValues.join(this._elemValuesDelim());
-
-  // store the display text on the DOM to compliment the value being stored on the
-  // DOM via the elem above.  need to use `attr` to persist selected values to the
-  // DOM for back button logic to work.  using `data` won't persist changes to DOM
-  // and breaks how the component deals with back-button behavior.
-  Romo.attr(this.elem, 'data-romo-picker-display-text', displayText);
+  Romo.setData(this.elem, 'romo-picker-display-text', displayText);
 }
 
 RomoPicker.prototype._elemValues = function() {
@@ -360,10 +357,7 @@ RomoPicker.prototype._elemValuesDelim = function() {
 }
 
 RomoPicker.prototype._refreshUI = function() {
-  // need to use `attr` so it will always read from the DOM
-  // using `data` works the first time but does some elem caching or something
-  // so it won't work subsequent times.
-  var text = Romo.attr(this.elem, 'data-romo-picker-display-text');
+  var text = Romo.data(this.elem, 'romo-picker-display-text') || '';
   if (this.romoSelectedOptionsList !== undefined) {
     this.romoSelectedOptionsList.doRefreshUI();
   }

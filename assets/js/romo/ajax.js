@@ -112,7 +112,7 @@ RomoAjax.prototype._onCallError = function(xhr, errorType, error) {
 RomoAjax.prototype._completeInvoke = function() {
   this._trigger('romoAjax:invoke', [this]);
   if (this.invokeQueued === true) {
-    this._doInvoke();
+    this._invoke();
   } else {
     this.invokeRunning = false;
   }
