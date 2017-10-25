@@ -94,8 +94,8 @@ RomoDropdown.prototype.doPlacePopupElem = function() {
   var elemTop    = elemOffset.top;
   var elemLeft   = elemOffset.left
 
-  var popupOffsetWidth  = this.popupElem.offsetWidth;
   var popupOffsetHeight = this.popupElem.offsetHeight;
+  var popupOffsetWidth  = this.popupElem.offsetWidth;
 
   var configHeight = Romo.data(this.elem, 'romo-dropdown-height') ||
                      Romo.data(this.elem, 'romo-dropdown-max-height');
