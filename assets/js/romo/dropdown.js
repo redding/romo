@@ -324,14 +324,14 @@ RomoDropdown.prototype._resetBody = function() {
 RomoDropdown.prototype._loadBodyStart = function() {
   Romo.updateHtml(this.bodyElem, '');
   this._bindBody();
-  this.doPlacePopupElem();
+  setTimeout(Romo.proxy(this.doPlacePopupElem, this), 1);
   Romo.trigger(this.elem, 'romoDropdown:loadBodyStart', [this]);
 }
 
 RomoDropdown.prototype._loadBodySuccess = function(data) {
   Romo.initUpdateHtml(this.bodyElem, data);
   this._bindBody();
-  this.doPlacePopupElem();
+  setTimeout(Romo.proxy(this.doPlacePopupElem, this), 1);
   Romo.trigger(this.elem, 'romoDropdown:loadBodySuccess', [data, this]);
 }
 
