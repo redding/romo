@@ -128,11 +128,12 @@ RomoIndicatorTextInput.prototype._placeIndicatorElem = function() {
 }
 
 RomoIndicatorTextInput.prototype._onIndicatorClick = function(e) {
+  e.preventDefault();
+
   if (this.elem.disabled === false) {
     this.elem.focus();
     Romo.trigger(this.elem, 'romoIndicatorTextInput:indicatorClick');
   }
-  return false;
 }
 
 // private

@@ -275,10 +275,11 @@ RomoModal.prototype._loadBodyError = function(xhr) {
 }
 
 RomoModal.prototype._onToggle = function(e) {
+  e.preventDefault();
+
   if (Romo.hasClass(this.elem, 'disabled') === false) {
     this.doToggle();
   }
-  return false;
 }
 
 RomoModal.prototype._onPopupOpen = function(e) {

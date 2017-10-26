@@ -313,6 +313,7 @@ RomoTooltip.prototype._onSetContent = function(e, value) {
 
 RomoTooltip.prototype._onResizeWindow = function(e) {
   this.doPlacePopupElem();
+  return true;
 }
 
 RomoTooltip.prototype._getPopupMaxAvailableHeight = function(position) {
