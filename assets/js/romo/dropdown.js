@@ -340,14 +340,14 @@ RomoDropdown.prototype._loadBodyError = function(xhr) {
 }
 
 RomoDropdown.prototype._onToggle = function(e) {
+  e.preventDefault();
+
   if (
     Romo.hasClass(this.elem, 'disabled') === false &&
     Romo.data(this.elem, 'romo-dropdown-disable-toggle') !== true
   ) {
     this.doToggle();
   }
-
-  return false;
 }
 
 RomoDropdown.prototype._onPopupOpen = function(e) {
