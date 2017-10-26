@@ -83,24 +83,23 @@ RomoModal.prototype.doPopupClose = function() {
 }
 
 RomoModal.prototype.doPlacePopupElem = function() {
-  var w              = this.popupElem.offsetWidth;
-  var h              = this.popupElem.offsetHeight;
-  var min            = 75;
-  var viewportHeight = document.documentElement.clientHeight;
-  var viewportWidth  = document.documentElement.clientWidth;
-  var centerTop      = viewportHeight / 2 - h / 2;
-  var centerLeft     = viewportWidth  / 2 - w / 2;
-  var css            = {};
+  var popupOffsetHeight = this.popupElem.offsetHeight;
+  var popupOffsetWidth  = this.popupElem.offsetWidth;
+  var minHeightWidth    = 75;
+  var viewportHeight    = document.documentElement.clientHeight;
+  var viewportWidth     = document.documentElement.clientWidth;
+  var centerTop         = (viewportHeight / 2) - (popupOffsetHeight / 2);
+  var centerLeft        = (viewportWidth  / 2) - (popupOffsetWidth / 2);
 
-  css.top = viewportHeight * 0.15;
-  if (centerTop < css.top) { css.top = centerTop; }
-  if (css.top < min) { css.top = min; }
+  var offsetTop = viewportHeight * 0.15;
+  if (centerTop < offsetTop) { offsetTop = centerTop; }
+  if (offsetTop < minHeightWidth) { offsetTop = minHeightWidth; }
 
-  css.left = centerLeft;
-  if (css.left < min) { css.left = min; }
+  var offsetLeft = centerLeft;
+  if (offsetLeft < minHeightWidth) { offsetLeft = minHeightWidth; }
 
-  Romo.setStyle(this.popupElem, 'top',  css.top);
-  Romo.setStyle(this.popupElem, 'left', css.left);
+  Romo.setStyle(this.popupElem, 'top',  offsetTop + 'px');
+  Romo.setStyle(this.popupElem, 'left', offsetLeft + 'px');
 
   if (Romo.data(this.elem, 'romo-modal-max-height') === 'detect') {
     var pad           = Romo.data(this.elem, 'romo-modal-max-height-detect-pad') || 10;
@@ -169,8 +168,8 @@ RomoModal.prototype._bindPopup = function() {
   }
 
   this.contentElem = undefined;
-  this.closeElem   = undefined;
-  this.dragElem    = undefined;
+  this.closeElems  = [];
+  this.dragElems   = [];
 
   // the popup should be treated like a child elem.  add it to Romo's
   // parent-child elems so it will be removed when the elem is removed.
@@ -209,16 +208,15 @@ RomoModal.prototype._bindBody = function() {
     this.contentElem = this.bodyElem;
   }
 
-  this.closeElem = Romo.find(this.popupElem, '[data-romo-modal-close="true"]')[0];
-  if (this.closeElem !== undefined) {
-    Romo.on(this.closeElem, 'click', Romo.proxy(this._onPopupClose, this));
-  }
+  this.closeElems = Romo.find(this.popupElem, '[data-romo-modal-close="true"]');
+  this.closeElems.forEach(Romo.proxy(function(closeElem) {
+    Romo.on(closeElem, 'click', Romo.proxy(this._onPopupClose, this));
+  }, this));
 
-  this.dragElem = Romo.find(this.popupElem, '[data-romo-modal-drag="true"]')[0];
-  if (this.dragElem !== undefined) {
-    Romo.addClass(this.dragElem, 'romo-modal-grab');
-    Romo.on(this.dragElem, 'mousedown', Romo.proxy(this._onMouseDown, this));
-  }
+  this.dragElems = Romo.find(this.popupElem, '[data-romo-modal-drag="true"]');
+  this.dragElems.forEach(Romo.proxy(function(dragElem) {
+    Romo.on(dragElem, 'mousedown', Romo.proxy(this._onMouseDown, this));
+  }, this));
 
   var css = {
     'min-width':  Romo.data(this.elem, 'romo-modal-min-width'),
@@ -253,9 +251,9 @@ RomoModal.prototype._resetBody = function() {
     Romo.rmStyle(this.contentElem, 'overflow');
   }
 
-  if (this.closeElem !== undefined) {
-    Romo.off(this.closeElem, 'click', Romo.proxy(this.onPopupClose, this));
-  }
+  this.closeElems.forEach(Romo.proxy(function(closeElem) {
+    Romo.off(closeElem, 'click', Romo.proxy(this._onPopupClose, this));
+  }, this));
 }
 
 RomoModal.prototype._loadBodyStart = function() {
@@ -299,14 +297,16 @@ RomoModal.prototype._onPopupClose = function(e) {
   }
 }
 
-RomoModal.prototype.onMouseDown = function(e) {
+RomoModal.prototype._onMouseDown = function(e) {
   this._dragStart(e);
   return false;
 }
 
 RomoModal.prototype._dragStart = function(e) {
-  Romo.addClass(this.dragElem, 'romo-modal-grabbing');
-  Romo.removeClass(this.dragElem, 'romo-modal-grab');
+  this.dragElems.forEach(Romo.proxy(function(dragElem) {
+    Romo.addClass(dragElem, 'romo-modal-grabbing');
+    Romo.removeClass(dragElem, 'romo-modal-grab');
+  }, this));
 
   Romo.setStyle(this.popupElem, 'width',  Romo.css(this.popupElem, 'width'));
   Romo.setStyle(this.popupElem, 'height', Romo.css(this.popupElem, 'height'));
@@ -334,20 +334,22 @@ RomoModal.prototype._dragMove = function(clientX, clientY) {
   Romo.trigger(this.elem, "romoModal:dragMove", [placeX, placeY, this]);
 }
 
-RomoModal.prototype.onMouseUp = function(e) {
+RomoModal.prototype._onMouseUp = function(e) {
   this._dragStop(e);
   return false;
 }
 
 RomoModal.prototype._dragStop = function(e) {
-  Romo.addClass(this.dragElem, 'romo-modal-grab');
-  Romo.removeClass(this.dragElem, 'romo-modal-grabbing');
+  this.dragElems.forEach(Romo.proxy(function(dragElem) {
+    Romo.addClass(dragElem, 'romo-modal-grab');
+    Romo.removeClass(dragElem, 'romo-modal-grabbing');
+  }, this));
 
   Romo.rmStyle(this.popupElem, 'width');
   Romo.rmStyle(this.popupElem, 'height');
 
-  Romo.off(window, 'mousemove', Romo.proxy(this.onMouseMove, this));
-  Romo.off(window, 'mouseup',   Romo.proxy(this.onMouseUp, this));
+  Romo.off(window, 'mousemove', Romo.proxy(this._onMouseMove, this));
+  Romo.off(window, 'mouseup',   Romo.proxy(this._onMouseUp, this));
   delete this._dragDiffX;
   delete this._dragDiffY;
 

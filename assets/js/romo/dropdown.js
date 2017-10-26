@@ -282,10 +282,10 @@ RomoDropdown.prototype._bindBody = function() {
     this.contentElem = this.bodyElem;
   }
 
-  this.closeElem = Romo.find(this.popupElem, '[data-romo-dropdown-close="true"]')[0];
-  if (this.closeElem !== undefined) {
-    Romo.on(this.closeElem, 'click', Romo.proxy(this._onPopupClose, this));
-  }
+  this.closeElems = Romo.find(this.popupElem, '[data-romo-dropdown-close="true"]');
+  this.closeElems.forEach(Romo.proxy(function(closeElem) {
+    Romo.on(closeElem, 'click', Romo.proxy(this._onPopupClose, this));
+  }, this));
 
   Romo.setStyle(this.contentElem, 'min-height', Romo.data(this.elem, 'romo-dropdown-min-height'));
   Romo.setStyle(this.contentElem, 'height',     Romo.data(this.elem, 'romo-dropdown-height'));
