@@ -173,17 +173,23 @@ Romo.prototype.css = function(elem, styleName) {
 }
 
 Romo.prototype.addClass = function(elem, className) {
-  elem.classList.add(className);
+  className.split(' ').filter(function(n){ return n; }).forEach(function(name) {
+    elem.classList.add(name);
+  });
   return className;
 }
 
 Romo.prototype.removeClass = function(elem, className) {
-  elem.classList.remove(className);
+  className.split(' ').filter(function(n){ return n; }).forEach(function(name) {
+    elem.classList.remove(name);
+  });
   return className;
 }
 
 Romo.prototype.toggleClass = function(elem, className) {
-  elem.classList.toggle(className);
+  className.split(' ').filter(function(n){ return n; }).forEach(function(name) {
+    elem.classList.toggle(name);
+  });
   return className;
 }
 
