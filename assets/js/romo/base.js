@@ -239,15 +239,15 @@ Romo.prototype.parseZIndex = function(elem) {
   }
 
   // for the case where z-index is inherited from a parent elem
+  var pval = 0;
   var parentIndexes = Romo.parents(elem).forEach(Romo.proxy(function(parentElem) {
-    var pval = this.parseElemZIndex(parentElem);
-    if (pval !== 0) {
-      return pval;
+    if (pval === 0) {
+      pval = this.parseElemZIndex(parentElem);
     }
   }, this));
 
   // z-index is 'auto' all the way up
-  return 0;
+  return pval;
 }
 
 Romo.prototype.parseElemZIndex = function(elem) {
