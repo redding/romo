@@ -126,7 +126,7 @@ RomoTooltip.prototype.doPlacePopupElem = function() {
 RomoTooltip.prototype.doSetContent = function(value) {
   Romo.setData(this.elem, 'romo-tooltip-content', value);
   this._setBodyHtml(Romo.data(this.elem, 'romo-tooltip-content'));
-  this.doPlacePopupElem();
+  setTimeout(Romo.proxy(this.doPlacePopupElem, this), 1);
 }
 
 RomoTooltip.prototype.doSetPopupZIndex = function(relativeElem) {
@@ -250,14 +250,14 @@ RomoTooltip.prototype._resetBody = function() {
 RomoTooltip.prototype._loadBodyStart = function() {
   this._setBodyHtml('');
   this._bindBody();
-  this.doPlacePopupElem();
+  setTimeout(Romo.proxy(this.doPlacePopupElem, this), 1);
   Romo.trigger(this.elem, 'romoTooltip:loadBodyStart', [this]);
 }
 
 RomoTooltip.prototype._loadBodySuccess = function(data) {
   Romo.initUpdateHtml(this.bodyElem, data);
   this._bindBody();
-  this.doPlacePopupElem();
+  setTimeout(Romo.proxy(this.doPlacePopupElem, this), 1);
   Romo.trigger(this.elem, 'romoTooltip:loadBodySuccess', [data, this]);
 }
 
