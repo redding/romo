@@ -270,7 +270,24 @@ Romo.prototype.elems = function(htmlString) {
   context.head.appendChild(base);
 
   context.body.innerHTML = htmlString;
-  return this.array(context.body.children);
+  if (context.body.children.length !== 0) {
+    return this.array(context.body.children);
+  } else {
+    var results = Romo._elemsTagNameRegEx.exec(htmlString);
+    if (!results){ return []; }
+
+    var tagName = results[1].toLowerCase();
+    var wrap    = Romo._elemsWrapMap[tagName];
+    if (!wrap){ return []; }
+
+    context.body.innerHTML = wrap[1] + htmlString + wrap[2];
+    var parentElem = context.body;
+    var i = wrap[0];
+    while(i-- !== 0) {
+      parentElem = parentElem.lastChild;
+    }
+    return this.array(parentElem.children)
+  }
 }
 
 Romo.prototype.remove = function(elem) {
@@ -817,6 +834,20 @@ Romo.prototype._deserializeValue = function(value) {
 Romo.prototype._addEventCallback = function(name, callback) {
   this._eventCallbacks.push({ eventName: name, callback:  callback });
 }
+
+Romo.prototype._elemsTagNameRegEx = /<([a-z][^\/\0>\x20\t\r\n\f]+)/i;
+
+Romo.prototype._elemsWrapMap = {
+  'caption':  [1, "<table>",            "</table>"],
+  'colgroup': [1, "<table>",            "</table>"],
+  'col':      [2, "<table><colgroup>",  "</colgroup></table>"],
+  'thead':    [1, "<table>",            "</table>"],
+  'tbody':    [1, "<table>",            "</table>"],
+  'tfoot':    [1, "<table>",            "</table>"],
+  'tr':       [2, "<table><tbody>",     "</tbody></table>"],
+  'th':       [3, "<table><tbody><tr>", "</tr></tbody></table>"],
+  'td':       [3, "<table><tbody><tr>", "</tr></tbody></table>"]
+};
 
 // RomoParentChildElems
 
