@@ -4,7 +4,6 @@ var RomoInline = function(elem) {
   this.doInit();
   this._bindElem();
 
-  this.doBindDismiss();
   Romo.trigger(this.elem, 'romoInline:ready', [this]);
 }
 
@@ -51,8 +50,10 @@ RomoInline.prototype._bindElem = function() {
 }
 
 RomoInline.prototype._bindDismiss = function() {
-  this.dismissElem = Romo.find(this.elem, '[data-romo-inline-dismiss]')[0];
-  Romo.on(this.dismissElem, 'click', Romo.proxy(this._onDismissClick, this));
+  this.dismissElems = Romo.find(this.elem, '[data-romo-inline-dismiss]');
+  this.dismissElems.forEach(Romo.proxy(function(dismissElem) {
+    Romo.on(dismissElem, 'click', Romo.proxy(this._onDismissClick, this));
+  }, this));
 }
 
 RomoInline.prototype._loadStart = function() {
@@ -63,7 +64,7 @@ RomoInline.prototype._loadStart = function() {
 RomoInline.prototype._loadSuccess = function(data) {
   this.doShow();
   Romo.initUpdateHtml(this.elem, data);
-  this.doBindDismiss();
+  this._bindDismiss();
   Romo.trigger(this.elem, 'romoInline:loadSuccess', [data, this]);
 }
 
@@ -75,10 +76,18 @@ RomoInline.prototype._loadError = function(xhr) {
 RomoInline.prototype._onDismissClick = function(e) {
   e.preventDefault();
 
-  if (Romo.data(this.dismissElem, 'romo-inline-dismiss') === 'confirm') {
-    Romo.trigger(this.elem, 'romoInline:confirmDismiss', [this]);
-  } else if (Romo.hasClass(this.dismissElem, 'disabled') === false) {
-    this.doDismiss();
+  var disabled = this.dismissElems.reduce(function(disabled, dismissElem) {
+    return disabled || Romo.hasClass(dismissElem, 'disabled');
+  }, false);
+  if (!disabled) {
+    var confirm = this.dismissElems.reduce(function(confirm, dismissElem) {
+      return confirm || Romo.data(dismissElem, 'romo-inline-dismiss') === 'confirm';
+    }, false);
+    if (confirm) {
+      Romo.trigger(this.elem, 'romoInline:confirmDismiss', [this]);
+    } else {
+      this.doDismiss();
+    }
   }
 }
 
