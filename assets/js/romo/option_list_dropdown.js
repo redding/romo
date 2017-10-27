@@ -267,8 +267,8 @@ RomoOptionListDropdown.prototype._buildOptionFilter = function() {
   if (Romo.data(this.elem, 'romo-option-list-dropdown-filter-indicator-width-px') !== undefined) {
     Romo.setData(filterElem, 'romo-indicator-text-input-indicator-width-px', Romo.data(this.elem, 'romo-option-list-dropdown-filter-indicator-width-px'));
   }
-  Romo.setData(filterElem, 'data-romo-form-disable-enter-submit', "true");
-  Romo.setData(filterElem, 'data-romo-onkey-on',                  "keydown");
+  Romo.setData(filterElem, 'romo-form-disable-enter-submit', "true");
+  Romo.setData(filterElem, 'romo-onkey-on',                  "keydown");
 
   Romo.setAttr(filterElem, 'autocomplete', 'off');
 
@@ -345,7 +345,7 @@ RomoOptionListDropdown.prototype._bindDropdownOptionFilter = function() {
   }, this));
 
   // 0.1 secs, want it to be really responsive
-  Romo.setData(this.optionFilterElem, 'data-onkey-delay-ms', 100);
+  Romo.setData(this.optionFilterElem, 'onkey-delay-ms', 100);
   Romo.on(this.optionFilterElem, 'romoOnkey:trigger', Romo.proxy(function(e, triggerEvent, romoOnkey) {
     if (Romo.nonInputTextKeyCodes().indexOf(triggerEvent.keyCode) === -1 /* Input Text */) {
       this._filterOptionElems();
