@@ -21,13 +21,9 @@ RomoDropdown.prototype.doInit = function() {
 
 RomoDropdown.prototype.doToggle = function() {
   if (this.popupOpen()) {
-    setTimeout(Romo.proxy(function() {
-      this.doPopupClose();
-    }, this), 100);
+    setTimeout(Romo.proxy(this.doPopupClose, this), 100);
   } else {
-    setTimeout(Romo.proxy(function() {
-      this.doPopupOpen();
-    }, this), 100);
+    setTimeout(Romo.proxy(this.doPopupOpen, this), 100);
   }
   Romo.trigger(this.elem, 'romoDropdown:toggle', [this]);
 }
@@ -48,9 +44,7 @@ RomoDropdown.prototype.doPopupOpen = function() {
   // click event to propagate.  If no timeout, we'll bind this
   // event, then the toggle click will propagate which will call
   // this event and immediately close the popup.
-  setTimeout(Romo.proxy(function() {
-    this.doBindWindowBodyClick();
-  }, this), 1);
+  setTimeout(Romo.proxy(this.doBindWindowBodyClick, this), 1);
 
   // bind "esc" keystroke to toggle close
   this.doBindWindowBodyKeyUp();
@@ -355,17 +349,13 @@ RomoDropdown.prototype._onToggle = function(e) {
 
 RomoDropdown.prototype._onPopupOpen = function(e) {
   if (Romo.hasClass(this.elem, 'disabled') === false && this.popupClosed()) {
-    setTimeout(Romo.proxy(function() {
-      this.doPopupOpen();
-    }, this), 1);
+    setTimeout(Romo.proxy(this.doPopupOpen, this), 1);
   }
 }
 
 RomoDropdown.prototype._onPopupClose = function(e) {
   if (Romo.hasClass(this.elem, 'disabled') === false && this.popupOpen()) {
-    setTimeout(Romo.proxy(function() {
-      this.doPopupClose();
-    }, this), 1);
+    setTimeout(Romo.proxy(this.doPopupClose, this), 1);
   }
 }
 
