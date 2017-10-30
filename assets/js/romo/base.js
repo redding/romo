@@ -444,6 +444,81 @@ Romo.prototype.initAfterHtml = function(elem, htmlString) {
   return this.triggerInitUI(this.afterHtml(elem, htmlString));
 }
 
+// events
+
+Romo.prototype.on = function(elem, eventName, fn) {
+  var elemString = Object.prototype.toString.call(elem);
+  if (
+    elemString === '[object NodeList]'       ||
+    elemString === '[object HTMLCollection]' ||
+    Array.isArray(elem)
+  ) {
+    throw new Error('Can only bind events on individual elems, not collections.');
+  }
+
+  var proxyFn = function(e) {
+    var result = fn.apply(elem, e.detail === undefined ? [e] : [e].concat(e.detail));
+    if (result === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    return result;
+  }
+  proxyFn._romofid = this._fn(fn)._romofid;
+
+  elem.addEventListener(eventName, proxyFn);
+  var key = this._handlerKey(elem, eventName, proxyFn);
+  if (this._handlers[key] === undefined) {
+    this._handlers[key] = [];
+  }
+  this._handlers[key].push(proxyFn);
+}
+
+Romo.prototype.off = function(elem, eventName, fn) {
+  var elemString = Object.prototype.toString.call(elem);
+  if (
+    elemString === '[object NodeList]'       ||
+    elemString === '[object HTMLCollection]' ||
+    Array.isArray(elem)
+  ) {
+    throw new Error('Can only unbind events on individual elems, not collections.');
+  }
+
+  var key = this._handlerKey(elem, eventName, fn);
+  (this._handlers[key] || []).forEach(function(proxyFn) {
+    elem.removeEventListener(eventName, proxyFn);
+  });
+  this._handlers[key] = [];
+}
+
+Romo.prototype.trigger = function(elem, customEventName, args) {
+  var elemString = Object.prototype.toString.call(elem);
+  if (
+    elemString === '[object NodeList]'       ||
+    elemString === '[object HTMLCollection]' ||
+    Array.isArray(elem)
+  ) {
+    throw new Error('Can only trigger events on individual elems, not collections.');
+  }
+
+  var event = undefined;
+  if (typeof window.CustomEvent === "function") {
+    event = new CustomEvent(customEventName, { detail: args });
+  } else {
+    event = document.createEvent('CustomEvent');
+    event.initCustomEvent(customEventName, false, false, args);
+  }
+  elem.dispatchEvent(event);
+}
+
+Romo.prototype.ready = function(eventHandlerFn) {
+  if (document.readyState === 'complete' || document.readyState !== 'loading') {
+    eventHandlerFn();
+  } else {
+    this.on(document, 'DOMContentLoaded', eventHandlerFn);
+  }
+}
+
 // init UI
 
 Romo.prototype.onInitUI = function(fn) {
@@ -607,81 +682,6 @@ Romo.prototype.ajax = function(settings) {
   };
   xhr.send(xhrData);
 },
-
-// events
-
-Romo.prototype.on = function(elem, eventName, fn) {
-  var elemString = Object.prototype.toString.call(elem);
-  if (
-    elemString === '[object NodeList]'       ||
-    elemString === '[object HTMLCollection]' ||
-    Array.isArray(elem)
-  ) {
-    throw new Error('Can only bind events on individual elems, not collections.');
-  }
-
-  var proxyFn = function(e) {
-    var result = fn.apply(elem, e.detail === undefined ? [e] : [e].concat(e.detail));
-    if (result === false) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    return result;
-  }
-  proxyFn._romofid = this._fn(fn)._romofid;
-
-  elem.addEventListener(eventName, proxyFn);
-  var key = this._handlerKey(elem, eventName, proxyFn);
-  if (this._handlers[key] === undefined) {
-    this._handlers[key] = [];
-  }
-  this._handlers[key].push(proxyFn);
-}
-
-Romo.prototype.off = function(elem, eventName, fn) {
-  var elemString = Object.prototype.toString.call(elem);
-  if (
-    elemString === '[object NodeList]'       ||
-    elemString === '[object HTMLCollection]' ||
-    Array.isArray(elem)
-  ) {
-    throw new Error('Can only unbind events on individual elems, not collections.');
-  }
-
-  var key = this._handlerKey(elem, eventName, fn);
-  (this._handlers[key] || []).forEach(function(proxyFn) {
-    elem.removeEventListener(eventName, proxyFn);
-  });
-  this._handlers[key] = [];
-}
-
-Romo.prototype.trigger = function(elem, customEventName, args) {
-  var elemString = Object.prototype.toString.call(elem);
-  if (
-    elemString === '[object NodeList]'       ||
-    elemString === '[object HTMLCollection]' ||
-    Array.isArray(elem)
-  ) {
-    throw new Error('Can only trigger events on individual elems, not collections.');
-  }
-
-  var event = undefined;
-  if (typeof window.CustomEvent === "function") {
-    event = new CustomEvent(customEventName, { detail: args });
-  } else {
-    event = document.createEvent('CustomEvent');
-    event.initCustomEvent(customEventName, false, false, args);
-  }
-  elem.dispatchEvent(event);
-}
-
-Romo.prototype.ready = function(eventHandlerFn) {
-  if (document.readyState === 'complete' || document.readyState !== 'loading') {
-    eventHandlerFn();
-  } else {
-    this.on(document, 'DOMContentLoaded', eventHandlerFn);
-  }
-}
 
 // utils
 
