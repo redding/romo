@@ -14,8 +14,13 @@ Romo.prototype.f = function(selector) {
   return this.array(document.querySelectorAll(selector));
 }
 
-Romo.prototype.find = function(parentElem, selector) {
-  return this.array(parentElem.querySelectorAll(selector));
+Romo.prototype.find = function(parentElems, selector) {
+  return this.array(parentElems).reduce(
+    Romo.proxy(function(foundElems, parentElem) {
+      return foundElems.concat(this.array(parentElem.querySelectorAll(selector)));
+    }, this),
+    []
+  );
 }
 
 Romo.prototype.is = function(elem, selector) {
