@@ -271,6 +271,4 @@ RomoSortable.prototype._resetGrabClasses = function() {
   }, this));
 }
 
-Romo.onInitUI(function(elem) {
-  Romo.initUIElems(elem, '[data-romo-sortable-auto="true"]').forEach(function(elem) { new RomoSortable(elem); });
-});
+Romo.addElemsInitSelector('[data-romo-sortable-auto="true"]', RomoSortable);

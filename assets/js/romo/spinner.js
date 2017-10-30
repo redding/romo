@@ -95,6 +95,4 @@ RomoSpinner.prototype._onStop = function(e) {
   this.doStop();
 }
 
-Romo.onInitUI(function(elem) {
-  Romo.initUIElems(elem, '[data-romo-spinner-auto="true"]').forEach(function(elem) { new RomoSpinner(elem); });
-});
+Romo.addElemsInitSelector('[data-romo-spinner-auto="true"]', RomoSpinner);

@@ -91,7 +91,4 @@ RomoInline.prototype._onDismissClick = function(e) {
   }
 }
 
-Romo.onInitUI(function(elem) {
-  Romo.initUIElems(elem, '[data-romo-inline-auto="true"]').forEach(function(elem) { new RomoInline(elem); });
-});
-
+Romo.addElemsInitSelector('[data-romo-inline-auto="true"]', RomoInline);

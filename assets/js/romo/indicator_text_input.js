@@ -167,6 +167,4 @@ RomoIndicatorTextInput.prototype._getIndicatorPosition = function() {
   );
 }
 
-Romo.onInitUI(function(elem) {
-  Romo.initUIElems(elem, '[data-romo-indicator-text-input-auto="true"]').forEach(function(elem) { new RomoIndicatorTextInput(elem); });
-});
+Romo.addElemsInitSelector('[data-romo-indicator-text-input-auto="true"]', RomoIndicatorTextInput);

@@ -97,7 +97,4 @@ RomoInlineForm.prototype._bindForm = function() {
   }
 }
 
-Romo.onInitUI(function(elem) {
-  Romo.initUIElems(elem, '[data-romo-inlineForm-auto="true"]').forEach(function(elem) { new RomoInlineForm(elem); });
-});
-
+Romo.addElemsInitSelector('[data-romo-inlineForm-auto="true"]', RomoInlineForm);

@@ -101,7 +101,4 @@ RomoDropdownForm.prototype._bindForm = function() {
   }
 }
 
-Romo.onInitUI(function(elem) {
-  Romo.initUIElems(elem, '[data-romo-dropdownForm-auto="true"]').forEach(function(elem) { new RomoDropdownForm(elem); });
-});
-
+Romo.addElemsInitSelector('[data-romo-dropdownForm-auto="true"]', RomoDropdownForm);

@@ -168,6 +168,4 @@ RomoCurrencyTextInput.prototype._getNewInputName = function() {
   );
 }
 
-Romo.onInitUI(function(elem) {
-  Romo.initUIElems(elem, '[data-romo-currency-text-input-auto="true"]').forEach(function(elem) { new RomoCurrencyTextInput(elem); });
-});
+Romo.addElemsInitSelector('[data-romo-currency-text-input-auto="true"]', RomoCurrencyTextInput);
