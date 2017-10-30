@@ -700,9 +700,11 @@ Romo.prototype.array = function(value) {
     typeof(object)          === 'function' &&
     typeof(object.nodeType) !== 'number'
   );
+  var isSelect = (object.nodeName && object.nodeName.toLowerCase() === 'select');
   var likeArray = (
     typeof(object) !== 'string' &&
     !isFunction                 &&
+    !isSelect                   &&
     object !== window           &&
     ( Array.isArray(object) ||
       length === 0          ||
