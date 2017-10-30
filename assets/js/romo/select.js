@@ -272,7 +272,10 @@ RomoSelect.prototype._elemValues = function() {
   var selectedOptElems = Romo.find(this.elem, 'OPTION[selected]');
   if (selectedOptElems.length === 0 && this.romoSelectedOptionsList === undefined) {
     // if a non-multi select has no selected options, treat the first option as selected
-    selectedOptElems = [Romo.find(this.elem, 'OPTION')[0]];
+    var firstOptElem = Romo.find(this.elem, 'OPTION')[0];
+    if (firstOptElem !== undefined) {
+      selectedOptElems = [firstOptElem];
+    }
   }
   return selectedOptElems.map(function(selectedOptElem) {
     return (Romo.attr(selectedOptElem, 'value') || '');
@@ -280,13 +283,14 @@ RomoSelect.prototype._elemValues = function() {
 }
 
 RomoSelect.prototype._refreshUI = function() {
-  var text = undefined;
+  var text = '';
   if (this.romoSelectedOptionsList !== undefined) {
-    text = '';
     this.romoSelectedOptionsList.doRefreshUI();
-  } else {
+  } else if (this._elemValues().length !== 0) {
     var optionElem = Romo.find(this.elem, 'OPTION[value="'+this._elemValues()[0]+'"]')[0];
-    text = optionElem.innerText.trim();
+    if (optionElem !== undefined) {
+      text = optionElem.innerText.trim();
+    }
   }
 
   var textElem = Romo.find(this.romoSelectDropdown.elem, '.romo-select-text')[0];
