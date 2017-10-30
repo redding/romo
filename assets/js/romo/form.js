@@ -141,10 +141,10 @@ RomoForm.prototype._browserSubmit = function() {
 }
 
 RomoForm.prototype._nonBrowserGetSubmit = function() {
-  var formData = this._getFormData(this._getFormValues({ includeFiles: false }));
+  var formValues = this._getFormValues({ includeFiles: false });
 
   if (Romo.data(this.elem, 'romo-form-redirect-page') === true) {
-    var paramString = Romo.param(formData, {
+    var paramString = Romo.param(formValues, {
       removeEmpty:  this.removeEmptyGetParams,
       decodeValues: this.decodeParams
     });
@@ -154,21 +154,21 @@ RomoForm.prototype._nonBrowserGetSubmit = function() {
       Romo.redirectPage(Romo.attr(this.elem, 'action'));
     }
   } else {
-    this._ajaxSubmit(formData);
+    this._ajaxSubmit(formValues);
   }
 }
 
 RomoForm.prototype._nonBrowserNonGetSubmit = function() {
-  var formData = this._getFormData(this._getFormValues({ includeFiles: true }));
+  var formValues = this._getFormValues({ includeFiles: true });
 
-  this._ajaxSubmit(formData);
+  this._ajaxSubmit(formValues);
 }
 
-RomoForm.prototype._ajaxSubmit = function(formData) {
+RomoForm.prototype._ajaxSubmit = function(formValues) {
   Romo.ajax({
     url:     Romo.attr(this.elem, 'action'),
     type:    Romo.attr(this.elem, 'method'),
-    data:    formData,
+    data:    formValues,
     success: Romo.proxy(this._onSubmitSuccess, this),
     error:   Romo.proxy(this._onSubmitError,   this)
   });
@@ -216,15 +216,6 @@ RomoForm.prototype._completeSubmit = function() {
   } else {
     this.submitRunning = false;
   }
-}
-
-RomoForm.prototype._getFormData = function(formValues) {
-  var formData = new FormData;
-  for (var name in formValues) {
-    formValues[name].forEach(function(value){ formData.append(name, value) });
-  }
-
-  return formData;
 }
 
 RomoForm.prototype._getFormValues = function(opts) {
@@ -275,7 +266,7 @@ RomoForm.prototype._getFormValues = function(opts) {
   var listDelims = Romo.find(this.elem, '[data-romo-form-list-values="true"]').reduce(
     function(delims, inputElem) {
       delims[Romo.attr(inputElem, 'name')] = (
-        Romo.data(currElem, 'romo-form-list-values-delim') ||
+        Romo.data(inputElem, 'romo-form-list-values-delim') ||
         this.defaultListValuesDelim
       );
       return delims;
@@ -285,6 +276,13 @@ RomoForm.prototype._getFormValues = function(opts) {
   for (var name in listDelims) {
     if (formValues[name]) {
       formValues[name] = [formValues[name].join(listDelims[name])];
+    }
+  }
+
+  // remove the array from any single item array values
+  for(var key in formValues) {
+    if (formValues[key].length === 1) {
+      formValues[key] = formValues[key][0]
     }
   }
 

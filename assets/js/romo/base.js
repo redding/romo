@@ -561,13 +561,23 @@ Romo.prototype.decodeParamMap = [
 Romo.prototype.ajax = function(settings) {
   var httpMethod = (settings.type || 'GET').toUpperCase();
   var xhrUrl     = settings.url || window.location.toString();
-  var xhrData    = settings.data ? settings.data : null
-  if (xhrData && httpMethod === 'GET') {
-    var xhrQuery = Romo.param(xhrData);
-    if (xhrQuery !== '') {
-      xhrUrl = (xhrUrl + '&' + xhrQuery).replace(/[&?]{1,2}/, '?');
+  var xhrData    = settings.data ? settings.data : undefined
+  if (xhrData) {
+    if (httpMethod === 'GET') {
+      var xhrQuery = Romo.param(xhrData);
+      if (xhrQuery !== '') {
+        xhrUrl = (xhrUrl + '&' + xhrQuery).replace(/[&?]{1,2}/, '?');
+      }
+      xhrData = undefined;
+    } else {
+      var formData = new FormData;
+      for (var name in xhrData) {
+        Romo.array(xhrData[name]).forEach(function(value){
+          formData.append(name, value)
+        });
+      }
+      xhrData = formData;
     }
-    xhrData = null;
   }
 
   var xhr = new XMLHttpRequest();
@@ -584,13 +594,13 @@ Romo.prototype.ajax = function(settings) {
   }
   xhr.onreadystatechange = function() {
     if (xhr.readyState === 4) {
-      if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+      if (settings.success !== undefined && ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304)) {
         if (xhr.responseType === 'arraybuffer' || xhr.responseType === 'blob') {
           settings.success.call(window, xhr.response, xhr.status, xhr, settings);
         } else {
           settings.success.call(window, xhr.responseText, xhr.status, xhr, settings);
         }
-      } else {
+      } else if(settings.error !== undefined) {
         settings.error.call(window, xhr.statusText || null, xhr.status, xhr, settings);
       }
     }
