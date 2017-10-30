@@ -60,7 +60,7 @@ RomoSpinner.prototype.doStop = function() {
     this.spinner = undefined;
   }
   if (this.elemHtml !== undefined) {
-    Romo.updateHtml(this.elem, this.elemHtml);
+    this.elem.innerHTML = this.elemHtml;
   }
   Romo.rmStyle(this.elem, 'position');
   Romo.rmStyle(this.elem, 'width');
