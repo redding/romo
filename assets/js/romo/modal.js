@@ -216,6 +216,7 @@ RomoModal.prototype._bindBody = function() {
   this.dragElems = Romo.find(this.popupElem, '[data-romo-modal-drag="true"]');
   this.dragElems.forEach(Romo.proxy(function(dragElem) {
     Romo.on(dragElem, 'mousedown', Romo.proxy(this._onMouseDown, this));
+    Romo.addClass(dragElem, 'romo-modal-grab');
   }, this));
 
   var css = {
