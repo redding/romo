@@ -874,8 +874,8 @@ var RomoParentChildElems = function() {
   var parentRemovedObserver = new MutationObserver(Romo.proxy(function(mutationRecords) {
     mutationRecords.forEach(Romo.proxy(function(mutationRecord) {
       if (mutationRecord.type === 'childList' && mutationRecord.removedNodes.length > 0) {
-        mutationRecord.removedNodes.forEach(Romo.proxy(function(removedNodeElem) {
-          this.remove(removedNodeElem);
+        mutationRecord.removedNodes.forEach(Romo.proxy(function(removedNode) {
+          this.remove(removedNode);
         }, this));
       }
     }, this));
@@ -891,15 +891,15 @@ RomoParentChildElems.prototype.add = function(parentElem, childElems) {
   Romo.setData(parentElem, this.attrName, this._push(childElems, Romo.data(parentElem, this.attrName)));
 }
 
-RomoParentChildElems.prototype.remove = function(nodeElem) {
-  if (nodeElem.nodeType !== Node.ELEMENT_NODE){ return false; }
+RomoParentChildElems.prototype.remove = function(elemNode) {
+  if (elemNode.nodeType !== Node.ELEMENT_NODE){ return false; }
 
-  if (Romo.data(nodeElem, 'romo-parent-removed-observer-disabled') !== true) {
-    if (Romo.data(nodeElem, this.attrName) !== undefined) {
+  if (Romo.data(elemNode, 'romo-parent-removed-observer-disabled') !== true) {
+    if (Romo.data(elemNode, this.attrName) !== undefined) {
       // node is a parent elem itself
-      this._removeChildElems(nodeElem);
+      this._removeChildElems(elemNode);
     }
-    Romo.find(nodeElem, '[data-'+this.attrName+']').forEach(Romo.proxy(function(childParentElem) {
+    Romo.find(elemNode, '[data-'+this.attrName+']').forEach(Romo.proxy(function(childParentElem) {
       this._removeChildElems(childParentElem);
     }, this));
   }
