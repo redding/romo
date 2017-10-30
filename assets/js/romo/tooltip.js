@@ -52,15 +52,18 @@ RomoTooltip.prototype.doPopupClose = function() {
 }
 
 RomoTooltip.prototype.doPlacePopupElem = function() {
+  var elemRect   = this.elem.getBoundingClientRect();
+  var elemOffset = undefined;
+
   if (Romo.parents(this.elem, '.romo-modal-popup').length !== 0) {
     Romo.setStyle(this.popupElem, 'position', 'fixed');
+    elemOffset = elemRect;
+  } else {
+    elemOffset = Romo.offset(this.elem);
   }
 
-  var elemRect   = this.elem.getBoundingClientRect();
   var elemHeight = elemRect.height;
   var elemWidth  = elemRect.width;
-
-  var elemOffset = Romo.offset(this.elem);
   var elemTop    = elemOffset.top;
   var elemLeft   = elemOffset.left
 
@@ -98,29 +101,29 @@ RomoTooltip.prototype.doPlacePopupElem = function() {
     popupOffsetHeight = configHeight;
   }
 
-  var offsetTop  = undefined;
-  var offsetLeft = undefined;
+  var posTop  = undefined;
+  var posLeft = undefined;
   switch (configPosition) {
     case 'top':
-      offsetTop  = elemTop - popupOffsetHeight - pad;
-      offsetLeft = elemLeft + (elemWidth / 2) - (popupOffsetWidth / 2);
+      posTop  = elemTop - popupOffsetHeight - pad;
+      posLeft = elemLeft + (elemWidth / 2) - (popupOffsetWidth / 2);
       break;
     case 'bottom':
-      offsetTop  = elemTop + elemHeight + pad;
-      offsetLeft = elemLeft + (elemWidth / 2) - (popupOffsetWidth / 2);
+      posTop  = elemTop + elemHeight + pad;
+      posLeft = elemLeft + (elemWidth / 2) - (popupOffsetWidth / 2);
       break;
     case 'left':
-      offsetTop  = elemTop + (elemHeight / 2) - (popupOffsetHeight / 2);
-      offsetLeft = elemLeft - popupOffsetWidth - pad;
+      posTop  = elemTop + (elemHeight / 2) - (popupOffsetHeight / 2);
+      posLeft = elemLeft - popupOffsetWidth - pad;
       break;
     case 'right':
-      offsetTop  = elemTop + (elemHeight / 2) - (popupOffsetHeight / 2);
-      offsetLeft = elemLeft + elemWidth + pad;
+      posTop  = elemTop + (elemHeight / 2) - (popupOffsetHeight / 2);
+      posLeft = elemLeft + elemWidth + pad;
       break;
   }
 
-  Romo.setStyle(this.popupElem, 'top',  offsetTop + 'px');
-  Romo.setStyle(this.popupElem, 'left', offsetLeft + 'px');
+  Romo.setStyle(this.popupElem, 'top',  posTop + 'px');
+  Romo.setStyle(this.popupElem, 'left', posLeft + 'px');
 }
 
 RomoTooltip.prototype.doSetContent = function(value) {
