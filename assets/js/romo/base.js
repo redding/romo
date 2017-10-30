@@ -451,11 +451,7 @@ Romo.prototype.onInitUI = function(fn) {
 
 Romo.prototype.triggerInitUI = function(onElems) {
   Romo.array(onElems).forEach(Romo.proxy(function(elem) {
-    this._initUICallbacks.forEach(function(fn) {
-      setTimeout(function() {
-        fn(elem);
-      }, 1);
-    });
+    this._initUICallbacks.forEach(function(fn) { fn(elem); });
   }, this));
 
   return onElems;
