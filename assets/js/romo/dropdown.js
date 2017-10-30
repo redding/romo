@@ -82,15 +82,18 @@ RomoDropdown.prototype.doPopupClose = function() {
 }
 
 RomoDropdown.prototype.doPlacePopupElem = function() {
+  var elemRect   = this.elem.getBoundingClientRect();
+  var elemOffset = undefined;
+
   if (Romo.parents(this.elem, '.romo-modal-popup').length !== 0) {
     Romo.setStyle(this.popupElem, 'position', 'fixed');
+    elemOffset = elemRect;
+  } else {
+    elemOffset = Romo.offset(this.elem);
   }
 
-  var elemRect   = this.elem.getBoundingClientRect();
   var elemHeight = elemRect.height;
   var elemWidth  = elemRect.width;
-
-  var elemOffset = Romo.offset(this.elem);
   var elemTop    = elemOffset.top;
   var elemLeft   = elemOffset.left
 
@@ -119,38 +122,38 @@ RomoDropdown.prototype.doPlacePopupElem = function() {
 
     // remove any height difference between the popup and content elems
     // assumes popup height always greater than or equal to content height
-    configHeight = configHeight - (popupOffsetHeight - this.contentElem.offsetHeight);
-    Romo.setStyle(this.contentElem, 'max-height', configHeight.toString() + 'px');
+    var contentMaxHeight = configHeight - (popupOffsetHeight - this.contentElem.offsetHeight);
+    Romo.setStyle(this.contentElem, 'max-height', contentMaxHeight.toString() + 'px');
   }
 
   if(popupOffsetHeight > configHeight) {
     popupOffsetHeight = configHeight;
   }
 
-  var offsetTop = undefined;
+  var posTop = undefined;
   switch (configPosition) {
     case 'top':
       var pad = 2;
-      offsetTop = elemTop - popupOffsetHeight - pad;
+      posTop = elemTop - popupOffsetHeight - pad;
       break;
     case 'bottom':
       var pad = 2;
-      offsetTop = elemTop + elemHeight + pad;
+      posTop = elemTop + elemHeight + pad;
       break;
   }
 
-  var offsetLeft = undefined;
+  var posLeft = undefined;
   switch (this.popupAlignment) {
     case 'left':
-      offsetLeft = elemLeft;
+      posLeft = elemLeft;
       break;
     case 'right':
-      offsetLeft = elemLeft + elemWidth - popupOffsetWidth;
+      posLeft = elemLeft + elemWidth - popupOffsetWidth;
       break;
   }
 
-  Romo.setStyle(this.popupElem, 'top',  this._roundPosOffsetVal(offsetTop)+'px');
-  Romo.setStyle(this.popupElem, 'left', this._roundPosOffsetVal(offsetLeft)+'px');
+  Romo.setStyle(this.popupElem, 'top',  this._roundPosOffsetVal(posTop)+'px');
+  Romo.setStyle(this.popupElem, 'left', this._roundPosOffsetVal(posLeft)+'px');
 }
 
 RomoDropdown.prototype.doSetPopupZIndex = function(relativeElem) {

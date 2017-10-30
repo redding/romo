@@ -206,10 +206,11 @@ Romo.prototype.hide = function(elem) {
 }
 
 Romo.prototype.offset = function(elem) {
-  var rect = elem.getBoundingClientRect();
+  var elemRect = elem.getBoundingClientRect();
+  var bodyRect = document.body.getBoundingClientRect();
   return {
-    top:  rect.top  + window.pageYOffset,
-    left: rect.left + window.pageXOffset
+    top:  elemRect.top  - bodyRect.top,
+    left: elemRect.left - bodyRect.left
   };
 }
 
