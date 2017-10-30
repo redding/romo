@@ -4,8 +4,7 @@ var Romo = function() {
 
 Romo.prototype.doInit = function() {
   this.parentChildElems = new RomoParentChildElems();
-
-  this.triggerInitUI(Romo.f('body')[0]);
+  this.initElems(Romo.f('body'));
 }
 
 // element finders
@@ -302,6 +301,14 @@ Romo.prototype.elems = function(htmlString) {
   }
 }
 
+Romo.prototype.initElems = function(elems) {
+  return this.triggerInitUI(elems);
+}
+
+Romo.prototype.initElemsHtml = function(htmlString) {
+  return this.initElems(this.elems(htmlString));
+}
+
 Romo.prototype.remove = function(elem) {
   return elem.parentNode.removeChild(elem);
 }
@@ -320,11 +327,11 @@ Romo.prototype.replaceHtml = function(elem, htmlString) {
 }
 
 Romo.prototype.initReplace = function(elem, replacementElem) {
-  return this.triggerInitUI(this.replace(elem, replacementElem));
+  return this.initElems(this.replace(elem, replacementElem));
 }
 
 Romo.prototype.initReplaceHtml = function(elem, htmlString) {
-  return this.triggerInitUI(this.replaceHtml(elem, htmlString));
+  return this.initElems(this.replaceHtml(elem, htmlString));
 }
 
 Romo.prototype.update = function(elem, childElems) {
@@ -347,11 +354,11 @@ Romo.prototype.updateText = function(elem, textString) {
 }
 
 Romo.prototype.initUpdate = function(elem, childElems) {
-  return this.triggerInitUI(this.update(elem, childElems));
+  return this.initElems(this.update(elem, childElems));
 }
 
 Romo.prototype.initUpdateHtml = function(elem, htmlString) {
-  return this.triggerInitUI(this.updateHtml(elem, htmlString));
+  return this.initElems(this.updateHtml(elem, htmlString));
 }
 
 Romo.prototype.prepend = function(elem, childElems) {
@@ -371,11 +378,11 @@ Romo.prototype.prependHtml = function(elem, htmlString) {
 }
 
 Romo.prototype.initPrepend = function(elem, childElems) {
-  return this.triggerInitUI(this.prepend(elem, childElems));
+  return this.initElems(this.prepend(elem, childElems));
 }
 
 Romo.prototype.initPrependHtml = function(elem, htmlString) {
-  return this.triggerInitUI(this.prependHtml(elem, htmlString));
+  return this.initElems(this.prependHtml(elem, htmlString));
 }
 
 Romo.prototype.append = function(elem, childElems) {
@@ -393,11 +400,11 @@ Romo.prototype.appendHtml = function(elem, htmlString) {
 }
 
 Romo.prototype.initAppend = function(elem, childElems) {
-  return this.triggerInitUI(this.append(elem, childElems));
+  return this.initElems(this.append(elem, childElems));
 }
 
 Romo.prototype.initAppendHtml = function(elem, htmlString) {
-  return this.triggerInitUI(this.appendHtml(elem, htmlString));
+  return this.initElems(this.appendHtml(elem, htmlString));
 }
 
 Romo.prototype.before = function(elem, siblingElems) {
@@ -418,11 +425,11 @@ Romo.prototype.beforeHtml = function(elem, htmlString) {
 }
 
 Romo.prototype.initBefore = function(elem, siblingElems) {
-  return this.triggerInitUI(this.before(elem, siblingElems));
+  return this.initElems(this.before(elem, siblingElems));
 }
 
 Romo.prototype.initBeforeHtml = function(elem, htmlString) {
-  return this.triggerInitUI(this.beforeHtml(elem, htmlString));
+  return this.initElems(this.beforeHtml(elem, htmlString));
 }
 
 Romo.prototype.after = function(elem, siblingElems) {
@@ -442,11 +449,11 @@ Romo.prototype.afterHtml = function(elem, htmlString) {
 }
 
 Romo.prototype.initAfter = function(elem, siblingElems) {
-  return this.triggerInitUI(this.after(elem, siblingElems));
+  return this.initElems(this.after(elem, siblingElems));
 }
 
 Romo.prototype.initAfterHtml = function(elem, htmlString) {
-  return this.triggerInitUI(this.afterHtml(elem, htmlString));
+  return this.initElems(this.afterHtml(elem, htmlString));
 }
 
 // events
