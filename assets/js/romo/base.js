@@ -699,6 +699,13 @@ Romo.prototype.array = function(value) {
     return Array.prototype.slice.call(value)
   }
 
+  // short circuit for passing elems, this ensures these remain fast and avoids
+  // running into the is like an array logic; this fixes issues with select and
+  // form elements being like an array and returning unexpected results
+  if (typeof(value.nodeType) === 'number') {
+    return [value];
+  }
+
   var object = Object(value)
   var length = undefined;
   if (!!object && 'length' in object) {
@@ -710,11 +717,9 @@ Romo.prototype.array = function(value) {
     typeof(object)          === 'function' &&
     typeof(object.nodeType) !== 'number'
   );
-  var isSelect = (object.nodeName && object.nodeName.toLowerCase() === 'select');
   var likeArray = (
     typeof(value) !== 'string' &&
     !isFunction                &&
-    !isSelect                  &&
     object !== window          &&
     ( Array.isArray(object) ||
       length === 0          ||
