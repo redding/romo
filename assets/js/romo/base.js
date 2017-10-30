@@ -46,7 +46,7 @@ Romo.prototype.parent = function(childElem) {
 
 Romo.prototype.parents = function(childElem, selector) {
   var parentElem = this.parent(childElem);
-  if (parentElem) {
+  if (parentElem && parentElem !== document) {
     if (!selector || Romo.is(parentElem, selector)) {
       if (Romo.is(parentElem, 'body')) {
         return [parentElem];
