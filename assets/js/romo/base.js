@@ -246,7 +246,7 @@ Romo.prototype.scrollLeft = function(elem) {
   return ('scrollLeft' in elem) ? elem.scrollLeft : elem.pageXOffset;
 }
 
-Romo.prototype.setScrollTop = function(elem, value) {
+Romo.prototype.setScrollTop = function(elems, value) {
   Romo.array(elems).forEach(function(elem) {
     if ('scrollTop' in elem) {
       elem.scrollTop = value;
@@ -256,7 +256,7 @@ Romo.prototype.setScrollTop = function(elem, value) {
   });
 }
 
-Romo.prototype.setScrollLeft = function(elem, value) {
+Romo.prototype.setScrollLeft = function(elems, value) {
   Romo.array(elems).forEach(function(elem) {
     if ('scrollLeft' in elem) {
       elem.scrollLeft = value;
@@ -339,7 +339,7 @@ Romo.prototype.initElemsHtml = function(htmlString) {
 
 // DOM manipulation
 
-Romo.prototype.remove = function(elem) {
+Romo.prototype.remove = function(elems) {
   return Romo.array(elems).map(function(elem) {
     return elem.parentNode.removeChild(elem);
   });
