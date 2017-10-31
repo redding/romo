@@ -39,10 +39,8 @@ RomoDatepicker.prototype.doRefreshUI = function(date) {
   Romo.trigger(this.elem, 'romoDatepicker:refresh', [rDate, this]);
 
   var itemElems = Romo.find(this.calTable, this.itemSelector);
-  itemElems.forEach(Romo.proxy(function(itemElem) {
-    Romo.on(itemElem, 'mouseenter', Romo.proxy(this._onItemEnter, this));
-    Romo.on(itemElem, 'click',      Romo.proxy(this._onItemClick, this));
-  }, this));
+  Romo.on(itemElems, 'mouseenter', Romo.proxy(this._onItemEnter, this));
+  Romo.on(itemElems, 'click',      Romo.proxy(this._onItemClick, this));
 
   Romo.on(this.romoDropdown.popupElem, 'mousedown', Romo.proxy(this._onPopupMouseDown, this));
   Romo.on(this.romoDropdown.popupElem, 'mouseup',   Romo.proxy(this._onPopupMouseUp, this));
@@ -279,9 +277,7 @@ RomoDatepicker.prototype._refreshCalendar = function(date) {
   var tableBodyElem = Romo.find(this.calTable, 'tbody')[0];
   Romo.updateHtml(tableBodyElem, '');
   var rowElems = this._buildCalendarBodyRows(date);
-  rowElems.forEach(Romo.proxy(function(rowElem) {
-    Romo.append(tableBodyElem, rowElem);
-  }, this));
+  Romo.append(tableBodyElem, rowElems);
 
   this.refreshDate = date;
 }
@@ -392,7 +388,7 @@ RomoDatepicker.prototype._buildCalendarBodyRows = function(date) {
 }
 
 RomoDatepicker.prototype._highlightItem = function(itemElem) {
-  var highlightElem = Romo.find(this.calTable, 'TD.romo-datepicker-highlight')[0]
+  var highlightElem = Romo.find(this.calTable, 'TD.romo-datepicker-highlight')[0];
   if(highlightElem !== undefined) {
     Romo.removeClass(highlightElem, 'romo-datepicker-highlight');
   }
