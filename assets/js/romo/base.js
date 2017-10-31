@@ -340,7 +340,9 @@ Romo.prototype.initElemsHtml = function(htmlString) {
 // DOM manipulation
 
 Romo.prototype.remove = function(elem) {
-  return elem.parentNode.removeChild(elem);
+  return Romo.array(elems).map(function(elem) {
+    return elem.parentNode.removeChild(elem);
+  });
 }
 
 Romo.prototype.replace = function(elem, replacementElem) {
