@@ -192,9 +192,7 @@ RomoSortable.prototype._onDragEnd = function(e) {
   if(this.draggedElem === undefined){ return; }
 
   if (this.dragOverClass() !== undefined) {
-    this.draggableElems.forEach(Romo.proxy(function(draggableElem) {
-      Romo.removeClass(draggableElem, this.dragOverClass());
-    }, this));
+    Romo.removeClass(this.draggableElems, this.dragOverClass());
   }
   if (this.draggingClass() !== undefined) {
     Romo.removeClass(this.draggedElem, this.draggingClass());
