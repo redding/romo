@@ -136,62 +136,79 @@ Romo.prototype.attr = function(elem, attrName) {
   }
 }
 
-Romo.prototype.setAttr = function(elem, attrName, attrValue) {
+Romo.prototype.setAttr = function(elems, attrName, attrValue) {
   var v = String(attrValue);
-  elem.setAttribute(attrName, v);
+  Romo.array(elems).forEach(function(elem) {
+    elem.setAttribute(attrName, v);
+  });
   return v;
 }
 
-Romo.prototype.rmAttr = function(elem, attrName) {
-  elem.removeAttribute(attrName);
+Romo.prototype.rmAttr = function(elems, attrName) {
+  Romo.array(elems).forEach(function(elem) {
+    elem.removeAttribute(attrName);
+  });
 }
 
 Romo.prototype.data = function(elem, dataName) {
   return this._deserializeValue(this.attr(elem, "data-"+dataName));
 }
 
-Romo.prototype.setData = function(elem, dataName, dataValue) {
-  return this.setAttr(elem, "data-"+dataName, dataValue);
+Romo.prototype.setData = function(elems, dataName, dataValue) {
+  return this.setAttr(elems, "data-"+dataName, dataValue);
 }
 
-Romo.prototype.rmData = function(elem, dataName) {
-  this.rmAttr(elem, "data-"+dataName);
+Romo.prototype.rmData = function(elems, dataName) {
+  this.rmAttr(elems, "data-"+dataName);
 }
 
 Romo.prototype.style = function(elem, styleName) {
   return elem.style[styleName];
 }
 
-Romo.prototype.setStyle = function(elem, styleName, styleValue) {
-  elem.style[styleName] = styleValue;
+Romo.prototype.setStyle = function(elems, styleName, styleValue) {
+  Romo.array(elems).forEach(function(elem) {
+    elem.style[styleName] = styleValue;
+  });
   return styleValue;
 }
 
-Romo.prototype.rmStyle = function(elem, styleName) {
-  elem.style[styleName] = '';
+Romo.prototype.rmStyle = function(elems, styleName) {
+  Romo.array(elems).forEach(function(elem) {
+    elem.style[styleName] = '';
+  });
 }
 
 Romo.prototype.css = function(elem, styleName) {
   return window.getComputedStyle(elem, null).getPropertyValue(styleName);
 }
 
-Romo.prototype.addClass = function(elem, className) {
-  className.split(' ').filter(function(n){ return n; }).forEach(function(name) {
-    elem.classList.add(name);
+Romo.prototype.addClass = function(elems, className) {
+  var classNames = className.split(' ').filter(function(n){ return n; });
+  Romo.array(elems).forEach(function(elem) {
+    classNames.forEach(function(name) {
+      elem.classList.add(name);
+    });
   });
   return className;
 }
 
-Romo.prototype.removeClass = function(elem, className) {
-  className.split(' ').filter(function(n){ return n; }).forEach(function(name) {
-    elem.classList.remove(name);
+Romo.prototype.removeClass = function(elems, className) {
+  var classNames = className.split(' ').filter(function(n){ return n; });
+  Romo.array(elems).forEach(function(elem) {
+    classNames.forEach(function(name) {
+      elem.classList.remove(name);
+    });
   });
   return className;
 }
 
-Romo.prototype.toggleClass = function(elem, className) {
-  className.split(' ').filter(function(n){ return n; }).forEach(function(name) {
-    elem.classList.toggle(name);
+Romo.prototype.toggleClass = function(elems, className) {
+  var classNames = className.split(' ').filter(function(n){ return n; });
+  Romo.array(elems).forEach(function(elem) {
+    classNames.forEach(function(name) {
+      elem.classList.toggle(name);
+    });
   });
   return className;
 }
@@ -200,12 +217,16 @@ Romo.prototype.hasClass = function(elem, className) {
   return elem.classList.contains(className);
 }
 
-Romo.prototype.show = function(elem) {
-  elem.style.display = '';
+Romo.prototype.show = function(elems) {
+  Romo.array(elems).forEach(function(elem) {
+    elem.style.display = '';
+  });
 }
 
-Romo.prototype.hide = function(elem) {
-  elem.style.display = 'none';
+Romo.prototype.hide = function(elems) {
+  Romo.array(elems).forEach(function(elem) {
+    elem.style.display = 'none';
+  });
 }
 
 Romo.prototype.offset = function(elem) {
@@ -226,19 +247,23 @@ Romo.prototype.scrollLeft = function(elem) {
 }
 
 Romo.prototype.setScrollTop = function(elem, value) {
-  if ('scrollTop' in elem) {
-    elem.scrollTop = value;
-  } else {
-    elem.scrollTo(elem.scrollX, value);
-  }
+  Romo.array(elems).forEach(function(elem) {
+    if ('scrollTop' in elem) {
+      elem.scrollTop = value;
+    } else {
+      elem.scrollTo(elem.scrollX, value);
+    }
+  });
 }
 
 Romo.prototype.setScrollLeft = function(elem, value) {
-  if ('scrollLeft' in elem) {
-    elem.scrollLeft = value;
-  } else {
-    elem.scrollTo(value, elem.scrollY);
-  }
+  Romo.array(elems).forEach(function(elem) {
+    if ('scrollLeft' in elem) {
+      elem.scrollLeft = value;
+    } else {
+      elem.scrollTo(value, elem.scrollY);
+    }
+  });
 }
 
 Romo.prototype.parseZIndex = function(elem) {
