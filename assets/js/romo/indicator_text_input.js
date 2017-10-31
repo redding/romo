@@ -17,25 +17,21 @@ RomoIndicatorTextInput.prototype.doInit = function() {
 
 RomoIndicatorTextInput.prototype.doEnable = function() {
   this.elem.disabled = false;
-  Romo.removeClass(this.elem, 'disabled');
-  Romo.removeClass(this.indicatorElem, 'disabled');
+  Romo.removeClass([this.elem, this.indicatorElem], 'disabled');
 }
 
 RomoIndicatorTextInput.prototype.doDisable = function() {
   this.elem.disabled = true;
-  Romo.addClass(this.elem, 'disabled');
-  Romo.addClass(this.indicatorElem, 'disabled');
+  Romo.addClass([this.elem, this.indicatorElem], 'disabled');
 }
 
 RomoIndicatorTextInput.prototype.doShow = function() {
-  this._show(this.elem);
-  this._show(this.indicatorElem);
+  Romo.show([this.elem, this.indicatorElem]);
   this._placeIndicatorElem();
 }
 
 RomoIndicatorTextInput.prototype.doHide = function() {
-  this._hide(this.elem);
-  this._hide(this.indicatorElem);
+  Romo.hide([this.elem, this.indicatorElem]);
 }
 
 // private
@@ -109,7 +105,7 @@ RomoIndicatorTextInput.prototype._placeIndicatorElem = function() {
       Romo.addClass(this.indicatorElem, 'disabled');
     }
     if (Romo.css(this.elem, 'display') === 'none') {
-      this._hide(this.indicatorElem);
+      Romo.hide(this.indicatorElem);
     }
 
     var indicatorPaddingPx = this._getIndicatorPaddingPx();
@@ -137,14 +133,6 @@ RomoIndicatorTextInput.prototype._onIndicatorClick = function(e) {
 }
 
 // private
-
-RomoIndicatorTextInput.prototype._show = function(elem) {
-  Romo.show(elem);
-}
-
-RomoIndicatorTextInput.prototype._hide = function(elem) {
-  Romo.hide(elem);
-}
 
 RomoIndicatorTextInput.prototype._getIndicatorPaddingPx = function() {
   return (
