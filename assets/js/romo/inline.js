@@ -51,9 +51,7 @@ RomoInline.prototype._bindElem = function() {
 
 RomoInline.prototype._bindDismiss = function() {
   this.dismissElems = Romo.find(this.elem, '[data-romo-inline-dismiss]');
-  this.dismissElems.forEach(Romo.proxy(function(dismissElem) {
-    Romo.on(dismissElem, 'click', Romo.proxy(this._onDismissClick, this));
-  }, this));
+  Romo.on(this.dismissElems, 'click', Romo.proxy(this._onDismissClick, this));
 }
 
 RomoInline.prototype._loadStart = function() {

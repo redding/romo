@@ -108,13 +108,11 @@ RomoModal.prototype.doPlacePopupElem = function() {
 }
 
 RomoModal.prototype.doBindElemKeyUp = function() {
-  Romo.on(this.elem,      'keyup', Romo.proxy(this._onElemKeyUp, this));
-  Romo.on(this.popupElem, 'keyup', Romo.proxy(this._onElemKeyUp, this));
+  Romo.on([this.elem, this.popupElem], 'keyup', Romo.proxy(this._onElemKeyUp, this));
 }
 
 RomoModal.prototype.doUnBindElemKeyUp = function() {
-  Romo.off(this.elem,      'keyup', Romo.proxy(this._onElemKeyUp, this));
-  Romo.off(this.popupElem, 'keyup', Romo.proxy(this._onElemKeyUp, this));
+  Romo.off([this.elem, this.popupElem], 'keyup', Romo.proxy(this._onElemKeyUp, this));
 }
 
 RomoModal.prototype.doBindWindowBodyClick = function() {
@@ -203,15 +201,11 @@ RomoModal.prototype._bindBody = function() {
   }
 
   this.closeElems = Romo.find(this.popupElem, '[data-romo-modal-close="true"]');
-  this.closeElems.forEach(Romo.proxy(function(closeElem) {
-    Romo.on(closeElem, 'click', Romo.proxy(this._onPopupClose, this));
-  }, this));
+  Romo.on(this.closeElems, 'click', Romo.proxy(this._onPopupClose, this));
 
   this.dragElems = Romo.find(this.popupElem, '[data-romo-modal-drag="true"]');
-  this.dragElems.forEach(Romo.proxy(function(dragElem) {
-    Romo.on(dragElem, 'mousedown', Romo.proxy(this._onMouseDown, this));
-    Romo.addClass(dragElem, 'romo-modal-grab');
-  }, this));
+  Romo.on(this.dragElems, 'mousedown', Romo.proxy(this._onMouseDown, this));
+  Romo.addClass(this.dragElems, 'romo-modal-grab');
 
   var css = {
     'min-width':  Romo.data(this.elem, 'romo-modal-min-width'),
@@ -246,9 +240,7 @@ RomoModal.prototype._resetBody = function() {
     Romo.rmStyle(this.contentElem, 'overflow');
   }
 
-  this.closeElems.forEach(Romo.proxy(function(closeElem) {
-    Romo.off(closeElem, 'click', Romo.proxy(this._onPopupClose, this));
-  }, this));
+  Romo.off(this.closeElems, 'click', Romo.proxy(this._onPopupClose, this));
 }
 
 RomoModal.prototype._loadBodyStart = function() {
@@ -295,10 +287,8 @@ RomoModal.prototype._onMouseDown = function(e) {
 }
 
 RomoModal.prototype._dragStart = function(e) {
-  this.dragElems.forEach(Romo.proxy(function(dragElem) {
-    Romo.addClass(dragElem, 'romo-modal-grabbing');
-    Romo.removeClass(dragElem, 'romo-modal-grab');
-  }, this));
+  Romo.addClass(this.dragElems, 'romo-modal-grabbing');
+  Romo.removeClass(this.dragElems, 'romo-modal-grab');
 
   Romo.setStyle(this.popupElem, 'width',  Romo.css(this.popupElem, 'width'));
   Romo.setStyle(this.popupElem, 'height', Romo.css(this.popupElem, 'height'));
@@ -332,10 +322,8 @@ RomoModal.prototype._onMouseUp = function(e) {
 }
 
 RomoModal.prototype._dragStop = function(e) {
-  this.dragElems.forEach(Romo.proxy(function(dragElem) {
-    Romo.addClass(dragElem, 'romo-modal-grab');
-    Romo.removeClass(dragElem, 'romo-modal-grabbing');
-  }, this));
+  Romo.addClass(this.dragElems, 'romo-modal-grab');
+  Romo.removeClass(this.dragElems, 'romo-modal-grabbing');
 
   Romo.rmStyle(this.popupElem, 'width');
   Romo.rmStyle(this.popupElem, 'height');
