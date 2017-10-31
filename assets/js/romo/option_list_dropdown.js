@@ -129,10 +129,8 @@ RomoOptionListDropdown.prototype.doSetListItems = function(itemsList) {
   this._updateOptionsListUI();
 
   var itemElems = Romo.find(this.optionListContainerElem, this.itemSelector);
-  itemElems.forEach(Romo.proxy(function(itemElem) {
-    Romo.on(itemElem, 'mouseenter', Romo.proxy(this._onItemEnter, this));
-    Romo.on(itemElem, 'click',      Romo.proxy(this._onItemClick, this));
-  }, this));
+  Romo.on(itemElems, 'mouseenter', Romo.proxy(this._onItemEnter, this));
+  Romo.on(itemElems, 'click',      Romo.proxy(this._onItemClick, this));
 }
 
 /* private */

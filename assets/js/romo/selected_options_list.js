@@ -58,9 +58,7 @@ RomoSelectedOptionsList.prototype.doRefreshUI = function() {
   var addItems = this.items.filter(function(item) {
     return uiValues.indexOf(item.value) === -1;
   });
-  rmElems.forEach(Romo.proxy(function(rmElem) {
-    Romo.remove(rmElem);
-  }, this));
+  Romo.remove(rmElems);
   addItems.forEach(Romo.proxy(function(addItem) {
     var addElem = this._buildItemElem(addItem);
     uiListElem.append(addElem);
