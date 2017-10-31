@@ -385,6 +385,4 @@ RomoModal.prototype._onResizeWindow = function(e) {
   return true;
 }
 
-Romo.onInitUI(function(elem) {
-  Romo.initUIElems(elem, '[data-romo-modal-auto="true"]').forEach(function(elem) { new RomoModal(elem); });
-});
+Romo.addElemsInitSelector('[data-romo-modal-auto="true"]', RomoModal);

@@ -329,6 +329,4 @@ RomoSelect.prototype._getCaretPosition = function() {
   );
 }
 
-Romo.onInitUI(function(elem) {
-  Romo.initUIElems(elem, '[data-romo-select-auto="true"]').forEach(function(elem) { new RomoSelect(elem); });
-});
+Romo.addElemsInitSelector('[data-romo-select-auto="true"]', RomoSelect);

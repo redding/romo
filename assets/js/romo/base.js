@@ -1,5 +1,4 @@
 var Romo = function() {
-  this._initUICallbacks = [];
 }
 
 Romo.prototype.doInit = function() {
@@ -269,7 +268,7 @@ Romo.prototype.parseElemZIndex = function(elem) {
   return 0;
 }
 
-// DOM manipulation
+// elems init
 
 Romo.prototype.elems = function(htmlString) {
   var context = document.implementation.createHTMLDocument();
@@ -301,13 +300,19 @@ Romo.prototype.elems = function(htmlString) {
   }
 }
 
+Romo.prototype.addElemsInitSelector = function(selector, componentClass) {
+  this._elemsInitComponents[selector] = componentClass;
+}
+
 Romo.prototype.initElems = function(elems) {
-  return this.triggerInitUI(elems);
+  return this._elemsInitTrigger(Romo.array(elems));
 }
 
 Romo.prototype.initElemsHtml = function(htmlString) {
   return this.initElems(this.elems(htmlString));
 }
+
+// DOM manipulation
 
 Romo.prototype.remove = function(elem) {
   return elem.parentNode.removeChild(elem);
@@ -529,28 +534,6 @@ Romo.prototype.ready = function(eventHandlerFn) {
   } else {
     this.on(document, 'DOMContentLoaded', eventHandlerFn);
   }
-}
-
-// init UI
-
-Romo.prototype.onInitUI = function(fn) {
-  this._initUICallbacks.push(fn);
-}
-
-Romo.prototype.triggerInitUI = function(onElems) {
-  Romo.array(onElems).forEach(Romo.proxy(function(elem) {
-    this._initUICallbacks.forEach(function(fn) { fn(elem); });
-  }, this));
-
-  return onElems;
-}
-
-Romo.prototype.initUIElems = function(elem, selector) {
-  var elems = Romo.find(elem, selector);
-  if (Romo.is(elem, selector)) {
-    elems.unshift(elem);
-  }
-  return elems;
 }
 
 // page handling
@@ -863,10 +846,6 @@ Romo.prototype._deserializeValue = function(value) {
   }
 }
 
-Romo.prototype._addEventCallback = function(name, callback) {
-  this._eventCallbacks.push({ eventName: name, callback:  callback });
-}
-
 Romo.prototype._elemsTagNameRegEx = /<([a-z][^\/\0>\x20\t\r\n\f]+)/i;
 
 Romo.prototype._elemsWrapMap = {
@@ -880,6 +859,21 @@ Romo.prototype._elemsWrapMap = {
   'th':       [3, "<table><tbody><tr>", "</tr></tbody></table>"],
   'td':       [3, "<table><tbody><tr>", "</tr></tbody></table>"]
 };
+
+Romo.prototype._elemsInitComponents = {};
+
+Romo.prototype._elemsInitTrigger = function(onElems) {
+  for (var selector in this._elemsInitComponents) {
+    var componentClass = this._elemsInitComponents[selector];
+    this._elemsInitFind(onElems, selector).forEach(function(initElem){ new componentClass(initElem); });
+  }
+  return onElems;
+}
+
+Romo.prototype._elemsInitFind = function(onElems, selector) {
+  var elems = onElems.filter(function(onElem){ return Romo.is(onElem, selector); });
+  return elems.concat(Romo.find(onElems, selector));;
+}
 
 // RomoParentChildElems
 

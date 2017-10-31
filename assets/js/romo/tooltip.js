@@ -354,6 +354,4 @@ RomoTooltip.prototype._setBodyHtml = function(content) {
   }
 }
 
-Romo.onInitUI(function(elem) {
-  Romo.initUIElems(elem, '[data-romo-tooltip-auto="true"]').forEach(function(elem) { new RomoTooltip(elem); });
-});
+Romo.addElemsInitSelector('[data-romo-tooltip-auto="true"]', RomoTooltip);

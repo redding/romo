@@ -256,6 +256,4 @@ RomoSelectDropdown.prototype._buildCustomOptionItem = function(value) {
   };
 }
 
-Romo.onInitUI(function(elem) {
-  Romo.initUIElems(elem, '[data-romo-select-dropdown-auto="true"]').forEach(function(elem) { new RomoSelectDropdown(elem); });
-});
+Romo.addElemsInitSelector('[data-romo-select-dropdown-auto="true"]', RomoSelectDropdown);

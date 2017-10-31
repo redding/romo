@@ -126,6 +126,4 @@ RomoAjax.prototype._trigger = function(eventName, eventData) {
   }
 }
 
-Romo.onInitUI(function(elem) {
-  Romo.initUIElems(elem, '[data-romo-ajax-auto="true"]').forEach(function(elem) { new RomoAjax(elem); });
-});
+Romo.addElemsInitSelector('[data-romo-ajax-auto="true"]', RomoAjax);

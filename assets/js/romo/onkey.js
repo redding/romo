@@ -35,6 +35,4 @@ RomoOnkey.prototype._doTrigger = function(triggerEvent) {
   );
 }
 
-Romo.onInitUI(function(elem) {
-  Romo.initUIElems(elem, '[data-romo-onkey-auto="true"]').forEach(function(elem) { new RomoOnkey(elem); });
-});
+Romo.addElemsInitSelector('[data-romo-onkey-auto="true"]', RomoOnkey);

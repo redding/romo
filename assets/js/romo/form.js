@@ -294,7 +294,4 @@ RomoForm.prototype._getXhrDataType = function() {
   return ((dataType === undefined) ? 'json' : dataType);
 }
 
-Romo.onInitUI(function(elem) {
-  Romo.initUIElems(elem, '[data-romo-form-auto="true"]').forEach(function(elem) { new RomoForm(elem); });
-});
-
+Romo.addElemsInitSelector('[data-romo-form-auto="true"]', RomoForm);

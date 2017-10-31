@@ -398,6 +398,4 @@ RomoPicker.prototype._getCaretPosition = function() {
   );
 }
 
-Romo.onInitUI(function(elem) {
-  Romo.initUIElems(elem, '[data-romo-picker-auto="true"]').forEach(function(elem) { new RomoPicker(elem); });
-});
+Romo.addElemsInitSelector('[data-romo-picker-auto="true"]', RomoPicker);

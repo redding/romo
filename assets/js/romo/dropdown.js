@@ -439,6 +439,4 @@ RomoDropdown.prototype._roundPosOffsetVal = function(value) {
   return Math.round(value*100) / 100;
 }
 
-Romo.onInitUI(function(elem) {
-  Romo.initUIElems(elem, '[data-romo-dropdown-auto="true"]').forEach(function(elem) { new RomoDropdown(elem); });
-});
+Romo.addElemsInitSelector('[data-romo-dropdown-auto="true"]', RomoDropdown);

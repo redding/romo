@@ -401,6 +401,4 @@ RomoDatepicker.prototype._highlightItem = function(itemElem) {
   }
 }
 
-Romo.onInitUI(function(elem) {
-  Romo.initUIElems(elem, '[data-romo-datepicker-auto="true"]').forEach(function(elem) { new RomoDatepicker(elem); });
-});
+Romo.addElemsInitSelector('[data-romo-datepicker-auto="true"]', RomoDatepicker);

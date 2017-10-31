@@ -621,6 +621,4 @@ RomoOptionListDropdown.prototype._getHighlightedItemElem = function() {
   return Romo.find(this.romoDropdown.bodyElem, 'LI.romo-option-list-dropdown-highlight')[0];
 }
 
-Romo.onInitUI(function(elem) {
-  Romo.initUIElems(elem, '[data-romo-option-list-dropdown-auto="true"]').forEach(function(elem) { new RomoOptionListDropdown(elem); });
-});
+Romo.addElemsInitSelector('[data-romo-option-list-dropdown-auto="true"]', RomoOptionListDropdown);
