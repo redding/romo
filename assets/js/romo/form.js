@@ -49,20 +49,14 @@ RomoForm.prototype.doSubmit = function() {
 // private
 
 RomoForm.prototype._bindElem = function() {
-  this.submitElems.forEach(Romo.proxy(function(submitElem) {
-    Romo.on(submitElem, 'click', Romo.proxy(this._onSubmitClick, this));
+  Romo.on(this.submitElems, 'click', Romo.proxy(this._onSubmitClick, this));
+
+  Romo.on(this.changeSubmitElems, 'change', Romo.proxy(function(e) {
+    Romo.trigger(this.elem, 'romoForm:triggerSubmit');
   }, this));
 
-  this.changeSubmitElems.forEach(Romo.proxy(function(changeSubmitElem) {
-    Romo.on(changeSubmitElem, 'change', Romo.proxy(function(e) {
-      Romo.trigger(this.elem, 'romoForm:triggerSubmit');
-    }, this));
-  }, this));
-
-  this.onkeySubmitElems.forEach(Romo.proxy(function(onkeySubmitElem) {
-    Romo.on(onkeySubmitElem, 'romoOnkey:trigger', Romo.proxy(function(e, triggerEvent, romoOnkey) {
-      Romo.trigger(this.elem, 'romoForm:triggerSubmit');
-    }, this));
+  Romo.on(this.onkeySubmitElems, 'romoOnkey:trigger', Romo.proxy(function(e, triggerEvent, romoOnkey) {
+    Romo.trigger(this.elem, 'romoForm:triggerSubmit');
   }, this));
 
   Romo.on(this.elem, 'romoForm:triggerSubmit', Romo.proxy(this._onTriggerSubmit, this));
@@ -121,9 +115,7 @@ RomoForm.prototype._submit = function() {
   this.submitQueued  = false;
   this.submitRunning = true;
 
-  this.spinnerElems.forEach(function(spinnerElem) {
-    Romo.trigger(spinnerElem, 'romoSpinner:triggerStart');
-  });
+  Romo.trigger(this.spinnerElems, 'romoSpinner:triggerStart');
   Romo.trigger(this.elem, 'romoForm:beforeSubmit', [this]);
 
   if(Romo.data(this.elem, 'romo-form-browser-submit') === true) {
@@ -202,9 +194,7 @@ RomoForm.prototype._onSubmitError = function(statusText, status, xhr) {
     Romo.trigger(this.elem, 'romoForm:submitXhrError', [xhr, this]);
   }
   Romo.trigger(this.elem, 'romoForm:submitError', [xhr, this]);
-  this.spinnerElems.forEach(function(spinnerElem) {
-    Romo.trigger(spinnerElem, 'romoSpinner:triggerStop');
-  });
+  Romo.trigger(this.spinnerElems, 'romoSpinner:triggerStop');
 
   this._completeSubmit();
 }
