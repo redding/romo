@@ -138,12 +138,8 @@ RomoSelectDropdown.prototype._bindElem = function() {
       return elem.textContent.replace(/\W/g, ' ');
     });
 
-    wbFilter.matchingElems.forEach(Romo.proxy(function(matchingElem) {
-      Romo.removeClass(matchingElem, this.filterHiddenClass);
-    }, this));
-    wbFilter.notMatchingElems.forEach(Romo.proxy(function(notMatchingElem) {
-      Romo.addClass(notMatchingElem, this.filterHiddenClass);
-    }, this));
+    Romo.removeClass(wbFilter.matchingElems, this.filterHiddenClass);
+    Romo.addClass(wbFilter.notMatchingElems, this.filterHiddenClass);
     this._setListItems();
 
     if (filterValue !== '') {

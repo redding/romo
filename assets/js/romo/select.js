@@ -186,10 +186,9 @@ RomoSelect.prototype._buildSelectDropdownElem = function() {
     Romo.setData(romoSelectDropdownElem, 'romo-dropdown-max-height', 'detect');
   }
 
-  var classList = Romo.attr(this.elem, 'class') !== undefined ? Romo.attr(this.elem, 'class').split(/\s+/) : [];
-  classList.forEach(Romo.proxy(function(classItem) {
-    Romo.addClass(romoSelectDropdownElem, classItem);
-  }, this));
+  if (Romo.attr(this.elem, 'class') !== undefined) {
+    Romo.addClass(romoSelectDropdownElem, Romo.attr(this.elem, 'class'));
+  }
   if (Romo.attr(this.elem, 'style') !== undefined) {
     Romo.setAttr(romoSelectDropdownElem, 'style', Romo.attr(this.elem, 'style'));
   }
