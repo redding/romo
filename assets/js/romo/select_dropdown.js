@@ -154,8 +154,9 @@ RomoSelectDropdown.prototype._bindElem = function() {
   Romo.trigger(this.elem, 'romoOptionListDropdown:triggerListOptionsUpdate', [this.selectedItemElem()]);
 
   if (Romo.attr(this.elem, 'id') !== undefined) {
-    var labelElem = Romo.f('label[for="'+Romo.attr(this.elem, 'id')+'"]')[0];
+    var labelElem = Romo.f('label[for="'+Romo.attr(this.elem, 'id')+'"]');
     Romo.on(labelElem, 'click', Romo.proxy(function(e) {
+      e.preventDefault();
       this.elem.focus();
     }, this));
   }

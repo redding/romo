@@ -700,10 +700,12 @@ Romo.prototype.array = function(value) {
     return Array.prototype.slice.call(value)
   }
 
-  // short circuit for passing elems, this ensures these remain fast and avoids
-  // running into the is like an array logic; this fixes issues with select and
-  // form elements being like an array and returning unexpected results
-  if (typeof(value.nodeType) === 'number') {
+  // short circuit for passing individual elems and "not truthy" values, this
+  // ensures these remain fast (the individual elems) and avoids running into
+  // the is like an array logic; this fixes issues with select and form elems
+  // being like an array and returning unexpected results.  This also fixes
+  // passing in null/undefined values.
+  if (!value || typeof(value.nodeType) === 'number') {
     return [value];
   }
 
