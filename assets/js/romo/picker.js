@@ -216,7 +216,7 @@ RomoPicker.prototype._buildOptionListDropdownElem = function() {
   }
 
   if (Romo.attr(this.elem, 'class') !== undefined) {
-    Romo.addClass(romoSelectDropdownElem, Romo.attr(this.elem, 'class'));
+    Romo.addClass(romoOptionListDropdownElem, Romo.attr(this.elem, 'class'));
   }
   if (Romo.attr(this.elem, 'style') !== undefined) {
     Romo.setAttr(romoOptionListDropdownElem, 'style', Romo.attr(this.elem, 'style'));
