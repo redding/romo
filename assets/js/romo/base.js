@@ -359,11 +359,11 @@ Romo.prototype.replaceHtml = function(elem, htmlString) {
 }
 
 Romo.prototype.initReplace = function(elem, replacementElem) {
-  return this.initElems(this.replace(elem, replacementElem));
+  return this.initElems(this.replace(elem, replacementElem))[0];
 }
 
 Romo.prototype.initReplaceHtml = function(elem, htmlString) {
-  return this.initElems(this.replaceHtml(elem, htmlString));
+  return this.initElems(this.replaceHtml(elem, htmlString))[0];
 }
 
 Romo.prototype.update = function(elem, childElems) {
