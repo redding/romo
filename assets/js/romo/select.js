@@ -54,8 +54,9 @@ RomoSelect.prototype._bindElem = function() {
   this.doSetValue(this._elemValues());
 
   if (Romo.attr(this.elem, 'id') !== undefined) {
-    var labelElem = Romo.f('label[for="'+Romo.attr(this.elem, 'id')+'"]')[0]
+    var labelElem = Romo.f('label[for="'+Romo.attr(this.elem, 'id')+'"]');
     Romo.on(labelElem, 'click', Romo.proxy(function(e) {
+      e.preventDefault();
       this.romoSelectDropdown.doFocus();
     }, this));
   }
