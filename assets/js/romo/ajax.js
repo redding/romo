@@ -78,7 +78,7 @@ RomoAjax.prototype._invoke = function() {
 
   var callUrl = Romo.attr(this.elem, this.urlAttr);
   if (this.callOnlyOnce === true) {
-    Romo.removeAttr(this.elem, this.urlAttr);
+    Romo.rmAttr(this.elem, this.urlAttr);
   }
   if (callUrl !== undefined) {
     this._call(callUrl, data);
