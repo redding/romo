@@ -304,17 +304,15 @@ Romo.prototype.elems = function(htmlString) {
   base.href = document.location.href;
   context.head.appendChild(base);
 
-  context.body.innerHTML = htmlString;
-  if (context.body.children.length !== 0) {
+  var results = Romo._elemsTagNameRegEx.exec(htmlString);
+  if (!results){ return []; }
+
+  var tagName = results[1].toLowerCase();
+  var wrap    = Romo._elemsWrapMap[tagName];
+  if (!wrap) {
+    context.body.innerHTML = htmlString;
     return this.array(context.body.children);
   } else {
-    var results = Romo._elemsTagNameRegEx.exec(htmlString);
-    if (!results){ return []; }
-
-    var tagName = results[1].toLowerCase();
-    var wrap    = Romo._elemsWrapMap[tagName];
-    if (!wrap){ return []; }
-
     context.body.innerHTML = wrap[1] + htmlString + wrap[2];
     var parentElem = context.body;
     var i = wrap[0];
@@ -854,7 +852,7 @@ Romo.prototype._deserializeValue = function(value) {
   }
 }
 
-Romo.prototype._elemsTagNameRegEx = /<([a-z][^\/\0>\x20\t\r\n\f]+)/i;
+Romo.prototype._elemsTagNameRegEx = /<([a-z-]+)[\s\/>]+/i;
 
 Romo.prototype._elemsWrapMap = {
   'caption':  [1, "<table>",            "</table>"],
