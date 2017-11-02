@@ -35,9 +35,14 @@ RomoCurrencyTextInput.prototype._bindElem = function() {
   Romo.on(this.elem, 'change', Romo.proxy(function(e) {
     this._refreshInputValue();
   }, this));
+  Romo.on(this.elem, 'romoOnkey:trigger', Romo.proxy(function(e, triggerEvent, romoOnkey) {
+    this._refreshInputValue(true);
+  }, this));
   Romo.on(this.elem, 'romoCurrencyTextInput:triggerUpdateInputValue', Romo.proxy(function(e) {
     this._refreshInputValue();
   }, this));
+
+  new RomoOnkey(this.elem)
 
   this._refreshInputValue();
 }
@@ -108,13 +113,15 @@ RomoCurrencyTextInput.prototype._bindIndicatorTextInput = function() {
   new RomoIndicatorTextInput(this.elem);
 }
 
-RomoCurrencyTextInput.prototype._refreshInputValue = function() {
+RomoCurrencyTextInput.prototype._refreshInputValue = function(skipRefreshElemValue) {
   var unFormattedValue = this._unFormatCurrencyValue(this.elem.value);
   this.hiddenInputElem.value = unFormattedValue;
-  if (Romo.data(this.elem, 'romo-currency-text-input-format-for-currency') !== false) {
-    this.elem.value = this._formatCurrencyValue(unFormattedValue);
-  } else {
-    this.elem.value = unFormattedValue;
+  if (!skipRefreshElemValue) {
+    if (Romo.data(this.elem, 'romo-currency-text-input-format-for-currency') !== false) {
+      this.elem.value = this._formatCurrencyValue(unFormattedValue);
+    } else {
+      this.elem.value = unFormattedValue;
+    }
   }
 }
 
