@@ -246,6 +246,7 @@ RomoModal.prototype._resetBody = function() {
 RomoModal.prototype._loadBodyStart = function() {
   Romo.updateHtml(this.bodyElem, '');
   this._bindBody();
+  this.doPlacePopupElem();
   setTimeout(Romo.proxy(this.doPlacePopupElem, this), 1);
   Romo.trigger(this.elem, 'romoModal:loadBodyStart', [this]);
 }
@@ -253,6 +254,7 @@ RomoModal.prototype._loadBodyStart = function() {
 RomoModal.prototype._loadBodySuccess = function(data) {
   Romo.initUpdateHtml(this.bodyElem, data);
   this._bindBody();
+  this.doPlacePopupElem();
   setTimeout(Romo.proxy(this.doPlacePopupElem, this), 1);
   Romo.trigger(this.elem, 'romoModal:loadBodySuccess', [data, this]);
 }
