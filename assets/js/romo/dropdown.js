@@ -25,6 +25,15 @@ RomoDropdown.prototype.doToggle = function() {
 }
 
 RomoDropdown.prototype.doPopupOpen = function() {
+  Romo.popupStack.addElem(
+    this.popupElem,
+    Romo.proxy(this._openPopup,       this),
+    Romo.proxy(this._closePopup,      this),
+    Romo.proxy(this.doPlacePopupElem, this)
+  );
+}
+
+RomoDropdown.prototype._openPopup = function() {
   if (Romo.data(this.elem, 'romo-dropdown-content-elem') !== undefined) {
     var contentElem = Romo.elems(Romo.data(this.elem, 'romo-dropdown-content-elem'))[0];
     this._loadBodySuccess(contentElem.outerHTML);
@@ -35,35 +44,16 @@ RomoDropdown.prototype.doPopupOpen = function() {
   Romo.addClass(this.popupElem, 'romo-dropdown-open');
   this.doPlacePopupElem();
 
-  // bind an event to close the popup when clicking away from the
-  // popup.  Bind on a timeout to allow time for any toggle
-  // click event to propagate.  If no timeout, we'll bind this
-  // event, then the toggle click will propagate which will call
-  // this event and immediately close the popup.
-  setTimeout(Romo.proxy(this.doBindWindowBodyClick, this), 1);
-
-  // bind "esc" keystroke to toggle close
-  this.doBindWindowBodyKeyUp();
-
-  // bind window resizes reposition dropdown
-  Romo.on(window, 'resize', Romo.proxy(this._onResizeWindow, this));
-
   Romo.trigger(this.elem, 'romoDropdown:popupOpen', [this]);
 }
 
 RomoDropdown.prototype.doPopupClose = function() {
+  Romo.popupStack.closeThru(this.popupElem);
+}
+
+RomoDropdown.prototype._closePopup = function() {
   Romo.removeClass(this.popupElem, 'romo-dropdown-open');
 
-  // unbind any event to close the popup when clicking away from it
-  this.doUnBindWindowBodyClick();
-
-  // unbind "esc" keystroke to toggle close
-  this.doUnBindWindowBodyKeyUp();
-
-  // unbind window resizes reposition dropdown
-  Romo.off(window, 'resize', Romo.proxy(this._onResizeWindow, this));
-
-  // clear the content elem markup if configured to
   if (Romo.data(this.elem, 'romo-dropdown-clear-content') === true) {
     Romo.updateHtml(this.contentElem, '');
   }
@@ -151,45 +141,12 @@ RomoDropdown.prototype.doSetPopupZIndex = function(relativeElem) {
   Romo.setStyle(this.popupElem, 'z-index', relativeZIndex + 1200); // see z-index.css
 }
 
-RomoDropdown.prototype.doBindElemKeyUp = function() {
-  Romo.on(this.elem,      'keyup', Romo.proxy(this._onElemKeyUp, this));
-  Romo.on(this.popupElem, 'keyup', Romo.proxy(this._onElemKeyUp, this));
-}
-
-RomoDropdown.prototype.doUnBindElemKeyUp = function() {
-  Romo.off(this.elem,      'keyup', Romo.proxy(this._onElemKeyUp, this));
-  Romo.off(this.popupElem, 'keyup', Romo.proxy(this._onElemKeyUp, this));
-}
-
-RomoDropdown.prototype.doBindWindowBodyClick = function() {
-  var bodyElem = Romo.f('body')[0];
-  Romo.on(bodyElem, 'click',               Romo.proxy(this._onWindowBodyClick, this));
-  Romo.on(bodyElem, 'romoModal:mousemove', Romo.proxy(this._onWindowBodyClick, this));
-}
-
-RomoDropdown.prototype.doUnBindWindowBodyClick = function() {
-  var bodyElem = Romo.f('body')[0];
-  Romo.off(bodyElem, 'click',               Romo.proxy(this._onWindowBodyClick, this));
-  Romo.off(bodyElem, 'romoModal:mousemove', Romo.proxy(this._onWindowBodyClick, this));
-}
-
-RomoDropdown.prototype.doBindWindowBodyKeyUp = function() {
-  var bodyElem = Romo.f('body')[0];
-  Romo.on(bodyElem, 'keyup', Romo.proxy(this._onWindowBodyKeyUp, this));
-}
-
-RomoDropdown.prototype.doUnBindWindowBodyKeyUp = function() {
-  var bodyElem = Romo.f('body')[0];
-  Romo.off(bodyElem, 'keyup', Romo.proxy(this._onWindowBodyKeyUp, this));
-}
-
 // private
 
 RomoDropdown.prototype._bindElem = function() {
   this._bindPopup();
   this._bindAjax();
   this._bindBody();
-  this.doBindElemKeyUp();
 
   if (Romo.data(this.elem, 'romo-dropdown-disable-click-invoke') !== true) {
     Romo.on(this.elem, 'click', Romo.proxy(this._onToggle, this));
@@ -200,22 +157,16 @@ RomoDropdown.prototype._bindElem = function() {
 }
 
 RomoDropdown.prototype._bindPopup = function() {
-  this.popupElem = Romo.elems('<div class="romo-dropdown-popup"><div class="romo-dropdown-body"></div></div>')[0];
-  var popupParentElem = Romo.closest(this.elem, Romo.data(this.elem, 'romo-dropdown-append-to-closest') || 'body');
+  this.popupElem = Romo.elems(
+    '<div class="romo-dropdown-popup"><div class="romo-dropdown-body"></div></div>'
+  )[0];
+  var popupParentElem = Romo.closest(
+    this.elem,
+    Romo.data(this.elem, 'romo-dropdown-append-to-closest') || 'body'
+  );
   Romo.append(popupParentElem, this.popupElem);
 
-  Romo.on(this.popupElem, 'romoModal:popupOpen', Romo.proxy(function(e) {
-    this.doUnBindWindowBodyClick();
-    this.doUnBindWindowBodyKeyUp();
-    this.doUnBindElemKeyUp();
-  }, this));
-  Romo.on(this.popupElem, 'romoModal:popupClose', Romo.proxy(function(e) {
-    this.doBindWindowBodyClick();
-    this.doBindWindowBodyKeyUp();
-    this.doBindElemKeyUp();
-  }, this));
-
-  this.bodyElem = Romo.children(this.popupElem).find(Romo.proxy(function(childElem){
+  this.bodyElem = Romo.children(this.popupElem).find(Romo.proxy(function(childElem) {
     return Romo.is(childElem, '.romo-dropdown-body');
   }, this));
   if (Romo.data(this.elem, 'romo-dropdown-style-class') !== undefined) {
@@ -232,12 +183,6 @@ RomoDropdown.prototype._bindPopup = function() {
 
   this.doSetPopupZIndex(this.elem);
 
-  // don't propagate click events on the popup elem.  this prevents the popup
-  // from closing when clicked (see body click event bind on popup open)
-  Romo.on(this.popupElem, 'click', function(e) {
-    e.stopPropagation();
-  })
-
   // the popup should be treated like a child elem.  add it to Romo's
   // parent-child elems so it will be removed when the elem is removed.
   // delay adding it b/c other components may `append` generated dropdowns
@@ -246,6 +191,9 @@ RomoDropdown.prototype._bindPopup = function() {
   setTimeout(Romo.proxy(function() {
     Romo.parentChildElems.add(this.elem, [this.popupElem]);
   }, this), 1);
+  Romo.on(this.popupElem, 'romoParentChildElems:childRemoved', Romo.proxy(function(childElem) {
+    Romo.popupStack.closeThru(this.popupElem);
+  }, this));
 }
 
 RomoDropdown.prototype._bindAjax = function() {
@@ -388,55 +336,7 @@ RomoDropdown.prototype.romoEvFn._onPopupClose = function(e) {
   }
 }
 
-RomoDropdown.prototype.romoEvFn._onElemKeyUp = function(e) {
-  if (Romo.hasClass(this.elem, 'disabled') === false) {
-    if (this.popupOpen()) {
-      if(e.keyCode === 27 /* Esc */ ) {
-        this.doPopupClose();
-        Romo.trigger(this.elem, 'romoDropdown:popupClosedByEsc', [this]);
-        return false;
-      } else {
-        return true;
-      }
-    } else {
-      return true;
-    }
-  }
-  return true;
-}
-
-RomoDropdown.prototype.romoEvFn._onWindowBodyClick = function(e) {
-  // if not clicked on the popup elem or the elem
-  if (e !== undefined) {
-    var parentPopupElems = Romo.parents(e.target, '.romo-dropdown-popup');
-
-    var elemIsParentOfTarget = Romo.parents(e.target).reduce(
-      Romo.proxy(function(isParent, parentElem) {
-        return isParent || (parentElem == this.elem);
-      }, this),
-      false
-    );
-
-    if (parentPopupElems.length === 0 && elemIsParentOfTarget === false) {
-      this.doPopupClose();
-    }
-  }
-  return true;
-}
-
-RomoDropdown.prototype.romoEvFn._onWindowBodyKeyUp = function(e) {
-  if (e.keyCode === 27 /* Esc */) {
-    this.doPopupClose();
-    Romo.trigger(this.elem, 'romoDropdown:popupClosedByEsc', [this]);
-  }
-  return true;
-}
-
-RomoDropdown.prototype.romoEvFn._onResizeWindow = function(e) {
-  this.doPlacePopupElem();
-  return true;
-}
-
 // init
 
+Romo.popupStack.addStyleClass('romo-dropdown-popup');
 Romo.addElemsInitSelector('[data-romo-dropdown-auto="true"]', RomoDropdown);
