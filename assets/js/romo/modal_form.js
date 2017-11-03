@@ -110,4 +110,8 @@ RomoModalForm.prototype._bindForm = function() {
   }
 }
 
+// event functions
+
+// init
+
 Romo.addElemsInitSelector('[data-romo-modalForm-auto="true"]', RomoModalForm);

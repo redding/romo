@@ -271,6 +271,43 @@ RomoTooltip.prototype._loadBodyError = function(xhr) {
   Romo.trigger(this.elem, 'romoTooltip:loadBodyError', [xhr, this]);
 }
 
+RomoTooltip.prototype._getPopupMaxAvailableHeight = function(position) {
+  var maxHeight = undefined;
+
+  switch (position) {
+    case 'top':
+      var elemTop = this.elem.getBoundingClientRect().top;
+      maxHeight = elemTop - this._getPopupMaxHeightDetectPad(position);
+      break;
+    case 'bottom':
+      var viewportHeight = document.documentElement.clientHeight;
+      var elemBottom     = this.elem.getBoundingClientRect().bottom;
+      maxHeight = viewportHeight - elemBottom - this._getPopupMaxHeightDetectPad(position);
+      break;
+  }
+
+  return maxHeight;
+}
+
+RomoTooltip.prototype._getPopupMaxHeightDetectPad = function(position) {
+  return (
+    Romo.data(this.elem, 'romo-tooltip-max-height-detect-pad-'+position) ||
+    Romo.data(this.elem, 'romo-tooltip-max-height-detect-pad')           ||
+    10
+  );
+}
+
+RomoTooltip.prototype._setBodyHtml = function(content) {
+  var contentElems = Romo.elems(content);
+  if (contentElems.length !== 0) {
+    Romo.update(this.bodyElem, contentElems);
+  } else {
+    Romo.updateText(this.bodyElem, content || '');
+  }
+}
+
+// event functions
+
 RomoTooltip.prototype._onToggleEnter = function(e) {
   this.hoverState = 'in';
   if (Romo.hasClass(this.elem, 'disabled') === false) {
@@ -322,39 +359,6 @@ RomoTooltip.prototype._onResizeWindow = function(e) {
   return true;
 }
 
-RomoTooltip.prototype._getPopupMaxAvailableHeight = function(position) {
-  var maxHeight = undefined;
-
-  switch (position) {
-    case 'top':
-      var elemTop = this.elem.getBoundingClientRect().top;
-      maxHeight = elemTop - this._getPopupMaxHeightDetectPad(position);
-      break;
-    case 'bottom':
-      var viewportHeight = document.documentElement.clientHeight;
-      var elemBottom     = this.elem.getBoundingClientRect().bottom;
-      maxHeight = viewportHeight - elemBottom - this._getPopupMaxHeightDetectPad(position);
-      break;
-  }
-
-  return maxHeight;
-}
-
-RomoTooltip.prototype._getPopupMaxHeightDetectPad = function(position) {
-  return (
-    Romo.data(this.elem, 'romo-tooltip-max-height-detect-pad-'+position) ||
-    Romo.data(this.elem, 'romo-tooltip-max-height-detect-pad')           ||
-    10
-  );
-}
-
-RomoTooltip.prototype._setBodyHtml = function(content) {
-  var contentElems = Romo.elems(content);
-  if (contentElems.length !== 0) {
-    Romo.update(this.bodyElem, contentElems);
-  } else {
-    Romo.updateText(this.bodyElem, content || '');
-  }
-}
+// init
 
 Romo.addElemsInitSelector('[data-romo-tooltip-auto="true"]', RomoTooltip);

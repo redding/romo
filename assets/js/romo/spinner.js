@@ -87,6 +87,8 @@ RomoSpinner.prototype._bindElem = function() {
   }
 }
 
+// event functions
+
 RomoSpinner.prototype._onStart = function(e, basisSize) {
   this.doStart(basisSize);
 }
@@ -94,5 +96,7 @@ RomoSpinner.prototype._onStart = function(e, basisSize) {
 RomoSpinner.prototype._onStop = function(e) {
   this.doStop();
 }
+
+// init
 
 Romo.addElemsInitSelector('[data-romo-spinner-auto="true"]', RomoSpinner);

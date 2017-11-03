@@ -301,13 +301,6 @@ RomoSelect.prototype._refreshUI = function() {
   }
 }
 
-RomoSelect.prototype._onCaretClick = function(e) {
-  if (this.elem.disabled === false) {
-    this.romoSelectDropdown.doFocus();
-    Romo.trigger(this.elem, 'romoSelect:triggerPopupOpen');
-  }
-}
-
 RomoSelect.prototype._getCaretPaddingPx = function() {
   return (
     Romo.data(this.elem, 'romo-select-caret-padding-px') ||
@@ -328,5 +321,16 @@ RomoSelect.prototype._getCaretPosition = function() {
     this.defaultCaretPosition
   );
 }
+
+// event functions
+
+RomoSelect.prototype._onCaretClick = function(e) {
+  if (this.elem.disabled === false) {
+    this.romoSelectDropdown.doFocus();
+    Romo.trigger(this.elem, 'romoSelect:triggerPopupOpen');
+  }
+}
+
+// init
 
 Romo.addElemsInitSelector('[data-romo-select-auto="true"]', RomoSelect);

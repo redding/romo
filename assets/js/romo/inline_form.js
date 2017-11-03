@@ -97,4 +97,8 @@ RomoInlineForm.prototype._bindForm = function() {
   }
 }
 
+// event functions
+
+// init
+
 Romo.addElemsInitSelector('[data-romo-inlineForm-auto="true"]', RomoInlineForm);

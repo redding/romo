@@ -123,17 +123,6 @@ RomoIndicatorTextInput.prototype._placeIndicatorElem = function() {
   }
 }
 
-RomoIndicatorTextInput.prototype._onIndicatorClick = function(e) {
-  e.preventDefault();
-
-  if (this.elem.disabled === false) {
-    this.elem.focus();
-    Romo.trigger(this.elem, 'romoIndicatorTextInput:indicatorClick');
-  }
-}
-
-// private
-
 RomoIndicatorTextInput.prototype._getIndicatorPaddingPx = function() {
   return (
     Romo.data(this.elem, 'romo-indicator-text-input-indicator-padding-px') ||
@@ -154,5 +143,18 @@ RomoIndicatorTextInput.prototype._getIndicatorPosition = function() {
     this.defaultIndicatorPosition
   );
 }
+
+// event functions
+
+RomoIndicatorTextInput.prototype._onIndicatorClick = function(e) {
+  e.preventDefault();
+
+  if (this.elem.disabled === false) {
+    this.elem.focus();
+    Romo.trigger(this.elem, 'romoIndicatorTextInput:indicatorClick');
+  }
+}
+
+// init
 
 Romo.addElemsInitSelector('[data-romo-indicator-text-input-auto="true"]', RomoIndicatorTextInput);

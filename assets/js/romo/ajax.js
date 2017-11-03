@@ -53,22 +53,6 @@ RomoAjax.prototype._bindElem = function() {
   Romo.on(this.elem, 'romoAjax:triggerInvoke', Romo.proxy(this._onTriggerInvoke, this));
 }
 
-RomoAjax.prototype._onInvoke = function(e) {
-  e.preventDefault();
-
-  if (Romo.hasClass(this.elem, 'disabled') === false) {
-    this.doInvoke();
-  }
-}
-
-RomoAjax.prototype._onTriggerInvoke = function(e, data) {
-  e.stopPropagation();
-
-  if (Romo.hasClass(this.elem, 'disabled') === false) {
-    this.doInvoke(data);
-  }
-}
-
 RomoAjax.prototype._invoke = function() {
   this.invokeQueued  = false;
   this.invokeRunning = true;
@@ -99,16 +83,6 @@ RomoAjax.prototype._call = function(callUrl, data) {
   });
 }
 
-RomoAjax.prototype._onCallSuccess = function(data, status, xhr) {
-  this._trigger('romoAjax:callSuccess', [data, this]);
-  this._completeInvoke();
-}
-
-RomoAjax.prototype._onCallError = function(xhr, errorType, error) {
-  this._trigger('romoAjax:callError', [xhr, this]);
-  this._completeInvoke();
-}
-
 RomoAjax.prototype._completeInvoke = function() {
   this._trigger('romoAjax:invoke', [this]);
   if (this.invokeQueued === true) {
@@ -125,5 +99,35 @@ RomoAjax.prototype._trigger = function(eventName, eventData) {
     Romo.trigger(this.elem, eventName, eventData);
   }
 }
+
+// event functions
+
+RomoAjax.prototype._onInvoke = function(e) {
+  e.preventDefault();
+
+  if (Romo.hasClass(this.elem, 'disabled') === false) {
+    this.doInvoke();
+  }
+}
+
+RomoAjax.prototype._onTriggerInvoke = function(e, data) {
+  e.stopPropagation();
+
+  if (Romo.hasClass(this.elem, 'disabled') === false) {
+    this.doInvoke(data);
+  }
+}
+
+RomoAjax.prototype._onCallSuccess = function(data, status, xhr) {
+  this._trigger('romoAjax:callSuccess', [data, this]);
+  this._completeInvoke();
+}
+
+RomoAjax.prototype._onCallError = function(xhr, errorType, error) {
+  this._trigger('romoAjax:callError', [xhr, this]);
+  this._completeInvoke();
+}
+
+// init
 
 Romo.addElemsInitSelector('[data-romo-ajax-auto="true"]', RomoAjax);

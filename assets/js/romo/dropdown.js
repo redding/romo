@@ -336,6 +336,39 @@ RomoDropdown.prototype._loadBodyError = function(xhr) {
   Romo.trigger(this.elem, 'romoDropdown:loadBodyError', [xhr, this]);
 }
 
+RomoDropdown.prototype._parsePositionData = function(posString) {
+  var posData = (posString || '').split(',');
+  return { position: posData[0], alignment: posData[1] };
+}
+
+RomoDropdown.prototype._getPopupMaxAvailableHeight = function(position) {
+  var maxHeight = undefined;
+
+  switch (position) {
+    case 'top':
+      var elemTop = this.elem.getBoundingClientRect().top;
+      maxHeight = elemTop - this._getPopupMaxHeightDetectPad(position);
+      break;
+    case 'bottom':
+      var viewportHeight = document.documentElement.clientHeight;
+      var elemBottom     = this.elem.getBoundingClientRect().bottom;
+      maxHeight = viewportHeight - elemBottom - this._getPopupMaxHeightDetectPad(position);
+      break;
+  }
+
+  return maxHeight;
+}
+
+RomoDropdown.prototype._getPopupMaxHeightDetectPad = function(position) {
+  return Romo.data(this.elem, 'romo-dropdown-max-height-detect-pad-'+position) || Romo.data(this.elem, 'romo-dropdown-max-height-detect-pad') || 10;
+}
+
+RomoDropdown.prototype._roundPosOffsetVal = function(value) {
+  return Math.round(value*100) / 100;
+}
+
+// event functions
+
 RomoDropdown.prototype._onToggle = function(e) {
   e.preventDefault();
 
@@ -408,35 +441,6 @@ RomoDropdown.prototype._onResizeWindow = function(e) {
   return true;
 }
 
-RomoDropdown.prototype._parsePositionData = function(posString) {
-  var posData = (posString || '').split(',');
-  return { position: posData[0], alignment: posData[1] };
-}
-
-RomoDropdown.prototype._getPopupMaxAvailableHeight = function(position) {
-  var maxHeight = undefined;
-
-  switch (position) {
-    case 'top':
-      var elemTop = this.elem.getBoundingClientRect().top;
-      maxHeight = elemTop - this._getPopupMaxHeightDetectPad(position);
-      break;
-    case 'bottom':
-      var viewportHeight = document.documentElement.clientHeight;
-      var elemBottom     = this.elem.getBoundingClientRect().bottom;
-      maxHeight = viewportHeight - elemBottom - this._getPopupMaxHeightDetectPad(position);
-      break;
-  }
-
-  return maxHeight;
-}
-
-RomoDropdown.prototype._getPopupMaxHeightDetectPad = function(position) {
-  return Romo.data(this.elem, 'romo-dropdown-max-height-detect-pad-'+position) || Romo.data(this.elem, 'romo-dropdown-max-height-detect-pad') || 10;
-}
-
-RomoDropdown.prototype._roundPosOffsetVal = function(value) {
-  return Math.round(value*100) / 100;
-}
+// init
 
 Romo.addElemsInitSelector('[data-romo-dropdown-auto="true"]', RomoDropdown);

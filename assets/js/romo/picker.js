@@ -370,13 +370,6 @@ RomoPicker.prototype._refreshUI = function() {
   }
 }
 
-RomoPicker.prototype._onCaretClick = function(e) {
-  if (this.elem.disabled === false) {
-    this.romoOptionListDropdown.doFocus();
-    Romo.trigger(this.elem, 'romoPicker:triggerPopupOpen');
-  }
-}
-
 RomoPicker.prototype._getCaretPaddingPx = function() {
   return (
     Romo.data(this.elem, 'romo-picker-caret-padding-px') ||
@@ -397,5 +390,16 @@ RomoPicker.prototype._getCaretPosition = function() {
     this.defaultCaretPosition
   );
 }
+
+// event functions
+
+RomoPicker.prototype._onCaretClick = function(e) {
+  if (this.elem.disabled === false) {
+    this.romoOptionListDropdown.doFocus();
+    Romo.trigger(this.elem, 'romoPicker:triggerPopupOpen');
+  }
+}
+
+// init
 
 Romo.addElemsInitSelector('[data-romo-picker-auto="true"]', RomoPicker);
