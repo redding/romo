@@ -1,11 +1,11 @@
-var RomoModal = function(elem) {
+var RomoModal = RomoComponent(function(elem) {
   this.elem = elem;
 
   this.doInit();
   this._bindElem();
 
   Romo.trigger(this.elem, 'romoModal:ready', [this]);
-}
+});
 
 RomoModal.prototype.popupOpen = function() {
   return Romo.hasClass(this.popupElem, 'romo-modal-open') === true;
@@ -13,10 +13,6 @@ RomoModal.prototype.popupOpen = function() {
 
 RomoModal.prototype.popupClosed = function() {
   return Romo.hasClass(this.popupElem, 'romo-modal-open') === false;
-}
-
-RomoModal.prototype.doInit = function() {
-  // override as needed
 }
 
 RomoModal.prototype.doToggle = function() {
@@ -304,7 +300,7 @@ RomoModal.prototype._dragStop = function(e) {
 
 // event functions
 
-RomoModal.prototype._onToggle = function(e) {
+RomoModal.prototype.romoEvFn._onToggle = function(e) {
   e.preventDefault();
 
   if (Romo.hasClass(this.elem, 'disabled') === false) {
@@ -312,35 +308,35 @@ RomoModal.prototype._onToggle = function(e) {
   }
 }
 
-RomoModal.prototype._onPopupOpen = function(e) {
+RomoModal.prototype.romoEvFn._onPopupOpen = function(e) {
   if (Romo.hasClass(this.elem, 'disabled') === false && this.popupClosed()) {
     setTimeout(Romo.proxy(this.doPopupOpen, this), 1);
   }
 }
 
-RomoModal.prototype._onPopupClose = function(e) {
+RomoModal.prototype.romoEvFn._onPopupClose = function(e) {
   if (Romo.hasClass(this.elem, 'disabled') === false && this.popupOpen()) {
     setTimeout(Romo.proxy(this.doPopupClose, this), 1);
   }
 }
 
-RomoModal.prototype._onMouseDown = function(e) {
+RomoModal.prototype.romoEvFn._onMouseDown = function(e) {
   this._dragStart(e);
   return false;
 }
 
-RomoModal.prototype._onMouseMove = function(e) {
+RomoModal.prototype.romoEvFn._onMouseMove = function(e) {
   Romo.trigger(Romo.f('body')[0], 'romoModal:mousemove');
   this._dragMove(e.clientX, e.clientY);
   return false;
 }
 
-RomoModal.prototype._onMouseUp = function(e) {
+RomoModal.prototype.romoEvFn._onMouseUp = function(e) {
   this._dragStop(e);
   return false;
 }
 
-RomoModal.prototype._onElemKeyUp = function(e) {
+RomoModal.prototype.romoEvFn._onElemKeyUp = function(e) {
   if (Romo.hasClass(this.elem, 'disabled') === false) {
     if (this.popupOpen()) {
       if(e.keyCode === 27 /* Esc */ ) {
@@ -356,7 +352,7 @@ RomoModal.prototype._onElemKeyUp = function(e) {
   return true;
 }
 
-RomoModal.prototype._onWindowBodyClick = function(e) {
+RomoModal.prototype.romoEvFn._onWindowBodyClick = function(e) {
   // if not clicked on the popup elem
   if (e !== undefined && Romo.parents(e.target, '.romo-modal-popup').length === 0) {
     this.doPopupClose();
@@ -364,7 +360,7 @@ RomoModal.prototype._onWindowBodyClick = function(e) {
   return true;
 }
 
-RomoModal.prototype._onWindowBodyKeyUp = function(e) {
+RomoModal.prototype.romoEvFn._onWindowBodyKeyUp = function(e) {
   if (e.keyCode === 27 /* Esc */) {
     this.doPopupClose();
     Romo.trigger(this.elem, 'romoModal:popupClosedByEsc', [this]);
@@ -372,7 +368,7 @@ RomoModal.prototype._onWindowBodyKeyUp = function(e) {
   return true;
 }
 
-RomoModal.prototype._onResizeWindow = function(e) {
+RomoModal.prototype.romoEvFn._onResizeWindow = function(e) {
   this.doPlacePopupElem();
   return true;
 }

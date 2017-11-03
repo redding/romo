@@ -1,15 +1,11 @@
-var RomoDropdownForm = function(elem) {
+var RomoDropdownForm = RomoComponent(function(elem) {
   this.elem = elem;
 
   this.doInit();
   this._bindElem()
 
   Romo.trigger(this.elem, 'romoDropdownForm:ready', [this]);
-}
-
-RomoDropdownForm.prototype.doInit = function() {
-  // override as needed
-}
+});
 
 // private
 

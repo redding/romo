@@ -1,4 +1,4 @@
-var RomoSortable = function(elem) {
+var RomoSortable = RomoComponent(function(elem) {
   this.elem = elem;
 
   this.draggableSelector = '[data-romo-sortable-item="true"]';
@@ -15,11 +15,7 @@ var RomoSortable = function(elem) {
   this._bindElem();
 
   Romo.trigger(this.elem, 'romoSortable:ready', [this]);
-}
-
-RomoSortable.prototype.doInit = function() {
-  // override as needed
-}
+});
 
 RomoSortable.prototype.draggingClass = function() {
   return Romo.data(this.elem, 'romo-sortable-dragging-class');
@@ -99,11 +95,11 @@ RomoSortable.prototype._resetGrabClasses = function() {
 
 // event functions
 
-RomoSortable.prototype._onBindDraggableElems = function(e, draggableElems) {
+RomoSortable.prototype.romoEvFn._onBindDraggableElems = function(e, draggableElems) {
   this._bindDraggableElems(draggableElems);
 }
 
-RomoSortable.prototype._onDragStart = function(e) {
+RomoSortable.prototype.romoEvFn._onDragStart = function(e) {
   if(!this.draggableSelected){ return false; }
 
   e.stopPropagation();
@@ -139,7 +135,7 @@ RomoSortable.prototype._onDragStart = function(e) {
   Romo.trigger(this.elem, 'romoSortable:dragStart', [this.draggedElem, this]);
 }
 
-RomoSortable.prototype._onDragEnter = function(e) {
+RomoSortable.prototype.romoEvFn._onDragEnter = function(e) {
   e.preventDefault();
   e.stopPropagation();
 
@@ -191,13 +187,13 @@ RomoSortable.prototype._onDragEnter = function(e) {
   Romo.trigger(this.elem, 'romoSortable:dragMove', [clientX, clientY, this.draggedElem, this]);
 }
 
-RomoSortable.prototype._onDragOver = function(e) {
+RomoSortable.prototype.romoEvFn._onDragOver = function(e) {
   // This is how you allow an element to receive a drop event.
   e.preventDefault();
   e.stopPropagation();
 }
 
-RomoSortable.prototype._onDragEnd = function(e) {
+RomoSortable.prototype.romoEvFn._onDragEnd = function(e) {
   e.stopPropagation();
   e.preventDefault();
 
@@ -223,7 +219,7 @@ RomoSortable.prototype._onDragEnd = function(e) {
   this.lastY             = undefined;
 }
 
-RomoSortable.prototype._onDragDrop = function(e) {
+RomoSortable.prototype.romoEvFn._onDragDrop = function(e) {
   e.stopPropagation();
   e.preventDefault();
 
@@ -249,7 +245,7 @@ RomoSortable.prototype._onDragDrop = function(e) {
   Romo.trigger(this.elem, 'romoSortable:dragDrop', [this.draggedElem, this]);
 }
 
-RomoSortable.prototype._onDraggableMouseDown = function(e) {
+RomoSortable.prototype.romoEvFn._onDraggableMouseDown = function(e) {
   // if our draggable elem doesn't have a handle then it's draggable
   var draggableElem = e.currentTarget;
   if(Romo.find(draggableElem, this.handleSelector).length === 0) {
@@ -259,14 +255,14 @@ RomoSortable.prototype._onDraggableMouseDown = function(e) {
   }
 }
 
-RomoSortable.prototype._onHandleMouseDown = function(e) {
+RomoSortable.prototype.romoEvFn._onHandleMouseDown = function(e) {
   this.draggableSelected = true;
   var handleElem = e.currentTarget;
   Romo.removeClass(handleElem, 'romo-sortable-grab');
   Romo.addClass(handleElem, 'romo-sortable-grabbing');
 }
 
-RomoSortable.prototype._onWindowBodyMouseUp = function(e) {
+RomoSortable.prototype.romoEvFn._onWindowBodyMouseUp = function(e) {
   this.draggableSelected = false;
   this._resetGrabClasses();
 }

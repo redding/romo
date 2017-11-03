@@ -1,4 +1,4 @@
-var RomoSelectDropdown = function(elem, optionElemsParentElem) {
+var RomoSelectDropdown = RomoComponent(function(elem, optionElemsParentElem) {
   this.elem = elem;
 
   this.filterHiddenClass     = 'romo-select-filter-hidden';
@@ -9,7 +9,7 @@ var RomoSelectDropdown = function(elem, optionElemsParentElem) {
   this._bindElem();
 
   Romo.trigger(this.elem, 'romoSelectDropdown:ready', [this]);
-}
+});
 
 RomoSelectDropdown.prototype.bodyElem = function() {
   return this.romoOptionListDropdown.bodyElem();
@@ -49,10 +49,6 @@ RomoSelectDropdown.prototype.optItemElems = function() {
 
 RomoSelectDropdown.prototype.optgroupItemElems = function() {
   return this.romoOptionListDropdown.optgroupItemElems();
-}
-
-RomoSelectDropdown.prototype.doInit = function() {
-  // override as needed
 }
 
 RomoSelectDropdown.prototype.doSetSelectedItem = function(newValue) {

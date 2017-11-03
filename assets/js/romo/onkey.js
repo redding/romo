@@ -1,4 +1,4 @@
-var RomoOnkey = function(elem) {
+var RomoOnkey = RomoComponent(function(elem) {
   this.elem = elem;
 
   this.defaultTriggerOn = 'keydown';
@@ -11,11 +11,7 @@ var RomoOnkey = function(elem) {
   Romo.on(this.elem, this.triggerOn, Romo.proxy(this._onTrigger, this));
 
   Romo.trigger(this.elem, 'romoOnkey:ready', [this]);
-}
-
-RomoOnkey.prototype.doInit = function() {
-  // override as needed
-}
+});
 
 // private
 
@@ -31,7 +27,7 @@ RomoOnkey.prototype._doTrigger = function(triggerEvent) {
 
 // event functions
 
-RomoOnkey.prototype._onTrigger = function(e) {
+RomoOnkey.prototype.romoEvFn._onTrigger = function(e) {
   if (Romo.hasClass(this.elem, 'disabled') === false) {
     this._doTrigger(e);
   }

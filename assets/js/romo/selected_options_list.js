@@ -1,4 +1,4 @@
-var RomoSelectedOptionsList = function(focusElem) {
+var RomoSelectedOptionsList = RomoComponent(function(focusElem) {
   this.elem      = undefined;
   this.focusElem = focusElem; // picker/select dropdown elem
 
@@ -6,11 +6,7 @@ var RomoSelectedOptionsList = function(focusElem) {
 
   this.doInit();
   this._bindElem();
-}
-
-RomoSelectedOptionsList.prototype.doInit = function() {
-  // override as needed
-}
+});
 
 /*
 Options are specified as a list of items.  Each 'option' item object
@@ -143,7 +139,7 @@ RomoSelectedOptionsList.prototype._scrollListTopToItem = function(itemElem) {
 
 // event functions
 
-RomoSelectedOptionsList.prototype._onItemClick = function(e) {
+RomoSelectedOptionsList.prototype.romoEvFn._onItemClick = function(e) {
   var itemElem = e.target;
   if (!Romo.hasClass(itemElem, 'romo-selected-options-list-item')) {
     var itemElem = Romo.closest(itemElem, '.romo-selected-options-list-item');

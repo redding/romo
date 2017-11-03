@@ -1,4 +1,4 @@
-var RomoOptionListDropdown = function(elem) {
+var RomoOptionListDropdown = RomoComponent(function(elem) {
   this.elem = elem;
 
   this.prevValue       = '';
@@ -13,7 +13,7 @@ var RomoOptionListDropdown = function(elem) {
   this._bindElem();
 
   Romo.trigger(this.elem, 'romoOptionListDropdown:ready', [this]);
-}
+});
 
 RomoOptionListDropdown.prototype.bodyElem = function() {
   return this.romoDropdown.bodyElem;
@@ -53,10 +53,6 @@ RomoOptionListDropdown.prototype.optItemElems = function() {
 
 RomoOptionListDropdown.prototype.optgroupItemElems = function() {
   return Romo.find(this.romoDropdown.bodyElem, 'LI[data-romo-option-list-dropdown-item="optgroup"]');
-}
-
-RomoOptionListDropdown.prototype.doInit = function() {
-  // override as needed
 }
 
 RomoOptionListDropdown.prototype.doSetSelectedItem = function(itemValue) {
@@ -511,7 +507,7 @@ RomoOptionListDropdown.prototype._getHighlightedItemElem = function() {
 
 // event functions
 
-RomoOptionListDropdown.prototype._onPopupOpen = function(e) {
+RomoOptionListDropdown.prototype.romoEvFn._onPopupOpen = function(e) {
   if (Romo.hasClass(this.elem, 'disabled') === false) {
     this._highlightItem(this.selectedItemElem());
     this._scrollTopToItem(this.selectedItemElem());
@@ -519,17 +515,17 @@ RomoOptionListDropdown.prototype._onPopupOpen = function(e) {
   Romo.on(Romo.f('body')[0], 'keydown', Romo.proxy(this._onPopupOpenBodyKeyDown, this));
 }
 
-RomoOptionListDropdown.prototype._onPopupClose = function(e) {
+RomoOptionListDropdown.prototype.romoEvFn._onPopupClose = function(e) {
   this._highlightItem(undefined);
   Romo.off(Romo.f('body')[0], 'keydown', Romo.proxy(this._onPopupOpenBodyKeyDown, this));
 }
 
-RomoOptionListDropdown.prototype._onItemEnter = function(e) {
+RomoOptionListDropdown.prototype.romoEvFn._onItemEnter = function(e) {
   this._highlightItem(e.target);
   return false;
 }
 
-RomoOptionListDropdown.prototype._onItemClick = function(e) {
+RomoOptionListDropdown.prototype.romoEvFn._onItemClick = function(e) {
   if (this.blurTimeoutId !== undefined) {
     clearTimeout(this.blurTimeoutId);
     this.blurTimeoutId = undefined;
@@ -538,15 +534,15 @@ RomoOptionListDropdown.prototype._onItemClick = function(e) {
   return false;
 }
 
-RomoOptionListDropdown.prototype._onPopupMouseDown = function(e) {
+RomoOptionListDropdown.prototype.romoEvFn._onPopupMouseDown = function(e) {
   this.popupMouseDown = true;
 }
 
-RomoOptionListDropdown.prototype._onPopupMouseUp = function(e) {
+RomoOptionListDropdown.prototype.romoEvFn._onPopupMouseUp = function(e) {
   this.popupMouseDown = false;
 }
 
-RomoOptionListDropdown.prototype._onPopupOpenBodyKeyDown = function(e) {
+RomoOptionListDropdown.prototype.romoEvFn._onPopupOpenBodyKeyDown = function(e) {
   e.stopPropagation();
 
   var scrollElem   = this.romoDropdown.bodyElem;
@@ -595,7 +591,7 @@ RomoOptionListDropdown.prototype._onPopupOpenBodyKeyDown = function(e) {
   }
 }
 
-RomoOptionListDropdown.prototype._onElemKeyDown = function(e) {
+RomoOptionListDropdown.prototype.romoEvFn._onElemKeyDown = function(e) {
   if (Romo.hasClass(this.elem, 'disabled') === false) {
     if (this.romoDropdown.popupClosed()) {
       if (e.keyCode === 40 /* Down */  || e.keyCode === 38 /* Up */) {

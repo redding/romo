@@ -1,15 +1,11 @@
-var RomoInlineForm = function(elem) {
+var RomoInlineForm = RomoComponent(function(elem) {
   this.elem = elem;
 
   this.doInit();
   this._bindElem();
 
   Romo.trigger(this.elem, 'romoInlineForm:ready', [this]);
-}
-
-RomoInlineForm.prototype.doInit = function() {
-  // override as needed
-}
+});
 
 // private
 

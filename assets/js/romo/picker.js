@@ -1,4 +1,4 @@
-var RomoPicker = function(elem) {
+var RomoPicker = RomoComponent(function(elem) {
   this.elem = elem;
 
   this.defaultCaretClass     = undefined;
@@ -13,11 +13,7 @@ var RomoPicker = function(elem) {
   this._bindElem();
 
   Romo.trigger(this.elem, 'romoPicker:ready', [this]);
-}
-
-RomoPicker.prototype.doInit = function() {
-  // override as needed
-}
+});
 
 RomoPicker.prototype.doSetValue = function(values) {
   var value = Romo.array(values).join(this._elemValuesDelim());
@@ -393,7 +389,7 @@ RomoPicker.prototype._getCaretPosition = function() {
 
 // event functions
 
-RomoPicker.prototype._onCaretClick = function(e) {
+RomoPicker.prototype.romoEvFn._onCaretClick = function(e) {
   if (this.elem.disabled === false) {
     this.romoOptionListDropdown.doFocus();
     Romo.trigger(this.elem, 'romoPicker:triggerPopupOpen');

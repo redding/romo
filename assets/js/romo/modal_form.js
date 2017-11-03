@@ -1,15 +1,11 @@
-var RomoModalForm = function(elem) {
+var RomoModalForm = RomoComponent(function(elem) {
   this.elem = elem;
 
   this.doInit();
   this._bindElem();
 
   Romo.trigger(this.elem, 'romoModalForm:ready', [this]);
-}
-
-RomoModalForm.prototype.doInit = function() {
-  // override as needed
-}
+});
 
 // private
 

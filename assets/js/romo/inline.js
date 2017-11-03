@@ -1,15 +1,11 @@
-var RomoInline = function(elem) {
+var RomoInline = RomoComponent(function(elem) {
   this.elem = elem;
 
   this.doInit();
   this._bindElem();
 
   Romo.trigger(this.elem, 'romoInline:ready', [this]);
-}
-
-RomoInline.prototype.doInit = function() {
-  // override as needed
-}
+});
 
 RomoInline.prototype.doShow = function() {
   Romo.show(this.elem);
@@ -73,7 +69,7 @@ RomoInline.prototype._loadError = function(xhr) {
 
 // event functions
 
-RomoInline.prototype._onDismissClick = function(e) {
+RomoInline.prototype.romoEvFn._onDismissClick = function(e) {
   e.preventDefault();
 
   var disabled = this.dismissElems.reduce(function(disabled, dismissElem) {

@@ -1,4 +1,4 @@
-var RomoAjax = function(elem) {
+var RomoAjax = RomoComponent(function(elem) {
   this.elem       = elem;
   this.targetElem = Romo.f(Romo.data(this.elem, 'romo-ajax-target'))[0];
 
@@ -22,11 +22,7 @@ var RomoAjax = function(elem) {
   this._bindElem();
 
   this._trigger('romoAjax:ready', [this]);
-}
-
-RomoAjax.prototype.doInit = function() {
-  // override as needed
-}
+});
 
 RomoAjax.prototype.doInvoke = function(data) {
   this.invokeQueued     = true;
@@ -102,7 +98,7 @@ RomoAjax.prototype._trigger = function(eventName, eventData) {
 
 // event functions
 
-RomoAjax.prototype._onInvoke = function(e) {
+RomoAjax.prototype.romoEvFn._onInvoke = function(e) {
   e.preventDefault();
 
   if (Romo.hasClass(this.elem, 'disabled') === false) {
@@ -110,7 +106,7 @@ RomoAjax.prototype._onInvoke = function(e) {
   }
 }
 
-RomoAjax.prototype._onTriggerInvoke = function(e, data) {
+RomoAjax.prototype.romoEvFn._onTriggerInvoke = function(e, data) {
   e.stopPropagation();
 
   if (Romo.hasClass(this.elem, 'disabled') === false) {
@@ -118,12 +114,12 @@ RomoAjax.prototype._onTriggerInvoke = function(e, data) {
   }
 }
 
-RomoAjax.prototype._onCallSuccess = function(data, status, xhr) {
+RomoAjax.prototype.romoEvFn._onCallSuccess = function(data, status, xhr) {
   this._trigger('romoAjax:callSuccess', [data, this]);
   this._completeInvoke();
 }
 
-RomoAjax.prototype._onCallError = function(xhr, errorType, error) {
+RomoAjax.prototype.romoEvFn._onCallError = function(xhr, errorType, error) {
   this._trigger('romoAjax:callError', [xhr, this]);
   this._completeInvoke();
 }

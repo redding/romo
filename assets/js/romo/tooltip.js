@@ -1,11 +1,11 @@
-var RomoTooltip = function(elem) {
+var RomoTooltip = RomoComponent(function(elem) {
   this.elem = elem;
 
   this.doInit();
   this._bindElem();
 
   Romo.trigger(this.elem, 'romoTooltip:ready', [this]);
-}
+});
 
 RomoTooltip.prototype.popupOpen = function() {
   return Romo.hasClass(this.popupElem, 'romo-tooltip-open') === true;
@@ -13,10 +13,6 @@ RomoTooltip.prototype.popupOpen = function() {
 
 RomoTooltip.prototype.popupClosed = function() {
   return Romo.hasClass(this.popupElem, 'romo-tooltip-open') === false;
-}
-
-RomoTooltip.prototype.doInit = function() {
-  // override as needed
 }
 
 RomoTooltip.prototype.doPopupOpen = function() {
@@ -308,7 +304,7 @@ RomoTooltip.prototype._setBodyHtml = function(content) {
 
 // event functions
 
-RomoTooltip.prototype._onToggleEnter = function(e) {
+RomoTooltip.prototype.romoEvFn._onToggleEnter = function(e) {
   this.hoverState = 'in';
   if (Romo.hasClass(this.elem, 'disabled') === false) {
     clearTimeout(this.timeout);
@@ -322,7 +318,7 @@ RomoTooltip.prototype._onToggleEnter = function(e) {
   return false;
 }
 
-RomoTooltip.prototype._onToggleLeave = function(e) {
+RomoTooltip.prototype.romoEvFn._onToggleLeave = function(e) {
   this.hoverState = 'out';
   if (Romo.hasClass(this.elem, 'disabled') === false) {
     clearTimeout(this.timeout);
@@ -336,25 +332,25 @@ RomoTooltip.prototype._onToggleLeave = function(e) {
   return false;
 }
 
-RomoTooltip.prototype._onPopupOpen = function(e) {
+RomoTooltip.prototype.romoEvFn._onPopupOpen = function(e) {
   if (Romo.hasClass(this.elem, 'disabled') === false) {
     this.doPopupOpen();
   }
 }
 
-RomoTooltip.prototype._onPopupClose = function(e) {
+RomoTooltip.prototype.romoEvFn._onPopupClose = function(e) {
   this.doPopupClose();
 }
 
-RomoTooltip.prototype._onModalPopupChange = function(e) {
+RomoTooltip.prototype.romoEvFn._onModalPopupChange = function(e) {
   this.doPopupClose();
 }
 
-RomoTooltip.prototype._onSetContent = function(e, value) {
+RomoTooltip.prototype.romoEvFn._onSetContent = function(e, value) {
   this.doSetContent(value);
 }
 
-RomoTooltip.prototype._onResizeWindow = function(e) {
+RomoTooltip.prototype.romoEvFn._onResizeWindow = function(e) {
   this.doPlacePopupElem();
   return true;
 }

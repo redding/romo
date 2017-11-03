@@ -1,4 +1,4 @@
-var RomoDatepicker = function(elem) {
+var RomoDatepicker = RomoComponent(function(elem) {
   this.elem = elem;
 
   this.defaultFormat    = 'yyyy-mm-dd'
@@ -14,14 +14,10 @@ var RomoDatepicker = function(elem) {
   this._bindElem();
 
   Romo.trigger(this.elem, 'romoDatepicker:ready', [this]);
-}
+});
 
 RomoDatepicker.prototype.formatString = function() {
   return Romo.data(this.elem, 'romo-datepicker-format') || this.defaultFormat;
-}
-
-RomoDatepicker.prototype.doInit = function() {
-  // override as needed
 }
 
 RomoDatepicker.prototype.doSetDate = function(value) {
@@ -333,12 +329,12 @@ RomoDatepicker.prototype._highlightItem = function(itemElem) {
 
 // event functions
 
-RomoDatepicker.prototype._onTriggerSetDate = function(e, value) {
+RomoDatepicker.prototype.romoEvFn._onTriggerSetDate = function(e, value) {
   this.doSetDate(value);
   this._triggerSetDateChangeEvent();
 }
 
-RomoDatepicker.prototype._onElemKeyDown = function(e) {
+RomoDatepicker.prototype.romoEvFn._onElemKeyDown = function(e) {
   if (Romo.hasClass(this.elem, 'disabled') === false) {
     if (this.romoDropdown.popupOpen()) {
       return true;
@@ -355,45 +351,45 @@ RomoDatepicker.prototype._onElemKeyDown = function(e) {
   return true;
 }
 
-RomoDatepicker.prototype._onPopupOpen = function(e) {
+RomoDatepicker.prototype.romoEvFn._onPopupOpen = function(e) {
   if (Romo.hasClass(this.elem, 'disabled') === false) {
     this.doSetDate(this.elem.value);
     this.doRefreshUI();
   }
 }
 
-RomoDatepicker.prototype._onPopupClose = function(e) {
+RomoDatepicker.prototype.romoEvFn._onPopupClose = function(e) {
   this._highlightItem(undefined);
 }
 
-RomoDatepicker.prototype._onItemEnter = function(e) {
+RomoDatepicker.prototype.romoEvFn._onItemEnter = function(e) {
   this._highlightItem(e.target);
   return false
 }
 
-RomoDatepicker.prototype._onItemClick = function(e) {
+RomoDatepicker.prototype.romoEvFn._onItemClick = function(e) {
   this._clearBlurTimeout();
   this._selectHighlightedItem();
   return false;
 }
 
-RomoDatepicker.prototype._onPrevClick = function(e) {
+RomoDatepicker.prototype.romoEvFn._onPrevClick = function(e) {
   this._clearBlurTimeout();
   this._refreshToPrevMonth();
   return false;
 }
 
-RomoDatepicker.prototype._onNextClick = function(e) {
+RomoDatepicker.prototype.romoEvFn._onNextClick = function(e) {
   this._clearBlurTimeout();
   this._refreshToNextMonth();
   return false;
 }
 
-RomoDatepicker.prototype._onPopupMouseDown = function(e) {
+RomoDatepicker.prototype.romoEvFn._onPopupMouseDown = function(e) {
   this.popupMouseDown = true;
 }
 
-RomoDatepicker.prototype._onPopupMouseUp = function(e) {
+RomoDatepicker.prototype.romoEvFn._onPopupMouseUp = function(e) {
   this.popupMouseDown = false;
 }
 

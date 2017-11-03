@@ -1,4 +1,4 @@
-var RomoCurrencyTextInput = function(elem) {
+var RomoCurrencyTextInput = RomoComponent(function(elem) {
   this.elem            = elem;
   this.hiddenInputElem = undefined;
 
@@ -12,11 +12,7 @@ var RomoCurrencyTextInput = function(elem) {
   this._bindElem();
 
   Romo.trigger(this.elem, 'romoCurrencyTextInput:ready', [this]);
-}
-
-RomoCurrencyTextInput.prototype.doInit = function() {
-  // override as needed
-}
+});
 
 RomoCurrencyTextInput.prototype.doSetValue = function(value) {
   this.elem.value = value;

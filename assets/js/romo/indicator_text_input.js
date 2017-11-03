@@ -1,4 +1,4 @@
-var RomoIndicatorTextInput = function(elem) {
+var RomoIndicatorTextInput = RomoComponent(function(elem) {
   this.elem = elem;
 
   this.defaultIndicatorClass     = undefined;
@@ -9,11 +9,7 @@ var RomoIndicatorTextInput = function(elem) {
   this._bindElem();
 
   Romo.trigger(this.elem, 'romoIndicatorTextInput:ready', [this]);
-}
-
-RomoIndicatorTextInput.prototype.doInit = function() {
-  // override as needed
-}
+});
 
 RomoIndicatorTextInput.prototype.doEnable = function() {
   this.elem.disabled = false;
@@ -146,7 +142,7 @@ RomoIndicatorTextInput.prototype._getIndicatorPosition = function() {
 
 // event functions
 
-RomoIndicatorTextInput.prototype._onIndicatorClick = function(e) {
+RomoIndicatorTextInput.prototype.romoEvFn._onIndicatorClick = function(e) {
   e.preventDefault();
 
   if (this.elem.disabled === false) {

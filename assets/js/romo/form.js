@@ -1,4 +1,4 @@
-var RomoForm = function(elem, givenSubmitElems, givenSpinnerElems) {
+var RomoForm = RomoComponent(function(elem, givenSubmitElems, givenSpinnerElems) {
   this.elem = elem;
 
   var defaultSubmitElems = Romo.find(
@@ -33,11 +33,7 @@ var RomoForm = function(elem, givenSubmitElems, givenSpinnerElems) {
 
   Romo.trigger(this.elem, 'romoForm:clearMsgs', [this]);
   Romo.trigger(this.elem, 'romoForm:ready',     [this]);
-}
-
-RomoForm.prototype.doInit = function() {
-  // override as needed
-}
+});
 
 RomoForm.prototype.doSubmit = function() {
   this.submitQueued = true;
@@ -212,7 +208,7 @@ RomoForm.prototype._getXhrDataType = function() {
 
 // event functions
 
-RomoForm.prototype._onSubmitClick = function(e) {
+RomoForm.prototype.romoEvFn._onSubmitClick = function(e) {
   e.preventDefault();
 
   var submitElem = e.target;
@@ -225,7 +221,7 @@ RomoForm.prototype._onSubmitClick = function(e) {
   }
 }
 
-RomoForm.prototype._onTriggerSubmit = function() {
+RomoForm.prototype.romoEvFn._onTriggerSubmit = function() {
   var disabled = this.submitElems.reduce(function(disabled, submitElem) {
     return disabled || Romo.hasClass(submitElem, 'disabled');
   }, false);
@@ -241,7 +237,7 @@ RomoForm.prototype._onTriggerSubmit = function() {
   }
 }
 
-RomoForm.prototype._onFormKeyPress = function(e) {
+RomoForm.prototype.romoEvFn._onFormKeyPress = function(e) {
   if (Romo.data(this.elem, 'romo-form-disable-keypress') !== true) {
     var targetElem = e.target;
     if (targetElem.nodeName.toLowerCase() !== 'textarea' && e.keyCode === 13 /* Enter */) {
@@ -254,7 +250,7 @@ RomoForm.prototype._onFormKeyPress = function(e) {
   }
 }
 
-RomoForm.prototype._onSubmitSuccess = function(response, status, xhr) {
+RomoForm.prototype.romoEvFn._onSubmitSuccess = function(response, status, xhr) {
   Romo.trigger(this.elem, 'romoForm:clearMsgs');
 
   var dataType = this._getXhrDataType();
@@ -267,7 +263,7 @@ RomoForm.prototype._onSubmitSuccess = function(response, status, xhr) {
   this._completeSubmit();
 }
 
-RomoForm.prototype._onSubmitError = function(statusText, status, xhr) {
+RomoForm.prototype.romoEvFn._onSubmitError = function(statusText, status, xhr) {
   Romo.trigger(this.elem, 'romoForm:clearMsgs');
 
   if(status === 422) {
