@@ -263,6 +263,47 @@ RomoModal.prototype._loadBodyError = function(xhr) {
   Romo.trigger(this.elem, 'romoModal:loadBodyError', [xhr, this]);
 }
 
+RomoModal.prototype._dragStart = function(e) {
+  Romo.addClass(this.dragElems, 'romo-modal-grabbing');
+  Romo.removeClass(this.dragElems, 'romo-modal-grab');
+
+  Romo.setStyle(this.popupElem, 'width',  Romo.css(this.popupElem, 'width'));
+  Romo.setStyle(this.popupElem, 'height', Romo.css(this.popupElem, 'height'));
+
+  this._dragDiffX = e.clientX - this.popupElem.offsetLeft;
+  this._dragDiffY = e.clientY - this.popupElem.offsetTop;
+  Romo.on(window, 'mousemove', Romo.proxy(this._onMouseMove, this));
+  Romo.on(window, 'mouseup',   Romo.proxy(this._onMouseUp,   this));
+
+  Romo.trigger(this.elem, "romoModal:dragStart", [this]);
+}
+
+RomoModal.prototype._dragMove = function(clientX, clientY) {
+  var placeX = clientX - this._dragDiffX;
+  var placeY = clientY - this._dragDiffY;
+  Romo.setStyle(this.popupElem, 'left', placeX+'px');
+  Romo.setStyle(this.popupElem, 'top',  placeY+'px');
+
+  Romo.trigger(this.elem, "romoModal:dragMove", [placeX, placeY, this]);
+}
+
+RomoModal.prototype._dragStop = function(e) {
+  Romo.addClass(this.dragElems, 'romo-modal-grab');
+  Romo.removeClass(this.dragElems, 'romo-modal-grabbing');
+
+  Romo.rmStyle(this.popupElem, 'width');
+  Romo.rmStyle(this.popupElem, 'height');
+
+  Romo.off(window, 'mousemove', Romo.proxy(this._onMouseMove, this));
+  Romo.off(window, 'mouseup',   Romo.proxy(this._onMouseUp, this));
+  delete this._dragDiffX;
+  delete this._dragDiffY;
+
+  Romo.trigger(this.elem, "romoModal:dragStop", [this]);
+}
+
+// event functions
+
 RomoModal.prototype._onToggle = function(e) {
   e.preventDefault();
 
@@ -288,54 +329,15 @@ RomoModal.prototype._onMouseDown = function(e) {
   return false;
 }
 
-RomoModal.prototype._dragStart = function(e) {
-  Romo.addClass(this.dragElems, 'romo-modal-grabbing');
-  Romo.removeClass(this.dragElems, 'romo-modal-grab');
-
-  Romo.setStyle(this.popupElem, 'width',  Romo.css(this.popupElem, 'width'));
-  Romo.setStyle(this.popupElem, 'height', Romo.css(this.popupElem, 'height'));
-
-  this._dragDiffX = e.clientX - this.popupElem.offsetLeft;
-  this._dragDiffY = e.clientY - this.popupElem.offsetTop;
-  Romo.on(window, 'mousemove', Romo.proxy(this._onMouseMove, this));
-  Romo.on(window, 'mouseup',   Romo.proxy(this._onMouseUp,   this));
-
-  Romo.trigger(this.elem, "romoModal:dragStart", [this]);
-}
-
 RomoModal.prototype._onMouseMove = function(e) {
   Romo.trigger(Romo.f('body')[0], 'romoModal:mousemove');
   this._dragMove(e.clientX, e.clientY);
   return false;
 }
 
-RomoModal.prototype._dragMove = function(clientX, clientY) {
-  var placeX = clientX - this._dragDiffX;
-  var placeY = clientY - this._dragDiffY;
-  Romo.setStyle(this.popupElem, 'left', placeX+'px');
-  Romo.setStyle(this.popupElem, 'top',  placeY+'px');
-
-  Romo.trigger(this.elem, "romoModal:dragMove", [placeX, placeY, this]);
-}
-
 RomoModal.prototype._onMouseUp = function(e) {
   this._dragStop(e);
   return false;
-}
-
-RomoModal.prototype._dragStop = function(e) {
-  Romo.addClass(this.dragElems, 'romo-modal-grab');
-  Romo.removeClass(this.dragElems, 'romo-modal-grabbing');
-
-  Romo.rmStyle(this.popupElem, 'width');
-  Romo.rmStyle(this.popupElem, 'height');
-
-  Romo.off(window, 'mousemove', Romo.proxy(this._onMouseMove, this));
-  Romo.off(window, 'mouseup',   Romo.proxy(this._onMouseUp, this));
-  delete this._dragDiffX;
-  delete this._dragDiffY;
-
-  Romo.trigger(this.elem, "romoModal:dragStop", [this]);
 }
 
 RomoModal.prototype._onElemKeyUp = function(e) {
@@ -374,5 +376,7 @@ RomoModal.prototype._onResizeWindow = function(e) {
   this.doPlacePopupElem();
   return true;
 }
+
+// init
 
 Romo.addElemsInitSelector('[data-romo-modal-auto="true"]', RomoModal);

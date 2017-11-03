@@ -253,4 +253,8 @@ RomoSelectDropdown.prototype._buildCustomOptionItem = function(value) {
   };
 }
 
+// event functions
+
+// init
+
 Romo.addElemsInitSelector('[data-romo-select-dropdown-auto="true"]', RomoSelectDropdown);

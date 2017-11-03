@@ -128,17 +128,6 @@ RomoSelectedOptionsList.prototype._getItemValues = function() {
   return this.items.map(function(item) { return item.value; });
 }
 
-RomoSelectedOptionsList.prototype._onItemClick = function(e) {
-  var itemElem = e.target;
-  if (!Romo.hasClass(itemElem, 'romo-selected-options-list-item')) {
-    var itemElem = Romo.closest(itemElem, '.romo-selected-options-list-item');
-  }
-  if (itemElem !== undefined) {
-    var value = Romo.data(itemElem, 'romo-selected-options-list-value');
-    Romo.trigger(this.elem, 'romoSelectedOptionsList:itemClick', [value, this]);
-  }
-}
-
 RomoSelectedOptionsList.prototype._scrollListTopToItem = function(itemElem) {
   if (itemElem !== undefined) {
     var scrollElem = this.elem;
@@ -149,5 +138,18 @@ RomoSelectedOptionsList.prototype._scrollListTopToItem = function(itemElem) {
     var selOffset       = parseInt(Romo.css(itemElem, 'height'), 10) / 2;
 
     scrollElem.scrollTop = selOffsetTop - scrollOffsetTop - selOffset;
+  }
+}
+
+// event functions
+
+RomoSelectedOptionsList.prototype._onItemClick = function(e) {
+  var itemElem = e.target;
+  if (!Romo.hasClass(itemElem, 'romo-selected-options-list-item')) {
+    var itemElem = Romo.closest(itemElem, '.romo-selected-options-list-item');
+  }
+  if (itemElem !== undefined) {
+    var value = Romo.data(itemElem, 'romo-selected-options-list-value');
+    Romo.trigger(this.elem, 'romoSelectedOptionsList:itemClick', [value, this]);
   }
 }

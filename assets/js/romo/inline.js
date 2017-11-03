@@ -71,6 +71,8 @@ RomoInline.prototype._loadError = function(xhr) {
   Romo.trigger(this.elem, 'romoInline:loadError', [xhr, this]);
 }
 
+// event functions
+
 RomoInline.prototype._onDismissClick = function(e) {
   e.preventDefault();
 
@@ -88,5 +90,7 @@ RomoInline.prototype._onDismissClick = function(e) {
     }
   }
 }
+
+// init
 
 Romo.addElemsInitSelector('[data-romo-inline-auto="true"]', RomoInline);

@@ -87,6 +87,18 @@ RomoSortable.prototype._bindDraggableElems = function(draggableElems) {
   this._resetGrabClasses();
 }
 
+RomoSortable.prototype._resetGrabClasses = function() {
+  this.draggableElems.forEach(Romo.proxy(function(draggableElem) {
+    handleElem = Romo.find(draggableElem, this.handleSelector)[0];
+    if(handleElem === undefined){ handleElem = draggableElem; }
+
+    Romo.addClass(handleElem, 'romo-sortable-grab');
+    Romo.removeClass(handleElem, 'romo-sortable-grabbing');
+  }, this));
+}
+
+// event functions
+
 RomoSortable.prototype._onBindDraggableElems = function(e, draggableElems) {
   this._bindDraggableElems(draggableElems);
 }
@@ -259,14 +271,6 @@ RomoSortable.prototype._onWindowBodyMouseUp = function(e) {
   this._resetGrabClasses();
 }
 
-RomoSortable.prototype._resetGrabClasses = function() {
-  this.draggableElems.forEach(Romo.proxy(function(draggableElem) {
-    handleElem = Romo.find(draggableElem, this.handleSelector)[0];
-    if(handleElem === undefined){ handleElem = draggableElem; }
-
-    Romo.addClass(handleElem, 'romo-sortable-grab');
-    Romo.removeClass(handleElem, 'romo-sortable-grabbing');
-  }, this));
-}
+// init
 
 Romo.addElemsInitSelector('[data-romo-sortable-auto="true"]', RomoSortable);

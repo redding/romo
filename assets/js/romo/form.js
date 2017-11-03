@@ -69,48 +69,6 @@ RomoForm.prototype._bindElem = function() {
   }
 }
 
-RomoForm.prototype._onSubmitClick = function(e) {
-  e.preventDefault();
-
-  var submitElem = e.target;
-  if (!Romo.hasClass(submitElem, 'disabled')) {
-    if (Romo.data(submitElem, 'romo-form-submit') === 'confirm') {
-      Romo.trigger(this.elem, 'romoForm:confirmSubmit', [this]);
-    } else {
-      this.doSubmit();
-    }
-  }
-}
-
-RomoForm.prototype._onTriggerSubmit = function() {
-  var disabled = this.submitElems.reduce(function(disabled, submitElem) {
-    return disabled || Romo.hasClass(submitElem, 'disabled');
-  }, false);
-  if (!disabled) {
-    var confirm = this.submitElems.reduce(function(confirm, submitElem) {
-      return confirm || Romo.data(submitElem, 'romo-form-submit') === 'confirm';
-    }, false);
-    if (confirm) {
-      Romo.trigger(this.elem, 'romoForm:confirmSubmit', [this]);
-    } else {
-      this.doSubmit();
-    }
-  }
-}
-
-RomoForm.prototype._onFormKeyPress = function(e) {
-  if (Romo.data(this.elem, 'romo-form-disable-keypress') !== true) {
-    var targetElem = e.target;
-    if (targetElem.nodeName.toLowerCase() !== 'textarea' && e.keyCode === 13 /* Enter */) {
-      e.preventDefault();
-      if (Romo.data(this.elem,  'romo-form-disable-enter-submit') !== true &&
-          Romo.data(targetElem, 'romo-form-disable-enter-submit') !== true) {
-        this._onTriggerSubmit();
-      }
-    }
-  }
-}
-
 RomoForm.prototype._submit = function() {
   this.submitQueued  = false;
   this.submitRunning = true;
@@ -166,38 +124,6 @@ RomoForm.prototype._ajaxSubmit = function(formValues) {
   });
 }
 
-
-RomoForm.prototype._onSubmitSuccess = function(response, status, xhr) {
-  Romo.trigger(this.elem, 'romoForm:clearMsgs');
-
-  var dataType = this._getXhrDataType();
-  Romo.trigger(
-    this.elem,
-    'romoForm:submitSuccess',
-    [(dataType === 'json' ? JSON.parse(response) : response), this]
-  );
-
-  this._completeSubmit();
-}
-
-RomoForm.prototype._onSubmitError = function(statusText, status, xhr) {
-  Romo.trigger(this.elem, 'romoForm:clearMsgs');
-
-  if(status === 422) {
-    var dataType = this._getXhrDataType();
-    Romo.trigger(
-      this.elem,
-      'romoForm:submitInvalidMsgs',
-      [(dataType === 'json' ? JSON.parse(xhr.responseText) : xhr.responseText), xhr, this]
-    );
-  } else {
-    Romo.trigger(this.elem, 'romoForm:submitXhrError', [xhr, this]);
-  }
-  Romo.trigger(this.elem, 'romoForm:submitError', [xhr, this]);
-  Romo.trigger(this.spinnerElems, 'romoSpinner:triggerStop');
-
-  this._completeSubmit();
-}
 
 RomoForm.prototype._completeSubmit = function() {
   Romo.trigger(this.elem, 'romoForm:submitComplete', [this]);
@@ -283,5 +209,83 @@ RomoForm.prototype._getXhrDataType = function() {
   var dataType = Romo.data(this.elem, 'romo-form-xhr-data-type');
   return ((dataType === undefined) ? 'json' : dataType);
 }
+
+// event functions
+
+RomoForm.prototype._onSubmitClick = function(e) {
+  e.preventDefault();
+
+  var submitElem = e.target;
+  if (!Romo.hasClass(submitElem, 'disabled')) {
+    if (Romo.data(submitElem, 'romo-form-submit') === 'confirm') {
+      Romo.trigger(this.elem, 'romoForm:confirmSubmit', [this]);
+    } else {
+      this.doSubmit();
+    }
+  }
+}
+
+RomoForm.prototype._onTriggerSubmit = function() {
+  var disabled = this.submitElems.reduce(function(disabled, submitElem) {
+    return disabled || Romo.hasClass(submitElem, 'disabled');
+  }, false);
+  if (!disabled) {
+    var confirm = this.submitElems.reduce(function(confirm, submitElem) {
+      return confirm || Romo.data(submitElem, 'romo-form-submit') === 'confirm';
+    }, false);
+    if (confirm) {
+      Romo.trigger(this.elem, 'romoForm:confirmSubmit', [this]);
+    } else {
+      this.doSubmit();
+    }
+  }
+}
+
+RomoForm.prototype._onFormKeyPress = function(e) {
+  if (Romo.data(this.elem, 'romo-form-disable-keypress') !== true) {
+    var targetElem = e.target;
+    if (targetElem.nodeName.toLowerCase() !== 'textarea' && e.keyCode === 13 /* Enter */) {
+      e.preventDefault();
+      if (Romo.data(this.elem,  'romo-form-disable-enter-submit') !== true &&
+          Romo.data(targetElem, 'romo-form-disable-enter-submit') !== true) {
+        this._onTriggerSubmit();
+      }
+    }
+  }
+}
+
+RomoForm.prototype._onSubmitSuccess = function(response, status, xhr) {
+  Romo.trigger(this.elem, 'romoForm:clearMsgs');
+
+  var dataType = this._getXhrDataType();
+  Romo.trigger(
+    this.elem,
+    'romoForm:submitSuccess',
+    [(dataType === 'json' ? JSON.parse(response) : response), this]
+  );
+
+  this._completeSubmit();
+}
+
+RomoForm.prototype._onSubmitError = function(statusText, status, xhr) {
+  Romo.trigger(this.elem, 'romoForm:clearMsgs');
+
+  if(status === 422) {
+    var dataType = this._getXhrDataType();
+    Romo.trigger(
+      this.elem,
+      'romoForm:submitInvalidMsgs',
+      [(dataType === 'json' ? JSON.parse(xhr.responseText) : xhr.responseText), xhr, this]
+    );
+  } else {
+    Romo.trigger(this.elem, 'romoForm:submitXhrError', [xhr, this]);
+  }
+  Romo.trigger(this.elem, 'romoForm:submitError', [xhr, this]);
+  Romo.trigger(this.spinnerElems, 'romoSpinner:triggerStop');
+
+  this._completeSubmit();
+}
+
+// init
 
 Romo.addElemsInitSelector('[data-romo-form-auto="true"]', RomoForm);

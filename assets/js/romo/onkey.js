@@ -19,12 +19,6 @@ RomoOnkey.prototype.doInit = function() {
 
 // private
 
-RomoOnkey.prototype._onTrigger = function(e) {
-  if (Romo.hasClass(this.elem, 'disabled') === false) {
-    this._doTrigger(e);
-  }
-}
-
 RomoOnkey.prototype._doTrigger = function(triggerEvent) {
   clearTimeout(this.delayTimeout);
   this.delayTimeout = setTimeout(
@@ -34,5 +28,15 @@ RomoOnkey.prototype._doTrigger = function(triggerEvent) {
     Romo.data(this.elem, 'romo-onkey-delay-ms') || this.defaultDelayMs
   );
 }
+
+// event functions
+
+RomoOnkey.prototype._onTrigger = function(e) {
+  if (Romo.hasClass(this.elem, 'disabled') === false) {
+    this._doTrigger(e);
+  }
+}
+
+// init
 
 Romo.addElemsInitSelector('[data-romo-onkey-auto="true"]', RomoOnkey);

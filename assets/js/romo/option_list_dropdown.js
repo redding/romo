@@ -384,116 +384,6 @@ RomoOptionListDropdown.prototype._selectHighlightedItem = function() {
   }
 }
 
-RomoOptionListDropdown.prototype._onPopupOpen = function(e) {
-  if (Romo.hasClass(this.elem, 'disabled') === false) {
-    this._highlightItem(this.selectedItemElem());
-    this._scrollTopToItem(this.selectedItemElem());
-  }
-  Romo.on(Romo.f('body')[0], 'keydown', Romo.proxy(this._onPopupOpenBodyKeyDown, this));
-}
-
-RomoOptionListDropdown.prototype._onPopupClose = function(e) {
-  this._highlightItem(undefined);
-  Romo.off(Romo.f('body')[0], 'keydown', Romo.proxy(this._onPopupOpenBodyKeyDown, this));
-}
-
-RomoOptionListDropdown.prototype._onItemEnter = function(e) {
-  this._highlightItem(e.target);
-  return false;
-}
-
-RomoOptionListDropdown.prototype._onItemClick = function(e) {
-  if (this.blurTimeoutId !== undefined) {
-    clearTimeout(this.blurTimeoutId);
-    this.blurTimeoutId = undefined;
-  }
-  this._selectHighlightedItem();
-  return false;
-}
-
-RomoOptionListDropdown.prototype._onPopupMouseDown = function(e) {
-  this.popupMouseDown = true;
-}
-
-RomoOptionListDropdown.prototype._onPopupMouseUp = function(e) {
-  this.popupMouseDown = false;
-}
-
-RomoOptionListDropdown.prototype._onPopupOpenBodyKeyDown = function(e) {
-  e.stopPropagation();
-
-  var scrollElem   = this.romoDropdown.bodyElem;
-  var scrollOffset = Romo.offset(scrollElem);
-  var scrollHeight = parseInt(Romo.css(scrollElem, 'height'), 10);
-
-  if (e.keyCode === 38 /* Up */) {
-    var prevElem = this._prevListItem();
-    if(prevElem === undefined){ return false; }
-
-    var prevOffset = Romo.offset(prevElem);
-
-    this._highlightItem(prevElem);
-
-    if (scrollOffset.top > prevOffset.top) {
-      this._scrollTopToItem(prevElem);
-    } else if ((scrollOffset.top + scrollHeight) < prevOffset.top) {
-      this._scrollTopToItem(prevElem);
-    }
-
-    return false;
-  } else if(e.keyCode === 40 /* Down */) {
-    var nextElem = this._nextListItem();
-    if(nextElem === undefined){ return false; }
-
-    var nextOffset = Romo.offset(nextElem);
-    var nextHeight = parseInt(Romo.css(nextElem, 'height'), 10);
-
-    this._highlightItem(nextElem);
-
-    if ((scrollOffset.top + scrollHeight) < (nextOffset.top + nextHeight)) {
-      this._scrollBottomToItem(nextElem);
-    } else if (scrollOffset.top > nextOffset.top) {
-      this._scrollTopToItem(nextElem);
-    }
-
-    return false;
-  } else if (e.keyCode === 13 /* Enter */ ) {
-    this._selectHighlightedItem();
-    return false;
-  } else if (e.keyCode === 9 /* Tab */ ) {
-    e.preventDefault();
-    return false;
-  } else {
-    return true;
-  }
-}
-
-RomoOptionListDropdown.prototype._onElemKeyDown = function(e) {
-  if (Romo.hasClass(this.elem, 'disabled') === false) {
-    if (this.romoDropdown.popupClosed()) {
-      if (e.keyCode === 40 /* Down */  || e.keyCode === 38 /* Up */) {
-        this.romoDropdown.doPopupOpen();
-        return false;
-      } else if (this.optionFilterElem !== undefined &&
-                 Romo.nonInputTextKeyCodes().indexOf(e.keyCode) === -1 /* Input Text */)  {
-        // don't prevent default on Cmd-* keys (preserve Cmd-R refresh, etc)
-        if (e.metaKey === false) {
-          e.preventDefault();
-          if (e.keyCode !== 8) { /* Backspace */
-            this.optionFilterElem.value = e.key;
-          }
-          this.romoDropdown.doPopupOpen();
-        }
-        e.stopPropagation();
-        return true;
-      } else {
-        return true;
-      }
-    }
-  }
-  return true;
-}
-
 RomoOptionListDropdown.prototype._scrollTopToItem = function(itemElem) {
   if (itemElem !== undefined) {
     var scrollElem = this.romoDropdown.bodyElem;
@@ -618,5 +508,119 @@ RomoOptionListDropdown.prototype._highlightItem = function(itemElem) {
 RomoOptionListDropdown.prototype._getHighlightedItemElem = function() {
   return Romo.find(this.romoDropdown.bodyElem, 'LI.romo-option-list-dropdown-highlight')[0];
 }
+
+// event functions
+
+RomoOptionListDropdown.prototype._onPopupOpen = function(e) {
+  if (Romo.hasClass(this.elem, 'disabled') === false) {
+    this._highlightItem(this.selectedItemElem());
+    this._scrollTopToItem(this.selectedItemElem());
+  }
+  Romo.on(Romo.f('body')[0], 'keydown', Romo.proxy(this._onPopupOpenBodyKeyDown, this));
+}
+
+RomoOptionListDropdown.prototype._onPopupClose = function(e) {
+  this._highlightItem(undefined);
+  Romo.off(Romo.f('body')[0], 'keydown', Romo.proxy(this._onPopupOpenBodyKeyDown, this));
+}
+
+RomoOptionListDropdown.prototype._onItemEnter = function(e) {
+  this._highlightItem(e.target);
+  return false;
+}
+
+RomoOptionListDropdown.prototype._onItemClick = function(e) {
+  if (this.blurTimeoutId !== undefined) {
+    clearTimeout(this.blurTimeoutId);
+    this.blurTimeoutId = undefined;
+  }
+  this._selectHighlightedItem();
+  return false;
+}
+
+RomoOptionListDropdown.prototype._onPopupMouseDown = function(e) {
+  this.popupMouseDown = true;
+}
+
+RomoOptionListDropdown.prototype._onPopupMouseUp = function(e) {
+  this.popupMouseDown = false;
+}
+
+RomoOptionListDropdown.prototype._onPopupOpenBodyKeyDown = function(e) {
+  e.stopPropagation();
+
+  var scrollElem   = this.romoDropdown.bodyElem;
+  var scrollOffset = Romo.offset(scrollElem);
+  var scrollHeight = parseInt(Romo.css(scrollElem, 'height'), 10);
+
+  if (e.keyCode === 38 /* Up */) {
+    var prevElem = this._prevListItem();
+    if(prevElem === undefined){ return false; }
+
+    var prevOffset = Romo.offset(prevElem);
+
+    this._highlightItem(prevElem);
+
+    if (scrollOffset.top > prevOffset.top) {
+      this._scrollTopToItem(prevElem);
+    } else if ((scrollOffset.top + scrollHeight) < prevOffset.top) {
+      this._scrollTopToItem(prevElem);
+    }
+
+    return false;
+  } else if(e.keyCode === 40 /* Down */) {
+    var nextElem = this._nextListItem();
+    if(nextElem === undefined){ return false; }
+
+    var nextOffset = Romo.offset(nextElem);
+    var nextHeight = parseInt(Romo.css(nextElem, 'height'), 10);
+
+    this._highlightItem(nextElem);
+
+    if ((scrollOffset.top + scrollHeight) < (nextOffset.top + nextHeight)) {
+      this._scrollBottomToItem(nextElem);
+    } else if (scrollOffset.top > nextOffset.top) {
+      this._scrollTopToItem(nextElem);
+    }
+
+    return false;
+  } else if (e.keyCode === 13 /* Enter */ ) {
+    this._selectHighlightedItem();
+    return false;
+  } else if (e.keyCode === 9 /* Tab */ ) {
+    e.preventDefault();
+    return false;
+  } else {
+    return true;
+  }
+}
+
+RomoOptionListDropdown.prototype._onElemKeyDown = function(e) {
+  if (Romo.hasClass(this.elem, 'disabled') === false) {
+    if (this.romoDropdown.popupClosed()) {
+      if (e.keyCode === 40 /* Down */  || e.keyCode === 38 /* Up */) {
+        this.romoDropdown.doPopupOpen();
+        return false;
+      } else if (this.optionFilterElem !== undefined &&
+                 Romo.nonInputTextKeyCodes().indexOf(e.keyCode) === -1 /* Input Text */)  {
+        // don't prevent default on Cmd-* keys (preserve Cmd-R refresh, etc)
+        if (e.metaKey === false) {
+          e.preventDefault();
+          if (e.keyCode !== 8) { /* Backspace */
+            this.optionFilterElem.value = e.key;
+          }
+          this.romoDropdown.doPopupOpen();
+        }
+        e.stopPropagation();
+        return true;
+      } else {
+        return true;
+      }
+    }
+  }
+  return true;
+}
+
+// init
 
 Romo.addElemsInitSelector('[data-romo-option-list-dropdown-auto="true"]', RomoOptionListDropdown);
