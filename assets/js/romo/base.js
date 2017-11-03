@@ -1,5 +1,4 @@
-var Romo = function() {
-}
+var Romo = function() {}
 
 Romo.prototype.doInit = function() {
   this.parentChildElems = new RomoParentChildElems();
@@ -879,6 +878,28 @@ Romo.prototype._elemsInitTrigger = function(onElems) {
 Romo.prototype._elemsInitFind = function(onElems, selector) {
   var elems = onElems.filter(function(onElem){ return Romo.is(onElem, selector); });
   return elems.concat(Romo.find(onElems, selector));;
+}
+
+// RomoComponent
+
+var RomoComponent = function(constructorFn) {
+  var component = function() {
+    RomoComponent.addEventFunctions(this);
+    constructorFn.apply(this, arguments);
+  }
+  component.prototype.romoEvFn = {};
+  component.prototype.doInit = function() {} // override as needed
+  return component;
+}
+
+RomoComponent.addEventFunctions = function(klassInstance) {
+  for(var name in klassInstance.romoEvFn) {
+    klassInstance[name] = RomoComponent.eventProxyFn(klassInstance.romoEvFn[name]);
+  }
+}
+
+RomoComponent.eventProxyFn = function(fn) {
+  return function(){ fn.apply(this, arguments); };
 }
 
 // RomoParentChildElems

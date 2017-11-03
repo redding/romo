@@ -1,11 +1,11 @@
-var RomoDropdown = function(elem) {
+var RomoDropdown = RomoComponent(function(elem) {
   this.elem = elem;
 
   this.doInit();
   this._bindElem();
 
   Romo.trigger(this.elem, 'romoDropdown:ready', [this]);
-}
+});
 
 RomoDropdown.prototype.popupOpen = function() {
   return Romo.hasClass(this.popupElem, 'romo-dropdown-open') === true;
@@ -13,10 +13,6 @@ RomoDropdown.prototype.popupOpen = function() {
 
 RomoDropdown.prototype.popupClosed = function() {
   return Romo.hasClass(this.popupElem, 'romo-dropdown-open') === false;
-}
-
-RomoDropdown.prototype.doInit = function() {
-  // override as needed
 }
 
 RomoDropdown.prototype.doToggle = function() {
@@ -369,7 +365,7 @@ RomoDropdown.prototype._roundPosOffsetVal = function(value) {
 
 // event functions
 
-RomoDropdown.prototype._onToggle = function(e) {
+RomoDropdown.prototype.romoEvFn._onToggle = function(e) {
   e.preventDefault();
 
   if (
@@ -380,19 +376,19 @@ RomoDropdown.prototype._onToggle = function(e) {
   }
 }
 
-RomoDropdown.prototype._onPopupOpen = function(e) {
+RomoDropdown.prototype.romoEvFn._onPopupOpen = function(e) {
   if (Romo.hasClass(this.elem, 'disabled') === false && this.popupClosed()) {
     setTimeout(Romo.proxy(this.doPopupOpen, this), 1);
   }
 }
 
-RomoDropdown.prototype._onPopupClose = function(e) {
+RomoDropdown.prototype.romoEvFn._onPopupClose = function(e) {
   if (Romo.hasClass(this.elem, 'disabled') === false && this.popupOpen()) {
     setTimeout(Romo.proxy(this.doPopupClose, this), 1);
   }
 }
 
-RomoDropdown.prototype._onElemKeyUp = function(e) {
+RomoDropdown.prototype.romoEvFn._onElemKeyUp = function(e) {
   if (Romo.hasClass(this.elem, 'disabled') === false) {
     if (this.popupOpen()) {
       if(e.keyCode === 27 /* Esc */ ) {
@@ -409,7 +405,7 @@ RomoDropdown.prototype._onElemKeyUp = function(e) {
   return true;
 }
 
-RomoDropdown.prototype._onWindowBodyClick = function(e) {
+RomoDropdown.prototype.romoEvFn._onWindowBodyClick = function(e) {
   // if not clicked on the popup elem or the elem
   if (e !== undefined) {
     var parentPopupElems = Romo.parents(e.target, '.romo-dropdown-popup');
@@ -428,7 +424,7 @@ RomoDropdown.prototype._onWindowBodyClick = function(e) {
   return true;
 }
 
-RomoDropdown.prototype._onWindowBodyKeyUp = function(e) {
+RomoDropdown.prototype.romoEvFn._onWindowBodyKeyUp = function(e) {
   if (e.keyCode === 27 /* Esc */) {
     this.doPopupClose();
     Romo.trigger(this.elem, 'romoDropdown:popupClosedByEsc', [this]);
@@ -436,7 +432,7 @@ RomoDropdown.prototype._onWindowBodyKeyUp = function(e) {
   return true;
 }
 
-RomoDropdown.prototype._onResizeWindow = function(e) {
+RomoDropdown.prototype.romoEvFn._onResizeWindow = function(e) {
   this.doPlacePopupElem();
   return true;
 }
