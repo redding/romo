@@ -899,7 +899,7 @@ RomoComponent.addEventFunctions = function(klassInstance) {
 }
 
 RomoComponent.eventProxyFn = function(fn) {
-  return function(){ fn.apply(this, arguments); };
+  return function(){ return fn.apply(this, arguments); };
 }
 
 // RomoParentChildElems

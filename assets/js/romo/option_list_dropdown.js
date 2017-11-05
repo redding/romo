@@ -536,10 +536,12 @@ RomoOptionListDropdown.prototype.romoEvFn._onItemClick = function(e) {
 
 RomoOptionListDropdown.prototype.romoEvFn._onPopupMouseDown = function(e) {
   this.popupMouseDown = true;
+  return true;
 }
 
 RomoOptionListDropdown.prototype.romoEvFn._onPopupMouseUp = function(e) {
   this.popupMouseDown = false;
+  return true;
 }
 
 RomoOptionListDropdown.prototype.romoEvFn._onPopupOpenBodyKeyDown = function(e) {
@@ -597,8 +599,10 @@ RomoOptionListDropdown.prototype.romoEvFn._onElemKeyDown = function(e) {
       if (e.keyCode === 40 /* Down */  || e.keyCode === 38 /* Up */) {
         this.romoDropdown.doPopupOpen();
         return false;
-      } else if (this.optionFilterElem !== undefined &&
-                 Romo.nonInputTextKeyCodes().indexOf(e.keyCode) === -1 /* Input Text */)  {
+      } else if (
+        this.optionFilterElem !== undefined &&
+        Romo.nonInputTextKeyCodes().indexOf(e.keyCode) === -1 /* Input Text */
+      )  {
         // don't prevent default on Cmd-* keys (preserve Cmd-R refresh, etc)
         if (e.metaKey === false) {
           e.preventDefault();
