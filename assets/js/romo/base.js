@@ -1,7 +1,11 @@
-var Romo = function() {}
+var Romo = function() {
+  this.popupStack       = new RomoPopupStack();
+  this.parentChildElems = new RomoParentChildElems();
+}
 
 Romo.prototype.doInit = function() {
-  this.parentChildElems = new RomoParentChildElems();
+  this.popupStack.doInit();
+  this.parentChildElems.doInit();
   this.initElems(Romo.f('body'));
 }
 
@@ -902,13 +906,123 @@ RomoComponent.eventProxyFn = function(fn) {
   return function(){ return fn.apply(this, arguments); };
 }
 
+// RomoPopupStack
+
+var RomoPopupStack = function() {
+  this.popupSelector = undefined;
+  this.styleClasses  = [];
+  this.items         = [];
+
+  this._buildItemClass();
+}
+
+RomoPopupStack.prototype.doInit = function(styleClass) {
+  this.bodyElem = Romo.f('body')[0];
+  Romo.on(this.bodyElem, 'click',  Romo.proxy(this._onBodyClick,    this));
+  Romo.on(this.bodyElem, 'keyup',  Romo.proxy(this._onBodyKeyUp,    this));
+  Romo.on(window,        'resize', Romo.proxy(this._onWindowResize, this));
+}
+
+RomoPopupStack.prototype.addStyleClass = function(styleClass) {
+  this.styleClasses.push(styleClass);
+  this.popupSelector = this.styleClasses.map(function(s){ return '.'+s; }).join(', ');
+}
+
+RomoPopupStack.prototype.addElem = function(popupElem, boundOpenFn, boundCloseFn, boundPlaceFn) {
+  this.items.push(new this.itemClass(popupElem, boundCloseFn, boundPlaceFn));
+
+  // run the open function in a timeout to allow any body click events
+  // to propagate and run.  This ensures any existing stack is in the
+  // appropriate state before opening a new popup.
+  setTimeout(boundOpenFn, 1);
+}
+
+RomoPopupStack.prototype.closeThru = function(popupElem) {
+  // run the closures in a timeout to allow any body click events to
+  // propagate and run.  This ensures any existing is in the appropriate
+  // state post-click before processing this closure.
+  setTimeout(Romo.proxy(function() {
+    if (this._includes(popupElem)) {
+      this.closeTo(popupElem);
+      this._closeTop();
+    }
+  }, this), 1);
+}
+
+RomoPopupStack.prototype.closeTo = function(popupElem) {
+  if (this._includes(popupElem)) {
+    while (this.items.length > 0 && !this.items[this.items.length-1].isFor(popupElem)) {
+      this._closeTop();
+    }
+  }
+}
+
+// private
+
+RomoPopupStack.prototype._buildItemClass = function() {
+  this.itemClass = function(popupElem, closeFn, placeFn) {
+    this.popupElem = popupElem;
+    this.closeFn   = closeFn;
+    this.placeFn   = placeFn;
+  }
+  this.itemClass.prototype.isFor = function(popupElem) {
+    return this.popupElem === popupElem;
+  }
+}
+
+RomoPopupStack.prototype._closeTop = function() {
+  if (this.items.length > 0) {
+    this.items.pop().closeFn();
+    Romo.trigger(this.bodyElem, 'romoPopupStack:popupClose');
+  }
+}
+
+RomoPopupStack.prototype._closeAll = function() {
+  while (this.items.length > 0) {
+    this._closeTop();
+  }
+}
+
+RomoPopupStack.prototype._includes = function(popupElem) {
+  return this.items.reduce(function(included, item) {
+    return included || item.isFor(popupElem);
+  }, false);
+}
+
+RomoPopupStack.prototype._onBodyClick = function(e) {
+  var popupElem = undefined;
+  if (Romo.is(e.target, this.popupSelector)) {
+    popupElem = e.target;
+  } else {
+    popupElem = Romo.parents(e.target, this.popupSelector)[0];
+  }
+
+  if (popupElem === undefined || !this._includes(popupElem)) {
+    this._closeAll();
+  } else {
+    this.closeTo(popupElem);
+  }
+}
+
+RomoPopupStack.prototype._onBodyKeyUp = function(e) {
+  if (e.keyCode === 27 /* Esc */) {
+    this._closeTop();
+  }
+}
+
+RomoPopupStack.prototype._onWindowResize = function(e) {
+  this.items.forEach(function(item){ item.placeFn(); });
+}
+
 // RomoParentChildElems
 
 var RomoParentChildElems = function() {
   this.attrName = 'romo-parent-elem-id';
   this.elemId   = 0;
   this.elems    = {};
+}
 
+RomoParentChildElems.prototype.doInit = function(parentElem, childElems) {
   var parentRemovedObserver = new MutationObserver(Romo.proxy(function(mutationRecords) {
     mutationRecords.forEach(Romo.proxy(function(mutationRecord) {
       if (mutationRecord.type === 'childList' && mutationRecord.removedNodes.length > 0) {
@@ -948,6 +1062,7 @@ RomoParentChildElems.prototype.remove = function(elemNode) {
 RomoParentChildElems.prototype._removeChildElems = function(parentElem) {
   this._pop(Romo.data(parentElem, this.attrName)).forEach(function(childElem) {
     Romo.remove(childElem);
+    Romo.trigger(childElem, 'romoParentChildElems:childRemoved', [childElem]);
   });
 };
 
@@ -971,8 +1086,7 @@ RomoParentChildElems.prototype._pop = function(id) {
 
 // Init
 
-window.Romo = new Romo();
-
+var Romo = new Romo();
 Romo.ready(function() {
   Romo.doInit();
 });

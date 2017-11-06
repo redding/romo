@@ -26,8 +26,8 @@ RomoTooltip.prototype.doPopupOpen = function() {
 
   if (Romo.parents(this.elem, '.romo-modal-popup').length !== 0) {
     var bodyElem = Romo.f('body')[0];
-    Romo.on(bodyElem, 'romoModal:mousemove',  Romo.proxy(this._onModalPopupChange, this));
-    Romo.on(bodyElem, 'romoModal:popupclose', Romo.proxy(this._onModalPopupChange, this));
+    Romo.on(bodyElem, 'romoModal:mousemove',       Romo.proxy(this._onModalPopupChange, this));
+    Romo.on(bodyElem, 'romoPopupStack:popupClose', Romo.proxy(this._onModalPopupChange, this));
   }
   Romo.on(window, 'resize', Romo.proxy(this._onResizeWindow, this));
 
@@ -39,8 +39,8 @@ RomoTooltip.prototype.doPopupClose = function() {
 
   if (Romo.parents(this.elem, '.romo-modal-popup').length !== 0) {
     var bodyElem = Romo.f('body')[0];
-    Romo.off(bodyElem, 'romoModal:mousemove',  Romo.proxy(this._onModalPopupChange, this));
-    Romo.off(bodyElem, 'romoModal:popupclose', Romo.proxy(this._onModalPopupChange, this));
+    Romo.off(bodyElem, 'romoModal:mousemove',       Romo.proxy(this._onModalPopupChange, this));
+    Romo.off(bodyElem, 'romoPopupStack:popupClose', Romo.proxy(this._onModalPopupChange, this));
   }
   Romo.off(window, 'resize', Romo.proxy(this._onResizeWindow, this));
 
