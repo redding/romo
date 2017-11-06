@@ -71,6 +71,16 @@ Romo.prototype.parents = function(childElem, selector) {
   }
 }
 
+Romo.prototype.scrollableParents = function(childElem, selector) {
+  return Romo.parents(childElem, selector).filter(function(parentElem) {
+    return (
+      Romo._overflowScrollableRegex.test(Romo.css(parentElem, 'overflow'))   ||
+      Romo._overflowScrollableRegex.test(Romo.css(parentElem, 'overflow-y')) ||
+      Romo._overflowScrollableRegex.test(Romo.css(parentElem, 'overflow-x'))
+    );
+  });
+}
+
 Romo.prototype.closest = function(fromElem, selector) {
   if (fromElem.closest) {
     return fromElem.closest(selector);
@@ -855,7 +865,8 @@ Romo.prototype._deserializeValue = function(value) {
   }
 }
 
-Romo.prototype._elemsTagNameRegEx = /<([a-z-]+)[\s\/>]+/i;
+Romo.prototype._overflowScrollableRegex = /(auto|scroll)/;
+Romo.prototype._elemsTagNameRegEx       = /<([a-z-]+)[\s\/>]+/i;
 
 Romo.prototype._elemsWrapMap = {
   'caption':  [1, "<table>",            "</table>"],
@@ -921,6 +932,7 @@ RomoPopupStack.prototype.doInit = function(styleClass) {
   Romo.on(this.bodyElem, 'click',  Romo.proxy(this._onBodyClick,    this));
   Romo.on(this.bodyElem, 'keyup',  Romo.proxy(this._onBodyKeyUp,    this));
   Romo.on(window,        'resize', Romo.proxy(this._onWindowResize, this));
+  Romo.on(window,        'scroll', Romo.proxy(this._onWindowScroll, this));
 }
 
 RomoPopupStack.prototype.addStyleClass = function(styleClass) {
@@ -955,6 +967,14 @@ RomoPopupStack.prototype.closeTo = function(popupElem) {
       this._closeTop();
     }
   }
+}
+
+RomoPopupStack.prototype.placeAllPopups = function(includingFixed) {
+  this.items.filter(function(item) {
+    return includingFixed || Romo.css(item.popupElem, 'position') !== 'fixed';
+  }).forEach(function(item){
+    item.placeFn();
+  });
 }
 
 // private
@@ -1011,7 +1031,11 @@ RomoPopupStack.prototype._onBodyKeyUp = function(e) {
 }
 
 RomoPopupStack.prototype._onWindowResize = function(e) {
-  this.items.forEach(function(item){ item.placeFn(); });
+  this.placeAllPopups(true);
+}
+
+RomoPopupStack.prototype._onWindowScroll = function(e) {
+  this.placeAllPopups();
 }
 
 // RomoParentChildElems

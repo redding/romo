@@ -16,6 +16,9 @@ RomoTooltip.prototype.popupClosed = function() {
 }
 
 RomoTooltip.prototype.doPopupOpen = function() {
+  var scrollParentElems = Romo.scrollableParents(this.elem).concat([window]);
+  Romo.on(scrollParentElems, 'scroll', Romo.proxy(this._onScrollableParentsScroll, this));
+
   if (this.romoAjax !== undefined) {
     this.romoAjax.doInvoke();
   } else {
@@ -24,11 +27,9 @@ RomoTooltip.prototype.doPopupOpen = function() {
   Romo.addClass(this.popupElem, 'romo-tooltip-open');
   this.doPlacePopupElem();
 
-  if (Romo.parents(this.elem, '.romo-modal-popup').length !== 0) {
-    var bodyElem = Romo.f('body')[0];
-    Romo.on(bodyElem, 'romoModal:mousemove',       Romo.proxy(this._onModalPopupChange, this));
-    Romo.on(bodyElem, 'romoPopupStack:popupClose', Romo.proxy(this._onModalPopupChange, this));
-  }
+  var bodyElem = Romo.f('body')[0];
+  Romo.on(bodyElem, 'romoModal:mousemove',       Romo.proxy(this._onModalPopupChange, this));
+  Romo.on(bodyElem, 'romoPopupStack:popupClose', Romo.proxy(this._onModalPopupChange, this));
   Romo.on(window, 'resize', Romo.proxy(this._onResizeWindow, this));
 
   Romo.trigger(this.elem, 'romoTooltip:popupOpen', [this]);
@@ -37,11 +38,12 @@ RomoTooltip.prototype.doPopupOpen = function() {
 RomoTooltip.prototype.doPopupClose = function() {
   Romo.removeClass(this.popupElem, 'romo-tooltip-open');
 
-  if (Romo.parents(this.elem, '.romo-modal-popup').length !== 0) {
-    var bodyElem = Romo.f('body')[0];
-    Romo.off(bodyElem, 'romoModal:mousemove',       Romo.proxy(this._onModalPopupChange, this));
-    Romo.off(bodyElem, 'romoPopupStack:popupClose', Romo.proxy(this._onModalPopupChange, this));
-  }
+  var scrollParentElems = Romo.scrollableParents(this.elem).concat([window]);
+  Romo.off(scrollParentElems, 'scroll', Romo.proxy(this._onScrollableParentsScroll, this));
+
+  var bodyElem = Romo.f('body')[0];
+  Romo.off(bodyElem, 'romoModal:mousemove',       Romo.proxy(this._onModalPopupChange, this));
+  Romo.off(bodyElem, 'romoPopupStack:popupClose', Romo.proxy(this._onModalPopupChange, this));
   Romo.off(window, 'resize', Romo.proxy(this._onResizeWindow, this));
 
   Romo.trigger(this.elem, 'romoTooltip:popupClose', [this]);
@@ -49,14 +51,7 @@ RomoTooltip.prototype.doPopupClose = function() {
 
 RomoTooltip.prototype.doPlacePopupElem = function() {
   var elemRect   = this.elem.getBoundingClientRect();
-  var elemOffset = undefined;
-
-  if (Romo.parents(this.elem, '.romo-modal-popup').length !== 0) {
-    Romo.setStyle(this.popupElem, 'position', 'fixed');
-    elemOffset = elemRect;
-  } else {
-    elemOffset = Romo.offset(this.elem);
-  }
+  var elemOffset = Romo.offset(this.elem);
 
   var elemHeight = elemRect.height;
   var elemWidth  = elemRect.width;
@@ -348,6 +343,10 @@ RomoTooltip.prototype.romoEvFn._onModalPopupChange = function(e) {
 
 RomoTooltip.prototype.romoEvFn._onSetContent = function(e, value) {
   this.doSetContent(value);
+}
+
+RomoTooltip.prototype.romoEvFn._onScrollableParentsScroll = function(e) {
+  this.doPopupClose();
 }
 
 RomoTooltip.prototype.romoEvFn._onResizeWindow = function(e) {
