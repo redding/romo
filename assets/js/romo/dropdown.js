@@ -34,6 +34,8 @@ RomoDropdown.prototype.doPopupOpen = function() {
 }
 
 RomoDropdown.prototype._openPopup = function() {
+  Romo.on(Romo.scrollableParents(this.elem), 'scroll', this._onScrollableParentsScroll);
+
   if (Romo.data(this.elem, 'romo-dropdown-content-elem') !== undefined) {
     var contentElem = Romo.elems(Romo.data(this.elem, 'romo-dropdown-content-elem'))[0];
     this._loadBodySuccess(contentElem.outerHTML);
@@ -53,6 +55,7 @@ RomoDropdown.prototype.doPopupClose = function() {
 
 RomoDropdown.prototype._closePopup = function() {
   Romo.removeClass(this.popupElem, 'romo-dropdown-open');
+  Romo.off(Romo.scrollableParents(this.elem), 'scroll', this._onScrollableParentsScroll);
 
   if (Romo.data(this.elem, 'romo-dropdown-clear-content') === true) {
     Romo.updateHtml(this.contentElem, '');
@@ -63,14 +66,7 @@ RomoDropdown.prototype._closePopup = function() {
 
 RomoDropdown.prototype.doPlacePopupElem = function() {
   var elemRect   = this.elem.getBoundingClientRect();
-  var elemOffset = undefined;
-
-  if (Romo.parents(this.elem, '.romo-modal-popup').length !== 0) {
-    Romo.setStyle(this.popupElem, 'position', 'fixed');
-    elemOffset = elemRect;
-  } else {
-    elemOffset = Romo.offset(this.elem);
-  }
+  var elemOffset = Romo.offset(this.elem);
 
   var elemHeight = elemRect.height;
   var elemWidth  = elemRect.width;
@@ -334,6 +330,10 @@ RomoDropdown.prototype.romoEvFn._onPopupClose = function(e) {
   if (Romo.hasClass(this.elem, 'disabled') === false && this.popupOpen()) {
     setTimeout(Romo.proxy(this.doPopupClose, this), 1);
   }
+}
+
+RomoDropdown.prototype.romoEvFn._onScrollableParentsScroll = function(e) {
+  Romo.popupStack.placeAllPopups();
 }
 
 // init
