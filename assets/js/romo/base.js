@@ -352,7 +352,10 @@ Romo.prototype.initElemsHtml = function(htmlString) {
 
 Romo.prototype.remove = function(elems) {
   return Romo.array(elems).map(function(elem) {
-    return elem.parentNode.removeChild(elem);
+    if (elem.parentNode) {
+      elem.parentNode.removeChild(elem);
+    }
+    return elem;
   });
 }
 
