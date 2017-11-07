@@ -33,32 +33,8 @@ RomoModal.prototype.doPopupOpen = function() {
   );
 }
 
-RomoModal.prototype._openPopup = function() {
-  if (Romo.data(this.elem, 'romo-modal-content-elem') !== undefined) {
-    var contentElem = Romo.elems(Romo.data(this.elem, 'romo-modal-content-elem'))[0];
-    this._loadBodySuccess(contentElem.outerHTML);
-  } else {
-    this.romoAjax.doInvoke();
-  }
-
-  Romo.addClass(this.popupElem, 'romo-modal-open');
-  this.doPlacePopupElem();
-
-  Romo.trigger(this.elem, 'romoModal:popupOpen', [this]);
-}
-
 RomoModal.prototype.doPopupClose = function() {
   Romo.popupStack.closeThru(this.popupElem);
-}
-
-RomoModal.prototype._closePopup = function() {
-  Romo.removeClass(this.popupElem, 'romo-modal-open');
-
-  if (Romo.data(this.elem, 'romo-modal-clear-content') === true) {
-    Romo.updateHtml(this.contentElem, '');
-  }
-
-  Romo.trigger(this.elem, 'romoModal:popupClose', [this]);
 }
 
 RomoModal.prototype.doPlacePopupElem = function() {
@@ -93,6 +69,30 @@ RomoModal.prototype.doPlacePopupElem = function() {
 }
 
 // private
+
+RomoModal.prototype._openPopup = function() {
+  if (Romo.data(this.elem, 'romo-modal-content-elem') !== undefined) {
+    var contentElem = Romo.elems(Romo.data(this.elem, 'romo-modal-content-elem'))[0];
+    this._loadBodySuccess(contentElem.outerHTML);
+  } else {
+    this.romoAjax.doInvoke();
+  }
+
+  Romo.addClass(this.popupElem, 'romo-modal-open');
+  this.doPlacePopupElem();
+
+  Romo.trigger(this.elem, 'romoModal:popupOpen', [this]);
+}
+
+RomoModal.prototype._closePopup = function() {
+  Romo.removeClass(this.popupElem, 'romo-modal-open');
+
+  if (Romo.data(this.elem, 'romo-modal-clear-content') === true) {
+    Romo.updateHtml(this.contentElem, '');
+  }
+
+  Romo.trigger(this.elem, 'romoModal:popupClose', [this]);
+}
 
 RomoModal.prototype._bindElem = function() {
   this._bindPopup();

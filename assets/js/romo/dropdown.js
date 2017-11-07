@@ -33,35 +33,8 @@ RomoDropdown.prototype.doPopupOpen = function() {
   );
 }
 
-RomoDropdown.prototype._openPopup = function() {
-  Romo.on(Romo.scrollableParents(this.elem), 'scroll', this._onScrollableParentsScroll);
-
-  if (Romo.data(this.elem, 'romo-dropdown-content-elem') !== undefined) {
-    var contentElem = Romo.elems(Romo.data(this.elem, 'romo-dropdown-content-elem'))[0];
-    this._loadBodySuccess(contentElem.outerHTML);
-  } else {
-    this.romoAjax.doInvoke();
-  }
-
-  Romo.addClass(this.popupElem, 'romo-dropdown-open');
-  this.doPlacePopupElem();
-
-  Romo.trigger(this.elem, 'romoDropdown:popupOpen', [this]);
-}
-
 RomoDropdown.prototype.doPopupClose = function() {
   Romo.popupStack.closeThru(this.popupElem);
-}
-
-RomoDropdown.prototype._closePopup = function() {
-  Romo.removeClass(this.popupElem, 'romo-dropdown-open');
-  Romo.off(Romo.scrollableParents(this.elem), 'scroll', this._onScrollableParentsScroll);
-
-  if (Romo.data(this.elem, 'romo-dropdown-clear-content') === true) {
-    Romo.updateHtml(this.contentElem, '');
-  }
-
-  Romo.trigger(this.elem, 'romoDropdown:popupClose', [this]);
 }
 
 RomoDropdown.prototype.doPlacePopupElem = function() {
@@ -138,6 +111,33 @@ RomoDropdown.prototype.doSetPopupZIndex = function(relativeElem) {
 }
 
 // private
+
+RomoDropdown.prototype._openPopup = function() {
+  Romo.on(Romo.scrollableParents(this.elem), 'scroll', this._onScrollableParentsScroll);
+
+  if (Romo.data(this.elem, 'romo-dropdown-content-elem') !== undefined) {
+    var contentElem = Romo.elems(Romo.data(this.elem, 'romo-dropdown-content-elem'))[0];
+    this._loadBodySuccess(contentElem.outerHTML);
+  } else {
+    this.romoAjax.doInvoke();
+  }
+
+  Romo.addClass(this.popupElem, 'romo-dropdown-open');
+  this.doPlacePopupElem();
+
+  Romo.trigger(this.elem, 'romoDropdown:popupOpen', [this]);
+}
+
+RomoDropdown.prototype._closePopup = function() {
+  Romo.removeClass(this.popupElem, 'romo-dropdown-open');
+  Romo.off(Romo.scrollableParents(this.elem), 'scroll', this._onScrollableParentsScroll);
+
+  if (Romo.data(this.elem, 'romo-dropdown-clear-content') === true) {
+    Romo.updateHtml(this.contentElem, '');
+  }
+
+  Romo.trigger(this.elem, 'romoDropdown:popupClose', [this]);
+}
 
 RomoDropdown.prototype._bindElem = function() {
   this._bindPopup();
