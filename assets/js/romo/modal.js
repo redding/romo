@@ -38,11 +38,23 @@ RomoModal.prototype.doPopupClose = function() {
 }
 
 RomoModal.prototype.doPlacePopupElem = function() {
+  var viewportHeight = document.documentElement.clientHeight;
+  var viewportWidth  = document.documentElement.clientWidth;
+
+  if (Romo.data(this.elem, 'romo-modal-max-height') === 'detect') {
+    var pad           = Romo.data(this.elem, 'romo-modal-max-height-detect-pad') || 10;
+    var contentTop    = this.contentElem.getBoundingClientRect().top;
+    var contentBottom = this.contentElem.getBoundingClientRect().bottom;
+    var bodyBottom    = this.bodyElem.getBoundingClientRect().bottom;
+    var padBottom     = bodyBottom - contentBottom;
+
+    var maxHeight = viewportHeight - contentTop - padBottom - pad;
+    Romo.setStyle(this.contentElem, 'max-height', maxHeight.toString() + 'px');
+  }
+
   var popupOffsetHeight = this.popupElem.offsetHeight;
   var popupOffsetWidth  = this.popupElem.offsetWidth;
   var minHeightWidth    = 75;
-  var viewportHeight    = document.documentElement.clientHeight;
-  var viewportWidth     = document.documentElement.clientWidth;
   var centerTop         = (viewportHeight / 2) - (popupOffsetHeight / 2);
   var centerLeft        = (viewportWidth  / 2) - (popupOffsetWidth / 2);
 
@@ -55,17 +67,6 @@ RomoModal.prototype.doPlacePopupElem = function() {
 
   Romo.setStyle(this.popupElem, 'top',  offsetTop + 'px');
   Romo.setStyle(this.popupElem, 'left', offsetLeft + 'px');
-
-  if (Romo.data(this.elem, 'romo-modal-max-height') === 'detect') {
-    var pad           = Romo.data(this.elem, 'romo-modal-max-height-detect-pad') || 10;
-    var contentTop    = this.contentElem.getBoundingClientRect().top;
-    var contentBottom = this.contentElem.getBoundingClientRect().bottom;
-    var bodyBottom    = this.bodyElem.getBoundingClientRect().bottom;
-    var padBottom     = bodyBottom - contentBottom;
-
-    var maxHeight = viewportHeight - contentTop - padBottom - pad;
-    Romo.setStyle(this.contentElem, 'max-height', maxHeight.toString() + 'px');
-  }
 }
 
 // private

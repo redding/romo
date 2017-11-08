@@ -50,25 +50,12 @@ RomoTooltip.prototype.doPopupClose = function() {
 }
 
 RomoTooltip.prototype.doPlacePopupElem = function() {
-  var elemRect   = this.elem.getBoundingClientRect();
-  var elemOffset = Romo.offset(this.elem);
-
-  var elemHeight = elemRect.height;
-  var elemWidth  = elemRect.width;
-  var elemTop    = elemOffset.top;
-  var elemLeft   = elemOffset.left
-
-  var popupOffsetHeight = this.popupElem.offsetHeight;
-  var popupOffsetWidth  = this.popupElem.offsetWidth;
-
-  var pad = 6 + 1; // arrow size + spacing
-
   var configHeight = Romo.data(this.elem, 'romo-tooltip-height') ||
                      Romo.data(this.elem, 'romo-tooltip-max-height');
   var configPosition = this.popupPosition;
 
   if (configHeight === 'detect' && (configPosition === 'top' || configPosition === 'bottom')) {
-    var popupHeight       = parseInt(Romo.css(this.popupElem, 'height'), 10);
+    var popupHeight       = this.popupElem.offsetHeight;
     var topAvailHeight    = this._getPopupMaxAvailableHeight('top');
     var bottomAvailHeight = this._getPopupMaxAvailableHeight('bottom');
 
@@ -86,11 +73,20 @@ RomoTooltip.prototype.doPlacePopupElem = function() {
     Romo.setStyle(this.bodyElem, 'max-height', configHeight.toString() + 'px');
   }
 
-  Romo.setData(this.popupElem, 'romo-tooltip-arrow-position', configPosition);
+  var elemRect   = this.elem.getBoundingClientRect();
+  var elemOffset = Romo.offset(this.elem);
 
-  if(popupOffsetHeight > configHeight) {
-    popupOffsetHeight = configHeight;
-  }
+  var elemHeight = elemRect.height;
+  var elemWidth  = elemRect.width;
+  var elemTop    = elemOffset.top;
+  var elemLeft   = elemOffset.left
+
+  var popupOffsetHeight = this.popupElem.offsetHeight;
+  var popupOffsetWidth  = this.popupElem.offsetWidth;
+
+  var pad = 6 + 1; // arrow size + spacing
+
+  Romo.setData(this.popupElem, 'romo-tooltip-arrow-position', configPosition);
 
   var posTop  = undefined;
   var posLeft = undefined;
