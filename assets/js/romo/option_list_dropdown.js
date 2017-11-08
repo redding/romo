@@ -274,6 +274,12 @@ RomoOptionListDropdown.prototype._bindDropdownOptionFilter = function() {
   this.romoIndicatorTextInput = new RomoIndicatorTextInput(this.optionFilterElem);
   new RomoOnkey(this.optionFilterElem);
 
+  Romo.on(this.romoDropdown.elem, 'mousedown', Romo.proxy(function(e) {
+    // don't open on focus because this focus is from a click
+    // so the click will handle opening the popup
+    this.openOnFocus = false;
+  }, this));
+
   Romo.on(this.romoDropdown.elem, 'focus', Romo.proxy(function(e) {
     if (this.blurTimeoutId !== undefined) {
       clearTimeout(this.blurTimeoutId);
