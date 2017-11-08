@@ -132,9 +132,13 @@ RomoModal.prototype._bindPopup = function() {
   setTimeout(Romo.proxy(function() {
     Romo.parentChildElems.add(this.elem, [this.popupElem]);
   }, this), 1);
-  Romo.on(this.popupElem, 'romoParentChildElems:childRemoved', Romo.proxy(function(childElem) {
+  Romo.on(this.popupElem, 'romoParentChildElems:childRemoved', Romo.proxy(function(e, childElem) {
     Romo.popupStack.closeThru(this.popupElem);
   }, this));
+  Romo.on(this.popupElem, 'romoPopupStack:popupClosedByEsc', Romo.proxy(function(e, romoPopupStack) {
+    Romo.trigger(this.elem, 'romoModal:popupClosedByEsc', [this]);
+  }, this));
+
 }
 
 RomoModal.prototype._bindAjax = function() {

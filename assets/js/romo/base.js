@@ -994,10 +994,14 @@ RomoPopupStack.prototype._buildItemClass = function() {
 }
 
 RomoPopupStack.prototype._closeTop = function() {
+  var item;
   if (this.items.length > 0) {
-    this.items.pop().closeFn();
-    Romo.trigger(this.bodyElem, 'romoPopupStack:popupClose');
+    item = this.items.pop();
+    item.closeFn();
+    Romo.trigger(this.bodyElem,  'romoPopupStack:popupClose', [item.popupElem, this]);
+    Romo.trigger(item.popupElem, 'romoPopupStack:popupClose', [this]);
   }
+  return item;
 }
 
 RomoPopupStack.prototype._closeAll = function() {
@@ -1028,8 +1032,10 @@ RomoPopupStack.prototype._onBodyClick = function(e) {
 }
 
 RomoPopupStack.prototype._onBodyKeyUp = function(e) {
+  var popupElem;
   if (e.keyCode === 27 /* Esc */) {
-    this._closeTop();
+    popupElem = this._closeTop().popupElem;
+    Romo.trigger(popupElem, 'romoPopupStack:popupClosedByEsc', [this]);
   }
 }
 
