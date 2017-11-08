@@ -652,7 +652,7 @@ Romo.prototype.ajax = function(settings) {
   var httpMethod = (settings.type || 'GET').toUpperCase();
   var xhrUrl     = settings.url || window.location.toString();
   var xhrData    = settings.data ? settings.data : undefined
-  if (xhrData) {
+  if (xhrData && Object.keys(xhrData).length > 0) {
     if (httpMethod === 'GET') {
       var xhrQuery = Romo.param(xhrData);
       if (xhrQuery !== '') {
@@ -668,6 +668,8 @@ Romo.prototype.ajax = function(settings) {
       }
       xhrData = formData;
     }
+  } else {
+    xhrData = undefined;
   }
 
   var xhr = new XMLHttpRequest();
