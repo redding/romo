@@ -209,9 +209,9 @@ RomoSelect.prototype._buildSelectDropdownElem = function() {
   // delay adding it b/c other components may `append` generated selects
   // meaning the select is removed and then re-added.  if added immediately
   // the "remove" part will incorrectly remove the wrapper.
-  setTimeout(Romo.proxy(function() {
+  Romo.pushFn(Romo.proxy(function() {
     Romo.parentChildElems.add(this.elem, [this.elemWrapper]);
-  }, this), 1);
+  }, this));
 
   this.caretElem = undefined;
   var caretClass = Romo.data(this.elem, 'romo-select-caret') || this.defaultCaretClass;

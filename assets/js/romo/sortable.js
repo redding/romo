@@ -233,9 +233,9 @@ RomoSortable.prototype.romoEvFn._onDragDrop = function(e) {
   // dropdown, tooltip popups) like normal.
   // we have to put this in a timeout so the reactor loop has a
   // chance to run the mutation observer before we re-enable
-  setTimeout(Romo.proxy(function() {
+  Romo.pushFn(Romo.proxy(function() {
     Romo.setData(this.draggedElem, 'romo-parent-removed-observer-disabled', false);
-  }, this), 1);
+  }, this));
 
   var elems    = Romo.children(Romo.parent(this.draggedElem));
   var newIndex = elems.indexOf(this.draggedElem);

@@ -17,9 +17,9 @@ RomoModal.prototype.popupClosed = function() {
 
 RomoModal.prototype.doToggle = function() {
   if (this.popupOpen()) {
-    setTimeout(Romo.proxy(this.doPopupClose, this), 1);
+    Romo.pushFn(Romo.proxy(this.doPopupClose, this));
   } else {
-    setTimeout(Romo.proxy(this.doPopupOpen, this), 1);
+    Romo.pushFn(Romo.proxy(this.doPopupOpen, this));
   }
   Romo.trigger(this.elem, 'romoModal:toggle', [this]);
 }
@@ -129,9 +129,9 @@ RomoModal.prototype._bindPopup = function() {
   // delay adding it b/c other components may `append` generated modals
   // meaning the modal is removed and then re-added.  if added immediately
   // the "remove" part will incorrectly remove the popup.
-  setTimeout(Romo.proxy(function() {
+  Romo.pushFn(Romo.proxy(function() {
     Romo.parentChildElems.add(this.elem, [this.popupElem]);
-  }, this), 1);
+  }, this));
   Romo.on(this.popupElem, 'romoParentChildElems:childRemoved', Romo.proxy(function(e, childElem) {
     Romo.popupStack.closeThru(this.popupElem);
   }, this));
@@ -215,7 +215,7 @@ RomoModal.prototype._loadBodyStart = function() {
   Romo.updateHtml(this.bodyElem, '');
   this._bindBody();
   this.doPlacePopupElem();
-  setTimeout(Romo.proxy(this.doPlacePopupElem, this), 1);
+  Romo.pushFn(Romo.proxy(this.doPlacePopupElem, this));
   Romo.trigger(this.elem, 'romoModal:loadBodyStart', [this]);
 }
 
@@ -223,7 +223,7 @@ RomoModal.prototype._loadBodySuccess = function(data) {
   Romo.initUpdateHtml(this.bodyElem, data);
   this._bindBody();
   this.doPlacePopupElem();
-  setTimeout(Romo.proxy(this.doPlacePopupElem, this), 1);
+  Romo.pushFn(Romo.proxy(this.doPlacePopupElem, this));
   Romo.trigger(this.elem, 'romoModal:loadBodySuccess', [data, this]);
 }
 

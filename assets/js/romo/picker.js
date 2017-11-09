@@ -237,9 +237,9 @@ RomoPicker.prototype._buildOptionListDropdownElem = function() {
   // delay adding it b/c other components may `append` generated pickers
   // meaning the picker is removed and then re-added.  if added immediately
   // the "remove" part will incorrectly remove the wrapper.
-  setTimeout(Romo.proxy(function() {
+  Romo.pushFn(Romo.proxy(function() {
     Romo.parentChildElems.add(this.elem, [this.elemWrapper]);
-  }, this), 1);
+  }, this));
 
   this.caretElem = undefined;
   var caretClass = Romo.data(this.elem, 'romo-picker-caret') || this.defaultCaretClass;
