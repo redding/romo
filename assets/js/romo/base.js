@@ -876,7 +876,7 @@ Romo.prototype._deserializeValue = function(value) {
 }
 
 Romo.prototype._overflowScrollableRegex = /(auto|scroll)/;
-Romo.prototype._elemsTagNameRegEx       = /<([a-z-]+)[\s\/>]+/i;
+Romo.prototype._elemsTagNameRegEx       = /<([a-z0-9-]+)[\s\/>]+/i;
 
 Romo.prototype._elemsWrapMap = {
   'caption':  [1, "<table>",            "</table>"],
