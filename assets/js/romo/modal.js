@@ -124,14 +124,7 @@ RomoModal.prototype._bindPopup = function() {
   this.closeElems  = [];
   this.dragElems   = [];
 
-  // the popup should be treated like a child elem.  add it to Romo's
-  // parent-child elems so it will be removed when the elem is removed.
-  // delay adding it b/c other components may `append` generated modals
-  // meaning the modal is removed and then re-added.  if added immediately
-  // the "remove" part will incorrectly remove the popup.
-  Romo.pushFn(Romo.proxy(function() {
-    Romo.parentChildElems.add(this.elem, [this.popupElem]);
-  }, this));
+  Romo.parentChildElems.add(this.elem, [this.popupElem]);
   Romo.on(this.popupElem, 'romoParentChildElems:childRemoved', Romo.proxy(function(e, childElem) {
     Romo.popupStack.closeThru(this.popupElem);
   }, this));

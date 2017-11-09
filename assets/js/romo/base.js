@@ -1078,7 +1078,12 @@ RomoParentChildElems.prototype.doInit = function(parentElem, childElems) {
 }
 
 RomoParentChildElems.prototype.add = function(parentElem, childElems) {
-  Romo.setData(parentElem, this.attrName, this._push(childElems, Romo.data(parentElem, this.attrName)));
+  // delay adding b/c the parent elem may be manipulated in the DOM resulting in the parent elem
+  // being removed and then re-added to the DOM.  if the child elems are associated immediately,
+  // any "remove" from DOM manipulation would incorrectly remove the popup.
+  Romo.pushFn(Romo.proxy(function() {
+    Romo.setData(parentElem, this.attrName, this._push(childElems, Romo.data(parentElem, this.attrName)));
+  }, this));
 }
 
 RomoParentChildElems.prototype.remove = function(elemNode) {
