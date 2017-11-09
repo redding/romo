@@ -17,9 +17,9 @@ RomoDropdown.prototype.popupClosed = function() {
 
 RomoDropdown.prototype.doToggle = function() {
   if (this.popupOpen()) {
-    setTimeout(Romo.proxy(this.doPopupClose, this), 100);
+    Romo.pushFn(Romo.proxy(this.doPopupClose, this));
   } else {
-    setTimeout(Romo.proxy(this.doPopupOpen, this), 100);
+    Romo.pushFn(Romo.proxy(this.doPopupOpen, this));
   }
   Romo.trigger(this.elem, 'romoDropdown:toggle', [this]);
 }
@@ -180,9 +180,9 @@ RomoDropdown.prototype._bindPopup = function() {
   // delay adding it b/c other components may `append` generated dropdowns
   // meaning the dropdown is removed and then re-added.  if added immediately
   // the "remove" part will incorrectly remove the popup.
-  setTimeout(Romo.proxy(function() {
+  Romo.pushFn(Romo.proxy(function() {
     Romo.parentChildElems.add(this.elem, [this.popupElem]);
-  }, this), 1);
+  }, this));
   Romo.on(this.popupElem, 'romoParentChildElems:childRemoved', Romo.proxy(function(e, childElem) {
     Romo.popupStack.closeThru(this.popupElem);
   }, this));
@@ -259,7 +259,7 @@ RomoDropdown.prototype._loadBodyStart = function() {
   Romo.updateHtml(this.bodyElem, '');
   this._bindBody();
   this.doPlacePopupElem();
-  setTimeout(Romo.proxy(this.doPlacePopupElem, this), 1);
+  Romo.pushFn(Romo.proxy(this.doPlacePopupElem, this));
   Romo.trigger(this.elem, 'romoDropdown:loadBodyStart', [this]);
 }
 
@@ -267,7 +267,7 @@ RomoDropdown.prototype._loadBodySuccess = function(data) {
   Romo.initUpdateHtml(this.bodyElem, data);
   this._bindBody();
   this.doPlacePopupElem();
-  setTimeout(Romo.proxy(this.doPlacePopupElem, this), 1);
+  Romo.pushFn(Romo.proxy(this.doPlacePopupElem, this));
   Romo.trigger(this.elem, 'romoDropdown:loadBodySuccess', [data, this]);
 }
 
@@ -321,13 +321,13 @@ RomoDropdown.prototype.romoEvFn._onToggle = function(e) {
 
 RomoDropdown.prototype.romoEvFn._onPopupOpen = function(e) {
   if (Romo.hasClass(this.elem, 'disabled') === false && this.popupClosed()) {
-    setTimeout(Romo.proxy(this.doPopupOpen, this), 1);
+    Romo.pushFn(Romo.proxy(this.doPopupOpen, this));
   }
 }
 
 RomoDropdown.prototype.romoEvFn._onPopupClose = function(e) {
   if (Romo.hasClass(this.elem, 'disabled') === false && this.popupOpen()) {
-    setTimeout(Romo.proxy(this.doPopupClose, this), 1);
+    Romo.pushFn(Romo.proxy(this.doPopupClose, this));
   }
 }
 

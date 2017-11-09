@@ -548,6 +548,11 @@ Romo.prototype.trigger = function(elems, customEventName, args) {
   });
 }
 
+Romo.prototype.pushFn = function(fn) {
+  // push the function to delay running until the end of the reactor stack
+  setTimeout(fn, 1);
+}
+
 Romo.prototype.ready = function(eventHandlerFn) {
   if (document.readyState === 'complete' || document.readyState !== 'loading') {
     eventHandlerFn();
@@ -948,22 +953,20 @@ RomoPopupStack.prototype.addStyleClass = function(styleClass) {
 RomoPopupStack.prototype.addElem = function(popupElem, boundOpenFn, boundCloseFn, boundPlaceFn) {
   this.items.push(new this.itemClass(popupElem, boundCloseFn, boundPlaceFn));
 
-  // run the open function in a timeout to allow any body click events
-  // to propagate and run.  This ensures any existing stack is in the
-  // appropriate state before opening a new popup.
-  setTimeout(boundOpenFn, 1);
+  // allow any body click events to propagate and run first.  This ensures
+  // any existing stack is in the appropriate state before opening a new popup.
+  Romo.pushFn(boundOpenFn);
 }
 
 RomoPopupStack.prototype.closeThru = function(popupElem) {
-  // run the closures in a timeout to allow any body click events to
-  // propagate and run.  This ensures any existing is in the appropriate
-  // state post-click before processing this closure.
-  setTimeout(Romo.proxy(function() {
+  // allow any body click events to propagate and run first.  This ensures
+  // any existing stack is in the appropriate state before opening a new popup.
+  Romo.pushFn(Romo.proxy(function() {
     if (this._includes(popupElem)) {
       this.closeTo(popupElem);
       this._closeTop();
     }
-  }, this), 1);
+  }, this));
 }
 
 RomoPopupStack.prototype.closeTo = function(popupElem) {

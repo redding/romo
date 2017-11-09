@@ -117,7 +117,7 @@ RomoTooltip.prototype.doSetContent = function(value) {
   Romo.setData(this.elem, 'romo-tooltip-content', value);
   this._setBodyHtml(Romo.data(this.elem, 'romo-tooltip-content'));
   this.doPlacePopupElem();
-  setTimeout(Romo.proxy(this.doPlacePopupElem, this), 1);
+  Romo.pushFn(Romo.proxy(this.doPlacePopupElem, this));
 }
 
 RomoTooltip.prototype.doSetPopupZIndex = function(relativeElem) {
@@ -189,9 +189,9 @@ RomoTooltip.prototype._bindPopup = function() {
   // delay adding it b/c other components may `append` generated tooltips
   // meaning the tooltip is removed and then re-added.  if added immediately
   // the "remove" part will incorrectly remove the popup.
-  setTimeout(Romo.proxy(function() {
+  Romo.pushFn(Romo.proxy(function() {
     Romo.parentChildElems.add(this.elem, [this.popupElem]);
-  }, this), 1);
+  }, this));
 }
 
 RomoTooltip.prototype._bindAjax = function() {
@@ -242,7 +242,7 @@ RomoTooltip.prototype._loadBodyStart = function() {
   this._setBodyHtml('');
   this._bindBody();
   this.doPlacePopupElem();
-  setTimeout(Romo.proxy(this.doPlacePopupElem, this), 1);
+  Romo.pushFn(Romo.proxy(this.doPlacePopupElem, this));
   Romo.trigger(this.elem, 'romoTooltip:loadBodyStart', [this]);
 }
 
@@ -250,7 +250,7 @@ RomoTooltip.prototype._loadBodySuccess = function(data) {
   Romo.initUpdateHtml(this.bodyElem, data);
   this._bindBody();
   this.doPlacePopupElem();
-  setTimeout(Romo.proxy(this.doPlacePopupElem, this), 1);
+  Romo.pushFn(Romo.proxy(this.doPlacePopupElem, this));
   Romo.trigger(this.elem, 'romoTooltip:loadBodySuccess', [data, this]);
 }
 

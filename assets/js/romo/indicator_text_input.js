@@ -47,9 +47,9 @@ RomoIndicatorTextInput.prototype._bindElem = function() {
   // delay adding it b/c the `append` statement above is not a "move", it is
   // a "remove" and "add" so if added immediately the "remove" part will
   // incorrectly remove the wrapper.
-  setTimeout(Romo.proxy(function() {
+  Romo.pushFn(Romo.proxy(function() {
     Romo.parentChildElems.add(this.elem, [elemWrapper]);
-  }, this), 1);
+  }, this));
 
   this.indicatorElem = undefined;
   var indicatorClass = Romo.data(this.elem, 'romo-indicator-text-input-indicator') || this.defaultIndicatorClass;
