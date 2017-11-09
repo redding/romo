@@ -1037,10 +1037,12 @@ RomoPopupStack.prototype._onBodyClick = function(e) {
 }
 
 RomoPopupStack.prototype._onBodyKeyUp = function(e) {
-  var popupElem;
+  var closedItem;
   if (e.keyCode === 27 /* Esc */) {
-    popupElem = this._closeTop().popupElem;
-    Romo.trigger(popupElem, 'romoPopupStack:popupClosedByEsc', [this]);
+    closedItem = this._closeTop();
+    if (closedItem) {
+      Romo.trigger(closedItem.popupElem, 'romoPopupStack:popupClosedByEsc', [this]);
+    }
   }
 }
 
