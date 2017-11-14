@@ -278,12 +278,7 @@ RomoTooltip.prototype._getPopupMaxHeightDetectPad = function(position) {
 }
 
 RomoTooltip.prototype._setBodyHtml = function(content) {
-  var contentElems = Romo.elems(content);
-  if (contentElems.length !== 0) {
-    Romo.update(this.bodyElem, contentElems);
-  } else {
-    Romo.updateText(this.bodyElem, content || '');
-  }
+  Romo.updateHtml(this.bodyElem, '<div>'+content+'</div>');
 }
 
 // event functions
