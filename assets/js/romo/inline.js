@@ -9,12 +9,16 @@ var RomoInline = RomoComponent(function(elem) {
 
 RomoInline.prototype.doShow = function() {
   Romo.show(this.elem);
-  Romo.hide(this.toggleElem);
+  if (this.toggleElem !== undefined) {
+    Romo.hide(this.toggleElem);
+  }
   Romo.trigger(this.elem, 'romoInline:show', [this]);
 }
 
 RomoInline.prototype.doDismiss = function() {
-  Romo.show(this.toggleElem);
+  if (this.toggleElem !== undefined) {
+    Romo.show(this.toggleElem);
+  }
   Romo.hide(this.elem);
   Romo.trigger(this.elem, 'romoInline:dismiss', [this]);
 }
