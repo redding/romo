@@ -3,6 +3,7 @@ var RomoSelect = RomoComponent(function(elem) {
 
   this.defaultCaretClass     = undefined;
   this.defaultCaretPaddingPx = 5;
+  this.defaultCaretWidthPx   = 18;
   this.defaultCaretPosition  = 'right'
 
   this.doInit();
@@ -218,7 +219,7 @@ RomoSelect.prototype._buildSelectDropdownElem = function() {
     var caretPosition  = this._getCaretPosition();
 
     // add a pixel to account for the default input border
-    Romo.setStyle(this.caretElem, caretPosition, caretPaddingPx+1);
+    Romo.setStyle(this.caretElem, caretPosition, caretPaddingPx+1+'px');
 
     // left-side padding
     // + caret width
@@ -299,7 +300,7 @@ RomoSelect.prototype._getCaretPaddingPx = function() {
 RomoSelect.prototype._getCaretWidthPx = function() {
   return (
     Romo.data(this.elem, 'romo-select-caret-width-px') ||
-    parseInt(Romo.css(this.caretElem, "width"), 10)
+    this._parseCaretWidthPx()
   );
 }
 
@@ -308,6 +309,14 @@ RomoSelect.prototype._getCaretPosition = function() {
     Romo.data(this.elem, 'romo-select-caret-position') ||
     this.defaultCaretPosition
   );
+}
+
+RomoSelect.prototype._parseCaretWidthPx = function() {
+  var widthPx = parseInt(Romo.css(this.caretElem, "width"), 10);
+  if (isNaN(widthPx)) {
+    widthPx = this.defaultCaretWidthPx;
+  }
+  return widthPx;
 }
 
 // event functions
