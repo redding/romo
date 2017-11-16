@@ -75,16 +75,16 @@ RomoDatepicker.prototype._bindElem = function() {
     Romo.trigger(this.elem, 'romoDatepicker:triggerPopupOpen');
   }, this));
 
-  Romo.on(this.elem, 'datepicker:triggerEnable', Romo.proxy(function(e) {
+  Romo.on(this.elem, 'romoDatepicker:triggerEnable', Romo.proxy(function(e) {
     Romo.trigger(this.elem, 'romoIndicatorTextInput:triggerEnable', []);
   }, this));
-  Romo.on(this.elem, 'datepicker:triggerDisable', Romo.proxy(function(e) {
+  Romo.on(this.elem, 'romoDatepicker:triggerDisable', Romo.proxy(function(e) {
     Romo.trigger(this.elem, 'romoIndicatorTextInput:triggerDisable', []);
   }, this));
-  Romo.on(this.elem, 'datepicker:triggerShow', Romo.proxy(function(e) {
+  Romo.on(this.elem, 'romoDatepicker:triggerShow', Romo.proxy(function(e) {
     Romo.trigger(this.elem, 'romoIndicatorTextInput:triggerShow', []);
   }, this));
-  Romo.on(this.elem, 'datepicker:triggerHide', Romo.proxy(function(e) {
+  Romo.on(this.elem, 'romoDatepicker:triggerHide', Romo.proxy(function(e) {
     Romo.trigger(this.elem, 'romoIndicatorTextInput:triggerHide', []);
   }, this));
 
