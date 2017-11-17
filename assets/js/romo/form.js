@@ -1,231 +1,287 @@
-$.fn.romoForm = function(givenSubmitElement, givenIndicatorElements) {
-  return $.map(this, function(element) {
-    return new RomoForm(element, givenSubmitElement, givenIndicatorElements);
-  });
-}
+var RomoForm = RomoComponent(function(elem, givenSubmitElems, givenSpinnerElems) {
+  this.elem = elem;
 
-var RomoForm = function(element, givenSubmitElement, givenIndicatorElements) {
-  this.elem = $(element);
-  this.defaultSubmitElem = this.elem.find('button[type="submit"], input[type="submit"], [data-romo-form-submit]');
-  this.submitElem = $(givenSubmitElement || this.defaultSubmitElem);
-  this.defaultIndicatorElems = this.elem.find('[data-romo-indicator-auto="true"]');
-  this.indicatorElems = $(givenIndicatorElements || this.defaultIndicatorElems);
-  this.changeSubmitElems = this.elem.find('[data-romo-form-change-submit="true"]');
-  this.onkeySubmitElems = this.elem.find('[data-romo-form-onkey-submit="true"]');
+  var defaultSubmitElems = Romo.find(
+    this.elem,
+    'button[type="submit"], input[type="submit"], [data-romo-form-submit]'
+  );
+  this.submitElems = (givenSubmitElems || []).concat(defaultSubmitElems || []);
 
-  this.defaultListValuesDelim = ',';
+  var defaultSpinnerElems = Romo.find(this.elem, '[data-romo-spinner-auto="true"]');
+  this.spinnerElems = (givenSpinnerElems || []).concat(defaultSpinnerElems || []);
+
+  this.changeSubmitElems = Romo.find(this.elem, '[data-romo-form-change-submit="true"]');
+  this.onkeySubmitElems  = Romo.find(this.elem, '[data-romo-form-onkey-submit="true"]');
+
+  this.defaultListValuesDelim  = ',';
   this.onkeyDefaultSubmitDelay = 300;  // 0.3 secs
-  this.submitQueued  = false;
-  this.submitRunning = false;
+  this.submitQueued            = false;
+  this.submitRunning           = false;
 
-  this.removeEmptyGetParams = this.elem.data('romo-form-remove-empty-get-params')
+  this.removeEmptyGetParams = Romo.data(this.elem, 'romo-form-remove-empty-get-params');
   if (this.removeEmptyGetParams === undefined) {
     this.removeEmptyGetParams = true;
   }
 
-  this.decodeParams = this.elem.data('romo-form-decode-params')
+  this.decodeParams = Romo.data(this.elem, 'romo-form-decode-params');
   if (this.decodeParams === undefined) {
     this.decodeParams = true;
   }
 
   this.doInit();
-  this.doBindForm();
-  this.elem.trigger('form:clearMsgs', [this]);
-  this.elem.trigger('form:ready', [this]);
-}
+  this._bindElem();
 
-RomoForm.prototype.doInit = function() {
-  // override as needed
-}
-
-RomoForm.prototype.doBindForm = function() {
-  this.defaultSubmitElem.unbind('click');
-  this.submitElem.unbind('click');
-  this.submitElem.on('click', $.proxy(this.onSubmitClick, this));
-
-  this.changeSubmitElems.on('change', $.proxy(function(e) {
-    this.elem.trigger('form:triggerSubmit');
-  }, this));
-  this.onkeySubmitElems.on('onkey:trigger', $.proxy(function(e, triggerEvent, onkey) {
-    clearTimeout(this.onkeySubmitTimeout);
-    this.onkeySubmitTimeout = setTimeout($.proxy(function() {
-      this.elem.trigger('form:triggerSubmit');
-    }, this), onkey.elem.data('romo-form-onkey-submit-delay') || this.onkeyDefaultSubmitDelay);
-  }, this));
-  this.elem.on('form:triggerSubmit', $.proxy(this.onSubmitClick, this));
-
-  this.elem.on('keypress', $.proxy(this.onFormKeyPress, this));
-
-  if (this.elem.data('romo-form-reload-page') === true) {
-    this.elem.on('form:submitSuccess', function(e, data, form) {
-      Romo.reloadPage();
-    })
-  }
-
-}
-
-RomoForm.prototype.onFormKeyPress = function(e) {
-  if (this.elem.data('romo-form-disable-keypress') !== true) {
-    var targetElem = $(e.target);
-    if (targetElem.is(':not(TEXTAREA)') && e.keyCode === 13 /* Enter */) {
-      e.preventDefault();
-      if (this.elem.data('romo-form-disable-enter-submit') !== true &&
-          targetElem.data('romo-form-disable-enter-submit') !== true) {
-        this.onSubmitClick();
-      }
-    }
-  }
-}
-
-RomoForm.prototype.onSubmitClick = function(e) {
-  if (e !== undefined) {
-    e.preventDefault();
-  }
-
-  if (this.submitElem.data('romo-form-submit') === 'confirm') {
-    this.elem.trigger('form:confirmSubmit', [this]);
-  } else if (this.submitElem.hasClass('disabled') === false) {
-    this.doSubmit();
-  }
-}
+  Romo.trigger(this.elem, 'romoForm:clearMsgs', [this]);
+  Romo.trigger(this.elem, 'romoForm:ready',     [this]);
+});
 
 RomoForm.prototype.doSubmit = function() {
   this.submitQueued = true;
   if (this.submitRunning === false) {
-    this._doSubmit();
+    this._submit();
   }
-}
-
-RomoForm.prototype.onSubmitSuccess = function(data, status, xhr) {
-  this.elem.trigger('form:clearMsgs');
-  this.elem.trigger('form:submitSuccess', [data, this]);
-  this._doCompleteSubmit();
-}
-
-RomoForm.prototype.onSubmitError = function(xhr, errorType, error) {
-  this.elem.trigger('form:clearMsgs');
-
-  if(xhr.status === 422) {
-    this.elem.trigger('form:submitInvalidMsgs', [$.parseJSON(xhr.responseText), xhr, this]);
-  } else {
-    this.elem.trigger('form:submitXhrError', [xhr, this]);
-  }
-  this.elem.trigger('form:submitError', [xhr, this]);
-  this.indicatorElems.trigger('indicator:triggerStop');
-  this._doCompleteSubmit();
 }
 
 // private
 
-RomoForm.prototype._doCompleteSubmit = function() {
-  this.elem.trigger('form:submitComplete', [this]);
+RomoForm.prototype._bindElem = function() {
+  Romo.on(this.submitElems, 'click', Romo.proxy(this._onSubmitClick, this));
+
+  Romo.on(this.changeSubmitElems, 'change', Romo.proxy(function(e) {
+    Romo.trigger(this.elem, 'romoForm:triggerSubmit');
+  }, this));
+
+  Romo.on(this.onkeySubmitElems, 'romoOnkey:trigger', Romo.proxy(function(e, triggerEvent, romoOnkey) {
+    Romo.trigger(this.elem, 'romoForm:triggerSubmit');
+  }, this));
+
+  Romo.on(this.elem, 'romoForm:triggerSubmit', Romo.proxy(this._onTriggerSubmit, this));
+  Romo.on(this.elem, 'keypress',               Romo.proxy(this._onFormKeyPress,  this));
+
+  if (Romo.data(this.elem, 'romo-form-reload-page') === true) {
+    Romo.on(this.elem, 'romoForm:submitSuccess', function(e, data, romoForm) {
+      Romo.reloadPage();
+    });
+  }
+}
+
+RomoForm.prototype._submit = function() {
+  this.submitQueued  = false;
+  this.submitRunning = true;
+
+  Romo.trigger(this.spinnerElems, 'romoSpinner:triggerStart');
+  Romo.trigger(this.elem, 'romoForm:beforeSubmit', [this]);
+
+  if(Romo.data(this.elem, 'romo-form-browser-submit') === true) {
+    this._browserSubmit();
+  } else if (Romo.attr(this.elem, 'method').toUpperCase() === 'GET') {
+    this._nonBrowserGetSubmit();
+  } else {
+    this._nonBrowserNonGetSubmit();
+  }
+}
+
+RomoForm.prototype._browserSubmit = function() {
+  this.elem.submit();
+  Romo.trigger(this.elem, 'romoForm:browserSubmit', [this]);
+}
+
+RomoForm.prototype._nonBrowserGetSubmit = function() {
+  var formValues = this._getFormValues({ includeFiles: false });
+
+  if (Romo.data(this.elem, 'romo-form-redirect-page') === true) {
+    var paramString = Romo.param(formValues, {
+      removeEmpty:  this.removeEmptyGetParams,
+      decodeValues: this.decodeParams
+    });
+    if (paramString !== '') {
+      Romo.redirectPage(Romo.attr(this.elem, 'action')+'?'+paramString);
+    } else {
+      Romo.redirectPage(Romo.attr(this.elem, 'action'));
+    }
+  } else {
+    this._ajaxSubmit(formValues);
+  }
+}
+
+RomoForm.prototype._nonBrowserNonGetSubmit = function() {
+  var formValues = this._getFormValues({ includeFiles: true });
+
+  this._ajaxSubmit(formValues);
+}
+
+RomoForm.prototype._ajaxSubmit = function(formValues) {
+  Romo.ajax({
+    url:     Romo.attr(this.elem, 'action'),
+    type:    Romo.attr(this.elem, 'method'),
+    data:    formValues,
+    success: Romo.proxy(this._onSubmitSuccess, this),
+    error:   Romo.proxy(this._onSubmitError,   this)
+  });
+}
+
+
+RomoForm.prototype._completeSubmit = function() {
+  Romo.trigger(this.elem, 'romoForm:submitComplete', [this]);
   if (this.submitQueued === true) {
-    this._doSubmit();
+    this._submit();
   } else {
     this.submitRunning = false;
   }
 }
 
-RomoForm.prototype._doSubmit = function() {
-  this.submitQueued  = false;
-  this.submitRunning = true;
-  this.indicatorElems.trigger('indicator:triggerStart');
-  this.elem.trigger('form:beforeSubmit', [this]);
-
-  if(this.elem.data('romo-form-browser-submit') === true) {
-    this._doBrowserSubmit();
-  } else if (this.elem.attr('method').toUpperCase() === 'GET') {
-    this._doNonBrowserGetSubmit();
-  } else {
-    this._doNonBrowserNonGetSubmit();
+RomoForm.prototype._getFormValues = function(opts) {
+  if (opts === undefined) {
+    opts = { includeFiles: false };
   }
-}
+  var formValues = {};
 
-RomoForm.prototype._doBrowserSubmit = function() {
-  this.elem.submit();
-  this.elem.trigger('form:browserSubmit', [this]);
-}
-
-RomoForm.prototype._doNonBrowserGetSubmit = function() {
-  var data = this._getSerializeObj();
-
-  if (this.elem.data('romo-form-redirect-page') === true) {
-    var paramString = Romo.param(data, {
-      removeEmpty:  this.removeEmptyGetParams,
-      decodeValues: this.decodeParams
-    });
-    if (paramString !== '') {
-      Romo.redirectPage(this.elem.attr('action') + '?' + paramString);
-    } else {
-      Romo.redirectPage(this.elem.attr('action'));
+  // build formValues from the form elements
+  // { "inputName1": ["inputValue1"],
+  //   "inputName2": ["inputValue1", "inputValue2"],
+  //   ...
+  // }
+  Romo.array(this.elem.elements).forEach(function(inputElem) {
+    if ( inputElem.nodeName.toLowerCase() !== 'fieldset' &&
+         inputElem.name              &&
+         !inputElem.disabled         &&
+         inputElem.type !== 'submit' &&
+         inputElem.type !== 'reset'  &&
+         inputElem.type !== 'button' &&
+         (opts.includeFiles || inputElem.type  !== 'file') &&
+         (inputElem.checked || (inputElem.type !== 'radio' && inputElem.type !== 'checkbox'))
+       ) {
+      if (formValues[inputElem.name] === undefined) {
+        formValues[inputElem.name] = [];
+      }
+      if (inputElem.nodeName.toLowerCase() === 'select') {
+        Romo.find(inputElem, 'option').filter(function(optElem){
+          return optElem.selected;
+        }).forEach(function(selectedOptElem) {
+          formValues[inputElem.name].push(selectedOptElem.value);
+        });
+      } else if (inputElem.type === 'file') {
+        Array.prototype.forEach.call(inputElem.files, function(file) {
+          formValues[inputElem.name].push(file);
+        });
+      } else {
+        formValues[inputElem.name].push(inputElem.value);
+      }
     }
-
-  } else {
-    this._doAjaxSubmit(data, true);
-  }
-}
-
-RomoForm.prototype._doNonBrowserNonGetSubmit = function() {
-  this._doAjaxSubmit(this._getFormData(), false);
-}
-
-RomoForm.prototype._doAjaxSubmit = function(data, process) {
-  $.ajax({
-    url:         this.elem.attr('action'),
-    type:        this.elem.attr('method'),
-    dataType:    this._getXhrDataType(),
-    data:        data,
-    processData: process,
-    contentType: false,
-    success:     $.proxy(this.onSubmitSuccess, this),
-    error:       $.proxy(this.onSubmitError, this)
-  });
-}
-
-RomoForm.prototype._getFormData = function() {
-  var formData = new FormData();
-
-  $.each(this._getSerializeObj(), function(k, v){ formData.append(k, v) });
-  $.each(this.elem.find('INPUT[type="file"]'), function(i, fileInput) {
-    var attrName = $(fileInput).attr('name')
-    $.each(fileInput.files, function(i, file) { formData.append(attrName, file) });
   });
 
-  return formData;
-}
-
-RomoForm.prototype._getSerializeObj = function() {
-  var listNamesDelims = this._getListValueInputNamesDelims();
-
-  return this.elem.serializeArray().reduce(function(prev, curr) {
-    if (listNamesDelims[curr.name] !== undefined) {
-      prev[curr.name] = $.map([prev[curr.name], curr.value], function(v) {
-        return v; // $.map removes null/undefined vals, this acts like a compact function
-      }).join(listNamesDelims[curr.name])
-    } else {
-      prev[curr.name] = curr.value;
+  // process any list value inputs (if any)
+  // { inputName1: ["inputValue1"],
+  //   inputName2: ["inputValue1,inputValue2"],
+  //   ...
+  // }
+  var listDelims = Romo.find(this.elem, '[data-romo-form-list-values="true"]').reduce(
+    function(delims, inputElem) {
+      delims[Romo.attr(inputElem, 'name')] = (
+        Romo.data(inputElem, 'romo-form-list-values-delim') ||
+        this.defaultListValuesDelim
+      );
+      return delims;
+    },
+    {}
+  );
+  for (var name in listDelims) {
+    if (formValues[name]) {
+      formValues[name] = [formValues[name].join(listDelims[name])];
     }
+  }
 
-    return prev;
-  }, {});
-}
+  // remove the array from any single item array values
+  for(var key in formValues) {
+    if (formValues[key].length === 1) {
+      formValues[key] = formValues[key][0]
+    }
+  }
 
-RomoForm.prototype._getListValueInputNamesDelims = function() {
-  return Romo.toArray(this.elem.find('[data-romo-form-list-values="true"]')).reduce($.proxy(function(prev, curr) {
-    prev[$(curr).attr('name')] = $(curr).data('romo-form-list-values-delim') || this.defaultListValuesDelim;
-    return prev;
-  }, this), {});
+  return formValues;
 }
 
 RomoForm.prototype._getXhrDataType = function() {
-  if(this.elem.data('romo-form-xhr-data-type') !== undefined) {
-    return this.elem.data('romo-form-xhr-data-type');
-  } else {
-    return 'json';
+  var dataType = Romo.data(this.elem, 'romo-form-xhr-data-type');
+  return ((dataType === undefined) ? 'json' : dataType);
+}
+
+// event functions
+
+RomoForm.prototype.romoEvFn._onSubmitClick = function(e) {
+  e.preventDefault();
+
+  var submitElem = e.target;
+  if (!Romo.hasClass(submitElem, 'disabled')) {
+    if (Romo.data(submitElem, 'romo-form-submit') === 'confirm') {
+      Romo.trigger(this.elem, 'romoForm:confirmSubmit', [this]);
+    } else {
+      this.doSubmit();
+    }
   }
 }
 
-Romo.onInitUI(function(e) {
-  Romo.initUIElems(e, '[data-romo-form-auto="true"]').romoForm();
-});
+RomoForm.prototype.romoEvFn._onTriggerSubmit = function() {
+  var disabled = this.submitElems.reduce(function(disabled, submitElem) {
+    return disabled || Romo.hasClass(submitElem, 'disabled');
+  }, false);
+  if (!disabled) {
+    var confirm = this.submitElems.reduce(function(confirm, submitElem) {
+      return confirm || Romo.data(submitElem, 'romo-form-submit') === 'confirm';
+    }, false);
+    if (confirm) {
+      Romo.trigger(this.elem, 'romoForm:confirmSubmit', [this]);
+    } else {
+      this.doSubmit();
+    }
+  }
+}
 
+RomoForm.prototype.romoEvFn._onFormKeyPress = function(e) {
+  if (Romo.data(this.elem, 'romo-form-disable-keypress') !== true) {
+    var targetElem = e.target;
+    if (targetElem.nodeName.toLowerCase() !== 'textarea' && e.keyCode === 13 /* Enter */) {
+      e.preventDefault();
+      if (Romo.data(this.elem,  'romo-form-disable-enter-submit') !== true &&
+          Romo.data(targetElem, 'romo-form-disable-enter-submit') !== true) {
+        this._onTriggerSubmit();
+      }
+    }
+  }
+}
+
+RomoForm.prototype.romoEvFn._onSubmitSuccess = function(response, status, xhr) {
+  Romo.trigger(this.elem, 'romoForm:clearMsgs');
+
+  var dataType = this._getXhrDataType();
+  Romo.trigger(
+    this.elem,
+    'romoForm:submitSuccess',
+    [(dataType === 'json' ? JSON.parse(response) : response), this]
+  );
+
+  this._completeSubmit();
+}
+
+RomoForm.prototype.romoEvFn._onSubmitError = function(statusText, status, xhr) {
+  Romo.trigger(this.elem, 'romoForm:clearMsgs');
+
+  if(status === 422) {
+    var dataType = this._getXhrDataType();
+    Romo.trigger(
+      this.elem,
+      'romoForm:submitInvalidMsgs',
+      [(dataType === 'json' ? JSON.parse(xhr.responseText) : xhr.responseText), xhr, this]
+    );
+  } else {
+    Romo.trigger(this.elem, 'romoForm:submitXhrError', [xhr, this]);
+  }
+  Romo.trigger(this.elem, 'romoForm:submitError', [xhr, this]);
+  Romo.trigger(this.spinnerElems, 'romoSpinner:triggerStop');
+
+  this._completeSubmit();
+}
+
+// init
+
+Romo.addElemsInitSelector('[data-romo-form-auto="true"]', RomoForm);

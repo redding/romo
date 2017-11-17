@@ -1,35 +1,38 @@
-$.fn.romoOnkey = function() {
-  return $.map(this, function(element) {
-    return new RomoOnkey(element);
-  });
-}
+var RomoOnkey = RomoComponent(function(elem) {
+  this.elem = elem;
 
-var RomoOnkey = function(element) {
-  this.elem = $(element);
   this.defaultTriggerOn = 'keydown';
+  this.defaultDelayMs   = 0;
+  this.delayTimeout     = undefined;
 
   this.doInit();
 
-  this.triggerOn = this.elem.data('romo-onkey-on') || this.defaultTriggerOn;
-  this.elem.on(this.triggerOn, $.proxy(this.onTrigger, this));
+  this.triggerOn = Romo.data(this.elem, 'romo-onkey-on') || this.defaultTriggerOn;
+  Romo.on(this.elem, this.triggerOn, Romo.proxy(this._onTrigger, this));
 
-  this.elem.trigger('onkey:ready', [this]);
+  Romo.trigger(this.elem, 'romoOnkey:ready', [this]);
+});
+
+// private
+
+RomoOnkey.prototype._doTrigger = function(triggerEvent) {
+  clearTimeout(this.delayTimeout);
+  this.delayTimeout = setTimeout(
+    Romo.proxy(function() {
+      Romo.trigger(this.elem, 'romoOnkey:trigger', [triggerEvent, this]);
+    }, this),
+    Romo.data(this.elem, 'romo-onkey-delay-ms') || this.defaultDelayMs
+  );
 }
 
-RomoOnkey.prototype.doInit = function() {
-  // override as needed
-}
+// event functions
 
-RomoOnkey.prototype.onTrigger = function(e) {
-  if (this.elem.hasClass('disabled') === false) {
-    this.doTrigger(e);
+RomoOnkey.prototype.romoEvFn._onTrigger = function(e) {
+  if (Romo.hasClass(this.elem, 'disabled') === false) {
+    this._doTrigger(e);
   }
 }
 
-RomoOnkey.prototype.doTrigger = function(triggerEvent) {
-  this.elem.trigger('onkey:trigger', [triggerEvent, this]);
-}
+// init
 
-Romo.onInitUI(function(e) {
-  Romo.initUIElems(e, '[data-romo-onkey-auto="true"]').romoOnkey();
-});
+Romo.addElemsInitSelector('[data-romo-onkey-auto="true"]', RomoOnkey);

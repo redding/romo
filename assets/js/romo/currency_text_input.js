@@ -1,11 +1,5 @@
-$.fn.romoCurrencyTextInput = function() {
-  return $.map(this, function(element) {
-    return new RomoCurrencyTextInput(element);
-  });
-}
-
-var RomoCurrencyTextInput = function(element) {
-  this.elem            = $(element);
+var RomoCurrencyTextInput = RomoComponent(function(elem) {
+  this.elem            = elem;
   this.hiddenInputElem = undefined;
 
   this.defaultIndicatorPosition       = 'left';
@@ -15,108 +9,117 @@ var RomoCurrencyTextInput = function(element) {
   this.defaultFormatNumDecimalPlaces  = 2;
 
   this.doInit();
-  this.doBindElem();
+  this._bindElem();
 
-  this.elem.trigger('romoCurrencyTextInput:ready', [this]);
-}
-
-RomoCurrencyTextInput.prototype.doInit = function() {
-  // override as needed
-}
-
-RomoCurrencyTextInput.prototype.doBindElem = function() {
-  this.doBindIndicatorTextInput();
-
-  this.hiddenInputElem = this._getHiddenInputElem();
-  this.elem.before(this.hiddenInputElem);
-  this.elem.attr('name', this._getNewInputName());
-
-  this.elem.on('change', $.proxy(function(e) {
-    this.doUpdateInputValue();
-  }, this));
-  this.elem.on('romoCurrencyTextInput:triggerUpdateInputValue', $.proxy(function(e) {
-    this.doUpdateInputValue();
-  }, this));
-
-  this.doUpdateInputValue();
-}
-
-RomoCurrencyTextInput.prototype.doUpdateInputValue = function() {
-  var unFormattedValue = this._unFormatCurrencyValue(this.elem.val());
-  this.hiddenInputElem.val(unFormattedValue);
-  if (this.elem.data('romo-currency-text-input-format-for-currency') !== false) {
-    this.elem.val(this._formatCurrencyValue(unFormattedValue));
-  } else {
-    this.elem.val(unFormattedValue);
-  }
-}
+  Romo.trigger(this.elem, 'romoCurrencyTextInput:ready', [this]);
+});
 
 RomoCurrencyTextInput.prototype.doSetValue = function(value) {
-  this.elem.val(value);
-  this.doUpdateInputValue();
-}
-
-RomoCurrencyTextInput.prototype.doBindIndicatorTextInput = function() {
-  this.elem.attr(
-    'data-romo-indicator-text-input-indicator-position',
-    this.elem.data('romo-currency-text-input-indicator-position') || this.defaultIndicatorPosition
-  );
-
-  if (this.elem.data('romo-currency-text-input-indicator') !== undefined) {
-    this.elem.attr(
-      'data-romo-indicator-text-input-indicator',
-      this.elem.data('romo-currency-text-input-indicator')
-    );
-  }
-  if (this.elem.data('romo-currency-text-input-indicator-width-px') !== undefined) {
-    this.elem.attr(
-      'data-romo-indicator-text-input-indicator-width-px',
-      this.elem.data('romo-currency-text-input-indicator-width-px')
-    );
-  }
-  if (this.elem.data('romo-currency-text-input-indicator-padding-px') !== undefined) {
-    this.elem.attr(
-      'data-romo-indicator-text-input-indicator-padding-px',
-      this.elem.data('romo-currency-text-input-indicator-padding-px')
-    );
-  }
-  if (this.elem.data('romo-currency-text-input-elem-display') !== undefined) {
-    this.elem.attr(
-      'data-romo-indicator-text-input-elem-display',
-      this.elem.data('romo-currency-text-input-elem-display')
-    );
-  }
-  if (this.elem.data('romo-currency-text-input-btn-group') !== undefined) {
-    this.elem.attr(
-      'data-romo-indicator-text-input-btn-group',
-      this.elem.data('romo-currency-text-input-btn-group')
-    );
-  }
-
-  this.elem.on('indicatorTextInput:indicatorClick', $.proxy(function(e) {
-    this.elem.trigger('romoCurrencyTextInput:indicatorClick', []);
-  }, this));
-
-  this.elem.on('romoCurrencyTextInput:triggerPlaceIndicator', $.proxy(function(e) {
-    this.elem.trigger('indicatorTextInput:triggerPlaceIndicator', []);
-  }, this));
-  this.elem.on('romoCurrencyTextInput:triggerEnable', $.proxy(function(e) {
-    this.elem.trigger('indicatorTextInput:triggerEnable', []);
-  }, this));
-  this.elem.on('romoCurrencyTextInput:triggerDisable', $.proxy(function(e) {
-    this.elem.trigger('indicatorTextInput:triggerDisable', []);
-  }, this));
-  this.elem.on('romoCurrencyTextInput:triggerShow', $.proxy(function(e) {
-    this.elem.trigger('indicatorTextInput:triggerShow', []);
-  }, this));
-  this.elem.on('romoCurrencyTextInput:triggerHide', $.proxy(function(e) {
-    this.elem.trigger('indicatorTextInput:triggerHide', []);
-  }, this));
-
-  this.elem.romoIndicatorTextInput();
+  this.elem.value = value;
+  this._refreshInputValue();
 }
 
 // private
+
+RomoCurrencyTextInput.prototype._bindElem = function() {
+  this._bindIndicatorTextInput();
+
+  this.hiddenInputElem = this._getHiddenInputElem();
+  Romo.before(this.elem, this.hiddenInputElem);
+  Romo.setAttr(this.elem, 'name', this._getNewInputName());
+
+  Romo.on(this.elem, 'change', Romo.proxy(function(e) {
+    this._refreshInputValue();
+  }, this));
+  Romo.on(this.elem, 'romoOnkey:trigger', Romo.proxy(function(e, triggerEvent, romoOnkey) {
+    this._refreshInputValue(true);
+  }, this));
+  Romo.on(this.elem, 'romoCurrencyTextInput:triggerUpdateInputValue', Romo.proxy(function(e) {
+    this._refreshInputValue();
+  }, this));
+
+  new RomoOnkey(this.elem)
+
+  this._refreshInputValue();
+}
+
+RomoCurrencyTextInput.prototype._bindIndicatorTextInput = function() {
+  Romo.setData(
+    this.elem,
+    'romo-indicator-text-input-indicator-position',
+    Romo.data(this.elem, 'romo-currency-text-input-indicator-position') || this.defaultIndicatorPosition
+  );
+
+  if (Romo.data(this.elem, 'romo-currency-text-input-indicator') !== undefined) {
+    Romo.setData(
+      this.elem,
+      'romo-indicator-text-input-indicator',
+      Romo.data(this.elem, 'romo-currency-text-input-indicator')
+    );
+  }
+  if (Romo.data(this.elem, 'romo-currency-text-input-indicator-width-px') !== undefined) {
+    Romo.setData(
+      this.elem,
+      'romo-indicator-text-input-indicator-width-px',
+      Romo.data(this.elem, 'romo-currency-text-input-indicator-width-px')
+    );
+  }
+  if (Romo.data(this.elem, 'romo-currency-text-input-indicator-padding-px') !== undefined) {
+    Romo.setData(
+      this.elem,
+      'romo-indicator-text-input-indicator-padding-px',
+      Romo.data(this.elem, 'romo-currency-text-input-indicator-padding-px')
+    );
+  }
+  if (Romo.data(this.elem, 'romo-currency-text-input-elem-display') !== undefined) {
+    Romo.setData(
+      this.elem,
+      'romo-indicator-text-input-elem-display',
+      Romo.data(this.elem, 'romo-currency-text-input-elem-display')
+    );
+  }
+  if (Romo.data(this.elem, 'romo-currency-text-input-btn-group') !== undefined) {
+    Romo.setData(
+      this.elem,
+      'romo-indicator-text-input-btn-group',
+      Romo.data(this.elem, 'romo-currency-text-input-btn-group')
+    );
+  }
+
+  Romo.on(this.elem, 'romoIndicatorTextInput:indicatorClick', Romo.proxy(function(e) {
+    Romo.trigger(this.elem, 'romoCurrencyTextInput:indicatorClick', []);
+  }, this));
+
+  Romo.on(this.elem, 'romoCurrencyTextInput:triggerPlaceIndicator', Romo.proxy(function(e) {
+    Romo.trigger(this.elem, 'romoIndicatorTextInput:triggerPlaceIndicator', []);
+  }, this));
+  Romo.on(this.elem, 'romoCurrencyTextInput:triggerEnable', Romo.proxy(function(e) {
+    Romo.trigger(this.elem, 'romoIndicatorTextInput:triggerEnable', []);
+  }, this));
+  Romo.on(this.elem, 'romoCurrencyTextInput:triggerDisable', Romo.proxy(function(e) {
+    Romo.trigger(this.elem, 'romoIndicatorTextInput:triggerDisable', []);
+  }, this));
+  Romo.on(this.elem, 'romoCurrencyTextInput:triggerShow', Romo.proxy(function(e) {
+    Romo.trigger(this.elem, 'romoIndicatorTextInput:triggerShow', []);
+  }, this));
+  Romo.on(this.elem, 'romoCurrencyTextInput:triggerHide', Romo.proxy(function(e) {
+    Romo.trigger(this.elem, 'romoIndicatorTextInput:triggerHide', []);
+  }, this));
+
+  new RomoIndicatorTextInput(this.elem);
+}
+
+RomoCurrencyTextInput.prototype._refreshInputValue = function(skipRefreshElemValue) {
+  var unFormattedValue = this._unFormatCurrencyValue(this.elem.value);
+  this.hiddenInputElem.value = unFormattedValue;
+  if (!skipRefreshElemValue) {
+    if (Romo.data(this.elem, 'romo-currency-text-input-format-for-currency') !== false) {
+      this.elem.value = this._formatCurrencyValue(unFormattedValue);
+    } else {
+      this.elem.value = unFormattedValue;
+    }
+  }
+}
 
 RomoCurrencyTextInput.prototype._formatCurrencyValue = function(sanitizedValue) {
   return RomoCurrency.format(sanitizedValue, {
@@ -134,35 +137,42 @@ RomoCurrencyTextInput.prototype._unFormatCurrencyValue = function(inputValue) {
 
 RomoCurrencyTextInput.prototype._getFormatThousandsDelim = function() {
   return (
-    this.elem.data('romo-currency-text-input-format-thousands-delim') ||
+    Romo.data(this.elem, 'romo-currency-text-input-format-thousands-delim') ||
     this.defaultFormatThousandsDelim
   );
 }
 
 RomoCurrencyTextInput.prototype._getFormatDecimalDelim = function() {
   return (
-    this.elem.data('romo-currency-text-input-format-decimal-delim') ||
+    Romo.data(this.elem, 'romo-currency-text-input-format-decimal-delim') ||
     this.defaultFormatDecimalDelim
   );
 }
 
 RomoCurrencyTextInput.prototype._getFormatNumDecimalPlaces = function() {
-  var places = this.elem.data('romo-currency-text-input-format-num-decimal-places');
+  var places = Romo.data(this.elem, 'romo-currency-text-input-format-num-decimal-places');
   return !isNaN(places = Math.abs(places)) ? places : this.defaultFormatNumDecimalPlaces;
 }
 
 RomoCurrencyTextInput.prototype._getHiddenInputElem = function() {
-  return $('<input type="hidden" name="'+this.elem.attr('name')+'" value="'+this.elem.val()+'">');;
+  return Romo.elems(
+    '<input type="hidden" ' +
+           'name="'+Romo.attr(this.elem, 'name')+'" ' +
+           'value="'+this.elem.value+'"' +
+    '>'
+  )[0];
 }
 
 RomoCurrencyTextInput.prototype._getNewInputName = function() {
   return (
-    this.elem.attr('name')+
+    Romo.attr(this.elem, 'name')+
     '-'+
-    (this.elem.data('romo-currency-text-input-name-suffix') || this.defaultInputNameSuffix)
+    (Romo.data(this.elem, 'romo-currency-text-input-name-suffix') || this.defaultInputNameSuffix)
   );
 }
 
-Romo.onInitUI(function(e) {
-  Romo.initUIElems(e, '[data-romo-currency-text-input-auto="true"]').romoCurrencyTextInput();
-});
+// event functions
+
+// init
+
+Romo.addElemsInitSelector('[data-romo-currency-text-input-auto="true"]', RomoCurrencyTextInput);

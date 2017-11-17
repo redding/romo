@@ -1,19 +1,19 @@
 var RomoWordBoundaryFilter = function(filterString, setElems, getElemTextContentCallback) {
   this.boundaryCharsRegex = /[\s-_]+/;
-  this.matchingNodes      = [];
-  this.notMatchingNodes   = [];
+  this.matchingElems      = [];
+  this.notMatchingElems   = [];
   this.filters            = filterString
                               .trim()
                               .toLowerCase()
                               .split(this.boundaryCharsRegex);
 
-  Romo.toArray(setElems).forEach($.proxy(function(node) {
-    var contentStack = getElemTextContentCallback($(node))
+  Romo.array(setElems).forEach(Romo.proxy(function(elem) {
+    var contentStack = getElemTextContentCallback(elem)
                          .trim()
                          .toLowerCase()
                          .split(this.boundaryCharsRegex).reverse();
 
-    var match = this.filters.reduce($.proxy(function(filterMatch, filter) {
+    var match = this.filters.reduce(Romo.proxy(function(filterMatch, filter) {
       if (filterMatch === false) {
         // short-circuit the reduce
         return false;
@@ -33,12 +33,9 @@ var RomoWordBoundaryFilter = function(filterString, setElems, getElemTextContent
     }, this), true);
 
     if (match === true) {
-      this.matchingNodes.push(node);
+      this.matchingElems.push(elem);
     } else {
-      this.notMatchingNodes.push(node);
+      this.notMatchingElems.push(elem);
     }
   }, this));
-
-  this.matchingElems    = $(this.matchingNodes);
-  this.notMatchingElems = $(this.notMatchingNodes);
 }

@@ -1,359 +1,50 @@
-$.fn.romoDropdown = function() {
-  return $.map(this, function(element) {
-    return new RomoDropdown(element);
-  });
-}
-
-var RomoDropdown = function(element) {
-  this.elem = $(element);
-  this.doInitPopup();
-  this.romoAjax = this.elem.romoAjax()[0];
-  this.romoAjax.doUnbindElem(); // disable auto invoke on click
-
-  if (this.elem.data('romo-dropdown-disable-click-invoke') !== true) {
-    this.elem.unbind('click');
-    this.elem.on('click', $.proxy(this.onToggleClick, this));
-  }
-  this.elem.on('dropdown:triggerToggle', $.proxy(this.onToggleClick, this));
-  this.elem.on('dropdown:triggerPopupOpen', $.proxy(this.onPopupOpen, this));
-  this.elem.on('dropdown:triggerPopupClose', $.proxy(this.onPopupClose, this));
-  this.elem.on('romoAjax:callStart', $.proxy(function(e, romoAjax) {
-    this.doLoadBodyStart();
-    return false;
-  }, this));
-  this.elem.on('romoAjax:callSuccess', $.proxy(function(e, data, romoAjax) {
-    this.doLoadBodySuccess(data);
-    return false;
-  }, this));
-  this.elem.on('romoAjax:callError', $.proxy(function(e, xhr, romoAjax) {
-    this.doLoadBodyError(xhr);
-    return false;
-  }, this));
-
-  this.doBindElemKeyUp();
+var RomoDropdown = RomoComponent(function(elem) {
+  this.elem = elem;
 
   this.doInit();
-  this.doInitBody();
+  this._bindElem();
 
-  this.elem.trigger('dropdown:ready', [this]);
-}
+  Romo.trigger(this.elem, 'romoDropdown:ready', [this]);
+});
 
 RomoDropdown.prototype.popupOpen = function() {
-  return this.popupElem.hasClass('romo-dropdown-open') === true;
+  return Romo.hasClass(this.popupElem, 'romo-dropdown-open') === true;
 }
 
 RomoDropdown.prototype.popupClosed = function() {
-  return this.popupElem.hasClass('romo-dropdown-open') === false;
-}
-
-RomoDropdown.prototype.doInit = function() {
-  // override as needed
-}
-
-RomoDropdown.prototype.doInitPopup = function() {
-  this.popupElem = $('<div class="romo-dropdown-popup"><div class="romo-dropdown-body"></div></div>');
-  this.popupElem.appendTo(this.elem.closest(this.elem.data('romo-dropdown-append-to-closest') || 'body'));
-
-  this.popupElem.on('modal:popupOpen', $.proxy(function(e) {
-    this.doUnBindWindowBodyClick();
-    this.doUnBindWindowBodyKeyUp();
-    this.doUnBindElemKeyUp();
-  }, this));
-  this.popupElem.on('modal:popupClose', $.proxy(function(e) {
-    this.doBindWindowBodyClick();
-    this.doBindWindowBodyKeyUp();
-    this.doBindElemKeyUp();
-  }, this));
-
-  this.bodyElem = this.popupElem.find('> .romo-dropdown-body');
-  if (this.elem.data('romo-dropdown-style-class') !== undefined) {
-    this.bodyElem.addClass(this.elem.data('romo-dropdown-style-class'));
-  }
-
-  this.contentElem = $();
-
-  var positionData = this._parsePositionData(this.elem.data('romo-dropdown-position'));
-  this.popupPosition  = positionData.position  || 'bottom';
-  this.popupAlignment = positionData.alignment || 'left';
-  this.popupElem.attr('data-romo-dropdown-position',  this.popupPosition);
-  this.popupElem.attr('data-romo-dropdown-alignment', this.popupAlignment);
-  this.popupElem.attr('data-romo-dropdown-fixed', this.elem.data('romo-dropdown-fixed'));
-
-  this.doSetPopupZIndex(this.elem);
-
-  // don't propagate click events on the popup elem.  this prevents the popup
-  // from closing when clicked (see body click event bind on popup open)
-  this.popupElem.on('click', function(e) {
-    if (e !== undefined) {
-      e.stopPropagation();
-    }
-  })
-
-  // the popup should be treated like a child elem.  add it to Romo's
-  // parent-child elems so it will be removed when the elem is removed.
-  // delay adding it b/c other components may `append` generated dropdowns
-  // meaning the dropdown is removed and then re-added.  if added immediately
-  // the "remove" part will incorrectly remove the popup.
-  setTimeout($.proxy(function() {
-    Romo.parentChildElems.add(this.elem, [this.popupElem]);
-  }, this), 1);
-}
-
-RomoDropdown.prototype.doInitBody = function() {
-  this.doResetBody();
-
-  this.contentElem = this.bodyElem.find('.romo-dropdown-content').last();
-  if (this.contentElem.size() === 0) {
-    this.contentElem = this.bodyElem;
-  }
-
-  this.closeElem = this.popupElem.find('[data-romo-dropdown-close="true"]');
-  this.closeElem.unbind('click');
-  this.closeElem.on('click', $.proxy(this.onPopupClose, this));
-
-  this.contentElem.css({
-    'min-height': this.elem.data('romo-dropdown-min-height'),
-    'height':     this.elem.data('romo-dropdown-height'),
-    'overflow-x': this.elem.data('romo-dropdown-overflow-x') || 'auto',
-    'overflow-y': this.elem.data('romo-dropdown-overflow-y') || 'auto'
-  });
-
-  if (this.elem.data('romo-dropdown-max-height') === undefined) {
-    this.elem.attr('data-romo-dropdown-max-height', 'detect');
-  }
-  if (this.elem.data('romo-dropdown-max-height') !== 'detect') {
-    this.contentElem.css({
-      'max-height': this.elem.data('romo-dropdown-max-height')
-    });
-  }
-
-  if (this.elem.data('romo-dropdown-width') === 'elem') {
-    this.popupElem.css({
-      'width': this.elem.css('width')
-    });
-  } else {
-    this.contentElem.css({
-      'min-width':  this.elem.data('romo-dropdown-min-width'),
-      'max-width':  this.elem.data('romo-dropdown-max-width'),
-      'width':      this.elem.data('romo-dropdown-width')
-    });
-  }
-}
-
-RomoDropdown.prototype.doResetBody = function() {
-  this.contentElem.css({
-    'min-width':  '',
-    'max-width':  '',
-    'width':      '',
-    'min-height': '',
-    'max-height': '',
-    'height':     '',
-    'overflow-x': '',
-    'overflow-y': ''
-  });
-}
-
-RomoDropdown.prototype.doLoadBodyStart = function() {
-  this.bodyElem.html('');
-  this.doInitBody();
-  this.doPlacePopupElem();
-  this.elem.trigger('dropdown:loadBodyStart', [this]);
-}
-
-RomoDropdown.prototype.doLoadBodySuccess = function(data) {
-  Romo.initHtml(this.bodyElem, data);
-  this.doInitBody();
-  this.doPlacePopupElem();
-  this.elem.trigger('dropdown:loadBodySuccess', [data, this]);
-}
-
-RomoDropdown.prototype.doLoadBodyError = function(xhr) {
-  this.elem.trigger('dropdown:loadBodyError', [xhr, this]);
-}
-
-RomoDropdown.prototype.onToggleClick = function(e) {
-  if (e !== undefined) {
-    e.preventDefault();
-  }
-
-  if (this.elem.hasClass('disabled') === false &&
-      this.elem.data('romo-dropdown-disable-toggle') !== true) {
-    this.doToggle();
-    return true;
-  }
-  return false;
+  return Romo.hasClass(this.popupElem, 'romo-dropdown-open') === false;
 }
 
 RomoDropdown.prototype.doToggle = function() {
   if (this.popupOpen()) {
-    setTimeout($.proxy(function() {
-      this.doPopupClose();
-    }, this), 100);
+    Romo.pushFn(Romo.proxy(this.doPopupClose, this));
   } else {
-    setTimeout($.proxy(function() {
-      this.doPopupOpen();
-    }, this), 100);
+    Romo.pushFn(Romo.proxy(this.doPopupOpen, this));
   }
-  this.elem.trigger('dropdown:toggle', [this]);
-}
-
-RomoDropdown.prototype.onPopupOpen = function(e) {
-  if (e !== undefined) {
-    e.preventDefault();
-  }
-
-  if (this.elem.hasClass('disabled') === false && this.popupClosed()) {
-    setTimeout($.proxy(function() {
-      this.doPopupOpen();
-    }, this), 100);
-  }
+  Romo.trigger(this.elem, 'romoDropdown:toggle', [this]);
 }
 
 RomoDropdown.prototype.doPopupOpen = function() {
-  if (this.elem.data('romo-dropdown-content-elem') !== undefined) {
-    this.doLoadBodySuccess($(this.elem.data('romo-dropdown-content-elem')).html())
-  } else {
-    this.romoAjax.doInvoke();
-  }
-
-  this.popupElem.addClass('romo-dropdown-open');
-  this.doPlacePopupElem();
-
-  // bind an event to close the popup when clicking away from the
-  // popup.  Bind on a timeout to allow time for any toggle
-  // click event to propagate.  If no timeout, we'll bind this
-  // event, then the toggle click will propagate which will call
-  // this event and immediately close the popup.
-  setTimeout($.proxy(function() {
-    this.doBindWindowBodyClick();
-  }, this), 100);
-
-  // bind "esc" keystroke to toggle close
-  this.doBindWindowBodyKeyUp();
-
-  // bind window resizes reposition dropdown
-  $(window).on('resize', $.proxy(this.onResizeWindow, this));
-
-  this.elem.trigger('dropdown:popupOpen', [this]);
-}
-
-RomoDropdown.prototype.onPopupClose = function(e) {
-  if (e !== undefined) {
-    e.preventDefault();
-  }
-
-  if (this.elem.hasClass('disabled') === false && this.popupOpen()) {
-    setTimeout($.proxy(function() {
-      this.doPopupClose();
-    }, this), 100);
-  }
+  Romo.popupStack.addElem(
+    this.popupElem,
+    Romo.proxy(this._openPopup,       this),
+    Romo.proxy(this._closePopup,      this),
+    Romo.proxy(this.doPlacePopupElem, this)
+  );
 }
 
 RomoDropdown.prototype.doPopupClose = function() {
-  this.popupElem.removeClass('romo-dropdown-open');
-
-  // unbind any event to close the popup when clicking away from it
-  this.doUnBindWindowBodyClick();
-
-  // unbind "esc" keystroke to toggle close
-  this.doUnBindWindowBodyKeyUp();
-
-  // unbind window resizes reposition dropdown
-  $(window).off('resize', $.proxy(this.onResizeWindow, this));
-
-  // clear the content elem markup if configured to
-  if (this.elem.data('romo-dropdown-clear-content') === true) {
-    this.contentElem.html('');
-  }
-
-  this.elem.trigger('dropdown:popupClose', [this]);
-}
-
-RomoDropdown.prototype.doBindElemKeyUp = function() {
-  this.elem.on('keyup', $.proxy(this.onElemKeyUp, this));
-  this.popupElem.on('keyup', $.proxy(this.onElemKeyUp, this));
-}
-
-RomoDropdown.prototype.doUnBindElemKeyUp = function() {
-  this.elem.off('keyup', $.proxy(this.onElemKeyUp, this));
-  this.popupElem.off('keyup', $.proxy(this.onElemKeyUp, this));
-}
-
-RomoDropdown.prototype.onElemKeyUp = function(e) {
-  if (this.elem.hasClass('disabled') === false) {
-    if (this.popupOpen()) {
-      if(e.keyCode === 27 /* Esc */ ) {
-        this.doPopupClose();
-        this.elem.trigger('dropdown:popupClosedByEsc', [this]);
-        return false;
-      } else {
-        return true;
-      }
-    } else {
-      return true;
-    }
-  }
-  return true;
-}
-
-RomoDropdown.prototype.doBindWindowBodyClick = function() {
-  $('body').on('click', $.proxy(this.onWindowBodyClick, this));
-  $('body').on('modal:mousemove', $.proxy(this.onWindowBodyClick, this));
-}
-
-RomoDropdown.prototype.doUnBindWindowBodyClick = function() {
-  $('body').off('click', $.proxy(this.onWindowBodyClick, this));
-  $('body').off('modal:mousemove', $.proxy(this.onWindowBodyClick, this));
-}
-
-RomoDropdown.prototype.onWindowBodyClick = function(e) {
-  // if not clicked on the popup elem or the elem
-  var target = $(e.target);
-  if (e !== undefined &&
-      target.parents('.romo-dropdown-popup').size() === 0 &&
-      target.closest(this.elem).size() === 0) {
-    this.doPopupClose();
-  }
-  return true;
-}
-
-RomoDropdown.prototype.doBindWindowBodyKeyUp = function() {
-  $('body').on('keyup', $.proxy(this.onWindowBodyKeyUp, this));
-}
-
-RomoDropdown.prototype.doUnBindWindowBodyKeyUp = function() {
-  $('body').off('keyup', $.proxy(this.onWindowBodyKeyUp, this));
-}
-
-RomoDropdown.prototype.onWindowBodyKeyUp = function(e) {
-  if (e.keyCode === 27 /* Esc */) {
-    this.doPopupClose();
-    this.elem.trigger('dropdown:popupClosedByEsc', [this]);
-  }
-  return true;
-}
-
-RomoDropdown.prototype.onResizeWindow = function(e) {
-  this.doPlacePopupElem();
-  return true;
+  Romo.popupStack.closeThru(this.popupElem);
 }
 
 RomoDropdown.prototype.doPlacePopupElem = function() {
-  if (this.elem.parents('.romo-modal-popup').size() !== 0) {
-    this.popupElem.css({'position': 'fixed'});
-  }
-
-  var pos = $.extend({}, this.elem[0].getBoundingClientRect(), this.elem.offset());
-  var w = this.popupElem[0].offsetWidth;
-  var h = this.popupElem[0].offsetHeight;
-  var offset = {};
-
-  var configHeight = this.elem.data('romo-dropdown-height') || this.elem.data('romo-dropdown-max-height');
+  var configHeight = Romo.data(this.elem, 'romo-dropdown-height') ||
+                     Romo.data(this.elem, 'romo-dropdown-max-height');
   var configPosition = this.popupPosition;
 
   if (configHeight === 'detect') {
-    var popupHeight = this.popupElem.height();
-    var topAvailHeight = this._getPopupMaxAvailableHeight('top');
+    var popupHeight       = this.popupElem.offsetHeight;
+    var topAvailHeight    = this._getPopupMaxAvailableHeight('top');
     var bottomAvailHeight = this._getPopupMaxAvailableHeight('bottom');
 
     if (popupHeight < topAvailHeight && popupHeight < bottomAvailHeight) {
@@ -361,51 +52,220 @@ RomoDropdown.prototype.doPlacePopupElem = function() {
       configHeight = this._getPopupMaxAvailableHeight(configPosition);
     } else if (topAvailHeight > bottomAvailHeight) {
       configPosition = 'top';
-      configHeight = topAvailHeight;
+      configHeight   = topAvailHeight;
     } else {
       configPosition = 'bottom';
-      configHeight = bottomAvailHeight;
+      configHeight   = bottomAvailHeight;
     }
 
     // remove any height difference between the popup and content elems
     // assumes popup height always greater than or equal to content height
-    configHeight = configHeight - (h - this.contentElem[0].offsetHeight);
-    this.contentElem.css({'max-height': configHeight.toString() + 'px'});
+    var contentMaxHeight = configHeight - (popupHeight - this.contentElem.offsetHeight);
+    Romo.setStyle(this.contentElem, 'max-height', contentMaxHeight.toString() + 'px');
   }
 
-  if(h > configHeight) {
-    h = configHeight;
-  }
+  var elemRect   = this.elem.getBoundingClientRect();
+  var elemOffset = Romo.offset(this.elem);
 
+  var elemHeight = elemRect.height;
+  var elemWidth  = elemRect.width;
+  var elemTop    = elemOffset.top;
+  var elemLeft   = elemOffset.left
+
+  var popupOffsetHeight = this.popupElem.offsetHeight;
+  var popupOffsetWidth  = this.popupElem.offsetWidth;
+
+  var posTop = undefined;
   switch (configPosition) {
     case 'top':
       var pad = 2;
-      $.extend(offset, { top: pos.top - h - pad });
+      posTop = elemTop - popupOffsetHeight - pad;
       break;
     case 'bottom':
       var pad = 2;
-      $.extend(offset, { top: pos.top + pos.height + pad });
-      break;
-  }
-  switch (this.popupAlignment) {
-    case 'left':
-      $.extend(offset, { left: pos.left });
-      break;
-    case 'right':
-      $.extend(offset, { left: pos.left + pos.width - w });
+      posTop = elemTop + elemHeight + pad;
       break;
   }
 
-  $.extend(offset, {
-    top:  this._roundPosOffsetVal(offset['top']),
-    left: this._roundPosOffsetVal(offset['left'])
-  });
-  this.popupElem.offset(offset);
+  var posLeft = undefined;
+  switch (this.popupAlignment) {
+    case 'left':
+      posLeft = elemLeft;
+      break;
+    case 'right':
+      posLeft = elemLeft + elemWidth - popupOffsetWidth;
+      break;
+  }
+
+  Romo.setStyle(this.popupElem, 'top',  this._roundPosOffsetVal(posTop)+'px');
+  Romo.setStyle(this.popupElem, 'left', this._roundPosOffsetVal(posLeft)+'px');
 }
 
 RomoDropdown.prototype.doSetPopupZIndex = function(relativeElem) {
   var relativeZIndex = Romo.parseZIndex(relativeElem);
-  this.popupElem.css({'z-index': relativeZIndex + 1200}); // see z-index.css
+  Romo.setStyle(this.popupElem, 'z-index', relativeZIndex + 1200); // see z-index.css
+}
+
+// private
+
+RomoDropdown.prototype._openPopup = function() {
+  Romo.on(Romo.scrollableParents(this.elem), 'scroll', this._onScrollableParentsScroll);
+
+  if (Romo.data(this.elem, 'romo-dropdown-content-elem') !== undefined) {
+    var contentElem = Romo.elems(Romo.data(this.elem, 'romo-dropdown-content-elem'))[0];
+    this._loadBodySuccess(contentElem.outerHTML);
+  } else {
+    this.romoAjax.doInvoke();
+  }
+
+  Romo.addClass(this.popupElem, 'romo-dropdown-open');
+  this.doPlacePopupElem();
+
+  Romo.trigger(this.elem, 'romoDropdown:popupOpen', [this]);
+}
+
+RomoDropdown.prototype._closePopup = function() {
+  Romo.removeClass(this.popupElem, 'romo-dropdown-open');
+  Romo.off(Romo.scrollableParents(this.elem), 'scroll', this._onScrollableParentsScroll);
+
+  if (Romo.data(this.elem, 'romo-dropdown-clear-content') === true) {
+    Romo.updateHtml(this.contentElem, '');
+  }
+
+  Romo.trigger(this.elem, 'romoDropdown:popupClose', [this]);
+}
+
+RomoDropdown.prototype._bindElem = function() {
+  this._bindPopup();
+  this._bindAjax();
+  this._bindBody();
+
+  if (Romo.data(this.elem, 'romo-dropdown-disable-click-invoke') !== true) {
+    Romo.on(this.elem, 'click', Romo.proxy(this._onToggle, this));
+  }
+  Romo.on(this.elem, 'romoDropdown:triggerToggle',     Romo.proxy(this._onToggle,     this));
+  Romo.on(this.elem, 'romoDropdown:triggerPopupOpen',  Romo.proxy(this._onPopupOpen,  this));
+  Romo.on(this.elem, 'romoDropdown:triggerPopupClose', Romo.proxy(this._onPopupClose, this));
+}
+
+RomoDropdown.prototype._bindPopup = function() {
+  this.popupElem = Romo.elems(
+    '<div class="romo-dropdown-popup"><div class="romo-dropdown-body"></div></div>'
+  )[0];
+  var popupParentElem = Romo.closest(
+    this.elem,
+    Romo.data(this.elem, 'romo-dropdown-append-to-closest') || 'body'
+  );
+  Romo.append(popupParentElem, this.popupElem);
+
+  this.bodyElem = Romo.children(this.popupElem).find(Romo.proxy(function(childElem) {
+    return Romo.is(childElem, '.romo-dropdown-body');
+  }, this));
+  if (Romo.data(this.elem, 'romo-dropdown-style-class') !== undefined) {
+    Romo.addClass(this.bodyElem, Romo.data(this.elem, 'romo-dropdown-style-class'));
+  }
+
+  this.contentElem = undefined;
+
+  var positionData = this._parsePositionData(Romo.data(this.elem, 'romo-dropdown-position'));
+  this.popupPosition  = positionData.position  || 'bottom';
+  this.popupAlignment = positionData.alignment || 'left';
+  Romo.setData(this.popupElem, 'romo-dropdown-position',  this.popupPosition);
+  Romo.setData(this.popupElem, 'romo-dropdown-alignment', this.popupAlignment);
+
+  this.doSetPopupZIndex(this.elem);
+
+  Romo.parentChildElems.add(this.elem, [this.popupElem]);
+  Romo.on(this.popupElem, 'romoParentChildElems:childRemoved', Romo.proxy(function(e, childElem) {
+    Romo.popupStack.closeThru(this.popupElem);
+  }, this));
+  Romo.on(this.popupElem, 'romoPopupStack:popupClosedByEsc', Romo.proxy(function(e, romoPopupStack) {
+    Romo.trigger(this.elem, 'romoDropdown:popupClosedByEsc', [this]);
+  }, this));
+}
+
+RomoDropdown.prototype._bindAjax = function() {
+  this.romoAjax = new RomoAjax(this.elem);
+  this.romoAjax.doUnbindElem(); // disable auto invoke on click
+
+  Romo.on(this.elem, 'romoAjax:callStart', Romo.proxy(function(e, romoAjax) {
+    this._loadBodyStart();
+    return false;
+  }, this));
+  Romo.on(this.elem, 'romoAjax:callSuccess', Romo.proxy(function(e, data, romoAjax) {
+    this._loadBodySuccess(data);
+    return false;
+  }, this));
+  Romo.on(this.elem, 'romoAjax:callError', Romo.proxy(function(e, xhr, romoAjax) {
+    this._loadBodyError(xhr);
+    return false;
+  }, this));
+}
+
+RomoDropdown.prototype._bindBody = function() {
+  this._resetBody();
+
+  var contentElems = Romo.find(this.bodyElem, '.romo-dropdown-content');
+  this.contentElem = contentElems[contentElems.length - 1];
+  if (this.contentElem === undefined) {
+    this.contentElem = this.bodyElem;
+  }
+
+  this.closeElems = Romo.find(this.popupElem, '[data-romo-dropdown-close="true"]');
+  Romo.on(this.closeElems, 'click', Romo.proxy(this._onPopupClose, this));
+
+  Romo.setStyle(this.contentElem, 'min-height', Romo.data(this.elem, 'romo-dropdown-min-height'));
+  Romo.setStyle(this.contentElem, 'height',     Romo.data(this.elem, 'romo-dropdown-height'));
+  Romo.setStyle(this.contentElem, 'overflow-x', Romo.data(this.elem, 'romo-dropdown-overflow-x') || 'auto');
+  Romo.setStyle(this.contentElem, 'overflow-y', Romo.data(this.elem, 'romo-dropdown-overflow-y') || 'auto');
+
+  if (Romo.data(this.elem, 'romo-dropdown-max-height') === undefined) {
+    Romo.setData(this.elem, 'romo-dropdown-max-height', 'detect');
+  }
+  if (Romo.data(this.elem, 'romo-dropdown-max-height') !== 'detect') {
+    Romo.setStyle(this.contentElem, 'max-height', Romo.data(this.elem, 'romo-dropdown-max-height'));
+  }
+
+  if (Romo.data(this.elem, 'romo-dropdown-width') === 'elem') {
+    Romo.setStyle(this.popupElem, 'width', Romo.css(this.elem, 'width'));
+  } else {
+    Romo.setStyle(this.contentElem, 'min-width', Romo.data(this.elem, 'romo-dropdown-min-width'));
+    Romo.setStyle(this.contentElem, 'max-width', Romo.data(this.elem, 'romo-dropdown-max-width'));
+    Romo.setStyle(this.contentElem, 'width',     Romo.data(this.elem, 'romo-dropdown-width'));
+  }
+}
+
+RomoDropdown.prototype._resetBody = function() {
+  if (this.contentElem !== undefined) {
+    Romo.rmStyle(this.contentElem, 'min-width');
+    Romo.rmStyle(this.contentElem, 'max-width');
+    Romo.rmStyle(this.contentElem, 'width');
+    Romo.rmStyle(this.contentElem, 'min-height');
+    Romo.rmStyle(this.contentElem, 'max-height');
+    Romo.rmStyle(this.contentElem, 'height');
+    Romo.rmStyle(this.contentElem, 'overflow-x');
+    Romo.rmStyle(this.contentElem, 'overflow-y');
+  }
+}
+
+RomoDropdown.prototype._loadBodyStart = function() {
+  Romo.updateHtml(this.bodyElem, '');
+  this._bindBody();
+  this.doPlacePopupElem();
+  Romo.pushFn(Romo.proxy(this.doPlacePopupElem, this));
+  Romo.trigger(this.elem, 'romoDropdown:loadBodyStart', [this]);
+}
+
+RomoDropdown.prototype._loadBodySuccess = function(data) {
+  Romo.initUpdateHtml(this.bodyElem, data);
+  this._bindBody();
+  this.doPlacePopupElem();
+  Romo.pushFn(Romo.proxy(this.doPlacePopupElem, this));
+  Romo.trigger(this.elem, 'romoDropdown:loadBodySuccess', [data, this]);
+}
+
+RomoDropdown.prototype._loadBodyError = function(xhr) {
+  Romo.trigger(this.elem, 'romoDropdown:loadBodyError', [xhr, this]);
 }
 
 RomoDropdown.prototype._parsePositionData = function(posString) {
@@ -418,12 +278,13 @@ RomoDropdown.prototype._getPopupMaxAvailableHeight = function(position) {
 
   switch (position) {
     case 'top':
-      var elemTop = this.elem[0].getBoundingClientRect().top;
+      var elemTop = this.elem.getBoundingClientRect().top;
       maxHeight = elemTop - this._getPopupMaxHeightDetectPad(position);
       break;
     case 'bottom':
-      var elemBottom = this.elem[0].getBoundingClientRect().bottom;
-      maxHeight = $(window).height() - elemBottom - this._getPopupMaxHeightDetectPad(position);
+      var viewportHeight = document.documentElement.clientHeight;
+      var elemBottom     = this.elem.getBoundingClientRect().bottom;
+      maxHeight = viewportHeight - elemBottom - this._getPopupMaxHeightDetectPad(position);
       break;
   }
 
@@ -431,13 +292,43 @@ RomoDropdown.prototype._getPopupMaxAvailableHeight = function(position) {
 }
 
 RomoDropdown.prototype._getPopupMaxHeightDetectPad = function(position) {
-  return this.elem.data('romo-dropdown-max-height-detect-pad-'+position) || this.elem.data('romo-dropdown-max-height-detect-pad') || 10;
+  return Romo.data(this.elem, 'romo-dropdown-max-height-detect-pad-'+position) || Romo.data(this.elem, 'romo-dropdown-max-height-detect-pad') || 10;
 }
 
 RomoDropdown.prototype._roundPosOffsetVal = function(value) {
   return Math.round(value*100) / 100;
 }
 
-Romo.onInitUI(function(e) {
-  Romo.initUIElems(e, '[data-romo-dropdown-auto="true"]').romoDropdown();
-});
+// event functions
+
+RomoDropdown.prototype.romoEvFn._onToggle = function(e) {
+  e.preventDefault();
+
+  if (
+    Romo.hasClass(this.elem, 'disabled') === false &&
+    Romo.data(this.elem, 'romo-dropdown-disable-toggle') !== true
+  ) {
+    this.doToggle();
+  }
+}
+
+RomoDropdown.prototype.romoEvFn._onPopupOpen = function(e) {
+  if (Romo.hasClass(this.elem, 'disabled') === false && this.popupClosed()) {
+    Romo.pushFn(Romo.proxy(this.doPopupOpen, this));
+  }
+}
+
+RomoDropdown.prototype.romoEvFn._onPopupClose = function(e) {
+  if (Romo.hasClass(this.elem, 'disabled') === false && this.popupOpen()) {
+    Romo.pushFn(Romo.proxy(this.doPopupClose, this));
+  }
+}
+
+RomoDropdown.prototype.romoEvFn._onScrollableParentsScroll = function(e) {
+  Romo.popupStack.placeAllPopups();
+}
+
+// init
+
+Romo.popupStack.addStyleClass('romo-dropdown-popup');
+Romo.addElemsInitSelector('[data-romo-dropdown-auto="true"]', RomoDropdown);

@@ -1,11 +1,5 @@
-$.fn.romoIndicatorTextInput = function() {
-  return $.map(this, function(element) {
-    return new RomoIndicatorTextInput(element);
-  });
-}
-
-var RomoIndicatorTextInput = function(element) {
-  this.elem = $(element);
+var RomoIndicatorTextInput = RomoComponent(function(elem) {
+  this.elem = elem;
 
   this.defaultIndicatorClass     = undefined;
   this.defaultIndicatorPaddingPx = 5;
@@ -14,107 +8,92 @@ var RomoIndicatorTextInput = function(element) {
   this.doInit();
   this._bindElem();
 
-  this.elem.trigger('indicatorTextInput:ready', [this]);
-}
-
-RomoIndicatorTextInput.prototype.doInit = function() {
-  // override as needed
-}
+  Romo.trigger(this.elem, 'romoIndicatorTextInput:ready', [this]);
+});
 
 RomoIndicatorTextInput.prototype.doEnable = function() {
-  this.elem.prop('disabled', false);
-  this.elem.removeClass('disabled');
-  this.indicatorElem.removeClass('disabled');
+  this.elem.disabled = false;
+  Romo.removeClass([this.elem, this.indicatorElem], 'disabled');
 }
 
 RomoIndicatorTextInput.prototype.doDisable = function() {
-  this.elem.prop('disabled', true);
-  this.elem.addClass('disabled');
-  this.indicatorElem.addClass('disabled');
+  this.elem.disabled = true;
+  Romo.addClass([this.elem, this.indicatorElem], 'disabled');
 }
 
 RomoIndicatorTextInput.prototype.doShow = function() {
-  this._show(this.elem);
-  this._show(this.indicatorElem);
+  Romo.show([this.elem, this.indicatorElem]);
   this._placeIndicatorElem();
 }
 
 RomoIndicatorTextInput.prototype.doHide = function() {
-  this._hide(this.elem);
-  this._hide(this.indicatorElem);
+  Romo.hide([this.elem, this.indicatorElem]);
 }
 
-/* private */
+// private
 
 RomoIndicatorTextInput.prototype._bindElem = function() {
-  var elemWrapper = $('<div class="romo-indicator-text-input-wrapper"></div>');
-  elemWrapper.css({'display': (this.elem.data('romo-indicator-text-input-elem-display') || 'inline-block')});
-  if (this.elem.data('romo-indicator-text-input-btn-group') === true) {
-    elemWrapper.addClass('romo-btn-group');
+  var elemWrapper = Romo.elems('<div class="romo-indicator-text-input-wrapper"></div>')[0];
+  Romo.setStyle(elemWrapper, 'display', (Romo.data(this.elem, 'romo-indicator-text-input-elem-display') || 'inline-block'));
+  if (Romo.data(this.elem, 'romo-indicator-text-input-btn-group') === true) {
+    Romo.addClass(elemWrapper, 'romo-btn-group');
   }
 
-  this.elem.before(elemWrapper);
-  elemWrapper.append(this.elem);
+  Romo.before(this.elem, elemWrapper);
+  Romo.append(elemWrapper, this.elem);
+  Romo.parentChildElems.add(this.elem, [elemWrapper]);
 
-  // the elem wrapper should be treated like a child elem.  add it to Romo's
-  // parent-child elems so it will be removed when the elem (input) is removed.
-  // delay adding it b/c the `append` statement above is not a "move", it is
-  // a "remove" and "add" so if added immediately the "remove" part will
-  // incorrectly remove the wrapper.  Any value will do - I chose 1 arbitrarily.
-  setTimeout($.proxy(function() {
-    Romo.parentChildElems.add(this.elem, [elemWrapper]);
-  }, this), 1);
-
-  this.indicatorElem = $();
-  var indicatorClass = this.elem.data('romo-indicator-text-input-indicator') || this.defaultIndicatorClass;
+  this.indicatorElem = undefined;
+  var indicatorClass = Romo.data(this.elem, 'romo-indicator-text-input-indicator') || this.defaultIndicatorClass;
   if (indicatorClass !== undefined && indicatorClass !== 'none') {
-    this.indicatorElem = $('<div class="romo-indicator-text-input-indicator"><div><i class="'+indicatorClass+'"></i></div></div>');
-    this.elem.after(this.indicatorElem);
-    this.indicatorElem.on('click', $.proxy(this._onIndicatorClick, this));
+    this.indicatorElem = Romo.elems('<div class="romo-indicator-text-input-indicator"><div><i class="'+indicatorClass+'"></i></div></div>')[0];
+    Romo.after(this.elem, this.indicatorElem);
+    Romo.on(this.indicatorElem, 'click', Romo.proxy(this._onIndicatorClick, this));
     this._placeIndicatorElem();
 
-    this.indicatorIconContainerElem = this.indicatorElem.find('div');
-    if (this.elem.data('romo-indicator-text-input-indicator-basis-size') !== undefined) {
-      this.indicatorIconContainerElem.attr(
-        'data-romo-indicator-basis-size',
-        this.elem.data('romo-indicator-text-input-indicator-basis-size')
+    this.indicatorIconContainerElem = Romo.find(this.indicatorElem, 'div')[0];
+    if (Romo.data(this.elem, 'romo-indicator-text-input-spinner-basis-size') !== undefined) {
+      Romo.setData(
+        this.indicatorIconContainerElem,
+        'romo-spinner-basis-size',
+        Romo.data(this.elem, 'romo-indicator-text-input-spinner-basis-size')
       )
     }
-    this.indicatorIconContainerElem.romoIndicator();
+    new RomoSpinner(this.indicatorIconContainerElem);
 
-    this.elem.on('indicatorTextInput:triggerPlaceIndicator', $.proxy(function(e) {
+    Romo.on(this.elem, 'romoIndicatorTextInput:triggerPlaceIndicator', Romo.proxy(function(e) {
       this._placeIndicatorElem();
     }, this));
-    this.elem.on('indicatorTextInput:triggerIndicatorStart', $.proxy(function(e, basisSize) {
-      this.indicatorIconContainerElem.trigger('indicator:triggerStart', [basisSize]);
+    Romo.on(this.elem, 'romoIndicatorTextInput:triggerSpinnerStart', Romo.proxy(function(e, basisSize) {
+      Romo.trigger(this.indicatorIconContainerElem, 'romoSpinner:triggerStart', [basisSize]);
     }, this));
-    this.elem.on('indicatorTextInput:triggerIndicatorStop', $.proxy(function(e) {
-      this.indicatorIconContainerElem.trigger('indicator:triggerStop');
+    Romo.on(this.elem, 'romoIndicatorTextInput:triggerSpinnerStop', Romo.proxy(function(e) {
+      Romo.trigger(this.indicatorIconContainerElem, 'romoSpinner:triggerStop');
     }, this));
   }
 
-  this.elem.on('indicatorTextInput:triggerEnable', $.proxy(function(e) {
+  Romo.on(this.elem, 'romoIndicatorTextInput:triggerEnable', Romo.proxy(function(e) {
     this.doEnable();
   }, this));
-  this.elem.on('indicatorTextInput:triggerDisable', $.proxy(function(e) {
+  Romo.on(this.elem, 'romoIndicatorTextInput:triggerDisable', Romo.proxy(function(e) {
     this.doDisable();
   }, this));
-  this.elem.on('indicatorTextInput:triggerShow', $.proxy(function(e) {
+  Romo.on(this.elem, 'romoIndicatorTextInput:triggerShow', Romo.proxy(function(e) {
     this.doShow();
   }, this));
-  this.elem.on('indicatorTextInput:triggerHide', $.proxy(function(e) {
+  Romo.on(this.elem, 'romoIndicatorTextInput:triggerHide', Romo.proxy(function(e) {
     this.doHide();
   }, this));
 }
 
 RomoIndicatorTextInput.prototype._placeIndicatorElem = function() {
   if (this.indicatorElem !== undefined) {
-    this.indicatorElem.css({'line-height': this.elem.css('height')});
-    if (this.elem.prop('disabled') === true) {
-      this.indicatorElem.addClass('disabled');
+    Romo.setStyle(this.indicatorElem, 'line-height', Romo.css(this.elem, 'height'));
+    if (this.elem.disabled === true) {
+      Romo.addClass(this.indicatorElem, 'disabled');
     }
-    if (this.elem.css('display') === 'none') {
-      this._hide(this.indicatorElem);
+    if (Romo.css(this.elem, 'display') === 'none') {
+      Romo.hide(this.indicatorElem);
     }
 
     var indicatorPaddingPx = this._getIndicatorPaddingPx();
@@ -122,58 +101,48 @@ RomoIndicatorTextInput.prototype._placeIndicatorElem = function() {
     var indicatorPosition  = this._getIndicatorPosition();
 
     // add a pixel to account for the default input border
-    this.indicatorElem.css(indicatorPosition, indicatorPaddingPx+1);
+    Romo.setStyle(this.indicatorElem, indicatorPosition, indicatorPaddingPx+1+'px');
 
     // left-side padding
     // + indicator width
     // + right-side padding
     var inputPaddingPx = indicatorPaddingPx + indicatorWidthPx + indicatorPaddingPx;
-    this.elem.css('padding-'+indicatorPosition, inputPaddingPx+'px');
+    Romo.setStyle(this.elem, 'padding-'+indicatorPosition, inputPaddingPx+'px');
   }
-}
-
-RomoIndicatorTextInput.prototype._onIndicatorClick = function(e) {
-  if (e !== undefined) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
-  if (this.elem.prop('disabled') === false) {
-    this.elem.focus();
-    this.elem.trigger('indicatorTextInput:indicatorClick');
-  }
-}
-
-// private
-
-RomoIndicatorTextInput.prototype._show = function(elem) {
-  elem.css('display', '');
-}
-
-RomoIndicatorTextInput.prototype._hide = function(elem) {
-  elem.css('display', 'none');
 }
 
 RomoIndicatorTextInput.prototype._getIndicatorPaddingPx = function() {
   return (
-    this.elem.data('romo-indicator-text-input-indicator-padding-px') ||
+    Romo.data(this.elem, 'romo-indicator-text-input-indicator-padding-px') ||
     this.defaultIndicatorPaddingPx
   );
 }
 
 RomoIndicatorTextInput.prototype._getIndicatorWidthPx = function() {
   return (
-    this.elem.data('romo-indicator-text-input-indicator-width-px') ||
-    parseInt(Romo.getComputedStyle(this.indicatorElem[0], "width"), 10)
+    Romo.data(this.elem, 'romo-indicator-text-input-indicator-width-px') ||
+    parseInt(Romo.css(this.indicatorElem, "width"), 10)
   );
 }
 
 RomoIndicatorTextInput.prototype._getIndicatorPosition = function() {
   return (
-    this.elem.data('romo-indicator-text-input-indicator-position') ||
+    Romo.data(this.elem, 'romo-indicator-text-input-indicator-position') ||
     this.defaultIndicatorPosition
   );
 }
 
-Romo.onInitUI(function(e) {
-  Romo.initUIElems(e, '[data-romo-indicator-text-input-auto="true"]').romoIndicatorTextInput();
-});
+// event functions
+
+RomoIndicatorTextInput.prototype.romoEvFn._onIndicatorClick = function(e) {
+  e.preventDefault();
+
+  if (this.elem.disabled === false) {
+    this.elem.focus();
+    Romo.trigger(this.elem, 'romoIndicatorTextInput:indicatorClick');
+  }
+}
+
+// init
+
+Romo.addElemsInitSelector('[data-romo-indicator-text-input-auto="true"]', RomoIndicatorTextInput);

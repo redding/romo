@@ -29,6 +29,11 @@
     border-color: rgba(0, 0, 0, 0.2);
   }
 
+  .romo-modal-body,
+  .romo-modal-content {
+    position: relative;
+  }
+
   .romo-modal-popup:not([class*="romo-modal-open"]) {
     display: none;
   }

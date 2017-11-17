@@ -1,103 +1,104 @@
-$.fn.romoDropdownForm = function() {
-  return $.map(this, function(element) {
-    return new RomoDropdownForm(element);
-  });
-}
-
-var RomoDropdownForm = function(element) {
-  this.elem = $(element);
-
-  this.dropdown = this.elem.romoDropdown()[0];
-  this.doBindDropdown();
-
-  this.form = undefined;
-  this.elem.on('dropdownForm:form:triggerSubmit', $.proxy(function(e) {
-    if (this.form != undefined) {
-      this.form.elem.trigger('form:triggerSubmit', []);
-    }
-  }, this));
-  this.doBindForm();
-  this.elem.on('dropdown:loadBodySuccess', $.proxy(function(e, data, dropdown) {
-    this.doBindForm();
-    this.elem.trigger('dropdownForm:formReady', [this.form, this]);
-  }, this));
+var RomoDropdownForm = RomoComponent(function(elem) {
+  this.elem = elem;
 
   this.doInit();
-  this.elem.trigger('dropdownForm:ready', [this]);
-}
+  this._bindElem()
 
-RomoDropdownForm.prototype.doInit = function() {
-  // override as needed
-}
-
-RomoDropdownForm.prototype.doBindDropdown = function() {
-if (this.elem.data('romo-dropdown-clear-content') === undefined) {
-    this.elem.attr('data-romo-dropdown-clear-content', 'true');
-  }
-
-  this.elem.on('dropdown:ready', $.proxy(function(e, dropdown) {
-    this.elem.trigger('dropdownForm:dropdown:ready', [dropdown, this]);
-  }, this));
-  this.elem.on('dropdown:toggle', $.proxy(function(e, dropdown) {
-    this.elem.trigger('dropdownForm:dropdown:toggle', [dropdown, this]);
-  }, this));
-  this.elem.on('dropdown:popupOpen', $.proxy(function(e, dropdown) {
-    this.elem.trigger('dropdownForm:dropdown:popupOpen', [dropdown, this]);
-  }, this));
-  this.elem.on('dropdown:popupClose', $.proxy(function(e, dropdown) {
-    this.elem.trigger('dropdownForm:dropdown:popupClose', [dropdown, this]);
-  }, this));
-  this.elem.on('dropdown:loadBodyStart', $.proxy(function(e, dropdown) {
-    this.elem.trigger('dropdownForm:dropdown:loadBodyStart', [dropdown, this]);
-  }, this));
-  this.elem.on('dropdown:loadBodySuccess', $.proxy(function(e, data, dropdown) {
-    this.elem.trigger('dropdownForm:dropdown:loadBodySuccess', [data, dropdown, this]);
-  }, this));
-  this.elem.on('dropdown:loadBodyError', $.proxy(function(e, xhr, dropdown) {
-    this.elem.trigger('dropdownForm:dropdown:loadBodyError', [xhr, dropdown, this]);
-  }, this));
-  this.elem.on('dropdown:dismiss', $.proxy(function(e, dropdown) {
-    this.elem.trigger('dropdownForm:dropdown:dismiss', [dropdown, this]);
-  }, this));
-}
-
-RomoDropdownForm.prototype.doBindForm = function() {
-  var formElem = this.dropdown.popupElem.find('[data-romo-form-auto="dropdownForm"]');
-
-  formElem.on('form:clearMsgs', $.proxy(function(e, form) {
-    this.elem.trigger('dropdownForm:form:clearMsgs', [form, this]);
-  }, this));
-  formElem.on('form:ready', $.proxy(function(e, form) {
-    this.elem.trigger('dropdownForm:form:ready', [form, this]);
-  }, this));
-  formElem.on('form:confirmSubmit', $.proxy(function(e, form) {
-    this.elem.trigger('dropdownForm:form:confirmSubmit', [form, this]);
-  }, this));
-  formElem.on('form:beforeSubmit', $.proxy(function(e, form) {
-    this.elem.trigger('dropdownForm:form:beforeSubmit', [form, this]);
-  }, this));
-  formElem.on('form:submitSuccess', $.proxy(function(e, data, form) {
-    this.elem.trigger('dropdownForm:form:submitSuccess', [data, form, this]);
-  }, this));
-  formElem.on('form:submitInvalidMsgs', $.proxy(function(e, msgs, xhr, form) {
-    this.elem.trigger('dropdownForm:form:submitInvalidMsgs', [msgs, xhr, form, this]);
-  }, this));
-  formElem.on('form:submitXhrError', $.proxy(function(e, xhr, form) {
-    this.elem.trigger('dropdownForm:form:submitXhrError', [xhr, form, this]);
-  }, this));
-  formElem.on('form:submitError', $.proxy(function(e, xhr, form) {
-    this.elem.trigger('dropdownForm:form:submitError', [xhr, form, this]);
-  }, this));
-  formElem.on('form:browserSubmit', $.proxy(function(e, form) {
-    this.elem.trigger('dropdownForm:form:browserSubmit', [form, this]);
-  }, this));
-
-  var submitElement = this.dropdown.popupElem.find('[data-romo-form-submit]')[0];
-  var indicatorElements = this.dropdown.popupElem.find('[data-romo-indicator-auto="true"]');
-  this.form = formElem.romoForm(submitElement, indicatorElements)[0];
-}
-
-Romo.onInitUI(function(e) {
-  Romo.initUIElems(e, '[data-romo-dropdownForm-auto="true"]').romoDropdownForm();
+  Romo.trigger(this.elem, 'romoDropdownForm:ready', [this]);
 });
 
+// private
+
+RomoDropdownForm.prototype._bindElem = function() {
+  Romo.on(this.elem, 'romoDropdownForm:romoForm:triggerSubmit', Romo.proxy(function(e) {
+    if (this.romoForm !== undefined) {
+      Romo.trigger(this.romoForm.elem, 'romoForm:triggerSubmit', []);
+    }
+  }, this));
+  Romo.on(this.elem, 'romoDropdown:loadBodySuccess', Romo.proxy(function(e, data, romoDropdown) {
+    this._bindForm();
+    Romo.trigger(this.elem, 'romoDropdownForm:formReady', [this.romoForm, this]);
+  }, this));
+
+  this._bindDropdown();
+  this._bindForm();
+}
+
+RomoDropdownForm.prototype._bindDropdown = function() {
+  this.romoDropdown = new RomoDropdown(this.elem);
+
+  if (Romo.data(this.elem, 'romo-dropdown-clear-content') === undefined) {
+    Romo.setData(this.elem, 'romo-dropdown-clear-content', 'true');
+  }
+
+  Romo.on(this.elem, 'romoDropdown:ready', Romo.proxy(function(e, romoDropdown) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoDropdown:ready', [romoDropdown, this]);
+  }, this));
+  Romo.on(this.elem, 'romoDropdown:toggle', Romo.proxy(function(e, romoDropdown) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoDropdown:toggle', [romoDropdown, this]);
+  }, this));
+  Romo.on(this.elem, 'romoDropdown:popupOpen', Romo.proxy(function(e, romoDropdown) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoDropdown:popupOpen', [romoDropdown, this]);
+  }, this));
+  Romo.on(this.elem, 'romoDropdown:popupClose', Romo.proxy(function(e, romoDropdown) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoDropdown:popupClose', [romoDropdown, this]);
+  }, this));
+  Romo.on(this.elem, 'romoDropdown:loadBodyStart', Romo.proxy(function(e, romoDropdown) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoDropdown:loadBodyStart', [romoDropdown, this]);
+  }, this));
+  Romo.on(this.elem, 'romoDropdown:loadBodySuccess', Romo.proxy(function(e, data, romoDropdown) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoDropdown:loadBodySuccess', [data, romoDropdown, this]);
+  }, this));
+  Romo.on(this.elem, 'romoDropdown:loadBodyError', Romo.proxy(function(e, xhr, romoDropdown) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoDropdown:loadBodyError', [xhr, romoDropdown, this]);
+  }, this));
+  Romo.on(this.elem, 'romoDropdown:dismiss', Romo.proxy(function(e, romoDropdown) {
+    Romo.trigger(this.elem, 'romoDropdownForm:romoDropdown:dismiss', [romoDropdown, this]);
+  }, this));
+}
+
+RomoDropdownForm.prototype._bindForm = function() {
+  this.romoForm = undefined;
+  var formElem = Romo.find(this.romoDropdown.popupElem, '[data-romo-form-auto="dropdownForm"]')[0];
+
+  if (formElem !== undefined) {
+    Romo.on(formElem, 'romoForm:clearMsgs', Romo.proxy(function(e, romoForm) {
+      Romo.trigger(this.elem, 'romoDropdownForm:romoForm:clearMsgs', [romoForm, this]);
+    }, this));
+    Romo.on(formElem, 'romoForm:ready', Romo.proxy(function(e, romoForm) {
+      Romo.trigger(this.elem, 'romoDropdownForm:romoForm:ready', [romoForm, this]);
+    }, this));
+    Romo.on(formElem, 'romoForm:confirmSubmit', Romo.proxy(function(e, romoForm) {
+      Romo.trigger(this.elem, 'romoDropdownForm:romoForm:confirmSubmit', [romoForm, this]);
+    }, this));
+    Romo.on(formElem, 'romoForm:beforeSubmit', Romo.proxy(function(e, romoForm) {
+      Romo.trigger(this.elem, 'romoDropdownForm:romoForm:beforeSubmit', [romoForm, this]);
+    }, this));
+    Romo.on(formElem, 'romoForm:submitSuccess', Romo.proxy(function(e, data, romoForm) {
+      Romo.trigger(this.elem, 'romoDropdownForm:romoForm:submitSuccess', [data, romoForm, this]);
+    }, this));
+    Romo.on(formElem, 'romoForm:submitInvalidMsgs', Romo.proxy(function(e, msgs, xhr, romoForm) {
+      Romo.trigger(this.elem, 'romoDropdownForm:romoForm:submitInvalidMsgs', [msgs, xhr, romoForm, this]);
+    }, this));
+    Romo.on(formElem, 'romoForm:submitXhrError', Romo.proxy(function(e, xhr, romoForm) {
+      Romo.trigger(this.elem, 'romoDropdownForm:romoForm:submitXhrError', [xhr, romoForm, this]);
+    }, this));
+    Romo.on(formElem, 'romoForm:submitError', Romo.proxy(function(e, xhr, romoForm) {
+      Romo.trigger(this.elem, 'romoDropdownForm:romoForm:submitError', [xhr, romoForm, this]);
+    }, this));
+    Romo.on(formElem, 'romoForm:browserSubmit', Romo.proxy(function(e, romoForm) {
+      Romo.trigger(this.elem, 'romoDropdownForm:romoForm:browserSubmit', [romoForm, this]);
+    }, this));
+
+    var submitElems  = Romo.find(this.romoDropdown.popupElem, '[data-romo-form-submit]');
+    var spinnerElems = Romo.find(this.romoDropdown.popupElem, '[data-romo-spinner-auto="true"]');
+
+    this.romoForm = new RomoForm(formElem, submitElems, spinnerElems);
+  }
+}
+
+// event functions
+
+// init
+
+Romo.addElemsInitSelector('[data-romo-dropdownForm-auto="true"]', RomoDropdownForm);

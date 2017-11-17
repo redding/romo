@@ -1,385 +1,309 @@
-$.fn.romoModal = function() {
-  return $.map(this, function(element) {
-    return new RomoModal(element);
-  });
-}
-
-var RomoModal = function(element) {
-  this.elem = $(element);
-  this.doInitPopup();
-  this.romoAjax = this.elem.romoAjax()[0];
-  this.romoAjax.doUnbindElem(); // disable auto invoke on click
-
-  if (this.elem.data('romo-modal-disable-click-invoke') !== true) {
-    this.elem.unbind('click');
-    this.elem.on('click', $.proxy(this.onToggleClick, this));
-  }
-  this.elem.on('modal:triggerToggle', $.proxy(this.onToggleClick, this));
-  this.elem.on('modal:triggerPopupOpen', $.proxy(this.onPopupOpen, this));
-  this.elem.on('modal:triggerPopupClose', $.proxy(this.onPopupClose, this));
-  this.elem.on('romoAjax:callStart', $.proxy(function(e, romoAjax) {
-    this.doLoadBodyStart();
-    return false;
-  }, this));
-  this.elem.on('romoAjax:callSuccess', $.proxy(function(e, data, romoAjax) {
-    this.doLoadBodySuccess(data);
-    return false;
-  }, this));
-  this.elem.on('romoAjax:callError', $.proxy(function(e, xhr, romoAjax) {
-    this.doLoadBodyError(xhr);
-    return false;
-  }, this));
-
-  this.doBindElemKeyUp();
+var RomoModal = RomoComponent(function(elem) {
+  this.elem = elem;
 
   this.doInit();
-  this.doInitBody();
+  this._bindElem();
 
-  this.elem.trigger('modal:ready', [this]);
+  Romo.trigger(this.elem, 'romoModal:ready', [this]);
+});
+
+RomoModal.prototype.popupOpen = function() {
+  return Romo.hasClass(this.popupElem, 'romo-modal-open') === true;
 }
 
-RomoModal.prototype.doInit = function() {
-  // override as needed
-}
-
-RomoModal.prototype.doInitPopup = function() {
-  this.popupElem = $('<div class="romo-modal-popup"><div class="romo-modal-body"></div></div>');
-  this.popupElem.appendTo(this.elem.closest(this.elem.data('romo-modal-append-to-closest') || 'body'));
-
-  this.bodyElem = this.popupElem.find('> .romo-modal-body');
-  if (this.elem.data('romo-modal-style-class') !== undefined) {
-    this.bodyElem.addClass(this.elem.data('romo-modal-style-class'));
-  }
-
-  this.contentElem = $();
-  this.closeElem   = $();
-  this.dragElem    = $();
-
-  // the popup should be treated like a child elem.  add it to Romo's
-  // parent-child elems so it will be removed when the elem is removed.
-  // delay adding it b/c other components may `append` generated modals
-  // meaning the modal is removed and then re-added.  if added immediately
-  // the "remove" part will incorrectly remove the popup.
-  setTimeout($.proxy(function() {
-    Romo.parentChildElems.add(this.elem, [this.popupElem]);
-  }, this), 1);
-}
-
-RomoModal.prototype.doInitBody = function() {
-  this.doResetBody();
-
-  this.contentElem = this.bodyElem.find('.romo-modal-content').last();
-  if (this.contentElem.size() === 0) {
-    this.contentElem = this.bodyElem;
-  }
-
-  this.closeElem = this.popupElem.find('[data-romo-modal-close="true"]');
-  this.closeElem.unbind('click');
-  this.closeElem.on('click', $.proxy(this.onPopupClose, this));
-
-  this.dragElem = this.popupElem.find('[data-romo-modal-drag="true"]');
-  this.dragElem.addClass('romo-modal-grab');
-  this.dragElem.on('mousedown', $.proxy(this.onMouseDown, this));
-
-  var css = {
-    'min-width':  this.elem.data('romo-modal-min-width'),
-    'max-width':  this.elem.data('romo-modal-max-width'),
-    'width':      this.elem.data('romo-modal-width'),
-    'min-height': this.elem.data('romo-modal-min-height'),
-    'height':     this.elem.data('romo-modal-height'),
-    'overflow-x': 'auto',
-    'overflow-y': 'auto'
-  }
-
-  if (this.elem.data('romo-modal-max-height') === undefined) {
-    this.elem.attr('data-romo-modal-max-height', 'detect');
-  }
-  if (this.elem.data('romo-modal-max-height') !== 'detect') {
-    css['max-height'] = this.elem.data('romo-modal-max-height');
-  }
-
-  this.contentElem.css(css);
-}
-
-RomoModal.prototype.doResetBody = function() {
-  this.contentElem.css({
-    'min-width':  '',
-    'max-width':  '',
-    'width':      '',
-    'min-height': '',
-    'max-height': '',
-    'height':     '',
-    'overflow':   ''
-  });
-
-  this.closeElem.off('click', $.proxy(this.onPopupClose, this));
-}
-
-RomoModal.prototype.doLoadBodyStart = function() {
-  this.bodyElem.html('');
-  this.doInitBody();
-  this.doPlacePopupElem();
-  this.elem.trigger('modal:loadBodyStart', [this]);
-}
-
-RomoModal.prototype.doLoadBodySuccess = function(data) {
-  Romo.initHtml(this.bodyElem, data);
-  this.doInitBody();
-  this.doPlacePopupElem();
-  this.elem.trigger('modal:loadBodySuccess', [data, this]);
-}
-
-RomoModal.prototype.doLoadBodyError = function(xhr) {
-  this.elem.trigger('modal:loadBodyError', [xhr, this]);
-}
-
-RomoModal.prototype.onToggleClick = function(e) {
-  if (e !== undefined) {
-    e.preventDefault();
-  }
-
-  if (this.elem.hasClass('disabled') === false) {
-    this.doToggle();
-  }
+RomoModal.prototype.popupClosed = function() {
+  return Romo.hasClass(this.popupElem, 'romo-modal-open') === false;
 }
 
 RomoModal.prototype.doToggle = function() {
-  if (this.popupElem.hasClass('romo-modal-open')) {
-    setTimeout($.proxy(function() {
-      this.doPopupClose();
-    }, this), 100);
+  if (this.popupOpen()) {
+    Romo.pushFn(Romo.proxy(this.doPopupClose, this));
   } else {
-    setTimeout($.proxy(function() {
-      this.doPopupOpen();
-    }, this), 100);
+    Romo.pushFn(Romo.proxy(this.doPopupOpen, this));
   }
-  this.elem.trigger('modal:toggle', [this]);
-}
-
-RomoModal.prototype.onPopupOpen = function(e) {
-  if (e !== undefined) {
-    e.preventDefault();
-  }
-
-  if ((this.elem.hasClass('disabled') === false) &&
-      (this.popupElem.hasClass('romo-modal-open') === false)) {
-    setTimeout($.proxy(function() {
-      this.doPopupOpen();
-    }, this), 100);
-  }
+  Romo.trigger(this.elem, 'romoModal:toggle', [this]);
 }
 
 RomoModal.prototype.doPopupOpen = function() {
-  if (this.elem.data('romo-modal-content-elem') !== undefined) {
-    this.doLoadBodySuccess($(this.elem.data('romo-modal-content-elem')).html())
+  Romo.popupStack.addElem(
+    this.popupElem,
+    Romo.proxy(this._openPopup,       this),
+    Romo.proxy(this._closePopup,      this),
+    Romo.proxy(this.doPlacePopupElem, this)
+  );
+}
+
+RomoModal.prototype.doPopupClose = function() {
+  Romo.popupStack.closeThru(this.popupElem);
+}
+
+RomoModal.prototype.doPlacePopupElem = function() {
+  var viewportHeight = document.documentElement.clientHeight;
+  var viewportWidth  = document.documentElement.clientWidth;
+
+  if (Romo.data(this.elem, 'romo-modal-max-height') === 'detect') {
+    var pad           = Romo.data(this.elem, 'romo-modal-max-height-detect-pad') || 10;
+    var contentTop    = this.contentElem.getBoundingClientRect().top;
+    var contentBottom = this.contentElem.getBoundingClientRect().bottom;
+    var bodyBottom    = this.bodyElem.getBoundingClientRect().bottom;
+    var padBottom     = bodyBottom - contentBottom;
+
+    var maxHeight = viewportHeight - contentTop - padBottom - pad;
+    Romo.setStyle(this.contentElem, 'max-height', maxHeight.toString() + 'px');
+  }
+
+  var popupOffsetHeight = this.popupElem.offsetHeight;
+  var popupOffsetWidth  = this.popupElem.offsetWidth;
+  var minHeightWidth    = 75;
+  var centerTop         = (viewportHeight / 2) - (popupOffsetHeight / 2);
+  var centerLeft        = (viewportWidth  / 2) - (popupOffsetWidth / 2);
+
+  var offsetTop = viewportHeight * 0.15;
+  if (centerTop < offsetTop) { offsetTop = centerTop; }
+  if (offsetTop < minHeightWidth) { offsetTop = minHeightWidth; }
+
+  var offsetLeft = centerLeft;
+  if (offsetLeft < minHeightWidth) { offsetLeft = minHeightWidth; }
+
+  Romo.setStyle(this.popupElem, 'top',  offsetTop + 'px');
+  Romo.setStyle(this.popupElem, 'left', offsetLeft + 'px');
+}
+
+// private
+
+RomoModal.prototype._openPopup = function() {
+  if (Romo.data(this.elem, 'romo-modal-content-elem') !== undefined) {
+    var contentElem = Romo.elems(Romo.data(this.elem, 'romo-modal-content-elem'))[0];
+    this._loadBodySuccess(contentElem.outerHTML);
   } else {
     this.romoAjax.doInvoke();
   }
 
-  this.popupElem.addClass('romo-modal-open');
+  Romo.addClass(this.popupElem, 'romo-modal-open');
   this.doPlacePopupElem();
 
-  // bind an event to close the popup when clicking away from the
-  // popup.  Bind on a timeout to allow time for any toggle
-  // click event to propagate.  If no timeout, we'll bind this
-  // event, then the toggle click will propagate which will call
-  // this event and immediately close the popup.
-  setTimeout($.proxy(function() {
-    this.doBindWindowBodyClick();
-  }, this), 100);
-
-  // bind "esc" keystroke to toggle close
-  this.doBindWindowBodyKeyUp();
-
-  // bind window resizes reposition modal
-  $(window).on('resize', $.proxy(this.onResizeWindow, this));
-
-  this.elem.trigger('modal:popupOpen', [this]);
+  Romo.trigger(this.elem, 'romoModal:popupOpen', [this]);
 }
 
-RomoModal.prototype.onPopupClose = function(e) {
-  if (e !== undefined) {
-    e.preventDefault();
+RomoModal.prototype._closePopup = function() {
+  Romo.removeClass(this.popupElem, 'romo-modal-open');
+
+  if (Romo.data(this.elem, 'romo-modal-clear-content') === true) {
+    Romo.updateHtml(this.contentElem, '');
   }
 
-  if (this.elem.hasClass('disabled') === false) {
-    setTimeout($.proxy(function() {
-      this.doPopupClose();
-    }, this), 100);
+  Romo.trigger(this.elem, 'romoModal:popupClose', [this]);
+}
+
+RomoModal.prototype._bindElem = function() {
+  this._bindPopup();
+  this._bindAjax();
+  this._bindBody();
+
+  if (Romo.data(this.elem, 'romo-modal-disable-click-invoke') !== true) {
+    Romo.on(this.elem, 'click', Romo.proxy(this._onToggle, this));
+  }
+  Romo.on(this.elem, 'romoModal:triggerToggle',     Romo.proxy(this._onToggle,     this));
+  Romo.on(this.elem, 'romoModal:triggerPopupOpen',  Romo.proxy(this._onPopupOpen,  this));
+  Romo.on(this.elem, 'romoModal:triggerPopupClose', Romo.proxy(this._onPopupClose, this));
+}
+
+RomoModal.prototype._bindPopup = function() {
+  this.popupElem = Romo.elems('<div class="romo-modal-popup"><div class="romo-modal-body"></div></div>')[0];
+  var popupParentElem = Romo.closest(this.elem, Romo.data(this.elem, 'romo-dropdown-append-to-closest') || 'body');
+  Romo.append(popupParentElem, this.popupElem)
+
+  this.bodyElem = Romo.children(this.popupElem).find(Romo.proxy(function(childElem){
+    return Romo.is(childElem, '.romo-modal-body');
+  }, this));
+  if (Romo.data(this.elem, 'romo-modal-style-class') !== undefined) {
+    Romo.addClass(this.bodyElem, Romo.data(this.elem, 'romo-modal-style-class'));
+  }
+
+  this.contentElem = undefined;
+  this.closeElems  = [];
+  this.dragElems   = [];
+
+  Romo.parentChildElems.add(this.elem, [this.popupElem]);
+  Romo.on(this.popupElem, 'romoParentChildElems:childRemoved', Romo.proxy(function(e, childElem) {
+    Romo.popupStack.closeThru(this.popupElem);
+  }, this));
+  Romo.on(this.popupElem, 'romoPopupStack:popupClosedByEsc', Romo.proxy(function(e, romoPopupStack) {
+    Romo.trigger(this.elem, 'romoModal:popupClosedByEsc', [this]);
+  }, this));
+
+}
+
+RomoModal.prototype._bindAjax = function() {
+  this.romoAjax = new RomoAjax(this.elem);
+  this.romoAjax.doUnbindElem(); // disable auto invoke on click
+
+  Romo.on(this.elem, 'romoAjax:callStart', Romo.proxy(function(e, romoAjax) {
+    this._loadBodyStart();
+    return false;
+  }, this));
+  Romo.on(this.elem, 'romoAjax:callSuccess', Romo.proxy(function(e, data, romoAjax) {
+    this._loadBodySuccess(data);
+    return false;
+  }, this));
+  Romo.on(this.elem, 'romoAjax:callError', Romo.proxy(function(e, xhr, romoAjax) {
+    this._loadBodyError(xhr);
+    return false;
+  }, this));
+}
+
+RomoModal.prototype._bindBody = function() {
+  this._resetBody();
+
+  var contentElems = Romo.find(this.bodyElem, '.romo-modal-content');
+  this.contentElem = contentElems[contentElems.length - 1];
+  if (this.contentElem === undefined) {
+    this.contentElem = this.bodyElem;
+  }
+
+  this.closeElems = Romo.find(this.popupElem, '[data-romo-modal-close="true"]');
+  Romo.on(this.closeElems, 'click', Romo.proxy(this._onPopupClose, this));
+
+  this.dragElems = Romo.find(this.popupElem, '[data-romo-modal-drag="true"]');
+  Romo.on(this.dragElems, 'mousedown', Romo.proxy(this._onMouseDown, this));
+  Romo.addClass(this.dragElems, 'romo-modal-grab');
+
+  var css = {
+    'min-width':  Romo.data(this.elem, 'romo-modal-min-width'),
+    'max-width':  Romo.data(this.elem, 'romo-modal-max-width'),
+    'width':      Romo.data(this.elem, 'romo-modal-width'),
+    'min-height': Romo.data(this.elem, 'romo-modal-min-height'),
+    'height':     Romo.data(this.elem, 'romo-modal-height'),
+    'overflow-x': 'auto',
+    'overflow-y': 'auto'
+  }
+
+  if (Romo.data(this.elem, 'romo-modal-max-height') === undefined) {
+    Romo.setData(this.elem, 'romo-modal-max-height', 'detect');
+  }
+  if (Romo.data(this.elem, 'romo-modal-max-height') !== 'detect') {
+    css['max-height'] = Romo.data(this.elem, 'romo-modal-max-height');
+  }
+
+  for (var key in css) {
+    Romo.setStyle(this.contentElem, key, css[key]);
   }
 }
 
-RomoModal.prototype.doPopupClose = function() {
-  $('body').trigger('modal:popupclose');
-  this.popupElem.removeClass('romo-modal-open');
-
-  // unbind any event to close the popup when clicking away from it
-  this.doUnBindWindowBodyClick();
-
-  // unbind "esc" keystroke to toggle close
-  this.doUnBindWindowBodyKeyUp();
-
-  // unbind window resizes reposition modal
-  $(window).off('resize', $.proxy(this.onResizeWindow, this));
-
-  // clear the content elem markup if configured to
-  if (this.elem.data('romo-modal-clear-content') === true) {
-    this.contentElem.html('');
+RomoModal.prototype._resetBody = function() {
+  if (this.contentElem !== undefined) {
+    Romo.rmStyle(this.contentElem, 'min-width');
+    Romo.rmStyle(this.contentElem, 'max-width');
+    Romo.rmStyle(this.contentElem, 'width');
+    Romo.rmStyle(this.contentElem, 'min-height');
+    Romo.rmStyle(this.contentElem, 'max-height');
+    Romo.rmStyle(this.contentElem, 'height');
+    Romo.rmStyle(this.contentElem, 'overflow');
   }
 
-  this.elem.trigger('modal:popupClose', [this]);
+  Romo.off(this.closeElems, 'click', Romo.proxy(this._onPopupClose, this));
 }
 
-RomoModal.prototype.onMouseDown = function(e) {
-  e.preventDefault();
-  e.stopPropagation();
-  this.doDragStart(e);
-  return false;
+RomoModal.prototype._loadBodyStart = function() {
+  Romo.updateHtml(this.bodyElem, '');
+  this._bindBody();
+  this.doPlacePopupElem();
+  Romo.pushFn(Romo.proxy(this.doPlacePopupElem, this));
+  Romo.trigger(this.elem, 'romoModal:loadBodyStart', [this]);
 }
 
-RomoModal.prototype.doDragStart = function(e) {
-  this.dragElem.addClass('romo-modal-grabbing');
-  this.dragElem.removeClass('romo-modal-grab');
-
-  this.popupElem.css('width', this.popupElem.width()+'px');
-  this.popupElem.css('height', this.popupElem.height()+'px');
-
-  this._dragDiffX = e.clientX - this.popupElem[0].offsetLeft;
-  this._dragDiffY = e.clientY - this.popupElem[0].offsetTop;
-  $(window).on('mousemove', $.proxy(this.onMouseMove, this));
-  $(window).on('mouseup',   $.proxy(this.onMouseUp, this));
-
-  this.elem.trigger("modal:dragStart", [this]);
+RomoModal.prototype._loadBodySuccess = function(data) {
+  Romo.initUpdateHtml(this.bodyElem, data);
+  this._bindBody();
+  this.doPlacePopupElem();
+  Romo.pushFn(Romo.proxy(this.doPlacePopupElem, this));
+  Romo.trigger(this.elem, 'romoModal:loadBodySuccess', [data, this]);
 }
 
-RomoModal.prototype.onMouseMove = function(e) {
-  $('body').trigger('modal:mousemove');
-  e.preventDefault();
-  e.stopPropagation();
-  this.doDragMove(e.clientX, e.clientY);
-  return false;
+RomoModal.prototype._loadBodyError = function(xhr) {
+  Romo.trigger(this.elem, 'romoModal:loadBodyError', [xhr, this]);
 }
 
-RomoModal.prototype.doDragMove = function(clientX, clientY) {
+RomoModal.prototype._dragStart = function(e) {
+  Romo.addClass(this.dragElems, 'romo-modal-grabbing');
+  Romo.removeClass(this.dragElems, 'romo-modal-grab');
+
+  Romo.popupStack.closeTo(this.popupElem);
+
+  Romo.setStyle(this.popupElem, 'width',  Romo.css(this.popupElem, 'width'));
+  Romo.setStyle(this.popupElem, 'height', Romo.css(this.popupElem, 'height'));
+
+  this._dragDiffX = e.clientX - this.popupElem.offsetLeft;
+  this._dragDiffY = e.clientY - this.popupElem.offsetTop;
+  Romo.on(window, 'mousemove', Romo.proxy(this._onMouseMove, this));
+  Romo.on(window, 'mouseup',   Romo.proxy(this._onMouseUp,   this));
+
+  Romo.trigger(this.elem, "romoModal:dragStart", [this]);
+}
+
+RomoModal.prototype._dragMove = function(clientX, clientY) {
   var placeX = clientX - this._dragDiffX;
   var placeY = clientY - this._dragDiffY;
-  this.popupElem.css({ left: placeX+'px' , top: placeY+'px' });
+  Romo.setStyle(this.popupElem, 'left', placeX+'px');
+  Romo.setStyle(this.popupElem, 'top',  placeY+'px');
 
-  this.elem.trigger("modal:dragMove", [placeX, placeY, this]);
+  Romo.trigger(this.elem, "romoModal:dragMove", [placeX, placeY, this]);
 }
 
-RomoModal.prototype.onMouseUp = function(e) {
-  e.preventDefault();
-  e.stopPropagation();
-  this.doDragStop(e);
-  return false;
-}
+RomoModal.prototype._dragStop = function(e) {
+  Romo.addClass(this.dragElems, 'romo-modal-grab');
+  Romo.removeClass(this.dragElems, 'romo-modal-grabbing');
 
-RomoModal.prototype.doDragStop = function(e) {
-  this.dragElem.addClass('romo-modal-grab');
-  this.dragElem.removeClass('romo-modal-grabbing');
-  this.popupElem.css('width', '');
-  this.popupElem.css('height', '');
+  Romo.rmStyle(this.popupElem, 'width');
+  Romo.rmStyle(this.popupElem, 'height');
 
-  $(window).off('mousemove', $.proxy(this.onMouseMove, this));
-  $(window).off('mouseup',   $.proxy(this.onMouseUp, this));
+  Romo.off(window, 'mousemove', Romo.proxy(this._onMouseMove, this));
+  Romo.off(window, 'mouseup',   Romo.proxy(this._onMouseUp, this));
   delete this._dragDiffX;
   delete this._dragDiffY;
 
-  this.elem.trigger("modal:dragStop", [this]);
+  Romo.trigger(this.elem, "romoModal:dragStop", [this]);
 }
 
-RomoModal.prototype.doBindElemKeyUp = function() {
-  this.elem.on('keyup', $.proxy(this.onElemKeyUp, this));
-  this.popupElem.on('keyup', $.proxy(this.onElemKeyUp, this));
-}
+// event functions
 
-RomoModal.prototype.doUnBindElemKeyUp = function() {
-  this.elem.off('keyup', $.proxy(this.onElemKeyUp, this));
-  this.popupElem.off('keyup', $.proxy(this.onElemKeyUp, this));
-}
+RomoModal.prototype.romoEvFn._onToggle = function(e) {
+  e.preventDefault();
 
-RomoModal.prototype.onElemKeyUp = function(e) {
-  if (this.elem.hasClass('disabled') === false) {
-    if (this.popupElem.hasClass('romo-modal-open')) {
-      if(e.keyCode === 27 /* Esc */ ) {
-        this.doPopupClose();
-        return false;
-      } else {
-        return true;
-      }
-    } else {
-      return true;
-    }
+  if (Romo.hasClass(this.elem, 'disabled') === false) {
+    this.doToggle();
   }
-  return true;
 }
 
-RomoModal.prototype.doBindWindowBodyClick = function() {
-  $('body').on('click', $.proxy(this.onWindowBodyClick, this));
+RomoModal.prototype.romoEvFn._onPopupOpen = function(e) {
+  if (Romo.hasClass(this.elem, 'disabled') === false && this.popupClosed()) {
+    this.doPopupOpen();
+  }
 }
 
-RomoModal.prototype.doUnBindWindowBodyClick = function() {
-  $('body').off('click', $.proxy(this.onWindowBodyClick, this));
-}
-
-RomoModal.prototype.onWindowBodyClick = function(e) {
-  // if not clicked on the popup elem
-  if (e !== undefined && $(e.target).parents('.romo-modal-popup').size() === 0) {
+RomoModal.prototype.romoEvFn._onPopupClose = function(e) {
+  if (Romo.hasClass(this.elem, 'disabled') === false && this.popupOpen()) {
     this.doPopupClose();
   }
-  return true;
 }
 
-RomoModal.prototype.doBindWindowBodyKeyUp = function() {
-  $('body').on('keyup', $.proxy(this.onWindowBodyKeyUp, this));
+RomoModal.prototype.romoEvFn._onMouseDown = function(e) {
+  this._dragStart(e);
+  return false;
 }
 
-RomoModal.prototype.doUnBindWindowBodyKeyUp = function() {
-  $('body').off('keyup', $.proxy(this.onWindowBodyKeyUp, this));
+RomoModal.prototype.romoEvFn._onMouseMove = function(e) {
+  Romo.trigger(Romo.f('body')[0], 'romoModal:mousemove');
+  this._dragMove(e.clientX, e.clientY);
+  return false;
 }
 
-RomoModal.prototype.onWindowBodyKeyUp = function(e) {
-  if (e.keyCode === 27 /* Esc */) {
-    this.doPopupClose();
-  }
-  return true;
+RomoModal.prototype.romoEvFn._onMouseUp = function(e) {
+  this._dragStop(e);
+  return false;
 }
 
-RomoModal.prototype.onResizeWindow = function(e) {
-  this.doPlacePopupElem();
-  return true;
-}
+// init
 
-RomoModal.prototype.doPlacePopupElem = function() {
-  var w = this.popupElem[0].offsetWidth;
-  var h = this.popupElem[0].offsetHeight;
-  var min = 75;
-  var centerTop  = $(window).height() / 2 - h / 2;
-  var centerLeft = $(window).width()  / 2 - w / 2;
-  var css = {};
-
-  css.top = $(window).height() * 0.15;
-  if (centerTop < css.top) { css.top = centerTop; }
-  if (css.top < min) { css.top = min; }
-
-  css.left = centerLeft;
-  if (css.left < min) { css.left = min; }
-
-  this.popupElem.css(css);
-
-  if (this.elem.data('romo-modal-max-height') === 'detect') {
-    var pad = this.elem.data('romo-modal-max-height-detect-pad') || 10;
-    var contentTop = this.contentElem[0].getBoundingClientRect().top;
-    var contentBottom = this.contentElem[0].getBoundingClientRect().bottom;
-    var bodyBottom = this.bodyElem[0].getBoundingClientRect().bottom;
-    var padBottom = bodyBottom - contentBottom;
-
-    var maxHeight = $(window).height() - contentTop - padBottom - pad;
-    this.contentElem.css({'max-height': maxHeight.toString() + 'px'});
-  }
-}
-
-Romo.onInitUI(function(e) {
-  Romo.initUIElems(e, '[data-romo-modal-auto="true"]').romoModal();
-});
+Romo.popupStack.addStyleClass('romo-modal-popup');
+Romo.addElemsInitSelector('[data-romo-modal-auto="true"]', RomoModal);
