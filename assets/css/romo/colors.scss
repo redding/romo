@@ -13,9 +13,10 @@
   .romo-text-alt-hover:hover,   a.romo-text-alt:hover,   a.romo-text-alt:focus   { @include text-alt-hover(!important);   }
   .romo-text-muted-hover:hover, a.romo-text-muted:hover, a.romo-text-muted:focus { @include text-muted-hover(!important); }
 
-  .romo-bg-base  { @include bg-base(!important);  }
-  .romo-bg-alt   { @include bg-alt(!important);   }
-  .romo-bg-muted { @include bg-muted(!important); }
+  .romo-bg-base    { @include bg-base(!important);    }
+  .romo-bg-alt     { @include bg-alt(!important);     }
+  .romo-bg-muted   { @include bg-muted(!important);   }
+  .romo-bg-striped { @include bg-striped(!important); }
 
   .romo-bg-base-hover:hover,  a.romo-bg-base:hover,  a.romo-bg-base:focus  { @include bg-base-hover(!important);  }
   .romo-bg-alt-hover:hover,   a.romo-bg-alt:hover,   a.romo-bg-alt:focus   { @include bg-alt-hover(!important);   }
