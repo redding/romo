@@ -100,7 +100,7 @@ RomoDatepicker.prototype._bindDropdown = function() {
   if (Romo.data(this.elem, 'romo-dropdown-width') === undefined) {
     Romo.setData(this.elem, 'romo-dropdown-width', 'elem');
   }
-  if (parseInt(Romo.css(this.elem, 'width'), 10) < 175) {
+  if (Romo.width(this.elem) < 175) {
     Romo.setData(this.elem, 'romo-dropdown-width', '175px');
   }
   this.romoDropdown = new RomoDropdown(this.elem);

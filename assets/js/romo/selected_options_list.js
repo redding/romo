@@ -59,7 +59,7 @@ RomoSelectedOptionsList.prototype.doRefreshUI = function() {
     var addElem = this._buildItemElem(addItem);
     uiListElem.append(addElem);
 
-    var listWidth       = parseInt(Romo.css(uiListElem, "width"), 10);
+    var listWidth       = Romo.width(uiListElem);
     var listLeftPad     = parseInt(Romo.css(uiListElem, "padding-left"), 10);
     var listRightPad    = parseInt(Romo.css(uiListElem, "padding-right"), 10);
     var itemBorderWidth = 1;
@@ -68,14 +68,14 @@ RomoSelectedOptionsList.prototype.doRefreshUI = function() {
     Romo.setStyle(Romo.find(addElem, 'DIV')[0], 'max-width', String(listWidth-listLeftPad-listRightPad-(2*itemBorderWidth)-itemLeftPad-itemRightPad)+'px');
   }, this));
 
-  var focusElemWidth = parseInt(Romo.css(this.focusElem, "width"), 10);
+  var focusElemWidth = Romo.width(this.focusElem);
   Romo.setStyle(this.elem, 'width', String(focusElemWidth)+'px');
 
   var maxRows           = undefined;
-  var uiListElemHeight  = parseInt(Romo.css(uiListElem, "height"), 10);
+  var uiListElemHeight  = Romo.height(uiListElem);
   var firstItemElem = Romo.find(uiListElem, '.romo-selected-options-list-item')[0];
   if (firstItemElem !== undefined) {
-    var itemHeight       = parseInt(Romo.css(firstItemElem, "height"), 10);
+    var itemHeight       = Romo.height(firstItemElem);
     var itemMarginBottom = parseInt(Romo.css(firstItemElem, "margin-bottom"), 10);
     var itemBorderWidth  = 1;
     var listTopPad       = parseInt(Romo.css(uiListElem, "padding-top"), 10);
@@ -131,7 +131,7 @@ RomoSelectedOptionsList.prototype._scrollListTopToItem = function(itemElem) {
 
     var scrollOffsetTop = Romo.offset(scrollElem).top;
     var selOffsetTop    = Romo.offset(itemElem).top;
-    var selOffset       = parseInt(Romo.css(itemElem, 'height'), 10) / 2;
+    var selOffset       = Romo.height(itemElem) / 2;
 
     scrollElem.scrollTop = selOffsetTop - scrollOffsetTop - selOffset;
   }

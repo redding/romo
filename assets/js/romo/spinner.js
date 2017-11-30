@@ -14,7 +14,7 @@ RomoSpinner.prototype.doStart = function(customBasisSize) {
   var basisSize = (
     customBasisSize                                 ||
     Romo.data(this.elem, 'romo-spinner-basis-size') ||
-    Math.min(parseInt(Romo.css(this.elem, "width"), 10), parseInt(Romo.css(this.elem, "height"), 10))
+    Math.min(Romo.width(this.elem), Romo.height(this.elem))
   );
 
   var spinnerOpts = {
@@ -41,8 +41,8 @@ RomoSpinner.prototype.doStart = function(customBasisSize) {
   this.elemStyle = Romo.attr(this.elem, 'style');
 
   Romo.setStyle(this.elem, 'position', 'relative');
-  Romo.setStyle(this.elem, 'width',    Romo.css(this.elem, 'width'));
-  Romo.setStyle(this.elem, 'height',   Romo.css(this.elem, 'height'));
+  Romo.setStyle(this.elem, 'width',    Romo.width(this.elem)+'px');
+  Romo.setStyle(this.elem, 'height',   Romo.height(this.elem)+'px');
 
   Romo.updateHtml(this.elem, '');
   this.spinner.spin(this.elem);

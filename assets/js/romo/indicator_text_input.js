@@ -88,7 +88,7 @@ RomoIndicatorTextInput.prototype._bindElem = function() {
 
 RomoIndicatorTextInput.prototype._placeIndicatorElem = function() {
   if (this.indicatorElem !== undefined) {
-    Romo.setStyle(this.indicatorElem, 'line-height', Romo.css(this.elem, 'height'));
+    Romo.setStyle(this.indicatorElem, 'line-height', Romo.height(this.elem)+'px');
     if (this.elem.disabled === true) {
       Romo.addClass(this.indicatorElem, 'disabled');
     }
@@ -121,7 +121,7 @@ RomoIndicatorTextInput.prototype._getIndicatorPaddingPx = function() {
 RomoIndicatorTextInput.prototype._getIndicatorWidthPx = function() {
   return (
     Romo.data(this.elem, 'romo-indicator-text-input-indicator-width-px') ||
-    parseInt(Romo.css(this.indicatorElem, "width"), 10)
+    Romo.width(this.indicatorElem)
   );
 }
 

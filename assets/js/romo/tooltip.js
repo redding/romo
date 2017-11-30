@@ -73,11 +73,10 @@ RomoTooltip.prototype.doPlacePopupElem = function() {
     Romo.setStyle(this.bodyElem, 'max-height', configHeight.toString() + 'px');
   }
 
-  var elemRect   = this.elem.getBoundingClientRect();
   var elemOffset = Romo.offset(this.elem);
 
-  var elemHeight = elemRect.height;
-  var elemWidth  = elemRect.width;
+  var elemHeight = Romo.height(this.elem);
+  var elemWidth  = Romo.width(this.elem);
   var elemTop    = elemOffset.top;
   var elemLeft   = elemOffset.left
 
