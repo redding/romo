@@ -1066,7 +1066,7 @@ RomoParentChildElems.prototype.doInit = function(parentElem, childElems) {
   var parentRemovedObserver = new MutationObserver(Romo.proxy(function(mutationRecords) {
     mutationRecords.forEach(Romo.proxy(function(mutationRecord) {
       if (mutationRecord.type === 'childList' && mutationRecord.removedNodes.length > 0) {
-        mutationRecord.removedNodes.forEach(Romo.proxy(function(removedNode) {
+        Romo.array(mutationRecord.removedNodes).forEach(Romo.proxy(function(removedNode) {
           this.remove(removedNode);
         }, this));
       }
