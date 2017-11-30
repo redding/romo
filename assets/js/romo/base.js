@@ -309,7 +309,7 @@ Romo.prototype.parseElemZIndex = function(elem) {
 // elems init
 
 Romo.prototype.elems = function(htmlString) {
-  var context = document.implementation.createHTMLDocument();
+  var context = document.implementation.createHTMLDocument('');
 
   // Set the base href for the created document so any parsed
   // elements with URLs are based on the document's URL
