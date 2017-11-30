@@ -163,9 +163,7 @@ RomoTooltip.prototype._bindPopup = function() {
   var popupParentElem = Romo.closest(this.elem, Romo.data(this.elem, 'romo-tooltip-append-to-closest') || 'body');
   Romo.append(popupParentElem, this.popupElem);
 
-  this.bodyElem = Romo.children(this.popupElem).find(Romo.proxy(function(childElem){
-    return Romo.is(childElem, '.romo-tooltip-body');
-  }, this));
+  this.bodyElem = Romo.children(this.popupElem, '.romo-tooltip-body')[0];
   if (Romo.data(this.elem, 'romo-tooltip-style-class') !== undefined) {
     Romo.addClass(this.bodyElem, Romo.data(this.elem, 'romo-tooltip-style-class'));
   }

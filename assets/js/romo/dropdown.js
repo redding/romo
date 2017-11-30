@@ -158,9 +158,7 @@ RomoDropdown.prototype._bindPopup = function() {
   );
   Romo.append(popupParentElem, this.popupElem);
 
-  this.bodyElem = Romo.children(this.popupElem).find(Romo.proxy(function(childElem) {
-    return Romo.is(childElem, '.romo-dropdown-body');
-  }, this));
+  this.bodyElem = Romo.children(this.popupElem, '.romo-dropdown-body')[0];
   if (Romo.data(this.elem, 'romo-dropdown-style-class') !== undefined) {
     Romo.addClass(this.bodyElem, Romo.data(this.elem, 'romo-dropdown-style-class'));
   }
