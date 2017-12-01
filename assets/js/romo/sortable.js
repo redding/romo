@@ -130,7 +130,7 @@ RomoSortable.prototype.romoEvFn._onDragStart = function(e) {
   var elems = Romo.children(Romo.parent(this.draggedElem));
   this.draggedIndex = elems.indexOf(this.draggedElem);
 
-  Romo.setStyle(this.placeholderElem, 'height', Romo.css(this.draggedElem, 'height'));
+  Romo.setStyle(this.placeholderElem, 'height', Romo.height(this.draggedElem)+'px');
 
   Romo.trigger(this.elem, 'romoSortable:dragStart', [this.draggedElem, this]);
 }

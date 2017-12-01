@@ -242,6 +242,14 @@ Romo.prototype.hide = function(elems) {
   });
 }
 
+Romo.prototype.height = function(elem) {
+  return elem.getBoundingClientRect().height;
+}
+
+Romo.prototype.width = function(elem) {
+  return elem.getBoundingClientRect().width;
+}
+
 Romo.prototype.offset = function(elem) {
   var elemRect = elem.getBoundingClientRect();
   var bodyRect = document.body.getBoundingClientRect();

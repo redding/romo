@@ -190,7 +190,7 @@ RomoSelect.prototype._buildSelectDropdownElem = function() {
   if (Romo.attr(this.elem, 'style') !== undefined) {
     Romo.setAttr(romoSelectDropdownElem, 'style', Romo.attr(this.elem, 'style'));
   }
-  Romo.setStyle(romoSelectDropdownElem, 'width', Romo.css(this.elem, 'width'));
+  Romo.setStyle(romoSelectDropdownElem, 'width', Romo.width(this.elem)+'px');
   if (Romo.attr(this.elem, 'disabled') !== undefined) {
     Romo.setAttr(this.romoSelectDropdown.elem, 'disabled', Romo.attr(this.elem, 'disabled'));
   }
@@ -210,7 +210,7 @@ RomoSelect.prototype._buildSelectDropdownElem = function() {
   var caretClass = Romo.data(this.elem, 'romo-select-caret') || this.defaultCaretClass;
   if (caretClass !== undefined && caretClass !== 'none') {
     this.caretElem = Romo.elems('<i class="romo-select-caret '+caretClass+'"></i>')[0];
-    Romo.setStyle(this.caretElem, 'line-height', parseInt(Romo.css(romoSelectDropdownElem, "line-height"), 10)+'px');
+    Romo.setStyle(this.caretElem, 'line-height', Romo.css(romoSelectDropdownElem, 'line-height'));
     Romo.on(this.caretElem, 'click', Romo.proxy(this._onCaretClick, this));
     Romo.append(romoSelectDropdownElem, this.caretElem);
 
@@ -312,7 +312,7 @@ RomoSelect.prototype._getCaretPosition = function() {
 }
 
 RomoSelect.prototype._parseCaretWidthPx = function() {
-  var widthPx = parseInt(Romo.css(this.caretElem, "width"), 10);
+  var widthPx = Romo.width(this.caretElem);
   if (isNaN(widthPx)) {
     widthPx = this.defaultCaretWidthPx;
   }

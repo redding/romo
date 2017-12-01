@@ -228,8 +228,8 @@ RomoModal.prototype._dragStart = function(e) {
 
   Romo.popupStack.closeTo(this.popupElem);
 
-  Romo.setStyle(this.popupElem, 'width',  Romo.css(this.popupElem, 'width'));
-  Romo.setStyle(this.popupElem, 'height', Romo.css(this.popupElem, 'height'));
+  Romo.setStyle(this.popupElem, 'width',  Romo.width(this.popupElem)+'px');
+  Romo.setStyle(this.popupElem, 'height', Romo.height(this.popupElem)+'px');
 
   this._dragDiffX = e.clientX - this.popupElem.offsetLeft;
   this._dragDiffY = e.clientY - this.popupElem.offsetTop;

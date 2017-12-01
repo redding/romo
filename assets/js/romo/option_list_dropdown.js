@@ -164,7 +164,7 @@ RomoOptionListDropdown.prototype._bindElem = function() {
     Romo.trigger(
       this.optionFilterElem,
       'romoIndicatorTextInput:triggerSpinnerStart',
-      [Romo.css(this.optionFilterElem, "height")]
+      [Romo.height(this.optionFilterElem)+'px']
     );
   }, this));
   Romo.on(this.elem, 'romoOptionListDropdown:triggerFilterSpinnerStop', Romo.proxy(function(e) {
@@ -393,7 +393,7 @@ RomoOptionListDropdown.prototype._scrollTopToItem = function(itemElem) {
 
     var scrollOffsetTop = Romo.offset(scrollElem).top;
     var selOffsetTop    = Romo.offset(itemElem).top;
-    var selOffset       = parseInt(Romo.css(itemElem, 'height'), 10) / 2;
+    var selOffset       = Romo.height(itemElem) / 2;
 
     scrollElem.scrollTop = selOffsetTop - scrollOffsetTop - selOffset;
   }
@@ -406,7 +406,7 @@ RomoOptionListDropdown.prototype._scrollBottomToItem = function(itemElem) {
 
     var scrollOffsetTop = Romo.offset(scrollElem).top;
     var selOffsetTop    = Romo.offset(itemElem).top;
-    var selOffset       = scrollElem.offsetHeight - parseInt(Romo.css(itemElem, 'height'), 10);
+    var selOffset       = scrollElem.offsetHeight - Romo.height(itemElem);
 
     scrollElem.scrollTop = selOffsetTop - scrollOffsetTop - selOffset;
   }
@@ -555,7 +555,7 @@ RomoOptionListDropdown.prototype.romoEvFn._onPopupOpenBodyKeyDown = function(e) 
 
   var scrollElem   = this.romoDropdown.bodyElem;
   var scrollOffset = Romo.offset(scrollElem);
-  var scrollHeight = parseInt(Romo.css(scrollElem, 'height'), 10);
+  var scrollHeight = Romo.height(scrollElem);
 
   if (e.keyCode === 38 /* Up */) {
     var prevElem = this._prevListItem();
@@ -577,7 +577,7 @@ RomoOptionListDropdown.prototype.romoEvFn._onPopupOpenBodyKeyDown = function(e) 
     if(nextElem === undefined){ return false; }
 
     var nextOffset = Romo.offset(nextElem);
-    var nextHeight = parseInt(Romo.css(nextElem, 'height'), 10);
+    var nextHeight = Romo.height(nextElem);
 
     this._highlightItem(nextElem);
 

@@ -64,11 +64,10 @@ RomoDropdown.prototype.doPlacePopupElem = function() {
     Romo.setStyle(this.contentElem, 'max-height', contentMaxHeight.toString() + 'px');
   }
 
-  var elemRect   = this.elem.getBoundingClientRect();
   var elemOffset = Romo.offset(this.elem);
 
-  var elemHeight = elemRect.height;
-  var elemWidth  = elemRect.width;
+  var elemHeight = Romo.height(this.elem);
+  var elemWidth  = Romo.width(this.elem);
   var elemTop    = elemOffset.top;
   var elemLeft   = elemOffset.left
 
@@ -225,7 +224,7 @@ RomoDropdown.prototype._bindBody = function() {
   }
 
   if (Romo.data(this.elem, 'romo-dropdown-width') === 'elem') {
-    Romo.setStyle(this.popupElem, 'width', Romo.css(this.elem, 'width'));
+    Romo.setStyle(this.popupElem, 'width', Romo.width(this.elem)+'px');
   } else {
     Romo.setStyle(this.contentElem, 'min-width', Romo.data(this.elem, 'romo-dropdown-min-width'));
     Romo.setStyle(this.contentElem, 'max-width', Romo.data(this.elem, 'romo-dropdown-max-width'));
