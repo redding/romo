@@ -243,11 +243,19 @@ Romo.prototype.hide = function(elems) {
 }
 
 Romo.prototype.height = function(elem) {
-  return elem.getBoundingClientRect().height;
+  var height = elem.getBoundingClientRect().height;
+  if (height === 0) {
+    height = parseInt(Romo.css(elem, 'height'), 10);
+  }
+  return height;
 }
 
 Romo.prototype.width = function(elem) {
-  return elem.getBoundingClientRect().width;
+  var width = elem.getBoundingClientRect().width;
+  if (width === 0) {
+    width = parseInt(Romo.css(elem, 'width'), 10);
+  }
+  return width;
 }
 
 Romo.prototype.offset = function(elem) {
