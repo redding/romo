@@ -184,12 +184,12 @@ RomoOptionListDropdown.prototype._bindElem = function() {
   if (Romo.data(this.elem, 'romo-option-list-dropdown-no-filter') !== true) {
     this.optionFilterElem = this._buildOptionFilter();
     var optionFilterWrapperElem = Romo.elems('<div class="romo-option-list-dropdown-filter-wrapper"></div>')[0];
-    optionFilterWrapperElem.append(this.optionFilterElem);
+    Romo.append(optionFilterWrapperElem, this.optionFilterElem);
     Romo.prepend(this.romoDropdown.popupElem, optionFilterWrapperElem);
     this._bindDropdownOptionFilter();
   }
 
-  this.romoDropdown.bodyElem.append(Romo.elems('<div class="romo-option-list-dropdown-container"></div>')[0]);
+  Romo.append(this.romoDropdown.bodyElem, Romo.elems('<div class="romo-option-list-dropdown-container"></div>')[0]);
   this.optionListContainerElem = Romo.find(this.romoDropdown.bodyElem, '.romo-option-list-dropdown-container')[0];
 
   this.doSetListItems([]);

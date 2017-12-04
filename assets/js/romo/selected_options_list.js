@@ -57,7 +57,7 @@ RomoSelectedOptionsList.prototype.doRefreshUI = function() {
   Romo.remove(rmElems);
   addItems.forEach(Romo.proxy(function(addItem) {
     var addElem = this._buildItemElem(addItem);
-    uiListElem.append(addElem);
+    Romo.append(uiListElem, addElem);
 
     var listWidth       = Romo.width(uiListElem);
     var listLeftPad     = parseInt(Romo.css(uiListElem, "padding-left"), 10);
