@@ -1043,7 +1043,7 @@ RomoPopupStack.prototype._onBodyClick = function(e) {
   if (Romo.is(e.target, this.popupSelector)) {
     popupElem = e.target;
   } else {
-    popupElem = Romo.parents(e.target, this.popupSelector)[0];
+    popupElem = Romo.closest(e.target, this.popupSelector);
   }
 
   if (popupElem === undefined || !this._includes(popupElem)) {
