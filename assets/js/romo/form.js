@@ -211,7 +211,12 @@ RomoForm.prototype._getXhrDataType = function() {
 RomoForm.prototype.romoEvFn._onSubmitClick = function(e) {
   e.preventDefault();
 
-  var submitElem = e.target;
+  var submitElem;
+  if (Romo.is(e.target, '[data-romo-form-submit]')) {
+    submitElem = e.target;
+  } else {
+    submitElem = Romo.closest(e.target, '[data-romo-form-submit]');
+  }
   if (!Romo.hasClass(submitElem, 'disabled')) {
     if (Romo.data(submitElem, 'romo-form-submit') === 'confirm') {
       Romo.trigger(this.elem, 'romoForm:confirmSubmit', [this]);
