@@ -11,6 +11,10 @@ var RomoSpinner = RomoComponent(function(elem) {
 });
 
 RomoSpinner.prototype.doStart = function(customBasisSize) {
+  if (this.spinner !== undefined) {
+    return;
+  }
+
   var basisSize = (
     customBasisSize                                 ||
     Romo.data(this.elem, 'romo-spinner-basis-size') ||
@@ -51,6 +55,10 @@ RomoSpinner.prototype.doStart = function(customBasisSize) {
 }
 
 RomoSpinner.prototype.doStop = function() {
+  if (this.spinner === undefined) {
+    return;
+  }
+
   if (this.spinner !== undefined) {
     this.spinner.stop();
     this.spinner = undefined;
