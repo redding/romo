@@ -967,11 +967,12 @@ RomoPopupStack.prototype.addStyleClass = function(styleClass) {
 }
 
 RomoPopupStack.prototype.addElem = function(popupElem, boundOpenFn, boundCloseFn, boundPlaceFn) {
-  this.items.push(new this.itemClass(popupElem, boundCloseFn, boundPlaceFn));
-
   // allow any body click events to propagate and run first.  This ensures
   // any existing stack is in the appropriate state before opening a new popup.
-  Romo.pushFn(boundOpenFn);
+  Romo.pushFn(Romo.proxy(function() {
+    this.items.push(new this.itemClass(popupElem, boundCloseFn, boundPlaceFn));
+    boundOpenFn();
+  }, this));
 }
 
 RomoPopupStack.prototype.closeThru = function(popupElem) {
