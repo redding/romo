@@ -67,7 +67,7 @@ RomoInlineForm.prototype._bindForm = function() {
     Romo.on(formElem, 'romoForm:ready', Romo.proxy(function(e, romoForm) {
       Romo.trigger(this.elem, 'romoInlineForm:romoForm:ready', [romoForm, this]);
     }, this));
-    Romo.on(formElem, 'romoForm:confirmSubmit', Romo.proxy(function(e, form) {
+    Romo.on(formElem, 'romoForm:confirmSubmit', Romo.proxy(function(e, romoForm) {
       Romo.trigger(this.elem, 'romoInlineForm:romoForm:confirmSubmit', [romoForm, this]);
     }, this));
     Romo.on(formElem, 'romoForm:beforeSubmit', Romo.proxy(function(e, romoForm) {
