@@ -73,8 +73,8 @@ RomoModal.prototype.doPlacePopupElem = function() {
 
 RomoModal.prototype._openPopup = function() {
   if (Romo.data(this.elem, 'romo-modal-content-elem') !== undefined) {
-    var contentElem = Romo.elems(Romo.data(this.elem, 'romo-modal-content-elem'))[0];
-    this._loadBodySuccess(contentElem.outerHTML);
+    var contentElem = Romo.f(Romo.data(this.elem, 'romo-modal-content-elem'))[0];
+    this._loadBodySuccess(contentElem.innerHTML);
   } else {
     this.romoAjax.doInvoke();
   }
