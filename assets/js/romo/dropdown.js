@@ -111,8 +111,8 @@ RomoDropdown.prototype._openPopup = function() {
   Romo.on(Romo.scrollableParents(this.elem), 'scroll', this._onScrollableParentsScroll);
 
   if (Romo.data(this.elem, 'romo-dropdown-content-elem') !== undefined) {
-    var contentElem = Romo.elems(Romo.data(this.elem, 'romo-dropdown-content-elem'))[0];
-    this._loadBodySuccess(contentElem.outerHTML);
+    var contentElem = Romo.f(Romo.data(this.elem, 'romo-dropdown-content-elem'))[0];
+    this._loadBodySuccess(contentElem.innerHTML);
   } else {
     this.romoAjax.doInvoke();
   }
