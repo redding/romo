@@ -44,14 +44,16 @@ RomoSpinner.prototype.doStart = function(customBasisSize) {
   this.elemHtml  = this.elem.innerHTML;
   this.elemStyle = Romo.attr(this.elem, 'style');
 
-  Romo.setStyle(this.elem, 'position', 'relative');
-  Romo.setStyle(this.elem, 'width',    Romo.width(this.elem)+'px');
-  Romo.setStyle(this.elem, 'height',   Romo.height(this.elem)+'px');
+  Romo.pushFn(Romo.proxy(function() {
+    Romo.setStyle(this.elem, 'position', 'relative');
+    Romo.setStyle(this.elem, 'width',    Romo.width(this.elem)+'px');
+    Romo.setStyle(this.elem, 'height',   Romo.height(this.elem)+'px');
 
-  Romo.updateHtml(this.elem, '');
-  this.spinner.spin(this.elem);
+    Romo.updateHtml(this.elem, '');
+    this.spinner.spin(this.elem);
 
-  Romo.trigger(this.elem, 'romoSpinner:start', [this]);
+    Romo.trigger(this.elem, 'romoSpinner:start', [this]);
+  }, this));
 }
 
 RomoSpinner.prototype.doStop = function() {
@@ -59,21 +61,24 @@ RomoSpinner.prototype.doStop = function() {
     return;
   }
 
-  if (this.spinner !== undefined) {
+  Romo.pushFn(Romo.proxy(function() {
     this.spinner.stop();
     this.spinner = undefined;
-  }
-  if (this.elemHtml !== undefined) {
-    this.elem.innerHTML = this.elemHtml;
-  }
-  Romo.rmStyle(this.elem, 'position');
-  Romo.rmStyle(this.elem, 'width');
-  Romo.rmStyle(this.elem, 'height');
 
-  if (this.elemStyle !== undefined) {
-    Romo.setAttr(this.elem, 'style', this.elemStyle);
-  }
-  Romo.trigger(this.elem, 'romoSpinner:stop', [this]);
+    if (this.elemHtml !== undefined) {
+      this.elem.innerHTML = this.elemHtml;
+    }
+
+    Romo.rmStyle(this.elem, 'position');
+    Romo.rmStyle(this.elem, 'width');
+    Romo.rmStyle(this.elem, 'height');
+
+    if (this.elemStyle !== undefined) {
+      Romo.setAttr(this.elem, 'style', this.elemStyle);
+    }
+
+    Romo.trigger(this.elem, 'romoSpinner:stop', [this]);
+  }, this))
 }
 
 // private
