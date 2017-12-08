@@ -57,11 +57,10 @@ RomoSpinner.prototype.doStart = function(customBasisSize) {
 }
 
 RomoSpinner.prototype.doStop = function() {
-  if (this.spinner === undefined) {
-    return;
-  }
-
   Romo.pushFn(Romo.proxy(function() {
+    if (this.spinner === undefined) {
+      return;
+    }
     this.spinner.stop();
     this.spinner = undefined;
 
