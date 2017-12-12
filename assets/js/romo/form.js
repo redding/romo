@@ -1,9 +1,12 @@
 var RomoForm = RomoComponent(function(elem, givenSubmitElems, givenSpinnerElems) {
   this.elem = elem;
 
+  this.submitElemSelector = 'button[type="submit"], ' +
+                            'input[type="submit"], '  +
+                            '[data-romo-form-submit]';
   var defaultSubmitElems = Romo.find(
     this.elem,
-    'button[type="submit"], input[type="submit"], [data-romo-form-submit]'
+    this.submitElemSelector
   );
   this.submitElems = (givenSubmitElems || []).concat(defaultSubmitElems || []);
 
@@ -212,10 +215,10 @@ RomoForm.prototype.romoEvFn._onSubmitClick = function(e) {
   e.preventDefault();
 
   var submitElem;
-  if (Romo.is(e.target, '[data-romo-form-submit]')) {
+  if (Romo.is(e.target, this.submitElemSelector)) {
     submitElem = e.target;
   } else {
-    submitElem = Romo.closest(e.target, '[data-romo-form-submit]');
+    submitElem = Romo.closest(e.target, this.submitElemSelector);
   }
   if (!Romo.hasClass(submitElem, 'disabled')) {
     if (Romo.data(submitElem, 'romo-form-submit') === 'confirm') {
