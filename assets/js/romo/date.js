@@ -78,6 +78,12 @@ var RomoDate = {
     return RomoDate.daysInMonth(d) - d.getDate() + 1;
   },
 
+  daysDiff: function(firstDate, secondDate) {
+    var fd = RomoDate.date(firstDate);
+    var sd = RomoDate.date(secondDate);
+    return Math.round((fd.getTime() - sd.getTime()) / 864e5); // 1000 * 60 * 60 * 24
+  },
+
   isoWeekNum: function(weekDate) {
     var d = RomoDate.date(weekDate)
 
