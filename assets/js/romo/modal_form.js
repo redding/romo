@@ -98,6 +98,9 @@ RomoModalForm.prototype._bindForm = function() {
     Romo.on(formElem, 'romoForm:browserSubmit', Romo.proxy(function(e, romoForm) {
       Romo.trigger(this.elem, 'romoModalForm:romoForm:browserSubmit', [romoForm, this]);
     }, this));
+    Romo.on(formElem, 'romoForm:eventSubmit', Romo.proxy(function(e, formValues, romoForm) {
+      Romo.trigger(this.elem, 'romoModalForm:romoForm:eventSubmit', [formValues, romoForm, this]);
+    }, this));
 
     var submitElems  = Romo.find(this.romoModal.popupElem, '[data-romo-form-submit]');
     var spinnerElems = Romo.find(this.romoModal.popupElem, '[data-romo-spinner-auto="true"]');

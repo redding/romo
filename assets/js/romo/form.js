@@ -77,19 +77,27 @@ RomoForm.prototype._submit = function() {
 
   if(Romo.data(this.elem, 'romo-form-browser-submit') === true) {
     this._browserSubmit();
+  } else if (Romo.data(this.elem, 'romo-form-event-submit') === true) {
+    this._eventSubmit();
   } else if (Romo.attr(this.elem, 'method').toUpperCase() === 'GET') {
-    this._nonBrowserGetSubmit();
+    this._ajaxGetSubmit();
   } else {
-    this._nonBrowserNonGetSubmit();
+    this._ajaxNonGetSubmit();
   }
 }
 
 RomoForm.prototype._browserSubmit = function() {
-  this.elem.submit();
   Romo.trigger(this.elem, 'romoForm:browserSubmit', [this]);
+  this.elem.submit();
 }
 
-RomoForm.prototype._nonBrowserGetSubmit = function() {
+RomoForm.prototype._eventSubmit = function() {
+  var formValues = this._getFormValues({ includeFiles: true });
+  Romo.trigger(this.elem, 'romoForm:eventSubmit', [formValues, this]);
+  this._completeSubmit();
+}
+
+RomoForm.prototype._ajaxGetSubmit = function() {
   var formValues = this._getFormValues({ includeFiles: false });
 
   if (Romo.data(this.elem, 'romo-form-redirect-page') === true) {
@@ -107,7 +115,7 @@ RomoForm.prototype._nonBrowserGetSubmit = function() {
   }
 }
 
-RomoForm.prototype._nonBrowserNonGetSubmit = function() {
+RomoForm.prototype._ajaxNonGetSubmit = function() {
   var formValues = this._getFormValues({ includeFiles: true });
 
   this._ajaxSubmit(formValues);
