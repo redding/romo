@@ -604,7 +604,10 @@ Romo.prototype.param = function(data, opts) {
   var processKeyValue = function(keyValues, key, value, opts) {
     var v = String(value);
     if (!opts || !opts.removeEmpty || v !== '') {
-      keyValues.push([key, v]);
+      keyValues.push([
+        encodeURIComponent(key),
+        encodeURIComponent(v)
+      ]);
     }
   }
 
