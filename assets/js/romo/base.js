@@ -375,6 +375,15 @@ Romo.prototype.remove = function(elems) {
   });
 }
 
+Romo.prototype.removeChildren = function(parentElems) {
+  return Romo.array(parentElems).map(function(parentElem) {
+    Romo.children(parentElem).forEach(function(childElem) {
+      parentElem.removeChild(childElem);
+    });
+    return parentElem;
+  });
+}
+
 Romo.prototype.replace = function(elem, replacementElem) {
   elem.parentNode.replaceChild(replacementElem, elem);
   return replacementElem;
