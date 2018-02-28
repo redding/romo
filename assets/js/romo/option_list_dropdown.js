@@ -71,7 +71,9 @@ RomoOptionListDropdown.prototype.doSetSelectedItem = function(itemValue) {
       this.romoDropdown.bodyElem,
       'LI[data-romo-option-list-dropdown-option-value="'+itemValue+'"]'
     )[0];
-    Romo.addClass(itemElem, 'selected');
+    if (itemElem !== undefined) {
+      Romo.addClass(itemElem, 'selected');
+    }
   }
   var selectedElem = this.selectedItemElem();
   if (selectedElem !== undefined) {
