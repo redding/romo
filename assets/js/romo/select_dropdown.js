@@ -65,52 +65,116 @@ RomoSelectDropdown.prototype._bindElem = function() {
   Romo.setData(this.elem, 'romo-option-list-focus-style-class', 'romo-select-focus');
 
   if (Romo.data(this.elem, 'romo-select-dropdown-no-filter') !== undefined) {
-    Romo.setData(this.elem, 'romo-option-list-dropdown-no-filter', Romo.data(this.elem, 'romo-select-dropdown-no-filter'));
+    Romo.setData(
+      this.elem,
+      'romo-option-list-dropdown-no-filter',
+      Romo.data(this.elem, 'romo-select-dropdown-no-filter')
+    );
   }
   if (Romo.data(this.elem, 'romo-select-dropdown-filter-placeholder') !== undefined) {
-    Romo.setData(this.elem, 'romo-option-list-dropdown-filter-placeholder', Romo.data(this.elem, 'romo-select-dropdown-filter-placeholder'));
+    Romo.setData(
+      this.elem,
+      'romo-option-list-dropdown-filter-placeholder',
+      Romo.data(this.elem, 'romo-select-dropdown-filter-placeholder')
+    );
   }
   if (Romo.data(this.elem, 'romo-select-dropdown-filter-indicator') !== undefined) {
-    Romo.setData(this.elem, 'romo-option-list-dropdown-filter-indicator', Romo.data(this.elem, 'romo-select-dropdown-filter-indicator'));
+    Romo.setData(
+      this.elem,
+      'romo-option-list-dropdown-filter-indicator',
+      Romo.data(this.elem, 'romo-select-dropdown-filter-indicator')
+    );
   }
   if (Romo.data(this.elem, 'romo-select-dropdown-filter-indicator-width-px') !== undefined) {
-    Romo.setData(this.elem, 'romo-option-list-dropdown-filter-indicator-width-px', Romo.data(this.elem, 'romo-select-dropdown-filter-indicator-width-px'));
+    Romo.setData(
+      this.elem,
+      'romo-option-list-dropdown-filter-indicator-width-px',
+      Romo.data(this.elem, 'romo-select-dropdown-filter-indicator-width-px')
+    );
   }
   if (Romo.data(this.elem, 'romo-select-dropdown-open-on-focus') !== undefined) {
-    Romo.setData(this.elem, 'romo-option-list-dropdown-open-on-focus', Romo.data(this.elem, 'romo-select-dropdown-open-on-focus'));
+    Romo.setData(
+      this.elem,
+      'romo-option-list-dropdown-open-on-focus',
+      Romo.data(this.elem, 'romo-select-dropdown-open-on-focus')
+    );
   }
 
-  Romo.on(this.elem, 'romoOptionListDropdown:romoDropdown:toggle', Romo.proxy(function(e, romoDropdown) {
-    Romo.trigger(this.elem, 'romoSelectDropdown:romoDropdown:toggle', [romoDropdown, this]);
-  }, this));
-  Romo.on(this.elem, 'romoOptionListDropdown:romoDropdown:popupOpen', Romo.proxy(function(e, romoDropdown) {
-    Romo.trigger(this.elem, 'romoSelectDropdown:romoDropdown:popupOpen', [romoDropdown, this]);
-  }, this));
-  Romo.on(this.elem, 'romoOptionListDropdown:romoDropdown:popupClose', Romo.proxy(function(e, romoDropdown) {
-    Romo.trigger(this.elem, 'romoSelectDropdown:romoDropdown:popupClose', [romoDropdown, this]);
-  }, this));
-  Romo.on(this.elem, 'romoOptionListDropdown:itemSelected', Romo.proxy(function(e, itemValue, itemDisplayText, romoOptionListDropdown) {
-    Romo.trigger(this.elem, 'romoSelectDropdown:itemSelected', [itemValue, itemDisplayText, this]);
-  }, this));
-  Romo.on(this.elem, 'romoOptionListDropdown:newItemSelected', Romo.proxy(function(e, itemValue, itemDisplayText, romoOptionListDropdown) {
-    var custOptElem = Romo.find(this.optionElemsParentElem, 'OPTION[data-romo-select-dropdown-custom-option="true"]')[0];
-    if (Romo.find(this.optionElemsParentElem, 'OPTION[value="'+itemValue+'"]').length === 0){
-      // a custom value is being selected. add a custom option elem and update its value/text
-      if (custOptElem === undefined) {
-        Romo.appendHtml(this.optionElemsParentElem, '<option data-romo-select-dropdown-custom-option="true"></option>');
-        custOptElem = Romo.find(this.optionElemsParentElem, 'OPTION[data-romo-select-dropdown-custom-option="true"]')[0];
+  Romo.on(
+    this.elem,
+    'romoOptionListDropdown:romoDropdown:toggle',
+    Romo.proxy(function(e, romoDropdown) {
+      Romo.trigger(
+        this.elem,
+        'romoSelectDropdown:romoDropdown:toggle',
+        [romoDropdown, this]
+      );
+    }, this)
+  );
+  Romo.on(
+    this.elem,
+    'romoOptionListDropdown:romoDropdown:popupOpen',
+    Romo.proxy(function(e, romoDropdown) {
+      Romo.trigger(
+        this.elem,
+        'romoSelectDropdown:romoDropdown:popupOpen',
+        [romoDropdown, this]
+      );
+    }, this)
+  );
+  Romo.on(
+    this.elem,
+    'romoOptionListDropdown:romoDropdown:popupClose',
+    Romo.proxy(function(e, romoDropdown) {
+      Romo.trigger(
+        this.elem,
+        'romoSelectDropdown:romoDropdown:popupClose',
+        [romoDropdown, this]
+      );
+    }, this)
+  );
+  Romo.on(
+    this.elem,
+    'romoOptionListDropdown:itemSelected',
+    Romo.proxy(function(e, itemValue, itemDisplayText, romoOptionListDropdown) {
+      Romo.trigger(
+        this.elem,
+        'romoSelectDropdown:itemSelected',
+        [itemValue, itemDisplayText, this]
+      );
+    }, this)
+  );
+  Romo.on(
+    this.elem,
+    'romoOptionListDropdown:newItemSelected',
+    Romo.proxy(function(e, itemValue, itemDisplayText, romoOptionListDropdown) {
+      var custOptElem = Romo.find(this.optionElemsParentElem, 'OPTION[data-romo-select-dropdown-custom-option="true"]')[0];
+      if (Romo.find(this.optionElemsParentElem, 'OPTION[value="'+itemValue+'"]').length === 0){
+        // a custom value is being selected. add a custom option elem and update its value/text
+        if (custOptElem === undefined) {
+          Romo.appendHtml(this.optionElemsParentElem, '<option data-romo-select-dropdown-custom-option="true"></option>');
+          custOptElem = Romo.find(this.optionElemsParentElem, 'OPTION[data-romo-select-dropdown-custom-option="true"]')[0];
+        }
+        Romo.setAttr(custOptElem, 'value', itemValue);
+        Romo.updateText(custOptElem,  itemDisplayText);
+      } else if (custOptElem !== undefined) {
+        // a non custom value is being selected. remove any existing custom option
+        Romo.remove(custOptElem);
       }
-      Romo.setAttr(custOptElem, 'value', itemValue);
-      Romo.updateText(custOptElem,  itemDisplayText);
-    } else if (custOptElem !== undefined) {
-      // a non custom value is being selected. remove any existing custom option
-      Romo.remove(custOptElem);
-    }
-    Romo.trigger(this.elem, 'romoSelectDropdown:newItemSelected', [itemValue, itemDisplayText, this]);
-  }, this));
-  Romo.on(this.elem, 'romoOptionListDropdown:change', Romo.proxy(function(e, newValue, prevValue, romoOptionListDropdown) {
-    Romo.trigger(this.elem, 'romoSelectDropdown:change', [newValue, prevValue, this]);
-  }, this));
+      Romo.trigger(
+        this.elem,
+        'romoSelectDropdown:newItemSelected',
+        [itemValue, itemDisplayText, this]
+      );
+    }, this)
+  );
+  Romo.on(
+    this.elem,
+    'romoOptionListDropdown:change',
+    Romo.proxy(function(e, newValue, prevValue, romoOptionListDropdown) {
+      Romo.trigger(this.elem, 'romoSelectDropdown:change', [newValue, prevValue, this]);
+    }, this)
+  );
 
 
   Romo.on(this.elem, 'romoSelectDropdown:triggerToggle', Romo.proxy(function(e) {
@@ -125,29 +189,45 @@ RomoSelectDropdown.prototype._bindElem = function() {
 
   this.romoOptionListDropdown = new RomoOptionListDropdown(this.elem);
 
-  Romo.on(this.elem, 'romoOptionListDropdown:filterChange', Romo.proxy(function(e, filterValue, romoOptionListDropdown) {
-    var elems    = Romo.find(this.optionElemsParentElem, 'OPTION');
-    var wbFilter = new RomoWordBoundaryFilter(filterValue, elems, function(elem) {
-      // The romo word boundary filter by default considers a space, "-" and "_"
-      // as word boundaries.  We want to also consider other non-word characters
-      // (such as ":", "/", ".", "?", "=", "&") as word boundaries as well.
-      return elem.textContent.replace(/\W/g, ' ');
-    });
+  Romo.on(
+    this.elem,
+    'romoOptionListDropdown:filterChange',
+    Romo.proxy(function(e, filterValue, romoOptionListDropdown) {
+      var elems    = Romo.find(this.optionElemsParentElem, 'OPTION');
+      var wbFilter = new RomoWordBoundaryFilter(filterValue, elems, function(elem) {
+        // The romo word boundary filter by default considers a space, "-" and "_"
+        // as word boundaries.  We want to also consider other non-word characters
+        // (such as ":", "/", ".", "?", "=", "&") as word boundaries as well.
+        return elem.textContent.replace(/\W/g, ' ');
+      });
 
-    Romo.removeClass(wbFilter.matchingItems, this.filterHiddenClass);
-    Romo.addClass(wbFilter.notMatchingItems, this.filterHiddenClass);
-    this._setListItems();
+      Romo.removeClass(wbFilter.matchingItems, this.filterHiddenClass);
+      Romo.addClass(wbFilter.notMatchingItems, this.filterHiddenClass);
+      this._setListItems();
 
-    if (filterValue !== '') {
-      Romo.trigger(this.romoOptionListDropdown.elem, 'romoOptionListDropdown:triggerListOptionsUpdate', [this.optItemElems()[0]]);
-    } else {
-      Romo.trigger(this.elem, 'romoOptionListDropdown:triggerListOptionsUpdate', [this.selectedItemElem()]);
-    }
-  }, this));
+      if (filterValue !== '') {
+        Romo.trigger(
+          this.romoOptionListDropdown.elem,
+          'romoOptionListDropdown:triggerListOptionsUpdate',
+          [this.optItemElems()[0]]
+        );
+      } else {
+        Romo.trigger(
+          this.elem,
+          'romoOptionListDropdown:triggerListOptionsUpdate',
+          [this.selectedItemElem()]
+        );
+      }
+    }, this)
+  );
 
   this._sanitizeOptions();
   this._setListItems();
-  Romo.trigger(this.elem, 'romoOptionListDropdown:triggerListOptionsUpdate', [this.selectedItemElem()]);
+  Romo.trigger(
+    this.elem,
+    'romoOptionListDropdown:triggerListOptionsUpdate',
+    [this.selectedItemElem()]
+  );
 
   if (Romo.attr(this.elem, 'id') !== undefined) {
     var labelElem = Romo.f('label[for="'+Romo.attr(this.elem, 'id')+'"]');

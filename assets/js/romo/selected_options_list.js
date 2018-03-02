@@ -65,7 +65,11 @@ RomoSelectedOptionsList.prototype.doRefreshUI = function() {
     var itemBorderWidth = 1;
     var itemLeftPad     = parseInt(Romo.css(addElem, "padding-left"), 10);
     var itemRightPad    = parseInt(Romo.css(addElem, "padding-right"), 10);
-    Romo.setStyle(Romo.find(addElem, 'DIV')[0], 'max-width', String(listWidth-listLeftPad-listRightPad-(2*itemBorderWidth)-itemLeftPad-itemRightPad)+'px');
+    Romo.setStyle(
+      Romo.find(addElem, 'DIV')[0],
+      'max-width',
+      String(listWidth-listLeftPad-listRightPad-(2*itemBorderWidth)-itemLeftPad-itemRightPad)+'px'
+      );
   }, this));
 
   var focusElemWidth = Romo.width(this.focusElem);
@@ -82,7 +86,14 @@ RomoSelectedOptionsList.prototype.doRefreshUI = function() {
     var listBottomPad    = parseInt(Romo.css(uiListElem, "padding-bottom"), 10);
 
     var maxRows   = Romo.data(this.focusElem, 'romo-selected-options-list-max-rows') || 0;
-    var maxHeight = listTopPad+(itemHeight*maxRows)+(itemMarginBottom*(maxRows-1))+(2*itemBorderWidth*maxRows)+listBottomPad+(itemHeight/2);
+    var maxHeight = (
+      listTopPad+
+      (itemHeight*maxRows)+
+      (itemMarginBottom*(maxRows-1))+
+      (2*itemBorderWidth*maxRows)+
+      listBottomPad+
+      (itemHeight/2)
+    );
   }
   if (maxRows !== 0 && (uiListElemHeight > maxHeight)) {
     Romo.setStyle(this.elem, 'height',     String(maxHeight)+'px');
@@ -100,7 +111,11 @@ RomoSelectedOptionsList.prototype.doRefreshUI = function() {
 // private
 
 RomoSelectedOptionsList.prototype._bindElem = function() {
-  this.elem = Romo.elems('<div class="romo-selected-options-list"><div class="romo-selected-options-list-items"></div></div>')[0];
+  this.elem = Romo.elems(
+    '<div class="romo-selected-options-list">'+
+      '<div class="romo-selected-options-list-items"></div>'+
+    '</div>'
+  )[0];
 
   Romo.on(this.elem, 'click', Romo.proxy(function(e) {
     Romo.trigger(this.elem, 'romoSelectedOptionsList:listClick', [this]);
@@ -112,8 +127,19 @@ RomoSelectedOptionsList.prototype._bindElem = function() {
 
 RomoSelectedOptionsList.prototype._buildItemElem = function(item) {
   var itemClass = Romo.data(this.focusElem, 'romo-selected-options-list-item-class') || '';
-  var itemElem  = Romo.elems('<div class="romo-selected-options-list-item romo-pointer romo-pad0-left romo-pad0-right romo-push0-right romo-push0-bottom '+itemClass+'"></div>')[0];
-  Romo.append(itemElem, Romo.elems('<div class="romo-crop-ellipsis romo-text-strikethrough-hover">'+(item.displayText || '')+'</div>')[0]);
+  var itemElem  = Romo.elems(
+    '<div class="romo-selected-options-list-item romo-pointer '+
+                'romo-pad0-left romo-pad0-right romo-push0-right romo-push0-bottom '+
+                itemClass+'">'+
+    '</div>'
+  )[0];
+  Romo.append(
+    itemElem,
+    Romo.elems(
+      '<div class="romo-crop-ellipsis romo-text-strikethrough-hover">'+
+      (item.displayText || '')+
+    '</div>'
+  )[0]);
   Romo.setData(itemElem, 'romo-selected-options-list-value', (item.value || ''));
   Romo.on(itemElem, 'click', Romo.proxy(this._onItemClick, this));
 
