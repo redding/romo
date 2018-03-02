@@ -1,0 +1,62 @@
+@import 'css/romo/vars';
+@import 'css/romo/mixins';
+
+.romo {
+
+  .romo-color-select-wrapper {
+    display: inline-block;
+    text-align: left;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    cursor: pointer;
+    @include user-select(none);
+    position: relative;
+  }
+
+  .romo-color-select {
+    min-width: 50px;
+    font-weight: normal;
+    text-align: left;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+  .romo-color-select:focus,
+  .romo-color-select.romo-color-select-focus { @include input-focus; }
+
+  .romo-color-select:active,
+  .romo-color-select.active {
+    background-image: none;
+    outline: 0;
+    @include box-shadow((inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)));
+  }
+
+  .romo-color-select-text {
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .romo-color-select-caret {
+    display: inline-block;
+    position: absolute;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  .romo-color-select-item {
+    @include pad0();
+  }
+  .romo-color-select-item-color,
+  .romo-color-select-item-name {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: $lineHeight1;
+  }
+  .romo-color-select-item-color {
+    @include push0-right();
+    @include border1();
+    width: $lineHeight1;
+  }
+
+}

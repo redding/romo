@@ -265,20 +265,20 @@ RomoSelectDropdown.prototype._setListItems = function() {
 }
 
 RomoSelectDropdown.prototype._buildOptionListItems = function(optionElems) {
-  var list = [];
+  var items = [];
 
   optionElems.forEach(Romo.proxy(function(optElem) {
     if (optElem.tagName === "OPTION") {
-      list.push(this._buildOptionItem(optElem));
+      items.push(this._buildOptionItem(optElem));
     } else if (optElem.tagName === "OPTGROUP") {
       var optGroupItem = this._buildOptGroupItem(optElem);
       if (optGroupItem.items.length !== 0) {
-        list.push(optGroupItem);
+        items.push(optGroupItem);
       }
     }
   }, this));
 
-  return list;
+  return items;
 }
 
 RomoSelectDropdown.prototype._buildOptionItem = function(optionElem) {
@@ -334,7 +334,7 @@ RomoSelectDropdown.prototype._buildCustomOptionItem = function(value) {
     'type':        'option',
     'value':       value,
     'displayText': value,
-    'displayHtml': value
+    'displayHtml': '<span>'+value+'</span>'
   };
 }
 
