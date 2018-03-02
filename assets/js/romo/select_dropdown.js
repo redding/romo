@@ -134,8 +134,8 @@ RomoSelectDropdown.prototype._bindElem = function() {
       return elem.textContent.replace(/\W/g, ' ');
     });
 
-    Romo.removeClass(wbFilter.matchingElems, this.filterHiddenClass);
-    Romo.addClass(wbFilter.notMatchingElems, this.filterHiddenClass);
+    Romo.removeClass(wbFilter.matchingItems, this.filterHiddenClass);
+    Romo.addClass(wbFilter.notMatchingItems, this.filterHiddenClass);
     this._setListItems();
 
     if (filterValue !== '') {
