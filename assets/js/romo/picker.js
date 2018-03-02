@@ -223,7 +223,8 @@ RomoPicker.prototype._buildOptionListDropdownElem = function() {
 
   Romo.setData(romoOptionListDropdownElem, 'romo-dropdown-overflow-x', 'hidden');
   Romo.setData(romoOptionListDropdownElem, 'romo-dropdown-width',      'elem');
-  Romo.setData(romoOptionListDropdownElem,
+  Romo.setData(
+    romoOptionListDropdownElem,
     'romo-option-list-focus-style-class',
     'romo-picker-focus'
   );

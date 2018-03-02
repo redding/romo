@@ -148,12 +148,21 @@ RomoSelectDropdown.prototype._bindElem = function() {
     this.elem,
     'romoOptionListDropdown:newItemSelected',
     Romo.proxy(function(e, itemValue, itemDisplayText, romoOptionListDropdown) {
-      var custOptElem = Romo.find(this.optionElemsParentElem, 'OPTION[data-romo-select-dropdown-custom-option="true"]')[0];
+      var custOptElem = Romo.find(
+        this.optionElemsParentElem,
+        'OPTION[data-romo-select-dropdown-custom-option="true"]'
+      )[0];
       if (Romo.find(this.optionElemsParentElem, 'OPTION[value="'+itemValue+'"]').length === 0){
         // a custom value is being selected. add a custom option elem and update its value/text
         if (custOptElem === undefined) {
-          Romo.appendHtml(this.optionElemsParentElem, '<option data-romo-select-dropdown-custom-option="true"></option>');
-          custOptElem = Romo.find(this.optionElemsParentElem, 'OPTION[data-romo-select-dropdown-custom-option="true"]')[0];
+          Romo.appendHtml(
+            this.optionElemsParentElem,
+            '<option data-romo-select-dropdown-custom-option="true"></option>'
+          );
+          custOptElem = Romo.find(
+            this.optionElemsParentElem,
+            'OPTION[data-romo-select-dropdown-custom-option="true"]'
+          )[0];
         }
         Romo.setAttr(custOptElem, 'value', itemValue);
         Romo.updateText(custOptElem,  itemDisplayText);

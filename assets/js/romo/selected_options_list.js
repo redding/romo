@@ -69,7 +69,7 @@ RomoSelectedOptionsList.prototype.doRefreshUI = function() {
       Romo.find(addElem, 'DIV')[0],
       'max-width',
       String(listWidth-listLeftPad-listRightPad-(2*itemBorderWidth)-itemLeftPad-itemRightPad)+'px'
-      );
+    );
   }, this));
 
   var focusElemWidth = Romo.width(this.focusElem);
@@ -137,9 +137,10 @@ RomoSelectedOptionsList.prototype._buildItemElem = function(item) {
     itemElem,
     Romo.elems(
       '<div class="romo-crop-ellipsis romo-text-strikethrough-hover">'+
-      (item.displayText || '')+
-    '</div>'
-  )[0]);
+        (item.displayText || '')+
+      '</div>'
+    )[0]
+  );
   Romo.setData(itemElem, 'romo-selected-options-list-value', (item.value || ''));
   Romo.on(itemElem, 'click', Romo.proxy(this._onItemClick, this));
 

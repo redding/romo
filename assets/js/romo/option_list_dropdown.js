@@ -145,23 +145,23 @@ RomoOptionListDropdown.prototype._bindElem = function() {
   Romo.on(this.elem, 'romoDropdown:toggle', Romo.proxy(function(e, romoDropdown) {
     Romo.trigger(
       this.elem,
-    'romoOptionListDropdown:romoDropdown:toggle',
-    [romoDropdown, this]
-  );
+      'romoOptionListDropdown:romoDropdown:toggle',
+      [romoDropdown, this]
+    );
   }, this));
   Romo.on(this.elem, 'romoDropdown:popupOpen', Romo.proxy(function(e, romoDropdown) {
     Romo.trigger(
       this.elem,
-    'romoOptionListDropdown:romoDropdown:popupOpen',
-    [romoDropdown, this]
-  );
+      'romoOptionListDropdown:romoDropdown:popupOpen',
+      [romoDropdown, this]
+    );
   }, this));
   Romo.on(this.elem, 'romoDropdown:popupClose', Romo.proxy(function(e, romoDropdown) {
     Romo.trigger(
       this.elem,
-    'romoOptionListDropdown:romoDropdown:popupClose',
-    [romoDropdown, this]
-  );
+      'romoOptionListDropdown:romoDropdown:popupClose',
+      [romoDropdown, this]
+    );
   }, this));
 
   Romo.on(
