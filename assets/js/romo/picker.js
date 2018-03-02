@@ -118,6 +118,13 @@ RomoPicker.prototype._bindSelectedOptionsList = function() {
         }
         this.romoSelectedOptionsList.doRemoveItem(itemValue);
         this._refreshUI();
+
+        Romo.trigger(this.elem, 'change');
+        Romo.trigger(
+          this.elem,
+          'romoPicker:multipleChange',
+          [currentValues, itemValue, this]
+        );
       }, this)
     );
     Romo.on(
@@ -209,7 +216,15 @@ RomoPicker.prototype._bindOptionListDropdown = function() {
     'romoOptionListDropdown:change',
     Romo.proxy(function(e, newValue, prevValue, optionListDropdown) {
       Romo.trigger(this.elem, 'change');
-      Romo.trigger(this.elem, 'romoPicker:change', [newValue, prevValue, this]);
+      if (this.romoSelectedOptionsList !== undefined) {
+        Romo.trigger(
+          this.elem,
+          'romoPicker:multipleChange',
+          [this._elemValues(), newValue, this]
+        );
+      } else {
+        Romo.trigger(this.elem, 'romoPicker:change', [newValue, prevValue, this]);
+      }
     }, this)
   );
 }
