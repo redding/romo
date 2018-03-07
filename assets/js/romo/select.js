@@ -237,6 +237,20 @@ RomoSelect.prototype._buildSelectDropdownElem = function() {
       Romo.data(this.elem, 'romo-select-dropdown-height')
     );
   }
+  if (Romo.data(this.elem, 'romo-select-dropdown-append-to-closest') !== undefined) {
+    Romo.setData(
+      romoOptionListDropdownElem,
+      'romo-dropdown-append-to-closest',
+      Romo.data(this.elem, 'romo-select-dropdown-append-to-closest')
+    );
+  }
+  if (Romo.data(this.elem, 'romo-select-dropdown-append-to') !== undefined) {
+    Romo.setData(
+      romoOptionListDropdownElem,
+      'romo-dropdown-append-to',
+      Romo.data(this.elem, 'romo-select-dropdown-append-to')
+    );
+  }
   if (Romo.data(this.elem, 'romo-select-filter-placeholder') !== undefined) {
     Romo.setData(
       romoSelectDropdownElem,

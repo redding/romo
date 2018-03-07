@@ -158,8 +158,22 @@ RomoTooltip.prototype._bindElem = function() {
 }
 
 RomoTooltip.prototype._bindPopup = function() {
-  this.popupElem = Romo.elems('<div class="romo-tooltip-popup"><div class="romo-tooltip-arrow"></div><div class="romo-tooltip-body"></div></div>')[0];
-  var popupParentElem = Romo.closest(this.elem, Romo.data(this.elem, 'romo-tooltip-append-to-closest') || 'body');
+  this.popupElem = Romo.elems(
+    '<div class="romo-tooltip-popup">' +
+      '<div class="romo-tooltip-arrow"></div>' +
+      '<div class="romo-tooltip-body"></div>' +
+    '</div>'
+  )[0];
+
+  var popupParentElem;
+  var appendToClosestSel = Romo.data(this.elem, 'romo-tooltip-append-to-closest');
+  if (appendToClosestSel !== undefined) {
+    popupParentElem = Romo.closest(this.elem, appendToClosestSel);
+  } else {
+    popupParentElem = Romo.f(
+      Romo.data(this.elem, 'romo-tooltip-append-to') || 'BODY'
+    )[0];
+  }
   Romo.append(popupParentElem, this.popupElem);
 
   this.bodyElem = Romo.children(this.popupElem, '.romo-tooltip-body')[0];

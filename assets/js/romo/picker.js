@@ -279,6 +279,20 @@ RomoPicker.prototype._buildOptionListDropdownElem = function() {
       Romo.data(this.elem, 'romo-picker-dropdown-height')
     );
   }
+  if (Romo.data(this.elem, 'romo-picker-dropdown-append-to-closest') !== undefined) {
+    Romo.setData(
+      romoOptionListDropdownElem,
+      'romo-dropdown-append-to-closest',
+      Romo.data(this.elem, 'romo-picker-dropdown-append-to-closest')
+    );
+  }
+  if (Romo.data(this.elem, 'romo-picker-dropdown-append-to') !== undefined) {
+    Romo.setData(
+      romoOptionListDropdownElem,
+      'romo-dropdown-append-to',
+      Romo.data(this.elem, 'romo-picker-dropdown-append-to')
+    );
+  }
   if (Romo.data(this.elem, 'romo-picker-filter-placeholder') !== undefined) {
     Romo.setData(
       romoOptionListDropdownElem,

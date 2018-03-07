@@ -109,9 +109,22 @@ RomoModal.prototype._bindElem = function() {
 }
 
 RomoModal.prototype._bindPopup = function() {
-  this.popupElem = Romo.elems('<div class="romo-modal-popup"><div class="romo-modal-body"></div></div>')[0];
-  var popupParentElem = Romo.closest(this.elem, Romo.data(this.elem, 'romo-dropdown-append-to-closest') || 'body');
-  Romo.append(popupParentElem, this.popupElem)
+  this.popupElem = Romo.elems(
+    '<div class="romo-modal-popup">' +
+      '<div class="romo-modal-body"></div>' +
+    '</div>'
+  )[0];
+
+  var popupParentElem;
+  var appendToClosestSel = Romo.data(this.elem, 'romo-modal-append-to-closest');
+  if (appendToClosestSel !== undefined) {
+    popupParentElem = Romo.closest(this.elem, appendToClosestSel);
+  } else {
+    popupParentElem = Romo.f(
+      Romo.data(this.elem, 'romo-modal-append-to') || 'BODY'
+    )[0];
+  }
+  Romo.append(popupParentElem, this.popupElem);
 
   this.bodyElem = Romo.children(this.popupElem, '.romo-modal-body')[0];
   if (Romo.data(this.elem, 'romo-modal-style-class') !== undefined) {
