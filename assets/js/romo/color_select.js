@@ -47,30 +47,37 @@ RomoColorSelect.prototype.doSetValue = function(value) {
 
 RomoColorSelect.prototype.doRefreshColorItemsJson = function() {
   var items, values;
-  items  = Romo.data(this.elem, 'romo-color-select-items-json');
-  values = this._elemValues();
+  itemTuples = Romo.data(this.elem, 'romo-color-select-items-json');
+  values     = this._elemValues();
 
-  this.colorItems = items.map(Romo.proxy(function(i) {
-    return {
-      'value':       i.value,
-      'displayText': i.name,
-      'displayHtml': this._buildColorItemDisplayHtml(i),
-      'selected':    values.includes(i.value)
-    }
+  this.colorItems = itemTuples.map(Romo.proxy(function(itemTuple) {
+    return this._buildColorItem(values, {
+      'value': itemTuple[0],
+      'name':  itemTuple[1]
+    });
   }, this));
 }
 
-RomoColorSelect.prototype._buildColorItemDisplayHtml = function(item) {
+// private
+
+RomoColorSelect.prototype._buildColorItem = function(elemValues, itemData) {
+  return {
+    'value':       itemData.value,
+    'displayText': itemData.name,
+    'displayHtml': this._buildColorItemDisplayHtml(itemData),
+    'selected':    elemValues.includes(itemData.value)
+  }
+}
+
+RomoColorSelect.prototype._buildColorItemDisplayHtml = function(itemData) {
   return (
     '<div class="romo-color-select-item">'+
       '<div class="romo-color-select-item-color"'+
-           'style="background-color: '+item.value+'">&nbsp;</div>'+
-      '<div class="romo-color-select-item-name">'+item.name+'</div>'+
+           'style="background-color: '+itemData.value+'">&nbsp;</div>'+
+      '<div class="romo-color-select-item-name">'+itemData.name+'</div>'+
     '</div>'
   );
 }
-
-// private
 
 RomoColorSelect.prototype._bindElem = function() {
   this._bindOptionListDropdown();
@@ -452,14 +459,15 @@ RomoColorSelect.prototype._buildOptionItems = function() {
 }
 
 RomoColorSelect.prototype._buildDefaultOptionItems = function() {
-  var items = []
+  var items = [];
 
   if (Romo.data(this.elem, 'romo-color-select-empty-option') === true) {
+    var text = Romo.data(this.elem, 'romo-color-select-empty-option-display-text') || '';
     items.push({
       'type':        'option',
       'value':       '',
-      'displayText': (Romo.data(this.elem, 'romo-color-select-empty-option-display-text') || ''),
-      'displayHtml': '<span>&nbsp;</span>'
+      'displayText': text,
+      'displayHtml': '<span>'+text+'</span>'
     });
   }
 
