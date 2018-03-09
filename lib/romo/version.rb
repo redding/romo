@@ -1,3 +1,3 @@
 module Romo
-  VERSION = "0.20.10"
+  VERSION = "0.20.11"
 end
