@@ -318,6 +318,20 @@ RomoColorSelect.prototype._buildOptionListDropdownElem = function() {
       Romo.data(this.elem, 'romo-color-select-dropdown-height')
     );
   }
+  if (Romo.data(this.elem, 'romo-color-select-dropdown-append-to-closest') !== undefined) {
+    Romo.setData(
+      romoOptionListDropdownElem,
+      'romo-dropdown-append-to-closest',
+      Romo.data(this.elem, 'romo-color-select-dropdown-append-to-closest')
+    );
+  }
+  if (Romo.data(this.elem, 'romo-color-select-dropdown-append-to') !== undefined) {
+    Romo.setData(
+      romoOptionListDropdownElem,
+      'romo-dropdown-append-to',
+      Romo.data(this.elem, 'romo-color-select-dropdown-append-to')
+    );
+  }
   if (Romo.data(this.elem, 'romo-color-select-filter-placeholder') !== undefined) {
     Romo.setData(
       romoOptionListDropdownElem,

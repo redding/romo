@@ -149,12 +149,20 @@ RomoDropdown.prototype._bindElem = function() {
 
 RomoDropdown.prototype._bindPopup = function() {
   this.popupElem = Romo.elems(
-    '<div class="romo-dropdown-popup"><div class="romo-dropdown-body"></div></div>'
+    '<div class="romo-dropdown-popup">' +
+      '<div class="romo-dropdown-body"></div>' +
+    '</div>'
   )[0];
-  var popupParentElem = Romo.closest(
-    this.elem,
-    Romo.data(this.elem, 'romo-dropdown-append-to-closest') || 'body'
-  );
+
+  var popupParentElem;
+  var appendToClosestSel = Romo.data(this.elem, 'romo-dropdown-append-to-closest');
+  if (appendToClosestSel !== undefined) {
+    popupParentElem = Romo.closest(this.elem, appendToClosestSel);
+  } else {
+    popupParentElem = Romo.f(
+      Romo.data(this.elem, 'romo-dropdown-append-to') || 'BODY'
+    )[0];
+  }
   Romo.append(popupParentElem, this.popupElem);
 
   this.bodyElem = Romo.children(this.popupElem, '.romo-dropdown-body')[0];
