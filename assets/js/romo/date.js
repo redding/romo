@@ -250,20 +250,16 @@ RomoDate.Formatter.prototype.dateString = function(forDate) {
       case    "M":
         return RomoDate.Utils.monthAbbrevs[d.getMonth()]
       case  "ddd":
-        var ds = day.toString();
-        switch (ds.slice(-1)) {
-          case '1':
-            ds += 'st';
-            break;
-          case '2':
-            ds += 'nd'
-            break;
-          case '3':
-            ds += 'rd';
-            break;
-          default:
-            ds += 'th';
-            break;
+        var ds         = day.toString();
+        var dayLastNum = ds.slice(-1);
+        if (dayLastNum === '1' && ds !== '11') {
+          ds += 'st';
+        } else if (dayLastNum === '2' && ds !== '12') {
+          ds += 'nd'
+        } else if (dayLastNum === '3' && ds !== '13') {
+          ds += 'rd';
+        } else {
+          ds += 'th';
         }
         return ds;
       case   "dd":
