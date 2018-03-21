@@ -366,23 +366,22 @@ RomoSelect.prototype._setValues = function(newValues) {
   var unsetValues = currentValues.filter(function(value) {
     return newValues.indexOf(value) === -1;
   });
-  var setValues = newValues.filter(function(value) {
-    return currentValues.indexOf(value) === -1;
-  });
   var unsetElems = unsetValues.map(Romo.proxy(function(value) {
     return Romo.find(this.elem, 'OPTION[value="'+value+'"]')[0];
   }, this));
-  var setElems = setValues.map(Romo.proxy(function(value) {
+  var setElems = newValues.map(Romo.proxy(function(value) {
     return Romo.find(this.elem, 'OPTION[value="'+value+'"]')[0];
   }, this));
 
+  // set the property before modifying the DOM, Safari has a bug where it won't
+  // allow setting the property if the DOM is updated first
   unsetElems.forEach(Romo.proxy(function(unsetElem) {
-    Romo.rmAttr(unsetElem, 'selected');
     unsetElem.selected = false;
+    Romo.rmAttr(unsetElem, 'selected');
   }, this));
   setElems.forEach(Romo.proxy(function(setElem) {
-    Romo.setAttr(setElem, 'selected', 'selected');
     setElem.selected = true;
+    Romo.setAttr(setElem, 'selected', 'selected');
   }, this));
 }
 
