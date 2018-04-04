@@ -23,7 +23,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency("assert", ["~> 2.16.3"])
 
   # TODO: make a romo-dassets gem that brings in these dependencies someday
-  gem.add_dependency("dassets",      ["~> 0.14.0"])
+  gem.add_dependency("dassets",      ["~> 0.14.5"])
   gem.add_dependency("dassets-sass", ["~> 0.4.0"])
 
 end

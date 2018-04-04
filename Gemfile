@@ -3,11 +3,13 @@ source "https://rubygems.org"
 gemspec
 
 gem 'pry',  "~> 0.9.0"
-gem 'json', "~> 1.8.3"
 
+platform :ruby_18 do
+  gem 'json', "~> 1.8"
+end
 
-gem 'rack'
-gem "deas",        "~> 0.43.1"
+gem 'rack',        " = 1.6.8"
+gem "deas",        "~> 0.43.3"
 gem "deas-erubis", "~> 0.5.5"
 gem "dassets-erb", "~> 0.2.0"
 gem "scmd",        "~> 3.0.3"
