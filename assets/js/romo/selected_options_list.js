@@ -172,7 +172,7 @@ RomoSelectedOptionsList.prototype.romoEvFn._onItemClick = function(e) {
     var itemElem = Romo.closest(itemElem, '.romo-selected-options-list-item');
   }
   if (itemElem !== undefined) {
-    var value = Romo.data(itemElem, 'romo-selected-options-list-value');
+    var value = Romo.data(itemElem, 'romo-selected-options-list-value').toString();
     Romo.trigger(this.elem, 'romoSelectedOptionsList:itemClick', [value, this]);
   }
 }
